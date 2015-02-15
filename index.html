@@ -36,19 +36,51 @@
 			</section>
 			<section class="s-about" id="s-about">
 				<div class="s-table">
-					<div class="row">
+					<div class="s-row">
 						<div class="s-col-1">
 							<p>M E</p>
 						</div>
-						<div class="s-col-2"></div>
-					</div>
+						<div class="s-col-2">
+							<p>As a product designer building cool stuff is  pretty much what I do. My goal is always to  make the world a better place.</p>
+							<p>I don't think things should be taken too seriously.</p>
+							<p>I spent a while in <a href="http://design.yorku.ca/" target="_blank">school</a>, now I'm off doing work  for whoever might need me. If you would like to talk send me a message.</p>
+							<p>I'm currently looking for contract work in the fall of this year. Feel free to reach out.</p>
+						</div>
+					</div> <!--- /row -->
+					<div class="s-row">
+						<div class="s-col-1">
+							<p>L I K E S</p>
+						</div>
+						<div class="s-col-2">
+							<p>Interior design, gaming, traveling, esports, virtual  reality, electropop, user experience, animation, cutting  edge tech, hacks, video game retro</p>
+						</div>
+					</div> <!--- /row -->
+					<div class="s-row">
+						<div class="s-col-1">
+							<p>♫</p>
+						</div>
+						<div class="s-col-2">
+				      <p class="s-current-track">
+				      	<a id="js-track-target" href="#" target="_blank"><span id="-t-track-title">Loading Last.fm</span></a> <span>-</span> <span id="-t-track-artist">There might be something wrong.</span>
+				      </p>
+						</div>
+					</div> <!--- /row -->
 				</div>
 			</section>
 		</div>
 
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+		<script type="text/javascript">
+        // Set up JSON call to grab most recent Last.fm track
+        function recentTrack(JSONdata) {
+          var oTrack = (new Array().concat(JSONdata.recenttracks.track))[0];
+          var ytSearch = oTrack.name + "+" + oTrack.artist["#text"];
+          document.getElementById("-t-track-artist").innerHTML = oTrack.artist["#text"];
+          document.getElementById("-t-track-title").innerHTML = oTrack.name;
+          document.getElementById("js-track-target").href="https://www.youtube.com/results?search_query="+ ytSearch;
+        }
+    </script>
+    <script type="text/javascript" src="http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=iamnbutler&api_key=eb5004312b5007e85399ab8128cd90ff&limit=1&format=json&callback=recentTrack"></script>
 		<!-- <script src="js/scripts.js"></script> -->
-
 	</body>
 </html>

@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 9;
   @extend .cf;
 
   .s-nav {
@@ -35,19 +36,24 @@
 // === Body == //
 
 .s-body {
+  position: relative;
   width: 1280px;
   padding: 60px 80px;
   margin: 0 auto;
+  z-index: 1;
 
   .s-table {
     width: 100%;
-    @extend .cf;
+    .s-row {
+      width: 100%;
+      @extend .cf;
+    }
     .s-col-1 {
       width: 180px;
       float: left;
     }
     .s-col-2 {
-      width: 400px;
+      width: 520px;
       float: left;
     }
   }
@@ -68,4 +74,17 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+// === Section - About == //
+.s-current-track {
+  width: 800px;
+}
+
+span {
+  display: inline-block;
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
