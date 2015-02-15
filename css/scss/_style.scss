@@ -7,6 +7,7 @@
   width: 100%;
   z-index: 9;
   @extend .cf;
+  background-color: #FFF;
 
   .s-nav {
     width: 1280px;
@@ -74,6 +75,14 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  &::after {
+    content:"( ─ ‿ ─ )";
+  }
+  &:hover {
+    &::after {
+      content:"( o ‿ ─ )";
+    }
+  }
 }
 
 // === Section - About == //
