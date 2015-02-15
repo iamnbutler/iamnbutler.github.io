@@ -1,0 +1,71 @@
+// === Header == //
+
+.s-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  @extend .cf;
+
+  .s-nav {
+    width: 1280px;
+    padding: 60px 80px;
+    margin: 0 auto;
+  }
+
+  a {
+    font-size: 22px;
+    &:not(:last-child) {
+      margin-right: 100px;
+    }
+    &:hover {
+      &#s-nav-about {
+        color: #FF0000;
+      }
+      &#s-nav-work {
+        color: #00FF00;
+      }
+      &#s-nav-journal {
+        color: #0000FF;
+      }
+    }
+  }
+}
+
+// === Body == //
+
+.s-body {
+  width: 1280px;
+  padding: 60px 80px;
+  margin: 0 auto;
+
+  .s-table {
+    width: 100%;
+    @extend .cf;
+    .s-col-1 {
+      width: 180px;
+      float: left;
+    }
+    .s-col-2 {
+      width: 400px;
+      float: left;
+    }
+  }
+}
+
+// === Section - Home == //
+
+.s-home {
+  height: 600px;
+  width: 100%;
+}
+
+.s-h-welcome {
+  text-align: center;
+  font-size: 140px;
+  font-family: Arial, "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

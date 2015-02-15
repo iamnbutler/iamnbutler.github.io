@@ -1,0 +1,127 @@
+/* = Reset = */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figcaption, figure, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  color: #000; }
+
+a:visited {
+  color: #333; }
+
+a:hover {
+  color: #000; }
+
+a:focus {
+  outline: thin dotted; }
+
+a:hover, a:active {
+  outline: 0; }
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* Contain floats. */
+.cf:after, .s-header:after, .s-body .s-table:after {
+  content: ' ';
+  display: block;
+  clear: both; }
+
+.s-right {
+  float: right; }
+
+.s-left {
+  float: left; }
+
+html {
+  font-family: "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 16px;
+  color: #141722; }
+
+html, html a {
+  -webkit-font-smoothing: antialiased !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004); }
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit; }
+
+p {
+  font-size: 1.6em;
+  line-height: 2.125em; }
+
+/* = Custom style starts here = */
+.s-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; }
+  .s-header .s-nav {
+    width: 1280px;
+    padding: 60px 80px;
+    margin: 0 auto; }
+  .s-header a {
+    font-size: 22px; }
+    .s-header a:not(:last-child) {
+      margin-right: 100px; }
+    .s-header a:hover#s-nav-about {
+      color: #FF0000; }
+    .s-header a:hover#s-nav-work {
+      color: #00FF00; }
+    .s-header a:hover#s-nav-journal {
+      color: #0000FF; }
+
+.s-body {
+  width: 1280px;
+  padding: 60px 80px;
+  margin: 0 auto; }
+  .s-body .s-table {
+    width: 100%; }
+    .s-body .s-table .s-col-1 {
+      width: 180px;
+      float: left; }
+    .s-body .s-table .s-col-2 {
+      width: 400px;
+      float: left; }
+
+.s-home {
+  height: 600px;
+  width: 100%; }
+
+.s-h-welcome {
+  text-align: center;
+  font-size: 140px;
+  font-family: Arial, "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
