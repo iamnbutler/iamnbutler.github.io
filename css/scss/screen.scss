@@ -22,6 +22,10 @@
   float: left;
 }
 
+html, body {
+  height: 100%;
+}
+
 // Typography
 
 @import "_typography.scss";
