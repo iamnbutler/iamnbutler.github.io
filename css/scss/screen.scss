@@ -2,6 +2,16 @@
 
 @import "_reset.scss";
 
+/* = Icons = */
+@import "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+// Vars
+
+// $c-text: #FFFFFF;
+$c-text: #141722;
+$c-black: #141722;
+$c-bg: #FFFFFF;
+
 /* apply a natural box layout model to all elements */
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -24,6 +34,7 @@
 
 html, body {
   height: 100%;
+  background-color: $c-bg;
 }
 
 // Typography

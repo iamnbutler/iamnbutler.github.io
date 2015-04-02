@@ -1,9 +1,9 @@
 // Typography
 
 html {
-  font-family: "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "proxima-nova", "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 16px;
-  color: #141722;
+  color: $c-text;
 }
 
 // Font smoothing hack
@@ -13,10 +13,7 @@ html, html a {
 }
 
 h1 {
-  font-size: 80px;
-  color: #F5F5F5;
-  padding-bottom: 80px;
-  line-height: 120px;
+  //h1
 }
 
 h2 {}
