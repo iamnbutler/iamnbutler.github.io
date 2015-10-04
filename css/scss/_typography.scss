@@ -19,15 +19,21 @@ h1 {
 h2 {}
 
 a {
-  font-weight: bold;
 	text-decoration: none;
 	color: inherit;
+  font-weight: bold;
 }
 
 p {
-  font-size: 1.6em;
+  font-size: 1.2em;
   line-height: 1.307692308em;
-  padding-bottom: 40px;
+  padding-bottom: 24px;
 }
 
 li {}
+
+.t-quote {
+  font-size: 1.8em;
+  line-height: 1.307692308em;
+  color: #999;
+}
