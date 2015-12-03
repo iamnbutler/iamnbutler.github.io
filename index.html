@@ -13,15 +13,22 @@
     <link rel="stylesheet" href="css/screen.css">
 
   </head>
-  <body class="s-layout">
-    <div class="s-content">
+  <body>
+    <main>
+      <section class="track">
+        <a href="#" id="song-link" target="_blank"><i class="fa fa-headphones"></i></i> <song id="song">Loading Track</song> - <artist id="artist">Please Wait</artist></a>
+      </section>
+      <section class="bio">
+        <h1>Nate Butler</h1>
+      </section>
+    </main>
+    <!-- <div class="s-content">
 
       <section class="s-home s-body" id="s-home">
-        <h1>Nate Butler</h1>
+
         <p>How's it going?</p>
         <p>There isn't a whole lot of anything here right now, but if you would like to chat <a href="mailto:mail-to:iamnbutler@gmail.com">send me a message</a>, or find me on one of the services below.</p>
 
-        <!-- Social -->
         <a href="http://dribbble.com/iamnbutler" target="_blank">
           <i class="fa fa-dribbble"></i>
         </a>
@@ -35,22 +42,22 @@
           <i class="fa fa-linkedin-square"></i>
         </a>
       </section>
-    </div>
+    </div> -->
 
-    <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//use.typekit.net/ooq2nez.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
+    <!-- <script>try{Typekit.load();}catch(e){}</script> -->
     <script type="text/javascript">
         // Set up JSON call to grab most recent Last.fm track
         function recentTrack(JSONdata) {
           var oTrack = (new Array().concat(JSONdata.recenttracks.track))[0];
           var ytSearch = oTrack.name + "+" + oTrack.artist["#text"];
-          document.getElementById("-t-track-artist").innerHTML = oTrack.artist["#text"];
-          document.getElementById("-t-track-title").innerHTML = oTrack.name;
-          document.getElementById("js-track-target").href="https://www.youtube.com/results?search_query="+ ytSearch;
+          document.getElementById("artist").innerHTML = oTrack.artist["#text"];
+          document.getElementById("song").innerHTML = oTrack.name;
+          document.getElementById("song-link").href="https://www.youtube.com/results?search_query="+ ytSearch;
         }
     </script>
     <script type="text/javascript" src="http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=iamnbutler&api_key=eb5004312b5007e85399ab8128cd90ff&limit=1&format=json&callback=recentTrack"></script>
-    <script src="js/scripts.js"></script> -->
+    <script src="js/scripts.js"></script>
   </body>
 </html>

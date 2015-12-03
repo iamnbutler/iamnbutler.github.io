@@ -12,21 +12,19 @@ html, html a {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
-h1 {
-  //h1
-}
+h1 {}
 
 h2 {}
 
 a {
   text-decoration: none;
-  color: #000;
+  color: inherit;
   font-weight: bold;
   &:visited {
-    color: #333;
+    color: inherit;
   }
   &:hover {
-    color: #000;
+    color: inherit;
     outline: 0;
   }
   &:focus {
