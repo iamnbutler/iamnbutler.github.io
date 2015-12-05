@@ -1,0 +1,71 @@
+// Typography
+
+html {
+  font-family: "Gotham", Gotham, "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 16px;
+  color: $c-text;
+}
+
+// Font smoothing hack
+html, html a {
+    -webkit-font-smoothing: antialiased !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+h1 {}
+
+h2 {}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    color: inherit;
+    outline: 0;
+  }
+  &:focus {
+    outline: thin dotted;
+  }
+  &:active {
+    outline: 0;
+  }
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.307692308em;
+  padding-bottom: 24px;
+}
+
+li {}
+
+.t-quote {
+  font-size: 1.8em;
+  line-height: 1.307692308em;
+  color: #999;
+}
+
+.t-feature-headline {
+  font-size: 4.5em;
+  line-height: 0.833em;
+  font-weight: bold;
+}
+
+.t-small-subhead {
+  font-family: monospace;
+  font-size: 0.75em;
+  font-weight: bold;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.t-large-body {
+  font-size: 1.25em;
+  line-height: 1.3em;
+  font-weight: 300;
+}

@@ -1,9 +1,12 @@
-/* = Reset = */
+// === Reset == //
+@import "compass/reset";
 
-@import "_reset.scss";
-
-/* = Icons = */
+// === Icons == //
 @import "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+// === Theme == //
+
+@import "_theme.scss";
 
 // Vars
 
@@ -36,13 +39,10 @@ html, body {
   background-color: $c-bg;
 }
 
-// Typography
+// === Typography == //
 
 @import "_typography.scss";
 
-
-/* = Custom style starts here = */
-
-// Style
+// === Style == //
 
 @import "_style.scss";
