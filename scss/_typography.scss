@@ -1,7 +1,7 @@
 // Typography
 
 html {
-  font-family: "proxima-nova", "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Gotham", Gotham, "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 16px;
   color: $c-text;
 }
@@ -47,4 +47,25 @@ li {}
   font-size: 1.8em;
   line-height: 1.307692308em;
   color: #999;
+}
+
+.t-feature-headline {
+  font-size: 4.5em;
+  line-height: 0.833em;
+  font-weight: bold;
+}
+
+.t-small-subhead {
+  font-family: monospace;
+  font-size: 0.75em;
+  font-weight: bold;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.t-large-body {
+  font-size: 1.25em;
+  line-height: 1.3em;
+  font-weight: 300;
 }
