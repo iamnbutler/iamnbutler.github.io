@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- TODO: Make this change when changing tabs -->
-    <title>( ─ ‿ ─)☆</title>
+    <title>Nate Butler | Product Design</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,55 +14,33 @@
 
   </head>
   <body>
-    <section class="sidebar">
-      <section class="track">
-        <a href="#" id="song-link" target="_blank"><i class="fa fa-headphones"></i></i> <song id="song">Loading Track</song> - <artist id="artist">Please Wait</artist></a>
-        <div class="border"></div>
-      </section>
-      <nav class="site-nav">
-        <a href="#work">Work</a>
-        <a href="#work">Journal</a>
-        <a href="#work">Discoveries</a>
+    <sidebar>
+      <header>
+        <h1>Nate Butler</h1>
+      </header>
+      <nav>
+        <a href="#" class="active">Work</a>
+        <a href="#">Stream</a>
+        <a href="#">Experiments</a>
+        <a href="#">Journal</a>
+        <a href="#">Discoveries</a>
       </nav>
-    </section>
+    </sidebar>
     <main>
-      <section class="bio">
-        <header><h1 class="t-feature-headline">Nate Butler</h1></header>
-        <p>I’m currently working my way through my fourth year of YSDN, soon joining Facebook as a Product Designer. Previously at Format and Lookbook. In my spare time you will find me playing games, writing janky code and working on side projects.</p>
 
-        <p>If you are into photos or process check out my Instagram. If like hacking and terrible code take a look at my Github. You can catch up with me on Facebook or send me a note.</p>
-
-        <footer>
-          <p>iamnbutler@gmail.com</p>
-        </footer>
-      </section>
     </main>
-    <!-- <div class="s-content">
-
-      <section class="s-home s-body" id="s-home">
-
-        <p>How's it going?</p>
-        <p>There isn't a whole lot of anything here right now, but if you would like to chat <a href="mailto:mail-to:iamnbutler@gmail.com">send me a message</a>, or find me on one of the services below.</p>
-
-        <a href="http://dribbble.com/iamnbutler" target="_blank">
-          <i class="fa fa-dribbble"></i>
-        </a>
-        <a href="https://github.com/iamnbutler" target="_blank">
-          <i class="fa fa-github-alt"></i>
-        </a>
-        <a href="https://instagram.com/iamnbutler" target="_blank">
-          <i class="fa fa-instagram"></i>
-        </a>
-        <a href="//ca.linkedin.com/pub/nathan-butler/29/488/214/" target="_blank">
-          <i class="fa fa-linkedin-square"></i>
-        </a>
-      </section>
-    </div> -->
+    <section class="frameExtras">
+      <div class="frameTrack"></div>
+      <div class="frameSocial"></div>
+    </section>
+    <shape id="backgroundFrame">
+      <div class="inner"></div>
+    </shape>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://use.typekit.net/bct6ybl.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         // Set up JSON call to grab most recent Last.fm track
         function recentTrack(JSONdata) {
           var oTrack = (new Array().concat(JSONdata.recenttracks.track))[0];
@@ -83,6 +61,6 @@
       ga('create', 'UA-33885149-6', 'auto');
       ga('send', 'pageview');
 
-    </script>
+    </script> -->
   </body>
 </html>

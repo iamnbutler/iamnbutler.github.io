@@ -6,57 +6,62 @@ html, body {
 }
 
 body {
-  background-color: $tPrimaryColor;
+  background-color: white;
+}
+
+// === Background == //
+
+shape#backgroundFrame {
+  $frame-margin: 24px;
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  padding: $frame-margin;
+  padding-left: 80 + $frame-margin;
+  .inner {
+    width: 100%;
+    height: 100%;
+
+    background-color: #f9f9f9;
+  }
 }
 
 // === Body == //
 
 main {
-  position: absolute;
-  top: 0px;
-  left: 180px;
-  z-index: 1;
-  &:hover {
-    z-index: 9;
-  }
 }
 
-section.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
+sidebar {
+  position: absolute;
+  z-index: 9;
 
-  width: 60px;
-  height: 100%;
-
-  color: $tTextColorWhite;
-  background-color: $tPrimaryColor;
-  z-index: 5;
+  padding: 18px;
+  h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
   nav {
-    position: absolute;
-    top: 380px;
-    left: 50px;
+    margin-top: 80px;
     a {
-      line-height: 60px;
+      font-family: "adelle-sans";
+      font-size: .8em;
+      font-weight: 400;
 
       display: block;
 
-      width: 160px;
-      height: 60px;
-      margin-bottom: 14px;
+      margin: 14px 0;
 
-      transition: all .4s;
-      text-align: center;
-
-      background-color: $tDarkColor;
-      box-shadow: 0px 4px 12px rgba(0,0,0,.24);
-
-      @extend .t-small-subhead;
-      &:hover {
-        transition: all .4s;
-
-        background-color: lighten($tDarkColor, 2%);
-        box-shadow: 0px 6px 14px rgba(0,0,0,.38);
+      letter-spacing: .25em;
+      text-transform: lowercase;
+      &.active {
+        font-weight: bold;
       }
     }
   }
@@ -106,19 +111,5 @@ section.track {
     min-height: 1px;
 
     border-bottom: 1px solid white;
-  }
-}
-
-section.bio {
-  width: 450px;
-  padding-top: 60px;
-  color: $tTextColorWhite;
-  h1 {
-    width: 240px;
-    text-shadow: -10px 20px 0 rgba(80,58,81,.1);
-    margin-bottom: 50px;
-  }
-  p {
-
   }
 }
