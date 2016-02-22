@@ -65,18 +65,23 @@
 	}
 
 	.friends {
-		width: 70%;
+		width: 420px;
 		a {
 			font-size: 0.9em;
 			border: none;
+			margin-bottom: 2px;
+			&:hover {
+				border-bottom: 1px dotted #aaa;
+			}
 		}
 		li {
-			line-height: 1.6;
+			width: 140px;
+			line-height: 2.4em;
 			display: inline-block;
 			margin-right: 4px;
-			&:not(:last-child) ::after {
-				content: ',';
-			}
+			// &:not(:last-child) ::after {
+			// 	content: ',';
+			// }
 		}
 	}
 }
