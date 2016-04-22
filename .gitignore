@@ -1,3 +1,5 @@
 *.scssc
 config.codekit
 *.codekit
+public/
+node_modules/
