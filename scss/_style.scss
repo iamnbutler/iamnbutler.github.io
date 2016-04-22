@@ -12,14 +12,14 @@ body {
 // === Header === //
 
 header {
-  max-width: $site-wrapper;
-  margin: 0 auto;
   position: relative;
   z-index: 9;
 
   display: flex;
 
+  max-width: $site-wrapper;
   height: 74px;
+  margin: 0 auto;
 }
 
 header #wordmark {
@@ -48,13 +48,13 @@ header nav a {
 
   color: #333333;
 
-  &:hover {
-    background-color: #000;
-    color: white;
-    font-weight: bold;
-  }
-
   @include monospace;
+  &:hover {
+    font-weight: bold;
+
+    color: white;
+    background-color: #000000;
+  }
   &.active {
     font-weight: bold;
   }
@@ -105,13 +105,71 @@ header .track #song, header .track #artist {
 main {
   max-width: $site-wrapper;
   margin: 0 auto;
+  padding: 0 30px;
 }
 
 // === Hero === //
 
 .work-index-hero {
-  @include aspect-ratio(16, 9);
-  background-color: pink;
+  position: relative;
+
+  cursor: pointer;
+
+  @include aspect-ratio(16, 7);
+  &:hover {
+    h2, h3 {
+      transition: all .3s;
+      transform: translateY(-6px);
+
+      text-shadow: 0px 15px 5px rgba(0,0,0,.08),
+      10px 20px 5px rgba(0,0,0,.04),
+      -10px 20px 5px rgba(0,0,0,.04);
+    }
+    img {
+      transition: all .3s;
+
+      opacity: .9;
+    }
+  }
+}
+
+.work-index-hero .title {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 140px;
+
+  transform: translateY(-50%);
+}
+
+.work-index-hero h2 {
+  font-family: DINCondensed-Bold;
+  font-size: 68px;
+  line-height: 48px;
+
+  transition: all .3s;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.work-index-hero h3 {
+  font-family: DINCondensed-Bold;
+  font-size: 28px;
+  line-height: 30px;
+
+  transition: all .3s;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+
+  color: #fc708f;
+}
+
+.work-index-hero img {
+  width: 100%;
+
+  transition: all .3s;
 }
 
 // === Frame Extras === //
@@ -120,7 +178,7 @@ $frame-margin: 32px;
 
 .frameExtras {
   position: fixed;
-  z-index: 2;
+  z-index: -1;
   top: 0;
 
   width: 100%;
