@@ -1,0 +1,214 @@
+$site-wrapper: 1360px;
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background-color: white;
+}
+
+// === Header === //
+
+// header {
+//   position: relative;
+//   z-index: 9;
+
+//   display: flex;
+
+//   max-width: $site-wrapper;
+//   height: 74px;
+//   margin: 0 auto;
+// }
+
+// header #wordmark {
+//   padding: 24px 18px 24px 30px;
+
+//   flex: 0 0 120px;
+// }
+
+// header nav {
+//   font-size: 14px;
+//   line-height: 28px;
+
+//   padding: 24px 0px;
+
+//   flex: 1;
+// }
+
+// header nav a {
+//   font-size: 14px;
+//   line-height: 20px;
+
+//   padding: 4px 12px;
+
+//   letter-spacing: 2px;
+//   text-transform: lowercase;
+
+//   color: #333333;
+
+//   @include monospace;
+//   &:hover {
+//     font-weight: bold;
+
+//     color: white;
+//     background-color: #000000;
+//   }
+//   &.active {
+//     font-weight: bold;
+//   }
+// }
+
+// header .track {
+//   font-size: 14px;
+//   line-height: 14px;
+
+//   padding: 31px 30px;
+
+//   text-transform: uppercase;
+
+//   color: #333333;
+
+//   flex: 0 1 auto;
+//   align-self: flex-end;
+//   @include monospace;
+// }
+
+// header .track a {
+//   display: block;
+//   overflow: hidden;
+
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
+// }
+// header .track i {
+//   position: relative;
+//   top: -2px;
+// }
+
+// header .track #song, header .track #artist {
+//   font-size: 12px;
+
+//   display: inline-block;
+//   overflow: hidden;
+
+//   max-width: 280px;
+
+//   white-space: nowrap;
+//   letter-spacing: 2px;
+//   text-overflow: ellipsis;
+// }
+
+// // === Body == //
+
+// main {
+//   max-width: $site-wrapper;
+//   margin: 0 auto;
+//   padding: 0 30px;
+// }
+
+// // === Hero === //
+
+// .work-index-hero {
+//   position: relative;
+
+//   cursor: pointer;
+
+//   @include aspect-ratio(16, 7);
+//   &:hover {
+//     h2, h3 {
+//       transition: all .3s;
+//       transform: translateY(-6px);
+
+//       text-shadow: 0px 15px 5px rgba(0,0,0,.08),
+//       10px 20px 5px rgba(0,0,0,.04),
+//       -10px 20px 5px rgba(0,0,0,.04);
+//     }
+//     img {
+//       transition: all .3s;
+
+//       opacity: .9;
+//     }
+//   }
+// }
+
+// .work-index-hero .title {
+//   position: absolute;
+//   z-index: 2;
+//   top: 50%;
+//   left: 140px;
+
+//   transform: translateY(-50%);
+// }
+
+// .work-index-hero h2 {
+//   font-family: DINCondensed-Bold;
+//   font-size: 68px;
+//   line-height: 48px;
+
+//   transition: all .3s;
+//   letter-spacing: 1px;
+//   text-transform: uppercase;
+
+//   color: #ffffff;
+// }
+
+// .work-index-hero h3 {
+//   font-family: DINCondensed-Bold;
+//   font-size: 28px;
+//   line-height: 30px;
+
+//   transition: all .3s;
+//   letter-spacing: .4px;
+//   text-transform: uppercase;
+
+//   color: #fc708f;
+// }
+
+// .work-index-hero img {
+//   width: 100%;
+
+//   transition: all .3s;
+// }
+
+// // === Frame Extras === //
+
+// $frame-margin: 32px;
+
+// .frameExtras {
+//   position: fixed;
+//   z-index: -1;
+//   top: 0;
+
+//   width: 100%;
+//   height: 100%;
+// }
+
+// // Social
+
+// .frameSocial {
+//   position: absolute;
+//   right: $frame-margin;
+//   bottom: 8px;
+//   a {
+//     font-size: .7em;
+//     font-weight: bold;
+//     font-style: italic;
+
+//     display: inline-block;
+
+//     padding: 0 2px;
+
+//     transition: all .2s;
+//     letter-spacing: .08em;
+//     text-transform: uppercase;
+
+//     color: #cccccc;
+//     &:hover {
+//       transition: all .2s;
+
+//       color: #666666;
+//     }
+//   }
+// }
