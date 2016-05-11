@@ -13,29 +13,62 @@
     <link rel="stylesheet" href="assets/css/screen.css">
 
   </head>
-  <body class="work-index">
-      <header>
-        <a href="/">
-          <h1 id="wordmark">
-            <img src="assets/img/wordmark.svg" alt="Nate Butler - Product Designer">
-          </h1>
-        </a>
-        <nav>
-          <a href="#" class="active">Work</a>
-          <a href="#">Streams</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </nav>
+  <body class="index">
+    <nav class="mobile-nav">
+      <div class="nav-items">
+        <a href="#" class="state-active">Work</a>
+        <a href="#">Streams</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <footer>
         <div class="track">
-          <a href="#" id="song-link" target="_blank"><i class="fa fa-headphones"></i></i> <song id="song">Loading Track</song><i> - </i><artist id="artist">Please Wait</artist></a>
+          <a href="#" id="song-link" target="_blank"><i class="fa fa-headphones"></i></i> <song id="song">Loading Track</song><i> //</i><artist id="artist">Please Wait</artist></a>
         </div>
-      </header>
+      </footer>
+    </nav>
+    <header class="state-closed">
+      <h1 id="wordmark">
+        <a href="/">
+          <img src="assets/img/n8-wordmark.svg" alt="Nate Butler - Product Designer">
+        </a>
+      </h1>
+      <a href="#" id="menu">
+        <svg width="22px" height="16px" viewBox="329 24 22 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs></defs>
+            <g id="mobile-header-nav-svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(329.000000, 24.000000)">
+                <rect id="bar-3" fill="#000000" x="0" y="0" width="22" height="2" rx="2"></rect>
+                <rect id="bar-2" fill="#000000" x="0" y="7" width="22" height="2" rx="2"></rect>
+                <rect id="bar-1" fill="#000000" x="0" y="14" width="22" height="2" rx="2"></rect>
+            </g>
+        </svg>
+      </a>
+      </div>
+    </header>
     <main>
-
+      <div class="hero">
+        <h1>Hi – I'm Nate and I like to build things.</h1>
+        <a href="/about" class="hero-more more-text">FIND OUT MORE >></a>
+      </div>
+      <div class="work">
+        <div class="work-item"></div>
+        <div class="work-item"></div>
+        <div class="work-item"></div>
+      </div>
     </main>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://use.typekit.net/bct6ybl.js"></script>
-    <script src="assets/js/scripts-min.js"></script>
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'bct6ybl',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    <script src="assets/js/min/scripts-min.js"></script>
+    <script type="text/javascript" src="http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=iamnbutler&api_key=eb5004312b5007e85399ab8128cd90ff&limit=1&format=json&callback=recentTrack"></script>
   </body>
 </html>

@@ -2,7 +2,15 @@
 try{Typekit.load({ async: true });}catch(e){}
 
 // Uncomment if using jQuery
-// $(document).ready(function(){  });
+$(document).ready(function(){
+	var body = $('body');
+
+	$('#menu').on('click', function(){
+		body.toggleClass('state-nav-active');
+		return false;
+	});
+
+});
 
 // Grab most recent last.fm track
 function recentTrack(JSONdata) {

@@ -37,6 +37,11 @@ html, body {
 
 @import "_typography.scss";
 
+// === Partials == //
+
+@import "_header.scss";
+
 // === Style == //
 
 @import "_style.scss";
+@import "_index.scss";
