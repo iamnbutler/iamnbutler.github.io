@@ -10,6 +10,11 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$('#full-view, #full-view-gallery').on('click', function(){
+		$('#full-view-gallery').toggleClass('state-active');
+		return false;
+	});
+
 });
 
 // Grab most recent last.fm track
