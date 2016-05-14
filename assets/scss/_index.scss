@@ -1,7 +1,5 @@
 body.index {
-
-	// === Hero === //
-
+  // === Hero === //
   .hero {
     padding: 64px 24px;
   }
@@ -12,6 +10,7 @@ body.index {
 
     margin-bottom: 34px;
 
+    animation: rotate-in .4s forwards;
     letter-spacing: .65px;
 
     color: #1e1e1e;
@@ -19,24 +18,58 @@ body.index {
   .hero .hero-more {
     font-size: 12px;
 
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
     letter-spacing: 2px;
 
     color: #3e3e3e;
 
     @include monospace();
-    display: block;
+  }
+  // === Work === //
+  .work .work-item {
     width: 100%;
-    text-align: center;
+
+    background-color: #efefef;
+
+    @include aspect-ratio(1,1);
+    &:nth-child(2n) {
+      background-color: #fefefe;
+    }
+  }
+}
+
+@keyframes rotate-in {
+  0% {
+    -webkit-transform: translateZ(-20px) rotateX(90deg);
+    -moz-transform: translateZ(-20px) rotateX(90deg);
+    -ms-transform: translateZ(-20px) rotateX(90deg);
+    -o-transform: translateZ(-20px) rotateX(90deg);
+    transform: translateZ(-20px) rotateX(90deg);
+
+    opacity: 0;
   }
 
-  // === Work === //
+  60% {
+    -webkit-transform: translateZ(-20px) rotateX(-10deg);
+    -moz-transform: translateZ(-20px) rotateX(-10deg);
+    -ms-transform: translateZ(-20px) rotateX(-10deg);
+    -o-transform: translateZ(-20px) rotateX(-10deg);
+    transform: translateZ(-20px) rotateX(-10deg);
 
-  .work .work-item {
-  	width: 100%;
-		@include aspect-ratio(1,1);
-		background-color: #efefef;
-		&:nth-child(2n) {
-			background-color: #fefefe;
-		}
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateZ(-20px) rotateX(0);
+    -moz-transform: translateZ(-20px) rotateX(0);
+    -ms-transform: translateZ(-20px) rotateX(0);
+    -o-transform: translateZ(-20px) rotateX(0);
+    transform: translateZ(-20px) rotateX(0);
+
+    opacity: 1;
   }
 }

@@ -1,4 +1,4 @@
-header {
+header.site-header {
   position: relative;
   z-index: 9;
 
@@ -17,21 +17,21 @@ header {
   }
 }
 
-header #wordmark {
+header.site-header #wordmark {
   width: 108px;
   height: 64px;
 
   flex: 0 1 108px;
 }
 
-header #wordmark a {
+header.site-header #wordmark a {
   display: block;
 
   width: 70px;
   padding: 20px 24px;
 }
 
-header #menu {
+header.site-header #menu {
   display: block;
 
   height: 64px;
@@ -126,11 +126,11 @@ header #menu {
 
 // == Mobile Nav Animation == //
 
-header #menu rect {
+header.site-header #menu rect {
   transition: all .3s;
 }
 
-header #menu {
+header.site-header #menu {
   #bar-3 {
     transform: rotate(0deg);
   }
@@ -142,7 +142,7 @@ header #menu {
   }
 }
 
-body.state-nav-active header #menu {
+body.state-nav-active header.site-header #menu {
   #bar-3 {
     transform: rotate(45deg) translateX(4px) translateY(-3px);
   }
