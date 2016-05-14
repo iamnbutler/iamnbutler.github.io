@@ -406,9 +406,12 @@ body.project .gallery {
   margin: auto;
   white-space: nowrap;
   background-color: #f9f9f9;
-  -webkit-overflow-scrolling: touch;
+  -webkit-scroll-snap-type: mandatory;
+  -ms-scroll-snap-type: mandatory;
   scroll-snap-type: mandatory;
-  scroll-snap-points-x: repeat(234px);
+  -webkit-scroll-snap-points-x: repeat(345px);
+  -ms-scroll-snap-points-x: repeat(345px);
+  scroll-snap-points-x: repeat(345px);
   -webkit-overflow-scrolling: touch; }
   body.project .gallery::-webkit-scrollbar {
     display: none;
