@@ -36,26 +36,85 @@ body.project {
     }
   }
   .gallery img {
+    z-index: 1;
+
     width: 345px;
     margin-right: 5px;
-    z-index: 1;
   }
   a.full-view {
     position: absolute;
-    width: 44px;
-    height: 44px;
+    z-index: 7;
     right: 0;
     bottom: 0;
 
+    width: 44px;
+    height: 44px;
     margin: 14px;
 
     background-color: #ffffff;
     box-shadow: -5px 10px 5px 0px rgba(0,0,0,.04), 5px 10px 5px 0px rgba(0,0,0,.04), 0px 8px 5px 0px rgba(0,0,0,.08);
-    z-index: 7;
   }
   a.full-view svg {
-  	margin: 8px;
-  	width: 28px;
-  	height: 28px;
+    width: 28px;
+    height: 28px;
+    margin: 8px;
+  }
+
+  // == Project Body == //
+  .project-body {
+  	padding-bottom: 34px;
+  }
+  .project-body h2 {
+    font-size: 32px;
+    line-height: 32px;
+
+    margin: 24px 24px 14px 24px;
+
+    letter-spacing: .4px;
+
+    color: #1e1e1e;
+  }
+  .project-body h3 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+
+    margin: 10px 24px 14px 24px;
+
+    letter-spacing: .3px;
+
+    color: #1e1e1e;
+  }
+  .project-body p {
+    font-size: 14px;
+    line-height: 24px;
+
+    margin: 14px 24px;
+
+    letter-spacing: 0px;
+
+    color: #4a4a4a;
+
+    @include monospace();
+  }
+  .project-body img {
+    width: 100%;
+    padding: 0 10px;
+  }
+  a.project-body-btn {
+    font-size: 14px;
+    font-weight: bold;
+
+    margin: 10px 24px;
+    display: inline-block;
+    padding: 10px 14px;
+
+    letter-spacing: 0px;
+
+    color: white;
+    color: #ffffff;
+    background: #1e1e1e;
+
+    @include monospace();
   }
 }
