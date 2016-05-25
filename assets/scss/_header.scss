@@ -47,6 +47,35 @@ header.site-header #menu {
   flex: 0 1 70px;
 }
 
+@media (min-width: 800px) {
+  header.site-header #menu {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  header.site-header .desktop-nav {
+    display: none;
+  }
+}
+
+// == Desktop Nav == //
+
+.desktop-nav {
+
+}
+
+.desktop-nav a {
+	line-height: $header-height;
+	padding: 0 12px;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	font-size: 14px;
+	&:last-child {
+		padding-right: 24px;
+	}
+}
+
 // == Mobile Nav == //
 
 .mobile-nav {
