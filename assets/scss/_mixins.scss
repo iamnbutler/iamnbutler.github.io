@@ -1,3 +1,10 @@
+// Contain floats
+@mixin clearfix {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
 // Maintain Aspect Ratio
 @mixin aspect-ratio($width, $height) {
   position: relative;
