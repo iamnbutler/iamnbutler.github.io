@@ -237,6 +237,15 @@ header.site-header #menu {
   align-self: flex-end;
   flex: 0 1 70px; }
 
+header .social-links a {
+  line-height: 64px;
+  padding: 0 4px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 14px; }
+  header .social-links a:last-child {
+    padding-right: 24px; }
+
 @media (min-width: 800px) {
   header.site-header #menu {
     display: none; } }
@@ -346,7 +355,7 @@ body.index .hero h1 {
   line-height: 56px;
   margin-bottom: 34px;
   animation: rotate-in .2s forwards;
-  animation-delay: 0.4s;
+  animation-delay: .4s;
   letter-spacing: .65px;
   opacity: 0;
   color: #1e1e1e; }
@@ -361,12 +370,14 @@ body.index .hero .hero-more {
 @media (min-width: 800px) {
   body.index .hero h1 {
     text-align: center; } }
+body.index .work {
+  padding-bottom: 80px; }
 body.index .work .work-item {
   position: relative;
   width: 100%;
   background-color: #efefef; }
   body.index .work .work-item:hover img {
-    opacity: 0.7; }
+    opacity: .7; }
   body.index .work .work-item:nth-child(2n) {
     background-color: #fefefe; }
 body.index .work-item img {
@@ -376,10 +387,10 @@ body.index .work-item h2 {
   font-size: 36px;
   font-weight: bold;
   line-height: 36px;
-  height: 40px;
   position: absolute;
   top: 20px;
   left: 20px;
+  height: 40px;
   padding: 8px 6px;
   letter-spacing: 0px;
   text-transform: uppercase;
@@ -392,10 +403,10 @@ body.index .work-item p {
   top: 70px;
   left: 20px;
   max-width: 80%;
+  max-width: 320px;
   padding: 4px 6px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  max-width: 320px;
   color: #666666;
   background-color: #ffffff;
   font-family: SourceCodePro-Regular, "SourceCodePro", monospace; }
@@ -411,8 +422,43 @@ body.index .work-item p {
     body.index .work::after {
       clear: both; }
   body.index .work .work-item {
-    width: 50%;
-    float: left; } }
+    float: left;
+    width: 50%; } }
+body.index .about {
+  padding: 40px 0;
+  border-top: solid #f5f5f5 8px; }
+@media (min-width: 800px) {
+  body.index .about {
+    overflow: auto;
+    zoom: 1;
+    max-width: 1200px;
+    margin: 0 auto; }
+    body.index .about::before, body.index .about::after {
+      display: table;
+      content: ""; }
+    body.index .about::after {
+      clear: both; } }
+body.index .about .row {
+  display: flex; }
+body.index .about .photo {
+  flex: 1 1 30%;
+  padding-right: 60px; }
+body.index .about .photo img {
+  width: 100%; }
+body.index .about .bio {
+  flex: 1 1 70%;
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 60px;
+  -webkit-column-gap: 60px;
+  column-gap: 60px; }
+body.index .about .bio p {
+  font-size: 14px;
+  line-height: 24px;
+  padding-bottom: 12px;
+  text-align: justify;
+  font-family: SourceCodePro-Regular, "SourceCodePro", monospace; }
 body.index footer {
   padding-bottom: 44px;
   border-bottom: solid #f5f5f5 8px; }
