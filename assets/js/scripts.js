@@ -25,3 +25,14 @@ function recentTrack(JSONdata) {
   document.getElementById("song").innerHTML = oTrack.name;
   document.getElementById("song-link").href="https://www.youtube.com/results?search_query="+ ytSearch;
 }
+
+// Grab Instagram Posts
+var userFeed = new Instafeed({
+  get: 'user',
+  userId: '276356813',
+  accessToken: '276356813.1677ed0.1a062f2a7c2946b68ba74211c32d01aa',
+  limit: 6,
+  resolution: 'low_resolution',
+  template: '<div class="insta-item"><a href="{{link}}"><img src="{{image}}" /></a></div>'
+});
+userFeed.run();
