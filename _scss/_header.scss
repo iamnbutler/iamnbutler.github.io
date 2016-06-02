@@ -21,6 +21,16 @@ header.site-header {
   }
 }
 
+@media (min-width: 800px) {
+    .site-header {
+      overflow: auto;
+      zoom: 1;
+
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+  }
+
 header.site-header #wordmark {
   float: left;
 
