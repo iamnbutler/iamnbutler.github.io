@@ -68,6 +68,16 @@ body.index {
 
     padding-top: 40px;
   }
+  main .content > .wrapper {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+
+    background-color: #ffffff;
+    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
+    10px 10px 20px rgba(0,0,0,.03),
+    0px 8px 30px rgba(0,0,0,.08),
+    0px 2px 5px rgba(0,0,0,.06);
+  }
   // === Hero === //
   .hero {
     position: relative;
@@ -89,10 +99,10 @@ body.index {
 
     opacity: 0;
     color: white;
-    text-shadow: -14px 20px 16px rgba(0,0,0,.04),
-    14px 20px 16px rgba(0,0,0,.04),
-    0px 12px 60px rgba(0,0,0,.24),
-    0px 4px 10px rgba(0,0,0,.28);
+    text-shadow: -7px 14px 16px rgba(0,0,0,.04),
+    7px 14px 16px rgba(0,0,0,.04),
+    0px 12px 60px rgba(0,0,0,.18),
+    0px 4px 10px rgba(0,0,0,.22);
   }
   .hero .hero-more {
     font-size: 12px;
@@ -110,7 +120,7 @@ body.index {
     height: 36px;
     margin-left: -160px;
 
-    transition: box-shadow .3s;
+    transition: box-shadow .2s;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -124,11 +134,11 @@ body.index {
 
     @include monospace();
     &:hover {
-      transition: box-shadow .3s;
+      transition: box-shadow .2s;
 
       box-shadow: -8px 10px 14px rgba(0,0,0,.08),
       8px 10px 14px rgba(0,0,0,.08),
-      0px 12px 40px rgba(0,0,0,.20),
+      0px 20px 40px rgba(0,0,0,.20),
       0px 6px 6px rgba(0,0,0,.18);
     }
   }
@@ -139,6 +149,8 @@ body.index {
   }
   // === Work === //
   .work {
+    position: relative;
+
     padding-bottom: 40px;
   }
   .work-item {
@@ -154,11 +166,6 @@ body.index {
     display: block;
 
     margin: 0px;
-
-    box-shadow: -20px 20px 20px rgba(0,0,0,.04),
-    20px 20px 20px rgba(0,0,0,.04),
-    0px 12px 40px rgba(0,0,0,.16),
-    0px 4px 10px rgba(0,0,0,.12);
   }
   .work-item img {
     display: block;
@@ -205,27 +212,41 @@ body.index {
     @include monospace();
   }
   .work-more {
-    font-size: 14px;
-    line-height: 60px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 36px;
 
-    float: left;
+    position: absolute;
+    z-index: 9;
+    bottom: 20px;
+    left: 50%;
 
-    width: 100%;
-    height: 60px;
-    margin-top: 80px;
+    display: block;
 
+    width: 320px;
+    height: 36px;
+    margin-left: -160px;
+
+    transition: box-shadow .3s;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
 
-    background-color: #f5f5f5;
+    color: #3e3e3e;
+    background-color: #ffffff;
+    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
+    10px 10px 20px rgba(0,0,0,.03),
+    0px 8px 30px rgba(0,0,0,.08),
+    0px 2px 5px rgba(0,0,0,.06);
 
     @include monospace();
     &:hover {
-      font-weight: bold;
+      transition: box-shadow .3s;
 
-      color: #ffffff;
-      background-color: #000000;
+      box-shadow: -8px 10px 14px rgba(0,0,0,.08),
+      8px 10px 14px rgba(0,0,0,.08),
+      0px 12px 40px rgba(0,0,0,.20),
+      0px 6px 6px rgba(0,0,0,.18);
     }
   }
   @media (min-width: 800px) {
@@ -252,7 +273,7 @@ body.index {
   }
   // == About == //
   .about {
-    padding: 40px 0;
+    padding: 80px 0 120px 0;
     // border-top: solid #f5f5f5 8px;
   }
   @media (min-width: 800px) {
@@ -273,51 +294,46 @@ body.index {
     }
   }
   .about .row {
-    display: flex;
+    padding: 0 160px;
   }
-  .about .photo {
-    padding-right: 60px;
-
-    flex: 1 1 22%;
-  }
-  .about .photo img {
-    width: 100%;
-    height: 100%;
-    margin-top: 6px;
+  .about h2 {
+    font-size: 38px;
+    line-height: 44px;
+    margin-bottom: 30px;
   }
   .about .bio {
-    flex: 1 1 78%;
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
-    -moz-column-gap: 40px;
-    -webkit-column-gap: 40px;
-    column-gap: 40px;
+    column-count: 2;
+    column-gap: 60px;
+    margin-bottom: 30px;
   }
   .about .bio p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 32px;
 
     padding-bottom: 12px;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
 
     @include monospace();
   }
   .about .bio p a {
     font-weight: bold;
   }
-  @media (min-width: 1200px) {
-    .about .bio {
-      -moz-column-count: 2;
-      -webkit-column-count: 2;
-      column-count: 2;
-    }
 
-    .about .bio p {
-      text-align: justify;
-      -webkit-hyphens: auto;
-      -moz-hyphens: auto;
-      hyphens: auto;
+  .about-contact {
+    font-size: 16px;
+    line-height: 32px;
+
+    @include monospace();
+    &:hover {
+      font-weight: bold;
     }
+  }
+
+  .about-contact span {
+    font-weight: bold;
   }
   // Insta Feed
   .insta-feed {
