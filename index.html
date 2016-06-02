@@ -3,31 +3,39 @@ layout: default
 ---
 
 <div class="hero">
-  <h1>Hi – I'm Nate and I like to build things.</h1>
+  <h1>Hey – I'm Nate and I like to build things.</h1>
   <a href="/about" class="hero-more more-text">MORE ABOUT ME >></a>
 </div>
 <div class="work">
   <div class="work-item">
-    <a href="/project.html">
-      {{ src | img : "work-img-1" }}
-      <h2>Making Workshop</h2>
-      <p>Exploring the meeting place between art &amp; design</p>
-    </a>
+    <div class="inner">
+      <a href="/project.html">
+        {{ src | img : "work-img-1" }}
+        <h2>Making Workshop</h2>
+        <p>Exploring the meeting place between art &amp; design</p>
+      </a>
+    </div>
   </div>
   <div class="work-item">
-    {{ src | img : "work-img-2" }}
-    <h2>Affordable Housing</h2>
-    <p>Addressing The Crisis In The San Francisco Bay Area</p>
+    <div class="inner">
+      {{ src | img : "work-img-2" }}
+      <h2>Affordable Housing</h2>
+      <p>Addressing The Crisis In The San Francisco Bay Area</p>
+    </div>
   </div>
   <div class="work-item">
-    {{ src | img : "work-img-3" }}
-    <h2>The Impostor Inside</h2>
-    <p>And other stories of a designer's self discovery</p>
+    <div class="inner">
+      {{ src | img : "work-img-3" }}
+      <h2>The Impostor Inside</h2>
+      <p>And other stories of a designer's self discovery</p>
+    </div>
   </div>
   <div class="work-item">
-    {{ src | img : "work-img-4" }}
-    <h2>FB Page Plugin</h2>
-    <p>Empowering Facebook Pages to share their content</p>
+    <div class="inner">
+      {{ src | img : "work-img-4" }}
+      <h2>FB Page Plugin</h2>
+      <p>Empowering Facebook Pages to share their content</p>
+    </div>
   </div>
   <a href="#more">
     <div class="work-more">

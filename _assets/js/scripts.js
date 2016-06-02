@@ -21,9 +21,9 @@ $(document).ready(function(){
 function recentTrack(JSONdata) {
   var oTrack = (new Array().concat(JSONdata.recenttracks.track))[0];
   var ytSearch = oTrack.name + "+" + oTrack.artist["#text"];
-  document.getElementById("artist").innerHTML = oTrack.artist["#text"];
-  document.getElementById("song").innerHTML = oTrack.name;
-  document.getElementById("song-link").href="https://www.youtube.com/results?search_query="+ ytSearch;
+  document.getElementById("track-artist").innerHTML = oTrack.artist["#text"];
+  document.getElementById("track-track").innerHTML = oTrack.name;
+  document.getElementById("track").href="https://www.youtube.com/results?search_query="+ ytSearch;
 }
 
 // Grab Instagram Posts
