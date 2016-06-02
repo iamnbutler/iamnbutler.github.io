@@ -5,11 +5,12 @@
     </a>
   </h1>
   <nav class="desktop-nav">
+    {% assign current = page.url | downcase | split: '/' %}
     <div class="nav-items">
-      <a href="{{ site.baseurl }}/work" class="state-active">Work</a>
-      <a href="{{ site.baseurl }}/stream">Stream</a>
-      <a href="{{ site.baseurl }}/journal">Journal</a>
-      <a href="{{ site.baseurl }}/about">About</a>
+      <a href="{{ site.baseurl }}/work" {% if current[1] == 'work' %}class='state-active'{% endif %}>Work</a>
+      <a href="{{ site.baseurl }}/stream" {% if current[1] == 'stream' %}class='state-active'{% endif %}>Stream</a>
+      <a href="{{ site.baseurl }}/journal" {% if current[1] == 'journal' %}class='state-active'{% endif %}>Journal</a>
+      <a href="{{ site.baseurl }}/about" {% if current[1] == 'about' %}class='state-active'{% endif %}>About</a>
     </div>
   </nav>
   <nav class="social-links">

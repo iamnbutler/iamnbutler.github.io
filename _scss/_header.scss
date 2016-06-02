@@ -13,9 +13,9 @@ header.site-header {
   margin: 0 auto;
 
   background-color: #ffffff;
-  box-shadow: 0px 0px 60px rgba(0,0,0,0.18),
-              0px 4px 12px rgba(0,0,0,0.08),
-              0px 12px 8px rgba(0,0,0,0.04);
+  box-shadow: 0px 0px 60px rgba(0,0,0,.18),
+  0px 4px 12px rgba(0,0,0,.08),
+  0px 12px 8px rgba(0,0,0,.04);
 
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -25,14 +25,14 @@ header.site-header {
 }
 
 @media (min-width: 800px) {
-    .site-header {
-      overflow: auto;
-      zoom: 1;
+  .site-header {
+    overflow: auto;
+    zoom: 1;
+    // max-width: 1240px;
 
-      // max-width: 1240px;
-      margin: 0 auto;
-    }
+    margin: 0 auto;
   }
+}
 
 header.site-header #wordmark {
   float: left;
@@ -55,7 +55,6 @@ header.site-header #menu {
 
   height: $header-height;
   padding: 24px;
-
 }
 
 header.site-header .social-links {
@@ -94,40 +93,56 @@ header.site-header .social-links a {
 
 .desktop-nav {
   float: left;
+
   padding: 0 12px;
+
   text-align: center;
 }
 
 .desktop-nav a {
   font-size: 12px;
-  line-height: $header-height;
   font-weight: bold;
-  color: #000;
+  line-height: $header-height;
 
-  padding: 0 12px;
+  margin: 0 12px;
 
   letter-spacing: .2em;
   text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 6px;
+
+  color: #000000;
   &:last-child {
-    padding-right: 24px;
+    margin-right: 24px;
+  }
+  &.state-active {
+    border-color: black;
   }
 }
 
 header.site-header #track {
-  max-width: 600px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding: 0 24px;
-  float: right;
-  line-height: $header-height;
   font-size: 14px;
-  letter-spacing: 0.02em;
-  color: #000;
+  line-height: $header-height;
+
+  float: right;
+  overflow: hidden;
+
+  max-width: 600px;
+  padding: 0 24px;
+
+  white-space: nowrap;
+  letter-spacing: .02em;
+  text-overflow: ellipsis;
+
+  color: #000000;
+
   @include monospace();
 }
 
 header.site-header #track i {
+  position: relative;
+  top: 1px;
+
   animation: header-track-blink 2s infinite ease-in-out;
   &.live {
     color: #f13333;
