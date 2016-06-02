@@ -13,6 +13,9 @@ header.site-header {
   margin: 0 auto;
 
   background-color: #ffffff;
+  box-shadow: 0px 0px 60px rgba(0,0,0,0.18),
+              0px 4px 12px rgba(0,0,0,0.08),
+              0px 12px 8px rgba(0,0,0,0.04);
 
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -26,7 +29,7 @@ header.site-header {
       overflow: auto;
       zoom: 1;
 
-      max-width: 1240px;
+      // max-width: 1240px;
       margin: 0 auto;
     }
   }
@@ -56,11 +59,11 @@ header.site-header #menu {
   flex: 0 1 70px;
 }
 
-header .social-links {
+header.site-header .social-links {
   float: right;
 }
 
-header .social-links a {
+header.site-header .social-links a {
   font-size: 16px;
   line-height: $header-height;
 
@@ -94,16 +97,29 @@ header .social-links a {
 }
 
 .desktop-nav a {
-  font-size: 14px;
+  font-size: 12px;
   line-height: $header-height;
+  font-weight: bold;
+  color: #666;
 
   padding: 0 12px;
 
-  letter-spacing: .2em;
+  letter-spacing: .3em;
   text-transform: uppercase;
   &:last-child {
     padding-right: 24px;
   }
+}
+
+header.site-header #track {
+  padding: 0 24px;
+  float: right;
+  line-height: $header-height;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #aaa;
+  @include monospace();
 }
 
 // == Mobile Nav == //

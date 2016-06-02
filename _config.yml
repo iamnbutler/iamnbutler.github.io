@@ -23,7 +23,19 @@ gems:
 markdown: kramdown
 
 # Permalinks
-permalink:           pretty
+permalink: pretty
+
+# Collections
+collections:
+  work:
+    output: true
+    permalink: /work/:path/
+defualts:
+  - scope:
+      path: ""
+      type: work
+    values:
+      layout: work
 
 # Assets
 sass:

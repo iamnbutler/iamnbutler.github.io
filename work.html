@@ -1,11 +1,20 @@
 ---
-layout: default
+layout: work
 title: Work
 permalink: /work/
 ---
 
 <div class="work-body">
-	<div class="row">
-    zzz
+  <div class="row">
+    {% assign sorted = (site.work | sort: 'date') | reverse %}
+    {% for item in sorted %}
+    <div class="work-item">
+      <a href="{{ item.url }}">
+        <img src="{{ site.url }}/img/thumb-{{ item.title }}.png" alt="{{ item.title }}">
+        <h2>{{ item.title }}</h2>
+        <p>Exploring the meeting place between art &amp; design</p>
+      </a>
+    </div>
+    {% endfor %}
   </div>
 </div>

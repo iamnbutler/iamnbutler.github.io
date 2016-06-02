@@ -1,4 +1,8 @@
 body.index {
+
+  background: rgb(181,247,181);
+  background: linear-gradient(110deg, rgba(158,236,244,1) 0%,rgba(208,251,209,1) 100%);
+
   // === Hero === //
   .hero {
     padding: 64px 24px;
@@ -40,7 +44,7 @@ body.index {
   .work {
     padding-bottom: 40px;
   }
-  .work .work-item {
+  .work-item {
     position: relative;
 
     width: 100%;
