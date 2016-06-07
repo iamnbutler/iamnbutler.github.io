@@ -15,44 +15,18 @@ body.index {
     background: rgb(105,71,135);
     background: linear-gradient(65deg,  rgba(105,71,135,1) 0%,rgba(89,117,211,1) 30%,rgba(85,185,255,1) 60%,rgba(104,233,255,1) 100%);
   }
-  main .bg-clouds-top {
-    position: fixed;
-    z-index: 3;
-    top: -100px;
-    right: -400px;
-
-    width: 1660px;
-    height: 800px;
-
-    animation: bg-clouds 100s linear infinite;
-
-    background-image: url( /img/bg-clouds-top.png );
-  }
-  main .bg-middle-middle {
-    position: fixed;
-    z-index: 2;
-    top: -100px;
-    right: -400px;
-
-    width: 1660px;
-    height: 800px;
-
-    animation: bg-clouds 80s linear infinite;
-
-    background-image: url( /img/bg-clouds-middle.png );
-  }
-  main .bg-clouds-bottom {
-    position: fixed;
+  main .bg-clouds {
+    position: absolute;
     z-index: 1;
-    top: -100px;
-    right: -400px;
+    top: -160px;
+    left: -160px;
 
     width: 1660px;
     height: 800px;
 
-    animation: bg-clouds 60s linear infinite;
+    // animation: bg-clouds 60s linear infinite;
 
-    background-image: url( /img/bg-clouds-bottom.png );
+    background-image: url( /img/bg-clouds.png );
   }
   @keyframes bg-clouds {
     0% {
@@ -99,10 +73,7 @@ body.index {
 
     opacity: 0;
     color: white;
-    text-shadow: -7px 14px 16px rgba(0,0,0,.04),
-    7px 14px 16px rgba(0,0,0,.04),
-    0px 12px 60px rgba(0,0,0,.18),
-    0px 4px 10px rgba(0,0,0,.22);
+    text-shadow: -7px 14px 16px rgba(0,0,0,.02),7px 14px 16px rgba(0,0,0,.02),0px 12px 60px rgba(0,0,0,.08),0px 4px 10px rgba(0,0,0,.14);
   }
   .hero .hero-more {
     font-size: 12px;
@@ -127,19 +98,19 @@ body.index {
 
     color: #3e3e3e;
     background-color: #ffffff;
-    box-shadow: -10px 10px 20px rgba(0,0,0,.06),
-    10px 10px 20px rgba(0,0,0,.06),
-    0px 8px 30px rgba(0,0,0,.16),
-    0px 2px 5px rgba(0,0,0,.12);
+    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
+    10px 10px 20px rgba(0,0,0,.03),
+    0px 8px 30px rgba(0,0,0,.08),
+    0px 2px 5px rgba(0,0,0,.10);
 
     @include monospace();
     &:hover {
       transition: box-shadow .2s;
 
-      box-shadow: -8px 10px 14px rgba(0,0,0,.08),
-      8px 10px 14px rgba(0,0,0,.08),
-      0px 20px 40px rgba(0,0,0,.20),
-      0px 6px 6px rgba(0,0,0,.18);
+      box-shadow: -8px 10px 14px rgba(0,0,0,.04),
+      8px 10px 14px rgba(0,0,0,.04),
+      0px 20px 40px rgba(0,0,0,.16),
+      0px 6px 6px rgba(0,0,0,.14);
     }
   }
   @media (min-width: 800px) {
@@ -299,12 +270,14 @@ body.index {
   .about h2 {
     font-size: 38px;
     line-height: 44px;
+
     margin-bottom: 30px;
   }
   .about .bio {
+    margin-bottom: 30px;
+
     column-count: 2;
     column-gap: 60px;
-    margin-bottom: 30px;
   }
   .about .bio p {
     font-size: 16px;
@@ -321,7 +294,6 @@ body.index {
   .about .bio p a {
     font-weight: bold;
   }
-
   .about-contact {
     font-size: 16px;
     line-height: 32px;
@@ -331,7 +303,6 @@ body.index {
       font-weight: bold;
     }
   }
-
   .about-contact span {
     font-weight: bold;
   }
