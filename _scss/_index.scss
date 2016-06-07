@@ -1,35 +1,64 @@
 body.index {
   // === Hero === //
   .hero {
-    padding: 64px 24px;
+    position: relative;
+
+    max-width: 1200px;
+    margin: 0px auto 60px auto;
   }
   .hero h1 {
-    font-size: 52px;
+    font-size: 160px;
     font-weight: bold;
-    line-height: 56px;
+    line-height: 240px;
 
-    margin-bottom: 34px;
+    position: relative;
+    z-index: 1;
 
     animation: rotate-in .2s forwards;
     animation-delay: .4s;
-    letter-spacing: .65px;
+    letter-spacing: -.02em;
 
     opacity: 0;
-    color: #1e1e1e;
+    color: white;
+    text-shadow: -7px 14px 16px rgba(0,0,0,.02),7px 14px 16px rgba(0,0,0,.02),0px 12px 60px rgba(0,0,0,.08),0px 4px 10px rgba(0,0,0,.14);
   }
   .hero .hero-more {
     font-size: 12px;
+    font-weight: bold;
+    line-height: 36px;
+
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    left: 50%;
 
     display: block;
 
-    width: 100%;
+    width: 320px;
+    height: 36px;
+    margin-left: -160px;
 
+    transition: box-shadow .2s;
     text-align: center;
     letter-spacing: 2px;
+    text-transform: uppercase;
 
     color: #3e3e3e;
+    background-color: #ffffff;
+    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
+    10px 10px 20px rgba(0,0,0,.03),
+    0px 8px 30px rgba(0,0,0,.08),
+    0px 2px 5px rgba(0,0,0,.10);
 
     @include monospace();
+    &:hover {
+      transition: box-shadow .2s;
+
+      box-shadow: -8px 10px 14px rgba(0,0,0,.04),
+      8px 10px 14px rgba(0,0,0,.04),
+      0px 20px 40px rgba(0,0,0,.16),
+      0px 6px 6px rgba(0,0,0,.14);
+    }
   }
   @media (min-width: 800px) {
     .hero h1 {
@@ -38,25 +67,29 @@ body.index {
   }
   // === Work === //
   .work {
-    padding-bottom: 40px;
-  }
-  .work .work-item {
     position: relative;
+  }
+  .work-item {
+    position: relative;
+    z-index: 1;
 
     width: 100%;
 
-    background-color: #efefef;
+    @include aspect-ratio(1,1);
     &:hover img {
-      opacity: .7;
+      z-index: 99;
     }
-    &:nth-child(2n) {
-      background-color: #fefefe;
-    }
+  }
+  .work-item .inner {
+    display: block;
+
+    margin: 0px;
   }
   .work-item img {
     display: block;
 
     width: 100%;
+    height: 100%;
   }
   .work-item h2 {
     font-size: 36px;
@@ -97,26 +130,45 @@ body.index {
     @include monospace();
   }
   .work-more {
-    float: left;
-    height: 60px;
-    line-height: 60px;
-    @include monospace();
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 36px;
+
+    position: absolute;
+    z-index: 9;
+    bottom: -18px;
+    left: 50%;
+
+    display: block;
+
+    width: 320px;
+    height: 36px;
+    margin-left: -160px;
+
+    transition: box-shadow .3s;
     text-align: center;
-    width: 100%;
-    margin-top: 80px;
-    background-color: #f5f5f5;
-    text-transform: uppercase;
-    font-size: 14px;
     letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #3e3e3e;
+    background-color: #ffffff;
+    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
+    10px 10px 20px rgba(0,0,0,.03),
+    0px 8px 30px rgba(0,0,0,.08),
+    0px 2px 5px rgba(0,0,0,.06);
+
+    @include monospace();
     &:hover {
-      background-color: #000;
-      color: #fff;
-      font-weight: bold;
+      transition: box-shadow .3s;
+
+      box-shadow: -8px 10px 14px rgba(0,0,0,.08),
+      8px 10px 14px rgba(0,0,0,.08),
+      0px 12px 40px rgba(0,0,0,.20),
+      0px 6px 6px rgba(0,0,0,.18);
     }
   }
   @media (min-width: 800px) {
     .work {
-      overflow: auto;
       zoom: 1;
 
       max-width: 1200px;
@@ -139,8 +191,12 @@ body.index {
   }
   // == About == //
   .about {
-    padding: 40px 0;
+    padding: 0px 0 120px 0;
     // border-top: solid #f5f5f5 8px;
+  }
+  .about .portrait img {
+    width: 100%;
+    margin-bottom: 80px;
   }
   @media (min-width: 800px) {
     .about {
@@ -160,54 +216,54 @@ body.index {
     }
   }
   .about .row {
-    display: flex;
+    padding: 0 160px;
   }
-  .about .photo {
-    padding-right: 60px;
+  .about h2 {
+    font-size: 38px;
+    line-height: 44px;
 
-    flex: 1 1 22%;
-  }
-  .about .photo img {
-    width: 100%;
-    margin-top: 6px;
+    margin-bottom: 30px;
   }
   .about .bio {
-    flex: 1 1 78%;
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
-    -moz-column-gap: 40px;
-    -webkit-column-gap: 40px;
-    column-gap: 40px;
+    margin-bottom: 30px;
+
+    column-count: 2;
+    column-gap: 60px;
   }
   .about .bio p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 32px;
 
     padding-bottom: 12px;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
 
     @include monospace();
   }
   .about .bio p a {
     font-weight: bold;
   }
-  @media (min-width: 1200px) {
-    .about .bio {
-      -moz-column-count: 2;
-      -webkit-column-count: 2;
-      column-count: 2;
-    }
+  .about-contact {
+    font-size: 16px;
+    line-height: 32px;
 
-    .about .bio p {
-      text-align: justify;
-      -webkit-hyphens: auto;
-      -moz-hyphens: auto;
-      hyphens: auto;
+    @include monospace();
+    &:hover {
+      font-weight: bold;
     }
+  }
+  .about-contact span {
+    font-weight: bold;
   }
   // Insta Feed
   .insta-feed {
-    padding: 40px 0;
+    overflow: hidden;
+
+    margin-top: 40px;
+
+    background-color: #ffffff;
   }
   .insta-feed .insta-item {
     display: block;
@@ -244,98 +300,6 @@ body.index {
         clear: both;
       }
     }
-  }
-  // == Footer == //
-  footer {
-    padding-bottom: 50px;
-
-    text-align: center;
-    // border-top: solid #f5f5f5 4px;
-  }
-  @media (min-width: 800px) {
-    footer {
-      overflow: auto;
-      zoom: 1;
-
-      max-width: 1212px;
-      margin: 0 auto;
-    }
-  }
-
-  footer .row {
-    display: flex;
-
-    justify-content: center;
-    &:not(:last-child) {
-      padding-bottom: 28px;
-    }
-  }
-
-  footer .footer-nav {
-    line-height: 52px;
-
-    height: 52px;
-    margin-bottom: 16px;
-
-    align-items: flex-start;
-  }
-
-  footer .footer-nav a {
-    font-size: 12px;
-
-    display: inline-block;
-
-    padding: 0 30px;
-
-    transition: opacity .2s;
-    letter-spacing: .4em;
-    text-transform: uppercase;
-    &:hover {
-      transition: opacity .2s;
-
-      opacity: .7;
-    }
-  }
-  footer .footer-nav a img {
-    position: relative;
-    top: 8px;
-    height: 28px;
-  }
-  footer .social {
-    // color: #444;
-  }
-  footer .social i {
-    padding-right: 4px;
-    font-size: 12px;
-    line-height: 16px;
-  }
-  footer .social a {
-    font-size: 10px;
-    line-height: 16px;
-    font-weight: bold;
-    @include monospace();
-
-    display: inline-block;
-
-    padding: 0 30px;
-
-    transition: opacity .2s;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    &:hover {
-      transition: opacity .2s;
-
-      opacity: .7;
-    }
-  }
-  footer .copywrite {
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    color: #666;
-
-    @include monospace();
   }
 }
 

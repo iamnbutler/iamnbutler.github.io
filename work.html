@@ -1,0 +1,20 @@
+---
+layout: work
+title: Work
+permalink: /work/
+---
+
+<div class="work-body">
+  <div class="row">
+    {% assign workItems = (site.work | sort: 'date') | reverse %}
+    {% for item in workItems %}
+    <div class="work-item">
+      <a href="{{ item.url }}">
+        <img src="{{ site.url }}/img/thumb-{{ item.title }}.png" alt="{{ item.title }}">
+        <h2>{{ item.title }}</h2>
+        <p>Exploring the meeting place between art &amp; design</p>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
