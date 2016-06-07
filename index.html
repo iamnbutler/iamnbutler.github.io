@@ -2,49 +2,34 @@
 layout: default
 ---
 
-<div class="hero">
+<!-- <div class="hero">
   <h1>Hi – I'm Nate</h1>
   <a href="/about" class="hero-more more-text">I like to build things >></a>
-</div>
+</div> -->
 <div class="wrapper">
   <div class="work">
+    {% assign workItems = (site.work | sort: 'date') | reverse %}
+    {% for item in workItems | limit: 4 %}
     <div class="work-item">
       <div class="inner">
-        <a href="/project.html">
-          {{ src | img : "work-img-1" }}
-          <h2>Making Workshop</h2>
+        <a href="{{ item.url }}">
+          <img src="{{ site.url }}/img/thumb-{{ item.title }}.png" alt="{{ item.title }}">
+          <h2>{{ item.title }}</h2>
           <p>Exploring the meeting place between art &amp; design</p>
         </a>
       </div>
     </div>
-    <div class="work-item">
-      <div class="inner">
-        {{ src | img : "work-img-2" }}
-        <h2>Affordable Housing</h2>
-        <p>Addressing The Crisis In The San Francisco Bay Area</p>
-      </div>
-    </div>
-    <div class="work-item">
-      <div class="inner">
-        {{ src | img : "work-img-3" }}
-        <h2>The Impostor Inside</h2>
-        <p>And other stories of a designer's self discovery</p>
-      </div>
-    </div>
-    <div class="work-item">
-      <div class="inner">
-        {{ src | img : "work-img-4" }}
-        <h2>FB Page Plugin</h2>
-        <p>Empowering Facebook Pages to share their content</p>
-      </div>
-    </div>
-    <a href="#more">
+    {% endfor %}
+    <a href="/work">
       <div class="work-more">
         View All Work >>
       </div>
     </a>
   </div>
   <div class="about">
+    <div class="portrait">
+      <img src="/img/about-portrait.jpg" alt="">
+    </div>
     <div class="row">
       <h2>About Nate</h2>
       <div class="bio">
