@@ -33,6 +33,6 @@ var userFeed = new Instafeed({
   accessToken: '276356813.1677ed0.1a062f2a7c2946b68ba74211c32d01aa',
   limit: 6,
   resolution: 'standard_resolution',
-  template: '<div class="insta-item"><a href="{{link}}"><img src="{{image}}" /></a></div>'
+  template: '<div class="insta-item"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></div>'
 });
 userFeed.run();
