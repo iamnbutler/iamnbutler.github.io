@@ -14,7 +14,7 @@ body.work {
     margin: 0 auto;
   }
   .work-body p {
-    margin-top: 29px;
+    margin-bottom: 29px;
     font-size: 21px;
     line-height: 1.58;
     font-weight: 400;
@@ -25,5 +25,14 @@ body.work {
 
   .work-body a {
     font-weight: bold;
+  }
+
+  .work-body h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .work-body h2 {
+    margin-bottom: 12px;
   }
 }

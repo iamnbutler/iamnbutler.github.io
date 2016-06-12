@@ -9,8 +9,6 @@ headerimg:
   url: "/img/work/closing-design/work-header.jpg"
 ---
 
-<h1>On the Closing of a Design Degree</h1>
-
 # Learning to Make
 
 This is a project about discovery, identifying weakness, and finding strength. A two part project: one part illustration, one part narrative. It was born out of a desire to make without a problem, to make for the sake of making. The illustrations began by exploring the ideas of lost worlds and alternate realities but as the project continued it began to gradually in change form.
@@ -21,7 +19,7 @@ The idea of making without a goal or problem in mind was both terrifying and lib
 
 Perhaps saying that the project doesn’t deal with a problem is misleading. It would be more correct to say that the problem is the process in which making powers discoveries through research. It is easy to become complacent when designing from project briefs, and it is easy to lose some of the imagination and pure creation that one starts out with in design when following this process. Exploring showed how to research and design by making–creating work that by itself was not solving a problem, but when put together in series showed development and expansion of of voice.
 
-# Visual Research
+## Visual Research
 
 Sketching came first in the form of simple geometric illustrations. There was an idea of geometric shapes and forms right from the beginning. The direction pursued was one of exploring an unknown world, of teleportation and [telepresence](https://www.google.ca/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=define+telepresence).
 
@@ -29,7 +27,7 @@ Sketching came first in the form of simple geometric illustrations. There was an
 
 This idea manifested itself in the work through form, layering and artistic direction. Rather than focus on designing to these ideas, they simply existed as a springboard into a deep process of making.
 
-# Creating a Process
+## Creating a Process
 
 I began exploring various 3D softwares. I stumbled upon a delightful voxel design program called [MagicaVoxel](https://ephtracy.github.io/) (a voxel is the 3D equivalent of a 2D pixel.) It was a simple, very lightweight program that allowed quick prototyping of ideas, with rather straightforward rendering tools.
 
@@ -47,7 +45,7 @@ To summate the results of my making and research so far I created a series of fi
 
 One of the themes that came up during this process of summation and evaluation of work completed was the cyclical nature of the making process. Exploration and research lead to making, which lead to new inspiration, which in turn lead to more exploration and research to find how to make the next desired piece, and so forth. While this is true of many processes it seemed to occur very rapidly while making in this manner.
 
-# Taking a Step Back
+## Taking a Step Back
 
 Beginning from the second half of the project, while making continued as in the first half, I began to explore writing as another way to challenge weakness. Writing is an important aspect of design that is often overlooked and one that I personally struggle with. By diving into writing different aspects of making could be addressed. Language, personal versus impersonal writing, pacing and sentence structure are similar to the tools used in production design, akin to the pen tool, the type tool, rulers, guides and shapes. By seeing writing beyond just words it reveals itself as another form of creating–one which can be explored, manipulated, molded and crafted.
 
@@ -66,11 +64,11 @@ I decided to make a mini-site with a collection of four stories reflecting on th
 
 <!-- ![](workshop_writing_1.jpg) -->
 
-# Making By Reflecting
+## Making By Reflecting
 
 The writing began as a mostly self-reflective process, but I learned through the process that simply reading someone else's reflections does not drive a desire for change, or help the reader to feel the impact of the writing. As I wrote and rewrote my stories I attempted to lead into less personal rhetoric as the story progressed to help universalize the problem being discussed. The goal was not to tell others how I dealt with impostor syndrome or worked through my depression, but rather to inspire others who may be dealing with or know others dealing with the same situations, and maybe learn some steps to take to help climb out of these situations.
 
-# Closing Thoughts
+## Closing Thoughts
 
 <!-- ![](closing_image.jpg) -->
 
