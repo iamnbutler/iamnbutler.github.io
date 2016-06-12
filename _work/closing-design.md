@@ -5,17 +5,17 @@ tagline: Exploring the meeting place between art & design
 thumbnail:
   slug: closing-design
   extension: .png
+headerimg:
+  url: "/img/work/closing-design/work-header.jpg"
 ---
 
 <h1>On the Closing of a Design Degree</h1>
-
-![](Header-Image.jpg)
 
 # Learning to Make
 
 This is a project about discovery, identifying weakness, and finding strength. A two part project: one part illustration, one part narrative. It was born out of a desire to make without a problem, to make for the sake of making. The illustrations began by exploring the ideas of lost worlds and alternate realities but as the project continued it began to gradually in change form.
 
-![](intro_quote.jpg)
+<!--  ![](intro_quote.jpg) -->
 
 The idea of making without a goal or problem in mind was both terrifying and liberating. Designers are used to the idea of making from a brief or a set of instructions, or finding a solution to a problem. Here I sought to explore the scope of possibilities outside the prototypical design process. The project is a rejection all that is design: creating using a problem and solution formula. It is a dive into the concept of design as making, creating to discover about the world and one’s self.
 
@@ -25,7 +25,7 @@ Perhaps saying that the project doesn’t deal with a problem is misleading. It 
 
 Sketching came first in the form of simple geometric illustrations. There was an idea of geometric shapes and forms right from the beginning. The direction pursued was one of exploring an unknown world, of teleportation and [telepresence](https://www.google.ca/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=define+telepresence).
 
-![](workshop_process_1.png)
+<!-- ![](workshop_process_1.png) -->
 
 This idea manifested itself in the work through form, layering and artistic direction. Rather than focus on designing to these ideas, they simply existed as a springboard into a deep process of making.
 
@@ -33,15 +33,15 @@ This idea manifested itself in the work through form, layering and artistic dire
 
 I began exploring various 3D softwares. I stumbled upon a delightful voxel design program called [MagicaVoxel](https://ephtracy.github.io/) (a voxel is the 3D equivalent of a 2D pixel.) It was a simple, very lightweight program that allowed quick prototyping of ideas, with rather straightforward rendering tools.
 
-![](workshop_process_2b_four.png)
+<!-- ![](workshop_process_2b_four.png) -->
 
 The process of designing work was a form of visual research for me. By first creating, then observing work out in the world and then reflecting and creating again I could see a shift in the voice of the work I created. This was a strange but exciting feeling to me as I had not worked in this fashion intensely before, discovering new ideas by creating rather than doing formal research.
 
-![](workshop_process_3.png)
+<!-- ![](workshop_process_3.png) -->
 
 I quickly desired more depth in my 3D software so I explored [Blender](https://www.blender.org/) and [Maya](http://www.autodesk.com/products/maya/overview). I spent a large amount of time working on learning the new workflows of these platforms, but noticed that the quality of the work I produced week to week was less. I was spending less time on finding exciting compositions and interactions and more on developing new techniques and learning how to do more complex rendering. While this in itself is not a bad thing, because of the short nature of the project I decided to go back to the simpler software I worked with to continue to develop my ideas.
 
-![](workshop_semseter_1.png)
+<!-- ![](workshop_semseter_1.png) -->
 
 To summate the results of my making and research so far I created a series of five posters. The posters address the topics of intention, message, complexity and fluidity. They include narrative that discuss results and act as visual process, exposing a landmark in my research.
 
@@ -64,7 +64,7 @@ I decided to make a mini-site with a collection of four stories reflecting on th
  <span class="contributor-role">There is no such thing as a design superstar, just those with more experience, and those that put the work in</span>
 </div>
 
-![](workshop_writing_1.jpg)
+<!-- ![](workshop_writing_1.jpg) -->
 
 # Making By Reflecting
 
@@ -72,7 +72,7 @@ The writing began as a mostly self-reflective process, but I learned through the
 
 # Closing Thoughts
 
-![](closing_image.jpg)
+<!-- ![](closing_image.jpg) -->
 
 The project was designed explore the process of making. Whether making through writing, illustration, traditional communication design or web development the experience of working through an alternate making process teaches much about the way designers often limit themselves into a standardized workflow. By moving beyond that workflow and making in different ways new solutions can be found. The project was an enlightening one, and I hope to expand upon the research done during this process in the future.
 
@@ -80,7 +80,5 @@ The final site can be experienced through the link below.
 
 <a class="button" href="http://nate.jp/cuuubic" target="_blank">Visit the Site</a>
 
-<div class="contributors">
- <span class="contributor-role">Photography</span>
- <span class="contributor-name">[Unsplash](https://unsplash.com/license)</span>
-</div>
+Photography:
+[Unsplash](https://unsplash.com/license)
