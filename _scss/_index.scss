@@ -72,41 +72,27 @@ body.index {
     @include monospace();
   }
   .work-more {
-    font-size: 12px;
-    line-height: 36px;
+    font-size: 14px;
+    line-height: 60px;
     font-weight: bold;
 
-    position: absolute;
-    z-index: 9;
-    bottom: -18px;
-    left: 50%;
-
     display: block;
+    float: left;
 
-    width: 320px;
-    height: 36px;
-    margin-left: -160px;
+    width: 100%;
+    height: 60px;
 
-    transition: box-shadow .3s;
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: .1em;
     text-transform: uppercase;
 
-    color: #3e3e3e;
-    background-color: #ffffff;
-    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
-    10px 10px 20px rgba(0,0,0,.03),
-    0px 8px 30px rgba(0,0,0,.08),
-    0px 2px 5px rgba(0,0,0,.06);
+    color: white;
+    background-color: black;
 
     @include monospace();
     &:hover {
-      transition: box-shadow .3s;
-
-      box-shadow: -8px 10px 14px rgba(0,0,0,.08),
-      8px 10px 14px rgba(0,0,0,.08),
-      0px 12px 40px rgba(0,0,0,.20),
-      0px 6px 6px rgba(0,0,0,.18);
+      background-color: white;
+      color: black;
     }
   }
   @media (min-width: 800px) {
@@ -142,7 +128,7 @@ body.index {
       overflow: auto;
       zoom: 1;
 
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
       &::before, &::after {
         display: table;
