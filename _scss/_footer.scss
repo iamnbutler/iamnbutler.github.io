@@ -1,3 +1,48 @@
+// Insta Feed
+.insta-feed {
+  overflow: hidden;
+
+  margin-top: 40px;
+
+  background-color: #ffffff;
+}
+.insta-feed .insta-item {
+  display: block;
+  float: left;
+  overflow: hidden;
+
+  width: 16.6666667%;
+  // padding: 6px;
+
+  transition: opacity .2s;
+  &:hover {
+    transition: opacity .2s;
+
+    opacity: .7;
+  }
+}
+.insta-feed .insta-item img {
+  overflow: hidden;
+
+  width: 100%;
+}
+@media (min-width: 800px) {
+  .insta-feed {
+    overflow: auto;
+    zoom: 1;
+    // max-width: 1212px;
+    // margin: 0 auto;
+    &::before, &::after {
+      display: table;
+
+      content: "";
+    }
+    &::after {
+      clear: both;
+    }
+  }
+}
+
 // == Footer == //
 footer.site-footer {
   padding: 40px;
