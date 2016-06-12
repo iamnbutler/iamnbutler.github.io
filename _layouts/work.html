@@ -6,12 +6,16 @@
   <body class="work">
     {% include header.html %}
     <main>
-    	<div class="background">
-    		<div class="bg-clouds"></div>
-    	</div>
     	<div class="content">
     		<div class="wrapper">
-    			{{ content }}
+          <article class="work-content">
+            <header>
+              <img src="{{ item.headerimg.url }}" alt="" class="header-image">
+            </header>
+            <div class="work-body">
+              {{ content }}
+            </div>
+          </article>
     		</div>
     	</div>
     </main>

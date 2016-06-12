@@ -8,11 +8,5 @@ main > .content {
 }
 main .content > .wrapper {
   max-width: 1440px;
-  margin: 0 auto 80px auto;
-
-  background-color: #ffffff;
-  box-shadow: -10px 10px 20px rgba(0,0,0,.03),
-  10px 10px 20px rgba(0,0,0,.03),
-  0px 8px 30px rgba(0,0,0,.08),
-  0px 2px 5px rgba(0,0,0,.06);
+  margin: 0 auto 0px auto;
 }
