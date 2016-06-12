@@ -1,6 +1,10 @@
 ---
 layout: work
 title: On the Closing of a Design Degree
+tagline: Exploring the meeting place between art & design
+thumbnail:
+  slug: closing-design
+  extension: .png
 ---
 
 <h1>On the Closing of a Design Degree</h1>

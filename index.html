@@ -2,20 +2,17 @@
 layout: default
 ---
 
-<!-- <div class="hero">
-  <h1>Hi – I'm Nate</h1>
-  <a href="/about" class="hero-more more-text">I like to build things >></a>
-</div> -->
 <div class="wrapper">
+  {% include hero-about.html %}
   <div class="work">
     {% assign workItems = (site.work | sort: 'date') | reverse %}
-    {% for item in workItems | limit: 4 %}
+    {% for item in workItems | limit: 6 %}
     <div class="work-item">
       <div class="inner">
         <a href="{{ item.url }}">
-          <img src="{{ site.url }}/img/thumb-{{ item.title }}.png" alt="{{ item.title }}">
+          <img src="/img/work/thumbs/thumb-work-{{ item.thumbnail.slug }}{{ item.thumbnail.extension }}" alt="{{ item.title }}">
           <h2>{{ item.title }}</h2>
-          <p>Exploring the meeting place between art &amp; design</p>
+          <p>{{ item.tagline }}</p>
         </a>
       </div>
     </div>

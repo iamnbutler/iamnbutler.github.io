@@ -1,70 +1,4 @@
 body.index {
-  // === Hero === //
-  .hero {
-    position: relative;
-
-    max-width: 1200px;
-    margin: 0px auto 60px auto;
-  }
-  .hero h1 {
-    font-size: 160px;
-    font-weight: bold;
-    line-height: 240px;
-
-    position: relative;
-    z-index: 1;
-
-    animation: rotate-in .2s forwards;
-    animation-delay: .4s;
-    letter-spacing: -.02em;
-
-    opacity: 0;
-    color: white;
-    text-shadow: -7px 14px 16px rgba(0,0,0,.02),7px 14px 16px rgba(0,0,0,.02),0px 12px 60px rgba(0,0,0,.08),0px 4px 10px rgba(0,0,0,.14);
-  }
-  .hero .hero-more {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 36px;
-
-    position: absolute;
-    z-index: 2;
-    bottom: 0px;
-    left: 50%;
-
-    display: block;
-
-    width: 320px;
-    height: 36px;
-    margin-left: -160px;
-
-    transition: box-shadow .2s;
-    text-align: center;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    color: #3e3e3e;
-    background-color: #ffffff;
-    box-shadow: -10px 10px 20px rgba(0,0,0,.03),
-    10px 10px 20px rgba(0,0,0,.03),
-    0px 8px 30px rgba(0,0,0,.08),
-    0px 2px 5px rgba(0,0,0,.10);
-
-    @include monospace();
-    &:hover {
-      transition: box-shadow .2s;
-
-      box-shadow: -8px 10px 14px rgba(0,0,0,.04),
-      8px 10px 14px rgba(0,0,0,.04),
-      0px 20px 40px rgba(0,0,0,.16),
-      0px 6px 6px rgba(0,0,0,.14);
-    }
-  }
-  @media (min-width: 800px) {
-    .hero h1 {
-      text-align: center;
-    }
-  }
   // === Work === //
   .work {
     position: relative;
@@ -73,11 +7,14 @@ body.index {
     position: relative;
     z-index: 1;
 
+    overflow: hidden;
+
     width: 100%;
 
-    @include aspect-ratio(1,1);
+    @include aspect-ratio(4,3);
     &:hover img {
-      z-index: 99;
+      transition: transform .4s;
+      transform: scale(1.04);
     }
   }
   .work-item .inner {
@@ -86,22 +23,28 @@ body.index {
     margin: 0px;
   }
   .work-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     display: block;
 
     width: 100%;
     height: 100%;
+
+    transition: transform .4s;
   }
   .work-item h2 {
     font-size: 36px;
-    font-weight: bold;
     line-height: 36px;
+    font-weight: bold;
 
     position: absolute;
     top: 20px;
     left: 20px;
 
     height: 40px;
-    padding: 8px 6px;
+    padding: 2px 6px;
 
     letter-spacing: 0px;
     text-transform: uppercase;
@@ -111,18 +54,17 @@ body.index {
   }
   .work-item p {
     font-size: 16px;
-    line-height: 18px;
+    line-height: 1.28em;
 
     position: absolute;
     top: 70px;
     left: 20px;
 
     max-width: 80%;
-    max-width: 320px;
+    max-width: 380px;
     padding: 4px 6px;
 
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    letter-spacing: .04em;
 
     color: #666666;
     background-color: #ffffff;
@@ -131,8 +73,8 @@ body.index {
   }
   .work-more {
     font-size: 12px;
-    font-weight: bold;
     line-height: 36px;
+    font-weight: bold;
 
     position: absolute;
     z-index: 9;
@@ -170,9 +112,6 @@ body.index {
   @media (min-width: 800px) {
     .work {
       zoom: 1;
-
-      max-width: 1200px;
-      margin: 0 auto;
       &::before, &::after {
         display: table;
 
