@@ -1,16 +1,126 @@
-body.index {
-	// === About Body === //
-	.about-body {
-		width: 100%;
-	}
-
-	@media (min-width: 800px) {
-    .about-body {
+body.about {
+  // === About Body === //
+  .about-body {
+    width: 100%;
+  }
+  .about {
+    padding: 0px 0 120px 0;
+    // border-top: solid #f5f5f5 8px;
+  }
+  .about .portrait img {
+    width: 100%;
+    margin-bottom: 80px;
+  }
+  @media (min-width: 800px) {
+    .about {
       overflow: auto;
       zoom: 1;
 
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
+      &::before, &::after {
+        display: table;
+
+        content: "";
+      }
+      &::after {
+        clear: both;
+      }
     }
+  }
+  .about .row {
+    padding: 0 160px;
+    &::before, &::after {
+      display: table;
+
+      content: "";
+    }
+    &::after {
+      clear: both;
+    }
+    &:not(:last-child) {
+      margin-bottom: 80px;
+    }
+  }
+  .about .row {
+    & .list-1 {
+      float: left;
+
+      width: 25%;
+      ul {
+        column-count: 1;
+      }
+    }
+    & .list-2 {
+      float: left;
+
+      width: 50%;
+      ul {
+        column-count: 2;
+      }
+    }
+    & .list-4 {
+      float: left;
+
+      width: 100%;
+      ul {
+        column-count: 4;
+      }
+    }
+  }
+  .about .row li {
+    line-height: 1.59em;
+
+    list-style: none;
+
+    @include monospace();
+    &::before {
+      content: "– ";
+    }
+  }
+  .about h2 {
+    font-size: 38px;
+    line-height: 44px;
+
+    margin-bottom: 30px;
+  }
+  .about h3 {
+    font-size: 24px;
+    line-height: 1.12;
+
+    margin-bottom: 12px;
+  }
+  .about .bio {
+    margin-bottom: 30px;
+
+    column-count: 2;
+    column-gap: 60px;
+  }
+  .about .bio p {
+    font-size: 16px;
+    line-height: 32px;
+
+    padding-bottom: 12px;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+
+    @include monospace();
+  }
+  .about .bio p a {
+    font-weight: bold;
+  }
+  .about-contact {
+    font-size: 16px;
+    line-height: 32px;
+    margin-right: 110px;
+    @include monospace();
+    &:hover span {
+      color: #f13333;
+    }
+  }
+  .about-contact span {
+    font-weight: bold;
   }
 }
