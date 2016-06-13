@@ -69,13 +69,21 @@ body.about {
     }
   }
   .about .row li {
-    line-height: 1.59em;
+    line-height: 1.69em;
 
     list-style: none;
 
     @include monospace();
     &::before {
       content: "– ";
+    }
+  }
+  .about .row li > a {
+    &:hover {
+      color: #f13333;
+      i {
+        color: black;
+      }
     }
   }
   .about h2 {
@@ -86,11 +94,12 @@ body.about {
   }
   .about h3 {
     font-size: 16px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     line-height: 1.12;
 
     margin-bottom: 8px;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
   }
   .about .bio {
     margin-bottom: 30px;
@@ -110,13 +119,18 @@ body.about {
 
     @include monospace();
   }
-  .about .bio p a {
+  .about .bio p > a {
     font-weight: bold;
+    &:hover {
+      color: #f13333;
+    }
   }
   .about-contact {
     font-size: 16px;
     line-height: 32px;
+
     margin-right: 110px;
+
     @include monospace();
     &:hover span {
       color: #f13333;
