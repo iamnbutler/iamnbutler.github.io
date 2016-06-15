@@ -65,6 +65,7 @@ function populateModalVideo(node) {
   $("#track").on( 'click', function(){
     var node = $(this);
 
+    $(".track-player").fadeIn(200);
     // Populate modal content
     // populateModalInfo(node);
     populateModalVideo(node);
