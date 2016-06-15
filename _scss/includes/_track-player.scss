@@ -1,0 +1,71 @@
+$track-video-width: 284px;
+$track-video-height: 160px;
+
+.track-player {
+  position: fixed;
+  z-index: 99;
+  right: 20px;
+  bottom: 20px;
+
+  transition: opacity .4s;
+
+  opacity: .8;
+  background-color: rgba(255,255,255,1);
+  box-shadow: 0px 4px 12px rgba(0,0,0,.26),
+  						0px 8px 24px rgba(0,0,0,.32);
+  &:hover {
+    transition: opacity .4s;
+
+    opacity: 1;
+  }
+  & > header {
+    width: $track-video-width;
+    padding: 14px 16px;
+  }
+  & > footer {
+    font-size: 14px;
+
+    display: none;
+
+    width: $track-video-width;
+    padding: 14px 16px;
+
+    letter-spacing: .04em;
+    text-transform: uppercase;
+
+    @include monospace();
+  }
+  h4 {
+    font-family: $type-sans-serif-stack;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 300;
+
+    overflow: hidden;
+
+    margin-bottom: 8px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  h5 {
+    font-family: $type-sans-serif-stack;
+    font-size: 13px;
+
+    overflow: hidden;
+
+    margin-bottom: -2px;
+
+    white-space: nowrap;
+    letter-spacing: .02em;
+    text-overflow: ellipsis;
+
+    color: #666666;
+  }
+  .track-video-container {
+    overflow: hidden;
+
+    width: $track-video-width;
+    height: $track-video-height;
+  }
+}
