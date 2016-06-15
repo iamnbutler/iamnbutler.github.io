@@ -1,7 +1,9 @@
 // Typography
 
+$type-sans-serif-stack: "Gotham", Gotham, "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
 html {
-  font-family: "Gotham", Gotham, "HelveticaNeue-Regular", "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: $type-sans-serif-stack;
   font-size: 16px;
   color: $c-text;
 }
@@ -12,7 +14,7 @@ html, html a {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: "Nimbus Sans Cond", "Nimbus Sans Condensed", "nimbus-sans-condensed", sans-serif;
 }
 

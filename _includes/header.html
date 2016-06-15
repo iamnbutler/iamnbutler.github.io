@@ -1,3 +1,4 @@
+{% include track-player.html %} <!-- Load header last.fm track player -->
 <header class="site-header state-closed">
   <h1 id="wordmark">
     <a href="{{ site.baseurl }}/">
@@ -22,7 +23,7 @@
     <!-- <a href="http://www.last.fm/user/iamnbutler" target="_blank"><i class="fa fa-lastfm" aria-hidden="true"></i></a> -->
   </nav>
   <!-- [#2] Todo: Build YT track sideloader for current track - https://github.com/iamnbutler/nate-dev/issues/2 -->
-  <a href="#" id="track" target="_blank">
+  <a href="#" id="track">
     <i class="fa fa-fw fa-headphones live"></i> <span id="track-track">Track</span> &mdash; <span id="track-artist">Artist</span>
   </a>
   <a href="#" id="menu">
