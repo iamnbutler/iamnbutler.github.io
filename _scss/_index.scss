@@ -1,4 +1,5 @@
 body.index {
+  // margin: 2px;
   // === Work === //
   .work {
     position: relative;
@@ -10,31 +11,49 @@ body.index {
     overflow: hidden;
 
     width: 100%;
+    margin-bottom: 2px;
 
     @include aspect-ratio(4,3);
-    &:hover img {
-      transition: transform .4s;
-      transform: scale(1.04);
+    &:hover {
+      .overlay {
+        transition: background-color .4s;
+
+        background-color: rgba(255,255,255,.98);
+      }
+      h2 {
+        transition: opacity .2s;
+
+        opacity: 1;
+      }
+    }
+    &:nth-child(odd) .inner {
+      margin-right: 2px;
+    }
+    &:nth-child(1), &:nth-child(2) {
+      margin-top: 2px;
     }
   }
   .work-item .inner {
-    display: block;
     position: absolute;
+    z-index: 6;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+
+    display: block;
 
     margin: 0px;
-    z-index: 6;
   }
   .work-item .overlay {
     position: absolute;
+    z-index: 7;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    z-index: 7;
+    left: 0;
+
+    transition: background-color .4s;
   }
   .work-item img {
     position: absolute;
@@ -45,45 +64,27 @@ body.index {
 
     width: 100%;
     height: 100%;
-
-    transition: transform .4s;
   }
   .work-item h2 {
-    font-size: 24px;
-    line-height: 36px;
-    font-weight: bold;
-
-    position: absolute;
-    top: 10px;
-    left: 10px;
-
-    height: 40px;
-    padding: 2px 6px;
-
-    letter-spacing: 0px;
-    text-transform: uppercase;
-
-    // color: #000000;
-    color: #ffffff;
-  }
-  .work-item p {
     font-size: 16px;
-    line-height: 1.32em;
+    line-height: 16px;
 
     position: absolute;
-    top: 60px;
-    left: 10px;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0px;
 
-    max-width: 80%;
-    max-width: 340px;
-    padding: 4px 6px;
+    margin-top: -8px;
 
-    letter-spacing: .04em;
+    transition: opacity .2s;
+    text-align: center;
+    letter-spacing: -.02em;
 
-    color: #444;
-    background-color: #ffffff;
+    opacity: 0;
+    color: #000000;
 
-    // @include monospace();
+    @include monospace();
   }
   .work-more {
     font-size: 14px;
@@ -95,6 +96,7 @@ body.index {
 
     width: 100%;
     height: 60px;
+    margin-bottom: 2px;
 
     text-align: center;
     letter-spacing: .1em;
@@ -105,8 +107,8 @@ body.index {
 
     @include monospace();
     &:hover {
-      background-color: white;
       color: black;
+      background-color: white;
     }
   }
   @media (min-width: 800px) {

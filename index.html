@@ -8,11 +8,10 @@ layout: default
     {% assign workItems = (site.work | sort: 'date') | reverse %}
     {% for item in workItems | limit: 6 %}
     <div class="work-item">
-      <div class="overlay">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.tagline }}</p>
-      </div>
       <a href="{{ item.url }}" class="inner">
+        <div class="overlay">
+          <h2>{{ item.title }}</h2>
+        </div>
         <img src="/img/work/thumbs/thumb-work-{{ item.thumbnail.slug }}{{ item.thumbnail.extension }}" alt="{{ item.title }}">
       </a>
     </div>
