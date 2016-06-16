@@ -48,10 +48,10 @@ body.index {
   .work-item .overlay {
     position: absolute;
     z-index: 7;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: 40px;
+    right: 40px;
+    bottom: 40px;
+    left: 40px;
 
     transition: background-color .3s;
   }
@@ -66,8 +66,8 @@ body.index {
     height: 100%;
   }
   .work-item h2 {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 20px;
+    line-height: 20px;
 
     position: absolute;
     top: 50%;
@@ -75,7 +75,7 @@ body.index {
     bottom: 0;
     left: 0px;
 
-    margin-top: -8px;
+    margin-top: -10px;
 
     transition: opacity .2s;
     text-align: center;
