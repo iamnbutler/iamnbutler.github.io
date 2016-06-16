@@ -16,7 +16,7 @@ body.index {
     @include aspect-ratio(4,3);
     &:hover {
       .overlay {
-        transition: background-color .4s;
+        transition: background-color .3s;
 
         background-color: rgba(255,255,255,.98);
       }
@@ -53,7 +53,7 @@ body.index {
     bottom: 0;
     left: 0;
 
-    transition: background-color .4s;
+    transition: background-color .3s;
   }
   .work-item img {
     position: absolute;
