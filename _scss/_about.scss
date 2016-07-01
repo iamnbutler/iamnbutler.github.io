@@ -136,7 +136,21 @@ body.about {
       color: #f13333;
     }
   }
-  .about-contact span {
-    font-weight: bold;
+}
+
+// About info widget
+
+section.about-info {
+  margin-bottom: 80px;
+  .about-contact {
+    font-size: 16px;
+    line-height: 32px;
+
+    margin-right: 110px;
+
+    @include monospace();
+    &:hover span {
+      color: #f13333;
+    }
   }
 }
