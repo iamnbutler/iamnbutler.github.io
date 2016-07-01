@@ -13,7 +13,7 @@ body.index {
     width: 100%;
     margin-bottom: 2px;
 
-    @include aspect-ratio(4,3);
+    @include aspect-ratio(16,9);
     &:hover {
       .overlay {
         transition: background-color .3s;
@@ -48,10 +48,10 @@ body.index {
   .work-item .overlay {
     position: absolute;
     z-index: 7;
-    top: 40px;
-    right: 40px;
-    bottom: 40px;
-    left: 40px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 
     transition: background-color .3s;
   }
@@ -66,8 +66,8 @@ body.index {
     height: 100%;
   }
   .work-item h2 {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 16px;
 
     position: absolute;
     top: 50%;
@@ -75,7 +75,7 @@ body.index {
     bottom: 0;
     left: 0px;
 
-    margin-top: -10px;
+    margin-top: -8px;
 
     transition: opacity .2s;
     text-align: center;
