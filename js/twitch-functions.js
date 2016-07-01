@@ -1,11 +1,11 @@
 // Is twitch channel live?
 $.getJSON('https://api.twitch.tv/kraken/streams/then8show', function(channel) {
-    console.log('works');
     if (channel["stream"] == null) {
-        // Channel is not live
-        $('#twitch-live').html('<h1>NOT LIVE<h1>');
+      // Channel is not live
+      console.log("Nate currently isn't live on Twitch, be sure to check back later!");
+      $('#twitch-live').html('<p><i class="fa fa-fw fa-video-camera fa-live"></i> Nate is currently live on Twitch! Come join the stream <i class="fa fa-fw fa-angle-double-right"</i><p>');
     } else {
       // Channel is live
-      $('#twitch-live').html('<h1>LIVE<h1>');
+
     }
 });

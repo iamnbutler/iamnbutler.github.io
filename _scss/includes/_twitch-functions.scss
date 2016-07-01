@@ -1,0 +1,16 @@
+#twitch-live {
+	position: absolute;
+	top: 20px;
+	padding: 8px 14px;
+	background-color: #fff;
+	z-index: 2;
+	font-size: 16px;
+	line-height: 16px;
+	.fa-live {
+		position: relative;
+		bottom: 1px;
+		color: #f13333;
+		font-size: 12px;
+		padding-right: 4px;
+	}
+}
