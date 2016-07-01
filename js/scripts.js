@@ -1,7 +1,6 @@
 // Load Typekit junk
 try{Typekit.load({ async: true });}catch(e){}
 
-// Uncomment if using jQuery
 $(document).ready(function(){
 	var body = $('body');
 
