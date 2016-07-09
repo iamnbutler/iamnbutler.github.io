@@ -30,11 +30,13 @@ html, body {
 
 @import "_typography.scss";
 
-// === Includes == //
+// === Partials == //
 
 @import "_header.scss";
 @import "_footer.scss";
 @import "_main.scss";
+
+// === Includes == //
 @import "includes/_hero-about.scss";
 @import "includes/_track-player.scss";
 @import "includes/_twitch-functions.scss";
@@ -42,8 +44,12 @@ html, body {
 // === Style == //
 
 @import "_style.scss";
+
+// Pages
+
 @import "_index.scss";
 @import "_about.scss";
 @import "_stream.scss";
 @import "_work.scss";
 @import "_project.scss";
+@import "_photos.scss";
