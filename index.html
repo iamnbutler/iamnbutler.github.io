@@ -3,7 +3,9 @@ layout: default
 ---
 
 <div class="wrapper">
-  {% include hero-about.html %}
+  <div class="about">
+    {% include about-info.html %}
+  </div>
   <div class="work">
     {% assign workItems = (site.work | sort: 'date') | reverse %}
     {% for item in workItems | limit: 6 %}
@@ -16,8 +18,5 @@ layout: default
       </a>
     </div>
     {% endfor %}
-  </div>
-  <div class="about">
-    {% include about-info.html %}
   </div>
 </div>
