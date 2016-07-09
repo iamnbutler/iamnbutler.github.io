@@ -10,7 +10,7 @@
   overflow: hidden;
 
   width: 100%;
-  height: 640px;
+  height: 550px;
 }
 
 .hero-image img {
@@ -19,7 +19,7 @@
   display: block;
 
   width: 100%;
-  height: 640px;
+  height: 550px;
 
   // transform: scale(1.1);
 
@@ -39,20 +39,22 @@
 .hero-overlay h2 {
   font-size: 120px;
   line-height: 1.12;
-  font-weight: bold;
+  // font-weight: bold;
 
   position: relative;
   z-index: 1;
 
   width: 100%;
   margin: 80px 0;
-  margin-top: 140px;
+  margin-top: 100px;
 
   animation: rotate-in .2s forwards;
   animation-delay: .4s;
   text-align: center;
   letter-spacing: -.022em;
   letter-spacing: -.02em;
+
+  @include monospace();
 
   opacity: 0;
   color: white;
@@ -66,7 +68,7 @@
   .hero-overlay h2 {
     font-size: 100px;
 
-    margin: 60px 0 30px 0;
+    margin: 30px 0 30px 0;
   }
 }
 
