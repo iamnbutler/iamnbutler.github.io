@@ -33,32 +33,29 @@
   bottom: 0;
   left: 0;
 
-  background-color: rgba(0,0,0,.4);
 }
 
 .hero-overlay h2 {
-  font-size: 120px;
+  font-size: 90px;
   line-height: 1.12;
-  // font-weight: bold;
+  font-weight: bold;
 
   position: relative;
   z-index: 1;
 
   width: 100%;
   margin: 80px 0;
-  margin-top: 100px;
+  margin-top: 140px;
+  text-align: center;
 
   animation: rotate-in .2s forwards;
+  text-transform: uppercase;
   animation-delay: .4s;
-  text-align: center;
   letter-spacing: -.022em;
   letter-spacing: -.02em;
 
-  @include monospace();
-
   opacity: 0;
   color: white;
-  text-shadow: -7px 14px 16px rgba(0,0,0,.04),7px 14px 16px rgba(0,0,0,.04),0px 12px 60px rgba(0,0,0,.14),0px 4px 10px rgba(0,0,0,.20);
 }
 
 @media (max-width:1080px) {
