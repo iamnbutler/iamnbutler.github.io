@@ -81,8 +81,3 @@ var userFeed = new Instafeed({
   template: '<div class="insta-item"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></div>'
 });
 userFeed.run();
-
-// JParallax
-jQuery('.parallax-layer').parallax({
-  mouseport: jQuery("#port")
-})
