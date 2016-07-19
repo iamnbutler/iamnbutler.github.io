@@ -1,4 +1,6 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<!-- Load Typekit stuff -->
 <script>
   (function(d) {
     var config = {
@@ -9,9 +11,14 @@
     h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
   })(document);
 </script>
+
+<!-- For YT Search -->
 <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+<!-- API for loading Instagram feed -->
 <script src="/js/instafeed.js"></script>
+
 <!-- Load page specific scripts -->
-<!-- TODO: Split up scripts by page -->
+<!-- TODO: Split up scripts by page and use gulp or other to merge post dev -->
 <script src="/js/scripts.js"></script>
 <script type="text/javascript" src="http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=iamnbutler&api_key=eb5004312b5007e85399ab8128cd90ff&limit=1&format=json&callback=recentTrack"></script>
