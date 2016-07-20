@@ -1,22 +1,129 @@
 ---
-layout: default
+layout: about
+title: About
+permalink: /
 ---
 
-<div class="wrapper">
-  <div class="about">
-    {% include about-info.html %}
-  </div>
-  <div class="work">
-    {% assign workItems = (site.work | sort: 'date') | reverse %}
-    {% for item in workItems | limit: 6 %}
-    <div class="work-item">
-      <a href="{{ item.url }}" class="inner">
-        <div class="overlay">
-          <h2>{{ item.title }}</h2>
-        </div>
-        <img src="/img/work/thumbs/thumb-work-{{ item.thumbnail.slug }}{{ item.thumbnail.extension }}" alt="{{ item.title }}">
-      </a>
+<div class="about">
+  {% include about-info.html %}
+  <div class="row">
+    <div class="list-2">
+      <h3>Elsewhere</h3>
+      <ul>
+        <li><a href="http://codepen.io/iamnbutler/"><i class="fa fa-fw fa-codepen"></i> Codepen</a></li>
+        <li><a href="https://dribbble.com/iamnbutler"><i class="fa fa-fw fa-dribbble"></i> Dribbble</a></li>
+        <li><a href="https://www.facebook.com/iamnbutler"><i class="fa fa-fw fa-facebook-square"></i> Facebook</a></li>
+        <li><a href="https://github.com/iamnbutler"><i class="fa fa-fw fa-github-alt"></i> Github</a></li>
+        <li><a href="https://www.instagram.com/iamnbutler/"><i class="fa fa-fw fa-instagram"></i> Instagram</a></li>
+        <li><a href="http://www.last.fm/user/iamnbutler"><i class="fa fa-fw fa-lastfm"></i> Last.fm</a></li>
+        <li><a href="https://ca.linkedin.com/in/imnate"><i class="fa fa-fw fa-linkedin"></i> Linkedin</a></li>
+        <li><a href="https://www.twitch.tv/then8show"><i class="fa fa-fw fa-twitch"></i> Twitch</a></li>
+      </ul>
     </div>
-    {% endfor %}
   </div>
+  <div class="row">
+    <div class="list-1">
+      <h3>Experience</h3>
+      <ul>
+        <li><a target="_blank" href="https://www.facebook.com/design/">Facebook</a></li>
+        <li><a target="_blank" href="https://format.com/about">Format</a></li>
+        <li><a target="_blank" href="http://lookbook.nu">Lookbook</a></li>
+        <li><a target="_blank" href="http://design.yorku.ca">York University</a></li>
+      </ul>
+    </div>
+    <div class="list-1">
+      <h3>Equipment</h3>
+      <ul>
+        <li><a target="_blank" href="http://www.apple.com/macbook/"><i class="fa fa-fw fa-laptop"></i> MBP 13" Retina</a></li>
+        <li><a target="_blank" href="http://www.razerzone.com/ca-en/gaming-mice/razer-naga"><i class="fa fa-fw fa-hand-o-up"></i> Razer Naga</a></li>
+        <li><a target="_blank" href="http://gaming.logitech.com/en-ca/product/g633-7-1-surround-sound-gaming-headset"><i class="fa fa-fw fa-headphones"></i> Logitech G633</a></li>
+        <li><a target="_blank" href="http://www.sony.com/electronics/interchangeable-lens-cameras/ilce-6300-body-kit"><i class="fa fa-fw fa-camera-retro"></i> Sony a6300</a></li>
+      </ul>
+    </div>
+    <div class="list-2">
+      <h3>Tools</h3>
+      <ul>
+        <li><a target="_blank" href="https://www.facebook.com/design/">Sketch</a></li>
+        <li><a target="_blank" href="https://format.com/about">Photoshop CC</a></li>
+        <li><a target="_blank" href="http://lookbook.nu">Sublime Text</a></li>
+        <li><a target="_blank" href="http://design.yorku.ca">Codekit</a></li>
+        <li><a target="_blank" href="http://lookbook.nu">Jekyll</a></li>
+        <li><a target="_blank" href="http://design.yorku.ca">Github</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="list-2">
+      <h3>Friends</h3>
+      <ul>
+        <li><a target="_blank" href="http://pillai.cc/">Aloke Pillai</a></li>
+        <li><a target="_blank" href="http://www.brockdonaldson.co/">Brock Donaldson</a></li>
+        <li><a target="_blank" href="http://huntercaron.com/">Hunter Caron</a></li>
+        <li><a target="_blank" href="http://jake.ly/">Jake Blakeley</a></li>
+        <li><a target="_blank" href="http://kvng.co/">Kevin Ng</a></li>
+        <li><a target="_blank" href="http://milee.co/">Michelle Lee</a></li>
+        <li><a target="_blank" href="http://rosszurowski.com/">Ross Zurowski</a></li>
+        <li><a target="_blank" href="http://www.sarahhum.com/">Sarah Hum</a></li>
+        <li><a target="_blank" href="http://emmersonic.com/">Taylor Emmerson</a></li>
+        <li><a target="_blank" href="http://spgl.co/">Wayne Spiegel</a></li>
+      </ul>
+    </div>
+    <div class="list-2">
+      <h3>Inspiration</h3>
+      <ul>
+        <li><a target="_blank" href="http://www.ashthorp.com/">Ash Thorpe</a></li>
+        <li><a target="_blank" href="http://www.gmunk.com/">GMUNK</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Hayao_Miyazaki">Hayao Miyazaki</a></li>
+        <li><a target="_blank" href="http://allison.house/">House</a></li>
+        <li><a target="_blank" href="http://www.juliezhuo.com/">Julie Zhou</a></li>
+        <li><a target="_blank" href="http://soulwire.co.uk/hello">Justin Windle</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Makoto_Shinkai">Makoto Shinkai</a></li>
+        <li><a target="_blank" href="http://designobserver.com/profile/michaelbierut/110"></a>Michael Bierut</li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Satoshi_Kon">Satoshi Kon</a></li>
+        <li><a target="_blank" href="http://signalnoise.com/">Signalnoise</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="list-4">
+      <h3 id="about-watch">Watch</h3>
+      <ul>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/5_Centimeters_Per_Second">5cm Per Second</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/American_Beauty_(1999_film)">American Beauty</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Avatar:_The_Last_Airbender">Avatar: TLA</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Baccano!">Baccano!</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Drive_(2011_film)">Drive</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Firefly_(TV_series)">Firefly</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/FLCL">FLCL</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Ghost_in_the_Shell">Ghost in the Shell</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Only_Yesterday_(1991_film)">Only Yesterday</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Paprika_(2006_film)">Paprika</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Parasyte">Parasyte</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Perfect_Blue">Perfect Blue</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Porco_Rosso">Porco Rosso</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Redline_(2009_film)">Redline</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Sword_of_the_Stranger">Sword of the Stranger</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/The_Princess_Bride_(film)">The Princess Bride</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/The_Shawshank_Redemption">The Shawshank Redemption</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Whisper_of_the_Heart">Whisper of the Heart</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="list-4">
+      <h3 id="about-watch">Play</h3>
+      <ul>
+        <li><a target="_blank" href="http://bravelydefault.nintendo.com/">Bravely Default</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Final_Fantasy_VI">Final Fantasy VI</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Final_Fantasy_VIII">Final Fantasy VIII</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Mega_Man_Zero">Mega Man Zero</a></li>
+        <li><a target="_blank" href="https://minecraft.net/en/">Minecraft</a></li>
+        <li><a target="_blank" href="https://playoverwatch.com/en-us/">Overwatch</a></li>
+        <li><a target="_blank" href="https://en.wikipedia.org/wiki/Paper_Mario">Paper Mario</a></li>
+        <li><a target="_blank" href="http://zelda.com/windwaker/#unlock-the-treasure">TLoZ: The Wind Waker</a></li>
+        <li><a target="_blank" href="http://thewitcher.com/en/witcher3">The Witcher 3: Wild Hunt</a></li>
+        <li><a target="_blank" href="http://www.tombraider.com/landing/">Tomb Raider</a></li>
+      </ul>
+    </div>
+  </div> -->
 </div>
