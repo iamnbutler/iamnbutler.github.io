@@ -17,7 +17,6 @@ github_username:  iamnbutler
 
 # Gems
 gems:
-  - jekyll-assets
 
 # Build settings
 markdown: kramdown
