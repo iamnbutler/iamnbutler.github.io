@@ -16,8 +16,7 @@ twitter_username: iamnbutler
 github_username:  iamnbutler
 
 # Gems
-gems:
-  - jekyll-assets
+# gems:
 
 # Build settings
 markdown: kramdown
@@ -68,3 +67,5 @@ assets:
     - _assets/fonts
     - _assets/img
     - _assets/js
+    - js
+    - img
