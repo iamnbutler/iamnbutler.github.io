@@ -6,3 +6,4 @@ Gemfile.lock
 Rakefile
 vendor
 config.codekit
+/img/temp/*
