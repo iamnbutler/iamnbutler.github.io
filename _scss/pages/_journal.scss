@@ -9,7 +9,7 @@
 
 .journal-header {
   margin-top: 58px;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 
 .journal-header > h2 {
@@ -36,7 +36,7 @@
 }
 
 .journal-header > nav {
-  margin: 16px 0;
+  margin: 32px 0;
   margin-bottom: 0;
 
   text-align: center;
@@ -86,7 +86,7 @@ $journal-item-inner-margin: 20px;
   						0px 2px 4px rgba(0,0,0,.12);
   transition: all .4s;
 
-  flex: 0 0 32%;
+  flex: 0 0 32.333333%;
   .overlay {
     position: absolute;
     z-index: 2;
@@ -141,8 +141,8 @@ $journal-item-inner-margin: 20px;
   }
 }
 
-.journal-body .journal-item:nth-child(1) {
-  flex: 0 0 65%;
+.journal-body .journal-item:nth-child(6n+1) {
+  flex: 0 0 65.9666%;
 }
 
 .journal-item .inner {
