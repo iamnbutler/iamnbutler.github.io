@@ -1,1 +1,34 @@
 // -- Journal -- //
+
+.journal-wrapper {
+	width: 100%;
+	margin-bottom: 58px;
+}
+
+// [.journal-header]
+
+.journal-header {
+	margin-top: 58px;
+	margin-bottom: 38px;
+
+}
+
+.journal-header > h2 {
+	line-height: 58px;
+	width: 100%;
+	font-size: 46px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.journal-header > p {
+	text-align: center;
+	font-size: 15px;
+	width: 440px;
+	line-height: 24px;
+	margin: 0 auto;
+	& > a {
+		font-weight: bold;
+	}
+
+}
