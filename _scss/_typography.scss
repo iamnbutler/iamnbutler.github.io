@@ -38,6 +38,10 @@ a {
 
 li {}
 
+@mixin bodycopy {
+  font-family: $type-sans-serif-stack;
+}
+
 @mixin monospace {
   font-family: SourceCodePro-Regular, "SourceCodePro", monospace;
 }

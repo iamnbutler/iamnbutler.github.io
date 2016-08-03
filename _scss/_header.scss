@@ -150,7 +150,7 @@ header.site-header #track i {
 
   animation: header-track-blink 2s infinite ease-in-out;
   &.live {
-    color: #f13333;
+    color: $c-red;
   }
 }
 
