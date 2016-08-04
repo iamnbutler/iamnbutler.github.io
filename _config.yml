@@ -26,15 +26,9 @@ permalink: pretty
 
 # Collections
 collections:
-  work:
+  journal:
     output: true
-    permalink: /work/:path/
-defualts:
-  - scope:
-      path: ""
-      type: work
-    values:
-      layout: work
+    permalink: /journal/:path/
 
 # Assets
 sass:
