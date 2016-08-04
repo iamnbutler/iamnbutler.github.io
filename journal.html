@@ -3,6 +3,8 @@ layout: journal
 title: Journal
 permalink: /journal/
 ---
+
+<p>WIP! This page is currently a work in progress.</p>
 <div class="journal-wrapper">
 	<header class="journal-header">
 		<h2>Journal</h2>
@@ -17,7 +19,23 @@ permalink: /journal/
 		</nav>
 	</header>
 	<div class="journal-body">
-		<article class="journal-item">
+		{% for post in site.posts %}
+			<article class="journal-item">
+			  	<div class="overlay"></div>
+					<div class="journal-category">
+						<a href="#category">{{ post.category }}</a>
+					</div>
+					<a href="{{ post.url }}">
+						<div class="inner">
+							<h2 class="journal-headline">{{ post.title }}</h2>
+						</div>
+					</a>
+					<div class="journal-date">
+						<a href="#">{{ post.date | date: "%-d %B %Y"}}</a>
+					</div>
+		  </article>
+		{% endfor %}
+		<!-- <article class="journal-item">
 	  	<div class="overlay"></div>
 			<div class="journal-category">
 				<a href="#category">Design</a>
@@ -97,7 +115,8 @@ permalink: /journal/
 				<a href="#">August 13th, 2016</a>
 			</div>
 	  </article>
-	  <article class="journal-item">
+	  <article class="journal-item has-image">
+	  	<div class="overlay"></div>
 			<div class="journal-category">
 				<a href="#category">Design</a>
 			</div>
@@ -119,5 +138,16 @@ permalink: /journal/
 				<a href="#">August 13th, 2016</a>
 			</div>
 	  </article>
+	  <article class="journal-item">
+			<div class="journal-category">
+				<a href="#category">Design</a>
+			</div>
+			<div class="inner">
+				<h2 class="journal-headline">Learning to Pixel Art</h2>
+			</div>
+			<div class="journal-date">
+				<a href="#">August 13th, 2016</a>
+			</div>
+	  </article> -->
 	</div>
 </div>

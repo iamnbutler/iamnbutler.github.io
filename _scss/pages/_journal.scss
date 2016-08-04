@@ -9,7 +9,7 @@
 
 .journal-header {
   margin-top: 58px;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 
 .journal-header > h2 {
@@ -36,7 +36,7 @@
 }
 
 .journal-header > nav {
-  margin: 16px 0;
+  margin: 32px 0;
   margin-bottom: 0;
 
   text-align: center;
@@ -80,13 +80,13 @@ $journal-item-inner-margin: 20px;
   height: $journal-item-height;
   margin-bottom: 24px;
 
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0px 4px 12px rgba(0,0,0,.06),
-  						0px 2px 4px rgba(0,0,0,.12);
   transition: all .4s;
+  text-align: center;
 
-  flex: 0 0 32%;
+  box-shadow: 0px 4px 12px rgba(0,0,0,.06),
+  0px 2px 4px rgba(0,0,0,.12);
+
+  flex: 0 0 32.333333%;
   .overlay {
     position: absolute;
     z-index: 2;
@@ -127,22 +127,22 @@ $journal-item-inner-margin: 20px;
     }
   }
   &:hover {
-    .overlay {
-
-      background-color: rgba(0,0,0,.6);
-      transition: all .6s;
-    }
     transition: all .2s;
 
-      box-shadow: 0px 12px 16px rgba(0,0,0,.08),
-						      -8px 14px 12px rgba(0,0,0,.02),
-						      8px 14px 12px rgba(0,0,0,.02),
-  								0px 2px 6px rgba(0,0,0,.16);
+    box-shadow: 0px 12px 16px rgba(0,0,0,.08),
+    -8px 14px 12px rgba(0,0,0,.02),
+    8px 14px 12px rgba(0,0,0,.02),
+    0px 2px 6px rgba(0,0,0,.16);
+    .overlay {
+      transition: all .6s;
+
+      background-color: rgba(0,0,0,.6);
+    }
   }
 }
 
-.journal-body .journal-item:nth-child(1) {
-  flex: 0 0 65%;
+.journal-body .journal-item:nth-child(6n+1) {
+  flex: 0 0 65.9666%;
 }
 
 .journal-item .inner {
