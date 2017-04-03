@@ -82,6 +82,14 @@ html, body {
 body {
   padding: 40px; }
 
+footer {
+  margin-top: 80px;
+  font-family: Monaco;
+  font-size: 10px;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  line-height: 18px; }
+
 h1 {
   font-family: HelveticaNeue-Bold;
   font-size: 32px;
