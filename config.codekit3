@@ -93,6 +93,30 @@
 		"oAP": "\/.sass-cache\/dde8e375f52128b4b89e737f87a055a161426095\/screen.scssc",
 		"oF": 0
 		},
+	"\/android-chrome-192x192.png": {
+		"ft": 32768,
+		"iS": 8555,
+		"oA": 0,
+		"oAP": "\/android-chrome-192x192.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/android-chrome-256x256.png": {
+		"ft": 32768,
+		"iS": 7037,
+		"oA": 0,
+		"oAP": "\/android-chrome-256x256.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/android-chrome-96x96.png": {
+		"ft": 32768,
+		"iS": 1843,
+		"oA": 0,
+		"oAP": "\/android-chrome-96x96.png",
+		"oF": 0,
+		"opt": 0
+		},
 	"\/config.rb": {
 		"ft": 131072,
 		"oA": 0,
@@ -141,6 +165,16 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"\/safari-pinned-tab.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/safari-pinned-tab.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/scss\/modules\/_variables.scss": {
 		"aP": 0,
