@@ -1,7 +1,28 @@
 // Index
 
 html, body {
-	background: #6BCEBB;
+background: linear-gradient(326deg, #fda085, #f6d365, #ff9a9e, #fad0c4);
+background-size: 800% 800%;
+
+-webkit-animation: gradientAnimation 32s linear infinite;
+-moz-animation: gradientAnimation 32s linear infinite;
+animation: gradientAnimation 32s linear infinite;
+}
+
+@-webkit-keyframes gradientAnimation {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
+}
+@-moz-keyframes gradientAnimation {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
+}
+@keyframes gradientAnimation {
+    0%{background-position:53% 0%}
+    50%{background-position:48% 100%}
+    100%{background-position:53% 0%}
 }
 
 body {
