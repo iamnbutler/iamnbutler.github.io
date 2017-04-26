@@ -174,5 +174,8 @@ li {
 .friends {
   max-width: 500px;
   column-count: 3; }
+  @media (max-width: 600px) {
+    .friends {
+      column-count: 1; } }
   .friends a {
     font-weight: 400; }
