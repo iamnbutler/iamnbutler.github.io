@@ -19,43 +19,64 @@
 
 	</head>
 	<body>
+		<div class="column">
+			<div class="inner">
+				<h1><a href="/">Nate Butler</a></h1>
+				<p class="intro">Hi – I'm Nate. I work at <a href="http://facebook.design/">Facebook</a> &amp;  live in San Francisco. In my spare time I like to create <a href="https://www.instagram.com/n8.3d/">3D art</a>, take photos &amp; play games. I <a href="https://medium.com/@iamnbutler">write</a> from time to time. If you would like to connect send me a <a href="https://www.messenger.com/t/iamnbutler">message</a>!</p>
+				<ul class="links">
+					<li><a href="https://www.instagram.com/iamnbutler/">Instagram</a></li>
+					<li><a href="https://github.com/iamnbutler/">Github</a></li>
+				</ul>
+				<ul class="work">
+					<h2>Work</h2>
+					<li>2016 – <a href="http://facebook.design/">Facebook</a></li>
+					<li>2014 – <a href="https://www.format.com/">Format</a></li>
+					<li>2012 – <a href="http://lookbook.nu/">Lookbook</a></li>
+				</ul>
+				<h2>Friends</h2>
+				<!-- <ul class="friends">
+					<li><a href="http://www.brockdonaldson.co/">Brock Donaldson</a></li>
+					<li><a href="http://huntercaron.com/">Hunter Caron</a></li>
+					<li><a href="http://jake.ly/">Jake Blakeley</a></li>
+					<li><a href="https://twitter.com/kymchiho">Kim Ho</a></li>
+					<li><a href="https://twitter.com/iamkory">Kory Westerhold</a></li>
+					<li><a href="http://laurapitt.com/">Laura Pitt</a></li>
+					<li><a href="http://milee.co/">Michelle Lee</a></li>
+					<li><a href="http://rosszurowski.com/">Ross Zurowski</a></li>
+					<li><a href="http://xueliang.ca">Shirley Liang</a></li>
+					<li><a href="http://emmersonic.com/">Taylor Emmerson</a></li>
+					<li><a href="http://spgl.co/">Wayne Spiegel</a></li>
+				</ul> -->
 
-		<h1><a href="/">Nate Butler</a></h1>
-		<p class="intro">Hi – I'm Nate. I work on News Feed at <a href="http://facebook.design/">Facebook</a> &amp;  live in San Francisco. In my spare time I like to take photos, play games and think about the future. I <a href="https://medium.com/@iamnbutler">write</a> from time to time. If you would like to connect send me a <a href="https://www.messenger.com/t/iamnbutler">message</a>!</p>
-		<ul class="links">
-			<li><a href="https://www.instagram.com/iamnbutler/">Instagram</a></li>
-			<li><a href="https://github.com/iamnbutler/">Github</a></li>
-		</ul>
-		<ul class="work">
-			<h2>Work</h2>
-			<li>2016 – <a href="http://facebook.design/">Facebook</a></li>
-			<li>2014 – <a href="https://www.format.com/">Format</a></li>
-			<li>2012 – <a href="http://lookbook.nu/">Lookbook</a></li>
-		</ul>
-		<h2>Friends</h2>
-		<ul class="friends">
-			<li><a href="http://www.brockdonaldson.co/">Brock Donaldson</a></li>
-			<li><a href="http://huntercaron.com/">Hunter Caron</a></li>
-			<li><a href="http://jake.ly/">Jake Blakeley</a></li>
-			<li><a href="https://twitter.com/kymchiho">Kim Ho</a></li>
-			<li><a href="https://twitter.com/iamkory">Kory Westerhold</a></li>
-			<li><a href="http://laurapitt.com/">Laura Pitt</a></li>
-			<li><a href="http://milee.co/">Michelle Lee</a></li>
-			<li><a href="http://rosszurowski.com/">Ross Zurowski</a></li>
-			<li><a href="http://xueliang.ca">Shirley Liang</a></li>
-			<li><a href="http://emmersonic.com/">Taylor Emmerson</a></li>
-			<li><a href="http://spgl.co/">Wayne Spiegel</a></li>
-		</ul>
+				<h2>Inspiration Feed</h2>
+				<ul class="inspo">
+					<li><a href="https://goo.gl/photos/qeTYKqGErL45REbW7">2017</a></li>
+					<li><a href="https://goo.gl/photos/mp14Ro4i82y78kBz8">2016</a></li>
+				</ul>
 
-		<h2>Inspiration Feed</h2>
-		<ul class="inspo">
-			<li><a href="https://goo.gl/photos/qeTYKqGErL45REbW7">2017</a></li>
-		</ul>
-
-		<footer><a href="https://github.com/iamnbutler/iamnbutler.github.io">nate.jp // v7.0.0</a></footer>
+				<footer><a href="https://github.com/iamnbutler/iamnbutler.github.io">nate.jp // v7.0.0</a></footer>
+			</div>
+		</div>
+		<div class="column work">
+			<div class="inner">
+				<h2>3D WORK</h2>
+				<div id="instafeed"></div>
+			</div>
+		</div>
 
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/scripts.js"></script>
+		<script>
+			// Load IG posts
+			var userFeed = new Instafeed({
+			    get: 'user',
+			    userId: '276356813',
+			    clientId: '0433c061150d4d878fb1ae4bfcf4b9d5',
+			  	accessToken: '276356813.0433c06.7579d1fd22744ec88320b161db39cfde',
+			  	limit: '10',
+			  	resolution: 'standard_resolution'});
+			userFeed.run();
+		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
