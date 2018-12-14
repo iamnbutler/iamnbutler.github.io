@@ -4,17 +4,31 @@
 	{
 		"name": "Process All Remaining Files and Folders",
 		"stepType": 1,
-		"uuidString": "76F4F540-C92C-47CE-BB55-950A3866E045"
+		"uuidString": "1CA87828-1FE4-4870-8929-BFFC6C472F25"
 		}
 	],
 "creatorBuild": "28905",
 "files": {
+	"/.gitignore": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/.gitignore",
+		"oF": 0
+		},
+	"/CNAME": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/CNAME",
+		"oF": 0
+		},
 	"/css/style-min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "/css/style-min-min.css",
 		"oF": 0,
 		"oS": 3
@@ -24,7 +38,7 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "/css/style-min.css",
 		"oF": 0,
 		"oS": 3
@@ -36,15 +50,43 @@
 		"oAP": "/index.html",
 		"oF": 0
 		},
+	"/js/scripts-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/js/scripts-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/js/scripts.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "/js/scripts-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
+		},
+	"/readme.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 0,
+		"oAP": "/readme.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
 		}
 	},
 "hooks": [
@@ -53,7 +95,7 @@
 	},
 "projectAttributes": {
 	"creationDate": 566469345.59015,
-	"displayValue": "2018",
+	"displayValue": "iamnbutler.github.io",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-cryingJordan",
 	"iconImageWasSetByUser": 0
