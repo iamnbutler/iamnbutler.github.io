@@ -1,13 +1,20 @@
-$(document).ready(function(){ 
+var content = document.getElementById("content");
+var links = content.getElementsByClassName("workToggle"); 
 
-	$('.link').click(function(){
-		$(this).children('ul').addClass('active');
-		return false;
-	});
+// Open & Close work on click
 
-	$('.cmd-see-less').click(function(){
-		$('ul').removeClass('active');
-		return false;
-	});
 
-});
+for (let link of links) {
+	link.onclick = function() {
+		console.log(link);
+		var list = link.querySelector('ul');
+		// If item isn't active
+		if (list.classList.contains("active")) {
+			// Remove Active class
+			list.className -= "active";
+		} else {
+			// Find ul item and add .active
+			list.className += " active";
+		}
+	}
+}

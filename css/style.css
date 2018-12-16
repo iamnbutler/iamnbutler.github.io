@@ -105,6 +105,8 @@ background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox=
 
 .content-layer a {
   opacity: 0.7;
+  outline: 0;
+  cursor: pointer;
   /*font-weight: 800;*/
 }
 
@@ -122,6 +124,11 @@ background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox=
   width: 60%;
   transition: 0.2s all;
   padding-bottom: 2.6vw;
+}
+
+.content-layer ul li a {
+  /*Remove outline on click*/
+  outline: 0;
 }
 
 .content-layer ul li ul.active {
