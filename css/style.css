@@ -105,6 +105,7 @@ background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox=
 
 .content-layer a {
   opacity: 0.7;
+  outline: 0;
   /*font-weight: 800;*/
 }
 
