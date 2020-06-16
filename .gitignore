@@ -8,3 +8,6 @@ vendor
 config.codekit
 /img/temp/*
 config.codekit3
+.DS_Store
+.DS_store
+.ds_store
