@@ -1,4 +1,4 @@
-# Nate Buler's Personal Protfolio Site
+# Nate Buler's Personal Portfolio Site
 
 Changelog:
 
