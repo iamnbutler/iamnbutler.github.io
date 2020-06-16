@@ -1,1 +1,0 @@
-$(document).ready(function(){$(".link").click(function(){return $(this).children("ul").addClass("active"),!1}),$(".cmd-see-less").click(function(){return $("ul").removeClass("active"),!1})});
