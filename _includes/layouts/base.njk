@@ -7,7 +7,9 @@
 
 		<main>
 			{% include "components/nav.njk" %}
-			{{ layoutContent | safe }}
+			<section class="site-content">
+				{{ layoutContent | safe }}
+			</section>
 			<aside id="sidebar" class="site-sidebar"></aside>
 		</main>
 		

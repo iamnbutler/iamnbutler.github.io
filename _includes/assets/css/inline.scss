@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
+
 :root {
   --primary: #000;
   --secondary: white;
@@ -10,7 +11,6 @@
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -18,12 +18,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-}
-
-html,
-body {
-  font-family: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
-    "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  &:not(h1, h2, h3, h4, h5, h6) {
+    font-family: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
+      "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  }
 }
 
 h1,
@@ -39,10 +37,8 @@ h6 {
 }
 
 body {
-  display: -ms-grid;
   display: grid;
   height: 100vh;
-  -ms-grid-rows: auto 1fr auto;
   grid-template-rows: auto 1fr auto;
   background-color: var(--background);
 }
@@ -52,21 +48,17 @@ main {
   margin: 0 auto;
   background-color: var(--background);
   border: 1px solid var(--border);
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 290px 13fr 10fr;
   grid-template-columns: 290px 13fr 10fr;
-  -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   gap: 1px 1px;
   background-color: var(--border);
-}
-
-main > nav,
-main > div,
-main > section,
-main > aside {
-  background-color: var(--background);
+  & > nav,
+  & > div,
+  & > section,
+  & > aside {
+    background-color: var(--background);
+  }
 }
 
 p,
@@ -102,9 +94,9 @@ pre {
   word-spacing: normal;
   word-break: normal;
   -moz-tab-size: 2;
-  -o-tab-size: 2;
   tab-size: 2;
   -webkit-hyphens: none;
+  -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
   padding: 1em;
@@ -155,7 +147,6 @@ a[rel="tag"]:last-child {
 
 /* Contact Form */
 form {
-  display: -ms-grid;
   display: grid;
   padding: 2em 0;
 }
@@ -199,4 +190,3 @@ button {
   width: 100%;
   height: 100%;
 }
-/*# sourceMappingURL=inline.css.map */
