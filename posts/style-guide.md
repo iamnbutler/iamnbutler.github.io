@@ -18,15 +18,15 @@ tags:
 
 ###### Headline 6
 
-Small Caps
+<p class="text-small-caps">Small Caps</p>
 
-Large Copy – The idea of making without a goal or problem in mind was both terrifying and liberating. Designers are used to the idea of making from a brief or a set of instructions, or finding a solution to a problem. Here I sought to explore the [scope of possibilities outside](aaa) the prototypical design process. 
-The project is a [rejection](aaa) all that is design: creating using a problem and solution formula. It is a dive into the concept of design as making, creating to discover about the world and one’s self.
+<p class="text-large">Large Copy – The idea of making without a goal or problem in mind was both terrifying and liberating. Designers are used to the idea of making from a brief or a set of instructions, or finding a solution to a problem. Here I sought to explore the [scope of possibilities outside](aaa) the prototypical design process. 
+The project is a [rejection](aaa) all that is design: creating using a problem and solution formula. It is a dive into the concept of design as making, creating to discover about the world and one’s self.</p>
 
 Body Copy – The idea of making without a goal or problem in mind was both terrifying and liberating. Designers are used to the idea of [making from a brief](aaa) or a set of instructions, or finding a solution to a problem. Here I sought to explore the scope of possibilities outside the prototypical design process. 
 The project is a rejection all that is design: creating using a problem and solution formula. It is a dive into the concept of design as making, creating to discover about the world and one’s self.
 
-Caption – Perhaps saying that the project doesn’t deal with a problem is misleading. It would be more correct to say that the problem is the process in which making powers discoveries through research. It is easy to become complacent when designing from project briefs, and it is easy to lose some of the imagination and pure creation that one starts out with in design when following this process. 
+<p class="text-caption">Caption – Perhaps saying that the project doesn’t deal with a problem is misleading. It would be more correct to say that the problem is the process in which making powers discoveries through research. It is easy to become complacent when designing from project briefs, and it is easy to lose some of the imagination and pure creation that one starts out with in design when following this process.</p>
 
 > Block Quote – Perhaps saying that the project doesn’t deal with a problem is misleading. It would be more correct to say that the problem is the process in which making powers discoveries through research. It is easy to become complacent when designing from project briefs, and it is easy to lose some of the imagination and pure creation that one starts out with in design when following this process. 
 
