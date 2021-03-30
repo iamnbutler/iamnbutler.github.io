@@ -39,16 +39,9 @@ Caption – Perhaps saying that the project doesn’t deal with a problem is mis
 
 ```
 A block of code.
-{% if tags %}
-  <p>
-  {% for tag in tags %}
-    {%- if tag != "post" -%}
-      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-      <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-    {%- endif -%}
-  {% endfor %}
-  </p>
-{% endif %}
+<div class="some class">
+  This is some code.
+</div>
 ```
 
 ![Alt Text](/static/img/https___hybrismediaprod.blob.core.windows.net_sys-master-phoenix-images-container_hbc_h0f_9081448529950_razer-deathadder-v2-gallery-hero-1500x1000.jpg "Image Title")
