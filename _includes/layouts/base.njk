@@ -1,0 +1,35 @@
+<!doctype html>
+<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
+
+	{% include "components/head.njk" %}
+
+	<body>
+
+		<main>
+			{% include "components/nav.njk" %}
+			{{ layoutContent | safe }}
+			<aside id="sidebar" class="site-sidebar"></aside>
+		</main>
+		
+		<!-- Site Background -->
+		<div class="site-bg">
+			<svg width="100%" height="100%">
+				<defs>
+					<pattern id="site-bg-lines" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+						<g clip-path="url(#clip0)">
+							<path d="M-1 50L50 -1" stroke="#333333"/>
+							<path d="M48 51L100 -1" stroke="#333333"/>
+						</g>       
+					</pattern>
+					<clipPath id="clip0">
+						<rect width="50" height="50" fill="white"/>
+					</clipPath>
+				</defs>
+			
+				<rect x="0" y="0" width="100%" height="100%" fill="url(#site-bg-lines)"></rect>
+			</svg>
+		</div>
+
+	</body>
+
+</html>
