@@ -7,14 +7,10 @@ eleventyNavigation:
   key: Home
   order: 0
 ---
-# Welcome
+# Nate Butler — Designer
 
-This is a template for building a simple blog website with the [Eleventy static site generator](https://www.11ty.io), with deployment to [Netlify](https://www.netlify.com).
+I’m a designer working in the product design industry for the past 10 years. My focus has been on vision design & expression. I believe in helping people share themselves, regardless of platform.
+I’m passionate about democratizaion of tools and knowledge — I’d rather teach people the tools to do something themselves than do it for them.
 
-Includes [Netlify CMS](https://www.netlifycms.org) for WYSIWYG content editing, and [Netlify Forms](https://www.netlify.com/docs/form-handling) for processing your site's form data.
-
-For more info on installation and usage, view the [project repo]({{ pkg.repository.url }}) on GitHub.
-
-Or click the button below to deploy your own copy of this project to Netlify.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danurbanowicz/eleventy-netlify-boilerplate&stack=cms)
+I want to help the people around me level up, in their careers & lives. I think technology is a tool that brings value but we have to respect and guide it, as it is not innately good.
+I'm a bit of a collector, and post about all types of things here. You will find a mix of work, top of mind, reflections, random posts & process.

@@ -127,6 +127,25 @@ code {
   }
 }
 
+/* Layout Lists */
+
+.layout-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  li.primary {
+    order: 1;
+    flex-grow: 2;
+  }
+
+  li.secondary {
+    flex-grow: 1;
+  }
+}
+
+/* Layout Sections */
+
 body {
   display: grid;
   height: 100vh;
@@ -197,6 +216,8 @@ nav {
 // code {
 //   line-height: 1.5;
 // }
+
+/* --------------- clean everything below here ----------- */
 
 a[href],
 a[href]:visited {
