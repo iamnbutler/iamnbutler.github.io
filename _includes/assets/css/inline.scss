@@ -20,6 +20,26 @@ body {
   margin: 0;
 }
 
+/* || Helpers */
+
+.border {
+  border-width: 0;
+  border-color: var(--border);
+  border-style: solid;
+  &.bottom {
+    border-bottom-width: 1px;
+  }
+  &.top {
+    border-top-width: 1px;
+  }
+  &.right {
+    border-right-width: 1px;
+  }
+  &.left {
+    border-left-width: 1px;
+  }
+}
+
 /* || Typography */
 
 html,
@@ -101,6 +121,22 @@ blockquote {
   @extend .text-large;
 }
 
+a[href],
+a[href]:visited {
+  color: var(--primary);
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
+
+.text-link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 code {
   display: block;
   padding: 8px 16px;
@@ -120,27 +156,75 @@ code {
 
 .layout-frame {
   &:not(.large) {
-    padding: 10px;
+    padding: 5px 10px;
+    &:first-child {
+      padding-top: 10px;
+    }
+    &:last-child {
+      padding-bottom: 10px;
+    }
   }
   &.large {
-    padding: 20px;
+    padding: 10px 20px;
+    &:first-child {
+      padding-top: 20px;
+    }
+    &:last-child {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.layout-space {
+  margin-bottom: 10px;
+}
+
+.layout-space-large {
+  margin-bottom: 20px;
+}
+
+// TODO: Move this to general helpers
+.interactable {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  &:pressed {
+    background-color: rgba(0, 0, 0, 0.15);
   }
 }
 
 /* Layout Lists */
 
 .layout-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  padding: 0px;
+  margin: 0px;
 
-  li.primary {
-    order: 1;
-    flex-grow: 2;
+  .list-item,
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    list-style: none;
   }
 
-  li.secondary {
-    flex-grow: 1;
+  li > .primary {
+    flex-basis: 66.66%;
+  }
+
+  li > .secondary {
+    flex-basis: 33.33%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    @extend .text-link;
   }
 }
 
@@ -171,14 +255,17 @@ main {
   }
 }
 
+/* Nav */
+
 nav {
   position: relative;
-  header,
-  section,
+  header {
+    @extend .border;
+    @extend .border.bottom;
+  }
   footer {
     @extend .layout-frame.large;
   }
-  header,
   section:not(:last-child) {
     border-bottom: 1px solid var(--border);
   }
@@ -188,6 +275,72 @@ nav {
     position: absolute;
     bottom: 0;
     width: 100%;
+  }
+}
+
+.nav-top {
+  height: 50px;
+  @extend .layout-frame.large;
+}
+
+.nav-search {
+  @extend .layout-frame.large;
+  form {
+    padding: 0;
+    border: 1px solid var(--border);
+    position: relative;
+
+    // TODO: Figure out why this doesn't work.
+    &:focus {
+      .input[type="submit"] {
+        display: block;
+      }
+    }
+
+    label {
+      display: none;
+    }
+
+    input {
+      border: 0;
+      background-color: transparent;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      border-radius: 0;
+    }
+
+    input[type="submit"] {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      display: none;
+    }
+  }
+}
+
+.nav-list {
+  @extend .layout-frame.large;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 10px;
+
+  li {
+    list-style: none;
+    @extend .layout-frame;
+    border: 1px solid var(--border);
+    min-height: 80px;
+  }
+
+  a {
+    text-decoration: none;
+    @extend .interactable;
   }
 }
 
@@ -218,15 +371,6 @@ nav {
 // }
 
 /* --------------- clean everything below here ----------- */
-
-a[href],
-a[href]:visited {
-  color: var(--primary);
-}
-
-a[href]:not(:hover) {
-  text-decoration: none;
-}
 
 img {
   max-width: 100%;
@@ -295,44 +439,6 @@ a[rel="tag"]:hover {
 
 a[rel="tag"]:last-child {
   margin-right: 0;
-}
-
-/* Contact Form */
-form {
-  display: grid;
-  padding: 2em 0;
-}
-
-form label {
-  display: none;
-}
-
-input,
-textarea,
-button {
-  width: 100%;
-  padding: 1em;
-  margin-bottom: 1em;
-  font-size: 1rem;
-  font-family: "Avenir", "Avenir Next", sans-serif;
-}
-
-input,
-textarea {
-  border: 1px solid black;
-}
-
-button {
-  border: 1px solid var(--primary);
-  background-color: var(--primary);
-  color: var(--secondary);
-  cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-  :root {
-    font-size: 1.1rem;
-  }
 }
 
 /* Site BG */
