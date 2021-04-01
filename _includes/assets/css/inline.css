@@ -20,11 +20,20 @@ body {
   margin: 0;
 }
 
+body {
+  font-size: 14px;
+  line-height: 20px;
+}
+
 /* || Helpers */
 .border, nav header {
   border-width: 0;
   border-color: var(--border);
   border-style: solid;
+}
+
+.border.all, nav header.all {
+  border-width: 1px;
 }
 
 .border.bottom, nav header {
@@ -213,6 +222,16 @@ code {
 .layout-space-large, .layout-list.spaced-list .list-header,
 .layout-list.spaced-list .list-item:not(:last-child) {
   margin-bottom: 20px;
+}
+
+.layout-text-columns.two {
+  -webkit-columns: auto 2;
+          columns: auto 2;
+}
+
+.layout-text-columns.three {
+  -webkit-columns: auto 2;
+          columns: auto 2;
 }
 
 .interactable:hover, .nav-list a:hover {

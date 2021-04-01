@@ -20,12 +20,20 @@ body {
   margin: 0;
 }
 
+body {
+  font-size: 14px;
+  line-height: 20px;
+}
+
 /* || Helpers */
 
 .border {
   border-width: 0;
   border-color: var(--border);
   border-style: solid;
+  &.all {
+    border-width: 1px;
+  }
   &.bottom {
     border-bottom-width: 1px;
   }
@@ -209,6 +217,16 @@ code {
 
 .layout-space-large {
   margin-bottom: 20px;
+}
+
+.layout-text-columns {
+  &.two {
+    columns: auto 2;
+  }
+
+  &.three {
+    columns: auto 2;
+  }
 }
 
 // TODO: Move this to general helpers
