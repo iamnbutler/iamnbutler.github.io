@@ -3,7 +3,7 @@
     <div class="nav-top layout-row flex-space-between">
       <!-- TODO: Add data-current when on the home page -->
       <a href="{{ '/' | url }}">
-        <i class="icon icon-20">
+        <i class="icon icon-20 brand">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g>
               <path d="M0 14.5H5.5M16 14.5H5.5M5.5 14.5V9.5M5.5 0V6.875M5.5 9.5H0M5.5 9.5V6.875M5.5 6.875H10.25M15 0V6.875H10.25M10.25 6.875V0" stroke="black" stroke-width="3"/>
@@ -51,7 +51,7 @@
   <section>
   <ul class="layout-list spaced-list">
     <li class="list-header">
-      <h3>Posts</h3>
+      <h3>Categories</h3>
     </li>
     <!-- TODO: filter out 'page' -->
     {% for tag in collections.tagsList %}
