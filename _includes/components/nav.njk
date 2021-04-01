@@ -1,5 +1,4 @@
 <nav>
-  {% set navPages = collections.all | eleventyNavigation %}
   <header>
     <div class="nav-top layout-row flex-space-between">
       <!-- TODO: Add data-current when on the home page -->
@@ -26,6 +25,7 @@
         </svg>
       </a>
     </div>
+
     <div class="nav-search layout-row">
       <form action="http://www.google.com/search">
         <label for=q>Keyword(s):</label>
@@ -35,7 +35,9 @@
         <input type="submit" value="&rarr;">
       </form>
     </div>
+
     <ul class="nav-list">
+      {% set navPages = collections.all | eleventyNavigation %}
       {%- for entry in navPages %}
       <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
         <li>
@@ -45,5 +47,11 @@
       {%- endfor %}
     </ul>
   </header>
+
+  <section>
+  {% for tag in collections.tagsList %}
+    <a href="/tags/{{tag}}">{{tag}}</a>
+  {% endfor %}
+  </section>
   {% include "components/footer.njk" %}
 </nav>

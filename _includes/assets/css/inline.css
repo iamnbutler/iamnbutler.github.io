@@ -44,6 +44,7 @@ body {
 }
 
 /* || Typography */
+/* Set font stacks */
 html ,
 body {
   font-family: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
@@ -65,6 +66,15 @@ h5 {
   letter-spacing: -2%;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 h1 {
@@ -155,21 +165,21 @@ code {
   padding-bottom: 10px;
 }
 
-.layout-frame.large, nav footer, .nav-top, .nav-search, .nav-list, .nav-list li.large, .site-content header,
+.layout-frame.large, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, .site-content header,
 .site-content article,
 .site-content section,
 .site-content footer {
   padding: 10px 20px;
 }
 
-.layout-frame.large:first-child, nav footer:first-child, .nav-top:first-child, .nav-search:first-child, .nav-list:first-child, .nav-list li.large:first-child, .site-content header:first-child,
+.layout-frame.large:first-child, nav footer:first-child, nav section:first-child, .nav-top:first-child, .nav-search:first-child, .nav-list:first-child, .nav-list li.large:first-child, .site-content header:first-child,
 .site-content article:first-child,
 .site-content section:first-child,
 .site-content footer:first-child {
   padding-top: 20px;
 }
 
-.layout-frame.large:last-child, nav footer:last-child, .nav-top:last-child, .nav-search:last-child, .nav-list:last-child, .nav-list li.large:last-child, .site-content header:last-child,
+.layout-frame.large:last-child, nav footer:last-child, nav section:last-child, .nav-top:last-child, .nav-search:last-child, .nav-list:last-child, .nav-list li.large:last-child, .site-content header:last-child,
 .site-content article:last-child,
 .site-content section:last-child,
 .site-content footer:last-child {
