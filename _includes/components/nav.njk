@@ -49,9 +49,26 @@
   </header>
 
   <section>
-  {% for tag in collections.tagsList %}
-    <a href="/tags/{{tag}}">{{tag}}</a>
-  {% endfor %}
+  <ul class="layout-list spaced-list">
+    <li class="list-header">
+      <h3>Posts</h3>
+    </li>
+    <!-- TODO: filter out 'page' -->
+    {% for tag in collections.tagsList %}
+    <li class="list-item">
+      <div class="flex-row">
+        <div class="primary">
+          <a href="/tags/{{tag}}" class="text-capitalize">{{tag}}</a>
+        </div>
+        <div class="secondary">
+          {{ collections[tag].length }} Posts
+        </div>
+      </div>
+      <p>TODO: Add tag descriptions.</p>
+    </li>
+    {% endfor %}
+  </ul>
+  
   </section>
   {% include "components/footer.njk" %}
 </nav>
