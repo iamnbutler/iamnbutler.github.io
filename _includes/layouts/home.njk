@@ -21,17 +21,17 @@ section: home
   </section>
 </section>
 <aside id="sidebar" class="site-sidebar">
-  <ul class="sidebar-articles">
-    {% for post in postslist | reverse | limit(2) %}
-    <li class="list-item layout-tile full">
-      <div class="post-image">
-        <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
-      </div>
-      <header>
-        <div>
+  <section class="sidebar-articles">
+    <ul class="visual-feature-list">
+      {% for post in postslist | reverse | limit(2) %}
+      <li class="list-item layout-tile full">
+        <div class="post-image">
+          <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
+        </div>
+        <header>
           <div class="primary">
             <a href="{{ post.url | url }}">
-                <h3>
+                <h3 class="layout-space">
                   {% if post.data.title %}
                     {{ post.data.title }}
                   {% else %}
@@ -39,16 +39,18 @@ section: home
                   {% endif %}
                 </h3>
               </a>
+              <p class="layout-space-large"> {{ post.data.summary }} </p>
           </div>
-          {{ post.data.summary }}
           <div class="flex-row text-caption">
             <div class="post-tag">
               {% if post.data.tags %}
-                <p>
+                <p class="text-capitalize">
                   {% for tag in post.data.tags %}
                     {%- if tag != "post" -%}
                       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-                    <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                      <a href="{{ tagUrl | url }}" rel="tag">
+                        {{ tag }}
+                      </a>
                     {%- endif -%}
                   {% endfor %}
                 </p>
@@ -60,9 +62,50 @@ section: home
               </time>
             </div>
           </div>
-        </div>
-      </header>
-    </li>
-    {% endfor %}
-  </ul>
+        </header>
+      </li>
+      {% endfor %}
+    </ul>
+    <ul class="writing-feature-list">
+      {% for post in postslist | reverse | limit(3) %}
+      <li class="list-item layout-tile full">
+        <header>
+          <div>
+            <div class="primary">
+              <a href="{{ post.url | url }}">
+                  <h3 class="layout-space">
+                    {% if post.data.title %}
+                      {{ post.data.title }}
+                    {% else %}
+                      Untitled
+                    {% endif %}
+                  </h3>
+                </a>
+            </div>
+            <p class="layout-space-large"> {{ post.data.summary }} </p>
+            <div class="flex-row text-caption">
+              <div class="post-tag">
+                {% if post.data.tags %}
+                  <p>
+                    {% for tag in post.data.tags %}
+                      {%- if tag != "post" -%}
+                        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                      <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                      {%- endif -%}
+                    {% endfor %}
+                  </p>
+                {% endif %}
+              </div>
+              <div class="post-date date-MY">
+                <time datetime="{{ post.date | machineDate }}">
+                  {{ post.date | readableDate }}
+                </time>
+              </div>
+            </div>
+          </div>
+        </header>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
 </aside>
