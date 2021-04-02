@@ -185,21 +185,21 @@ code {
   padding-bottom: 10px;
 }
 
-.layout-frame.large, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, .site-content header,
+.layout-frame.large, .layout-tile header, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, .site-content header,
 .site-content article,
 .site-content section,
 .site-content footer {
   padding: 10px 20px;
 }
 
-.layout-frame.large:first-child, nav footer:first-child, nav section:first-child, .nav-top:first-child, .nav-search:first-child, .nav-list:first-child, .nav-list li.large:first-child, .site-content header:first-child,
+.layout-frame.large:first-child, .layout-tile header:first-child, nav footer:first-child, nav section:first-child, .nav-top:first-child, .nav-search:first-child, .nav-list:first-child, .nav-list li.large:first-child, .site-content header:first-child,
 .site-content article:first-child,
 .site-content section:first-child,
 .site-content footer:first-child {
   padding-top: 20px;
 }
 
-.layout-frame.large:last-child, nav footer:last-child, nav section:last-child, .nav-top:last-child, .nav-search:last-child, .nav-list:last-child, .nav-list li.large:last-child, .site-content header:last-child,
+.layout-frame.large:last-child, .layout-tile header:last-child, nav footer:last-child, nav section:last-child, .nav-top:last-child, .nav-search:last-child, .nav-list:last-child, .nav-list li.large:last-child, .site-content header:last-child,
 .site-content article:last-child,
 .site-content section:last-child,
 .site-content footer:last-child {
@@ -394,6 +394,33 @@ nav footer {
 }
 
 /* Page Layouts */
+/* --- Home --- */
+.sidebar-articles {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 1px 1px;
+  background-color: var(--border);
+}
+
+.sidebar-articles > li {
+  list-style: none;
+  background-color: #fff;
+}
+
+.sidebar-articles > li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-articles > li:nth-child(n + 3) {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 /* |x End Layout */
 /* --------------- clean everything below here ----------- */
 img {

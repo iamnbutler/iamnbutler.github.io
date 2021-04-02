@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 section: home
 ---
-<section class="site-content">
+<section class="site-content" id="home">
   <section class="home-about">
     {{ layoutContent | safe }}
   </section>
@@ -20,4 +20,34 @@ section: home
     <h2>Mentions</h2>
   </section>
 </section>
-<aside id="sidebar" class="site-sidebar"></aside>
+<aside id="sidebar" class="site-sidebar">
+  <ul class="sidebar-articles">
+    {% for post in postslist | reverse %}
+    <li class="list-item layout-tile full">
+      <header>
+        <div class="flex-row">
+          <div class="primary">
+            <a href="{{ post.url | url }}">
+                {% if post.data.title %}
+                  {{ post.data.title }}
+                {% else %}
+                  Untitled
+                {% endif %}
+              </a>
+          </div>
+          <div class="secondary">
+            <div class="post-tag">
+              {{ post.data.summary }}
+            </div>
+            <div class="post-date date-MY">
+              <time datetime="{{ post.date | machineDate }}">
+                {{ post.date | readableDate }}
+              </time>
+            </div>
+          </div>
+        </div>
+      </header>
+    </li>
+    {% endfor %}
+  </ul>
+</aside>

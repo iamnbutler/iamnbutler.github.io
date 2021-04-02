@@ -206,6 +206,12 @@ code {
   }
 }
 
+.layout-tile {
+  header {
+    @extend .layout-frame.large;
+  }
+}
+
 .flex-space-between {
   display: flex;
   justify-content: space-between;
@@ -415,17 +421,32 @@ nav {
 }
 
 /* Page Layouts */
+
+/* --- Home --- */
+.sidebar-articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px 1px;
+  background-color: var(--border);
+  & > li {
+    list-style: none;
+    background-color: #fff;
+    &:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+    &:nth-child(n + 3) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+}
+
 // #blog {
 //   // TODO: Span grid column 2-3
 // }
 
 /* |x End Layout */
-
-// p,
-// pre,
-// code {
-//   line-height: 1.5;
-// }
 
 /* --------------- clean everything below here ----------- */
 
