@@ -173,37 +173,27 @@ code {
 /* |x End Typography */
 /* || Layout */
 /* Layout Helpers */
-.layout-frame:not(.large), .nav-list li:not(.large) {
-  padding: 5px 10px;
-}
-
-.layout-frame:not(.large):first-child, .nav-list li:not(.large):first-child {
-  padding-top: 10px;
-}
-
-.layout-frame:not(.large):last-child, .nav-list li:not(.large):last-child {
-  padding-bottom: 10px;
+.layout-frame, .nav-list li {
+  padding: 10px 10px;
 }
 
 .layout-frame.large, .layout-tile header, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, .site-content header,
 .site-content article,
 .site-content section,
 .site-content footer {
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 
-.layout-frame.large:first-child, .layout-tile header:first-child, nav footer:first-child, nav section:first-child, .nav-top:first-child, .nav-search:first-child, .nav-list:first-child, .nav-list li.large:first-child, .site-content header:first-child,
-.site-content article:first-child,
-.site-content section:first-child,
-.site-content footer:first-child {
-  padding-top: 20px;
-}
-
-.layout-frame.large:last-child, .layout-tile header:last-child, nav footer:last-child, nav section:last-child, .nav-top:last-child, .nav-search:last-child, .nav-list:last-child, .nav-list li.large:last-child, .site-content header:last-child,
-.site-content article:last-child,
-.site-content section:last-child,
-.site-content footer:last-child {
-  padding-bottom: 20px;
+.flex-row, .layout-list .lits-flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .flex-space-between {
@@ -254,24 +244,12 @@ code {
   list-style: none;
 }
 
-.layout-list .flex-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.layout-list .flex-row > .primary {
+.layout-list .lits-flex-row > .primary {
   -ms-flex-preferred-size: 66.66%;
       flex-basis: 66.66%;
 }
 
-.layout-list .flex-row > .secondary {
+.layout-list .lits-flex-row > .secondary {
   -ms-flex-preferred-size: 33.33%;
       flex-basis: 33.33%;
   text-align: right;
@@ -400,8 +378,6 @@ nav footer {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
   gap: 1px 1px;
   background-color: var(--border);
 }
@@ -409,6 +385,13 @@ nav footer {
 .sidebar-articles > li {
   list-style: none;
   background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .sidebar-articles > li:last-child {
@@ -419,6 +402,29 @@ nav footer {
   -ms-grid-column: 1;
       grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.sidebar-articles > li:nth-child(2n) .post-image {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.sidebar-articles > li:nth-child(1) .post-image, .sidebar-articles > li:nth-child(2) .post-image {
+  display: block;
+}
+
+.sidebar-articles .post-image {
+  display: none;
+  width: 100%;
+  height: 14vw;
+  background-color: #efefef;
+}
+
+.sidebar-articles .post-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* |x End Layout */

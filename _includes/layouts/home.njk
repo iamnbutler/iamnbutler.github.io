@@ -11,33 +11,48 @@ section: home
     {% include "components/post-layout-list.njk" %}
   </section>
   <section class="home-work">
-    <H2>Work</H2>
+    <h4>Work</h4>
   </section>
   <section class="home-elsewhere">
-    <H2>Elsewhere</H2>
+    <h4>Elsewhere</h4>
   </section>
   <section class="home-mentions">
-    <h2>Mentions</h2>
+    <h4>Mentions</h4>
   </section>
 </section>
 <aside id="sidebar" class="site-sidebar">
   <ul class="sidebar-articles">
     {% for post in postslist | reverse %}
     <li class="list-item layout-tile full">
+      <div class="post-image">
+        <img src="#" alt="Image Placeholder">
+      </div>
       <header>
-        <div class="flex-row">
+        <div>
           <div class="primary">
             <a href="{{ post.url | url }}">
-                {% if post.data.title %}
-                  {{ post.data.title }}
-                {% else %}
-                  Untitled
-                {% endif %}
+                <h3>
+                  {% if post.data.title %}
+                    {{ post.data.title }}
+                  {% else %}
+                    Untitled
+                  {% endif %}
+                </h3>
               </a>
           </div>
-          <div class="secondary">
+          {{ post.data.summary }}
+          <div class="flex-row text-caption">
             <div class="post-tag">
-              {{ post.data.summary }}
+              {% if post.data.tags %}
+                <p>
+                  {% for tag in post.data.tags %}
+                    {%- if tag != "post" -%}
+                      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                    <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+                    {%- endif -%}
+                  {% endfor %}
+                </p>
+              {% endif %}
             </div>
             <div class="post-date date-MY">
               <time datetime="{{ post.date | machineDate }}">
