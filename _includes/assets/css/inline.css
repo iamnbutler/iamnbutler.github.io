@@ -5,6 +5,12 @@
   --background: white;
   --border: #333;
   --highlight: #00ffff;
+  --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
+    "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  --headlines: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
+    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
+    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
 }
 
 *,
@@ -56,7 +62,7 @@ body {
 /* Set font stacks */
 html ,
 body {
-  font-family: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  font-family: var(--body-copy);
 }
 
 h1,
@@ -64,11 +70,11 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--headlines);
 }
 
 h1,
-h2,
+h2:not(.text-subhead),
 h3 {
   letter-spacing: -2%;
   text-transform: uppercase;
@@ -89,9 +95,16 @@ h1 {
   line-height: 50px;
 }
 
-h2 {
+h2:not(.text-subhead) {
   font-size: 40px;
   line-height: 40px;
+}
+
+h2.text-subhead {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: var(--body-copy);
 }
 
 h3 {
@@ -182,10 +195,10 @@ code {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-tile header, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, .site-content header,
-.site-content article,
-.site-content section,
-.site-content footer {
+.layout-frame.large, .layout-tile header, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, #home .site-content header,
+#home .site-content article,
+#home .site-content section,
+#home .site-content footer, #post header, #post .post-content, .mobile-disclaimer {
   padding: 20px 20px;
 }
 
@@ -215,7 +228,7 @@ code {
 }
 
 .layout-space-large, .layout-list.spaced-list .list-header,
-.layout-list.spaced-list .list-item:not(:last-child) {
+.layout-list.spaced-list .list-item:not(:last-child), .mobile-disclaimer {
   margin-bottom: 20px;
 }
 
@@ -266,12 +279,17 @@ code {
 
 /* Layout Sections */
 body {
+  height: 100vh;
+  background-color: var(--background);
+}
+
+body > .site-grid {
+  position: relative;
   display: -ms-grid;
   display: grid;
   height: 100vh;
   -ms-grid-rows: auto 1fr auto;
       grid-template-rows: auto 1fr auto;
-  background-color: var(--background);
 }
 
 main {
@@ -370,11 +388,6 @@ nav footer {
 
 .nav-list a {
   text-decoration: none;
-}
-
-.site-content header,
-.site-content section:not(:last-child) {
-  border-bottom: 1px solid var(--border);
 }
 
 /* Page Layouts */
@@ -490,7 +503,68 @@ nav footer {
   height: auto;
 }
 
+#home .site-content header,
+#home .site-content section:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+/* --- Blog & Post --- */
+#blog,
+#post {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 4;
+  max-width: 910px;
+}
+
+#post header {
+  border-bottom: 1px solid var(--border);
+}
+
+#post header .inner {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+#post header h1,
+#post header h2 {
+  margin-bottom: 10px;
+}
+
+#post .post-content {
+  border-bottom: 1px solid var(--border);
+}
+
+#post .post-content .inner {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.post-rich-text p {
+  margin-bottom: 10px;
+}
+
+.post-rich-text h1,
+.post-rich-text h2,
+.post-rich-text h3,
+.post-rich-text h4 {
+  margin: 10px 0;
+}
+
+/* --- Mobile Disclaimer --- */
 /* |x End Layout */
+.mobile-disclaimer {
+  background-color: #fff;
+  border: 1px solid var(--border);
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .mobile-disclaimer {
+    display: block;
+  }
+}
+
 /* --------------- clean everything below here ----------- */
 img {
   max-width: 100%;
@@ -521,6 +595,8 @@ pre {
 
 /* Site BG */
 .site-bg {
+  top: 0;
+  left: 0;
   position: fixed;
   z-index: -1;
   width: 100%;

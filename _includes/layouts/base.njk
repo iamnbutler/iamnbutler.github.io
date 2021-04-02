@@ -4,12 +4,15 @@
 	{% include "components/head.njk" %}
 
 	<body>
-
-		<main>
-			{% include "components/nav.njk" %}
-			{{ layoutContent | safe }}
-		</main>
-		
+		<div class="mobile-disclaimer">
+			<p>Hey, I'm working super hard right now to get this site up and out there so I can write more top of mind. Mobile styles will come at some point, but my focus is currently getting something out as fast as I can. Thanks for the patience 🙏🏽</p>
+		</div>
+		<div class="site-grid">
+			<main>
+				{% include "components/nav.njk" %}
+				{{ layoutContent | safe }}
+			</main>
+		</div>
 		<!-- Site Background -->
 		<div class="site-bg">
 			<svg width="100%" height="100%">

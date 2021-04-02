@@ -6,6 +6,12 @@
   --background: white;
   --border: #333;
   --highlight: #00ffff;
+  --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
+    "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  --headlines: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
+    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
+    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
 }
 
 *,
@@ -55,8 +61,7 @@ body {
 html,
 body {
   &:not(h1, h2, h3, h4, h5) {
-    font-family: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
-      "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+    font-family: var(--body-copy);
   }
 }
 
@@ -65,14 +70,11 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
-    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
-    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+  font-family: var(--headlines);
 }
 
 h1,
-h2,
+h2:not(.text-subhead),
 h3 {
   letter-spacing: -2%;
   text-transform: uppercase;
@@ -94,8 +96,16 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
-  line-height: 40px;
+  &:not(.text-subhead) {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  &.text-subhead {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+    font-family: var(--body-copy);
+  }
 }
 
 h3 {
@@ -287,10 +297,14 @@ code {
 /* Layout Sections */
 
 body {
-  display: grid;
   height: 100vh;
-  grid-template-rows: auto 1fr auto;
   background-color: var(--background);
+  & > .site-grid {
+    position: relative;
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
 }
 
 main {
@@ -404,19 +418,6 @@ nav {
   }
 }
 
-.site-content {
-  header,
-  article,
-  section,
-  footer {
-    @extend .layout-frame.large;
-  }
-  header,
-  section:not(:last-child) {
-    border-bottom: 1px solid var(--border);
-  }
-}
-
 /* Page Layouts */
 
 /* --- Home --- */
@@ -498,14 +499,86 @@ nav {
   }
 }
 
-// #blog {
-//   // TODO: Span grid column 2-3
-// }
+#home {
+  .site-content {
+    header,
+    article,
+    section,
+    footer {
+      @extend .layout-frame.large;
+    }
+    header,
+    section:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+  }
+}
+
+/* --- Blog & Post --- */
+
+#blog,
+#post {
+  // TODO: Span grid column 2-3
+  grid-column-start: 2;
+  grid-column-end: 4;
+  max-width: 910px;
+}
+
+#post {
+  header {
+    @extend .layout-frame.large;
+    border-bottom: 1px solid var(--border);
+    .inner {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    h1,
+    h2 {
+      margin-bottom: 10px;
+    }
+  }
+  .post-content {
+    @extend .layout-frame.large;
+    border-bottom: 1px solid var(--border);
+    .inner {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.post-rich-text {
+  p {
+    margin-bottom: 10px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 10px 0;
+  }
+}
+
+/* --- Mobile Disclaimer --- */
 
 /* |x End Layout */
 
-/* --------------- clean everything below here ----------- */
+.mobile-disclaimer {
+  @extend .layout-frame.large;
+  background-color: #fff;
+  border: 1px solid var(--border);
+  @extend .layout-space-large;
+  display: none;
+}
 
+@media screen and (max-width: 1000px) {
+  .mobile-disclaimer {
+    display: block;
+  }
+}
+
+/* --------------- clean everything below here ----------- */
 img {
   max-width: 100%;
   height: auto;
@@ -535,6 +608,8 @@ pre {
 
 /* Site BG */
 .site-bg {
+  top: 0;
+  left: 0;
   position: fixed;
   z-index: -1;
   width: 100%;
