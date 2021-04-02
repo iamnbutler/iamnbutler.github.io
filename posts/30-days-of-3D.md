@@ -6,7 +6,7 @@ summary: I spent the year learning the fundamentals of 3D through daily renders.
 tags:
   - design
   - 3d
-thumbnail: static/img/30_days_thumb.png
+thumbnail_url: static/img/30_days_thumb.png
 ---
 
 ## Design Critique

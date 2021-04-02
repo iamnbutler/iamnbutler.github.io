@@ -25,7 +25,7 @@ section: home
     {% for post in postslist | reverse | limit(2) %}
     <li class="list-item layout-tile full">
       <div class="post-image">
-        <img src="#" alt="Image Placeholder">
+        <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
       </div>
       <header>
         <div>
