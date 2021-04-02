@@ -271,6 +271,7 @@ body {
 
 main {
   width: 1440px;
+  min-height: 90vh;
   margin: 0 auto;
   background-color: var(--background);
   border: 1px solid var(--border);
