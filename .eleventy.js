@@ -46,6 +46,12 @@ module.exports = function (eleventyConfig) {
     return tagsSet;
   });
 
+  // Add support for Limiting the output of a Collection
+  // Found at https://github.com/11ty/eleventy/issues/1368
+  eleventyConfig.addNunjucksFilter("limit", (arr, limit) =>
+    arr.slice(0, limit)
+  );
+
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");

@@ -5,7 +5,7 @@
       <i class="icon plus"></i>
     </a>
   </li>
-  {% for post in postslist | reverse %}
+  {% for post in postslist | reverse | limit(10) %}
   <li class="list-item">
     <div class="flex-row">
       <div class="primary">
