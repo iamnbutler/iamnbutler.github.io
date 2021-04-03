@@ -9,7 +9,6 @@ tags:
   - tip
 feature_visual: 0
 feature_writing: 1
-
 thumbnail_url: static/img/30_days_thumb.png
 ---
 
