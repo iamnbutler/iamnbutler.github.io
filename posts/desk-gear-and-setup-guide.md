@@ -2,6 +2,7 @@
 title: Desk Gear & Setup Guide
 custom_slug: desk-gear-setup-guide
 date: 2021-03-26T05:43:21.121Z
+date_updated: 2021-04-03
 author: Nate Butler
 summary: Everyone has been spending more working from home recently – Here are some ways to level up your setup.
 tags:

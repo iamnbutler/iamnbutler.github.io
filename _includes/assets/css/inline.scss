@@ -310,18 +310,29 @@ main {
   width: 1440px;
   min-height: 90vh;
   margin: 0 auto;
-  background-color: var(--background);
-  border: 1px solid var(--border);
   display: grid;
   grid-template-columns: 290px 13fr 10fr;
   grid-template-rows: 1fr;
-  gap: 1px 1px;
-  background-color: var(--border);
+  gap: 0px;
   & > nav,
   & > div,
   & > section,
   & > aside {
     background-color: var(--background);
+  }
+
+  & > aside {
+    border-right: 1px solid var(--border);
+  }
+  .site-content {
+    border: 1px solid var(--border);
+    border-left-width: 0;
+    &:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+    &:first-child {
+      border-right: 1px solid var(--border);
+    }
   }
 }
 
@@ -329,6 +340,7 @@ main {
 
 nav {
   position: relative;
+  border: 1px solid var(--border);
   header {
     @extend .border;
     @extend .border.bottom;

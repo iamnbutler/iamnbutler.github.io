@@ -55,6 +55,7 @@
     </li>
     <!-- TODO: filter out 'page' -->
     {% for tag in collections.tagsList %}
+    {%- if tag != "post" -%}
     <li class="list-item">
       <div class="flex-row">
         <div class="primary">
@@ -66,6 +67,7 @@
       </div>
       <p>TODO: Add tag descriptions.</p>
     </li>
+    {% endif %}
     {% endfor %}
   </ul>
   

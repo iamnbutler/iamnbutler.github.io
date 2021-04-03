@@ -295,16 +295,13 @@ main {
   width: 1440px;
   min-height: 90vh;
   margin: 0 auto;
-  background-color: var(--background);
-  border: 1px solid var(--border);
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 290px 13fr 10fr;
       grid-template-columns: 290px 13fr 10fr;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 1px 1px;
-  background-color: var(--border);
+  gap: 0px;
 }
 
 main > nav,
@@ -314,9 +311,27 @@ main > aside {
   background-color: var(--background);
 }
 
+main > aside {
+  border-right: 1px solid var(--border);
+}
+
+main .site-content {
+  border: 1px solid var(--border);
+  border-left-width: 0;
+}
+
+main .site-content:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+
+main .site-content:first-child {
+  border-right: 1px solid var(--border);
+}
+
 /* Nav */
 nav {
   position: relative;
+  border: 1px solid var(--border);
 }
 
 nav section:not(:last-child) {
