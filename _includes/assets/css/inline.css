@@ -32,30 +32,12 @@ body {
 }
 
 /* || Helpers */
-.border, nav header {
-  border-width: 0;
-  border-color: var(--border);
-  border-style: solid;
+.border-all, .site-grid, .skip-nav {
+  border: 1px solid var(--border);
 }
 
-.border.all, nav header.all {
-  border-width: 1px;
-}
-
-.border.bottom, nav header {
-  border-bottom-width: 1px;
-}
-
-.border.top, nav header.top {
-  border-top-width: 1px;
-}
-
-.border.right, nav header.right {
-  border-right-width: 1px;
-}
-
-.border.left, nav header.left {
-  border-left-width: 1px;
+.border-bottom {
+  border-bottom: 1px solid var(--border);
 }
 
 /* || Typography */
@@ -195,11 +177,15 @@ code {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-tile header, nav footer, nav section, .nav-top, .nav-search, .nav-list, .nav-list li.large, #home .site-content header,
+.layout-frame.large, .skip-nav, notice, .nav-top, .nav-search, .nav-list, .nav-list li.large, #home .site-content header,
 #home .site-content article,
 #home .site-content section,
-#home .site-content footer, #post header, #post .post-content, .mobile-disclaimer {
+#home .site-content footer, #post header, #post .post-content {
   padding: 20px 20px;
+}
+
+.layout-card {
+  background-color: var(--background);
 }
 
 .flex-row, .layout-list .lits-flex-row {
@@ -228,7 +214,7 @@ code {
 }
 
 .layout-space-large, .layout-list.spaced-list .list-header,
-.layout-list.spaced-list .list-item:not(:last-child), .mobile-disclaimer {
+.layout-list.spaced-list .list-item:not(:last-child) {
   margin-bottom: 20px;
 }
 
@@ -277,31 +263,58 @@ code {
   margin: 0;
 }
 
-/* Layout Sections */
+/* ================================ */
+/* Layout Sections                 */
+/* ============================== */
+/* Base Layout */
 body {
   height: 100vh;
   background-color: var(--background);
 }
 
-body > .site-grid {
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: auto 1fr auto;
-      grid-template-rows: auto 1fr auto;
-}
-
-main {
-  width: 1440px;
+.site-grid {
+  width: 1000px;
   min-height: 90vh;
   margin: 0 auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 290px 13fr 10fr;
-      grid-template-columns: 290px 13fr 10fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
-  gap: 0px;
+  gap: 1px;
+  background-color: var(--border);
+}
+
+.skip-nav {
+  margin: 20px;
+  background-color: var(--background);
+  position: absolute;
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  z-index: 99;
+}
+
+.skip-nav:active, .skip-nav:focus-within {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+notice {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-column: 1 / 5;
+  background-color: var(--background);
+}
+
+main {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  grid-column: 2 / 5;
 }
 
 main > nav,
@@ -311,34 +324,24 @@ main > aside {
   background-color: var(--background);
 }
 
-main > aside {
-  border-right: 1px solid var(--border);
-}
-
-main .site-content {
-  border: 1px solid var(--border);
-  border-left-width: 0;
-}
-
-main .site-content:not(:last-child) {
-  border-right: 1px solid var(--border);
-}
-
-main .site-content:first-child {
-  border-right: 1px solid var(--border);
-}
-
 /* Nav */
-nav {
+#main-nav {
   position: relative;
-  border: 1px solid var(--border);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto auto;
+      grid-template-rows: auto auto auto;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: var(--border);
 }
 
-nav section:not(:last-child) {
+#main-nav section:last-child {
   border-bottom: 1px solid var(--border);
 }
 
-nav footer {
+#main-nav footer {
   border-top: 1px solid var(--border);
   position: absolute;
   bottom: 0;
@@ -346,7 +349,7 @@ nav footer {
 }
 
 .nav-top {
-  height: 50px;
+  height: 60px;
 }
 
 .nav-search form {
@@ -567,15 +570,14 @@ nav footer {
 
 /* --- Mobile Disclaimer --- */
 /* |x End Layout */
-.mobile-disclaimer {
-  background-color: #fff;
-  border: 1px solid var(--border);
+notice {
   display: none;
 }
 
 @media screen and (max-width: 1000px) {
-  .mobile-disclaimer {
+  notice {
     display: block;
+    width: 100vw;
   }
 }
 

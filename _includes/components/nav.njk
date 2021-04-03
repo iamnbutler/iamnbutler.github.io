@@ -1,59 +1,76 @@
-<nav>
-  <header>
-    <div class="nav-top layout-row flex-space-between">
-      <!-- TODO: Add data-current when on the home page -->
-      <a href="{{ '/' | url }}">
-        <i class="icon icon-20 brand">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g>
-              <path d="M0 14.5H5.5M16 14.5H5.5M5.5 14.5V9.5M5.5 0V6.875M5.5 9.5H0M5.5 9.5V6.875M5.5 6.875H10.25M15 0V6.875H10.25M10.25 6.875V0" stroke="black" stroke-width="3"/>
-            </g>
-          </svg>
-        </i>
-      </a>
-      <a href="#" id="system-theme-toggle">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="10" cy="10" r="3.5" transform="rotate(-90 10 10)" stroke="black"/>
-          <line x1="4" y1="10" x2="1" y2="10" stroke="black"/>
-          <line x1="10" y1="4" x2="10" y2="1" stroke="black"/>
-          <line x1="10" y1="19" x2="10" y2="16" stroke="black"/>
-          <line x1="14.6464" y1="5.14645" x2="16.9375" y2="2.85542" stroke="black"/>
-          <line x1="3.64645" y1="16.1464" x2="5.93747" y2="13.8554" stroke="black"/>
-          <line x1="5.64645" y1="5.85404" x2="3.35542" y2="3.56302" stroke="black"/>
-          <line x1="16.6464" y1="16.8536" x2="14.3554" y2="14.5625" stroke="black"/>
-          <line x1="19" y1="10" x2="16" y2="10" stroke="black"/>
+<section class="header layout-card">
+  <!-- Main Nav – Header -->
+  <div class="nav-top layout-row flex-space-between">
+    <!-- TODO: Add data-current when on the home page -->
+    <a href="{{ '/' | url }}">
+      <i class="icon icon-20 brand">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <path d="M0 14.5H5.5M16 14.5H5.5M5.5 14.5V9.5M5.5 0V6.875M5.5 9.5H0M5.5 9.5V6.875M5.5 6.875H10.25M15 0V6.875H10.25M10.25 6.875V0" stroke="black" stroke-width="3"/>
+          </g>
         </svg>
+      </i>
+    </a>
+    <a href="#" id="system-theme-toggle">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="3.5" transform="rotate(-90 10 10)" stroke="black"/>
+        <line x1="4" y1="10" x2="1" y2="10" stroke="black"/>
+        <line x1="10" y1="4" x2="10" y2="1" stroke="black"/>
+        <line x1="10" y1="19" x2="10" y2="16" stroke="black"/>
+        <line x1="14.6464" y1="5.14645" x2="16.9375" y2="2.85542" stroke="black"/>
+        <line x1="3.64645" y1="16.1464" x2="5.93747" y2="13.8554" stroke="black"/>
+        <line x1="5.64645" y1="5.85404" x2="3.35542" y2="3.56302" stroke="black"/>
+        <line x1="16.6464" y1="16.8536" x2="14.3554" y2="14.5625" stroke="black"/>
+        <line x1="19" y1="10" x2="16" y2="10" stroke="black"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Main Nav – Search -->
+  <div class="nav-search layout-row">
+    <form action="http://www.google.com/search">
+      <label for=q>Keyword(s):</label>
+      <input type="text" name="post-search" id="post-search">
+      <input type="hidden" name="ie" value="utf-8">
+      <input type="hidden" name="oe" value="utf-8">
+      <input type="submit" value="&rarr;">
+    </form>
+  </div>
+
+  <!-- Main Nav – Nav List -->
+  <ul class="nav-list">
+    <!-- TODO: Add counts to nav items -->
+    {% set navPages = collections.all | eleventyNavigation %}
+    {%- for entry in navPages %}
+    <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
+      <li>
+        <h4>{{ entry.title }}</h4>
+      </li>
+    </a>
+    {%- endfor %}
+  </ul>
+</section>
+
+<!-- Main Nav – Collapsible Card List -->
+<!-- Not every card appears on every page. This is controlled by the template. -->
+<section class="collapsible-card-list">
+  <!-- Collapsible Card List – Table of Contents -->
+  <ul class="layout-card layout-list collapsible-card">
+    <li class="card-header">
+      <h4>Table of Contents</h4>
+      <a href="#" data-control="collapse">
+        <i class="icon icon-20 minus"></i>
       </a>
-    </div>
-
-    <div class="nav-search layout-row">
-      <form action="http://www.google.com/search">
-        <label for=q>Keyword(s):</label>
-        <input type="text" name="post-search" id="post-search">
-        <input type="hidden" name="ie" value="utf-8">
-        <input type="hidden" name="oe" value="utf-8">
-        <input type="submit" value="&rarr;">
-      </form>
-    </div>
-
-    <ul class="nav-list">
-      {% set navPages = collections.all | eleventyNavigation %}
-      {%- for entry in navPages %}
-      <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
-        <li>
-          <h4>{{ entry.title }}</h4>
-        </li>
-      </a>
-      {%- endfor %}
-    </ul>
-  </header>
-
-  <section>
-  <ul class="layout-list spaced-list">
+    </li>
+    <li class="list-item">List Item</li>
+    <li class="list-item">List Item</li>
+    <li class="list-item">List Item</li>
+  </ul>
+  <!-- Collapsible Card List – Category List -->
+  <ul class="layout-card layout-list extra-space">
     <li class="list-header">
       <h4>Categories</h4>
     </li>
-    <!-- TODO: filter out 'page' -->
     {% for tag in collections.tagsList %}
     {%- if tag != "post" -%}
     <li class="list-item">
@@ -70,7 +87,53 @@
     {% endif %}
     {% endfor %}
   </ul>
-  
-  </section>
-  {% include "components/footer.njk" %}
-</nav>
+
+  <!-- Collapsible Card List – Post List -->
+  <ul class="layout-card layout-list">
+    <li class="card-header">
+      <h4>All Posts</h4>
+      <a href="#" data-control="collapse">
+        <i class="icon icon-20 minus"></i>
+      </a>
+    </li>
+    {% set postslist = collections.post %}
+    {% for post in postslist | reverse | limit(10) %}
+    <li class="list-item">
+      <article{% if post.url == url %} data-current="current item"{% endif %}>
+        <a href="{{ post.url | url }}">
+          {% if post.data.title %}
+            {{ post.data.title }}
+          {% else %}
+            Untitled
+          {% endif %}
+        </a>
+        {% if post.data.summary %}
+          <p>
+            {{ post.data.summary }}
+          </p>
+        {% endif %}
+        <p>
+          <time datetime="{{ post.date | machineDate }}">
+            <small>{{ post.date | readableDate }} by <a href="/authors/{{ post.data.author | slug }}/">{{ post.data.author }}</a></small>
+          </time>
+        </p>
+        {% if post.data.tags %}
+          <p>
+            {% for tag in post.data.tags %}
+              {%- if tag != "post" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+              <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+              {%- endif -%}
+            {% endfor %}
+          </p>
+        {% endif %}
+      </article>
+    </li>
+    {% endfor %}
+    <li class="list-item read-more">
+      <a href="/posts">All posts &rarr;</a>
+    </li>
+  </ul>
+</section>
+
+{% include "components/footer.njk" %}

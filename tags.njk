@@ -15,11 +15,15 @@ renderData:
   metaDescription: "All posts from the Blog tagged with “{{ tag }}”"
 ---
 
-<h1>Tagged “{{ tag }}”</h1>
+<section class="site-content" id="tag">
+	<article>
+    <header>
+      <h1>{{ tag }}</h1>
+    </header>
 
-{% set postslist = collections[tag] %}
-{% include "components/postslist.njk" %}
+    {{ layoutContent | safe }}
 
-<nav>
-  <a href="{{ '/blog/' | url }}">← Blog index</a>
-</nav>
+    {% set postslist = collections[tag] %}
+    {% include "components/postslist.njk" %}
+  </article>
+</section>
