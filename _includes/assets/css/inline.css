@@ -287,7 +287,6 @@ body > .site-grid {
   position: relative;
   display: -ms-grid;
   display: grid;
-  height: 100vh;
   -ms-grid-rows: auto 1fr auto;
       grid-template-rows: auto 1fr auto;
 }
