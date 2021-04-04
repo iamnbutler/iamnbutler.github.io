@@ -6,6 +6,8 @@
   --secondary: white;
   --background: white;
   --border: #333;
+  --hover: #f2f2f2;
+  --pressed: #d9d9d9;
   --highlight: #00ffff;
   --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
     "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
@@ -254,11 +256,11 @@ code {
 // TODO: Move this to general helpers
 .interactable {
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: var(--hover);
   }
 
   &:pressed {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: var(--pressed);
   }
 }
 
@@ -488,9 +490,10 @@ main {
     display: flex;
     background-color: var(--background);
     min-height: 240px;
-    list-style: none;
     flex-direction: column;
     justify-content: space-between;
+    text-decoration: none;
+    @extend .interactable;
     .thumbnail {
       background-color: #eee;
       width: 100%;

@@ -5,6 +5,8 @@
   --secondary: white;
   --background: white;
   --border: #333;
+  --hover: #f2f2f2;
+  --pressed: #d9d9d9;
   --highlight: #00ffff;
   --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
     "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
@@ -246,12 +248,12 @@ code {
           columns: auto 2;
 }
 
-.interactable:hover, .nav-list a:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+.interactable:hover, .nav-list a:hover, .home-feature-list .layout-tile:hover {
+  background-color: var(--hover);
 }
 
-.interactable:pressed, .nav-list a:pressed {
-  background-color: rgba(0, 0, 0, 0.15);
+.interactable:pressed, .nav-list a:pressed, .home-feature-list .layout-tile:pressed {
+  background-color: var(--pressed);
 }
 
 /* Layout Lists */
@@ -473,7 +475,6 @@ main > aside {
   display: flex;
   background-color: var(--background);
   min-height: 240px;
-  list-style: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -481,6 +482,7 @@ main > aside {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  text-decoration: none;
 }
 
 .home-feature-list .layout-tile .thumbnail {

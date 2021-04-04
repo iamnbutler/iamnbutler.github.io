@@ -10,10 +10,10 @@ section: home
 
   <section class="home-featured">
     {% set postslist = collections.post %}
-    <ul class="home-feature-list">
+    <div class="home-feature-list">
 
       {% for post in postslist | reverse | limit(4) %}
-      <li class="list-item layout-tile full">
+      <a href="{{ post.url | url }}" class="layout-tile">
         
         <!-- TODO: Do something smarter here -->
         {% if post.data.thumbnail %}
@@ -30,13 +30,11 @@ section: home
         <div class="post-preview">
           <div class="preview-content">
               <h3 class="layout-space">
-                <a href="{{ post.url | url }}">
                 {% if post.data.title %}
                   {{ post.data.title }}
                 {% else %}
                   Untitled
                 {% endif %}
-                </a>
               </h3>
               <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
               <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
@@ -49,9 +47,7 @@ section: home
                   {% for tag in post.data.tags %}
                     {%- if tag != "post" -%}
                       {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-                      <a href="{{ tagUrl | url }}" rel="tag">
-                        {{ tag }}
-                      </a>
+                      {{ tag }}
                     {%- endif -%}
                   {% endfor %}
                 </p>
@@ -65,10 +61,10 @@ section: home
           </div>
         </div>        
         
-      </li>
+      </a>
       {% endfor %}
 
-    </ul>
+    </div>
   </section>
 
   <section class="layout-card home-posts">
