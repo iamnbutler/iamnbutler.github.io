@@ -99,3 +99,15 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "URL", name: "url", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
+
+  # media
+  - name: "media"
+    label: "Mentions"
+    folder: "media"
+    create: true # Change to true to allow editors to create new pages
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "URL", name: "url", widget: "string" }
+      - { label: "Outlet", name: "outlet", widget: "string" }
+      - { label: "Year", name: "year", widget: "number" }
