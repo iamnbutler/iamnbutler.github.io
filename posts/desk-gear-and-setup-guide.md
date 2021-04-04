@@ -9,7 +9,7 @@ tags:
   - tip
 feature_visual: 0
 feature_writing: 1
-thumbnail_url: static/img/30_days_thumb.png
+thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bb2aa65053b8df597914e_client-launcher-real-pixels.png
 ---
 
 <h3>Overview + Methodology</h3>

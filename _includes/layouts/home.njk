@@ -8,28 +8,32 @@ section: home
     {{ layoutContent | safe }}
   </section>
 
-  <section class="layout-card home-featured">
+  <section class="home-featured">
     {% set postslist = collections.post %}
-    <ul class="post-feature-list">
-      {% for post in postslist | reverse | limit(2) %}
+    <ul class="home-feature-list">
+
+      {% for post in postslist | reverse | limit(4) %}
       <li class="list-item layout-tile full">
-        <div class="post-image">
+        
+        <div class="thumbnail">
           <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
         </div>
-        <header>
-          <div class="primary">
-            <a href="{{ post.url | url }}">
-                <h3 class="layout-space">
-                  {% if post.data.title %}
-                    {{ post.data.title }}
-                  {% else %}
-                    Untitled
-                  {% endif %}
-                </h3>
-              </a>
+        
+        <div class="post-preview">
+          <div class="preview-content">
+              <h3 class="layout-space">
+                <a href="{{ post.url | url }}">
+                {% if post.data.title %}
+                  {{ post.data.title }}
+                {% else %}
+                  Untitled
+                {% endif %}
+                </a>
+              </h3>
               <p class="layout-space-large"> {{ post.data.summary }} </p>
           </div>
-          <div class="flex-row text-caption">
+          
+          <div class="post-preview-meta">
             <div class="post-tag">
               {% if post.data.tags %}
                 <p class="text-capitalize">
@@ -50,9 +54,11 @@ section: home
               </time>
             </div>
           </div>
-        </header>
+        </div>        
+        
       </li>
       {% endfor %}
+
     </ul>
   </section>
 

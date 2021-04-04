@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 :root {
+  --unit: 10;
   --primary: #000;
   --secondary: white;
   --background: white;
@@ -58,9 +59,8 @@ h5 {
 h1,
 h2:not(.text-subhead),
 h3 {
-  letter-spacing: -2%;
+  letter-spacing: -0.5px;
   text-transform: uppercase;
-  text-decoration: none;
 }
 
 h1,
@@ -70,6 +70,14 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  text-decoration: none;
 }
 
 h1 {
@@ -306,6 +314,18 @@ notice {
   background-color: var(--background);
 }
 
+/* --- Mobile Notice Disclaimer --- */
+notice {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  notice {
+    display: block;
+    width: 100vw;
+  }
+}
+
 main {
   -ms-grid-column: 2;
   -ms-grid-column-span: 3;
@@ -420,6 +440,52 @@ main > aside {
 /* Page Layouts                    */
 /* ============================== */
 /* --- Home --- */
+.home-feature-list {
+  /* Create 3 column grid */
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+  gap: 1px 1px;
+  background-color: var(--border);
+  /* Post Tiles */
+  /* TODO: De-specify this */
+}
+
+.home-feature-list .layout-tile {
+  background-color: var(--background);
+  min-height: 270px;
+}
+
+.home-feature-list .layout-tile .thumbnail {
+  background-color: #eee;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+}
+
+.home-feature-list .layout-tile:nth-child(1) .thumbnail {
+  padding-bottom: 100%;
+}
+
+.home-feature-list .layout-tile:nth-child(2) {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.home-feature-list .layout-tile:nth-child(2) .thumbnail {
+  padding-bottom: 50%;
+}
+
+.home-feature-list .layout-tile:nth-child(3) {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 .sidebar-articles {
   display: -ms-grid;
   display: grid;
@@ -574,19 +640,7 @@ main > aside {
   margin: 10px 0;
 }
 
-/* --- Mobile Disclaimer --- */
 /* |x End Layout */
-notice {
-  display: none;
-}
-
-@media screen and (max-width: 1000px) {
-  notice {
-    display: block;
-    width: 100vw;
-  }
-}
-
 /* --------------- clean everything below here ----------- */
 img {
   max-width: 100%;
