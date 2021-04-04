@@ -3,26 +3,14 @@ layout: layouts/base.njk
 section: home
 ---
 <section class="site-content" id="home">
-  <section class="home-about">
+
+  <section class="layout-card home-about">
     {{ layoutContent | safe }}
   </section>
-  <section class="home-posts">
+
+  <section class="layout-card home-featured">
     {% set postslist = collections.post %}
-    {% include "components/post-layout-list.njk" %}
-  </section>
-  <section class="home-work">
-    <h4>Work</h4>
-  </section>
-  <section class="home-elsewhere">
-    <h4>Elsewhere</h4>
-  </section>
-  <section class="home-mentions">
-    <h4>Mentions</h4>
-  </section>
-</section>
-<aside id="sidebar" class="site-sidebar">
-  <section class="sidebar-articles">
-    <ul class="visual-feature-list">
+    <ul class="post-feature-list">
       {% for post in postslist | reverse | limit(2) %}
       <li class="list-item layout-tile full">
         <div class="post-image">
@@ -66,6 +54,34 @@ section: home
       </li>
       {% endfor %}
     </ul>
+  </section>
+
+  <section class="layout-card home-posts">
+    {% set postslist = collections.post %}
+    {% include "components/post-layout-list.njk" %}
+  </section>
+
+  <section class="layout-card home-work">
+    <h4>Work</h4>
+  </section>
+
+  <section class="layout-card home-elsewhere">
+    <h4>Elsewhere</h4>
+  </section>
+
+  <section class="layout-card home-mentions">
+    <h4>Mentions</h4>
+  </section>
+
+</section>
+
+
+
+
+
+<aside id="sidebar" class="site-sidebar">
+  <section class="sidebar-articles">
+    
     <ul class="writing-feature-list">
       {% for post in postslist | reverse | limit(3) %}
       <li class="list-item layout-tile full">

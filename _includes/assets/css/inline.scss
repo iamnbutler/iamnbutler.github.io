@@ -198,6 +198,7 @@ code {
 
 .layout-card {
   background-color: var(--background);
+  @extend .layout-frame.large;
 }
 
 .flex-row {
@@ -243,9 +244,6 @@ code {
 /* Layout Lists */
 
 .layout-list {
-  padding: 0px;
-  margin: 0px;
-
   .list-item,
   .list-header {
     list-style: none;
@@ -293,10 +291,10 @@ body {
 }
 
 .site-grid {
+  display: grid;
   width: 1000px;
   min-height: 90vh;
   margin: 0 auto;
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 1px;
@@ -305,14 +303,14 @@ body {
 }
 
 .skip-nav {
-  @extend .layout-frame.large;
+  position: absolute;
   margin: 20px;
   background-color: var(--background);
-  @extend .border-all;
-  position: absolute;
   transform: translateY(-150%);
   transition: transform 0.2s;
   z-index: 99;
+  @extend .layout-frame.large;
+  @extend .border-all;
   &:active,
   &:focus-within {
     transform: translateY(0%);
@@ -320,9 +318,9 @@ body {
 }
 
 notice {
-  @extend .layout-frame.large;
   grid-column: 1 / 5;
   background-color: var(--background);
+  @extend .layout-frame.large;
 }
 
 main {
@@ -336,11 +334,22 @@ main {
   }
 }
 
-/* Nav */
+.site-content {
+  display: grid;
+  position: relative;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: var(--border);
+}
+
+/* ================================ */
+/* Main Nav                        */
+/* ============================== */
 
 #main-nav {
-  position: relative;
   display: grid;
+  position: relative;
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr;
   gap: 1px;
@@ -351,9 +360,9 @@ main {
   }
 
   footer {
-    border-top: 1px solid var(--border);
     position: absolute;
     bottom: 0;
+    border-top: 1px solid var(--border);
     width: 100%;
   }
 }
@@ -367,9 +376,9 @@ main {
   @extend .layout-frame.large;
 
   form {
+    position: relative;
     padding: 0;
     border: 1px solid var(--border);
-    position: relative;
 
     // TODO: Figure out why this doesn't work.
     &:focus {
@@ -395,28 +404,28 @@ main {
     }
 
     input[type="submit"] {
+      display: none;
       position: absolute;
-      right: 0;
       top: 0;
+      right: 0;
       width: 40px;
       height: 40px;
-      display: none;
     }
   }
 }
 
 .nav-list {
-  @extend .layout-frame.large;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 10px 10px;
+  @extend .layout-frame.large;
 
   li {
     list-style: none;
-    @extend .layout-frame;
     border: 1px solid var(--border);
     min-height: 80px;
+    @extend .layout-frame;
   }
 
   a {
@@ -425,7 +434,9 @@ main {
   }
 }
 
-/* Page Layouts */
+/* ================================ */
+/* Page Layouts                    */
+/* ============================== */
 
 /* --- Home --- */
 .sidebar-articles {
@@ -451,8 +462,8 @@ main {
       flex-basis: 50%;
 
       header {
-        flex: 2;
         display: flex;
+        flex: 2;
         flex-direction: column;
         justify-content: space-between;
 
@@ -473,9 +484,9 @@ main {
   }
 
   li {
+    display: flex;
     list-style: none;
     background-color: #fff;
-    display: flex;
     flex-direction: column;
 
     &:nth-child(n + 3) {
@@ -514,22 +525,6 @@ main {
   }
 }
 
-#home {
-  .site-content {
-    header,
-    article,
-    section,
-    footer {
-      @extend .layout-frame.large;
-    }
-
-    header,
-    section:not(:last-child) {
-      border-bottom: 1px solid var(--border);
-    }
-  }
-}
-
 /* --- Blog & Post --- */
 
 #blog,
@@ -542,8 +537,8 @@ main {
 
 #post {
   header {
-    @extend .layout-frame.large;
     border-bottom: 1px solid var(--border);
+    @extend .layout-frame.large;
 
     .inner {
       max-width: 540px;
@@ -557,8 +552,8 @@ main {
   }
 
   .post-content {
-    @extend .layout-frame.large;
     border-bottom: 1px solid var(--border);
+    @extend .layout-frame.large;
 
     .inner {
       max-width: 540px;
@@ -625,9 +620,9 @@ pre {
 
 /* Site BG */
 .site-bg {
+  position: fixed;
   top: 0;
   left: 0;
-  position: fixed;
   z-index: -1;
   width: 100%;
   height: 100%;
