@@ -3,7 +3,7 @@ title: Break The Cycle
 custom_slug: break-the-cycle
 subtitle: Not many things in life are more discouraging than not knowing why you
   feel so bad.
-date: 2021-04-04T05:22:17.027Z
+date: 2016-03-01T06:22:17.027Z
 author: Nate Butler
 summary: You feel great for weeks at a time and then out of the blue life
   suddenly feels meaningless.
