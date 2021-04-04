@@ -56,6 +56,7 @@ collections:
           widget: "string",
           required: false,
         }
+      - { label: "Edits", name: "edit", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
 
   # Our pages e.g. About
