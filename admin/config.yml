@@ -16,11 +16,48 @@ collections:
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Custom Slug",
+          name: "custom_slug",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Subtitle",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string", default: "Anonymous" }
+      - {
+          label: "Author",
+          name: "author",
+          widget: "string",
+          default: "Nate Butler",
+        }
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - {
+          label: "Featured",
+          name: "featued",
+          widget: "boolean",
+          default: ["false"],
+          required: false,
+        }
+      - {
+          label: "Thumbnail URL",
+          name: "thumbnail_url",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Thumbnail Wide URL",
+          name: "thumbnail_wide_url",
+          widget: "string",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
+
   # Our pages e.g. About
   - name: "pages"
     label: "Page"
