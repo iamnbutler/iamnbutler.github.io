@@ -11,6 +11,7 @@ tags:
   - thoughts
 featued:
   - "false"
+edit: These are my views alone, and not the views of my employer.
 ---
 Where is the line between responsibility and censorship? Like everything, this probably isn't a solid line but actually a gradation.
 
