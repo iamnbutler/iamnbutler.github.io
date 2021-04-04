@@ -15,9 +15,17 @@ section: home
       {% for post in postslist | reverse | limit(4) %}
       <li class="list-item layout-tile full">
         
+        <!-- TODO: Do something smarter here -->
+        {% if post.data.thumbnail %}
         <div class="thumbnail">
-          <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
+          <div class="thumbnail-regular">
+            <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
+          </div>
+          <div class="thumbnail-wide">
+            <img src="{{ post.data.thumbnail_wide_url }}" alt="Image Placeholder">
+          </div>
         </div>
+        {% endif %}
         
         <div class="post-preview">
           <div class="preview-content">
@@ -30,7 +38,8 @@ section: home
                 {% endif %}
                 </a>
               </h3>
-              <p class="layout-space-large"> {{ post.data.summary }} </p>
+              <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
+              <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
           </div>
           
           <div class="post-preview-meta">

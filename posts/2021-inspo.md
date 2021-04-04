@@ -1,13 +1,17 @@
 ---
-title: Style Guide
-date: 1992-03-30T20:22:32.757Z
+title: Inspiration 2021
+subtitle: A year’s worth of inspiration – from 3D to Print.
+date: 2021-04-02T20:22:32.757Z
 author: Anonymous
-summary: Testing all the styles available on the site.
+summary: I try to create one of these every year as a time capsule to go back to what was inspiring me at that time. Hope this helps you find something inspiring as well!
 tags:
   - post
 feature_visual: 0
 feature_writing: 1
-thumbnail_url: static/img/30_days_thumb.png
+
+thumbnail: yes
+thumbnail_url: static/img/post/inspiration-2021-thumbnail-1x1.png
+thumbnail_wide_url: static/img/post/inspiration-2021-thumbnail-2x1.png
 ---
 
 # Headline 1

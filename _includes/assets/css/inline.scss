@@ -125,6 +125,13 @@ h6 {
   font-weight: 900;
 }
 
+.subtitle {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: var(--body-copy);
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -188,6 +195,12 @@ code {
 
 .text-lowercase {
   text-transform: lowercase;
+}
+
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* |x End Typography */
@@ -472,8 +485,12 @@ main {
   /* Post Tiles */
   /* TODO: De-specify this */
   .layout-tile {
+    display: flex;
     background-color: var(--background);
-    min-height: 270px;
+    min-height: 240px;
+    list-style: none;
+    flex-direction: column;
+    justify-content: space-between;
     .thumbnail {
       background-color: #eee;
       width: 100%;
@@ -484,6 +501,12 @@ main {
       .thumbnail {
         padding-bottom: 100%;
       }
+      .thumbnail-wide {
+        display: none;
+      }
+      .subtitle {
+        display: none;
+      }
     }
     &:nth-child(2) {
       grid-column-start: 2;
@@ -491,10 +514,29 @@ main {
       .thumbnail {
         padding-bottom: 50%;
       }
+      .thumbnail-regular {
+        display: none;
+      }
     }
     &:nth-child(3) {
       grid-column-start: 1;
       grid-column-end: 3;
+    }
+
+    .post-preview {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      @extend .layout-frame.large;
+      .preview-content {
+        flex-grow: 1;
+      }
+    }
+
+    .post-preview-meta {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
