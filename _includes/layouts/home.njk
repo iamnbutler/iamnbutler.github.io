@@ -4,10 +4,6 @@ section: home
 ---
 <section class="site-content" id="home">
 
-  <section class="layout-card home-about">
-    {{ layoutContent | safe }}
-  </section>
-
   <section class="home-featured">
     {% set postslist = collections.post %}
     <div class="home-feature-list">
@@ -72,16 +68,20 @@ section: home
     {% include "components/post-layout-list.njk" %}
   </section>
 
+  <section class="layout-card home-about">
+    {{ layoutContent | safe }}
+  </section>
+
   <section class="layout-card home-work">
-    <h4>Work</h4>
+    {% include "components/partials/work-list.njk" %}
   </section>
 
   <section class="layout-card home-elsewhere">
-    <h4>Elsewhere</h4>
+    {% include "components/partials/social-list.njk" %}
   </section>
 
   <section class="layout-card home-mentions">
-    <h4>Mentions</h4>
+    {% include "components/partials/media-list.njk" %}
   </section>
 
 </section>
