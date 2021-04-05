@@ -286,6 +286,23 @@ code {
   margin: 0;
 }
 
+.collapsible-card-list {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  -ms-grid-rows: 0.1fr 0.1fr 0.1fr;
+      grid-template-rows: 0.1fr 0.1fr 0.1fr;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+  gap: 1px;
+  background-color: var(--border);
+}
+
+.collapsible-card-list *:not(.bullet-list),
+.collapsible-card-list *:not(.numbered-list) {
+  list-style: none;
+}
+
 /* ================================ */
 /* Layout Sections                 */
 /* ============================== */

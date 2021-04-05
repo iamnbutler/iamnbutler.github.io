@@ -309,6 +309,19 @@ code {
   }
 }
 
+.collapsible-card-list {
+  display: grid;
+  position: relative;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr;
+  grid-template-columns: auto;
+  gap: 1px;
+  background-color: var(--border);
+  *:not(.bullet-list),
+  *:not(.numbered-list) {
+    list-style: none;
+  }
+}
+
 /* ================================ */
 /* Layout Sections                 */
 /* ============================== */
