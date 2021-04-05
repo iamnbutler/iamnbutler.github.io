@@ -390,8 +390,8 @@ main {
 #main-nav {
   display: grid;
   position: relative;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr auto auto;
+  grid-template-columns: auto;
   gap: 1px;
   background-color: var(--border);
 
@@ -408,13 +408,11 @@ main {
 }
 
 .nav-top {
-  height: 60px;
-  @extend .layout-frame.large;
+  @extend .layout-space-large;
 }
 
 .nav-search {
-  @extend .layout-frame.large;
-
+  @extend .layout-space-large;
   form {
     position: relative;
     padding: 0;
@@ -459,7 +457,6 @@ main {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 10px 10px;
-  @extend .layout-frame.large;
 
   li {
     list-style: none;
@@ -469,6 +466,7 @@ main {
   }
 
   a {
+    display: block;
     text-decoration: none;
     @extend .interactable;
   }

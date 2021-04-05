@@ -205,7 +205,7 @@ code {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, .skip-nav, notice, .nav-top, .nav-search, .nav-list, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .post-content {
+.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .post-content {
   padding: 20px 20px;
 }
 
@@ -239,7 +239,7 @@ code {
 }
 
 .layout-space-large, .layout-list.spaced-list .list-header,
-.layout-list.spaced-list .list-item:not(:last-child) {
+.layout-list.spaced-list .list-item:not(:last-child), .nav-top, .nav-search {
   margin-bottom: 20px;
 }
 
@@ -376,10 +376,10 @@ main {
   display: -ms-grid;
   display: grid;
   position: relative;
-  -ms-grid-rows: auto auto auto;
-      grid-template-rows: auto auto auto;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  -ms-grid-rows: 0.1fr auto auto;
+      grid-template-rows: 0.1fr auto auto;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
   gap: 1px;
   background-color: var(--border);
 }
@@ -393,10 +393,6 @@ main {
   bottom: 0;
   border-top: 1px solid var(--border);
   width: 100%;
-}
-
-.nav-top {
-  height: 60px;
 }
 
 .nav-search form {
@@ -451,6 +447,7 @@ main {
 }
 
 .nav-list a {
+  display: block;
   text-decoration: none;
 }
 
