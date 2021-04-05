@@ -45,6 +45,11 @@ body {
 
 /* || Typography */
 /* Set font stacks */
+html,
+body {
+  color: var(--primary);
+}
+
 html ,
 body {
   font-family: var(--body-copy);

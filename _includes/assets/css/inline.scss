@@ -15,6 +15,12 @@
     "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
     "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
     Helvetica, Arial, sans-serif;
+
+  // @media screen and (prefers-color-scheme: dark) {
+  //   --primary: #fff;
+  //   --background: #000;
+  //   --border: #fff;
+  // }
 }
 
 *,
@@ -50,6 +56,7 @@ body {
 
 html,
 body {
+  color: var(--primary);
   &:not(h1, h2, h3, h4, h5) {
     font-family: var(--body-copy);
   }
