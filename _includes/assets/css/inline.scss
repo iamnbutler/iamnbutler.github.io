@@ -60,6 +60,7 @@ body {
 html,
 body {
   color: var(--primary);
+
   &:not(h1, h2, h3, h4, h5) {
     font-family: var(--body-copy);
   }
@@ -197,6 +198,7 @@ code {
 
 i.icon {
   display: block;
+
   &.icon-20 {
     width: 20px;
     height: 20px;
@@ -338,6 +340,7 @@ i.icon {
   grid-template-columns: auto;
   gap: 1px;
   background-color: var(--border);
+
   *:not(.bullet-list),
   *:not(.numbered-list) {
     list-style: none;
@@ -346,15 +349,18 @@ i.icon {
   .card-header {
     @extend .flex-space-between;
     @extend .layout-space-large;
+
     .collapse-control {
       .icon {
         @extend .interactable;
       }
+
       &.active {
         .minus {
           display: none;
         }
       }
+
       &:not(.active) {
         .plus {
           display: none;
@@ -406,6 +412,7 @@ body {
   z-index: 99;
   @extend .layout-frame.large;
   @extend .border-all;
+
   &:active,
   &:focus-within {
     transform: translateY(0%);
@@ -442,6 +449,7 @@ main {
   grid-template-columns: 1fr;
   gap: 1px;
   background-color: var(--border);
+
   & > article,
   & > section {
     background-color: var(--background);
@@ -454,10 +462,11 @@ main {
 
 #main-nav {
   display: flex;
-  flex-direction: column;
   position: relative;
+  flex-direction: column;
   min-height: 0;
   background-color: var(--border);
+
   > *:not(:last-child) {
     border-bottom: 1px solid var(--border);
   }
@@ -478,6 +487,7 @@ main {
 .nav-top {
   height: 20px;
   @extend .layout-space-large;
+
   .brand svg {
     margin: 2px;
   }
@@ -492,6 +502,7 @@ main {
 
 .nav-search {
   @extend .layout-space-large;
+
   form {
     position: relative;
     padding: 0;
@@ -531,9 +542,9 @@ main {
     }
 
     .icon {
+      position: absolute;
       top: 10px;
       left: 10px;
-      position: absolute;
     }
   }
 }
@@ -555,6 +566,7 @@ main {
     display: block;
     text-decoration: none;
     @extend .interactable;
+
     & > [aria-current="page"] {
       box-shadow: 2px 2px 0 var(--highlight);
     }
@@ -585,33 +597,41 @@ main {
     justify-content: space-between;
     text-decoration: none;
     @extend .interactable;
+
     .thumbnail {
       background-color: #eee;
       width: 100%;
       height: 0;
       overflow: hidden;
     }
+
     &:nth-child(1) {
       .thumbnail {
         padding-bottom: 100%;
       }
+
       .thumbnail-wide {
         display: none;
       }
+
       .subtitle {
         display: none;
       }
     }
+
     &:nth-child(2) {
       grid-column-start: 2;
       grid-column-end: 4;
+
       .thumbnail {
         padding-bottom: 50%;
       }
+
       .thumbnail-regular {
         display: none;
       }
     }
+
     &:nth-child(3) {
       grid-column-start: 1;
       grid-column-end: 3;
@@ -623,6 +643,7 @@ main {
       justify-content: space-between;
       flex-grow: 1;
       @extend .layout-frame.large;
+
       .preview-content {
         flex-grow: 1;
       }

@@ -428,11 +428,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
   min-height: 0;
   background-color: var(--border);
 }
@@ -507,9 +507,9 @@ main {
 }
 
 .nav-search form .icon {
+  position: absolute;
   top: 10px;
   left: 10px;
-  position: absolute;
 }
 
 .nav-list {

@@ -4,13 +4,36 @@ section: home
 ---
 <section class="site-content" id="home">
 
+  <section class="layout-card home-about">
+    <h1 class="layout-space-large">Nate Butler – Designer</h1>
+
+    <div class="layout-text-columns post-rich-text">
+      <p>I’m a designer &amp; maker that has been working in the product design industry for the past 10 years. I believe
+        enabling people to share themselves, their ideas, and their creativity, responsibly &amp; regardless of platform. I
+        don't think our major platforms are doing this well and we have a way to go.</p>
+
+      <p>This makes me passionate about the democratizaion of tools and knowledge — I’d rather teach people the tools to
+        do something themselves than create something that does it for them.</p>
+
+      <p>I want to help the people around me level up, in their careers &amp; lives, to far surpass anything I could even
+        imagine achieving.</p>
+
+      <p>I'm a bit of a collector, and post about all types of things here. You will find a mix of work, top of mind,
+        reflections, random posts &amp; process.</p>
+    </div>
+
+    <div class="post-rich-text">
+      <a href="/about" class="text-link">Read More &rarr;</a>
+    </div>
+  </section>
+
   <section class="home-featured">
     {% set postslist = collections.post %}
     <div class="home-feature-list">
 
       {% for post in postslist | reverse | limit(4) %}
       <a href="{{ post.url | url }}" class="layout-tile">
-        
+
         <!-- TODO: Do something smarter here -->
         {% if post.data.thumbnail %}
         <div class="thumbnail">
@@ -22,31 +45,31 @@ section: home
           </div>
         </div>
         {% endif %}
-        
+
         <div class="post-preview">
           <div class="preview-content">
-              <h3 class="layout-space">
-                {% if post.data.title %}
-                  {{ post.data.title }}
-                {% else %}
-                  Untitled
-                {% endif %}
-              </h3>
-              <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
-              <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
+            <h3 class="layout-space">
+              {% if post.data.title %}
+              {{ post.data.title }}
+              {% else %}
+              Untitled
+              {% endif %}
+            </h3>
+            <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
+            <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
           </div>
-          
+
           <div class="post-preview-meta">
             <div class="post-tag">
               {% if post.data.tags %}
-                <p class="text-capitalize">
-                  {% for tag in post.data.tags %}
-                    {%- if tag != "post" -%}
-                      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-                      {{ tag }}
-                    {%- endif -%}
-                  {% endfor %}
-                </p>
+              <p class="text-capitalize">
+                {% for tag in post.data.tags %}
+                {%- if tag != "post" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                {{ tag }}
+                {%- endif -%}
+                {% endfor %}
+              </p>
               {% endif %}
             </div>
             <div class="post-date date-MY">
@@ -55,8 +78,8 @@ section: home
               </time>
             </div>
           </div>
-        </div>        
-        
+        </div>
+
       </a>
       {% endfor %}
 
@@ -66,10 +89,6 @@ section: home
   <section class="layout-card home-posts">
     {% set postslist = collections.post %}
     {% include "components/post-layout-list.njk" %}
-  </section>
-
-  <section class="layout-card home-about">
-    {{ layoutContent | safe }}
   </section>
 
   <section class="layout-card home-work">
