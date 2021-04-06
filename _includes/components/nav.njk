@@ -2,7 +2,7 @@
   <!-- Main Nav – Header -->
   <div class="nav-top layout-row flex-space-between">
     <!-- TODO: Add data-current when on the home page -->
-    <a href="{{ '/' | url }}">
+    <a href="{{ '/' | url }}" class="brand-link" {% if page.url == '/' | url %}aria-current="page"{% endif %}>
       <i class="icon icon-20 brand">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g>
@@ -43,7 +43,7 @@
     {% set navPages = collections.all | eleventyNavigation %}
     {%- for entry in navPages %}
     <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
-      <li>
+      <li {% if entry.url == page.url %}aria-current="page"{% endif %}>
         <h4>{{ entry.title }}</h4>
       </li>
     </a>
@@ -99,7 +99,7 @@
     {% set postslist = collections.post %}
     {% for post in postslist | reverse | limit(10) %}
     <li class="list-item">
-      <article{% if post.url == url %} data-current="current item"{% endif %}>
+      <article{% if post.url == url %} data-current="current item" aria-current="page"{% endif %}>
         <a href="{{ post.url | url }}">
           {% if post.data.title %}
             {{ post.data.title }}
