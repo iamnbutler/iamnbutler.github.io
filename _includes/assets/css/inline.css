@@ -254,12 +254,12 @@ i.icon.frame {
           justify-content: space-between;
 }
 
-.layout-space, .collapsible-card-list .card-header, .collapsible-card-list .list-item:not(:last-child) {
+.layout-space, .collapsible-card-list .list-item:not(:last-child) {
   margin-bottom: 10px;
 }
 
 .layout-space-large, .layout-list.spaced-list .list-header,
-.layout-list.spaced-list .list-item:not(:last-child), .nav-top, .nav-search {
+.layout-list.spaced-list .list-item:not(:last-child), .collapsible-card-list .card-header, .nav-top, .nav-search {
   margin-bottom: 20px;
 }
 

@@ -344,7 +344,7 @@ i.icon {
 
   .card-header {
     @extend .flex-space-between;
-    @extend .layout-space;
+    @extend .layout-space-large;
     .collapse-control {
       .icon {
         @extend .interactable;
