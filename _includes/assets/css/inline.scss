@@ -494,8 +494,9 @@ main {
 }
 
 #system-theme-toggle {
+  transition: transform 0.8s ease-in-out;
   &:hover {
-    transform: rotateZ(180deg);
+    transform: rotateZ(90deg);
     transition: transform 0.8s ease-in-out;
   }
 }

@@ -461,9 +461,16 @@ main {
   margin: 2px;
 }
 
+#system-theme-toggle {
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
+}
+
 #system-theme-toggle:hover {
-  -webkit-transform: rotateZ(180deg);
-          transform: rotateZ(180deg);
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
   -webkit-transition: -webkit-transform 0.8s ease-in-out;
   transition: -webkit-transform 0.8s ease-in-out;
   transition: transform 0.8s ease-in-out;
