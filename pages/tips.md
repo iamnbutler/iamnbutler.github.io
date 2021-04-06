@@ -1,11 +1,11 @@
 ---
-layout: layouts/home.njk
-title: Home
-date: 2016-01-01T00:00:00.000Z
-permalink: /
+title: Tips
+metaDescription: A sample Blog page listing various posts and authors.
+date: 2017-01-01
+permalink: /tips/index.html
 eleventyNavigation:
-  key: Home
-  order: 0
+  key: Tips
+  order: 3
 ---
 
 <h4 class="layout-space-large">Hey, I'm Nate!</h4>
