@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 
+// Global Variables
+$border: #333;
+
 :root {
   --unit: 10;
   --primary: #000;
@@ -198,6 +201,16 @@ i.icon {
     width: 20px;
     height: 20px;
   }
+
+  &.icon-40 {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.frame {
+    box-shadow: inset 0px 0px 0px 1px $border;
+    background-color: var(--background);
+  }
 }
 
 /* Typography Helpers */
@@ -327,6 +340,34 @@ i.icon {
   *:not(.bullet-list),
   *:not(.numbered-list) {
     list-style: none;
+  }
+
+  .card-header {
+    @extend .flex-space-between;
+    @extend .layout-space;
+    .collapse-control {
+      .icon {
+        @extend .interactable;
+      }
+      &.active {
+        .minus {
+          display: none;
+        }
+      }
+      &:not(.active) {
+        .plus {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .list-item[aria-current="section"] {
+    text-shadow: 2px 4px 2px rgba(0, 255, 255, 0.5);
+  }
+
+  .list-item:not(:last-child) {
+    @extend .layout-space;
   }
 }
 

@@ -188,6 +188,17 @@ i.icon.icon-20 {
   height: 20px;
 }
 
+i.icon.icon-40 {
+  width: 40px;
+  height: 40px;
+}
+
+i.icon.frame {
+  -webkit-box-shadow: inset 0px 0px 0px 1px #333;
+          box-shadow: inset 0px 0px 0px 1px #333;
+  background-color: var(--background);
+}
+
 /* Typography Helpers */
 .text-uppercase {
   text-transform: uppercase;
@@ -234,7 +245,7 @@ i.icon.icon-20 {
           align-items: flex-start;
 }
 
-.flex-space-between {
+.flex-space-between, .collapsible-card-list .card-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -243,7 +254,7 @@ i.icon.icon-20 {
           justify-content: space-between;
 }
 
-.layout-space {
+.layout-space, .collapsible-card-list .card-header, .collapsible-card-list .list-item:not(:last-child) {
   margin-bottom: 10px;
 }
 
@@ -262,11 +273,11 @@ i.icon.icon-20 {
           columns: auto 2;
 }
 
-.interactable:hover, .nav-list a:hover, .home-feature-list .layout-tile:hover {
+.interactable:hover, .collapsible-card-list .card-header .collapse-control .icon:hover, .nav-list a:hover, .home-feature-list .layout-tile:hover {
   background-color: var(--hover);
 }
 
-.interactable:pressed, .nav-list a:pressed, .home-feature-list .layout-tile:pressed {
+.interactable:pressed, .collapsible-card-list .card-header .collapse-control .icon:pressed, .nav-list a:pressed, .home-feature-list .layout-tile:pressed {
   background-color: var(--pressed);
 }
 
@@ -310,6 +321,18 @@ i.icon.icon-20 {
 .collapsible-card-list *:not(.bullet-list),
 .collapsible-card-list *:not(.numbered-list) {
   list-style: none;
+}
+
+.collapsible-card-list .card-header .collapse-control.active .minus {
+  display: none;
+}
+
+.collapsible-card-list .card-header .collapse-control:not(.active) .plus {
+  display: none;
+}
+
+.collapsible-card-list .list-item[aria-current="section"] {
+  text-shadow: 2px 4px 2px rgba(0, 255, 255, 0.5);
 }
 
 /* ================================ */
