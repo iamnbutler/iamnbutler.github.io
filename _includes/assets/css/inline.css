@@ -310,8 +310,9 @@ i.icon.frame {
   display: -ms-grid;
   display: grid;
   position: relative;
-  -ms-grid-rows: 0.1fr 0.1fr 0.1fr;
-      grid-template-rows: 0.1fr 0.1fr 0.1fr;
+  min-height: 0;
+  -ms-grid-rows: 0.1fr;
+      grid-template-rows: 0.1fr;
   -ms-grid-columns: auto;
       grid-template-columns: auto;
   gap: 1px;
@@ -349,6 +350,7 @@ body {
   display: -ms-grid;
   display: grid;
   width: 1000px;
+  min-width: 0;
   min-height: 90vh;
   margin: 0 auto;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
@@ -423,26 +425,27 @@ main {
 /* Main Nav                        */
 /* ============================== */
 #main-nav {
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
-  -ms-grid-rows: 0.1fr auto auto;
-      grid-template-rows: 0.1fr auto auto;
-  -ms-grid-columns: auto;
-      grid-template-columns: auto;
-  gap: 1px;
+  min-height: 0;
   background-color: var(--border);
 }
 
-#main-nav section:last-child {
+#main-nav > *:not(:last-child) {
   border-bottom: 1px solid var(--border);
 }
 
-#main-nav footer {
-  position: absolute;
-  bottom: 0;
-  border-top: 1px solid var(--border);
-  width: 100%;
+#main-nav .footer {
+  background-color: var(--background);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 #main-nav .brand-link[aria-current="page"] svg {
@@ -456,6 +459,15 @@ main {
 
 .nav-top .brand svg {
   margin: 2px;
+}
+
+#system-theme-toggle:hover {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out, -webkit-transform 0.8s ease-in-out;
 }
 
 .nav-search form {
@@ -492,6 +504,12 @@ main {
   right: 0;
   width: 40px;
   height: 40px;
+}
+
+.nav-search form .icon {
+  top: 10px;
+  left: 10px;
+  position: absolute;
 }
 
 .nav-list {

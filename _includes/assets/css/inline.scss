@@ -333,7 +333,8 @@ i.icon {
 .collapsible-card-list {
   display: grid;
   position: relative;
-  grid-template-rows: 0.1fr 0.1fr 0.1fr;
+  min-height: 0;
+  grid-template-rows: 0.1fr;
   grid-template-columns: auto;
   gap: 1px;
   background-color: var(--border);
@@ -386,6 +387,7 @@ body {
 .site-grid {
   display: grid;
   width: 1000px;
+  min-width: 0;
   min-height: 90vh;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -451,22 +453,18 @@ main {
 /* ============================== */
 
 #main-nav {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  grid-template-rows: 0.1fr auto auto;
-  grid-template-columns: auto;
-  gap: 1px;
+  min-height: 0;
   background-color: var(--border);
-
-  section:last-child {
+  > *:not(:last-child) {
     border-bottom: 1px solid var(--border);
   }
 
-  footer {
-    position: absolute;
-    bottom: 0;
-    border-top: 1px solid var(--border);
-    width: 100%;
+  .footer {
+    background-color: var(--background);
+    flex-grow: 1;
   }
 
   .brand-link[aria-current="page"] {
@@ -478,10 +476,17 @@ main {
 }
 
 .nav-top {
-  @extend .layout-space-large;
   height: 20px;
+  @extend .layout-space-large;
   .brand svg {
     margin: 2px;
+  }
+}
+
+#system-theme-toggle {
+  &:hover {
+    transform: rotateZ(180deg);
+    transition: transform 0.8s ease-in-out;
   }
 }
 
@@ -523,6 +528,12 @@ main {
       right: 0;
       width: 40px;
       height: 40px;
+    }
+
+    .icon {
+      top: 10px;
+      left: 10px;
+      position: absolute;
     }
   }
 }
