@@ -362,7 +362,8 @@ i.icon {
     }
   }
 
-  .list-item[aria-current="section"] {
+  .list-item[aria-current="section"],
+  .list-item[aria-current="page"] {
     text-shadow: 2px 4px 2px rgba(0, 255, 255, 0.5);
   }
 

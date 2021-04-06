@@ -331,7 +331,8 @@ i.icon.frame {
   display: none;
 }
 
-.collapsible-card-list .list-item[aria-current="section"] {
+.collapsible-card-list .list-item[aria-current="section"],
+.collapsible-card-list .list-item[aria-current="page"] {
   text-shadow: 2px 4px 2px rgba(0, 255, 255, 0.5);
 }
 
