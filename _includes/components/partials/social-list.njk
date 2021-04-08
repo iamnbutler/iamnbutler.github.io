@@ -8,13 +8,7 @@
 
   {% for social in sociallist %}
   <li class="list-item">
-    <a href="{{ social.url | url }}">
-      {% if social.data.title %}
-        {{ social.data.title }}
-      {% else %}
-        Untitled
-      {% endif %}
-    </a>
+    <a href="{{ social.url | url }}">{{ social.data.title }}</a>
     <p class="description">{{ social.data.description }}</p>
   </li>
   {% endfor %}
