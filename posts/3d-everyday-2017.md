@@ -1,4 +1,6 @@
 ---
+featued:
+  - "false"
 title: 3D Everyday 2017
 custom_slug: 3d-everyday-2017
 subtitle: ""
@@ -10,8 +12,8 @@ tags:
   - post
   - design
   - project
-featued:
-  - "false"
+featured: true
+thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604aeb55bdf6b18931550387_nate_butler_3D_2017_0011.jpg
 ---
 
 Here are some of my favorites from my first year of doing 3D!
