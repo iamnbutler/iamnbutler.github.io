@@ -1,4 +1,5 @@
 ---
+featued: false
 title: Experimenting with Pixel Art
 custom_slug: learning-pixel-art
 subtitle: Studies I've been working on to learn a bit of Pixel Art.
@@ -10,7 +11,7 @@ tags:
   - post
   - project
   - art
-featued: false
+thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bbc5340c96d7b8259b81a_Untitled.png
 ---
 
 I've been exploring the crazy world of Pixel Art the past few weeks. It's insane the amount of detail and love that goes into these things. There is this super interesting balance of retro and techniques and looks that continue to evolve, even as more efficient ways of creating art are developed. One of my biggest inspirations right now is [Nate Kling](http://www.natekling.com/) and his Duelyst work.
