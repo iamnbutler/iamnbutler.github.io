@@ -1,53 +1,17 @@
-<ul class="layout-list">
+<!-- Work List – work-list.njk -->
+{% set worklist = collections.work %}
+<ul class="layout-list work-list">
+
   <li class="list-header">
     <h4>Work</h4>
   </li>
+
+  {% for work in worklist %}
   <li class="list-item">
-    <a href="#" class="work-link">Facebook Stories</a>
-    <p class="work-year">2021</p>
+    <a href="{{ work.url | url }}" class="work-link">{{ work.data.title }}</a>
+    <p class="work-year">{{ work.data.year }}</p>
   </li>
-  <li class="list-item">
-    <a href="#" class="work-link">xDesign System</a>
-    <p class="work-year">2020</p>
+  {% endfor %}
   </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Visual Sharing</a>
-    <p class="work-year">2019</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Facebook Avatars</a>
-    <p class="work-year">2019</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Visual Text Posts</a>
-    <p class="work-year">2017</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">The Intermission</a>
-    <p class="work-year">2016</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">News Feed Design</a>
-    <p class="work-year">2016</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Facebook Plugins</a>
-    <p class="work-year">2015</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Design Workshop</a>
-    <p class="work-year">2015</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Format Custom Pages</a>
-    <p class="work-year">2014</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">Lookbook Collections</a>
-    <p class="work-year">2013</p>
-  </li>
-  <li class="list-item">
-    <a href="#" class="work-link">York Design Website</a>
-    <p class="work-year">2012</p>
-  </li>
+  
 </ul>
