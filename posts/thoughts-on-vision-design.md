@@ -1,4 +1,6 @@
 ---
+featued:
+  - "false"
 title: Thoughts on Vision Design
 custom_slug: ""
 subtitle: Is this another made up designer title? Or is there something real here?
@@ -12,8 +14,7 @@ tags:
   - post
   - design
   - editorial
-featued:
-  - "false"
+featured: true
 ---
 
 I've been thinking about this over the past few years. The type of work I like to do and excel at tending to fall into a very specific portion of a project, and I found the further along a project got, the less efficient my time was and the less value I was producing. In contrast, the earlier I was into a project, the more efficient and valuable my contributions have been.
