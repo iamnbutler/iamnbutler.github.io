@@ -12,6 +12,7 @@ tags:
   - post
   - design
   - editorial
+  - featured
 featured: true
 ---
 

@@ -28,24 +28,24 @@ section: home
   </section>
 
   <section class="home-featured">
-    {% set postslist = collections.post %}
+    {{ collections.featured | log }}
+    {% set postslist = collections.featured | limit(7) %}
     <div class="home-feature-list">
 
       {% for post in postslist | reverse %}
-      {%- if post.data.featured == true -%}
       <a href="{{ post.url | url }}" class="layout-tile">
 
         <!-- TODO: Do something smarter here -->
         <div class="thumbnail">
-          {%- if post.data.thumbnail_url -%}
+          {# {%- if post.data.thumbnail_url -%} #}
           <div class="thumbnail-regular">
             <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
           </div>
           {# <div class="thumbnail-wide">
             <img src="{{ post.data.thumbnail_wide_url }}" alt="Image Placeholder">
           </div> #}
-          {% else %}
-          {% endif %}
+          {# {% else %} #}
+          {# {% endif %} #}
         </div>
 
         <div class="post-preview">
@@ -65,7 +65,7 @@ section: home
             <div class="post-tag">
               {% if post.data.tags %}
               <p class="text-capitalize">
-                {% for tag in post.data.tags %}
+                {% for tag in post.data.tags | limit(3) %}
                 {%- if tag != "post" -%}
                 {% set tagUrl %}/tags/{{ tag }}/{% endset %}
                 {{ tag }}
@@ -83,7 +83,6 @@ section: home
         </div>
 
       </a>
-      {% endif %}
       {% endfor %}
 
     </div>

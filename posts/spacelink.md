@@ -9,6 +9,7 @@ tags:
   - post
   - project
   - design
+  - featured
 featured: true
 thumbnail_url:
 ---

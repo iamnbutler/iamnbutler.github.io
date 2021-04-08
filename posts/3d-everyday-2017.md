@@ -10,8 +10,9 @@ tags:
   - post
   - design
   - project
+  - featured
 featured: true
-thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604aeb55bdf6b18931550387_nate_butler_3D_2017_0011.jpg
+thumbnail_url: static/img/post/3d-2017-thumbnail-1x1.jpeg
 ---
 
 Here are some of my favorites from my first year of doing 3D!

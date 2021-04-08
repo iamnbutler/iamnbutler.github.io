@@ -1,7 +1,7 @@
 ---
 title: Creating Jewelry with 3D Printing
 custom_slug: 3d-printing-jewelry
-subtitle: Apparently you can 3D print metal? Let's have fun with this :)
+subtitle: Apparently you can 3D print metal?
 date: 2018-11-16T06:24:23.626Z
 author: Nate Butler
 summary: My wife is a huge Kingdom Hearts fan, so once I discovered that 3D
@@ -12,6 +12,7 @@ tags:
   - post
   - project
   - tip
+  - featured
 featured: true
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
 thumbnail_wide_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg

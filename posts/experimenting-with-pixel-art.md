@@ -10,6 +10,7 @@ tags:
   - post
   - project
   - art
+  - featured
 featured: true
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bbc5340c96d7b8259b81a_Untitled.png
 ---
