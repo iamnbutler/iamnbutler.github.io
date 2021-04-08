@@ -1,26 +1,23 @@
 <!-- Social List – social-list.njk -->
+{% set sociallist = collections.social %}
 <ul class="layout-list social-list">
+
   <li class="list-header">
     <h4>Elsewhere</h4>
   </li>
+
+  {% for social in sociallist %}
   <li class="list-item">
-    <a href="mailto:hi@iamnbutler.com">Email</a>
-    <p class="description">Shoot me an email.</p>
+    <a href="{{ social.url | url }}">
+      {% if social.data.title %}
+        {{ social.data.title }}
+      {% else %}
+        Untitled
+      {% endif %}
+    </a>
+    <p class="description">{{ social.data.description }}</p>
   </li>
-  <li class="list-item">
-    <a href="https://read.cv/natebutler">Read.cv</a>
-    <p class="description">Where my resume lives.</p>
+  {% endfor %}
   </li>
-  <li class="list-item">
-    <a href="https://codepen.io/iamnbutler/">Codepen</a>
-    <p class="description">Snippets and sketches.</p>
-  </li>
-  <li class="list-item">
-    <a href="https://github.com/iamnbutler">GitHub</a>
-    <p class="description">Where I tinker.</p>
-  </li>
-  <li class="list-item">
-    <a href="https://twitter.com/iamnbutler">Twitter</a>
-    <p class="description">Top of mind and reshares.</p>
-  </li>
+  
 </ul>
