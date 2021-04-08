@@ -9,8 +9,6 @@ tags:
   - post
   - project
 featured: true
-feature_visual: 0
-feature_writing: 0
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bc4508d872f86d803efee_bling1.jpg
 ---
 

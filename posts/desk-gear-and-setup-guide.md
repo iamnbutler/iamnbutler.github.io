@@ -16,7 +16,6 @@ tags:
   - post
   - tip
 featured: true
-feature_writing: 1
 thumbnail_url: static/img/post/desk-guide-thumbnail-1x1.png
 thumbnail_wide_url: static/img/post/desk-guide-thumbnail-2x1.png
 ---

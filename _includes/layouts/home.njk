@@ -32,10 +32,10 @@ section: home
     <div class="home-feature-list">
 
       {% for post in postslist | reverse | limit(7) %}
+      {%- if post.data.featured == true -%}
       <a href="{{ post.url | url }}" class="layout-tile">
 
         <!-- TODO: Do something smarter here -->
-        {% if post.data.thumbnail %}
         <div class="thumbnail">
           <div class="thumbnail-regular">
             <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
@@ -44,7 +44,6 @@ section: home
             <img src="{{ post.data.thumbnail_wide_url }}" alt="Image Placeholder">
           </div>
         </div>
-        {% endif %}
 
         <div class="post-preview">
           <div class="preview-content">
@@ -81,6 +80,7 @@ section: home
         </div>
 
       </a>
+      {% endif %}
       {% endfor %}
 
     </div>

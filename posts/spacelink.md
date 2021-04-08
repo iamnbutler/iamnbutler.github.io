@@ -10,8 +10,6 @@ tags:
   - project
   - design
 featured: true
-feature_visual: 0
-feature_writing: 0
 thumbnail_url:
 ---
 

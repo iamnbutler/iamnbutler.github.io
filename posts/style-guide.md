@@ -5,8 +5,6 @@ author: Anonymous
 summary: Testing all the styles available on the site.
 tags:
   - post
-feature_visual: 0
-feature_writing: 1
 featured: false
 thumbnail_url: static/img/30_days_thumb.png
 ---
