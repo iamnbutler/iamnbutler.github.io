@@ -1,4 +1,6 @@
 ---
+featued:
+  - "false"
 title: A Few Thoughts
 subtitle: Doing nothing isn't Being Bold.
 date: 2020-06-01T05:14:39.218Z
@@ -10,8 +12,7 @@ tags:
   - post
   - editorial
   - thoughts
-featued:
-  - "false"
+featured: true
 edit: These are my views alone, and not the views of my employer.
 ---
 
