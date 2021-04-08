@@ -7,6 +7,7 @@ date_updated: 2021-04-03
 author: Nate Butler
 summary: I've compiled together a list of all the high quality desk/work from home gear I've used or know of in one place (so you don't have to waste money on things that are not great!) This is the list I wish I had when I started building my setup!
 tags:
+  - post
   - tip
 feature_visual: 0
 feature_writing: 1

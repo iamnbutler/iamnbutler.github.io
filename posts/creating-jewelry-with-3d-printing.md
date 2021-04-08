@@ -9,6 +9,7 @@ summary: My wife is a huge Kingdom Hearts fan, so once I discovered that 3D
   I'd make her a custom Keyblade piece.I'll try to remember to come back and
   post some of my exploratory sketches...
 tags:
+  - post
   - project
   - tip
 featued:
@@ -16,6 +17,7 @@ featued:
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
 thumbnail_wide_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
 ---
+
 My wife is a huge Kingdom Hearts fan, so once I discovered that 3D printing metal was not only possible, but also not overly expensive, I decided I'd make her a custom Keyblade piece.
 
 I'll try to remember to come back and post some of my exploratory sketches, but here is what the render looked like in the end:

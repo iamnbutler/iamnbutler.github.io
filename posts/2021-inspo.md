@@ -10,8 +10,10 @@ date: 2021-04-02T20:22:32.757Z
 feature_writing: 1
 subtitle: A year’s worth of inspiration – from 3D to Print.
 tags:
+  - post
   - design
 thumbnail_url: static/img/post/inspiration-2021-thumbnail-1x1.png
 thumbnail_wide_url: static/img/post/inspiration-2021-thumbnail-2x1.png
 ---
+
 Another year, another post. Here is this year's inspiration!

@@ -7,12 +7,14 @@ summary: Where is the line between responsibility and censorship? Like
   everything, this probably isn't a solid line but actually a gradation. Working
   at FB this is something I think about constantly, especially since 2016...
 tags:
+  - post
   - editorial
   - thoughts
 featued:
   - "false"
 edit: These are my views alone, and not the views of my employer.
 ---
+
 Where is the line between responsibility and censorship? Like everything, this probably isn't a solid line but actually a gradation.
 
 Working at FB this is something I think about constantly, especially since 2016. Joining Facebook as a stary-eyed new grad, I came in wanting to make the world a better place. My goal at FB has always been to bring a little bit of extra fun and joy to the world.

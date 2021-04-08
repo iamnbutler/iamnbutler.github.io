@@ -6,6 +6,7 @@ date_updated:
 author: Nate Butler
 summary: I tried making one of those cool 3D device renders for a pitch. Didn't go quite as planned!
 tags:
+  - post
   - project
 feature_visual: 0
 feature_writing: 0

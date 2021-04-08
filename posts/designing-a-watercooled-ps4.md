@@ -8,12 +8,14 @@ summary: "The PS4 is a great console – some of my best gaming memories come fr
   this thing. But it has a major issue: It is hot and loud. This is an attempt
   to do something about that!"
 tags:
+  - post
   - project
 featued:
   - "false"
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604595933ae2c8a437fd5a7b_D2C46A7UkAAkizd.jpeg
 thumbnail_wide_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604595933ae2c8a437fd5a7b_D2C46A7UkAAkizd.jpeg
 ---
+
 I had every intention of making this a reality! Once I found out about the PS5 coming I decided to put this project on hold and work on one for the next generation :) Of course, getting ahead of myself, I have many of the watercooling parts already ready to go in a drawer in my office...
 
 ![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bccb165053b140d981d98_IMG_0203.png)

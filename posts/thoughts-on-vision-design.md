@@ -1,7 +1,7 @@
 ---
 title: Thoughts on Vision Design
 custom_slug: ""
-subtitle: Is this another made up designer title?  Or is there something real here?
+subtitle: Is this another made up designer title? Or is there something real here?
 date: 2021-03-04T08:06:38.725Z
 author: Nate Butler
 summary: I've been thinking about this over the past few years. The type of work
@@ -9,11 +9,13 @@ summary: I've been thinking about this over the past few years. The type of work
   project, and I found the further along a project got, the less efficient my
   time was and the less value I was producing...
 tags:
+  - post
   - design
   - editorial
 featued:
   - "false"
 ---
+
 I've been thinking about this over the past few years. The type of work I like to do and excel at tending to fall into a very specific portion of a project, and I found the further along a project got, the less efficient my time was and the less value I was producing. In contrast, the earlier I was into a project, the more efficient and valuable my contributions have been.
 
 Recently I've been trying to align myself more with a role I've tentatively been calling Vision Design. I haven't spent much time yet researching what else is out there related to this term or how others use it yet, as I first want to process for myself what this means.‍

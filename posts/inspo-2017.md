@@ -7,6 +7,7 @@ author: Nate Butler
 summary: All the images that inspired me this year.
 tags:
   - post
+  - design
 feature_visual: 0
 feature_writing: 0
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604dd6d20851a706a76e45a9_IMG_20170603_225341_145.jpg

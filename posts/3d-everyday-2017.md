@@ -7,11 +7,13 @@ author: Nate Butler
 summary: I spent the year learning the fundamentals of 3D through daily renders.
   Here is a collection of the best ones, and a few things I learned.
 tags:
+  - post
   - design
   - project
 featued:
   - "false"
 ---
+
 Here are some of my favorites from my first year of doing 3D!
 
 ![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604ae9758a23d1847f29f017_nate_butler_3D_2017_0004.jpg)
@@ -46,7 +48,7 @@ My first day using Octane. It definitely had a huge effect on the aesthetic I s
 
 ![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604aebd97c8fe1d567c58d54_nate_butler_3D_2017_0014.jpg)
 
-Inspired by *[Knights of Sidonia](https://en.wikipedia.org/wiki/Knights_of_Sidonia)*
+Inspired by _[Knights of Sidonia](https://en.wikipedia.org/wiki/Knights_of_Sidonia)_
 
 ![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604aec13ac5dd6106202c9b7_nate_butler_3D_2017_0015.jpg)
 

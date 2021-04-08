@@ -6,6 +6,7 @@ date_updated:
 author: Nate Butler
 summary: A quick exploration of a more visual and accessible League launcher.
 tags:
+  - post
   - project
   - design
 feature_visual: 0

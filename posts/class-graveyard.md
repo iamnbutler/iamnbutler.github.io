@@ -7,6 +7,7 @@ author: Nate Butler
 summary: I've never been able to get more than a few chapters into any class.
 tags:
   - post
+  - thoughts
 feature_visual: 0
 feature_writing: 0
 thumbnail_url:

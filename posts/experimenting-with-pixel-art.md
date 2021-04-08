@@ -7,10 +7,12 @@ author: Nate Butler
 summary: I've been exploring the crazy world of Pixel Art the past few weeks.
   It's insane the amount of detail and love that goes into these things...
 tags:
+  - post
   - project
   - art
 featued: false
 ---
+
 I've been exploring the crazy world of Pixel Art the past few weeks. It's insane the amount of detail and love that goes into these things. There is this super interesting balance of retro and techniques and looks that continue to evolve, even as more efficient ways of creating art are developed. One of my biggest inspirations right now is [Nate Kling](http://www.natekling.com/) and his Duelyst work.
 
 ![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/60457c13bfa49d5d4a153761_Moonlight--Dribbble.gif)

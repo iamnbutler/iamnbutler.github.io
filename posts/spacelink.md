@@ -6,6 +6,7 @@ date_updated:
 author: Nate Butler
 summary: An exploration of infinite space and communication.
 tags:
+  - post
   - project
   - design
 feature_visual: 0
