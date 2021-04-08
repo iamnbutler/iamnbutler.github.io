@@ -31,18 +31,21 @@ section: home
     {% set postslist = collections.post %}
     <div class="home-feature-list">
 
-      {% for post in postslist | reverse | limit(7) %}
+      {% for post in postslist | reverse %}
       {%- if post.data.featured == true -%}
       <a href="{{ post.url | url }}" class="layout-tile">
 
         <!-- TODO: Do something smarter here -->
         <div class="thumbnail">
+          {%- if post.data.thumbnail_url -%}
           <div class="thumbnail-regular">
             <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
           </div>
-          <div class="thumbnail-wide">
+          {# <div class="thumbnail-wide">
             <img src="{{ post.data.thumbnail_wide_url }}" alt="Image Placeholder">
-          </div>
+          </div> #}
+          {% else %}
+          {% endif %}
         </div>
 
         <div class="post-preview">

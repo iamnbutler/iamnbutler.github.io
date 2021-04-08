@@ -602,6 +602,7 @@ main {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .home-feature-list .layout-tile .thumbnail {
@@ -621,26 +622,6 @@ main {
 
 .home-feature-list .layout-tile:nth-child(1) .subtitle {
   display: none;
-}
-
-.home-feature-list .layout-tile:nth-child(2) {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
-  grid-column-end: 4;
-}
-
-.home-feature-list .layout-tile:nth-child(2) .thumbnail {
-  padding-bottom: 50%;
-}
-
-.home-feature-list .layout-tile:nth-child(2) .thumbnail-regular {
-  display: none;
-}
-
-.home-feature-list .layout-tile:nth-child(3) {
-  -ms-grid-column: 1;
-      grid-column-start: 1;
-  grid-column-end: 3;
 }
 
 .home-feature-list .layout-tile .post-preview {
