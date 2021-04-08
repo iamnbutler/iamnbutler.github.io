@@ -275,6 +275,14 @@ i.icon.frame {
           columns: auto 2;
 }
 
+.layout-width {
+  display: block;
+}
+
+.layout-width.sixty {
+  max-width: 60%;
+}
+
 .interactable:hover, .collapsible-card-list .card-header .collapse-control .icon:hover, .nav-list a:hover, .home-feature-list .layout-tile:hover {
   background-color: var(--hover);
 }

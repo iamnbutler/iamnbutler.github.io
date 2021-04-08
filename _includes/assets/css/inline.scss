@@ -283,6 +283,13 @@ i.icon {
   }
 }
 
+.layout-width {
+  display: block;
+  &.sixty {
+    max-width: 60%;
+  }
+}
+
 // TODO: Move this to general helpers
 .interactable {
   &:hover {
