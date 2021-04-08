@@ -52,6 +52,7 @@ module.exports = function (eleventyConfig) {
     arr.slice(0, limit)
   );
 
+  // Consider moving to eleventy-plugin-date | https://www.npmjs.com/package/eleventy-plugin-date
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
@@ -60,6 +61,11 @@ module.exports = function (eleventyConfig) {
   // Date formatting (machine readable)
   eleventyConfig.addFilter("machineDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-dd");
+  });
+
+  // Date formatting (MMYY)
+  eleventyConfig.addFilter("mmyy", (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toFormat("LLL—yy");
   });
 
   // Minify CSS

@@ -32,9 +32,9 @@
           </p>
           {% endif %}
         </div>
-        <div class="post-date date-MY">
+        <div class="post-date date-MY text-uppercase">
           <time datetime="{{ post.date | machineDate }}">
-            {{ post.date | readableDate }}
+            {{ post.date | mmyy }}
           </time>
         </div>
       </div>

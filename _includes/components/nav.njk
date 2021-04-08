@@ -126,7 +126,7 @@
           {% endif %}
 
           <time datetime="{{ post.date | machineDate }}">
-            {{ post.date | readableDate }}
+            <span class="text-uppercase">{{ post.date | mmyy }}</span>
           </time>
 
         </div>
