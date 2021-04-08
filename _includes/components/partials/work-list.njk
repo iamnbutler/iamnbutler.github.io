@@ -3,7 +3,7 @@
 <ul class="layout-list work-list">
 
   <li class="list-header">
-    <h4>Work</h4>
+    <h4>Selected Work</h4>
     
   </li>
 
@@ -11,12 +11,20 @@
     <p>Work pages coming soon!</p>
   </li>
 
-  {% for work in worklist %}
+  {% for work in worklist | limit(8) %}
   <li class="list-item">
-    <p class="work-title">{{ work.data.title }}</p>
-    <p class="work-year">{{ work.data.year }}</p>
+    <header>
+      <div class="list-title">
+        <p class="work-title">{{ work.data.title }}</p>
+      </div>
+      <div class="list-meta">
+        <p class="work-year">{{ work.data.year }}</p>
+    </header>
   </li>
   {% endfor %}
-  </li>
   
+  <li class="list-item list-footer">
+    <a href="/posts">All work &rarr;</a>  
+  </li>
+
 </ul>

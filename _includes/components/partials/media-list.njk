@@ -10,18 +10,26 @@
     <p>I've been extremely privileged to work on some awesome projects – Here are a few I’ve lead design on that have been mentioned externally:</p>
   </li>
 
-  <li class="list-item">
-    <a href="https://www.tomsguide.com/how-to/facebook-avatars-are-here-how-to-make-yours-now" class="media-link">How to make your own Facebook avatar</a>
-    <a href="https://www.tomsguide.com/" class="outlet">Tom's Guide</a>
-    <p class="year">2021</p>
-  </li>
-
   {% for media in medialist %}
   <li class="list-item">
-    <a href="{{ media.url | url }}" class="media-link">{{ media.data.title }}</a>
+    <header>
+      <div class="list-title">
+        <a href="{{ media.url | url }}" class="media-link">{{ media.data.title }}</a>
+      </div>
+      <div class="list-meta">
+        <a href="#" class="outlet">{{ media.data.outlet }}</a>
+        <p class="year">{{ media.data.year }}</p>
+      </div>
+    </header>
+    <div class="list-content">
+      <div class="list-description"></div>
+    </div>
+  </li>
+  
+  <li class="list-item">
+    
     <!-- TODO: Add outlet URL -->
-    <a href="#" class="outlet">{{ media.data.outlet }}</a>
-    <p class="year">{{ media.data.year }}</p>
+    
   </li>
   {% endfor %}
   
