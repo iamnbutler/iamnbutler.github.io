@@ -1,4 +1,6 @@
 ---
+featued:
+  - "false"
 title: Creating Jewelry with 3D Printing
 custom_slug: 3d-printing-jewelry
 subtitle: Apparently you can 3D print metal? Let's have fun with this :)
@@ -12,8 +14,7 @@ tags:
   - post
   - project
   - tip
-featued:
-  - "false"
+featured: true
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
 thumbnail_wide_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
 ---
