@@ -89,6 +89,7 @@ collections:
       - { label: "Year", name: "year", widget: "number" }
       - { label: "Permalink", name: "permalink", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["work"] }
 
   # social
   - name: "social"
@@ -100,6 +101,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "URL", name: "url", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["social"] }
 
   # media
   - name: "media"
@@ -112,3 +114,4 @@ collections:
       - { label: "URL", name: "url", widget: "string" }
       - { label: "Outlet", name: "outlet", widget: "string" }
       - { label: "Year", name: "year", widget: "number" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["media"] }
