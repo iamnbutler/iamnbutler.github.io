@@ -1,5 +1,5 @@
 ---
-featued:
+featured:
   - "false"
 title: 3D Everyday 2017
 custom_slug: 3d-everyday-2017

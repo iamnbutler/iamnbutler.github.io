@@ -1,6 +1,4 @@
 ---
-featued:
-  - "false"
 title: A Few Thoughts
 subtitle: Doing nothing isn't Being Bold.
 date: 2020-06-01T05:14:39.218Z

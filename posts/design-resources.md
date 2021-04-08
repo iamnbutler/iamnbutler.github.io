@@ -9,7 +9,7 @@ tags:
   - post
   - tip
   - design
-featued: false
+featured: false
 edit: This is an ongoing list. Last Update April 3, 2021.
 ---
 

@@ -10,7 +10,7 @@ summary: You feel great for weeks at a time and then out of the blue life
 tags:
   - post
   - editorial
-featued: false
+featured: false
 edit: ""
 ---
 

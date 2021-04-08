@@ -9,6 +9,7 @@ tags:
   - post
   - project
   - design
+featured: false
 feature_visual: 0
 feature_writing: 0
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bb2aa65053b8df597914e_client-launcher-real-pixels.png

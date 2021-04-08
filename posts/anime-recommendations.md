@@ -9,7 +9,7 @@ summary: An unordered list of Anime film & series recommendations, covering a
 tags:
   - post
   - tip
-featued: false
+featured: false
 edit: ""
 ---
 

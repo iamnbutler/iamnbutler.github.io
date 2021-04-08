@@ -1,6 +1,4 @@
 ---
-featued:
-  - "false"
 title: Thoughts on Vision Design
 custom_slug: ""
 subtitle: Is this another made up designer title? Or is there something real here?

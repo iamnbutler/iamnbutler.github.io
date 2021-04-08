@@ -1,5 +1,4 @@
 ---
-featued: false
 title: Experimenting with Pixel Art
 custom_slug: learning-pixel-art
 subtitle: Studies I've been working on to learn a bit of Pixel Art.

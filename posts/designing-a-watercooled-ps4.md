@@ -10,8 +10,7 @@ summary: "The PS4 is a great console – some of my best gaming memories come fr
 tags:
   - post
   - project
-featued:
-  - "false"
+featured: true
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604595933ae2c8a437fd5a7b_D2C46A7UkAAkizd.jpeg
 thumbnail_wide_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604595933ae2c8a437fd5a7b_D2C46A7UkAAkizd.jpeg
 ---
