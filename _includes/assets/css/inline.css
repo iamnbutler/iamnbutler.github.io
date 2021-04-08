@@ -233,7 +233,7 @@ i.icon.frame {
   background-color: var(--background);
 }
 
-.flex-row, .layout-list .lits-flex-row {
+.flex-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -245,7 +245,7 @@ i.icon.frame {
           align-items: flex-start;
 }
 
-.flex-space-between, .collapsible-card-list .card-header {
+.flex-space-between, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -254,7 +254,9 @@ i.icon.frame {
           justify-content: space-between;
 }
 
-.layout-space, .collapsible-card-list .list-item:not(:last-child) {
+.layout-space, .layout-list .list-item:not(:last-child),
+.layout-list .list-context:not(:last-child),
+.layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child) {
   margin-bottom: 10px;
 }
 
@@ -287,19 +289,33 @@ i.icon.frame {
 }
 
 .layout-list .list-item,
+.layout-list .list-context,
 .layout-list .list-header {
   list-style: none;
 }
 
-.layout-list .lits-flex-row > .primary {
-  -ms-flex-preferred-size: 66.66%;
-      flex-basis: 66.66%;
+.layout-list .list-title {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
 }
 
-.layout-list .lits-flex-row > .secondary {
-  -ms-flex-preferred-size: 33.33%;
-      flex-basis: 33.33%;
-  text-align: right;
+.layout-list .list-meta {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.layout-list .list-context {
+  max-width: 500px;
 }
 
 .layout-list p {

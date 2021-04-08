@@ -1,33 +1,35 @@
 <ul class="layout-list">
+
   <li class="list-header">
     <h4>More Posts</h4>
     <a href="#">
       <i class="icon plus"></i>
     </a>
   </li>
+
   {% for post in postslist | reverse | limit(10) %}
   <li class="list-item">
-    <div class="flex-row">
-      <div class="primary">
+    <header>
+      <div class="list-title">
         <a href="{{ post.url | url }}">
-            {% if post.data.title %}
-              {{ post.data.title }}
-            {% else %}
-              Untitled
-            {% endif %}
-          </a>
+          {% if post.data.title %}
+            {{ post.data.title }}
+          {% else %}
+            Untitled
+          {% endif %}
+        </a>
       </div>
-      <div class="secondary">
+      <div class="list-meta">
         <div class="post-tag">
           {% if post.data.tags %}
-            <p>
-              {% for tag in post.data.tags %}
-                {%- if tag != "post" -%}
-                  {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-                <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-                {%- endif -%}
-              {% endfor %}
-            </p>
+          <p>
+            {% for tag in post.data.tags | limit(2) %}
+              {%- if tag != "post" -%}
+                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                <a href="{{ tagUrl | url }}" rel="tag" class="text-capitalize">{{ tag }}</a>
+              {%- endif -%}
+            {% endfor %}
+          </p>
           {% endif %}
         </div>
         <div class="post-date date-MY">
@@ -36,7 +38,14 @@
           </time>
         </div>
       </div>
+    </header>
+    <div class="list-content">
+      <div class="list-description"></div>
     </div>
   </li>
   {% endfor %}
+  
+  <li class="list-item list-footer">
+    Continue reading <a href="/posts">more posts &rarr;</a>  
+  </li>
 </ul>

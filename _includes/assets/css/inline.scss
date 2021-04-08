@@ -298,21 +298,34 @@ i.icon {
 
 .layout-list {
   .list-item,
+  .list-context,
   .list-header {
     list-style: none;
+
+    &:not(:last-child) {
+      @extend .layout-space;
+    }
   }
 
-  .lits-flex-row {
-    @extend .flex-row;
+  .list-item header {
+    @extend .flex-space-between;
+  }
 
-    & > .primary {
-      flex-basis: 66.66%;
-    }
+  .list-title {
+    flex-grow: 2;
+    flex-shrink: 0;
+    flex-basis: 60%;
+  }
 
-    & > .secondary {
-      flex-basis: 33.33%;
-      text-align: right;
-    }
+  .list-meta {
+    @extend .flex-space-between;
+    flex-basis: 40%;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  .list-context {
+    max-width: 500px;
   }
 
   a {
