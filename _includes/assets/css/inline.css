@@ -300,8 +300,9 @@ i.icon.frame {
           flex-grow: 2;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  -ms-flex-preferred-size: 60%;
-      flex-basis: 60%;
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+  margin-right: 5%;
 }
 
 .layout-list .list-meta {
