@@ -31,7 +31,7 @@ section: home
     {% set postslist = collections.post %}
     <div class="home-feature-list">
 
-      {% for post in postslist | reverse | limit(4) %}
+      {% for post in postslist | reverse | limit(7) %}
       <a href="{{ post.url | url }}" class="layout-tile">
 
         <!-- TODO: Do something smarter here -->

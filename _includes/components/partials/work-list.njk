@@ -4,11 +4,16 @@
 
   <li class="list-header">
     <h4>Work</h4>
+    
+  </li>
+
+  <li class="list-context">
+    <p>Work pages coming soon!</p>
   </li>
 
   {% for work in worklist %}
   <li class="list-item">
-    <a href="{{ work.url | url }}" class="work-link">{{ work.data.title }}</a>
+    <p class="work-title">{{ work.data.title }}</p>
     <p class="work-year">{{ work.data.year }}</p>
   </li>
   {% endfor %}
