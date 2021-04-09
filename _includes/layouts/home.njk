@@ -32,18 +32,25 @@ section: home
     <div class="home-feature-list">
 
       {% for post in postslist | reverse %}
+      <!-- TODO: Reduce redundancy here -->
+      {%- if post.data.prefer_wide_thumbnail -%}
+        <a href="{{ post.url | url }}" class="layout-tile wide">
+      {% else %}
       <a href="{{ post.url | url }}" class="layout-tile">
-
-        <!-- TODO: Do something smarter here -->
-        {%- if post.data.show_thumbnail != "false" -%}
-        <div class="thumbnail">
-          <div class="thumbnail-regular">
-            <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
+      {% endif %}
+        
+        {%- if post.data.show_thumbnail -%}
+        
+        {%- if post.data.prefer_wide_thumbnail -%}
+          <div class="thumbnail wide">
+            <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder">
           </div>
-          <div class="thumbnail-wide">
-            <img src="{{ post.data.thumbnail_wide_url }}" alt="Image Placeholder">
+        {% else %}
+          <div class="thumbnail">
+            <img src="{{ post.data.thumbnail }}" alt="Image Placeholder">
           </div>
-        </div>
+        {% endif %}
+        
         {% endif %}
 
         <div class="post-preview">

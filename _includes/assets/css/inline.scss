@@ -620,43 +620,21 @@ main {
     text-decoration: none;
     overflow: hidden;
     @extend .interactable;
+    &.wide {
+      grid-column: auto / span 2;
+    }
 
     .thumbnail {
       background-color: #eee;
       width: 100%;
       height: 0;
-      padding-bottom: 100%;
       overflow: hidden;
-    }
-
-    &:nth-child(1) {
-      .thumbnail {
+      &:not(.wide) {
         padding-bottom: 100%;
       }
-
-      .thumbnail-wide {
-        display: none;
-      }
-    }
-
-    &:nth-child(2),
-    &:nth-child(3) {
-      .thumbnail {
+      &.wide {
         padding-bottom: 50%;
       }
-      .thumbnail-regular {
-        display: none;
-      }
-    }
-
-    &:nth-child(2) {
-      grid-column-start: 2;
-      grid-column-end: 4;
-    }
-
-    &:nth-child(3) {
-      grid-column-start: 1;
-      grid-column-end: 3;
     }
 
     .post-preview {
