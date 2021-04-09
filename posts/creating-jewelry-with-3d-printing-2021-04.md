@@ -3,10 +3,12 @@ post_visible: true
 title: Creating Jewelry with 3D Printing
 custom_slug: 3d-printing-jewelry
 subtitle: Apparently you can 3D print metal?
-summary: My wife is a huge Kingdom Hearts fan, so once I discovered that 3D printing metal was not only possible, but also not overly expensive, I decided I'd make her a custom Keyblade piece.
+summary: My wife is a huge Kingdom Hearts fan, so once I discovered that 3D
+  printing metal was not only possible, but also not overly expensive, I decided
+  I'd make her a custom Keyblade piece.
 author: Nate Butler
-date: 2015-11-16T06:12:30.394Z
-date_updated: 2015-11-16T06:12:00.000Z
+date: 2018-11-16T06:12:30.394Z
+date_updated: 2018-11-16T06:12:00.000Z
 tags:
   - post
   - featured
