@@ -1,0 +1,134 @@
+// Footer
+
+.site-footer {
+	position: relative;
+	padding: 24px;
+	overflow: hidden;
+	// background-color: $green-dark;
+
+	.content {
+		z-index: 2;
+		margin-top: 50px;
+	}
+
+	h1 {
+		color: white;
+		text-align: right;
+		margin-bottom: 24px;
+	}
+
+	ul {
+		text-align: right;
+	}
+
+	ul > li {
+		padding: 12px 16px;
+		background-color: $white;
+		font-family: FiraSans-Medium;
+		font-size: 18px;
+		color: #000000;
+		letter-spacing: 0;
+		line-height: 20px;
+		border-radius: 20px;
+		display: inline-block;
+		margin: 6px 2px;
+		@extend .shadow-soft;
+		&:hover {
+			cursor:pointer;
+			background-color: darken($white, 10%);
+		}
+	}
+
+	.footer-intro {
+		margin-top: 16px;
+		&::after {
+			display: block;
+			content: "";
+			clear: both;
+		}
+		.avatar {
+			float: left;
+			margin-top: 10px;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			background-color: #000;
+			margin-right: 10px;
+			background-image: $portrait;
+			background-size: 48px;
+		}
+
+		a {
+			font-weight: 700;
+		}
+
+		p {
+			font-size: 18px;
+			line-height: 22px;
+			&:first-child {
+				margin-bottom: 8px;
+			}
+		}
+
+		.em {
+			transform: scale(0.85);
+		}
+	}
+
+	.bubble {
+		float: left;
+		width: calc(100% - 64px);
+		background-color: $white;
+		border-radius: 16px;
+		color: $black;
+		font-family: FiraSans-Regular;
+		font-size: 16px;
+		letter-spacing: 0;
+		padding: 12px 16px;
+		@extend .shadow-soft; 
+	}
+
+	footer {
+		text-align: center;
+		padding: 16px;
+	}
+
+	.small-circle {
+		position: absolute;
+		top: 12vw;
+		left: -15vw;
+		width: 67vw;
+		height: 67vw;
+		background: $green-light;
+		box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+		-webkit-border-radius: 50%; 
+		-moz-border-radius: 50%; 
+		border-radius: 50%;
+		z-index: 1;
+	}
+
+	.large-circle {
+		position: absolute;
+		top: 0px;
+		left: -10vw;
+		width: 160vw;
+		height: 160vw;
+		background: $green-dark;
+		box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+		-webkit-border-radius: 50%; 
+		-moz-border-radius: 50%; 
+		border-radius: 50%;
+		z-index: 1;
+	}
+
+	.bg-rect {
+		position: absolute;
+		top: 60vw;
+		left: 0;
+		width: 160vw;
+		height: 160vw;
+		background: $green-dark;
+		// box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+		z-index: 1;
+	}
+}

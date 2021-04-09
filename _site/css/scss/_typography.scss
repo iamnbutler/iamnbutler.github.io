@@ -1,0 +1,135 @@
+// Font smoothing hack
+html, html a {
+    -webkit-font-smoothing: antialiased !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+// Variables
+
+$raleway: 'Raleway', Raleway, "Gotham", Gotham, Helvetica, sans-serif;
+$fira: Fira Sans, "Fira Sans", Helvetica, sans-serif;
+
+// Set default size
+html { font-size: 16px; }
+
+// Font Sizes
+$type-xlarge: 2.375em;
+$type-large: 1.5em;
+$type-medium: 1.125em;
+$type-small: .9375em;
+
+.type-xlarge {
+	font-size: $type-xlarge;
+	letter-spacing: 0.3px;
+	line-height: 1em;
+}
+
+.type-large {
+	font-size: $type-large;
+	letter-spacing: 0;
+	line-height: 1.1em;
+}
+
+.type-medium {
+	font-size: $type-medium;
+	letter-spacing: 0;
+	line-height: 1.3em;
+}
+
+.type-small {
+	font-size: $type-small;
+	letter-spacing: 1.5px;
+	line-height: 1.1em;
+}
+
+// Font Weights
+.type-heavy {
+	font-weight: 900;
+}
+
+.type-semibold {
+	font-weight: 700;
+}
+
+.type-regular {
+	font-weight: 400;
+}
+
+
+// Typography
+h1 {
+	font-family: $raleway;
+	@extend .type-xlarge;
+	@extend .type-heavy;
+	margin: 4px 0;
+}
+
+h2 {
+	font-family: $raleway;
+	@extend .type-large;
+	@extend .type-heavy;
+	margin: 4px 0;
+}
+
+h3 {
+	font-family: $fira;
+	@extend .type-medium;
+	@extend .type-semibold;
+	margin: 4px 0;
+}
+
+h4, .meta {
+	opacity: 0.8;
+	font-family: $fira;
+	@extend .type-small;
+	@extend .type-semibold;
+	margin: 4px 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	&:hover {
+		color: inherit;
+	}
+}
+
+p {
+	@extend .type-medium;
+	@extend .type-regular;
+	margin: 4px 0;
+
+	a {
+		text-decoration: underline;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// Lists
+
+ul {
+	@extend .type-medium;
+	margin: 4px 0;
+}
+
+li {
+	@extend .type-regular;
+	&.list-header {
+		@extend .type-semibold;
+	}
+}
+
+.caption {
+	font-family: $fira;
+	font-style: italic;
+	font-size: 15px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+}
+
+// Fallback Master Type
+html {
+  font-family: $fira;
+}
