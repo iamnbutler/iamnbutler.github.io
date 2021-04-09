@@ -15,7 +15,7 @@ tags:
   - post
   - featured
   - editorial
-show_thumbnail: true
+show_thumbnail: false
 prefer_wide_thumbnail: false
 edit: These are my views alone, and not the views of my employer.
 ---
