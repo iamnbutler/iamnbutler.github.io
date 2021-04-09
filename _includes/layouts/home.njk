@@ -29,7 +29,7 @@ section: home
 
   <section class="home-featured">
     {{ collections.featured | log }}
-    {% set postslist = collections.featured | limit(7) %}
+    {% set postslist = collections.featured | limit(6) %}
     <div class="home-feature-list">
 
       {% for post in postslist | reverse %}
