@@ -11,6 +11,7 @@ date: 2015-11-16T06:12:30.394Z
 date_updated: 2015-11-16T06:12:00.000Z
 tags:
   - post
+  - featured
   - project
   - 3D
 show_thumbnail: true
