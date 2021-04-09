@@ -13,7 +13,6 @@ date: 2020-05-30T10:01:44.717Z
 date_updated: 2020-05-30T10:01:00.000Z
 tags:
   - post
-  - featured
   - editorial
 show_thumbnail: false
 prefer_wide_thumbnail: false
