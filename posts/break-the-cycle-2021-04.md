@@ -7,9 +7,7 @@ summary: Fixing things on my own is something I have always done. So inevitably
   when I ran into troubles with my mental health I thought I would be able to
   deal with them on my own. I didn’t realize at first what I was dealing with. I
   thought I was just a sleep-deprived design student. I thought that everyone
-  felt so tired they could hardly get out of bed every morning, or turned in
-  assignments late and missed classes because they couldn’t bring themselves to
-  leave the house that day...
+  felt so tired they could hardly get out of bed every morning...
 author: Nate Butler
 date: 2016-02-29T11:08:04.007Z
 date_updated: 2016-02-29T11:08:00.000Z
