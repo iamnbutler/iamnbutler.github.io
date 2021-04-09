@@ -1,0 +1,33 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+    - social
+    - media
+    - work
+    - featured
+permalink: /tags/{{ tag }}/
+layout: layouts/base.njk
+renderData:
+  title: "Tagged “{{ tag }}”"
+  metaDescription: "All posts from the Blog tagged with “{{ tag }}”"
+---
+
+<section class="site-content" id="tag">
+	<article>
+    <header>
+      <h1>{{ tag }}</h1>
+    </header>
+
+    {{ layoutContent | safe }}
+
+    {% set postslist = collections[tag] %}
+    {% include "components/postslist.njk" %}
+  </article>
+</section>

@@ -1,0 +1,144 @@
+<section class="header layout-card">
+  <!-- Main Nav – Header -->
+  <div class="nav-top layout-row flex-space-between">
+    <!-- TODO: Add data-current when on the home page -->
+    <a href="{{ '/' | url }}" class="brand-link" {% if page.url == '/' | url %}aria-current="page"{% endif %}>
+      <i class="icon icon-20 brand">
+        {% include "static/img/icon/icon-brand.svg" %}
+      </i>
+    </a>
+    <a href="#" id="system-theme-toggle">
+      <i class="icon icon-20">
+        {% include "static/img/icon/icon-light.svg" %}
+      </i>
+    </a>
+  </div>
+
+  <!-- Main Nav – Search -->
+  <div class="nav-search layout-row">
+    <form action="http://www.google.com/search">
+      <label for=q>Keyword(s):</label>
+      <input type="text" name="post-search" id="post-search">
+      <input type="hidden" name="ie" value="utf-8">
+      <input type="hidden" name="oe" value="utf-8">
+      <input type="submit" value="&rarr;">
+      <i class="icon icon-20 search">
+        {% include "static/img/icon/icon-search.svg" %}
+      </i>
+    </form>
+  </div>
+
+  <!-- Main Nav – Nav List -->
+  <ul class="nav-list">
+    <!-- TODO: Add counts to nav items -->
+    {% set navPages = collections.all | eleventyNavigation %}
+    {%- for entry in navPages %}
+    <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
+      <li {% if entry.url == page.url %}aria-current="page"{% endif %}>
+        <h4>{{ entry.title }}</h4>
+      </li>
+    </a>
+    {%- endfor %}
+  </ul>
+</section>
+
+<!-- Main Nav – Collapsible Card List -->
+<!-- Not every card appears on every page. This is controlled by the template. -->
+<section class="collapsible-card-list">
+  <!-- Collapsible Card List – Table of Contents -->
+  <ul class="layout-card layout-list collapsible-card">
+    <li class="card-header">
+      <h4>Table of Contents</h4>
+      {% include "components/partials/collapse-control.njk" %}
+    </li>
+    <li class="list-item" aria-current="section">
+      <a href="#">Learning to Make</a>
+    </li>
+    <li class="list-item">
+      <a href="#">Visual Research</a>
+    </li>
+    <li class="list-item">
+      <a href="#">Creating a Process</a>
+    </li>
+    <li class="list-item">
+      <a href="#">Taking a Step Back</a>
+    </li>
+    <li class="list-item">
+      <a href="#">Making By Reflecting</a>
+    </li>
+    <li class="list-item">
+      <a href="#">Closing Thoughts</a>
+    </li>
+  </ul>
+  <!-- Collapsible Card List – Category List -->
+  <!-- TODO: Figure out why this list randomly resorts -->
+  <ul class="layout-card layout-list extra-space">
+    <li class="card-header">
+      <h4>Categories</h4>
+      {% include "components/partials/collapse-control.njk" %}
+    </li>
+    {% for tag in collections.tagsList %}
+    {%- if tag != "post" -%}
+    <li class="list-item">
+      <div class="flex-row">
+        <div class="primary">
+          <a href="/tags/{{tag}}" class="text-capitalize">{{tag}}</a>
+        </div>
+        <div class="secondary">
+          {{ collections[tag].length }} Posts
+        </div>
+      </div>
+      <p>TODO: Add tag descriptions.</p>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+
+  <!-- Collapsible Card List – Post List -->
+  <ul class="layout-card layout-list">
+    <li class="card-header">
+      <h4>All Posts</h4>
+      {% include "components/partials/collapse-control.njk" %}
+    </li>
+    {% set postslist = collections.post %}
+    {% for post in postslist | reverse | limit(10) %}
+    <li class="list-item" {% if post.url == url %} data-current="current item" aria-current="page"{% endif %}>
+      <article>
+        
+        <a href="{{ post.url | url }}">
+          {% if post.data.title %}
+            {{ post.data.title }}
+          {% else %}
+            Untitled
+          {% endif %}
+        </a>
+
+        <div class="flex-space-between text-caption text-capitalize">
+        
+          {% if post.data.tags %}
+            <p>
+              {% for tag in post.data.tags | limit(2) %}
+                {%- if tag != "post" -%}
+                  {{ tag }}
+                {%- endif -%}
+              {% endfor %}
+            </p>
+          {% endif %}
+
+          <time datetime="{{ post.date | machineDate }}">
+            <span class="text-uppercase">{{ post.date | mmyy }}</span>
+          </time>
+
+        </div>
+        
+      </article>
+    </li>
+    {% endfor %}
+    <li class="list-item read-more">
+      <a href="/posts">All posts &rarr;</a>
+    </li>
+  </ul>
+  {# <div class="list-footer"></div> #}
+</section>
+<section class="footer">
+</section>

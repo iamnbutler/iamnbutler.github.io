@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+section: post
+---
+
+<section class="site-content" id="post">
+	<article>
+    <header>
+      <div class="inner">
+        <h1>{{ title }}</h1>
+        <h2 class="text-subhead">{{ summary }}</h2>
+        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time> by <a href="/authors/{{ author | slug }}/">{{ author }}</a>
+        {% if tags %}
+          <p>
+          {% for tag in tags %}
+            {%- if tag != "post" -%}
+              {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+              <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+            {%- endif -%}
+          {% endfor %}
+          </p>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="post-content post-rich-text">
+      <div class="inner">
+        {{ layoutContent | safe }}
+      </div>
+    </div>
+
+  </article>
+</section>

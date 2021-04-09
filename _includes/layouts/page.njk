@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+section: page
+---
+<section class="site-content" id="page">
+  <article>
+    <header>
+      <h1>{{ title }}</h1>
+    </header>
+    <section class="page-main">
+      {{ layoutContent | safe }}
+    </section>
+  </article>
+</section>

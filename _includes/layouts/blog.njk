@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+section: blog
+permalink: /blog/index.html
+---
+<section class="site-content" id="blog">
+	<article>
+    <header>
+      <h1>{{ title }}</h1>
+    </header>
+
+    {{ layoutContent | safe }}
+
+    {% set postslist = collections.post %}
+    {% include "components/postslist.njk" %}
+  </article>
+</section>
+
