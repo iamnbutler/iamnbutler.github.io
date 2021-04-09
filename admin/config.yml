@@ -24,7 +24,8 @@ collections:
           required: false,
         }
       - { label: "Title", name: "title", widget: "string" }
-      - { # This isn't hooked up to anything yet
+      - {
+          # This isn't hooked up to anything yet
           label: "Custom Slug",
           name: "custom_slug",
           widget: "string",
@@ -53,13 +54,11 @@ collections:
           default: true,
           required: false,
         }
-      - { 
+      - {
           label: "Thumbnail",
           name: "thumbnail",
           widget: "image",
-          media_library:
-            config:
-              multiple: false,
+          media_library: { config: { multiple: false } },
           media_folder: "/static/img/post/thumbnail",
           required: false,
         }
@@ -70,39 +69,38 @@ collections:
           default: false,
           required: false,
         }
-      - { 
+      - {
           label: "Wide Thumbnail",
           name: "wide_thumbnail",
           widget: "image",
-          media_library:
-            config:
-              multiple: false,
+          media_library: { config: { multiple: false } },
           media_folder: "/static/img/post/thumbnail",
           required: false,
         }
-      - { 
+      - {
           label: "Hero Image",
           name: "hero_image",
           widget: "image",
-          media_library:
-            config:
-              multiple: false,
+          media_library: { config: { multiple: false } },
           media_folder: "/static/img/post/hero",
           required: false,
         }
-      - { 
+      - {
           label: "Image Gallery",
           name: "gallery_images",
           widget: "image",
-          media_library:
-            config:
-              multiple: true,
+          media_library: { config: { multiple: true } },
           media_folder: "/static/img/post/gallery",
           required: false,
         }
       - { label: "Edits", name: "edit", widget: "markdown", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Related Posts", name: "related_posts", widget: "list" }
+      - {
+          label: "Related Posts",
+          name: "related_posts",
+          widget: "list",
+          required: false,
+        }
 
   # Our pages e.g. About
   - name: "pages"
