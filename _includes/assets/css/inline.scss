@@ -326,10 +326,10 @@ i.icon {
   }
 
   .list-meta {
-    @extend .flex-space-between;
     flex-basis: 40%;
     flex-grow: 1;
     flex-shrink: 0;
+    @extend .flex-space-between;
   }
 
   .list-context {
