@@ -1,0 +1,420 @@
+/* = Reset = */
+
+@import "_reset.scss";
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+/* Contain floats. */
+.clearfix:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+// Spacing
+@import "_spacing.scss";
+
+// Color
+@import "_color.scss";
+
+// Typography
+@import "_typography.scss";
+
+// Style
+@import "_style.scss";
+
+html, body {
+	background-color: #ECEDF1;
+	z-index: 0;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+}
+
+.inner {
+	max-width: 360px;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+	.inner {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+}
+
+.shadow-soft {
+	box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+
+// Buttons
+.button {
+	display: block;
+	background-color: rgba(255,255,255,0.10);
+	border-radius: 26px;
+	font-family: $raleway;
+	font-weight: 600;
+	font-size: 18px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	line-height: 20px;
+	padding: 16px;
+	display: inline-block;
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(255,255,255,0.25);
+	}
+
+	&.dark {
+		background-color: $black;
+	}
+
+	i {
+		margin-right: 4px;
+  		vertical-align: middle;
+	}
+
+	span {
+		display: inline-block;
+  		vertical-align: middle;
+	}
+}
+
+.circle-button {
+	width: 44px;
+	height: 44px;
+	padding: 12px;
+	border-radius: 50%;
+	background-color: $green-light;
+	display: block;
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(255,255,255,0.25);
+	}
+}
+
+// Icons 
+.icon {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	background-size: 20px 20px;
+	// background-color: #fff;
+	// border-radius: 50%;
+}
+
+$close: url(../img/close.png);
+$lines: url(../img/lines.png);
+$contact: url(../img/contact.png);
+$mute: url(../img/mute.png);
+$play: url(../img/play.png);
+$up: url(../img/up.png);
+
+$portrait: url(../img/portrait.jpg);
+
+// Thumbs
+$avatarProjectThumb: url(../img/avatar_project_thumb.png);
+
+.icon-lines {
+	background-image: $lines;
+}
+
+.icon-contact {
+	background-image: $contact;
+}
+
+.icon-close {
+	background-image: $close;
+}
+
+.icon-mute {
+	background-image: $mute;
+}
+
+.icon-play {
+	background-image: $play;
+}
+
+.icon-up {
+	background-image: $up;
+}
+
+// Projects
+
+.card {
+	&.project {
+		&.avatar {
+			padding-right: 0px;
+			.project-thumb {
+				margin-top: 16px;
+				background-image: $avatarProjectThumb;
+				background-size: auto 256px;
+				height: 256px;
+				width: 100%;
+			}
+		}
+	}
+}
+
+//
+//  Header  //
+//
+
+header#site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 4px;
+	z-index: 11;
+
+	.circle-button {
+		background-color: rgba(255,255,255,0.1);
+		margin: 8px;
+		@extend .shadow-soft;
+	}
+
+	#about-nav {
+		display: block;
+		flex-grow: 2;
+		background-color: rgba(255,255,255,0.1);
+		border-radius: 22px;
+		font-family: $raleway;
+		text-transform: uppercase;
+		color: $white;
+		letter-spacing: 1.2px;
+		text-align: center;
+		line-height: 20px;
+		padding: 12px;
+		margin: 8px;
+		font-size: $type-large;
+		@extend .shadow-soft;
+	}
+
+	.inner {
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+//
+//  Cards  //
+//
+
+.card {
+	border-radius: 24px;
+	padding: 16px;
+	@extend .shadow-soft;
+
+}
+
+.home .card {
+	background: $green-light;
+
+	&.project {
+		min-height: 396px;
+	}
+
+	.meta {
+		padding-bottom: 4px;
+	}
+}
+
+// Home
+
+.home {
+	padding-top: 52px;
+}
+
+.home .card {
+	&.home-reel {
+		background-color: #0C0C0C;
+		height: 419px;
+		padding: 0;
+		position: relative;
+		// padding-top: 64px;
+
+		footer {
+			width: 100%;
+			position: absolute;
+			bottom: 16px;
+			text-align: center;
+
+			.button {
+				display: inline-block;
+			}
+
+		}
+
+		.preview {
+			background-image: url(../img/portrait_glitch.gif);
+			width: 90%;
+			height: 90%;
+			background-size: auto 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0 5%;
+			padding: 5% 0;
+		}
+	}
+
+	&.intro {
+		p {
+			margin-top: 8px;
+		}
+		a {
+			margin-top: 8px;
+			font-size: 16px;
+			font-weight: 800;
+			letter-spacing: 0;
+			line-height: 24px;
+			display: block;
+
+			&:hover {
+				color: rgba(255,255,255,0.85);
+			}
+		}
+	}
+
+	&.project {
+		background-color: $green-30;
+	}
+}
+
+//
+//  Background  //
+//
+
+.background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	.circle {
+		border-radius: 50%;
+		&.large {
+			width: 664px;
+			height: 664px;
+			background-color: $green-dark;
+			position: absolute;
+			left: -117px;
+			top: -104px;
+		}
+	}
+}
+
+//
+//  Overlay  //
+//
+
+#overlay {
+	position: fixed;
+	display: none;
+	z-index: 12;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	// transition: 0.4s all;
+
+	&.open {
+		// transition: 0.4s all;
+		display: block;
+	}
+
+	& > footer {
+		width: 100%;
+		position: absolute;
+		bottom: 16px;
+		text-align: center;
+
+		button {
+			display: inline-block;
+
+			
+		}
+
+		.icon {
+			margin-right: 4px;
+		}
+	}
+}
+
+//
+//  Overlay – Nav Menu //
+//
+
+#nav-menu {
+	position: absolute;
+	overflow: scroll;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+
+	ul {
+		width: 100%;
+		padding: 8px 8px;
+	}
+
+	ul > li {
+		@extend .card;
+		background-color: #fff;
+		width: calc(50% - 16px);
+		float: left;
+		opacity: 0;
+		position: relative;
+
+		margin: 8px;
+		min-height: 216px;
+
+		&.wide {
+			width: calc(100% - 16px);
+		}
+
+		&.short {
+			height: 60px;
+			min-height: 60px;
+		}
+
+		&:last-child {
+			margin-bottom: 100px;
+		}
+	}
+}
+
+#overlay.open {
+	#nav-menu ul > li {
+		opacity: 1;
+	}
+}
+
+// Loop from 1-9.
+// @for $i from 1 through 9 {
+//   #nav-menu li {
+//     &:nth-child(#{$i}) {
+      
+//       // Delay the animation. Delay increases as items loop.
+//       animation-delay: $i * (.03s);
+//     }
+//   }
+// }
+
+//
+//  Lightbox  //
+//
+
+.lightbox {
+	position: absolute;
+	opacity: 0;
+	z-index: 12;
+}
+@import "_content.scss";
+@import "_projects.scss";
+@import "_footer.scss";

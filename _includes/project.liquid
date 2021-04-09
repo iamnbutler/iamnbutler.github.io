@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  {% include siteheader %}
+  <body>
+    {% include overlay %}
+    {% include header %}
+    <div class="page-header type-light">
+      <div class="header-spacer"></div>
+      <div class="inner">
+        <div class="project-header">
+          <h4>{{ year }} · Project</h4>
+          <h1 class="project-title">{{ title }}</h1>
+          <p class="project-tagline">
+            {{ tagline}}
+          </p>
+          <img src="/img/{{ desktopThumb }}" alt="" class="desktop-thumb">
+        </div>
+      </div>
+      <div class="page-header-background">
+        <div class="circle center-circle"></div>
+      </div>
+    </div>
+    <main class="content project">
+      <div class="inner project-body space-top-small space-bottom">
+        {{ content | safe }}
+      </div>
+    </main>
+    {% include footer %}
+  </body>
+</html>

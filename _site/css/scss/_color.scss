@@ -1,0 +1,21 @@
+// Color
+
+$white: #F0F2F5;
+$black: #000000;
+$green-dark: #175844;
+$green-30: #70AB99;
+$green-light: #488774;
+
+// Text Colors
+
+.type-light {
+	color: $white;
+}
+
+.type-theme {
+	color: $green-dark;
+}
+
+.type-dark {
+	color: $black;
+}
