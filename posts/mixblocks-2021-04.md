@@ -1,6 +1,6 @@
 ---
 post_visible: true
-title: MIXBLOCKS
+title: mixblocks
 subtitle: Social creativity, without the icky.
 summary: Learn, create & remix with light and sound. mixblocks lets you create
   small, open source blocks that anyone can use to make creations, license
