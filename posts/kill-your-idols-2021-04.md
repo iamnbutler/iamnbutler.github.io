@@ -13,8 +13,7 @@ date: 2016-02-29T10:57:18.430Z
 date_updated: 2016-02-29T10:57:00.000Z
 tags:
   - post
-  - featured
-  - thoughts
+  - editoria
 show_thumbnail: false
 prefer_wide_thumbnail: false
 ---
