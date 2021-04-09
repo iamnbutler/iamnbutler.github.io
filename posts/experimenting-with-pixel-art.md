@@ -1,17 +1,17 @@
 ---
-title: Experimenting with Pixel Art
+title: Exploring Pixel Art
 custom_slug: learning-pixel-art
-subtitle: Studies I've been working on to learn a bit of Pixel Art.
+subtitle:
 date: 2016-08-09T07:02:25.649Z
 author: Nate Butler
-summary: I've been exploring the crazy world of Pixel Art the past few weeks.
-  It's insane the amount of detail and love that goes into these things...
+summary: I've been exploring the crazy world of Pixel Art the past few weeks. It's insane the amount of detail and love that goes into these things. There is this super interesting balance of retro and techniques and looks that continue to evolve, even as more efficient ways of creating art are developed...
 tags:
   - post
   - project
   - art
   - featured
 featured: true
+show_thumbnail: "false"
 thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bbc5340c96d7b8259b81a_Untitled.png
 ---
 

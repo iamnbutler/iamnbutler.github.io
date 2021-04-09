@@ -10,7 +10,6 @@ tags:
   - post
   - design
   - project
-  - featured
 featured: true
 thumbnail_url: static/img/post/3d-2017-thumbnail-1x1.jpeg
 ---

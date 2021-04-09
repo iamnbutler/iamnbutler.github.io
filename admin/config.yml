@@ -42,7 +42,7 @@ collections:
           label: "Show Thumbnail",
           name: "show_thumbnail",
           widget: "boolean",
-          default: ["false"],
+          default: ["true"],
           required: false,
         }
       - {

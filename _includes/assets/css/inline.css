@@ -621,12 +621,12 @@ main {
   display: none;
 }
 
-.home-feature-list .layout-tile:nth-child(1) .subtitle {
-  display: none;
-}
-
 .home-feature-list .layout-tile:nth-child(2) .thumbnail, .home-feature-list .layout-tile:nth-child(3) .thumbnail {
   padding-bottom: 50%;
+}
+
+.home-feature-list .layout-tile:nth-child(2) .thumbnail-regular, .home-feature-list .layout-tile:nth-child(3) .thumbnail-regular {
+  display: none;
 }
 
 .home-feature-list .layout-tile:nth-child(2) {

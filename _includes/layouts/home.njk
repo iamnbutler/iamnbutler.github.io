@@ -29,24 +29,23 @@ section: home
 
   <section class="home-featured">
     {{ collections.featured | log }}
-    {% set postslist = collections.featured | limit(6) %}
+    {% set postslist = collections.featured | limit(7) %}
     <div class="home-feature-list">
 
       {% for post in postslist | reverse %}
       <a href="{{ post.url | url }}" class="layout-tile">
 
         <!-- TODO: Do something smarter here -->
+        {%- if post.data.show_thumbnail != "false" -%}
         <div class="thumbnail">
-          {# {%- if post.data.thumbnail_url -%} #}
           <div class="thumbnail-regular">
             <img src="{{ post.data.thumbnail_url }}" alt="Image Placeholder">
           </div>
-          {# <div class="thumbnail-wide">
+          <div class="thumbnail-wide">
             <img src="{{ post.data.thumbnail_wide_url }}" alt="Image Placeholder">
-          </div> #}
-          {# {% else %} #}
-          {# {% endif %} #}
+          </div>
         </div>
+        {% endif %}
 
         <div class="post-preview">
           <div class="preview-content">

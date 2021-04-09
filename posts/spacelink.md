@@ -1,23 +1,21 @@
 ---
 title: Spacelink
+subtitle: An exploration of infinite space and communication.
 custom_slug: spacelink
 date: 2016-05-11T05:43:21.121Z
 date_updated:
 author: Nate Butler
-summary: An exploration of infinite space and communication.
+summary: The ideas of space, space travel and communication in space have always fascinated me. As this is an art project I wanted to take a personal approach, exploring a topic that is important to me. The goal of the assignment is to use a dataset to create art.
 tags:
   - post
   - project
   - design
   - featured
 featured: true
-thumbnail_url:
+show_thumbnail: "false"
 ---
 
-<p>This project is an exploration of infinite space and communication. The ideas of space, space travel and
-  communication in space have always fascinated me. As this is an art project I wanted to take a personal approach,
-  exploring a topic that is important to me. The goal of the assignment is to use a dataset to create art. I struggled
-  to find a dataset that would allow me to do exactly what I wanted, so I decided to use the data I found as a creative
+<p>This project is an exploration of infinite space and communication. The ideas of space, space travel and communication in space have always fascinated me. As this is an art project I wanted to take a personal approach, exploring a topic that is important to me. The goal of the assignment is to use a dataset to create art. I struggled to find a dataset that would allow me to do exactly what I wanted, so I decided to use the data I found as a creative
   medium rather than to use it as a direction for my narrative.</p>
 <p>The visual style of the piece was inspired by old technology. The dataset is from 1995, as well as the “glory days”
   of NASA are in the past as well. The movement of the map is designed after tape-based data storage, where data would

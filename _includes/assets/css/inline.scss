@@ -637,16 +637,15 @@ main {
       .thumbnail-wide {
         display: none;
       }
-
-      .subtitle {
-        display: none;
-      }
     }
 
     &:nth-child(2),
     &:nth-child(3) {
       .thumbnail {
         padding-bottom: 50%;
+      }
+      .thumbnail-regular {
+        display: none;
       }
     }
 

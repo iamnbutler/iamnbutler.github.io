@@ -14,8 +14,8 @@ tags:
   - tip
   - featured
 featured: true
-thumbnail_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
-thumbnail_wide_url: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604588753fdb244e04e47e20_emc_test.jpg
+thumbnail_url: static/img/post/making-jewelry-with-3d-printing-thumbnail-1x1.jpg
+thumbnail_wide_url: static/img/post/making-jewelry-with-3d-printing-thumbnail-2x1.jpg
 ---
 
 My wife is a huge Kingdom Hearts fan, so once I discovered that 3D printing metal was not only possible, but also not overly expensive, I decided I'd make her a custom Keyblade piece.

@@ -1,22 +1,21 @@
 ---
+title: Desk Gear & Setup Guide
+subtitle: Spending more time working from home? Here are some ways to level up
+  your setup.
 summary: I've compiled together a list of all the high quality desk/work from
   home gear I've used or know of in one place (so you don't have to waste money
   on things that are not great!) This is the list I wish I had when I started
   building my setup!
-feature_visual: 0
 date_updated: 2021-04-03
-title: Desk Gear & Setup Guide
 custom_slug: desk-gear-setup-guide
-subtitle: Spending more time working from home? Here are some ways to level up
-  your setup.
 date: 2021-03-26T05:43:21.121Z
 author: Nate Butler
-thumbnail: yes
 tags:
   - post
   - tip
   - featured
 featured: true
+show_thumbnail: "true"
 thumbnail_url: static/img/post/desk-guide-thumbnail-1x1.png
 thumbnail_wide_url: static/img/post/desk-guide-thumbnail-2x1.png
 ---

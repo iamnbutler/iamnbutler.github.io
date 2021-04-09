@@ -1,7 +1,7 @@
 ---
 title: Thoughts on Vision Design
 custom_slug: ""
-subtitle: Is this another made up designer title? Or is there something real here?
+subtitle: Something more than a made up title?
 date: 2021-03-04T08:06:38.725Z
 author: Nate Butler
 summary: I've been thinking about this over the past few years. The type of work
@@ -13,7 +13,7 @@ tags:
   - design
   - editorial
   - featured
-featured: true
+show_thumbnail: "false"
 ---
 
 I've been thinking about this over the past few years. The type of work I like to do and excel at tending to fall into a very specific portion of a project, and I found the further along a project got, the less efficient my time was and the less value I was producing. In contrast, the earlier I was into a project, the more efficient and valuable my contributions have been.
