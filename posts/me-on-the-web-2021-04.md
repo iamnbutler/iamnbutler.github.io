@@ -4,10 +4,9 @@ title: Me on the Web
 subtitle: A peak into my sketchbooks as I look back at all the directions I've
   explored for my personal site.
 summary: I have many, many, many times explored new directions for my personal
-  site. (My record of new direction to launched site is pretty abysmal, maybe
-  10:1 T__T) Those designs end up just living in a folder somewhere, so I wanted
-  to give them a place to live here. It's cool to look back over the years at
-  all the different directions, and watch the trends come and go.
+  site. Those designs end up just living in a folder somewhere, so I wanted to
+  give them a place to live here. It's cool to look back over the years at all
+  the different directions, and watch the trends come and go.
 author: Nate Butler
 date: 2021-03-12T11:17:01.350Z
 date_updated: 2021-03-12T11:17:00.000Z
@@ -16,8 +15,9 @@ tags:
   - featured
   - design
 show_thumbnail: true
-thumbnail: https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bbb590e0fb42da5ec0730_Screen%20Shot%202021-03-12%20at%2011.00.21%20AM.png
+thumbnail: /static/img/post/thumbnail/frame-27.jpg
 prefer_wide_thumbnail: false
+wide_thumbnail: /static/img/post/thumbnail/frame-28.jpg
 edit: This post may evolve over time as I find more old work, and new
   explorations are done!
 ---
