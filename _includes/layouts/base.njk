@@ -1,0 +1,48 @@
+<!doctype html>
+<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
+
+	{% include "components/head.njk" %}
+
+	<body>
+		<nav class="skip-nav">		
+			<p>Jump to: <a href="#main-content">Main Content</a> | <a href="#main-nav">Main Navigation</a> | <a href="#site-footer">Footer</a></p>
+		</nav>
+		<div class="site-grid">
+			<notice>
+				<div class="mobile-disclaimer">
+					<p>Mobile styles soon. Slammed getting everything up and running. Thanks for the patience 🙏🏽</p>
+				</div>
+			</notice>
+
+			<nav id="main-nav">
+				{% include "components/nav.njk" %}
+			</nav>
+
+			<main id="main-content">
+				{{ layoutContent | safe }}
+				{% include "components/footer.njk" %}
+			</main>
+		</div>
+
+		<!-- Site Background -->
+		<div class="site-bg">
+			<svg width="100%" height="100%">
+				<defs>
+					<pattern id="site-bg-lines" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+						<g clip-path="url(#clip0)">
+							<path d="M-1 50L50 -1" stroke="#333333"/>
+							<path d="M48 51L100 -1" stroke="#333333"/>
+						</g>       
+					</pattern>
+					<clipPath id="clip0">
+						<rect width="50" height="50" fill="white"/>
+					</clipPath>
+				</defs>
+			
+				<rect x="0" y="0" width="100%" height="100%" fill="url(#site-bg-lines)"></rect>
+			</svg>
+		</div>
+
+	</body>
+
+</html>

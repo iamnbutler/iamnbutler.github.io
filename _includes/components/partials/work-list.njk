@@ -1,0 +1,30 @@
+<!-- Work List – work-list.njk -->
+{% set worklist = collections.work %}
+<ul class="layout-list work-list">
+
+  <li class="list-header">
+    <h4>Selected Work</h4>
+    
+  </li>
+
+  <li class="list-context">
+    <p>Work pages coming soon!</p>
+  </li>
+
+  {% for work in worklist | limit(8) %}
+  <li class="list-item">
+    <header>
+      <div class="list-title">
+        <p class="work-title">{{ work.data.title }}</p>
+      </div>
+      <div class="list-meta">
+        <p class="work-year">{{ work.data.year }}</p>
+    </header>
+  </li>
+  {% endfor %}
+  
+  <li class="list-item list-footer">
+    <a href="/posts">All work &rarr;</a>  
+  </li>
+
+</ul>

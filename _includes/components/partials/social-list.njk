@@ -1,0 +1,21 @@
+<!-- Social List – social-list.njk -->
+{% set sociallist = collections.social %}
+<ul class="layout-list social-list">
+
+  <li class="list-header">
+    <h4>Elsewhere</h4>
+  </li>
+
+  {% for social in sociallist %}
+  <li class="list-item">
+    <header>
+      <div class="list-title">
+        <a href="{{ social.url | url }}">{{ social.data.title }}</a>
+      </div>
+      <div class="list-meta">
+        <p class="description">{{ social.data.description }}</p>
+    </header>
+  </li>
+  {% endfor %}
+  
+</ul>
