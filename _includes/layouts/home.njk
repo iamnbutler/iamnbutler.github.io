@@ -28,7 +28,6 @@ section: home
   </section>
 
   <section class="home-featured">
-    {{ collections.featured | log }}
     {% set postslist = collections.featured | limit(7) %}
     <div class="home-feature-list">
 
