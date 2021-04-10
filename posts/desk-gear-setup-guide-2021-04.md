@@ -25,29 +25,19 @@ thumbnail: /static/img/post/thumbnail/desk-setup-guide-1x1.jpg
 prefer_wide_thumbnail: true
 wide_thumbnail: /static/img/post/thumbnail/desk-setup-guide-2x1.jpg
 hero_image: /static/img/post/hero/desk-setup-guide-hero.jpg
-edit: Image from Unsplash.
+edit: ""
 ---
-
-
 ### Overview + Methodology
 
 I've always been a huge tech nerd and a bit of a spendaholic, so I've compiled together a list of all the high quality desk/work from home gear I've used or know of in one place (so you don't have to waste money on things that are not great!) This is the list I wish I had when I started building my setup!
 
 These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. I'll call out anything in this list that I haven't personally owned or used.
 
-(VC = Video conferencing = Remote meetings like Zoom, etc.)
-
-Jump to a section:
-
-[The Gear](https://yaminateo.webflow.io/p/desk-gear-setup-guide#the-gear) [The Setup](https://yaminateo.webflow.io/p/desk-gear-setup-guide#the-setup) [General Thoughts](https://yaminateo.webflow.io/p/desk-gear-setup-guide#general-thoughts)
-
 ## THE GEAR
 
 ### Computer
 
-You probably already have on of these, but in case you are shopping around, here is what I recommend in 2021.
-
-‍
+You probably already have on of these, but in case you are shopping around, here is what I recommend in 2021.‍
 
 ##### Macs
 
