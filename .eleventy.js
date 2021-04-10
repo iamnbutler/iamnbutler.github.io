@@ -2,7 +2,10 @@ const { DateTime } = require("luxon");
 const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
+const uslug = require("uslug");
+const uslugify = (s) => uslug(s);
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+// TODO: Switch ToC to https://www.npmjs.com/package/markdown-it-toc-done-right
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 
 module.exports = function (eleventyConfig) {
@@ -13,13 +16,27 @@ module.exports = function (eleventyConfig) {
   module.exports = function (eleventyConfig) {
     let markdownIt = require("markdown-it");
     let markdownItEmoji = require("markdown-it-emoji");
-    let markdownItAnchor = require("markdown-it-anchor");
     let options = {
-      html: true,
+      html: false,
+      xhtmlOut: true,
       linkify: true,
       typographer: true,
+      permalink: true,
     };
-    let markdownLib = markdownIt(options).use(markdownItEmoji);
+    let anchor_options = {
+      slugify: uslugify,
+      permalink: ture,
+      renderPermalink,
+      permalinkClass: "header-anchor",
+      permalinkSpace: true,
+      permalinkSymbol: "#",
+      permalinkBefore: true,
+      permalinkHref,
+      permalinkAttrs,
+    };
+    let markdownLib = markdownIt(options)
+      .use(markdownItEmoji)
+      .use(require("markdown-it-anchor"), anchor_options);
 
     eleventyConfig.setLibrary("md", markdownLib);
   };

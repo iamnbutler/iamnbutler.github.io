@@ -732,9 +732,11 @@ main {
   }
 
   .edit {
+    display: inline-block;
     border-left-width: 5px;
     @extend .border-all;
     @extend .layout-frame;
+    @extend .layout-space-large;
   }
 
   .post-content {
@@ -763,6 +765,7 @@ main {
     widows: 2;
   }
 
+  h3,
   h4 {
     margin: 20px 0 10px 0;
   }

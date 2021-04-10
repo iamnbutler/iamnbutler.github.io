@@ -269,7 +269,7 @@ i.icon.frame {
 }
 
 .layout-space-large, .layout-list.spaced-list .list-header,
-.layout-list.spaced-list .list-item:not(:last-child), .collapsible-card-list .card-header, .nav-top, .nav-search, #post .hero-image-wrapper {
+.layout-list.spaced-list .list-item:not(:last-child), .collapsible-card-list .card-header, .nav-top, .nav-search, #post .hero-image-wrapper, #post .edit {
   margin-bottom: 20px;
 }
 
@@ -713,6 +713,7 @@ main {
 }
 
 #post .edit {
+  display: inline-block;
   border-left-width: 5px;
 }
 
@@ -735,6 +736,7 @@ main {
   widows: 2;
 }
 
+.post-rich-text h3,
 .post-rich-text h4 {
   margin: 20px 0 10px 0;
 }
