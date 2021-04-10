@@ -5,9 +5,10 @@
 
 // Global Variables
 $border: #333;
+$unit: 10;
 
 :root {
-  --unit: 10;
+  --unit: $unit;
   --primary: #000;
   --secondary: white;
   --background: white;
@@ -15,6 +16,7 @@ $border: #333;
   --hover: #f2f2f2;
   --pressed: #d9d9d9;
   --highlight: #00ffff;
+  --highlight-soft: rgba(0, 255, 255, 0.3);
   --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
     "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
   --headlines: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
@@ -186,6 +188,9 @@ li {
 .text-link {
   text-decoration: underline;
   text-underline-offset: 2px;
+  &:hover {
+    background-color: var(--highlight-soft);
+  }
 }
 
 code {
@@ -685,6 +690,30 @@ main {
     }
   }
 
+  .hero-image-wrapper {
+    @extend .layout-space-large;
+    @extend .border-all;
+  }
+
+  .hero-image {
+    margin: 0;
+    position: relative;
+
+    img {
+      object-fit: cover;
+      display: block;
+    }
+
+    figcaption {
+      position: absolute;
+      bottom: 2 * $unit + px;
+      right: 20px;
+      @extend .layout-frame;
+      @extend .border-all;
+      background-color: var(--background);
+    }
+  }
+
   .post-content {
     border-bottom: 1px solid var(--border);
     @extend .layout-frame.large;
@@ -701,11 +730,19 @@ main {
     margin-bottom: 10px;
   }
 
+  p a {
+    @extend .text-link;
+  }
+
   h1,
-  h2,
+  h2 {
+    margin: 50px 0 10px 0;
+    widows: 2;
+  }
+
   h3,
   h4 {
-    margin: 10px 0;
+    margin: 20px 0 10px 0;
   }
 }
 

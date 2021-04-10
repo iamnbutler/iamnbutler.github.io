@@ -32,11 +32,13 @@ section: post
     <div class="post-content post-rich-text">
       
       {% if hero_image %}
-      <figure class="hero-image layout-space">
-        <img src="{{ hero_image }}"
-            alt="{{ title }}">
-        <figcaption>This is an example hero image caption.</figcaption>
-      </figure>
+      <section class="hero-image-wrapper">
+        <figure class="hero-image">
+          <img src="{{ hero_image }}"
+              alt="{{ title }}">
+          <figcaption>Photo credit: <a href="https://unsplash.com/@slavasfotos">Slava Keyzman</a></figcaption>
+        </figure>
+      </section>
       {% endif %}
       
       <div class="inner">

@@ -1,7 +1,7 @@
 @import url(/Users/natebutler/Documents/GitHub/iamnbutler.github.io/_includes/assets/css/normalize.css);
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 :root {
-  --unit: 10;
+  --unit: $unit;
   --primary: #000;
   --secondary: white;
   --background: white;
@@ -9,6 +9,7 @@
   --hover: #f2f2f2;
   --pressed: #d9d9d9;
   --highlight: #00ffff;
+  --highlight-soft: rgba(0, 255, 255, 0.3);
   --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
     "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
   --headlines: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
@@ -36,7 +37,7 @@ body {
 }
 
 /* || Helpers */
-.border-all, .site-grid, .skip-nav {
+.border-all, .site-grid, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption {
   border: 1px solid var(--border);
 }
 
@@ -164,9 +165,13 @@ li {
   margin: 0;
 }
 
-.text-link, .layout-list a {
+.text-link, .layout-list a, .post-rich-text p a {
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.text-link:hover, .layout-list a:hover, .post-rich-text p a:hover {
+  background-color: var(--highlight-soft);
 }
 
 code {
@@ -222,11 +227,11 @@ i.icon.frame {
 /* |x End Typography */
 /* || Layout */
 /* Layout Helpers */
-.layout-frame, .nav-list li {
+.layout-frame, .nav-list li, #post .hero-image figcaption {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .post-content {
+.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .post-content {
   padding: 20px 20px;
 }
 
@@ -262,7 +267,7 @@ i.icon.frame {
 }
 
 .layout-space-large, .layout-list.spaced-list .list-header,
-.layout-list.spaced-list .list-item:not(:last-child), .collapsible-card-list .card-header, .nav-top, .nav-search {
+.layout-list.spaced-list .list-item:not(:last-child), .collapsible-card-list .card-header, .nav-top, .nav-search, #post .hero-image-wrapper {
   margin-bottom: 20px;
 }
 
@@ -679,6 +684,24 @@ main {
   margin-bottom: 10px;
 }
 
+#post .hero-image {
+  margin: 0;
+  position: relative;
+}
+
+#post .hero-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+#post .hero-image figcaption {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--background);
+}
+
 #post .post-content {
   border-bottom: 1px solid var(--border);
 }
@@ -693,10 +716,14 @@ main {
 }
 
 .post-rich-text h1,
-.post-rich-text h2,
+.post-rich-text h2 {
+  margin: 50px 0 10px 0;
+  widows: 2;
+}
+
 .post-rich-text h3,
 .post-rich-text h4 {
-  margin: 10px 0;
+  margin: 20px 0 10px 0;
 }
 
 /* |x End Layout */
