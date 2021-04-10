@@ -41,6 +41,10 @@ body {
   border: 1px solid var(--border);
 }
 
+.border-top, #main-content > footer {
+  border-top: 1px solid var(--border);
+}
+
 .border-bottom {
   border-bottom: 1px solid var(--border);
 }
@@ -253,7 +257,7 @@ i.icon.frame {
           align-items: flex-start;
 }
 
-.flex-space-between, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header {
+.flex-space-between, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header, #main-content > footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -584,6 +588,13 @@ main {
 
 .nav-toc li li {
   margin-left: 20px;
+}
+
+/* ================================ */
+/* Footer                          */
+/* ============================== */
+#main-content > footer {
+  background-color: var(--background);
 }
 
 /* ================================ */

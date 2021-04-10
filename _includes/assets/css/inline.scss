@@ -54,6 +54,10 @@ body {
   border: 1px solid var(--border);
 }
 
+.border-top {
+  border-top: 1px solid var(--border);
+}
+
 .border-bottom {
   border-bottom: 1px solid var(--border);
 }
@@ -618,6 +622,16 @@ main {
       margin-left: 2 * $unit + px;
     }
   }
+}
+
+/* ================================ */
+/* Footer                          */
+/* ============================== */
+
+#main-content > footer {
+  background-color: var(--background);
+  @extend .border-top;
+  @extend .flex-space-between;
 }
 
 /* ================================ */
