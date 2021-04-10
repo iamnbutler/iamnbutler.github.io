@@ -12,8 +12,8 @@ summary: >-
 
   These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. I'll call out anything in this list that I haven't personally owned or used.
 author: Nate Butler
-date: 2021-04-09T08:47:53.609Z
-date_updated: ""
+date: 2021-03-15T20:15:12.985Z
+date_updated: 2021-04-10T20:15:08.334Z
 tags:
   - post
   - featured
@@ -25,15 +25,18 @@ thumbnail: /static/img/post/thumbnail/desk-setup-guide-1x1.jpg
 prefer_wide_thumbnail: true
 wide_thumbnail: /static/img/post/thumbnail/desk-setup-guide-2x1.jpg
 hero_image: /static/img/post/hero/desk-setup-guide-hero.jpg
-edit: ""
+edit: Updated as of 2021. Will update this guide as I find new ideas and good
+  hardware!
 ---
-### Overview + Methodology
+I've been working on my desk setup religiously for a few years now, and have experimented with my fair share of hardware and desk layouts. To hopefully save you some pain, I've compiled together this guide. 
 
-I've always been a huge tech nerd and a bit of a spendaholic, so I've compiled together a list of all the high quality desk/work from home gear I've used or know of in one place (so you don't have to waste money on things that are not great!) This is the list I wish I had when I started building my setup!
+In the first half I've created a list of all the high quality desk/work from home gear I've used or know of in one place (so you don't have to waste money on things that are not great!) This is the list I wish I had when I started building my setup!
 
-These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. I'll call out anything in this list that I haven't personally owned or used.
+In the second half I'll go through desk layout, lighting, ergonomics and more to help you be comfortable, productive and efficient! There will be a few cool tips & tricks here too!
 
 ## THE GEAR
+
+These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. I'll call out anything in this list that I haven't personally owned or used.
 
 ### Computer
 
@@ -256,6 +259,8 @@ I haven't owned this one either, but it looks pretty solid, and the cable holder
 ‍
 
 ### Monitor Stands, Arms & Risers
+
+
 
 [Wood Desk Shelf](https://grovemade.com/product/wood-desk-shelf/?initial=342) – [Grovemade](https://grovemade.com/)
 
