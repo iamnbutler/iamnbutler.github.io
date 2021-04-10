@@ -45,7 +45,12 @@ collections:
           default: "Nate Butler",
         }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Last Updated", name: "date_updated", widget: "datetime" }
+      - {
+          label: "Last Updated",
+          name: "date_updated",
+          widget: "datetime",
+          required: false,
+        }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
       - {
           label: "Show Thumbnail",
