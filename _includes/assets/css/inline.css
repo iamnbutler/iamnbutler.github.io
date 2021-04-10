@@ -117,8 +117,9 @@ h4 {
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
+  font-family: var(--body-copy);
 }
 
 h6 {
@@ -262,7 +263,7 @@ i.icon.frame {
 
 .layout-space, .layout-list .list-item:not(:last-child),
 .layout-list .list-context:not(:last-child),
-.layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child) {
+.layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child), .post-rich-text h5 {
   margin-bottom: 10px;
 }
 

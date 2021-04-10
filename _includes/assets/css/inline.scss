@@ -133,8 +133,9 @@ h4 {
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
+  font-family: var(--body-copy);
 }
 
 h6 {
@@ -749,6 +750,10 @@ main {
   h3,
   h4 {
     margin: 20px 0 10px 0;
+  }
+
+  h5 {
+    @extend .layout-space;
   }
 }
 
