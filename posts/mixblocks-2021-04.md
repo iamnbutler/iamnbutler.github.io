@@ -14,8 +14,8 @@ tags:
   - design
   - project
 show_thumbnail: true
-thumbnail: /static/img/post/thumbnail/thumbnail.jpg
+thumbnail: /static/img/post/thumbnail/mixblocks-1x1.jpg
 prefer_wide_thumbnail: false
-wide_thumbnail: /static/img/post/thumbnail/thumbnail-2x1.jpg
+wide_thumbnail: /static/img/post/thumbnail/mixblocks-2x1.jpg
 ---
 Inspired by a project a friend did recently about a display that reacts to your music, I started exploring mixblocks.
