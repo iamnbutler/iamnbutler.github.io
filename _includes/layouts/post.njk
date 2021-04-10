@@ -8,18 +8,24 @@ section: post
     <header>
       <div class="inner">
         <h1>{{ title }}</h1>
-        <h2 class="text-subhead">{{ summary }}</h2>
-        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time> by <a href="/authors/{{ author | slug }}/">{{ author }}</a>
-        {% if tags %}
-          <p>
+        <p class="subtitle layout-space">{{ subtitle }}</p>
+        <p>
+          <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
+          {% if date_updated %}
+          <time datetime="{{ date_updated | machineDate }}">(Updated {{ date_updated | readableDate }})</time>
+          {% endif %}
+          &mdash;
+
+          {% if tags %}
           {% for tag in tags %}
-            {%- if tag != "post" -%}
-              {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-              <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-            {%- endif -%}
+          {%- if tag != "post" -%}
+          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+          <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+          {%- endif -%}
           {% endfor %}
-          </p>
+
         {% endif %}
+        </p>
       </div>
     </header>
 
