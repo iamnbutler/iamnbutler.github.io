@@ -237,11 +237,11 @@ i.icon.frame {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
+.layout-frame.large, .layout-card, #posts, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
   padding: 20px 20px;
 }
 
-.layout-card {
+.layout-card, #posts {
   background-color: var(--background);
 }
 
@@ -337,6 +337,14 @@ i.icon.frame {
 
 .layout-list .list-context {
   max-width: 500px;
+}
+
+.layout-list .list-content {
+  margin-top: 10px;
+}
+
+.layout-list .list-description {
+  max-width: 80%;
 }
 
 .layout-list p {

@@ -1,0 +1,112 @@
+---
+layout: layouts/base.njk
+section: posts
+---
+
+<section class="site-content" id="posts">
+	<article>
+    <header>
+      <h1>{{ title }}</h1>
+    </header>
+
+    {{ layoutContent | safe }}
+
+    <ul class="layout-list">
+    {% set postslist = collections.post %}
+    {% for post in postslist | reverse %}
+      <li class="list-item">
+        <article{% if post.url == url %} data-current="current item"{% endif %}>
+            <header>
+              <div class="list-title">
+                <a href="{{ post.url | url }}">
+                  {% if post.data.title %}
+                    {{ post.data.title }}
+                  {% else %}
+                    Untitled
+                  {% endif %}
+                </a>
+              </div>
+              <div class="list-meta">
+                <div class="post-tag">
+                  {% if post.data.tags %}
+                  <p>
+                    {% for tag in post.data.tags | limit(3) %}
+                      {%- if tag != "post" -%}
+                        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+                        <a href="{{ tagUrl | url }}" rel="tag" class="text-capitalize">{{ tag }}</a>
+                      {%- endif -%}
+                    {% endfor %}
+                  </p>
+                  {% endif %}
+                </div>
+                <div class="post-date date-MY text-uppercase">
+                  <time datetime="{{ post.date | machineDate }}">
+                    {{ post.date | mmyy }}
+                  </time>
+                </div>
+              </div>
+            </header>
+            <div class="list-content">
+              <div class="list-description">
+                <p>{{ post.data.summary }}</p>
+              </div>
+            </div>
+
+        </article>
+      {% endfor %}
+      </li>
+    </ul>
+  </article>
+</section>
+
+{# <section class="site-content" >
+	<article>
+    <header>
+      <div class="inner">
+        <h1>{{ title }}</h1>
+        <p class="subtitle layout-space">{{ subtitle }}</p>
+        <p>
+          <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
+          {% if date_updated %}
+          <time datetime="{{ date_updated | machineDate }}">(Updated {{ date_updated | readableDate }})</time>
+          {% endif %}
+          &mdash;
+
+          {% if tags %}
+          {% for tag in tags %}
+          {%- if tag != "post" -%}
+          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+          <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+          {%- endif -%}
+          {% endfor %}
+
+        {% endif %}
+        </p>
+      </div>
+    </header>
+
+    <div class="post-content post-rich-text">
+      
+      {% if hero_image %}
+      <section class="hero-image-wrapper">
+        <figure class="hero-image">
+          <img src="{{ hero_image }}"
+              alt="{{ title }}">
+          <figcaption>Photo credit: <a href="https://unsplash.com/@slavasfotos">Slava Keyzman</a></figcaption>
+        </figure>
+      </section>
+      {% endif %}
+      
+      <div class="inner">
+        {% if edit %}
+        <section class="edit">
+          <p>{{ edit }}</p>
+        </section>
+        {% endif %}
+        {{ layoutContent | safe }}
+      </div>
+
+    </div>
+
+  </article>
+</section> #}

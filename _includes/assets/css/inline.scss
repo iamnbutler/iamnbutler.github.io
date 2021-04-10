@@ -350,6 +350,14 @@ i.icon {
     max-width: 500px;
   }
 
+  .list-content {
+    margin-top: $unit + px;
+  }
+
+  .list-description {
+    max-width: 80%;
+  }
+
   a {
     @extend .text-link;
   }
@@ -787,6 +795,10 @@ main {
   h5 {
     @extend .layout-space;
   }
+}
+
+#posts {
+  @extend .layout-card;
 }
 
 /* |x End Layout */
