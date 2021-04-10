@@ -30,9 +30,19 @@ section: post
     </header>
 
     <div class="post-content post-rich-text">
+      
+      {% if hero_image %}
+      <figure class="hero-image layout-space">
+        <img src="{{ hero_image }}"
+            alt="{{ title }}">
+        <figcaption>This is an example hero image caption.</figcaption>
+      </figure>
+      {% endif %}
+      
       <div class="inner">
         {{ layoutContent | safe }}
       </div>
+
     </div>
 
   </article>
