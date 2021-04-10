@@ -37,7 +37,7 @@ body {
 }
 
 /* || Helpers */
-.border-all, .site-grid, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption {
+.border-all, .site-grid, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption, #post .edit {
   border: 1px solid var(--border);
 }
 
@@ -227,11 +227,11 @@ i.icon.frame {
 /* |x End Typography */
 /* || Layout */
 /* Layout Helpers */
-.layout-frame, .nav-list li, #post .hero-image figcaption {
+.layout-frame, .nav-list li, #post .hero-image figcaption, #post .edit {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .post-content {
+.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
   padding: 20px 20px;
 }
 
@@ -702,6 +702,10 @@ main {
   background-color: var(--background);
 }
 
+#post .edit {
+  border-left-width: 5px;
+}
+
 #post .post-content {
   border-bottom: 1px solid var(--border);
 }
@@ -711,7 +715,7 @@ main {
   margin: 0 auto;
 }
 
-.post-rich-text p {
+.post-rich-text p:not(:last-child) {
   margin-bottom: 10px;
 }
 

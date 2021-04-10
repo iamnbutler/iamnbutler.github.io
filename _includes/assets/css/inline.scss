@@ -714,6 +714,12 @@ main {
     }
   }
 
+  .edit {
+    @extend .border-all;
+    border-left-width: 5px;
+    @extend .layout-frame;
+  }
+
   .post-content {
     border-bottom: 1px solid var(--border);
     @extend .layout-frame.large;
@@ -726,7 +732,7 @@ main {
 }
 
 .post-rich-text {
-  p {
+  p:not(:last-child) {
     margin-bottom: 10px;
   }
 

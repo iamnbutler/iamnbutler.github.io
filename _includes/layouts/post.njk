@@ -42,6 +42,11 @@ section: post
       {% endif %}
       
       <div class="inner">
+        {% if hero_image %}
+        <section class="edit">
+          <p>{{ edit }}</p>
+        </section>
+        {% endif %}
         {{ layoutContent | safe }}
       </div>
 
