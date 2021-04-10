@@ -25,7 +25,7 @@ thumbnail: /static/img/post/thumbnail/desk-setup-guide-1x1.jpg
 prefer_wide_thumbnail: true
 wide_thumbnail: /static/img/post/thumbnail/desk-setup-guide-2x1.jpg
 hero_image: /static/img/post/hero/desk-setup-guide-hero.jpg
-edit: Updated as of 2021. Will update this guide as I find new ideas and hardware!
+edit: Updated 2021. Will update as I find new ideas and hardware!
 ---
 I've been working on my desk setup religiously for a few years now, and have experimented with my fair share of hardware and desk layouts. To hopefully save you some pain, I've compiled together this guide. 
 
