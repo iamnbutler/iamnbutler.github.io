@@ -713,27 +713,27 @@ main {
   }
 
   .hero-image {
-    margin: 0;
     position: relative;
+    margin: 0;
 
     img {
-      object-fit: cover;
       display: block;
+      object-fit: cover;
     }
 
     figcaption {
       position: absolute;
-      bottom: 2 * $unit + px;
       right: 20px;
+      bottom: 2 * $unit + px;
+      background-color: var(--background);
       @extend .layout-frame;
       @extend .border-all;
-      background-color: var(--background);
     }
   }
 
   .edit {
-    @extend .border-all;
     border-left-width: 5px;
+    @extend .border-all;
     @extend .layout-frame;
   }
 
@@ -763,7 +763,6 @@ main {
     widows: 2;
   }
 
-  h3,
   h4 {
     margin: 20px 0 10px 0;
   }

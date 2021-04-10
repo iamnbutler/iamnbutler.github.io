@@ -695,20 +695,20 @@ main {
 }
 
 #post .hero-image {
-  margin: 0;
   position: relative;
+  margin: 0;
 }
 
 #post .hero-image img {
+  display: block;
   -o-object-fit: cover;
      object-fit: cover;
-  display: block;
 }
 
 #post .hero-image figcaption {
   position: absolute;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   background-color: var(--background);
 }
 
@@ -735,7 +735,6 @@ main {
   widows: 2;
 }
 
-.post-rich-text h3,
 .post-rich-text h4 {
   margin: 20px 0 10px 0;
 }
