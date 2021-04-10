@@ -161,6 +161,7 @@ a[href]:visited {
 }
 
 ul,
+ol,
 li {
   padding: 0;
   margin: 0;
@@ -263,7 +264,7 @@ i.icon.frame {
 
 .layout-space, .layout-list .list-item:not(:last-child),
 .layout-list .list-context:not(:last-child),
-.layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child), .post-rich-text h5 {
+.layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child), .nav-toc li, .post-rich-text h5 {
   margin-bottom: 10px;
 }
 
@@ -575,6 +576,14 @@ main {
 .nav-list a > [aria-current="page"] {
   -webkit-box-shadow: 2px 2px 0 var(--highlight);
           box-shadow: 2px 2px 0 var(--highlight);
+}
+
+.nav-toc li > ol {
+  margin-top: 10px;
+}
+
+.nav-toc li li {
+  margin-left: 20px;
 }
 
 /* ================================ */

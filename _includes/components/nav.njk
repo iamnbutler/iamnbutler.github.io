@@ -45,31 +45,21 @@
 <!-- Main Nav – Collapsible Card List -->
 <!-- Not every card appears on every page. This is controlled by the template. -->
 <section class="collapsible-card-list">
-  {# <!-- Collapsible Card List – Table of Contents -->
-  <ul class="layout-card layout-list collapsible-card">
+  <!-- Collapsible Card List – Table of Contents -->
+  <!-- Add ToC if the page content needs it --> 
+  {% if content | toc %}
+  <ul class="layout-card layout-list collapsible-card numbered-list">
+
     <li class="card-header">
       <h4>Table of Contents</h4>
       {% include "components/partials/collapse-control.njk" %}
     </li>
-    <li class="list-item" aria-current="section">
-      <a href="#">Learning to Make</a>
-    </li>
-    <li class="list-item">
-      <a href="#">Visual Research</a>
-    </li>
-    <li class="list-item">
-      <a href="#">Creating a Process</a>
-    </li>
-    <li class="list-item">
-      <a href="#">Taking a Step Back</a>
-    </li>
-    <li class="list-item">
-      <a href="#">Making By Reflecting</a>
-    </li>
-    <li class="list-item">
-      <a href="#">Closing Thoughts</a>
-    </li>
-  </ul> #}
+    
+    {{ content | toc(wrapperClass='nav-toc') | safe }}
+    
+  </ul>
+  {% endif %}
+
   <!-- Collapsible Card List – Category List -->
   <!-- TODO: Figure out why this list randomly resorts -->
   <ul class="layout-card layout-list extra-space">
