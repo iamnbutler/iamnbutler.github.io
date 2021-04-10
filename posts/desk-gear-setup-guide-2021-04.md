@@ -13,7 +13,7 @@ summary: >-
   These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. I'll call out anything in this list that I haven't personally owned or used.
 author: Nate Butler
 date: 2021-04-09T08:47:53.609Z
-date_updated: 2021-04-09T08:47:53.625Z
+date_updated: ""
 tags:
   - post
   - featured
