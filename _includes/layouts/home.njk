@@ -93,6 +93,16 @@ section: home
     </div>
   </section>
 
+  {# TODO: Pull posts from Airtable #}
+  {# <section class="layout-card home-posts">
+    {% for item in all %}
+    <article>
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.summary }}</p>
+    </article>
+    {% endfor %}
+  </section> #}
+
   <section class="layout-card home-posts">
     {% set postslist = collections.post %}
     {% include "components/post-layout-list.njk" %}
