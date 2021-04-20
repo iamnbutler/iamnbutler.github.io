@@ -27,12 +27,20 @@ section: home
     </div>
   </section>
 
+  <!-- TODO: For all post lists – Filter out unpublished posts (Should this happen at the data level?) -->
   <section class="home-featured">
+    <!-- TODO: Abstract featured list to a partial -->
+    <!-- TODO: Make styles non-specifc to home -->
+    <!-- TODO: Filter out posts that featured == FALSE -->
+    <!-- TODO: Choose total post count and limit -->
+    <!-- TODO: Refactor this section -->
+
+    <!-- TODO: Only show summary if show_thumbnail == FALSE -->
+    <!-- TODO: Cap summary at 15 lines -->
     {% set postslist = collections.post %}
     <div class="home-feature-list">
 
       {% for post in postslist | reverse %}
-      <!-- TODO: Reduce redundancy here -->
       {%- if post.data.prefer_wide_thumbnail -%}
         <a href="{{ post.url | url }}" class="layout-tile wide">
       {% else %}
@@ -68,16 +76,9 @@ section: home
 
           <div class="post-preview-meta">
             <div class="post-tag">
-              {% if post.data.tags %}
               <p class="text-capitalize">
-                {% for tag in post.data.tags | limit(3) %}
-                {%- if tag != "post" -%}
-                {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-                {{ tag }}
-                {%- endif -%}
-                {% endfor %}
+                {{ post.data.primary_tag }}
               </p>
-              {% endif %}
             </div>
             <div class="post-date date-MY text-uppercase">
               <time datetime="{{ post.date | machineDate }}">
