@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
     };
     let anchor_options = {
       slugify: uslugify,
-      permalink: ture,
+      permalink: true,
       renderPermalink,
       permalinkClass: "header-anchor",
       permalinkSpace: true,
