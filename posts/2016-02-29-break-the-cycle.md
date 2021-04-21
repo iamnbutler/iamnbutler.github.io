@@ -1,22 +1,18 @@
 ---
 post_visible: true
+status: published
 title: Break The Cycle
-subtitle: Not many things in life are more discouraging than not knowing why you
-  feel so bad.
-summary: Fixing things on my own is something I have always done. So inevitably
-  when I ran into troubles with my mental health I thought I would be able to
-  deal with them on my own. I didn’t realize at first what I was dealing with. I
-  thought I was just a sleep-deprived design student. I thought that everyone
-  felt so tired they could hardly get out of bed every morning...
+subtitle: >-
+  Not many things in life are more discouraging than not knowing why you feel so
+  bad.
+slug: 2016-02-29-break-the-cycle
+custom_slug: break-the-cycle
+date: '2016-02-29'
 author: Nate Butler
-date: 2016-02-29T11:08:04.007Z
-date_updated: 2016-02-29T11:08:00.000Z
+primary_tag: editorial
 tags:
-  - post
-  - featured
   - editorial
-show_thumbnail: false
-prefer_wide_thumbnail: false
+show_thumbnail: true
 ---
 *Chapter Two —*
 
