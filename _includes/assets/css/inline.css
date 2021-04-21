@@ -237,11 +237,12 @@ i.icon.frame {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, #posts, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
+.layout-frame.large, .layout-card, .skip-nav, notice, .nav-list li.large, .home-feature-list .layout-tile .post-preview,
+.post-grid .layout-tile .post-preview, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
   padding: 20px 20px;
 }
 
-.layout-card, #posts {
+.layout-card {
   background-color: var(--background);
 }
 
@@ -295,11 +296,13 @@ i.icon.frame {
   max-width: 60%;
 }
 
-.interactable:hover, .collapsible-card-list .card-header .collapse-control .icon:hover, .nav-list a:hover, .home-feature-list .layout-tile:hover {
+.interactable:hover, .collapsible-card-list .card-header .collapse-control .icon:hover, .nav-list a:hover, .home-feature-list .layout-tile:hover,
+.post-grid .layout-tile:hover {
   background-color: var(--hover);
 }
 
-.interactable:pressed, .collapsible-card-list .card-header .collapse-control .icon:pressed, .nav-list a:pressed, .home-feature-list .layout-tile:pressed {
+.interactable:pressed, .collapsible-card-list .card-header .collapse-control .icon:pressed, .nav-list a:pressed, .home-feature-list .layout-tile:pressed,
+.post-grid .layout-tile:pressed {
   background-color: var(--pressed);
 }
 
@@ -609,7 +612,8 @@ main {
 /* Page Layouts                    */
 /* ============================== */
 /* --- Home --- */
-.home-feature-list {
+.home-feature-list,
+.post-grid {
   /* Create 3 column grid */
   display: -ms-grid;
   display: grid;
@@ -623,7 +627,8 @@ main {
   /* TODO: De-specify this */
 }
 
-.home-feature-list .layout-tile {
+.home-feature-list .layout-tile,
+.post-grid .layout-tile {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -640,26 +645,31 @@ main {
   overflow: hidden;
 }
 
-.home-feature-list .layout-tile.wide {
+.home-feature-list .layout-tile.wide,
+.post-grid .layout-tile.wide {
   grid-column: auto / span 2;
 }
 
-.home-feature-list .layout-tile .thumbnail {
+.home-feature-list .layout-tile .thumbnail,
+.post-grid .layout-tile .thumbnail {
   background-color: #eee;
   width: 100%;
   height: 0;
   overflow: hidden;
 }
 
-.home-feature-list .layout-tile .thumbnail:not(.wide) {
+.home-feature-list .layout-tile .thumbnail:not(.wide),
+.post-grid .layout-tile .thumbnail:not(.wide) {
   padding-bottom: 100%;
 }
 
-.home-feature-list .layout-tile .thumbnail.wide {
+.home-feature-list .layout-tile .thumbnail.wide,
+.post-grid .layout-tile .thumbnail.wide {
   padding-bottom: 50%;
 }
 
-.home-feature-list .layout-tile .post-preview {
+.home-feature-list .layout-tile .post-preview,
+.post-grid .layout-tile .post-preview {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -675,13 +685,15 @@ main {
           flex-grow: 1;
 }
 
-.home-feature-list .layout-tile .post-preview .preview-content {
+.home-feature-list .layout-tile .post-preview .preview-content,
+.post-grid .layout-tile .post-preview .preview-content {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.home-feature-list .layout-tile .post-preview-meta {
+.home-feature-list .layout-tile .post-preview-meta,
+.post-grid .layout-tile .post-preview-meta {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

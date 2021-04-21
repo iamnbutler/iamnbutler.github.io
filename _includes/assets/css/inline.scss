@@ -648,7 +648,8 @@ main {
 
 /* --- Home --- */
 
-.home-feature-list {
+.home-feature-list,
+.post-grid {
   /* Create 3 column grid */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -798,7 +799,6 @@ main {
 }
 
 #posts {
-  @extend .layout-card;
 }
 
 /* |x End Layout */
