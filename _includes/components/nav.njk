@@ -68,7 +68,8 @@
       {% include "components/partials/collapse-control.njk" %}
     </li>
     {% for tag in collections.tagsList %}
-    {%- if tag != "post" -%}
+    {# TODO: This is pretty brute force, prettify this #}
+    {%- if tag != "post" and tag != "social" and tag != "media" and tag != "work" -%}
     <li class="list-item">
       <div class="flex-row">
         <div class="primary">
