@@ -7,7 +7,7 @@ subtitle: >-
   ways to level up your setup.
 slug: 2021-03-26-desk-gear-and-setup-guide
 custom_slug: desk-gear-setup-guide
-date: '2021-03-26'
+date: "2021-03-26"
 author: Nate Butler
 primary_tag: guide
 tags:
@@ -15,10 +15,11 @@ tags:
 featured: true
 show_thumbnail: true
 thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_1x1.jpg
-prefer_wide_thumbnail: true
+prefer_wide_thumbnail: false
 wide_thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_2x1.jpg
 hero_image: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_hero.jpg
 ---
+
 _INTRO WIP_
 
 First, we'll take a look at all the gear you might want to set up your desk. If you already have everything, you can jump straight to [the setup](#the-setup).

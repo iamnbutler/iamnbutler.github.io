@@ -52,7 +52,7 @@ section: home
           {% endif %}
           
             {# If there is a post thumbnail show it #}
-            {%- if post.data.show_thumbnail -%}
+            {%- if post.data.show_thumbnail and post.data.thumbnail -%}
               {# If a post prefers wide thumbnails use them #}
               {%- if post.data.prefer_wide_thumbnail -%}
                 <div class="thumbnail wide">
