@@ -1,5 +1,116 @@
-@import url(/Users/natebutler/Documents/GitHub/iamnbutler.github.io/_includes/assets/css/normalize.css);
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+          text-size-adjust: none;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 :root {
   --unit: $unit;
   --primary: #000;
@@ -12,53 +123,126 @@
   --highlight-soft: rgba(0, 255, 255, 0.3);
   --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
     "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-  --headlines: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
-    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
-    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+  --headlines: "Raleway", Univers, Calibri, "Gill Sans", "Gill Sans MT",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+/* || Typography */
+html {
+  color: var(--primary);
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
+html {
+  font-size: 14px;
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc( 14px + 4 * ((100vw - 320px) / 880));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+html {
+  font-family: var(--body-copy);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--headlines);
+}
+
+h1 {
+  font-size: 2.0736rem;
+  line-height: 2rem;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  font-weight: 900;
+  font-family: var(--headlines);
+}
+
+h1 {
+  font-size: 29.0304px;
+}
+
+@media screen and (min-width: 320px) {
+  h1 {
+    font-size: calc( 29.0304px + 5.14929 * ((100vw - 320px) / 880));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 34.17969px;
+  }
+}
+
+h2 {
+  font-size: 1.728rem;
+  line-height: 1.5rem;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  font-family: var(--headlines);
+}
+
+h2 {
+  font-size: 21.7728px;
+}
+
+@media screen and (min-width: 320px) {
+  h2 {
+    font-size: calc( 21.7728px + 2.83657 * ((100vw - 320px) / 880));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h2 {
+    font-size: 24.60938px;
+  }
+}
+
+h3 {
+  font-size: 1.44rem;
+  line-height: 1.4rem;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+  font-weight: 600;
+  font-family: var(--body-copy);
+}
+
+h3 {
+  font-size: 16.128px;
+}
+
+@media screen and (min-width: 320px) {
+  h3 {
+    font-size: calc( 16.128px + 1.372 * ((100vw - 320px) / 880));
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h3 {
+    font-size: 17.5px;
+  }
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 body {
   font-size: 14px;
   line-height: 20px;
-}
-
-/* || Helpers */
-.border-all, .site-grid, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption, #post .edit {
-  border: 1px solid var(--border);
-}
-
-.border-top, #main-content > footer {
-  border-top: 1px solid var(--border);
-}
-
-.border-bottom {
-  border-bottom: 1px solid var(--border);
-}
-
-/* || Typography */
-/* Set font stacks */
-html,
-body {
-  color: var(--primary);
-}
-
-html ,
-body {
-  font-family: var(--body-copy);
 }
 
 h1,
@@ -191,26 +375,6 @@ code {
   line-height: 20px;
 }
 
-i.icon {
-  display: block;
-}
-
-i.icon.icon-20 {
-  width: 20px;
-  height: 20px;
-}
-
-i.icon.icon-40 {
-  width: 40px;
-  height: 40px;
-}
-
-i.icon.frame {
-  -webkit-box-shadow: inset 0px 0px 0px 1px #333;
-          box-shadow: inset 0px 0px 0px 1px #333;
-  background-color: var(--background);
-}
-
 /* Typography Helpers */
 .text-uppercase {
   text-transform: uppercase;
@@ -231,6 +395,39 @@ i.icon.frame {
 }
 
 /* |x End Typography */
+/* || Helpers */
+.border-all, .site-grid, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption, #post .edit {
+  border: 1px solid var(--border);
+}
+
+.border-top, #main-content > footer {
+  border-top: 1px solid var(--border);
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--border);
+}
+
+i.icon {
+  display: block;
+}
+
+i.icon.icon-20 {
+  width: 20px;
+  height: 20px;
+}
+
+i.icon.icon-40 {
+  width: 40px;
+  height: 40px;
+}
+
+i.icon.frame {
+  -webkit-box-shadow: inset 0px 0px 0px 1px #333;
+          box-shadow: inset 0px 0px 0px 1px #333;
+  background-color: var(--background);
+}
+
 /* || Layout */
 /* Layout Helpers */
 .layout-frame, .nav-list li, #post .hero-image figcaption, #post .edit {

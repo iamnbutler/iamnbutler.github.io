@@ -1,4 +1,4 @@
-@import "reset.scss";
+@import "_reset.scss";
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 
 // __      __           _         _      _
@@ -36,7 +36,7 @@ $unit: 10;
 
 /* || Typography */
 
-@import "typography.scss";
+@import "_typography.scss";
 
 /* |x End Typography */
 

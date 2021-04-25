@@ -7,20 +7,116 @@
 //         __/ || |             __/ |            | |             __/ |
 //        |___/ |_|            |___/             |_|            |___/
 
-body {
-  font-size: 14px;
-  line-height: 20px;
+// Fluid Scaling type mixin
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
 }
 
-/* Set font stacks */
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
 
-html,
-body {
+  @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+    & {
+      font-size: $min-font-size;
+
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// Configure type sizes
+$min_width: 320px;
+$max_width: 1200px;
+$min_font: 14px;
+$max_font: 18px;
+$mob: 1.2; // Mobile scaling factor
+$desk: 1.25; // Desktop scaling factor
+
+html {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
   color: var(--primary);
 
   &:not(h1, h2, h3, h4, h5) {
     font-family: var(--body-copy);
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--headlines);
+}
+
+h1 {
+  font-size: $mob * $mob * $mob * $mob * 1rem;
+  line-height: 2rem;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  font-weight: 900;
+  font-family: var(--headlines);
+  @include fluid-type(
+    $min_width,
+    $max_width,
+    $mob * $mob * $mob * $mob * $min_font,
+    $desk * $desk * $desk * $desk * $min_font
+  );
+}
+
+h2 {
+  font-size: $mob * $mob * $mob * 1rem;
+  line-height: 1.5rem;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  font-family: var(--headlines);
+  @include fluid-type(
+    $min_width,
+    $max_width,
+    $mob * $mob * $mob * 0.9 * $min_font,
+    $desk * $desk * $desk * 0.9 * $min_font
+  );
+}
+
+h3 {
+  font-size: $mob * $mob * 1rem;
+  line-height: 1.4rem;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+  font-weight: 600;
+  font-family: var(--body-copy);
+  @include fluid-type(
+    $min_width,
+    $max_width,
+    $mob * $mob * 0.8 * $min_font,
+    $desk * $desk * 0.8 * $min_font
+  );
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+
+  &:last-child {
+  }
+}
+
+body {
+  font-size: 14px;
+  line-height: 20px;
 }
 
 h1,
