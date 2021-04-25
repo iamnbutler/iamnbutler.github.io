@@ -1,6 +1,13 @@
 @import "reset.scss";
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 
+// __      __           _         _      _
+// \ \    / /          (_)       | |    | |
+//  \ \  / /__ _  _ __  _   __ _ | |__  | |  ___  ___
+//   \ \/ // _` || '__|| | / _` || '_ \ | | / _ \/ __|
+//    \  /| (_| || |   | || (_| || |_) || ||  __/\__ \
+//     \/  \__,_||_|   |_| \__,_||_.__/ |_| \___||___/
+
 // Global Variables
 $border: #333;
 $unit: 10;
@@ -27,10 +34,11 @@ $unit: 10;
   // }
 }
 
-body {
-  font-size: 14px;
-  line-height: 20px;
-}
+/* || Typography */
+
+@import "typography.scss";
+
+/* |x End Typography */
 
 /* || Helpers */
 
@@ -44,154 +52,6 @@ body {
 
 .border-bottom {
   border-bottom: 1px solid var(--border);
-}
-
-/* || Typography */
-
-/* Set font stacks */
-
-html,
-body {
-  color: var(--primary);
-
-  &:not(h1, h2, h3, h4, h5) {
-    font-family: var(--body-copy);
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: var(--headlines);
-}
-
-h1,
-h2:not(.text-subhead),
-h3 {
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a {
-  text-decoration: none;
-}
-
-h1 {
-  font-size: 54px;
-  line-height: 50px;
-}
-
-h2 {
-  &:not(.text-subhead) {
-    font-size: 40px;
-    line-height: 40px;
-  }
-
-  &.text-subhead {
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 700;
-    font-family: var(--body-copy);
-  }
-}
-
-h3 {
-  font-size: 28px;
-  line-height: 30px;
-}
-
-h4 {
-  font-size: 16px;
-  line-height: 20px;
-}
-
-h5 {
-  font-size: 16px;
-  line-height: 20px;
-  font-family: var(--body-copy);
-}
-
-h6 {
-  font-size: 1em;
-  line-height: 1em;
-  font-weight: 900;
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 700;
-  font-family: var(--body-copy);
-}
-
-p {
-  margin: 0;
-  padding: 0;
-}
-
-.text-small-caps {
-  text-transform: uppercase;
-}
-
-.text-large {
-  font-size: 19px;
-  line-height: 30px;
-}
-
-.text-caption {
-  font-size: 12px;
-  line-height: 20px;
-}
-
-.text-block-quote,
-blockquote {
-  @extend .text-large;
-}
-
-a[href],
-a[href]:visited {
-  color: var(--primary);
-}
-
-ul,
-ol,
-li {
-  padding: 0;
-  margin: 0;
-}
-
-.text-link {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  &:hover {
-    background-color: var(--highlight-soft);
-  }
-}
-
-code {
-  display: block;
-  padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.05);
-  font-family: Fira Code, monospace;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 13;
-  line-height: 20px;
 }
 
 i.icon {
@@ -212,28 +72,6 @@ i.icon {
     background-color: var(--background);
   }
 }
-
-/* Typography Helpers */
-
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-.text-capitalize {
-  text-transform: capitalize;
-}
-
-.text-lowercase {
-  text-transform: lowercase;
-}
-
-.text-overflow-ellipsis {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-/* |x End Typography */
 
 /* || Layout */
 
@@ -283,6 +121,7 @@ i.icon {
 
 .layout-width {
   display: block;
+
   &.sixty {
     max-width: 60%;
   }
@@ -522,6 +361,7 @@ main {
 
 #system-theme-toggle {
   transition: transform 0.8s ease-in-out;
+
   &:hover {
     transform: rotateZ(90deg);
     transition: transform 0.8s ease-in-out;
@@ -606,6 +446,7 @@ main {
   // display: list-item;
   li {
     @extend .layout-space;
+
     & > ol {
       margin-top: $unit + px;
     }
@@ -652,6 +493,7 @@ main {
     text-decoration: none;
     overflow: hidden;
     @extend .interactable;
+
     &.wide {
       grid-column: auto / span 2;
     }
@@ -661,9 +503,11 @@ main {
       width: 100%;
       height: 0;
       overflow: hidden;
+
       &:not(.wide) {
         padding-bottom: 100%;
       }
+
       &.wide {
         padding-bottom: 50%;
       }
