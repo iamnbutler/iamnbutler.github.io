@@ -152,12 +152,21 @@ html {
   font-family: var(--body-copy);
 }
 
+/* Headlines */
 h1,
 h2,
 h3,
 h4,
 h5 {
   font-family: var(--headlines);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  text-decoration: none;
 }
 
 h1 {
@@ -235,133 +244,10 @@ h3 {
   }
 }
 
+/* Body Elements */
 p {
   font-size: 1rem;
   line-height: 1.5;
-}
-
-body {
-  font-size: 14px;
-  line-height: 20px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: var(--headlines);
-}
-
-h1,
-h2:not(.text-subhead),
-h3 {
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a {
-  text-decoration: none;
-}
-
-h1 {
-  font-size: 54px;
-  line-height: 50px;
-}
-
-h2:not(.text-subhead) {
-  font-size: 40px;
-  line-height: 40px;
-}
-
-h2.text-subhead {
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 700;
-  font-family: var(--body-copy);
-}
-
-h3 {
-  font-size: 28px;
-  line-height: 30px;
-}
-
-h4 {
-  font-size: 16px;
-  line-height: 20px;
-}
-
-h5 {
-  font-size: 16px;
-  line-height: 20px;
-  font-family: var(--body-copy);
-}
-
-h6 {
-  font-size: 1em;
-  line-height: 1em;
-  font-weight: 900;
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 700;
-  font-family: var(--body-copy);
-}
-
-p {
-  margin: 0;
-  padding: 0;
-}
-
-.text-small-caps {
-  text-transform: uppercase;
-}
-
-.text-large, .text-block-quote,
-blockquote {
-  font-size: 19px;
-  line-height: 30px;
-}
-
-.text-caption {
-  font-size: 12px;
-  line-height: 20px;
-}
-
-a[href],
-a[href]:visited {
-  color: var(--primary);
-}
-
-ul,
-ol,
-li {
-  padding: 0;
-  margin: 0;
-}
-
-.text-link, .layout-list a, .post-rich-text p a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.text-link:hover, .layout-list a:hover, .post-rich-text p a:hover {
-  background-color: var(--highlight-soft);
 }
 
 code {
@@ -375,6 +261,21 @@ code {
   line-height: 20px;
 }
 
+/* Links */
+a[href],
+a[href]:visited {
+  color: var(--primary);
+}
+
+.text-link, .layout-list a, .post-rich-text p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.text-link:hover, .layout-list a:hover, .post-rich-text p a:hover {
+  background-color: var(--highlight-soft);
+}
+
 /* Typography Helpers */
 .text-uppercase {
   text-transform: uppercase;
@@ -386,12 +287,6 @@ code {
 
 .text-lowercase {
   text-transform: lowercase;
-}
-
-.text-overflow-ellipsis {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 /* |x End Typography */
