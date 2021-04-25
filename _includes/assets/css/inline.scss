@@ -1,6 +1,4 @@
 @import "reset.scss";
-
-// TODO: Move reset to include
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 
 // Global Variables
@@ -19,10 +17,8 @@ $unit: 10;
   --highlight-soft: rgba(0, 255, 255, 0.3);
   --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
     "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-  --headlines: "Raleway", Frutiger, "Frutiger Linotype", Univers, Calibri,
-    "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed",
-    "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+  --headlines: "Raleway", Univers, Calibri, "Gill Sans", "Gill Sans MT",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   // @media screen and (prefers-color-scheme: dark) {
   //   --primary: #fff;
