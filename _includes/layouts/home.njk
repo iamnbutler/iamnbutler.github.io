@@ -3,6 +3,49 @@ layout: layouts/base.njk
 section: home
 ---
 <section class="featured-post-grid" id="home">
+  <div class="card site-nav">
+    <nav>
+      <div class="nav-top layout-row flex-space-between">
+        <a href="{{ '/' | url }}" class="brand-link" {% if page.url == '/' | url %}aria-current="page"{% endif %}>
+          <i class="icon icon-20 brand">
+            {% include "static/img/icon/icon-brand.svg" %}
+          </i>
+        </a>
+        <a href="#" id="system-theme-toggle">
+          <i class="icon icon-20">
+            {% include "static/img/icon/icon-light.svg" %}
+          </i>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Nav – Search -->
+    <div class="nav-search layout-row">
+      <form action="http://www.google.com/search">
+        <label for=q>Keyword(s):</label>
+        <input type="text" name="post-search" id="post-search">
+        <input type="hidden" name="ie" value="utf-8">
+        <input type="hidden" name="oe" value="utf-8">
+        <input type="submit" value="&rarr;">
+        <i class="icon icon-20 search">
+          {% include "static/img/icon/icon-search.svg" %}
+        </i>
+      </form>
+    </div>
+
+    <!-- Main Nav – Nav List -->
+    <ul class="nav-list">
+      <!-- TODO: Add counts to nav items -->
+      {% set navPages = collections.all | eleventyNavigation %}
+      {%- for entry in navPages %}
+      <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
+        <li {% if entry.url == page.url %}aria-current="page"{% endif %}>
+          <h4>{{ entry.title }}</h4>
+        </li>
+      </a>
+      {%- endfor %}
+    </ul>
+  </div>
   <div class="card wide">
     <div class="content">
       <h1>hey, i'm nate ✌🏽</h1>
@@ -19,10 +62,11 @@ section: home
         I post about all types of things here. You will find a mix of
         <a href="/work">work</a>, <a href="/tags/thought">top of mind</a>, <a href="/tags/editorial">reflections</a>, &amp;  <a href="/tags/process">process</a>. Enjoy!
       </p>
-      <img src="https://storage.googleapis.com/yaminateo-image-bucket/img/global/nate.gif" alt="Avatar of Nate Butler" class="nate-avatar">
+      
     </div>
     <footer>
       <a href="/about">More about me?</a>
+      <img src="https://storage.googleapis.com/yaminateo-image-bucket/img/global/nate.gif" alt="Avatar of Nate Butler" class="nate-avatar">
     </footer>
   </div>
   <div class="card wide">
