@@ -186,6 +186,12 @@ h1 {
   letter-spacing: -0.5px;
   font-weight: 700;
   margin-bottom: 20px;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  text-shadow: 10px 10px 0px var(--highlight-soft);
+  cursor: help;
+  -webkit-transform-origin: center;
+          transform-origin: center;
 }
 
 h1 {
@@ -202,6 +208,15 @@ h1 {
   h1 {
     font-size: 36.62109px;
   }
+}
+
+h1:hover {
+  -webkit-transition: 0.8s ease-in-out;
+  transition: 0.8s ease-in-out;
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+  letter-spacing: 4px;
+  text-shadow: 10px 10px 0px var(--highlight-soft);
 }
 
 h2 {
