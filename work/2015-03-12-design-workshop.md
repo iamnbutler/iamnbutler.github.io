@@ -5,7 +5,7 @@ subtitle: Designing the problem through making.
 slug: 2015-03-12-design-workshop
 custom_slug: ydsn-design-workshop
 date: '2015-03-12'
-tags:
+roles:
   - Art Direction
   - Development
 summary: >-

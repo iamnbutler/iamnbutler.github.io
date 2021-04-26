@@ -5,7 +5,7 @@ subtitle: Helping product teams build more efficiently.
 slug: 2020-04-13-productivity-design
 custom_slug: facebook-internal-productivity-design
 date: '2020-04-13'
-tags:
+roles:
   - Design Systems
   - Product Thinking
   - Cross-functional

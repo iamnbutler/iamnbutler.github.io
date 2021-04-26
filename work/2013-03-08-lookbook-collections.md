@@ -5,7 +5,7 @@ subtitle: Creating the curator sharing persona through Collections.
 slug: 2013-03-08-lookbook-collections
 custom_slug: lookbook-collections
 date: '2013-03-08'
-tags:
+roles:
   - Product Thinking
   - Visual Design
 role: Exploration, prototyping in code.

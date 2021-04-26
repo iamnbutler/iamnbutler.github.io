@@ -5,7 +5,7 @@ subtitle: Bringing some fun & joy back to Facebook.
 slug: 2019-03-31-facebok-avatars
 custom_slug: facebook-avatars
 date: '2019-03-31'
-tags:
+roles:
   - Vision & Strategy
   - Team Design
   - Cross-functional
