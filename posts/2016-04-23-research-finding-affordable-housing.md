@@ -2,7 +2,7 @@
 post_visible: true
 status: published
 title: 'Research: Finding Affordable Housing'
-subtitle: Addressing the Crisis in the San Francisco Bay Area
+subtitle: Addressing the housing crisis in the San Francisco Bay Area
 slug: 2016-04-23-research-finding-affordable-housing
 custom_slug: finding-affordable-housing
 date: '2016-04-23'

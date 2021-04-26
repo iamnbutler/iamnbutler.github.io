@@ -1,6 +1,6 @@
 ---
 post_visible: true
-status: draft
+status: published
 title: Hardware Hacking
 subtitle: Building robots and games with Arduino & Pi.
 slug: 2016-02-26-hardware-hacking

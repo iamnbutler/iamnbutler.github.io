@@ -1,9 +1,9 @@
 ---
 post_visible: true
-status: draft
-title: Web Development Resources
-subtitle: Useful resources for the hobby developer in all of us.
-slug: 2021-03-15-web-development-resources
+status: published
+title: Web Dev Resources
+subtitle: Useful resources for the hobby developers.
+slug: 2021-03-15-web-dev-resources
 custom_slug: web-development-resources
 date: '2021-03-15'
 author: Nate Butler

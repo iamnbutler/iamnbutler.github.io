@@ -1,6 +1,6 @@
 ---
 post_visible: true
-status: draft
+status: published
 title: Making Jewelry with 3D Printing
 subtitle: Apparently you can 3D print metal? Let's have fun with this :)
 slug: 2018-11-15-making-jewelry-with-3d-printing

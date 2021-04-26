@@ -1,8 +1,8 @@
 ---
 post_visible: true
-status: draft
+status: published
 title: mixblocks
-subtitle: Collective creativity, without the social media icky.
+subtitle: Collective creativity, without the social icky.
 slug: 2021-04-10-mixblocks
 custom_slug: mixblocks
 date: '2021-04-10'
@@ -18,6 +18,7 @@ summary: >-
 featured: true
 show_thumbnail: true
 thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/mixblocks_1x1.jpg
+prefer_wide_thumbnail: true
 wide_thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/mixblocks_1x2.jpg
 hero_image: https://storage.googleapis.com/yaminateo-image-bucket/img/mixblocks_hero.jpg
 ---

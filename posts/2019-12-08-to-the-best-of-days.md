@@ -1,9 +1,9 @@
 ---
 post_visible: true
-status: draft
-title: Got Married ✌🏽
-subtitle: nbd
-slug: 2019-12-08-got-married
+status: published
+title: To the best of days
+subtitle: Days like these are few and far between. A reflection.
+slug: 2019-12-08-to-the-best-of-days
 custom_slug: got-married
 date: '2019-12-08'
 author: Nate Butler
@@ -13,6 +13,7 @@ tags:
 featured: true
 show_thumbnail: true
 thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/got_married_1x1.jpg
+prefer_wide_thumbnail: true
 wide_thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/got_married_1x2.jpg
 hero_image: https://storage.googleapis.com/yaminateo-image-bucket/img/got_married_hero.jpg
 ---

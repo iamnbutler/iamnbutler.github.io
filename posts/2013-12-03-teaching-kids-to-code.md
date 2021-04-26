@@ -1,6 +1,6 @@
 ---
 post_visible: true
-status: draft
+status: published
 title: Teaching Kids to Code
 subtitle: Investing in our future and helping elevate those around us.
 slug: 2013-12-03-teaching-kids-to-code
