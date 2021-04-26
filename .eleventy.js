@@ -101,6 +101,11 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toFormat("LLL—yy");
   });
 
+  // Date formatting (YYYY)
+  eleventyConfig.addFilter("yyyy", (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toFormat("yyyy");
+  });
+
   // Minify CSS
   eleventyConfig.addFilter("cssmin", function (code) {
     return new CleanCSS({}).minify(code).styles;
