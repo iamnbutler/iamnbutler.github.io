@@ -3,111 +3,96 @@ layout: layouts/base.njk
 section: home
 ---
 <section class="featured-post-grid" id="home">
-  <div class="about-card grid-card wide">
-    <h1>Hey, I'm Nate ✌🏽</h1>
-    <p>
-      I’m a designer & maker that has been working in the product design
-      industry for the past 10 years. I believe enabling people to share
-      themselves, their ideas, and their creativity, responsibly &
-      regardless of platform. I don't think our major platforms are
-      doing this well and we have a way to go.
-    </p>
-    <p>
-      This makes me passionate about the democratizaion of tools and
-      knowledge — I’d rather teach people the tools to do something
-      themselves than create something that does it for them.
-    </p>
-    <p>
-      I post about all types of things here. You will find a mix of
-      work, top of mind, reflections, random posts & process. Enjoy!
-    </p>
-    <a href="/about">More about me?</a>
-  </div>
-  <div class="work-card grid-card wide">
-    <h1>Work 🎒</h1>
-    <article>
-      <h2>Facebook Stories // 2021</h2>
-      <h3>Making stories more at home in News Feed.</h3>
+  <div class="card wide">
+    <div class="content">
+      <h1>hey, i'm nate ✌🏽</h1>
+      <h2>
+        I’m a designer &amp; maker that is passionate about the democratization of knowledge and the tools that enable people to create.</h2>
       <p>
-        Over 2.5 billion people use News Feed every day, yet more
-        original content come from stories than feed. We explored a
-        range of ways to introduce new people to stories that...
+        People should be able to share themselves, their ideas, and their creativity, responsibly &amp; in the way that represents them best. This should be regardless
+        of platform. We aren't doing this well and we have a long way to go to understand technology and it's influence on our lives and society.
       </p>
-    </article>
-    <article>
-      <h2>xDesign // 2020</h2>
-      <h3>Unlocking new tools through greater discovery.</h3>
       <p>
-        At Facebook we have over 1000 internal tools. Our goal was to
-        find the best of the best and curate them into a single surface
-        that people would use daily. On top of this meta surface we...
+        This makes me want to help people create the things important to them&mdash;To empower them to create something themselves and feel the euphoria it brings. My goal is always to help the people around me level up, in their careers &amp; lives.
       </p>
-    </article>
+      <p>
+        I post about all types of things here. You will find a mix of
+        <a href="/work">work</a>, <a href="/tags/thought">top of mind</a>, <a href="/tags/editorial">reflections</a>, &amp;  <a href="/tags/process">process</a>. Enjoy!
+      </p>
+      <img src="https://storage.googleapis.com/yaminateo-image-bucket/img/global/nate.gif" alt="Avatar of Nate Butler" class="nate-avatar">
+    </div>
     <footer>
-      <a href="/work">More</a>
+      <a href="/about">More about me?</a>
+    </footer>
+  </div>
+  <div class="card wide">
+    <div class="content">
+      <h1>work 🎒</h1>
+      {% include "components/partials/work-list.njk" %}
+    </div>
+    <footer>
+      <a href="/work">More Work</a>
+      <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>
     </footer>
   </div>
 
   <!-- TODO: For all post lists – Filter out unpublished posts (Should this happen at the data level?) -->
-    <!-- TODO: Abstract featured list to a partial -->
-    <!-- TODO: Make styles non-specifc to home -->
-    <!-- TODO: Filter out posts that featured == FALSE -->
-    <!-- TODO: Choose total post count and limit -->
-    <!-- TODO: Refactor this section -->
+  <!-- TODO: Abstract featured list to a partial -->
+  <!-- TODO: Make styles non-specifc to home -->
+  <!-- TODO: Filter out posts that featured == FALSE -->
+  <!-- TODO: Choose total post count and limit -->
+  <!-- TODO: Refactor this section -->
 
-    <!-- TODO: Only show summary if show_thumbnail == FALSE -->
-    <!-- TODO: Cap summary at 15 lines -->
-    {% set postslist = collections.post %}
+  <!-- TODO: Only show summary if show_thumbnail == FALSE -->
+  <!-- TODO: Cap summary at 15 lines -->
+  {% set postslist = collections.post %}
 
-      {% for post in postslist | reverse %}
-      {# Only show the post if it is featured #}
-      {%- if post.data.featured === true -%}
-        {%- if post.data.prefer_wide_thumbnail -%}
-        <article class="grid-card wide">
-        {% else %}
-        <article class="grid-card">
-        {% endif %}
-          {# If there is a post thumbnail show it #}
-          {%- if post.data.show_thumbnail and post.data.thumbnail -%}
-            {# If a post prefers wide thumbnails use them #}
-            <div class="thumbnail">
-              <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
-              {%- if post.data.wide_thumbnail -%}
-              <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
-              {% endif %}
-            </div>
-            
+  {% for post in postslist | reverse %}
+  {# Only show the post if it is featured #}
+  {%- if post.data.featured === true -%}
+  <article class="card e2e
+        {% if post.data.prefer_wide_thumbnail %} wide {% endif %}
+        {% if post.data.show_thumbnail %} has-thumbnail{% endif %}">
+    {# If there is a post thumbnail show it #}
+    {%- if post.data.show_thumbnail and post.data.thumbnail -%}
+    {# If a post prefers wide thumbnails use them #}
+    <div class="thumbnail">
+      <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
+      {%- if post.data.wide_thumbnail -%}
+      <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
+      {% endif %}
+    </div>
+
+    {% endif %}
+
+    <div class="content post-preview">
+      <div class="preview-content">
+        <h2 class="layout-space">
+          {% if post.data.title %}
+          {{ post.data.title }}
+          {% else %}
+          Untitled
           {% endif %}
-
-          <div class="post-preview">
-            <div class="preview-content">
-              <h3 class="layout-space">
-                {% if post.data.title %}
-                {{ post.data.title }}
-                {% else %}
-                Untitled
-                {% endif %}
-              </h3>
-              <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
-              <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
-            </div>
-
-            <div class="post-preview-meta">
-              <div class="post-tag">
-                <p class="text-capitalize">
-                  {{ post.data.primary_tag }}
-                </p>
-              </div>
-              <div class="post-date date-MY text-uppercase">
-                <time datetime="{{ post.date | machineDate }}">
-                  {{ post.date | mmyy }}
-                </time>
-              </div>
-            </div>
-          </div>
-        {% endif %}
-      </article>
-      {% endfor %}
+        </h2>
+        <h3 class="layout-space">{{ post.data.subtitle }}</h3>
+        <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
+      </div>
+    </div>
+    <footer class="post-preview-meta">
+      <div class="post-tag">
+        <p class="text-capitalize">
+          {{ post.data.primary_tag }}
+        </p>
+      </div>
+      <div class="post-date date-MY text-uppercase">
+        <time datetime="{{ post.date | machineDate }}">
+          {{ post.date | mmyy }}
+        </time>
+      </div>
+    </footer>
+    {% endif %}
+  </article>
+  {% endfor %}
 
   <section class="layout-card home-posts">
     {% set postslist = collections.post %}

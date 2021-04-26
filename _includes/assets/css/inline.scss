@@ -1,12 +1,13 @@
 @import "_reset.scss";
-@import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;700&family=Raleway:ital,wght@0,900;1,700&display=swap");
 
+/*
 // __      __           _         _      _
 // \ \    / /          (_)       | |    | |
 //  \ \  / /__ _  _ __  _   __ _ | |__  | |  ___  ___
 //   \ \/ // _` || '__|| | / _` || '_ \ | | / _ \/ __|
 //    \  /| (_| || |   | || (_| || |_) || ||  __/\__ \
-//     \/  \__,_||_|   |_| \__,_||_.__/ |_| \___||___/
+//     \/  \__,_||_|   |_| \__,_||_.__/ |_| \___||___/ 
+*/
 
 // Global Variables
 $border: #333;
@@ -15,6 +16,7 @@ $unit: 10;
 :root {
   --unit: $unit;
   --primary: #000;
+  --body: rgba(41, 41, 41, 1);
   --secondary: white;
   --background: white;
   --border: #333;
@@ -22,10 +24,6 @@ $unit: 10;
   --pressed: #d9d9d9;
   --highlight: #00ffff;
   --highlight-soft: rgba(0, 255, 255, 0.3);
-  --body-copy: "Martel", Cambria, "Hoefler Text", Utopia, "Liberation Serif",
-    "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-  --headlines: "Raleway", Univers, Calibri, "Gill Sans", "Gill Sans MT",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   // @media screen and (prefers-color-scheme: dark) {
   //   --primary: #fff;
@@ -87,12 +85,53 @@ i.icon {
 
 /* Layout Helpers */
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  &:not(.e2e) {
+    padding: (2 * $unit) + px;
+
+    footer {
+      margin-top: (2 * $unit) + px;
+    }
+  }
+
+  &.e2e {
+    .content {
+      padding: (2 * $unit) + px;
+      padding-bottom: 0;
+    }
+
+    footer {
+      padding: (2 * $unit) + px;
+      padding-top: 0;
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+  }
+
+  footer {
+    flex-grow: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .layout-frame {
   padding: 10px 10px;
 
   &.large {
     padding: 20px 20px;
   }
+}
+
+.layout-frame-large {
+  padding: 20px 20px;
 }
 
 .layout-card {
@@ -321,45 +360,6 @@ main {
     width: 100%;
     overflow: hidden;
 
-    .content {
-      @extend .layout-frame.large;
-    }
-
-    p {
-      // display: none;
-      // max-height: 140px;
-      // @extend .text-overflow-ellipsis;
-      width: 100%;
-    }
-
-    .thumbnail img {
-      width: 100%;
-      height: auto;
-    }
-
-    .thumbnail-2x1 {
-      display: none;
-    }
-
-    &.no-thumb {
-      p {
-        display: block;
-      }
-    }
-
-    @media all and (min-width: 700px) {
-      // When in desktop layout, enable wide thumbnails
-      &.wide {
-        grid-column-end: span 2;
-
-        .thumbnail-2x1 {
-          display: block;
-        }
-        .thumbnail-1x1 {
-          display: none;
-        }
-      }
-    }
     &.double-wide {
       grid-column-end: span 4;
     }
@@ -553,9 +553,56 @@ main {
   grid-auto-flow: dense; // Makes it so we don't end up with gaps due to wide tiles
   @extend .card-grid;
 
-  & > article,
-  & > div {
-    min-height: 400px;
+  .card {
+    // When in desktop layout, enable wide thumbnails
+    @media all and (min-width: 700px) {
+      &.wide {
+        grid-column-end: span 2;
+
+        .thumbnail-2x1 {
+          display: block;
+        }
+        .thumbnail-1x1 {
+          display: none;
+        }
+      }
+    }
+
+    p {
+      width: 100%;
+    }
+
+    .content p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+
+    // Card thumbnails
+    .thumbnail img {
+      width: 100%;
+      height: auto;
+    }
+
+    .thumbnail-2x1 {
+      display: none;
+    }
+
+    // Behavior based on thumbnails
+    &:not(.has-thumbnail) {
+      .content p {
+        line-clamp: 15; /* number of lines to show */
+        -webkit-line-clamp: 15; /* number of lines to show */
+      }
+    }
+
+    &.has-thumbnail {
+      .content p {
+        line-clamp: 6; /* number of lines to show */
+        -webkit-line-clamp: 6; /* number of lines to show */
+      }
+    }
   }
 }
 
@@ -571,6 +618,21 @@ main {
   & > div {
     background-color: var(--background);
     @extend .layout-frame.large;
+  }
+}
+
+.nate-avatar {
+  position: relative;
+  margin-top: $unit + px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+  cursor: grab;
+  &:hover {
+    transition: all 0.2s ease-out;
+    transform: skew(30deg, 12deg) scale(1.4, 2.8) rotateX(30deg);
+    box-shadow: 2px 2px 0px var(--highlight);
   }
 }
 
