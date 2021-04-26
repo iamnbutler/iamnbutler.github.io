@@ -6,6 +6,7 @@
     "build": "npx eleventy",
     "watch": "npx eleventy --watch",
     "serve": "npx eleventy --serve",
+    "serve-quiet": "npx eleventy --serve --quiet",
     "debug": "DEBUG=* npx eleventy"
   },
   "repository": {
