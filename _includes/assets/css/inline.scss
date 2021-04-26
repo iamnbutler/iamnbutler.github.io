@@ -88,8 +88,6 @@ i.icon {
 .card {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
-  position: relative;
   background-color: var(--background);
 
   &:not(.e2e) {
@@ -273,14 +271,6 @@ i.icon {
   p {
     margin: 0;
   }
-
-  /* Special Lists */
-  &.spaced-list {
-    .list-header,
-    .list-item:not(:last-child) {
-      @extend .layout-space-large;
-    }
-  }
 }
 
 .collapsible-card-list {
@@ -346,7 +336,6 @@ body {
   display: flex;
   height: 100%;
   justify-content: space-between;
-  // max-width: 1660px;
 
   @media all and (min-width: 1677px) {
     border-right: 1px solid $border;
@@ -585,7 +574,7 @@ main {
 
 /* --- Home --- */
 .featured-post-grid {
-  min-height: 100%;
+  min-height: 100vh;
   grid-auto-flow: dense; // Makes it so we don't end up with gaps due to wide tiles
   @extend .card-grid;
 
