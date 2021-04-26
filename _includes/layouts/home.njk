@@ -2,33 +2,53 @@
 layout: layouts/base.njk
 section: home
 ---
-<section class="site-content" id="home">
-
-  <section class="layout-card home-about">
-    <h1 class="layout-space-large">
-      <span class="layout-width sixty">Nate Butler – Designer</span>
-    </h1>
-
-    <div class="layout-text-columns two post-rich-text">
-      <p>I’m a designer &amp; maker that has been working in the product design industry for the past 10 years. I believe
-        enabling people to share themselves, their ideas, and their creativity, responsibly &amp; regardless of platform. I
-        don't think our major platforms are doing this well and we have a way to go.</p>
-
-      <p>This makes me passionate about the democratizaion of tools and knowledge — I’d rather teach people the tools to
-        do something themselves than create something that does it for them.</p>
-
-      <p>I want to help the people around me level up, in their careers &amp; lives, to far surpass anything I could even
-        imagine achieving.</p>
-
-      <p>I'm a bit of a collector, and post about all types of things here. You will find a mix of work, top of mind,
-        reflections, random posts &amp; process.</p>
-      
-      <a href="/about" class="text-link">Read More &rarr;</a>
-    </div>
-  </section>
+<section class="featured-post-grid" id="home">
+  <div class="about-card grid-card wide">
+    <h1>Hey, I'm Nate ✌🏽</h1>
+    <p>
+      I’m a designer & maker that has been working in the product design
+      industry for the past 10 years. I believe enabling people to share
+      themselves, their ideas, and their creativity, responsibly &
+      regardless of platform. I don't think our major platforms are
+      doing this well and we have a way to go.
+    </p>
+    <p>
+      This makes me passionate about the democratizaion of tools and
+      knowledge — I’d rather teach people the tools to do something
+      themselves than create something that does it for them.
+    </p>
+    <p>
+      I post about all types of things here. You will find a mix of
+      work, top of mind, reflections, random posts & process. Enjoy!
+    </p>
+    <a href="/about">More about me?</a>
+  </div>
+  <div class="work-card grid-card wide">
+    <h1>Work 🎒</h1>
+    <article>
+      <h2>Facebook Stories // 2021</h2>
+      <h3>Making stories more at home in News Feed.</h3>
+      <p>
+        Over 2.5 billion people use News Feed every day, yet more
+        original content come from stories than feed. We explored a
+        range of ways to introduce new people to stories that...
+      </p>
+    </article>
+    <article>
+      <h2>xDesign // 2020</h2>
+      <h3>Unlocking new tools through greater discovery.</h3>
+      <p>
+        At Facebook we have over 1000 internal tools. Our goal was to
+        find the best of the best and curate them into a single surface
+        that people would use daily. On top of this meta surface we...
+      </p>
+    </article>
+    <footer>
+      <a href="/work">More</a>
+    </footer>
+  </div>
 
   <!-- TODO: For all post lists – Filter out unpublished posts (Should this happen at the data level?) -->
-  <section class="home-featured">
     <!-- TODO: Abstract featured list to a partial -->
     <!-- TODO: Make styles non-specifc to home -->
     <!-- TODO: Filter out posts that featured == FALSE -->
@@ -39,64 +59,55 @@ section: home
     <!-- TODO: Cap summary at 15 lines -->
     {% set postslist = collections.post %}
 
-    <div class="home-feature-list">
-
       {% for post in postslist | reverse %}
-        {# Only show the post if it is featured #}
-        {%- if post.data.featured === true -%}
-
-          {%- if post.data.prefer_wide_thumbnail -%}
-          <a href="{{ post.url | url }}" class="layout-tile wide">
-          {% else %}
-          <a href="{{ post.url | url }}" class="layout-tile">
-          {% endif %}
-          
-            {# If there is a post thumbnail show it #}
-            {%- if post.data.show_thumbnail and post.data.thumbnail -%}
-              {# If a post prefers wide thumbnails use them #}
-              {%- if post.data.prefer_wide_thumbnail -%}
-                <div class="thumbnail wide">
-                  <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder">
-                </div>
-              {% else %}
-                <div class="thumbnail">
-                  <img src="{{ post.data.thumbnail }}" alt="Image Placeholder">
-                </div>
+      {# Only show the post if it is featured #}
+      {%- if post.data.featured === true -%}
+        {%- if post.data.prefer_wide_thumbnail -%}
+        <article class="grid-card wide">
+        {% else %}
+        <article class="grid-card">
+        {% endif %}
+          {# If there is a post thumbnail show it #}
+          {%- if post.data.show_thumbnail and post.data.thumbnail -%}
+            {# If a post prefers wide thumbnails use them #}
+            <div class="thumbnail">
+              <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
+              {%- if post.data.wide_thumbnail -%}
+              <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
               {% endif %}
-            {% endif %}
+            </div>
+            
+          {% endif %}
 
-            <div class="post-preview">
-              <div class="preview-content">
-                <h3 class="layout-space">
-                  {% if post.data.title %}
-                  {{ post.data.title }}
-                  {% else %}
-                  Untitled
-                  {% endif %}
-                </h3>
-                <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
-                <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
+          <div class="post-preview">
+            <div class="preview-content">
+              <h3 class="layout-space">
+                {% if post.data.title %}
+                {{ post.data.title }}
+                {% else %}
+                Untitled
+                {% endif %}
+              </h3>
+              <p class="layout-space subtitle"> {{ post.data.subtitle }}</p>
+              <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
+            </div>
+
+            <div class="post-preview-meta">
+              <div class="post-tag">
+                <p class="text-capitalize">
+                  {{ post.data.primary_tag }}
+                </p>
               </div>
-
-              <div class="post-preview-meta">
-                <div class="post-tag">
-                  <p class="text-capitalize">
-                    {{ post.data.primary_tag }}
-                  </p>
-                </div>
-                <div class="post-date date-MY text-uppercase">
-                  <time datetime="{{ post.date | machineDate }}">
-                    {{ post.date | mmyy }}
-                  </time>
-                </div>
+              <div class="post-date date-MY text-uppercase">
+                <time datetime="{{ post.date | machineDate }}">
+                  {{ post.date | mmyy }}
+                </time>
               </div>
             </div>
-          </a>
+          </div>
         {% endif %}
-
+      </article>
       {% endfor %}
-    </div>
-  </section>
 
   <section class="layout-card home-posts">
     {% set postslist = collections.post %}

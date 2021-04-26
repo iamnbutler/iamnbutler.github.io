@@ -15,7 +15,7 @@ tags:
 featured: true
 show_thumbnail: true
 thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_1x1.jpg
-prefer_wide_thumbnail: false
+prefer_wide_thumbnail: true
 wide_thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_2x1.jpg
 hero_image: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_hero.jpg
 ---
