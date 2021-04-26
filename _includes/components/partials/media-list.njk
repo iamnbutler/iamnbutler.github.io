@@ -1,36 +1,16 @@
 <!-- Media List – nedia-list.njk -->
 {% set medialist = collections.media %}
-<ul class="layout-list media-list">
-
-  <li class="list-header">
-    <h4>Mentions</h4>
-  </li>
-
-  <li class="list-context">
-    <p>I've been extremely privileged to work on some awesome projects – Here are a few I’ve lead design on that have been mentioned externally:</p>
-  </li>
-
+<section class="list">
   {% for media in medialist %}
-  <li class="list-item">
+  <article class="list-item">
     <header>
-      <div class="list-title">
-        <a href="{{ media.url | url }}" class="media-link">{{ media.data.title }}</a>
-      </div>
-      <div class="list-meta">
-        <a href="#" class="outlet">{{ media.data.outlet }}</a>
-        <p class="year">{{ media.data.year }}</p>
-      </div>
+      <a href="{{ media.url | url }}" class="title">{{ media.data.title }}</a>
     </header>
-    <div class="list-content">
-      <div class="list-description"></div>
-    </div>
-  </li>
-  
-  <li class="list-item">
-    
-    <!-- TODO: Add outlet URL -->
-    
-  </li>
+    <footer class="meta">
+      <a href="#" class="outlet">{{ media.data.outlet }}</a>
+      <div class="year">{{ media.data.year }}</div>
+    </footer>
+  </article>
   {% endfor %}
   
-</ul>
+</section>

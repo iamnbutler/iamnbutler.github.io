@@ -88,13 +88,14 @@ i.icon {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
   position: relative;
+  background-color: var(--background);
 
   &:not(.e2e) {
     padding: (2 * $unit) + px;
 
-    footer {
+    & > footer {
       margin-top: (2 * $unit) + px;
     }
   }
@@ -105,7 +106,7 @@ i.icon {
       padding-bottom: 0;
     }
 
-    footer {
+    & > footer {
       padding: (2 * $unit) + px;
       padding-top: 0;
     }
@@ -115,10 +116,45 @@ i.icon {
     flex-grow: 1;
   }
 
-  footer {
+  & > footer {
     flex-grow: 0;
     display: flex;
     justify-content: space-between;
+  }
+}
+
+.list {
+  .list-item {
+    margin-bottom: 2 * $unit + px;
+    header {
+      @extend .flex-space-between;
+      @extend .layout-space;
+    }
+
+    .title {
+      flex-grow: 2;
+      flex-shrink: 0;
+      flex-basis: 55%;
+      margin-right: 5%;
+    }
+
+    .meta {
+      flex-basis: 40%;
+      flex-grow: 1;
+      flex-shrink: 0;
+      font-size: 0.8em;
+      @extend .flex-space-between;
+    }
+
+    .context {
+      @extend .flex-space-between;
+      @extend .layout-space;
+      max-width: 80%;
+    }
+
+    .content {
+      margin-top: $unit + px;
+    }
   }
 }
 

@@ -92,7 +92,7 @@ h1 {
 
 h2 {
   font-size: $mob * $mob * $mob * 1em;
-  line-height: 1.4em;
+  line-height: 1.3em;
   text-decoration: none;
   letter-spacing: -0.4px;
   font-weight: 600;
@@ -147,8 +147,8 @@ code {
 a[href],
 a[href]:visited {
   color: var(--primary);
-  text-decoration: underline;
   text-underline-offset: 2px;
+  line-height: 1.5;
 }
 
 .text-link {

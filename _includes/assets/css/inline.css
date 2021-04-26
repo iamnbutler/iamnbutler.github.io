@@ -206,7 +206,7 @@ h1 {
 
 h2 {
   font-size: 1.728em;
-  line-height: 1.4em;
+  line-height: 1.3em;
   text-decoration: none;
   letter-spacing: -0.4px;
   font-weight: 600;
@@ -280,8 +280,8 @@ code {
 a[href],
 a[href]:visited {
   color: var(--primary);
-  text-decoration: underline;
   text-underline-offset: 2px;
+  line-height: 1.5;
 }
 
 .text-link:hover, .layout-list a:hover, .post-rich-text p a:hover {
@@ -354,17 +354,15 @@ i.icon.frame {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   position: relative;
+  background-color: var(--background);
 }
 
 .card:not(.e2e) {
   padding: 20px;
 }
 
-.card:not(.e2e) footer {
+.card:not(.e2e) > footer {
   margin-top: 20px;
 }
 
@@ -373,7 +371,7 @@ i.icon.frame {
   padding-bottom: 0;
 }
 
-.card.e2e footer {
+.card.e2e > footer {
   padding: 20px;
   padding-top: 0;
 }
@@ -384,7 +382,7 @@ i.icon.frame {
           flex-grow: 1;
 }
 
-.card footer {
+.card > footer {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
@@ -394,6 +392,40 @@ i.icon.frame {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.list .list-item {
+  margin-bottom: 20px;
+}
+
+.list .list-item .title {
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+  margin-right: 5%;
+}
+
+.list .list-item .meta {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  font-size: 0.8em;
+}
+
+.list .list-item .context {
+  max-width: 80%;
+}
+
+.list .list-item .content {
+  margin-top: 10px;
 }
 
 .layout-frame, .nav-list li, #post .hero-image figcaption, #post .edit {
@@ -424,7 +456,7 @@ i.icon.frame {
           align-items: flex-start;
 }
 
-.flex-space-between, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header, #main-content > footer {
+.flex-space-between, .list .list-item header, .list .list-item .meta, .list .list-item .context, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header, #main-content > footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -433,7 +465,7 @@ i.icon.frame {
           justify-content: space-between;
 }
 
-.layout-space, .layout-list .list-item:not(:last-child),
+.layout-space, .list .list-item header, .list .list-item .context, .layout-list .list-item:not(:last-child),
 .layout-list .list-context:not(:last-child),
 .layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child), .nav-toc li, .post-rich-text h5 {
   margin-bottom: 10px;

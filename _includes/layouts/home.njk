@@ -28,7 +28,7 @@ section: home
   <div class="card wide">
     <div class="content">
       <h1>work 🎒</h1>
-      {% include "components/partials/work-list.njk" %}
+      {% include "components/post-layout-list.njk" %}
     </div>
     <footer>
       <a href="/work">More Work</a>
@@ -47,7 +47,7 @@ section: home
   <!-- TODO: Cap summary at 15 lines -->
   {% set postslist = collections.post %}
 
-  {% for post in postslist | reverse %}
+  {% for post in postslist | reverse | limit(10) %}
   {# Only show the post if it is featured #}
   {%- if post.data.featured === true -%}
   <article class="card e2e
@@ -56,22 +56,23 @@ section: home
     {# If there is a post thumbnail show it #}
     {%- if post.data.show_thumbnail and post.data.thumbnail -%}
     {# If a post prefers wide thumbnails use them #}
-    <div class="thumbnail">
-      <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
-      {%- if post.data.wide_thumbnail -%}
-      <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
-      {% endif %}
-    </div>
-
+    <a href="{{ post.url | url }}">
+      <div class="thumbnail">
+        <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
+        {%- if post.data.wide_thumbnail -%}
+        <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
+        {% endif %}
+      </div>
+    </a>
     {% endif %}
 
     <div class="content post-preview">
       <div class="preview-content">
         <h2 class="layout-space">
           {% if post.data.title %}
-          {{ post.data.title }}
+          <a href="{{ post.url | url }}">{{ post.data.title }}</a>
           {% else %}
-          Untitled
+          <a href="{{ post.url | url }}">Untitled</a>
           {% endif %}
         </h2>
         <h3 class="layout-space">{{ post.data.subtitle }}</h3>
@@ -94,21 +95,30 @@ section: home
   </article>
   {% endfor %}
 
-  <section class="layout-card home-posts">
+  <section class="card wide home-posts">
+    <h1>more posts ✏️</h1>
     {% set postslist = collections.post %}
     {% include "components/post-layout-list.njk" %}
+    <footer>
+      <a href="/posts">All Posts</a>
+    </footer>
   </section>
 
-  <section class="layout-card home-work">
-    {% include "components/partials/work-list.njk" %}
-  </section>
-
-  <section class="layout-card home-elsewhere">
+  <section class="card home-elsewhere">
+    <h1>elsewhere 📞</h1>
     {% include "components/partials/social-list.njk" %}
   </section>
 
-  <section class="layout-card home-mentions">
+  <section class="card wide home-mentions">
+    <h1>mentions 📣</h1>
+    <p>I've been extremely privileged to work on some awesome projects – Here are a few I’ve lead design on that have been mentioned externally:</p>
     {% include "components/partials/media-list.njk" %}
+  </section>
+
+  <section class="card site-footer">
+    <h1>fin.</h1>
+    <div class="footer-attribution">Nate Butler, 2021. <a href="https://github.com/iamnbutler/iamnbutler.github.io">V11</a></div>
+    <div class="footer-meta">Never stop making ∞</div>
   </section>
 
 </section>

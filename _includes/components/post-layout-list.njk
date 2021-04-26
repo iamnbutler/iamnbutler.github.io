@@ -1,44 +1,26 @@
-<ul class="layout-list">
+<section class="list">
 
-  <li class="list-header">
-    <h4>More Posts</h4>
-    <a href="#">
-      <i class="icon plus"></i>
-    </a>
-  </li>
-
-  {% for post in postslist | reverse | limit(10) %}
-  <li class="list-item">
+  {% set postslist = collections.post %}
+  {% for post in postslist | reverse | limit(5) %}
+  <article class="list-item">
     <header>
-      <div class="list-title">
-        <a href="{{ post.url | url }}">
-          {% if post.data.title %}
-            {{ post.data.title }}
-          {% else %}
-            Untitled
-          {% endif %}
-        </a>
-      </div>
-      <div class="list-meta">
-        <div class="post-tag">
-          <p>
-            <a href="/tags/{{ post.data.primary_tag }}/" rel="tag" class="text-capitalize">{{ post.data.primary_tag }}</a>
-          </p>
-        </div>
-        <div class="post-date date-MY text-uppercase">
-          <time datetime="{{ post.date | machineDate }}">
-            {{ post.date | mmyy }}
-          </time>
-        </div>
-      </div>
+      <a href="{{ post.url | url }}" class="title">
+        {% if post.data.title %}
+        {{ post.data.title }}
+        {% else %}
+        Untitled
+        {% endif %}
+      </a>
     </header>
-    <div class="list-content">
-      <div class="list-description"></div>
+    <div class="context">
+      <h3>{{ post.data.subtitle }}</h3>
     </div>
-  </li>
+    <footer class="meta">
+      <a href="/tags/{{ post.data.primary_tag }}/" rel="tag" class="text-capitalize">{{ post.data.primary_tag }}</a>
+      <time datetime="{{ post.date | machineDate }}" class="text-uppercase">
+        {{ post.date | mmyy }}
+      </time>
+    </footer>
+  </article>
   {% endfor %}
-  
-  <li class="list-item list-footer">
-    Continue reading <a href="/posts">more posts &rarr;</a>  
-  </li>
-</ul>
+</section>

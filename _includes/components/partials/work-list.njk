@@ -3,7 +3,7 @@
   {% for work in worklist | limit(8) %}
   <article class="list-item">
       <div class="list-title">
-        <p class="work-title">{{ work.data.title }}</p>
+        <a href="/work/{{ work.data.permalink }}"><h4 class="work-title">{{ work.data.title }}</h4></a>
       </div>
       <div class="list-meta">
         <p class="work-year">{{ work.data.year }}</p>
