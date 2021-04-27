@@ -849,10 +849,31 @@ main {
   grid-auto-flow: dense;
 }
 
+.featured-post-grid .card .thumbnail {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.featured-post-grid .card:not(.wide) .thumbnail {
+  padding-top: 100%;
+}
+
+.featured-post-grid .card .thumbnail-1x1, .featured-post-grid .card .thumbnail-2x1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @media all and (min-width: 700px) {
   .featured-post-grid .card.wide {
     -ms-grid-column-span: 2;
         grid-column-end: span 2;
+  }
+  .featured-post-grid .card.wide .thumbnail {
+    padding-top: 50%;
   }
   .featured-post-grid .card.wide .thumbnail-2x1 {
     display: block;
@@ -864,6 +885,10 @@ main {
 
 .featured-post-grid .card p {
   width: 100%;
+}
+
+.featured-post-grid .card img {
+  display: block;
 }
 
 .featured-post-grid .card .content p {

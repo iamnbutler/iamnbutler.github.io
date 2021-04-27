@@ -555,10 +555,34 @@ main {
   @extend .card-grid;
 
   .card {
+    .thumbnail {
+      height: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    &:not(.wide) {
+      .thumbnail {
+        padding-top: 1/1 * 100%; // Aspect ratio of thumbnails. In this case, 1x1.
+      }
+    }
+
+    .thumbnail-1x1, .thumbnail-2x1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     // When in desktop layout, enable wide thumbnails
     @media all and (min-width: 700px) {
       &.wide {
         grid-column-end: span 2;
+
+        .thumbnail {
+          padding-top: 1/2 * 100%; // Aspect ratio of thumbnail
+        }
 
         .thumbnail-2x1 {
           display: block;
@@ -571,6 +595,10 @@ main {
 
     p {
       width: 100%;
+    }
+
+    img {
+      display: block;
     }
 
     .content p {
