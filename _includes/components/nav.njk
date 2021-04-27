@@ -1,135 +1,33 @@
-<section class="header layout-card">
-  <!-- Main Nav – Header -->
-  <div class="nav-top layout-row flex-space-between">
-    <!-- TODO: Add data-current when on the home page -->
+<div class="card site-nav">
+  <nav>
+    <!-- Main Nav – Header -->
     <a href="{{ '/' | url }}" class="brand-link" {% if page.url == '/' | url %}aria-current="page"{% endif %}>
-      <i class="icon icon-20 brand">
-        {% include "static/img/icon/icon-brand.svg" %}
-      </i>
+      <h1>nate.rip</h1>
     </a>
-    <a href="#" id="system-theme-toggle">
-      <i class="icon icon-20">
-        {% include "static/img/icon/icon-light.svg" %}
-      </i>
-    </a>
-  </div>
 
-  <!-- Main Nav – Search -->
-  <div class="nav-search layout-row">
-    <form action="http://www.google.com/search">
-      <label for=q>Keyword(s):</label>
-      <input type="text" name="post-search" id="post-search">
-      <input type="hidden" name="ie" value="utf-8">
-      <input type="hidden" name="oe" value="utf-8">
-      <input type="submit" value="&rarr;">
-      <i class="icon icon-20 search">
-        {% include "static/img/icon/icon-search.svg" %}
-      </i>
-    </form>
-  </div>
-
-  <!-- Main Nav – Nav List -->
-  <ul class="nav-list">
+    <!-- Main Nav – Nav List -->
     <!-- TODO: Add counts to nav items -->
-    {% set navPages = collections.all | eleventyNavigation %}
-    {%- for entry in navPages %}
-    <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>
-      <li {% if entry.url == page.url %}aria-current="page"{% endif %}>
-        <h4>{{ entry.title }}</h4>
+    <!-- TODO: Made dynamic -->
+    <ul class="list">
+      <li>
+          <h2 class="link">✏️ <a href="/posts">Posts &amp; Tags</a></h2>
+          <h3>Where I write about pretty much everything.</h3>
       </li>
-    </a>
-    {%- endfor %}
-  </ul>
-</section>
-
-<!-- Main Nav – Collapsible Card List -->
-<!-- Not every card appears on every page. This is controlled by the template. -->
-<section class="collapsible-card-list">
-  <!-- Collapsible Card List – Table of Contents -->
-  <!-- Add ToC if the page content needs it --> 
-  {% if content | toc %}
-  <ul class="layout-card layout-list collapsible-card numbered-list">
-
-    <li class="card-header">
-      <h4>Table of Contents</h4>
-      {% include "components/partials/collapse-control.njk" %}
-    </li>
-    
-    {{ content | toc(wrapperClass='nav-toc') | safe }}
-    
-  </ul>
-  {% endif %}
-
-  <!-- Collapsible Card List – Category List -->
-  <!-- TODO: Figure out why this list randomly resorts -->
-  <ul class="layout-card layout-list extra-space">
-    <li class="card-header">
-      <h4>Categories</h4>
-      {% include "components/partials/collapse-control.njk" %}
-    </li>
-    {% for tag in collections.tagsList %}
-    {# TODO: This is pretty brute force, prettify this #}
-    {%- if tag != "post" and tag != "social" and tag != "media" and tag != "work" -%}
-    <li class="list-item">
-      <div class="flex-row">
-        <div class="primary">
-          <a href="/tags/{{tag}}" class="text-capitalize">{{tag}}</a>
-        </div>
-        <div class="secondary">
-          {{ collections[tag].length }} Posts
-        </div>
-      </div>
-      {# <p>TODO: Add tag descriptions.</p> #}
-    </li>
-    {% endif %}
-    {% endfor %}
-  </ul>
-
-  {# <!-- Collapsible Card List – Post List -->
-  <ul class="layout-card layout-list">
-    <li class="card-header">
-      <h4>All Posts</h4>
-      {% include "components/partials/collapse-control.njk" %}
-    </li>
-    {% set postslist = collections.post %}
-    {% for post in postslist | reverse | limit(10) %}
-    <li class="list-item" {% if post.url == url %} data-current="current item" aria-current="page"{% endif %}>
-      <article>
-        
-        <a href="{{ post.url | url }}">
-          {% if post.data.title %}
-            {{ post.data.title }}
-          {% else %}
-            Untitled
-          {% endif %}
-        </a>
-
-        <div class="flex-space-between text-caption text-capitalize">
-        
-          {% if post.data.tags %}
-            <p>
-              {% for tag in post.data.tags | limit(2) %}
-                {%- if tag != "post" -%}
-                  {{ tag }}
-                {%- endif -%}
-              {% endfor %}
-            </p>
-          {% endif %}
-
-          <time datetime="{{ post.date | machineDate }}">
-            <span class="text-uppercase">{{ post.date | mmyy }}</span>
-          </time>
-
-        </div>
-        
-      </article>
-    </li>
-    {% endfor %}
-    <li class="list-item read-more">
-      <a href="/posts">All posts &rarr;</a>
-    </li>
-  </ul> #}
-  {# <div class="list-footer"></div> #}
-</section>
-<section class="footer">
-</section>
+      <li>
+          <h2 class="link">🎒 <a href="/work">Selected Work</a></h2>
+          <h3>(I do real work, sometimes...)</h3>
+      </li>
+      <li>
+          <h2 class="link">🍎 <a href="/tips">Tips &amp; Guides</a></h2>
+          <h3>Hardware, hobbiest software, design &amp; more.</h3>
+      </li>
+      <li>
+          <h2 class="link">📒 <a href="/lists">Lists</a></h2>
+          <h3>Dev resources, gear, software, movie lists &amp; more.</h3>
+      </li>
+      <li>
+          <h2 class="link">🌱 <a href="/about">About Me</a></h2>
+      </li>
+    </ul>
+  </nav>
+</div>  

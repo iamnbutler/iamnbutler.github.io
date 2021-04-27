@@ -10,8 +10,11 @@
 		<div class="site-grid">
 
 			<main id="main-content">
+				<section class="featured-post-grid">
+				{% include "components/nav.njk" %}
 				{{ layoutContent | safe }}
-				{# {% include "components/footer.njk" %} #}
+				{% include "components/footer.njk" %}
+				</section>
 			</main>
 		</div>
 
