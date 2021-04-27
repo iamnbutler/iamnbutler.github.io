@@ -38,6 +38,8 @@ $unit: 10;
 
 /* |x End Typography */
 
+@import "_grid.scss";
+
 /* || Helpers */
 
 .border-all {
@@ -90,43 +92,6 @@ ul {
 }
 
 /* Layout Helpers */
-
-.card {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--background);
-
-  &:not(.e2e) {
-    padding: (2 * $unit) + px;
-
-    & > footer {
-      margin-top: (2 * $unit) + px;
-    }
-  }
-
-  &.e2e {
-    .content {
-      padding: (2 * $unit) + px;
-      padding-bottom: 0;
-    }
-
-    & > footer {
-      padding: (2 * $unit) + px;
-      padding-top: 0;
-    }
-  }
-
-  .content {
-    flex-grow: 1;
-  }
-
-  & > footer {
-    flex-grow: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-}
 
 .list {
   .list-item {
@@ -376,32 +341,6 @@ main {
   min-height: 100%;
   flex-direction: column;
   flex-grow: 1;
-}
-
-.card-grid {
-  display: grid;
-  background-color: var(--border);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fill, 1fr);
-  grid-column-gap: 1px;
-  grid-row-gap: 1px;
-
-  & > article,
-  & > div {
-    background-color: var(--background);
-    width: 100%;
-    overflow: hidden;
-
-    &.double-wide {
-      grid-column-end: span 4;
-    }
-  }
-}
-
-.grid-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 /* ================================ */
