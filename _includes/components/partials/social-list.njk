@@ -1,8 +1,8 @@
 <!-- Social List – social-list.njk -->
 {% set sociallist = collections.social %}
-<ul class="layout-list social-list">
+<ul class="list">
   {% for social in sociallist %}
-  <li class="list-item">
+  <li>
     <header>
       <div class="list-title">
         <a href="{{ social.url | url }}">{{ social.data.title }}</a>
