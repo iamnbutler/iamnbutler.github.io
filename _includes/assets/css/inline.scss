@@ -527,6 +527,13 @@ main {
   }
 }
 
+.main-nav-link {
+  @extend .flex-space-between;
+  .icon {
+    margin-right: 2 * $unit + px;
+  }
+}
+
 /* ================================ */
 /* Footer                          */
 /* ============================== */

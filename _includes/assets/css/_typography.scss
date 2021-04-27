@@ -82,9 +82,11 @@ h1 {
   letter-spacing: -0.5px;
   font-weight: 700;
   margin-bottom: 2 * $unit + px;
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   transform-origin: center;
+  transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+    letter-spacing: 4px;
   @include fluid-type(
     $min_width,
     $max_width,
@@ -92,10 +94,10 @@ h1 {
     $desk * $desk * $desk * $desk * $min_font
   );
   &:hover {
-    transition: 0.8s ease-in-out;
-    transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
-    letter-spacing: 4px;
-    text-shadow: 10px 10px 0px var(--highlight-soft);
+    transition: 0.1s ease-in;
+    transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
+    text-shadow: 10px 10px 0px var(--highlight);
+    letter-spacing: 6px;
   }
 }
 

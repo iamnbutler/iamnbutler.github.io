@@ -186,11 +186,14 @@ h1 {
   letter-spacing: -0.5px;
   font-weight: 700;
   margin-bottom: 20px;
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   -webkit-transform-origin: center;
           transform-origin: center;
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+  letter-spacing: 4px;
 }
 
 h1 {
@@ -210,12 +213,12 @@ h1 {
 }
 
 h1:hover {
-  -webkit-transition: 0.8s ease-in-out;
-  transition: 0.8s ease-in-out;
-  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
-          transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
-  letter-spacing: 4px;
-  text-shadow: 10px 10px 0px var(--highlight-soft);
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
+  text-shadow: 10px 10px 0px var(--highlight);
+  letter-spacing: 6px;
 }
 
 h2 {
@@ -481,7 +484,7 @@ i.icon.frame {
           align-items: flex-start;
 }
 
-.flex-space-between, .list .list-item header, .list .list-item .meta, .list .list-item .context, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header, #main-content > footer {
+.flex-space-between, .list .list-item header, .list .list-item .meta, .list .list-item .context, .layout-list .list-item header, .layout-list .list-meta, .collapsible-card-list .card-header, .main-nav-link, #main-content > footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -824,6 +827,10 @@ main {
 
 .nav-toc li li {
   margin-left: 20px;
+}
+
+.main-nav-link .icon {
+  margin-right: 20px;
 }
 
 /* ================================ */
