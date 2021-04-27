@@ -1,20 +1,22 @@
 ---
-title: About
-metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
+title: hey, i'm nate ✌🏽
 date: 2017-01-01T00:00:00.000Z
 permalink: /about/index.html
 eleventyNavigation:
   key: About
   order: 4
 ---
+## I’m a designer &amp; maker passionate about democratizing knowledge and the tools that enable people to create.
 
-## WIP
+People should be able to share themselves, their ideas, and their creativity, responsibly &amp; in the way that represents them best. This should be regardless of platform. We aren't doing this well and we have a long way to go to understand technology and it's influence on our lives and society.
 
-About coming soon. Why don't you check out a [post](/posts/) for now?
+This makes me want to help people create the things important to them&mdash;To empower them to create something themselves and feel the euphoria it brings. My goal is always to help the people around me level up, in their careers &amp; lives.
+
+I post about all types of things here. You will find a mix of <a href="/work">work</a>, <a href="/tags/thought">top of mind</a>, <a href="/tags/editorial">reflections</a>, &amp;  <a href="/tags/process">process</a>. Enjoy!
 
 ## Looking to Hire Someone?
 
-Try one of these:
+I'm not looking for work right now, but you can try one of these:
 
 - [Women Who Design](https://womenwho.design/)
 - [Blacks Who Design](https://blackswho.design/)
