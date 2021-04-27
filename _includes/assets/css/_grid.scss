@@ -7,14 +7,43 @@
 //   \_____|_|  |_|\__,_|                               
 // ======================== */
 
+$one-column: 700px;
+$two-column: 900px;
+$three-column: 1200px;
+$four-column: 1500px;
+
 /* Standard grid */
 .card-grid {
   display: grid;
   background-color: var(--border);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: repeat(auto-fill, 1fr);
   grid-column-gap: 1px;
   grid-row-gap: 1px;
+
+  // One column ~ Mobile
+  @media all and (max-width: $one-column) {
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
+  }
+
+  // Two columns ~ Tablet, landscape, slim window
+  @media all and (min-width: $one-column + 1px) and (max-width: $two-column) {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+
+  // Three columns ~ small windows, larger tablets
+  @media all and (min-width: $two-column + 1px) and (max-width: $three-column) {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+
+  // Four columns ~ standard windows, 13in laptops
+  @media all and (min-width: $three-column + 1px) and (max-width: $four-column) {
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+  }
+
+  // Five columns++ ~ larger laptops, desktops, tvs, etc
+  @media all and (min-width: $four-column + 1px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 
   & > article,
   & > div {
@@ -83,5 +112,45 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+  }
+
+  // Grid spacers for filling empty space
+  &.grid-spacer {
+    display: block;
+  }
+
+  // One column ~ Mobile
+  @media all and (max-width: $one-column) {
+    &.grid-spacer {
+      display: none;
+    }
+  }
+
+  // Two columns ~ Tablet, landscape, slim window
+  @media all and (min-width: $one-column + 1px) and (max-width: $two-column) {
+    &.grid-spacer {
+      display: block;
+    }
+  }
+
+  // Three columns ~ small windows, larger tablets
+  @media all and (min-width: $two-column + 1px) and (max-width: $three-column) {
+    &.grid-spacer {
+      display: block;
+    }
+  }
+
+  // Four columns ~ standard windows, 13in laptops
+  @media all and (min-width: $three-column + 1px) and (max-width: $four-column) {
+    &.grid-spacer {
+      display: block;
+    }
+  }
+
+  // Five columns++ ~ larger laptops, desktops, tvs, etc
+  @media all and (min-width: $four-column + 1px) {
+    &.grid-spacer {
+      display: block;
+    }
   }
 }

@@ -86,7 +86,7 @@ h1 {
   text-shadow: 10px 10px 0px var(--highlight-soft);
   transform-origin: center;
   transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
-    letter-spacing: 4px;
+  letter-spacing: 4px;
   @include fluid-type(
     $min_width,
     $max_width,
