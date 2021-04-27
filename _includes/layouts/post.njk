@@ -3,7 +3,7 @@ layout: layouts/base.njk
 section: post
 ---
 
-<section class="site-content" id="post">
+<section class="card wide" id="post">
 	<article>
     <header>
       <div class="inner">
@@ -54,3 +54,7 @@ section: post
 
   </article>
 </section>
+
+{% if content | toc %}
+  {% include "components/partials/toc.njk" %}
+{% endif %}

@@ -1,5 +1,5 @@
 <!-- Table of Contents -->
-{% if content | toc %}
+{# Wrap {% if content | toc %} around the include tag to conditionally add ToC if there is one. #}
 <ul class="layout-card layout-list collapsible-card numbered-list">
 
   <li class="card-header">
@@ -10,4 +10,3 @@
   {{ content | toc(wrapperClass='nav-toc') | safe }}
   
 </ul>
-{% endif %}
