@@ -3,8 +3,7 @@
 <ul class="layout-card layout-list collapsible-card numbered-list">
 
   <li class="card-header">
-    <h4>Contents</h4>
-    {% include "components/partials/collapse-control.njk" %}
+    <h1>Contents</h1>
   </li>
   
   {{ content | toc(wrapperClass='nav-toc') | safe }}

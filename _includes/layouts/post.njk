@@ -3,8 +3,12 @@ layout: layouts/base.njk
 section: post
 ---
 
-<section class="card wide" id="post">
+<section class="card wide e2e" id="post">
 	<article>
+    {% if hero_image %}
+      <img src="{{ hero_image }}"
+            alt="{{ title }}">
+    {% endif %}
     <header>
       <div class="inner">
         <h1>{{ title }}</h1>
@@ -30,16 +34,6 @@ section: post
     </header>
 
     <div class="post-content post-rich-text">
-      
-      {% if hero_image %}
-      <section class="hero-image-wrapper">
-        <figure class="hero-image">
-          <img src="{{ hero_image }}"
-              alt="{{ title }}">
-          <figcaption>Photo credit: <a href="https://unsplash.com/@slavasfotos">Slava Keyzman</a></figcaption>
-        </figure>
-      </section>
-      {% endif %}
       
       <div class="inner">
         {% if edit %}

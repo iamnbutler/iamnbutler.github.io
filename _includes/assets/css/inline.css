@@ -554,6 +554,10 @@ i.icon.frame {
 }
 
 /* || Layout */
+article img {
+  max-width: 100%;
+}
+
 /* Layout Helpers */
 .list .list-item {
   margin-bottom: 20px;
