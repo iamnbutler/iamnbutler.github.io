@@ -121,7 +121,7 @@ input {
   --unit: $unit;
   --primary: #000;
   --body: rgba(41, 41, 41, 1);
-  --secondary: white;
+  --secondary: rgba(41, 41, 41, 1);
   --background: white;
   --border: #333;
   --hover: #f2f2f2;
@@ -171,11 +171,11 @@ h5 {
   font-family: var(--body-copy);
 }
 
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a {
+h1:not(.link) a,
+h2:not(.link) a,
+h3:not(.link) a,
+h4:not(.link) a,
+h5:not(.link) a {
   text-decoration: none;
 }
 
@@ -189,7 +189,6 @@ h1 {
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   text-shadow: 10px 10px 0px var(--highlight-soft);
-  cursor: help;
   -webkit-transform-origin: center;
           transform-origin: center;
 }
@@ -297,10 +296,19 @@ a[href]:visited {
   color: var(--primary);
   text-underline-offset: 2px;
   line-height: 1.5;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
-.text-link:hover, .layout-list a:hover, .post-rich-text p a:hover {
+a[href]:hover,
+a[href]:visited:hover {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
   background-color: var(--highlight-soft);
+}
+
+.text-link, .layout-list a, .post-rich-text p a {
+  opacity: 0.99;
 }
 
 /* Typography Helpers */
@@ -445,11 +453,11 @@ i.icon.frame {
   margin-top: 10px;
 }
 
-.layout-frame, .nav-list li, #post .hero-image figcaption, #post .edit {
+.layout-frame, #post .hero-image figcaption, #post .edit {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, .skip-nav, .nav-list li.large, .home-header > div, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
+.layout-frame.large, .layout-card, .skip-nav, .home-header > div, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
   padding: 20px 20px;
 }
 
@@ -482,7 +490,7 @@ i.icon.frame {
           justify-content: space-between;
 }
 
-.layout-space, .list .list-item header, .list .list-item .context, .layout-list .list-item:not(:last-child),
+.layout-space, ul li, .list .list-item header, .list .list-item .context, .layout-list .list-item:not(:last-child),
 .layout-list .list-context:not(:last-child),
 .layout-list .list-header:not(:last-child), .collapsible-card-list .list-item:not(:last-child), .nav-toc li, .post-rich-text h5 {
   margin-bottom: 10px;
@@ -510,11 +518,11 @@ i.icon.frame {
   max-width: 60%;
 }
 
-.interactable:hover, .collapsible-card-list .card-header .collapse-control .icon:hover, .nav-list a:hover {
+.interactable:hover, .collapsible-card-list .card-header .collapse-control .icon:hover {
   background-color: var(--hover);
 }
 
-.interactable:pressed, .collapsible-card-list .card-header .collapse-control .icon:pressed, .nav-list a:pressed {
+.interactable:pressed, .collapsible-card-list .card-header .collapse-control .icon:pressed {
   background-color: var(--pressed);
 }
 
@@ -808,32 +816,6 @@ main {
   position: absolute;
   top: 10px;
   left: 10px;
-}
-
-.nav-list {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-  gap: 10px 10px;
-}
-
-.nav-list li {
-  list-style: none;
-  border: 1px solid var(--border);
-  min-height: 80px;
-}
-
-.nav-list a {
-  display: block;
-  text-decoration: none;
-}
-
-.nav-list a > [aria-current="page"] {
-  -webkit-box-shadow: 2px 2px 0 var(--highlight);
-          box-shadow: 2px 2px 0 var(--highlight);
 }
 
 .nav-toc li > ol {

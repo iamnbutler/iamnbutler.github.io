@@ -70,7 +70,8 @@ h3,
 h4,
 h5 {
   font-family: var(--body-copy);
-  a {
+  
+  &:not(.link) a {
     text-decoration: none;
   }
 }
@@ -84,7 +85,6 @@ h1 {
   margin-bottom: 2 * $unit + px;
   transition: all 0.2s ease-out;
   text-shadow: 10px 10px 0px var(--highlight-soft);
-  cursor: help;
   transform-origin: center;
   @include fluid-type(
     $min_width,
@@ -159,12 +159,15 @@ a[href]:visited {
   color: var(--primary);
   text-underline-offset: 2px;
   line-height: 1.5;
+  transition: all 0.2s;
+  &:hover {
+    transition: all 0.2s;
+    background-color: var(--highlight-soft);
+  }
 }
 
 .text-link {
-  &:hover {
-    background-color: var(--highlight-soft);
-  }
+  opacity: 0.99;
 }
 
 /* Typography Helpers */

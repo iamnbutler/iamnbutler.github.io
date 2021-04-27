@@ -17,7 +17,7 @@ $unit: 10;
   --unit: $unit;
   --primary: #000;
   --body: rgba(41, 41, 41, 1);
-  --secondary: white;
+  --secondary: rgba(41, 41, 41, 1);
   --background: white;
   --border: #333;
   --hover: #f2f2f2;
@@ -82,6 +82,12 @@ i.icon {
 }
 
 /* || Layout */
+
+ul {
+  li {
+    @extend .layout-space;
+  }
+}
 
 /* Layout Helpers */
 
@@ -398,20 +404,6 @@ main {
   justify-content: space-between;
 }
 
-// .site-content {
-//   display: grid;
-//   position: relative;
-//   grid-template-rows: auto auto auto;
-//   grid-template-columns: 1fr;
-//   gap: 1px;
-//   background-color: var(--border);
-
-//   & > article,
-//   & > section {
-//     background-color: var(--background);
-//   }
-// }
-
 /* ================================ */
 /* Main Nav                        */
 /* ============================== */
@@ -515,30 +507,6 @@ main {
       position: absolute;
       top: 10px;
       left: 10px;
-    }
-  }
-}
-
-.nav-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px 10px;
-
-  li {
-    list-style: none;
-    border: 1px solid var(--border);
-    min-height: 80px;
-    @extend .layout-frame;
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    @extend .interactable;
-
-    & > [aria-current="page"] {
-      box-shadow: 2px 2px 0 var(--highlight);
     }
   }
 }
