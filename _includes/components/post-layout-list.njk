@@ -4,7 +4,7 @@
   {% for post in postslist | reverse | limit(5) %}
   <article class="list-item">
     <header>
-      <a href="{{ post.url | url }}" class="title">
+      <a href="{{ post.url | url }}">
         {% if post.data.title %}
         {{ post.data.title }}
         {% else %}

@@ -4,7 +4,7 @@
   {% for media in medialist | limit(4) %}
   <article class="list-item">
     <header>
-      <a href="{{ media.url | url }}" class="title">{{ media.data.title }}</a>
+      <a href="{{ media.url | url }}">{{ media.data.title }}</a>
     </header>
     <footer class="meta">
       <a href="#" class="outlet">{{ media.data.outlet }}</a>
