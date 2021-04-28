@@ -355,7 +355,41 @@ main {
 
 .brand-link {
   transform: rotateZ(-3deg);
+  bottom: 6px;
   position: relative;
+}
+
+.site-nav {
+  
+  nav ul {
+    margin-top: 2 * $unit + px;
+    padding-bottom: 2 * $unit + px;
+  }
+  nav li {
+    margin-left: 40px;
+    position: relative;
+    ::before {
+      position: absolute;
+      top: 2px;
+      left: -36px;
+    }
+  }
+
+  .posts::before {
+    content:"✏️ ";
+  }
+  .work::before {
+    content:"🎒 ";
+  }
+  .tips::before {
+    content:"🍎 ";
+  }
+  .lists::before {
+    content:"📒 ";
+  }
+  .about::before {
+    content:"🌱 ";
+  }
 }
 
 #main-nav {
