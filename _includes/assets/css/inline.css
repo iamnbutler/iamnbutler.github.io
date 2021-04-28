@@ -148,13 +148,13 @@ html {
 
 @media screen and (min-width: 320px) {
   html {
-    font-size: calc( 15px + 4 * ((100vw - 320px) / 880));
+    font-size: calc( 15px + 5 * ((100vw - 320px) / 880));
   }
 }
 
 @media screen and (min-width: 1200px) {
   html {
-    font-size: 19px;
+    font-size: 20px;
   }
 }
 
@@ -163,6 +163,27 @@ html {
 }
 
 /* Headlines */
+@-webkit-keyframes float {
+  0% {
+    -webkit-transform: scale3d(1, 1.05, 1) rotateZ(0.8deg) skewX(-6deg) translateY(3px);
+            transform: scale3d(1, 1.05, 1) rotateZ(0.8deg) skewX(-6deg) translateY(3px);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1.1, 1) rotateZ(-2deg) skewX(-2deg) translateY(-3px);
+            transform: scale3d(1, 1.1, 1) rotateZ(-2deg) skewX(-2deg) translateY(-3px);
+  }
+}
+@keyframes float {
+  0% {
+    -webkit-transform: scale3d(1, 1.05, 1) rotateZ(0.8deg) skewX(-6deg) translateY(3px);
+            transform: scale3d(1, 1.05, 1) rotateZ(0.8deg) skewX(-6deg) translateY(3px);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1.1, 1) rotateZ(-2deg) skewX(-2deg) translateY(-3px);
+            transform: scale3d(1, 1.1, 1) rotateZ(-2deg) skewX(-2deg) translateY(-3px);
+  }
+}
+
 h1,
 h2,
 h3,
@@ -180,7 +201,7 @@ h5:not(.link) a {
 }
 
 h1 {
-  font-size: 2.0736em;
+  font-size: 2.8561em;
   line-height: 1.4em;
   text-decoration: none;
   letter-spacing: -0.5px;
@@ -191,18 +212,19 @@ h1 {
   text-shadow: 10px 10px 0px var(--highlight-soft);
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
-          transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
   letter-spacing: 4px;
+  position: relative;
 }
 
 h1 {
-  font-size: 31.104px;
+  font-size: 42.8415px;
 }
 
 @media screen and (min-width: 320px) {
   h1 {
-    font-size: calc( 31.104px + 5.51709 * ((100vw - 320px) / 880));
+    font-size: calc( 42.8415px + -6.22041 * ((100vw - 320px) / 880));
   }
 }
 
@@ -221,8 +243,13 @@ h1:hover {
   letter-spacing: 6px;
 }
 
+h1.float {
+  -webkit-animation: float 4s ease alternate infinite;
+          animation: float 4s ease alternate infinite;
+}
+
 h2 {
-  font-size: 1.728em;
+  font-size: 2.197em;
   line-height: 1.3em;
   text-decoration: none;
   letter-spacing: -0.4px;
@@ -231,12 +258,12 @@ h2 {
 }
 
 h2 {
-  font-size: 23.328px;
+  font-size: 29.6595px;
 }
 
 @media screen and (min-width: 320px) {
   h2 {
-    font-size: calc( 23.328px + 3.03919 * ((100vw - 320px) / 880));
+    font-size: calc( 29.6595px + -3.29231 * ((100vw - 320px) / 880));
   }
 }
 
@@ -247,7 +274,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.44em;
+  font-size: 1.69em;
   line-height: 1.4em;
   text-decoration: none;
   letter-spacing: 0px;
@@ -257,12 +284,12 @@ h3 {
 }
 
 h3 {
-  font-size: 17.28px;
+  font-size: 20.28px;
 }
 
 @media screen and (min-width: 320px) {
   h3 {
-    font-size: calc( 17.28px + 1.47 * ((100vw - 320px) / 880));
+    font-size: calc( 20.28px + -1.53 * ((100vw - 320px) / 880));
   }
 }
 
@@ -811,6 +838,12 @@ main {
 /* ================================ */
 /* Main Nav                        */
 /* ============================== */
+.brand-link {
+  -webkit-transform: rotateZ(-3deg);
+          transform: rotateZ(-3deg);
+  position: relative;
+}
+
 #main-nav {
   display: -webkit-box;
   display: -ms-flexbox;

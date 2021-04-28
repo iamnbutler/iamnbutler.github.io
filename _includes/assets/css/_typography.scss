@@ -49,8 +49,8 @@
 $min_width: 320px;
 $max_width: 1200px;
 $min_font: 15px;
-$max_font: 19px;
-$mob: 1.2; // Mobile scaling factor
+$max_font: 20px;
+$mob: 1.3; // Mobile scaling factor
 $desk: 1.25; // Desktop scaling factor
 
 html {
@@ -63,6 +63,15 @@ html {
 }
 
 /* Headlines */
+
+@keyframes float {
+  0% {
+    transform: scale3d(1, 1.05, 1) rotateZ(0.8deg) skewX(-6deg) translateY(3px);
+  }
+  100% {
+    transform: scale3d(1, 1.1, 1) rotateZ(-2deg) skewX(-2deg) translateY(-3px);
+  }
+}
 
 h1,
 h2,
@@ -85,8 +94,9 @@ h1 {
   transition: all 0.1s ease-out;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   transform-origin: center;
-  transform: scale3d(1, 1.1, 1) rotateZ(1deg) skewX(-5deg);
+  transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
   letter-spacing: 4px;
+  position: relative;
   @include fluid-type(
     $min_width,
     $max_width,
@@ -98,6 +108,10 @@ h1 {
     transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
     text-shadow: 10px 10px 0px var(--highlight);
     letter-spacing: 6px;
+  }
+
+  &.float {
+    animation: float 4s ease alternate infinite;
   }
 }
 

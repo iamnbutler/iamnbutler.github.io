@@ -353,6 +353,11 @@ main {
 /* Main Nav                        */
 /* ============================== */
 
+.brand-link {
+  transform: rotateZ(-3deg);
+  position: relative;
+}
+
 #main-nav {
   display: flex;
   position: relative;
