@@ -33,6 +33,7 @@ $four-column: 1500px;
   // Three columns ~ small windows, larger tablets
   @media all and (min-width: $two-column + 1px) and (max-width: $three-column) {
     grid-template-columns: repeat(3, minmax(300px, 1fr));
+  
   }
 
   // Four columns ~ standard windows, 13in laptops
@@ -131,12 +132,26 @@ $four-column: 1500px;
     &.grid-spacer {
       display: block;
     }
+    &.major {
+      grid-column-end: span 1;
+    }
+
+    &.fill {
+      grid-column-end: span 2;
+    }
   }
 
   // Three columns ~ small windows, larger tablets
   @media all and (min-width: $two-column + 1px) and (max-width: $three-column) {
     &.grid-spacer {
       display: block;
+    }
+    &.major {
+      grid-column-end: span 2;
+    }
+
+    &.fill {
+      grid-column-end: span 3;
     }
   }
 
@@ -145,12 +160,26 @@ $four-column: 1500px;
     &.grid-spacer {
       display: block;
     }
+    &.major {
+      grid-column-end: span 3;
+    }
+
+    &.fill {
+      grid-column-end: span 4;
+    }
   }
 
   // Five columns++ ~ larger laptops, desktops, tvs, etc
   @media all and (min-width: $four-column + 1px) {
     &.grid-spacer {
       display: block;
+    }
+    &.major {
+      grid-column-end: span 4;
+    }
+
+    &.fill {
+      grid-column-end: span 5;
     }
   }
 }

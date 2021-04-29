@@ -31,4 +31,11 @@
       </li>
     </ul>
   </nav>
+
+  {% if content | toc %}
+  <h1>Contents</h1>
+  <div class="list">
+    {{ content | toc(wrapperClass='nav-toc') | safe }}
+  </div>
+  {% endif %}
 </div>  

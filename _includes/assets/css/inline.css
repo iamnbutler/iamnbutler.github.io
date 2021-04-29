@@ -519,11 +519,27 @@ a[href]:visited:hover {
   .card.grid-spacer {
     display: block;
   }
+  .card.major {
+    -ms-grid-column-span: 1;
+        grid-column-end: span 1;
+  }
+  .card.fill {
+    -ms-grid-column-span: 2;
+        grid-column-end: span 2;
+  }
 }
 
 @media all and (min-width: 901px) and (max-width: 1200px) {
   .card.grid-spacer {
     display: block;
+  }
+  .card.major {
+    -ms-grid-column-span: 2;
+        grid-column-end: span 2;
+  }
+  .card.fill {
+    -ms-grid-column-span: 3;
+        grid-column-end: span 3;
   }
 }
 
@@ -531,11 +547,27 @@ a[href]:visited:hover {
   .card.grid-spacer {
     display: block;
   }
+  .card.major {
+    -ms-grid-column-span: 3;
+        grid-column-end: span 3;
+  }
+  .card.fill {
+    -ms-grid-column-span: 4;
+        grid-column-end: span 4;
+  }
 }
 
 @media all and (min-width: 1501px) {
   .card.grid-spacer {
     display: block;
+  }
+  .card.major {
+    -ms-grid-column-span: 4;
+        grid-column-end: span 4;
+  }
+  .card.fill {
+    -ms-grid-column-span: 5;
+        grid-column-end: span 5;
   }
 }
 
@@ -558,6 +590,10 @@ a[href]:visited:hover {
 
 .border-left {
   border-left: 1px solid var(--border);
+}
+
+.listify:not(:last-child)::after {
+  content: ", ";
 }
 
 /* Icons */
@@ -840,12 +876,12 @@ main {
 /* Main Nav                        */
 /* ============================== */
 .brand-link {
+  display: block;
+  position: relative;
+  bottom: 10px;
   -webkit-transform: rotateZ(-3deg);
           transform: rotateZ(-3deg);
-  bottom: 10px;
-  position: relative;
   padding-left: 50px;
-  display: block;
 }
 
 .site-nav nav ul {
@@ -854,8 +890,8 @@ main {
 }
 
 .site-nav nav li {
-  margin-left: 50px;
   position: relative;
+  margin-left: 50px;
 }
 
 .site-nav nav li ::before {
@@ -1019,24 +1055,6 @@ main {
   grid-auto-flow: dense;
 }
 
-.featured-post-grid .card .thumbnail {
-  height: 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.featured-post-grid .card:not(.wide) .thumbnail {
-  padding-top: 100%;
-}
-
-.featured-post-grid .card .thumbnail-1x1, .featured-post-grid .card .thumbnail-2x1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 @media all and (min-width: 700px) {
   .featured-post-grid .card.wide {
     -ms-grid-column-span: 2;
@@ -1053,6 +1071,25 @@ main {
   }
 }
 
+.featured-post-grid .card .thumbnail {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.featured-post-grid .card:not(.wide) .thumbnail {
+  padding-top: 100%;
+}
+
+.featured-post-grid .card .thumbnail-1x1,
+.featured-post-grid .card .thumbnail-2x1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .featured-post-grid .card p {
   width: 100%;
 }
@@ -1062,9 +1099,9 @@ main {
 }
 
 .featured-post-grid .card .content p {
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
 }
 
@@ -1130,14 +1167,6 @@ main {
 }
 
 /* --- Blog & Post --- */
-#blog,
-#post {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
-  grid-column-end: 4;
-  max-width: 910px;
-}
-
 #post header {
   border-bottom: 1px solid var(--border);
 }
@@ -1206,6 +1235,11 @@ main {
 .post-rich-text h3,
 .post-rich-text h4 {
   margin: 20px 0 10px 0;
+}
+
+#posts .tag-list a {
+  margin-right: 8px;
+  line-height: 2;
 }
 
 /* |x End Layout */

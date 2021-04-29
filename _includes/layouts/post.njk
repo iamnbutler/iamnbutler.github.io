@@ -3,7 +3,7 @@ layout: layouts/base.njk
 section: post
 ---
 
-<section class="card wide e2e" id="post">
+<section class="card major e2e" id="post">
 	<article>
     {% if hero_image %}
       <img src="{{ hero_image }}"
@@ -49,6 +49,3 @@ section: post
   </article>
 </section>
 
-{% if content | toc %}
-  {% include "components/partials/toc.njk" %}
-{% endif %}

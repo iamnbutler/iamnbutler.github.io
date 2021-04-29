@@ -79,6 +79,21 @@ module.exports = function (eleventyConfig) {
     return tagsSet;
   });
 
+  eleventyConfig.addFilter("filterTagList", tags => {
+    // should match the list in tags.njk
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "social", "media", "work"].indexOf(tag) === -1);
+  })
+
+  // Create an array of all tags
+  eleventyConfig.addCollection("tagList", function(collection) {
+    let tagSet = new Set();
+    collection.getAll().forEach(item => {
+      (item.data.tags || []).forEach(tag => tagSet.add(tag));
+    });
+
+    return [...tagSet];
+  });
+
   // Add support for Limiting the output of a Collection
   // Found at https://github.com/11ty/eleventy/issues/1368
   eleventyConfig.addNunjucksFilter("limit", (arr, limit) =>

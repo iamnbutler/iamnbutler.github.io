@@ -62,6 +62,15 @@ $unit: 10;
   border-left: 1px solid var(--border);
 }
 
+.listify {
+
+  &:not(:last-child) {
+    &::after {
+      content: ", ";
+    }
+  }
+}
+
 /* Icons */
 
 i.icon {
@@ -102,6 +111,7 @@ article {
 .list {
   .list-item {
     margin-bottom: 2 * $unit + px;
+
     header {
       @extend .flex-space-between;
       @extend .layout-space;
@@ -123,9 +133,9 @@ article {
     }
 
     .context {
+      max-width: 80%;
       @extend .flex-space-between;
       @extend .layout-space;
-      max-width: 80%;
     }
 
     .content {
@@ -202,6 +212,7 @@ article {
 /* Layout Lists */
 
 .layout-list {
+
   .list-item,
   .list-context,
   .list-header {
@@ -356,22 +367,23 @@ main {
 $mainNavLeftMargin: 50px;
 
 .brand-link {
-  transform: rotateZ(-3deg);
-  bottom: 10px;
-  position: relative;
-  padding-left: $mainNavLeftMargin;
   display: block;
+  position: relative;
+  bottom: 10px;
+  transform: rotateZ(-3deg);
+  padding-left: $mainNavLeftMargin;
 }
 
 .site-nav {
-  
   nav ul {
     margin-top: 2 * $unit + px;
     padding-bottom: 2 * $unit + px;
   }
+
   nav li {
-    margin-left: $mainNavLeftMargin;
     position: relative;
+    margin-left: $mainNavLeftMargin;
+
     ::before {
       position: absolute;
       top: 2px;
@@ -380,19 +392,23 @@ $mainNavLeftMargin: 50px;
   }
 
   .posts::before {
-    content:"✏️ ";
+    content: "✏️ ";
   }
+
   .work::before {
-    content:"🎒 ";
+    content: "🎒 ";
   }
+
   .tips::before {
-    content:"🍎 ";
+    content: "🍎 ";
   }
+
   .lists::before {
-    content:"📒 ";
+    content: "📒 ";
   }
+
   .about::before {
-    content:"🌱 ";
+    content: "🌱 ";
   }
 }
 
@@ -415,7 +431,7 @@ $mainNavLeftMargin: 50px;
 
   // Mobile Nav
 
-  > *:not(:last-child) {
+  >*:not(:last-child) {
     border-bottom: 1px solid var(--border);
   }
 
@@ -500,12 +516,13 @@ $mainNavLeftMargin: 50px;
 }
 
 .nav-toc {
+
   // list-style: inside;
   // display: list-item;
   li {
     @extend .layout-space;
 
-    & > ol {
+    &>ol {
       margin-top: $unit + px;
     }
 
@@ -517,6 +534,7 @@ $mainNavLeftMargin: 50px;
 
 .main-nav-link {
   @extend .flex-space-between;
+
   .icon {
     margin-right: 2 * $unit + px;
   }
@@ -526,7 +544,7 @@ $mainNavLeftMargin: 50px;
 /* Footer                          */
 /* ============================== */
 
-#main-content > footer {
+#main-content>footer {
   background-color: var(--background);
   @extend .border-top;
   @extend .flex-space-between;
@@ -543,25 +561,6 @@ $mainNavLeftMargin: 50px;
   @extend .card-grid;
 
   .card {
-    .thumbnail {
-      height: 0;
-      overflow: hidden;
-      position: relative;
-    }
-
-    &:not(.wide) {
-      .thumbnail {
-        padding-top: 1/1 * 100%; // Aspect ratio of thumbnails. In this case, 1x1.
-      }
-    }
-
-    .thumbnail-1x1, .thumbnail-2x1 {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
 
     // When in desktop layout, enable wide thumbnails
     @media all and (min-width: 700px) {
@@ -575,10 +574,32 @@ $mainNavLeftMargin: 50px;
         .thumbnail-2x1 {
           display: block;
         }
+
         .thumbnail-1x1 {
           display: none;
         }
       }
+    }
+
+    .thumbnail {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+    }
+
+    &:not(.wide) {
+      .thumbnail {
+        padding-top: 1/1 * 100%; // Aspect ratio of thumbnails. In this case, 1x1.
+      }
+    }
+
+    .thumbnail-1x1,
+    .thumbnail-2x1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
     p {
@@ -590,9 +611,9 @@ $mainNavLeftMargin: 50px;
     }
 
     .content p {
+      display: -webkit-box;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
       -webkit-box-orient: vertical;
     }
 
@@ -609,15 +630,19 @@ $mainNavLeftMargin: 50px;
     // Behavior based on thumbnails
     &:not(.has-thumbnail) {
       .content p {
-        line-clamp: 15; /* number of lines to show */
-        -webkit-line-clamp: 15; /* number of lines to show */
+        line-clamp: 15;
+        /* number of lines to show */
+        -webkit-line-clamp: 15;
+        /* number of lines to show */
       }
     }
 
     &.has-thumbnail {
       .content p {
-        line-clamp: 6; /* number of lines to show */
-        -webkit-line-clamp: 6; /* number of lines to show */
+        line-clamp: 6;
+        /* number of lines to show */
+        -webkit-line-clamp: 6;
+        /* number of lines to show */
       }
     }
   }
@@ -632,7 +657,7 @@ $mainNavLeftMargin: 50px;
   width: 100%;
   grid-column-end: span 4;
 
-  & > div {
+  &>div {
     background-color: var(--background);
     @extend .layout-frame.large;
   }
@@ -646,6 +671,7 @@ $mainNavLeftMargin: 50px;
   border-radius: 50%;
   transition: all 0.2s ease-in;
   cursor: grab;
+
   &:hover {
     transition: all 0.2s ease-out;
     transform: skew(30deg, 12deg) scale(1.4, 2.8) rotateX(30deg);
@@ -654,14 +680,6 @@ $mainNavLeftMargin: 50px;
 }
 
 /* --- Blog & Post --- */
-
-#blog,
-#post {
-  // TODO: Span grid column 2-3
-  grid-column-start: 2;
-  grid-column-end: 4;
-  max-width: 910px;
-}
 
 #post {
   header {
@@ -680,6 +698,7 @@ $mainNavLeftMargin: 50px;
 
     .post-tag {
       text-transform: capitalize;
+
       &:not(:last-child)::after {
         content: ",";
         margin-right: 2px;
@@ -755,7 +774,15 @@ $mainNavLeftMargin: 50px;
   }
 }
 
+// Posts
+
 #posts {
+  .tag-list {
+    a {
+      margin-right: 8px;
+      line-height: 2;
+    }
+  }
 }
 
 /* |x End Layout */
