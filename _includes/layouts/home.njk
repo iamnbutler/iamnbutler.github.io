@@ -59,9 +59,9 @@ section: home
     {# If a post prefers wide thumbnails use them #}
     <a href="{{ post.url | url }}">
       <div class="thumbnail">
-        <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
-        {%- if post.data.wide_thumbnail -%}
         <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
+        {%- if post.data.wide_thumbnail -%}
+        <img src="{{ post.data.wide_thumbnail }}" alt="Image Placeholder" class="thumbnail-2x1">
         {% endif %}
       </div>
     </a>
