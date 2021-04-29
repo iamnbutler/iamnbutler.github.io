@@ -1,7 +1,7 @@
 ---
 post_visible: true
 status: published
-title: To the best of days
+title: To The Best of Days
 subtitle: Days like these are few and far between. A reflection.
 slug: 2019-12-08-to-the-best-of-days
 custom_slug: got-married

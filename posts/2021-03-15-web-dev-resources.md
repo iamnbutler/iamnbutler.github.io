@@ -12,6 +12,13 @@ tags:
   - tip
   - design
   - list
+summary: >-
+  I tend to go back to the same articles, tools and setups over and over when
+  writing code. Now I'm passing them on, I hope you find something interesting!
+edit: >-
+  I'm a hobbiest myself, and I know opinions around tools and languages are
+  strong in the dev space. These are my experiences an opinions, feel free to
+  share yours!
 featured: true
 show_thumbnail: true
 thumbnail: >-
@@ -19,6 +26,13 @@ thumbnail: >-
 wide_thumbnail: >-
   https://storage.googleapis.com/yaminateo-image-bucket/img/web-dev-resources-2x1.jpg
 hero_image: >-
-  https://storage.googleapis.com/yaminateo-image-bucket/img/web-dev-resources-hero-image.jpg
+  https://storage.googleapis.com/yaminateo-image-bucket/img/web-dev-resources-hero.jpg
 ---
-<h2>CSS</h2><ul><li>Of course, the classics:&nbsp;CSSTricks' <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS&nbsp;Grid</a> and Flexbox guides.</li><li>This hand <a href="https://grid.layoutit.com/">CSS&nbsp;Grid generator</a>.</li></ul>
+## Tools
+Text editor: [VS Code](https://code.visualstudio.com/)
+
+## CSS
+
+- Of course, the classics: [CSSTricks' Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/) & [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- In fact, pretty much [any guide](https://css-tricks.com/guides/) from [Chris](https://chriscoyier.net/) & co is great.
+- A [CSS grid](https://grid.layoutit.com/) tool (there are many!) These are super useful when trying to take the idea in your head and put it in a grid. This one is nice since you can create a codepen and modify it from there.

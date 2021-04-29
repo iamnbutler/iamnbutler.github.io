@@ -1,9 +1,10 @@
 ---
 title: hey, i'm nate ✌🏽
+subtitle: Does anyone read these?
 date: 2017-01-01T00:00:00.000Z
 permalink: /about/index.html
 eleventyNavigation:
-  key: About
+  key: About Me
   order: 4
 ---
 ## I’m a designer &amp; maker passionate about democratizing knowledge and the tools that enable people to create.

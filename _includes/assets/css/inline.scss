@@ -353,10 +353,14 @@ main {
 /* Main Nav                        */
 /* ============================== */
 
+$mainNavLeftMargin: 50px;
+
 .brand-link {
   transform: rotateZ(-3deg);
-  bottom: 6px;
+  bottom: 10px;
   position: relative;
+  padding-left: $mainNavLeftMargin;
+  display: block;
 }
 
 .site-nav {
@@ -366,12 +370,12 @@ main {
     padding-bottom: 2 * $unit + px;
   }
   nav li {
-    margin-left: 40px;
+    margin-left: $mainNavLeftMargin;
     position: relative;
     ::before {
       position: absolute;
       top: 2px;
-      left: -36px;
+      left: -$mainNavLeftMargin + 4px;
     }
   }
 
@@ -665,13 +669,21 @@ main {
     @extend .layout-frame.large;
 
     .inner {
-      max-width: 540px;
+      max-width: 600px;
       margin: 0 auto;
     }
 
     h1,
     h2 {
       margin-bottom: 10px;
+    }
+
+    .post-tag {
+      text-transform: capitalize;
+      &:not(:last-child)::after {
+        content: ",";
+        margin-right: 2px;
+      }
     }
   }
 
@@ -712,7 +724,7 @@ main {
     @extend .layout-frame.large;
 
     .inner {
-      max-width: 540px;
+      max-width: 600px;
       margin: 0 auto;
     }
   }

@@ -103,15 +103,15 @@ h1 {
     $mob * $mob * $mob * $mob * $min_font,
     $desk * $desk * $desk * $desk * $min_font
   );
-  &:hover {
-    transition: 0.1s ease-in;
-    transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
-    text-shadow: 10px 10px 0px var(--highlight);
-    letter-spacing: 6px;
-  }
 
   &.float {
     animation: float 4s ease alternate infinite;
+    &:hover {
+      transition: 0.1s ease-in;
+      transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
+      text-shadow: 10px 10px 0px var(--highlight);
+      letter-spacing: 6px;
+    }
   }
 }
 
@@ -182,7 +182,7 @@ a[href]:visited {
 }
 
 .text-link {
-  opacity: 0.99;
+  opacity: 1;
 }
 
 /* Typography Helpers */

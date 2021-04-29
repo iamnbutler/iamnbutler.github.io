@@ -11,8 +11,10 @@ primary_tag: thought
 tags:
   - thought
   - process
-summary: |
-  test2
+summary: >-
+  It's taken me almost 10 years to finally get a full site live, but that
+  doesn't mean there haven't been a LOT of directions that I haven't explored.
+  Here are as many of them as I've been able to dig up!
 featured: true
 show_thumbnail: true
 thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/nate_web_1x1.jpg

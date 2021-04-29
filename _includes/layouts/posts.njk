@@ -3,16 +3,8 @@ layout: layouts/base.njk
 section: posts
 ---
 
-<section class="card wide" id="posts">
-	<section class="layout-frame large">
-    <header >
-      <h1>{{ title }}</h1>
-    </header>
-
-    {{ layoutContent | safe }}
-  </section>
-  <section class="posts-list">
-    {% set postslist = collections.post %}
-    {% include "components/partials/post-grid.njk" %}
-  </section>
+<section class="card" id="posts">
+	<h1>{{ title }}</h1>
 </section>
+{% set postslist = collections.post %}
+{% include "components/partials/post-grid.njk" %}

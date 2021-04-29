@@ -1,6 +1,4 @@
-<div class="post-grid">
-
-  {% for post in postslist | reverse %}
+  {# {% for post in postslist | reverse %}
 
       <a href="{{ post.url | url }}" class="layout-tile">
 
@@ -18,7 +16,7 @@
             {% else %}
               <p class="layout-space subtitle">Add a subtitle please!</p>
             {% endif %}
-            {# <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p> #}
+            <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
           </div>
 
           <div class="post-preview-meta">
@@ -36,5 +34,45 @@
         </div>
       </a>
 
+  {% endfor %} #}
+
+  {% for post in postslist | reverse %}
+  <article class="card e2e
+        {% if post.data.show_thumbnail %} has-thumbnail{% endif %}">
+    {# If there is a post thumbnail show it #}
+    {%- if post.data.show_thumbnail and post.data.thumbnail -%}
+    {# If a post prefers wide thumbnails use them #}
+    <a href="{{ post.url | url }}">
+      <div class="thumbnail">
+        <img src="{{ post.data.thumbnail }}" alt="Image Placeholder" class="thumbnail-1x1">
+      </div>
+    </a>
+    {% endif %}
+
+    <div class="content post-preview">
+      <div class="preview-content">
+        <h2 class="layout-space">
+          {% if post.data.title %}
+          <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+          {% else %}
+          <a href="{{ post.url | url }}">Untitled</a>
+          {% endif %}
+        </h2>
+        <h3 class="layout-space">{{ post.data.subtitle }}</h3>
+        <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
+      </div>
+    </div>
+    <footer class="post-preview-meta">
+      <div class="post-tag">
+        <p class="text-capitalize">
+          {{ post.data.primary_tag }}
+        </p>
+      </div>
+      <div class="post-date date-MY text-uppercase">
+        <time datetime="{{ post.date | machineDate }}">
+          {{ post.date | mmyy }}
+        </time>
+      </div>
+    </footer>
+  </article>
   {% endfor %}
-</div>

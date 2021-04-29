@@ -235,18 +235,18 @@ h1 {
   }
 }
 
-h1:hover {
+h1.float {
+  -webkit-animation: float 4s ease alternate infinite;
+          animation: float 4s ease alternate infinite;
+}
+
+h1.float:hover {
   -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
   -webkit-transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
           transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
   text-shadow: 10px 10px 0px var(--highlight);
   letter-spacing: 6px;
-}
-
-h1.float {
-  -webkit-animation: float 4s ease alternate infinite;
-          animation: float 4s ease alternate infinite;
 }
 
 h2 {
@@ -339,7 +339,7 @@ a[href]:visited:hover {
 }
 
 .text-link, .layout-list a, .post-rich-text p a {
-  opacity: 0.99;
+  opacity: 1;
 }
 
 /* Typography Helpers */
@@ -842,8 +842,10 @@ main {
 .brand-link {
   -webkit-transform: rotateZ(-3deg);
           transform: rotateZ(-3deg);
-  bottom: 6px;
+  bottom: 10px;
   position: relative;
+  padding-left: 50px;
+  display: block;
 }
 
 .site-nav nav ul {
@@ -852,14 +854,14 @@ main {
 }
 
 .site-nav nav li {
-  margin-left: 40px;
+  margin-left: 50px;
   position: relative;
 }
 
 .site-nav nav li ::before {
   position: absolute;
   top: 2px;
-  left: -36px;
+  left: -46px;
 }
 
 .site-nav .posts::before {
@@ -1141,13 +1143,22 @@ main {
 }
 
 #post header .inner {
-  max-width: 540px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 #post header h1,
 #post header h2 {
   margin-bottom: 10px;
+}
+
+#post header .post-tag {
+  text-transform: capitalize;
+}
+
+#post header .post-tag:not(:last-child)::after {
+  content: ",";
+  margin-right: 2px;
 }
 
 #post .hero-image {
@@ -1178,7 +1189,7 @@ main {
 }
 
 #post .post-content .inner {
-  max-width: 540px;
+  max-width: 600px;
   margin: 0 auto;
 }
 

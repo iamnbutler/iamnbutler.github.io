@@ -11,21 +11,21 @@ section: post
     {% endif %}
     <header>
       <div class="inner">
-        <h1>{{ title }}</h1>
+        <h1 class="post-title">{{ title }}</h1>
         <p class="subtitle layout-space">{{ subtitle }}</p>
         <p>
-          <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
+          <time>{{ date }}</time>
           {% if date_updated %}
-          <time datetime="{{ date_updated | machineDate }}">(Updated {{ date_updated | readableDate }})</time>
+          <time>(Updated {{ date_updated }})</time>
           {% endif %}
           &mdash;
 
           {% if tags %}
           {% for tag in tags %}
-          {%- if tag != "post" -%}
-          {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-          <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-          {%- endif -%}
+            {%- if tag != "post" -%}
+            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+              <span class="post-tag"><a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a></span>
+            {%- endif -%}
           {% endfor %}
 
         {% endif %}
