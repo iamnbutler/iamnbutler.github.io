@@ -456,6 +456,10 @@ a[href]:visited:hover {
   .card.grid-spacer {
     display: block;
   }
+  .card.wide {
+    -ms-grid-column-span: 1;
+        grid-column-end: span 1;
+  }
   .card.major {
     -ms-grid-column-span: 1;
         grid-column-end: span 1;
@@ -469,6 +473,10 @@ a[href]:visited:hover {
 @media all and (min-width: 901px) and (max-width: 1200px) {
   .card.grid-spacer {
     display: block;
+  }
+  .card.wide {
+    -ms-grid-column-span: 2;
+        grid-column-end: span 2;
   }
   .card.major {
     -ms-grid-column-span: 2;
@@ -484,6 +492,14 @@ a[href]:visited:hover {
   .card.grid-spacer {
     display: block;
   }
+  .card.wide:not(.secondary) {
+    -ms-grid-column-span: 2;
+        grid-column-end: span 2;
+  }
+  .card.wide .secondary {
+    -ms-grid-column-span: 1;
+        grid-column-end: span 1;
+  }
   .card.major {
     -ms-grid-column-span: 3;
         grid-column-end: span 3;
@@ -497,6 +513,10 @@ a[href]:visited:hover {
 @media all and (min-width: 1501px) {
   .card.grid-spacer {
     display: block;
+  }
+  .card.wide {
+    -ms-grid-column-span: 2;
+        grid-column-end: span 2;
   }
   .card.major {
     -ms-grid-column-span: 4;
@@ -1056,10 +1076,6 @@ main {
 }
 
 @media all and (min-width: 700px) {
-  .featured-post-grid .card.wide {
-    -ms-grid-column-span: 2;
-        grid-column-end: span 2;
-  }
   .featured-post-grid .card.wide .thumbnail {
     padding-top: 50%;
   }

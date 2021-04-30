@@ -565,7 +565,6 @@ $mainNavLeftMargin: 50px;
     // When in desktop layout, enable wide thumbnails
     @media all and (min-width: 700px) {
       &.wide {
-        grid-column-end: span 2;
 
         .thumbnail {
           padding-top: 1/2 * 100%; // Aspect ratio of thumbnail

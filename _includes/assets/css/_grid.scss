@@ -82,6 +82,10 @@ $four-column: 1500px;
       display: block;
     }
 
+    &.wide {
+      grid-column-end: span 1;
+    }
+
     &.major {
       grid-column-end: span 1;
     }
@@ -95,6 +99,10 @@ $four-column: 1500px;
   @media all and (min-width: $two-column + 1px) and (max-width: $three-column) {
     &.grid-spacer {
       display: block;
+    }
+
+    &.wide {
+      grid-column-end: span 2;
     }
 
     &.major {
@@ -112,6 +120,15 @@ $four-column: 1500px;
       display: block;
     }
 
+    &.wide {
+      &:not(.secondary) {
+        grid-column-end: span 2;
+      }
+      .secondary {
+        grid-column-end: span 1;
+      }
+    }
+
     &.major {
       grid-column-end: span 3;
     }
@@ -125,6 +142,10 @@ $four-column: 1500px;
   @media all and (min-width: $four-column + 1px) {
     &.grid-spacer {
       display: block;
+    }
+
+    &.wide {
+      grid-column-end: span 2;
     }
 
     &.major {
