@@ -16,7 +16,6 @@ summary: >-
   program. Each student works with a professor to explore an area that is
   interesting to them and they can get quite deep into. This is an opportunity
   to go deep on a topic you are passionate about... 
-edit: Updated in 2021 with some context and a bit of cleanup & organization.
 featured: true
 show_thumbnail: true
 thumbnail: >-

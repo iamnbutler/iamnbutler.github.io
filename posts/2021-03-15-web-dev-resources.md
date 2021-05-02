@@ -17,7 +17,7 @@ summary: >-
   writing code. Now I'm passing them on, I hope you find something interesting!
 edit: >-
   I'm a hobbiest myself, and I know opinions around tools and languages are
-  strong in the dev space. These are my experiences an opinions, feel free to
+  strong in the dev space. These are my experiences and opinions, feel free to
   share yours!
 featured: true
 show_thumbnail: true
