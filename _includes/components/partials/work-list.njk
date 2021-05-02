@@ -1,32 +1,15 @@
 <!-- Work List – work-list.njk -->
 <section class="list">
-{% set worklist = collections.work %}
+<ul class="list">
+  {% set worklist = collections.work %}
   {% for work in worklist | reverse | limit(4) %}
-  <article class="list-item">
-    <header>
-      <a href="{{ work.url | url }}">
-        {% if work.data.title %}
-        {{ work.data.title }}
-        {% else %}
-        Untitled
-        {% endif %}
-      </a>
-    </header>
-    <div class="context">
+  <li>
+      <h2 class="work-item link"><a href="{{ work.url | url }}">{{ work.data.title }}</a> – {{ work.date | yyyy }}</h2>
       <h3>{{ work.data.subtitle }}</h3>
-    </div>
-    <footer class="meta">
-      {% if work.data.roles %}
-				<p>
-					{% for role in work.data.roles %}
-		  			<span class="role">{{ role }}</span>
-					{% endfor %}
-				</p>
-			{% endif %}
-      <time datetime="{{ work.date | machineDate }}" class="text-uppercase">
-        {{ work.date | yyyy }}
-      </time>
-    </footer>
-  </article>
+  </li>
   {% endfor %}
+  <li>
+      <h2 class="work-item link"><a href="/work">More Work &rarr;</a></h2>
+  </li>
+</ul>
 </section>
