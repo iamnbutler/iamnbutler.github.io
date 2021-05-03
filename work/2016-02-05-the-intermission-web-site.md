@@ -1,11 +1,12 @@
 ---
 status: published
-title: The Intermission
+title: The Intermission Web Site
 subtitle: A brief pause in the chaos to celebrate achievement.
-slug: 2016-02-05-the-intermission
+slug: 2016-02-05-the-intermission-web-site
 custom_slug: ysdn-the-intermission
 date: '2016-02-05'
-roles:
+company: YSDN
+project_type:
   - Project Lead
   - Web Design
   - Development
@@ -16,7 +17,7 @@ summary: >-
   The Intermission is a celebration of the graduating class of 2016; it is a
   reflection on our past four years and our hopes for the future.
 role: Project lead, front-end development of the site.
-goal: >-
+goal: >
   Design & launch a web presence that 1) showcased the work of graduating class
   and 2) provided details for the physical grad show event.
 team: 2 design, 2 frontend, 1 backend
@@ -27,5 +28,9 @@ outcome: >-
   able to create here!
 link_one: https://ysdn-2016.github.io/
 link_two: https://github.com/ysdn-2016/ysdn-2016.github.io
+thumbnail: >-
+  https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/the_intermission_1x1.png
+wide_thumbnail: >-
+  https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/the_intermission_2x1.png
 ---
 undefined

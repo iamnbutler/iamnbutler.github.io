@@ -5,7 +5,8 @@ subtitle: Designing the problem through making.
 slug: 2015-03-12-design-workshop
 custom_slug: ydsn-design-workshop
 date: '2015-03-12'
-roles:
+company: YSDN
+project_type:
   - Art Direction
   - Development
 summary: >-
@@ -14,7 +15,8 @@ summary: >-
   of a desire to make without a problem, to make for the sake of making. The
   illustrations began by exploring the ideas of lost worlds and alternate
   realities but as the project continued it began to gradually in change form.
-goal: Explore & Learn
+goal: |
+  Explore & Learn
 team: Just me!
 wrapup: >-
   The project was designed explore the process of making. Whether making through
@@ -27,6 +29,10 @@ wrapup: >-
   experienced through the link below. Photography credit: Unsplash
 link_one: http://nate.jp/cuuubic
 show_thumbnail: true
+thumbnail: >-
+  https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/design_workshop_1x1.png
+wide_thumbnail: >-
+  https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/design_workshop_2x1.png
 ---
 ### Learning to Make
 

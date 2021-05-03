@@ -18,7 +18,6 @@ summary: >-
 featured: true
 show_thumbnail: true
 thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/spacelink-1x1.jpg
-prefer_wide_thumbnail: true
 wide_thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/spacelink-2x1.jpg
 hero_image: https://storage.googleapis.com/yaminateo-image-bucket/img/spacelink-hero.jpg
 ---

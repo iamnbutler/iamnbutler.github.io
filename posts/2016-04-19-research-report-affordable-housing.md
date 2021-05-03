@@ -2,7 +2,7 @@
 post_visible: true
 status: published
 title: 'Research Report: Affordable Housing'
-subtitle: 'Finding affordable housing: Addressing the housing crisis in the Bay Area.'
+subtitle: 'Student Research: Addressing the housing crisis in the Bay Area.'
 slug: 2016-04-19-research-report-affordable-housing
 date: '2016-04-19'
 author: Nate Butler

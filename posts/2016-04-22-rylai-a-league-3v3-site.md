@@ -15,7 +15,7 @@ summary: >-
   Ryl.ai is a concept project that I worked on to fill the place of some of the
   major League 3V3 sites that shut down. The idea was to get people excited
   about the game mode through easy access to streams, strategies and stats, in
-  the vein of something like [champion.gg](https://champion.gg/)
+  the vein of something like champion.gg.
 featured: true
 show_thumbnail: true
 thumbnail: >-

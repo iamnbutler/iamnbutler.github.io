@@ -1,0 +1,24 @@
+---
+title: work 🎒
+layout: layouts/base.njk
+date: 2016-01-01T00:00:00.000Z
+permalink: /work/index.html
+eleventyNavigation:
+  key: Work
+  order: 2
+---
+
+<section class="card" id="posts">
+	<h1>{{ title }}</h1>
+  <p>I write about all sorts of things here, use the tags below to narrow down your search or browse through everything in order.</p>
+  <div class="list tag-list">
+    <h2>Filter by Tag:</h2>
+    {% for tag in collections.tagList | filterTagList %}
+      {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="post-tag listify text-capitalize">{{ tag }}</a>
+    {% endfor %}
+  </div>
+  
+</section>
+{% set postslist = collections.post %}
+{% include "components/partials/work-grid.njk" %}
