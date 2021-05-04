@@ -10,4 +10,6 @@ eleventyNavigation:
 
 <section class="card" id="posts">
 	<h1>{{ title }}</h1>
+  {% set postslist = collections["list"] %}
+  {% include "components/postslist.njk" %}
 </section>

@@ -8,6 +8,11 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 // TODO: Switch ToC to https://www.npmjs.com/package/markdown-it-toc-done-right
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 
+// Enable Emoji-js – https://github.com/iamcal/js-emoji
+// Emoji catalog here: https://unicodey.com/emoji-data/table.htm
+const EmojiConvertor = require('emoji-js');
+const emoji = new EmojiConvertor();
+
 module.exports = function (eleventyConfig) {
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);

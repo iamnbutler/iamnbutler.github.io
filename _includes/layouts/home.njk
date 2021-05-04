@@ -3,17 +3,13 @@ layout: layouts/base.njk
 section: home
 ---
   
-  <div class="card wide">
+  <div class="card">
     <div class="content">
-      <h1>hey, i'm nate ✌🏽</h1>
-      <h2 class="layout-space-large">
+      <h1>hey i'm nate ✌🏽</h1>
+      <h2 class="layout-space">
         I’m a designer &amp; maker passionate about democratizing knowledge and the tools that enable people to create.</h2>
       <p>
-        People should be able to share themselves, their ideas, and their creativity, responsibly &amp; in the way that represents them best. This should be regardless
-        of platform. We aren't doing this well and we have a long way to go to understand technology and it's influence on our lives and society.
-      </p>
-      <p>
-        This makes me want to help people create the things important to them&mdash;To empower them to create something themselves and feel the euphoria it brings. My goal is always to help the people around me level up, in their careers &amp; lives.
+        I want to help people create the things important to them&mdash;To empower them to create something themselves and feel the euphoria it brings. My goal is always to help the people around me level up, in their careers &amp; lives.
       </p>
       <p>
         I post about all types of things here. You will find a mix of
@@ -26,7 +22,7 @@ section: home
       <img src="https://storage.googleapis.com/yaminateo-image-bucket/img/global/nate.gif" alt="Avatar of Nate Butler" class="nate-avatar">
     </footer>
   </div>
-  <div class="card wide secondary">
+  <div class="card secondary">
     <div class="content">
       <h1>work 🎒</h1>
       {% include "components/partials/work-list.njk" %}
@@ -51,7 +47,7 @@ section: home
   {# Only show the post if it is featured #}
   {%- if post.data.featured === true -%}
   <article class="card e2e
-        {% if post.data.prefer_wide_thumbnail %} wide {% endif %}
+        {# {% if post.data.prefer_wide_thumbnail %} wide {% endif %} #}
         {% if post.data.show_thumbnail %} has-thumbnail{% endif %}">
     {# If there is a post thumbnail show it #}
     {%- if post.data.show_thumbnail and post.data.thumbnail -%}
@@ -95,7 +91,7 @@ section: home
   </article>
   {% endfor %}
 
-  <section class="card wide home-posts">
+  <section class="card home-posts">
     <h1>more posts</h1>
     {% set postslist = collections.post %}
     {% include "components/post-layout-list.njk" %}
@@ -109,7 +105,7 @@ section: home
     {% include "components/partials/social-list.njk" %}
   </section>
 
-  <section class="card wide home-mentions">
+  <section class="card home-mentions">
     <h1>mentions</h1>
     <p>I've been extremely privileged to work on some awesome projects – Here are a few I’ve lead design on that have been mentioned externally:</p>
     {% include "components/partials/media-list.njk" %}

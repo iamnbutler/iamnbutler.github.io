@@ -149,13 +149,13 @@ html {
 
 @media screen and (min-width: 320px) {
   html {
-    font-size: calc( 15px + 5 * ((100vw - 320px) / 880));
+    font-size: calc( 15px + 4 * ((100vw - 320px) / 880));
   }
 }
 
 @media screen and (min-width: 1200px) {
   html {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
 
@@ -236,8 +236,8 @@ h1 {
 }
 
 h1.float {
-  -webkit-animation: float 4s ease alternate infinite;
-          animation: float 4s ease alternate infinite;
+  -webkit-animation: float 2.5s ease alternate infinite;
+          animation: float 2.5s ease alternate infinite;
 }
 
 h1.float:hover {
@@ -259,18 +259,18 @@ h2 {
 }
 
 h2 {
-  font-size: 29.6595px;
+  font-size: 28.01175px;
 }
 
 @media screen and (min-width: 320px) {
   h2 {
-    font-size: calc( 29.6595px + -3.29231 * ((100vw - 320px) / 880));
+    font-size: calc( 28.01175px + -3.10941 * ((100vw - 320px) / 880));
   }
 }
 
 @media screen and (min-width: 1200px) {
   h2 {
-    font-size: 26.36719px;
+    font-size: 24.90234px;
   }
 }
 
