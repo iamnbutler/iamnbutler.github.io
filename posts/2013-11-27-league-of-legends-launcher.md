@@ -11,7 +11,6 @@ primary_tag: project
 tags:
   - project
   - design
-featured: true
 show_thumbnail: true
 thumbnail: >-
   https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/lol-launcher-1x1.jpg

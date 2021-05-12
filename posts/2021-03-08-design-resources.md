@@ -12,7 +12,6 @@ tags:
   - tip
   - design
   - list
-featured: true
 show_thumbnail: true
 thumbnail: >-
   https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/design_resources_1x1.jpg

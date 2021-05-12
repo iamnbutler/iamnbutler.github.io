@@ -14,7 +14,6 @@ summary: >-
   Welcome to the YSDN Interactivity Workshop. Here we will learn how to build a
   simple website using Bootstrap, and learn some important basics about web
   development. Hopefully you are excited to get learning, so lets get to it!
-featured: true
 ---
 Welcome to the YSDN Interactivity Workshop. Here we will learn how to build a simple website using Bootstrap, and learn some important basics about web development. Helpfully you are excited to get learning, so let's get to it!
 

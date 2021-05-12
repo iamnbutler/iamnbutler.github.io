@@ -12,6 +12,5 @@ tags:
   - dev
   - design
   - project
-featured: true
 ---
 [View Site](http://iamnbutler.github.io/splash-page/) [View on Github](https://github.com/iamnbutler/splash-page)

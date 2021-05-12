@@ -19,7 +19,6 @@ edit: >-
   I'm a hobbiest myself, and I know opinions around tools and languages are
   strong in the dev space. These are my experiences and opinions, feel free to
   share yours!
-featured: true
 show_thumbnail: true
 thumbnail: >-
   https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/web-dev-resources-1x1.jpg

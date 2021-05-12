@@ -15,7 +15,6 @@ summary: >-
   the Bay Area would have on the housing market and the economic and social
   impacts caused by the influx of young entrepreneurs and young technology
   companies.
-featured: true
 hero_image: >-
   http://ysdn-gradshow.s3.amazonaws.com/564f9255e7679d3cd0f73ec9/56f020aa4fea7e080099ec81/7616d440d84774a0da3857cb9ebc0aae9b878a23-case_study_header.8b6ff64a31790288f1b061ccc4fe027a54591f84.jpg
 ---

@@ -1,9 +1,9 @@
 ---
 post_visible: true
 status: published
-title: Keyblade Necklace 3D Print
+title: Printing Jewelry
 subtitle: Combining modeling and 3D printing to create jewelry.
-slug: 2018-11-15-keyblade-necklace-3d-print
+slug: 2018-11-15-printing-jewelry
 date: '2018-11-15'
 author: Nate Butler
 primary_tag: project
