@@ -92,6 +92,9 @@ section: home
         <h3 class="layout-space">{{ post.data.subtitle }}</h3>
         <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
       </div>
+      {%- if post.data.series -%}
+        Part of <a href="#">{{ post.data.series }}</a>.
+      {%- endif -%}
     </div>
     <footer class="post-preview-meta">
       <div class="post-tag">

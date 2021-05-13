@@ -10,6 +10,8 @@ primary_tag: education
 tags:
   - education
   - dev
+series: YSDN Interactivity Workshop
+series_number: 2
 summary: >-
   Welcome to the YSDN Interactivity Workshop. Here we will learn how to build a
   simple website using Bootstrap, and learn some important basics about web

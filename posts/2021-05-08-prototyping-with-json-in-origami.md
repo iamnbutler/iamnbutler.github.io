@@ -11,6 +11,8 @@ tags:
   - design
   - dev
   - education
+series: Advanced Origami
+series_number: 3
 summary: >-
   Building large prototypes is complext enough, but managing content updates on
   the fly can become a real nightmare. Using local JSON to drive content in your

@@ -11,6 +11,7 @@ primary_tag: design
 tags:
   - design
   - process
+series: Design Workshop 2015
 summary: >-
   Design Workshop is a year long research & independent study course in the YSDN
   program. Each student works with a professor to explore an area that is
