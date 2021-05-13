@@ -2,9 +2,9 @@
 post_visible: true
 status: published
 title: |
-  Selected Works
+  YSDN: Selected Works
 subtitle: Here are a few of my selected design works spanning from 2011 — 2015.
-slug: 2016-04-19-selected-works
+slug: 2016-04-19-ysdn-selected-works
 date: '2016-04-19'
 author: Nate Butler
 primary_tag: design
