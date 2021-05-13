@@ -11,6 +11,7 @@ primary_tag: design
 tags:
   - design
   - project
+series: Design Workshop 2015
 summary: >-
   The result of a rather unconventional workshop project. This is the artifact I
   produced as a summary of my exploration and making throughout the first half
