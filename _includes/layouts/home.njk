@@ -93,7 +93,7 @@ section: home
         <p class="preview-summary layout-space-large"> {{ post.data.summary }}</p>
       </div>
       {%- if post.data.series -%}
-        Part of <a href="#">{{ post.data.series }}</a>.
+        <p class="layout-space">Part of <a href="#">{{ post.data.series }}</a>.</p>
       {%- endif -%}
     </div>
     <footer class="post-preview-meta">
@@ -111,5 +111,3 @@ section: home
     {% endif %}
   </article>
   {% endfor %}
-
-  <div class="card grid-spacer"></div>
