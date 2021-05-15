@@ -54,8 +54,8 @@ $mob: 1.3; // Mobile scaling factor
 $desk: 1.25; // Desktop scaling factor
 
 html {
-  @include fluid-type($min_width, $max_width, $min_font, $max_font);
   color: var(--body);
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
 
   &:not(h1, h2, h3, h4, h5) {
     font-family: var(--body-copy);
@@ -85,18 +85,19 @@ h5 {
 }
 
 h1 {
+  position: relative;
   font-size: $mob * $mob * $mob * $mob * 1em;
   line-height: 1.4em;
   text-decoration: none;
   letter-spacing: -0.5px;
   font-weight: 700;
-  margin-bottom: 2 * $unit + px;
-  transition: all 0.1s ease-out;
+  letter-spacing: 4px;
   text-shadow: 10px 10px 0px var(--highlight-soft);
+  margin-bottom: 2 * $unit + px;
   transform-origin: center;
   transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
-  letter-spacing: 4px;
-  position: relative;
+  transition: all 0.1s ease-out;
+  
   @include fluid-type(
     $min_width,
     $max_width,
@@ -116,18 +117,24 @@ h1 {
 }
 
 h2 {
-  font-size: $mob * $mob * $mob * 1em;
-  line-height: 1.3em;
-  text-decoration: none;
-  letter-spacing: -0.4px;
-  font-weight: 600;
-  margin-bottom: $unit + px;
-  @include fluid-type(
-    $min_width,
-    $max_width,
-    $mob * $mob * $mob * 0.85 * $min_font,
-    $desk * $desk * $desk * 0.85 * $min_font
-  );
+  &:not(.fake-h1) {
+    font-size: $mob * $mob * $mob * 1em;
+    line-height: 1.3em;
+    text-decoration: none;
+    letter-spacing: -0.4px;
+    font-weight: 600;
+    margin-bottom: $unit + px;
+    @include fluid-type(
+      $min_width,
+      $max_width,
+      $mob * $mob * $mob * 0.85 * $min_font,
+      $desk * $desk * $desk * 0.85 * $min_font
+    );
+  }
+
+  &.fake-h1 {
+    @extend h1;
+  }
 }
 
 h3 {
