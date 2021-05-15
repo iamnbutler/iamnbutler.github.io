@@ -22,7 +22,7 @@ section: home
   </div>
   <div class="card secondary">
     <div class="content">
-      <h1>work 🎒</h1>
+      <h2 class="fake-h1">work 🎒</h2>
       <p>As I work through documenting my old projects you can read more about my work on <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>!</p>
       {% include "components/partials/work-list.njk" %}
     </div>
@@ -61,7 +61,7 @@ section: home
   <!-- TODO: Cap summary at 15 lines -->
   {% set postslist = collections.post %}
 
-  {% for post in postslist | reverse | limit(10) %}
+  {% for post in postslist | reverse | limit(19) %}
   {# Only show the post if it is featured #}
   {%- if post.data.featured === true -%}
   <article class="card e2e

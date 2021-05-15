@@ -5,37 +5,48 @@ section: post
 
 <section class="card major e2e" id="post">
 	<article>
-    {% if hero_image %}
-      <img src="{{ hero_image }}"
-            alt="{{ title }}">
-    {% endif %}
     <header>
       <div class="inner">
+        {%- if series -%}
+          <p class="post-series layout-space"><a href="#" class="post-series-link">{{ series }}</a>
+          {%- if series_number -%}
+          , Part {{ series_number }} &mdash;
+          {%- endif -%}
+          </p>
+        {%- endif -%}
         <h1 class="post-title">{{ title }}</h1>
         <p class="subtitle layout-space">{{ subtitle }}</p>
-        <p>
-          <time>{{ date }}</time>
-          {% if date_updated %}
-          <time>(Updated {{ date_updated }})</time>
-          {% endif %}
-          &mdash;
-
+        <div class="post-meta">
           {% if tags %}
+          <p class="post-tags">
+          Posted in
           {% for tag in tags %}
             {%- if tag != "post" -%}
             {% set tagUrl %}/tags/{{ tag }}/{% endset %}
               <span class="post-tag"><a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a></span>
             {%- endif -%}
           {% endfor %}
+          </p>
+          {% endif %}
 
-        {% endif %}
-        </p>
+          <p class="post-time">
+            {% if date_updated %}
+            <time>Updated {{ date_updated }}</time>
+            {% else %}
+            <time>Posted {{ date }}</time>
+            {% endif %}
+          </p>
+        </div>
       </div>
     </header>
 
     <div class="post-content post-rich-text">
       
       <div class="inner">
+        {% if hero_image %}
+          <img src="{{ hero_image }}"
+                alt="{{ title }}">
+        {% endif %}
         {% if edit %}
         <section class="edit">
           <p>{{ edit }}</p>

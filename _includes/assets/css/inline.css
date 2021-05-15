@@ -15,6 +15,7 @@ object,
 iframe,
 figure,
 h1,
+h2.fake-h1,
 h2,
 h3,
 h4,
@@ -185,7 +186,9 @@ html {
   }
 }
 
+
 h1,
+h2.fake-h1,
 h2,
 h3,
 h4,
@@ -193,7 +196,7 @@ h5 {
   font-family: var(--body-copy);
 }
 
-h1:not(.link) a,
+h1:not(.link) a, h2.fake-h1:not(.link) a,
 h2:not(.link) a,
 h3:not(.link) a,
 h4:not(.link) a,
@@ -201,46 +204,54 @@ h5:not(.link) a {
   text-decoration: none;
 }
 
-h1 {
+
+h1,
+h2.fake-h1 {
+  position: relative;
   font-size: 2.8561em;
   line-height: 1.4em;
   text-decoration: none;
   letter-spacing: -0.5px;
   font-weight: 700;
-  margin-bottom: 20px;
-  -webkit-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out;
+  letter-spacing: 4px;
   text-shadow: 10px 10px 0px var(--highlight-soft);
+  margin-bottom: 20px;
   -webkit-transform-origin: center;
           transform-origin: center;
   -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
           transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
-  letter-spacing: 4px;
-  position: relative;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
 }
 
-h1 {
+
+h1,
+h2.fake-h1 {
   font-size: 42.8415px;
 }
 
 @media screen and (min-width: 320px) {
-  h1 {
+  
+  h1,
+  h2.fake-h1 {
     font-size: calc( 42.8415px + -6.22041 * ((100vw - 320px) / 880));
   }
 }
 
 @media screen and (min-width: 1200px) {
-  h1 {
+  
+  h1,
+  h2.fake-h1 {
     font-size: 36.62109px;
   }
 }
 
-h1.float {
+h1.float, h2.float.fake-h1 {
   -webkit-animation: float 2.5s ease alternate infinite;
           animation: float 2.5s ease alternate infinite;
 }
 
-h1.float:hover {
+h1.float:hover, h2.float.fake-h1:hover {
   -webkit-transition: 0.1s ease-in;
   transition: 0.1s ease-in;
   -webkit-transform: scale3d(1, 1.1, 1) rotateZ(2deg) skewX(-5deg);
@@ -249,7 +260,7 @@ h1.float:hover {
   letter-spacing: 6px;
 }
 
-h2 {
+h2:not(.fake-h1) {
   font-size: 2.197em;
   line-height: 1.3em;
   text-decoration: none;
@@ -258,18 +269,18 @@ h2 {
   margin-bottom: 10px;
 }
 
-h2 {
+h2:not(.fake-h1) {
   font-size: 28.01175px;
 }
 
 @media screen and (min-width: 320px) {
-  h2 {
+  h2:not(.fake-h1) {
     font-size: calc( 28.01175px + -3.10941 * ((100vw - 320px) / 880));
   }
 }
 
 @media screen and (min-width: 1200px) {
-  h2 {
+  h2:not(.fake-h1) {
     font-size: 24.90234px;
   }
 }
@@ -1192,7 +1203,7 @@ main {
   margin: 0 auto;
 }
 
-#post header h1,
+#post header h1, #post header h2.fake-h1,
 #post header h2 {
   margin-bottom: 10px;
 }
@@ -1242,7 +1253,7 @@ main {
   margin-bottom: 10px;
 }
 
-.post-rich-text h1,
+.post-rich-text h1, .post-rich-text h2.fake-h1,
 .post-rich-text h2 {
   margin: 50px 0 10px 0;
   widows: 2;
