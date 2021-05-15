@@ -11,6 +11,14 @@ primary_tag: design
 tags:
   - design
   - update
+summary: >-
+  Today we launched Facebook Avatars publicly! I've been working on this for a
+  long time now. 
+
+
+  I never would have imagined the complexity and amount of difficult decisions
+  it takes to get a system like this off the ground. I have a lot of respect for
+  all the teams out there working on likeness systems for people...
 featured: true
 ---
 Today we launched [a test of Facebook Avatars](https://www.theverge.com/2019/6/3/18650685/facebook-avatar-messenger-newsfeed-bitmoji) publicly! I've been working on this for a long time now. 

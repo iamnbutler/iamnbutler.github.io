@@ -1,9 +1,9 @@
 ---
 post_visible: true
 status: published
-title: Desk Gear & Setup Guide
+title: 'Home Office Setup: The Hardware'
 subtitle: Level up your desk gear, feel and ergonomics.
-slug: 2021-03-26-desk-gear-and-setup-guide
+slug: 2021-03-26-home-office-setup-the-hardware
 custom_slug: desk-gear-setup-guide
 date: '2021-03-26'
 author: Nate Butler
@@ -20,17 +20,17 @@ prefer_wide_thumbnail: true
 wide_thumbnail: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_2x1.jpg
 hero_image: https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_hero.jpg
 ---
-Photo credit: <a href="https://unsplash.com/@slavasfotos">Slava Keyzman</a>
+_Photo credit: <a href="https://unsplash.com/@slavasfotos">Slava Keyzman</a>_
 
-_INTRO WIP_
-
-First, we'll take a look at all the gear you might want to set up your desk. If you already have everything, you can jump straight to [the setup](#the-setup).
+In the first part of this series we'll take a look at all the hardware you might want when setting up your desk. We'll cover computer, peripherals, VC gear & audio, and more. In the later parts we'll cover desk setup, ergonomics and software!
 
 ## The Gear
 
 I've compiled together a list of all the high quality desk/work from home gear I've used or know of in one place (so you don't have to waste money on things that are not great!) This is the list I wish I had when I started building my setup!
 
-These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. I'll try to call out anything in this list that I haven't personally owned or used.
+These will skew towards the higher price range in these categories, but I'll try to include any budget options I know that are solid, or I've personally tested. Generally, I'm looking at a balance of quality, aesthetic and price range. 
+
+I'll try to call out anything in this list that I haven't personally owned or used.
 
 ### Computer
 
@@ -56,7 +56,9 @@ If an iMac sounds good I'd maybe recommend waiting though, as I imagine we'll li
 
 ##### PC – Laptop
 
-These move so fast it is hard to keep up with. If you are looking to buy a laptop, I recommend [Dave2D's](https://www.youtube.com/channel/UCVYamHliCI9rw1tHR1xbkfw) channel. He covers most notable ones in a straightforward and unbiased way. Otherwise, when in doubt, usually the [XPS 13](https://www.dell.com/en-us/shop/dell-laptops/xps-13-laptop/spd/xps-13-9310-laptop) is a good bet. Generally, [Razer Blades](https://www.razer.com/gaming-laptops/razer-blade) have a good track record, but they are a bit more hit or miss than the XPS 13.
+These move so fast it is hard to keep up with. If you are looking to buy a laptop, I recommend [Dave2D's](https://www.youtube.com/channel/UCVYamHliCI9rw1tHR1xbkfw) channel. He covers most notable ones in a straightforward and unbiased way. 
+
+Otherwise, when in doubt, usually the [XPS 13](https://www.dell.com/en-us/shop/dell-laptops/xps-13-laptop/spd/xps-13-9310-laptop) is a good bet. Generally, [Razer Blades](https://www.razer.com/gaming-laptops/razer-blade) have a good track record, but they are a bit more hit or miss than the XPS 13.
 
 ##### PC – Desktop
 
@@ -66,7 +68,7 @@ I picked up [one of these](https://www.zotac.com/us/product/mini_pcs/magnus-one
 
 The main thing to remember with PCs: smaller = more money, faster = more money, high end = mostly for bragging rights. Use a tool like [logical increments](https://www.logicalincrements.com/) to find the right price/performance ratio for you.
 
-Other desktop resources: [PC Part Picker](https://pcpartpicker.com/) | [SFF Subreddit](https://www.reddit.com/r/sffpc/)
+Other desktop resources: [PC Part Picker](https://pcpartpicker.com/) | [SFF Subreddit](https://www.reddit.com/r/sffpc/) if you are looking to build a smaller machine.
 
 ### Monitor
 
@@ -78,13 +80,13 @@ Not sure what the poor reviews are about here – I bought mine out of pocket (
 
 Options open up a bit more if you are willing to have non-OSX native color (this isn't overly noticeable as long as you don't use your laptop open, or are using a desktop like a Mac Mini.)
 
-[BenQ EW3270U](https://www.amazon.com/gp/product/B078HWBGH5/) (32", 4K) – BenQ
+[BenQ EW3270U](https://www.amazon.com/gp/product/B078HWBGH5/) (32"", 4K) – BenQ
 
 Matte display, super large. I've daily drove these for a few years now, and own two of them. IMO two of these are too big for a desk. If you want something pretty solid and are ok with slightly muted colors these are a pretty good place to start. You probably want to arm mount these. (Make sure you are ok with how big they are.)
 
 #### Even Bigger?
 
-Once you get over the 32" range you have two general directions you can go:
+Once you get over the 32"" range you have two general directions you can go:
 
 The first: Moving to an Ultrawide.
 
@@ -102,11 +104,11 @@ I use [Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12) on OSX ge
 
 Smaller monitor for VC
 
-I don't have a specific recommendation here, as most of these are from generic brands, but having a small (13~15") portable monitor for second screen things like music, as well as a dedicate VC is pretty handy. Ideally one with VESA compatible mounting holes is ideal (like [this](https://www.banggood.com/PORPOISE-HT-1330XT-13_3-Inch-1080P-Type-C-Portable-Computer-Monitor-Gaming-Display-Screen-for-Smartphone-Tablet-Laptop-Game-Consoles-p-1666109.html?p=1D22009628395201703K&custlinkid=1507010&cur_warehouse=CN) one) so you can put it on a monitor arm or VESA stand. Your webcam/mic/etc can also sit on top of this to get a better angle.
+I don't have a specific recommendation here, as most of these are from generic brands, but having a small (13~15"") portable monitor for second screen things like music, as well as a dedicate VC is pretty handy. Ideally one with VESA compatible mounting holes is ideal (like [this](https://www.banggood.com/PORPOISE-HT-1330XT-13_3-Inch-1080P-Type-C-Portable-Computer-Monitor-Gaming-Display-Screen-for-Smartphone-Tablet-Laptop-Game-Consoles-p-1666109.html?p=1D22009628395201703K&custlinkid=1507010&cur_warehouse=CN) one) so you can put it on a monitor arm or VESA stand. Your webcam/mic/etc can also sit on top of this to get a better angle.
 
-Something like a [Portal](https://portal.facebook.com/products/) can also work here if you want a flexible dedicated calling device. Downside: Not mountable. (Disclaimer: I've worked for Facebook.)
+Something like a [Portal](https://portal.facebook.com/products/) can also work here if you want a flexible dedicated calling device. Downside: Not mountable. (Disclaimer: I've worked for Facebook, though not on Portal.)
 
-### Monitor Stands, Arms & Risers
+### Monitor Stands
 
 [Wood Desk Shelf](https://grovemade.com/product/wood-desk-shelf/?initial=342) – [Grovemade](https://grovemade.com/)
 
@@ -119,6 +121,10 @@ The laptop riser adds quite a bit of height, so you would want this to sit besid
 The quality of Grovemade products overall are top tier, and I know a lot of people that have these. You probably won't regret investing in these.
 
 These are what I use on my desk today.
+
+### Arms & Risers
+
+More coming on these soon!
 
 ### Keyboard
 
@@ -136,6 +142,15 @@ Price: ~$30-50
 
 A super budget option – I was pretty impressed with this keyboard, Great form factor. Keys are mushy, so if that bugs you I would avoid this one. I actually like the feel of these keys over many higher-end mechanical keyboards. I'd expect a 1-2 year lifespan out of something like this, and no support if something goes wrong.
 
+[Logitech MX KEYS](https://www.logitech.com/en-us/products/keyboards/mx-keys-mac-wireless-keyboard.920-009552.html?crid=27)
+
+Price: ~$99
+
+I haven't used these, but Logitech is doing some great things recently with their keyboards & mice. The MX series looks quite promising over all, and I think a single small universal USB for all devices will be quite appealing for many people. 
+
+I'd recommend researching these if you just wants something that works and will last quite a while.
+
+
 ### Mouse
 
 Mice are highly based on preference, like keyboards, so I'll just share what I have used.
@@ -144,7 +159,11 @@ Mice are highly based on preference, like keyboards, so I'll just share what I h
 
 Price: ~$50-$130 (Depends on wireless, buttons, etc.)
 
-A solid daily driver – Some people rag on Razer but I've been using one model or another of the death adder since 2008 and they have always served me well. I'd expect to replace these every 2-3 years (the build is solid, but they often end up double clicking randomly later in their life, similar to a common issue with Logitech mice.)
+I'm sure I'll lose some people over this, but the Death Adder is a solid daily driver – Some people rag on Razer but I've been using one model or another of the death adder since 2008 and they have always served me well. I'd expect to replace these every 2-3 years (the build is solid, but they often end up double clicking randomly later in their life, similar to a common issue with Logitech mice.)
+
+[Logitech MX Anywhere 3](https://www.logitech.com/en-us/products/mice/mx-anywhere-3-mac.910-005899.html)
+
+As mentioned above, I haven't used this but the new Logitech line looks quite promising. I'll probably check these out next.
 
 ##### Specialized
 
@@ -186,7 +205,7 @@ I don't really use the wireless charging case, but it probably isn't needed if y
 
 Price: ~$120
 
-The classic. You probably know at least one person with pair of headphones or have seen someone on TV wearing them, and for a good reason. These are great, solid, unoffensive headphones. "Neutral" describes their sound well. If you need something reasonably priced, and high quality, these is a good place to start. There are tons of detailed reviews on the amazon page, so I won't write much more here. (Note: Some people in the reviews recommend trying after-market ear cups on these. I haven't done this on either pair of these that I have, but could be good to look in to.)
+The classic. You probably know at least one person with pair of headphones or have seen someone on TV wearing them, and for a good reason. These are great, solid, unoffensive headphones. ""Neutral"" describes their sound well. If you need something reasonably priced, and high quality, these is a good place to start. There are tons of detailed reviews on the amazon page, so I won't write much more here. (Note: Some people in the reviews recommend trying after-market ear cups on these. I haven't done this on either pair of these that I have, but could be good to look in to.)
 
 There is apparently a bluetooth version of these available now – I can't speak to them but they might be worth trying out.
 
@@ -199,6 +218,10 @@ These are the ones I own – I'm not sure why the XM4s are both cheaper (~$250) 
 While I bought these for working at my desk, the real place they shine is on long flights. With the noise cancelling on you basically forget anyone else is on the plane with you. It more or less completely removes cabin noise.
 
 Overall, if you are just using these as desk headphones, I'd go either cheaper and wired, or with the Airpod Pros.
+
+### Headphone Stands
+
+Overall, this is one area I haven't explored too much. I'll come back and add to this as I do more research and choose something.
 
 [Uppr Zero headphone stand](https://gouppercase.com/products/zero).
 
@@ -228,7 +251,7 @@ DSLR/Mirrorless + Capture Card
 
 Price: *~$300 all the way to tens of thousands*
 
-What most people you see with "amazing" looking video quality/youtube videos are using. There are _way_ to many options to get into here. I'm in the Sony ecosystem, so I'd recommend something like the a5100, a6300~ or Alpha 7C (these range from ~300-1.7k)
+What most people you see with ""amazing"" looking video quality/youtube videos are using. There are _way_ to many options to get into here. I'm in the Sony ecosystem, so I'd recommend something like the a5100, a6300~ or Alpha 7C (these range from ~300-1.7k)
 
 I'll link to [a post like this](https://www.epiphan.com/blog/best-cameras-for-live-streaming/) and let you dive in further.
 
@@ -244,7 +267,7 @@ This is a pretty cool + hacker friendly option. The lenses it uses are inexpens
 
 If you buy a single high end accessory for your desk, this is the one I would recommend.
 
-Flawless connectivity across multiple monitors, high quality USB, card reader and full power even for 16" 100W Macbook Pros. I've used my for the past 4 years and I've never had a single issue with it, and know at least 15 people who all have had a similar experience. This is the baseline for high quality tech.
+Flawless connectivity across multiple monitors, high quality USB, card reader and full power even for 16"" 100W Macbook Pros. I've used my for the past 4 years and I've never had a single issue with it, and know at least 15 people who all have had a similar experience. This is the baseline for high quality tech.
 
 (I've read some reports of people having issues with these and their Macbook Pros. I was surprised to hear this, as I know many, many people with these that have never had any issues, but once again YMMV.)
 
@@ -262,13 +285,29 @@ This sits on top of your monitor and illuminates the whole desk surface evenly w
 
 ### Chair
 
-_Seating WIP_
+More coming on these soon!
+
+I'm using an Aeron right now, but I'm not convinced this is as good as it gets, and likely a really good chair setup can be had for far less than what and Aeron costs.
+
+Will return as I research and learn more.
 
 ### Wifi/Networking
 
-Ethernet
+#### Ethernet
 
 If you don't have a dock with Ethernet, at least some sort of small USB-C to Ethernet dongle is a must have ([Example cheap on](https://www.amazon.com/gp/product/B07VPMPT6M/)e, I have this one and it works fine.)
+
+#### Wifi
+
+This deserves it's own post probably, but if you want something you plug in and it works, I'd look into something like [Nest Wifi](https://store.google.com/us/product/nest_wifi?hl=en-US) or [Erro](https://eero.com/shop).
+
+These are easy to use and troubleshoot, and are systems you can build on as you need more.
+
+If you want to start by buying into the upper end of systems you can build you can start with something like [this](https://store.ui.com/collections/unifi-network-unifi-os-consoles/products/unifi-dream-machine) and expand as you go. 
+
+A Ubiquiti setup is going to be on the upper end of where you can go without going full enterprise tier, and the setup isn't overly complicated.
+
+Their access points start at a [super reasonable price](https://store.ui.com/products/unifi-ap-6-lite) and you can keep expanding this system almost infinitely. You can also plug in cameras, door access systems and more in, similar to Nest, but it all runs local on your network rather than sending data to a third party.
 
 ### Extras
 
@@ -278,25 +317,21 @@ I haven't tried any of the below, but I'll here are some of the things I'm inter
 
 This is a pretty cool idea – I already use grommet holes to run cables from the top of my desk to the bottom, adding a hub here for things like headphones and quick USB access is pretty handy.
 
-Corsair iCUE LT100 – Corsair
+#### Accent Lighting
 
-Accent Lighting
+[Corsair iCUE LT100](https://www.corsair.com/us/en/Categories/Products/Ambient-Lighting/iCUE-LT100-Smart-Lighting-Towers-Starter-Kit/p/CD-9010002-NA) – Corsair
+
+These seem like a nice way to add lighting to your desk (if you are in to that kind of thing) without sticking light strips everywhere.
 
 Custom Cables
 
-A store like [this](https://www.etsy.com/shop/CustomCableCo)
+A store like [this](https://www.etsy.com/shop/CustomCableCo) can hook you up with some really amazing custom cables that can help finish the look of your desk. These are one of the first things people will notice!
 
-## The Setup
-
-Audio Input (Microphone)
-
-https://medium.com/macoclock/how-in-the-bleep-do-i-mute-my-mic-anywhere-on-macos-d2fa1185b13
-
-## General Thoughts
+## General Wrap Up Thoughts
 
 ### Buying from Amazon
 
-If you have a shopping history with them, buy though Amazon where possible. Their customer support generally will fix problems no questions asked, and often on lower priced items not even have you send them back Always look for the Prime tag, avoid buying from Amazon Marketplace accounts or items tagged "Fulfilled by Amazon."
+If you have a shopping history with them, buy though Amazon where possible. Their customer support generally will fix problems no questions asked, and often on lower priced items not even have you send them back Always look for the Prime tag, avoid buying from Amazon Marketplace accounts or items tagged ""Fulfilled by Amazon.""
 
 Expect buying through Amazon you will eventually get a returned item.
 
@@ -311,4 +346,3 @@ This really depends on what you have access to, but a high end credit card like 
 Many of these I've used at home or tried first hand, but here are some other places I found a few things:
 
 - [Unique Accessories For Your Desk Setup! ~ Work From Home Edition](https://www.youtube.com/watch?v=e4tAsGzf2lE) – [minimalistik](https://www.youtube.com/channel/UCZv7dyFdg4DIph6TIBlaVSQ)‍
-`

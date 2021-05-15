@@ -15,10 +15,7 @@ tags:
 summary: >-
   I tend to go back to the same articles, tools and setups over and over when
   writing code. Now I'm passing them on, I hope you find something interesting!
-edit: >-
-  I'm a hobbiest myself, and I know opinions around tools and languages are
-  strong in the dev space. These are my experiences and opinions, feel free to
-  share yours!
+featured: true
 show_thumbnail: true
 thumbnail: >-
   https://storage.googleapis.com/yaminateo-image-bucket/img/thumbnail/web-dev-resources-1x1.jpg
@@ -31,7 +28,8 @@ hero_image: >-
 I'm mostly a hobby developer – I've learned mostly by taping together bits of code found all over the internet for years now. This space is mostly for remembering the cool and useful shit I run across, but hopefully you can find something useful in here!
 
 ## Tools
-Text editor: [VS Code](https://code.visualstudio.com/)
+- [VS Code](https://code.visualstudio.com/) – More or less the god of code editors at this point. I was resistant to moving to something so "heavy", only to find once I tried it it is incredibly fast on top of being packed with useful stuff.
+- [Codekit](https://codekitapp.com/) – All sorts of fun things out of the box. Compass, local servers, sass compilation & more. I use VSCode more these days to cover these needs, but I relied on Codekit for years.
 
 ## CSS
 
@@ -50,6 +48,7 @@ Text editor: [VS Code](https://code.visualstudio.com/)
 - [CSS Doodle](https://css-doodle.com/) – Draw complex patterns & visuals in pure CSS.
 
 ## Static Site Generators
+- [Jamstack](https://jamstack.org/) – A great starting point for learning about static site generators and what is out there.
 
 ### [11ty](https://www.11ty.dev/)
 
