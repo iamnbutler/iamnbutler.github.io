@@ -73,18 +73,31 @@ html {
   }
 }
 
+.overline {
+  display: block;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  letter-spacing: 0.15em;
+  padding-bottom: 10px;
+
+  text-shadow: 10px 10px 0px rgba(0,255,255,0.3);
+  transform: scale3d(1, 1.1, 1) rotateZ(-1.5deg) skewX(-4deg);
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
   font-family: var(--body-copy);
+  transform-origin: bottom left;
   &:not(.link) a {
     text-decoration: none;
   }
   &.theme-1 {
     text-shadow: 10px 10px 0px rgba(0,255,255,0.3);
-    transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
+    transform: scale3d(1, 1.1, 1) rotateZ(-1deg) skewX(-4deg);
   }
   &.theme-2 {
     text-shadow: 10px 10px 0px rgba(255,255,0,0.3);
@@ -110,7 +123,6 @@ h1 {
   letter-spacing: 4px;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   margin-bottom: 2 * $unit + px;
-  transform-origin: center;
   transition: all 0.1s ease-out;
   
   @include fluid-type(

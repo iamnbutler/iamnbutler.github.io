@@ -186,6 +186,18 @@ html {
   }
 }
 
+.overline {
+  display: block;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  letter-spacing: 0.15em;
+  padding-bottom: 10px;
+  text-shadow: 10px 10px 0px rgba(0, 255, 255, 0.3);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(-1.5deg) skewX(-4deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(-1.5deg) skewX(-4deg);
+}
+
 
 h1,
 h2.fake-h1,
@@ -194,6 +206,8 @@ h3,
 h4,
 h5 {
   font-family: var(--body-copy);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
 }
 
 h1:not(.link) a, h2.fake-h1:not(.link) a,
@@ -210,8 +224,8 @@ h3.theme-1,
 h4.theme-1,
 h5.theme-1 {
   text-shadow: 10px 10px 0px rgba(0, 255, 255, 0.3);
-  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
-          transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(-1deg) skewX(-4deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(-1deg) skewX(-4deg);
 }
 
 h1.theme-2, h2.theme-2.fake-h1,
@@ -256,8 +270,6 @@ h2.fake-h1 {
   letter-spacing: 4px;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   margin-bottom: 20px;
-  -webkit-transform-origin: center;
-          transform-origin: center;
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 }
