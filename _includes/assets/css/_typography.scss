@@ -82,6 +82,22 @@ h5 {
   &:not(.link) a {
     text-decoration: none;
   }
+  &.theme-1 {
+    text-shadow: 10px 10px 0px rgba(0,255,255,0.3);
+    transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
+  }
+  &.theme-2 {
+    text-shadow: 10px 10px 0px rgba(255,255,0,0.3);
+    transform: scale3d(1, 1.1, 1) rotateZ(0.3deg) skewX(-6deg);
+  }
+  &.theme-3 {
+    text-shadow: 10px 10px 0px rgba(0,255,0,0.3);
+    transform: scale3d(1, 1.1, 1) rotateZ(-1.4deg) skewX(4deg);
+  }
+  &.theme-4 {
+    text-shadow: 10px 10px 0px rgba(255,0,0,0.3);
+    transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(9deg);
+  }
 }
 
 h1 {
@@ -95,7 +111,6 @@ h1 {
   text-shadow: 10px 10px 0px var(--highlight-soft);
   margin-bottom: 2 * $unit + px;
   transform-origin: center;
-  transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
   transition: all 0.1s ease-out;
   
   @include fluid-type(

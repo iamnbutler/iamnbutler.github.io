@@ -204,6 +204,46 @@ h5:not(.link) a {
   text-decoration: none;
 }
 
+h1.theme-1, h2.theme-1.fake-h1,
+h2.theme-1,
+h3.theme-1,
+h4.theme-1,
+h5.theme-1 {
+  text-shadow: 10px 10px 0px rgba(0, 255, 255, 0.3);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
+}
+
+h1.theme-2, h2.theme-2.fake-h1,
+h2.theme-2,
+h3.theme-2,
+h4.theme-2,
+h5.theme-2 {
+  text-shadow: 10px 10px 0px rgba(255, 255, 0, 0.3);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.3deg) skewX(-6deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(0.3deg) skewX(-6deg);
+}
+
+h1.theme-3, h2.theme-3.fake-h1,
+h2.theme-3,
+h3.theme-3,
+h4.theme-3,
+h5.theme-3 {
+  text-shadow: 10px 10px 0px rgba(0, 255, 0, 0.3);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(-1.4deg) skewX(4deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(-1.4deg) skewX(4deg);
+}
+
+h1.theme-4, h2.theme-4.fake-h1,
+h2.theme-4,
+h3.theme-4,
+h4.theme-4,
+h5.theme-4 {
+  text-shadow: 10px 10px 0px rgba(255, 0, 0, 0.3);
+  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(9deg);
+          transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(9deg);
+}
+
 
 h1,
 h2.fake-h1 {
@@ -218,8 +258,6 @@ h2.fake-h1 {
   margin-bottom: 20px;
   -webkit-transform-origin: center;
           transform-origin: center;
-  -webkit-transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
-          transform: scale3d(1, 1.1, 1) rotateZ(0.8deg) skewX(-5deg);
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 }
