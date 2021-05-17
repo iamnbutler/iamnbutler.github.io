@@ -79,7 +79,7 @@ html {
   font-size: 1.1em;
   line-height: 1.4em;
   letter-spacing: 0.15em;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 
   text-shadow: 10px 10px 0px rgba(0,255,255,0.3);
   transform: scale3d(1, 1.1, 1) rotateZ(-1.5deg) skewX(-4deg);
@@ -120,7 +120,7 @@ h1 {
   text-decoration: none;
   letter-spacing: -0.5px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 0.1em;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   margin-bottom: 2 * $unit + px;
   transition: all 0.1s ease-out;
@@ -182,9 +182,11 @@ h3 {
 
 /* Body Elements */
 
+$text-line-height: 1.5;
+
 p {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: $text-line-height;
   &:not(:last-child) {
     margin-bottom: $unit + px;
   }
@@ -192,13 +194,14 @@ p {
 
 code {
   display: block;
-  padding: 8px 16px;
+  padding: 12px 16px;
   background: rgba(0, 0, 0, 0.05);
   font-family: Fira Code, monospace;
   font-style: normal;
   font-weight: 300;
   font-size: 13;
   line-height: 20px;
+  margin: 20px 0;
 }
 
 /* Links */
@@ -219,6 +222,15 @@ a[href]:visited {
   opacity: 1;
 }
 
+.side-note {
+  margin: 20px 0;
+  display: inline-block;
+  border-left-width: 5px;
+  @extend .border-all;
+  @extend .layout-frame;
+  @extend .layout-space-large;
+}
+
 /* Typography Helpers */
 
 .text-uppercase {
@@ -231,4 +243,95 @@ a[href]:visited {
 
 .text-lowercase {
   text-transform: lowercase;
+}
+
+/* Post Styles */
+
+.post-content .inner {
+
+  // Headlines
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    &:not(:first-child) {
+      margin-top: 30px;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 42px;
+    letter-spacing: 0.1em;
+
+    text-shadow: 8px 8px 0px rgba(0, 255, 255, 0.15);
+    transform: rotate(-0.5deg);
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 34px;
+    letter-spacing: 0.05em;
+
+    transform: rotate(-0.5deg);
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 20px;
+
+    transform: rotate(-0.5deg);
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    font-weight: bold;
+  }
+
+  // Lists
+
+  & > ul,
+  & > ol {
+    padding-bottom: 0.5em;
+  }
+
+  ol {
+    line-height: $text-line-height;
+    margin-left: 32px;
+    
+    li {
+      list-style: outside;
+      list-style-type: decimal;
+      padding-left: 4px;
+      margin-bottom: 0.5em;
+      
+    }
+  }
+
+  ul {
+    line-height: $text-line-height;
+    margin-left: 32px;
+
+    li {
+      
+      list-style-type: disc;
+      padding-left: 4px;
+      list-style: outside;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  // Images
+
+  img {
+    margin: 20px 0;
+  }
+
 }

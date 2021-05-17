@@ -192,7 +192,7 @@ html {
   font-size: 1.1em;
   line-height: 1.4em;
   letter-spacing: 0.15em;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   text-shadow: 10px 10px 0px rgba(0, 255, 255, 0.3);
   -webkit-transform: scale3d(1, 1.1, 1) rotateZ(-1.5deg) skewX(-4deg);
           transform: scale3d(1, 1.1, 1) rotateZ(-1.5deg) skewX(-4deg);
@@ -267,7 +267,7 @@ h2.fake-h1 {
   text-decoration: none;
   letter-spacing: -0.5px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 0.1em;
   text-shadow: 10px 10px 0px var(--highlight-soft);
   margin-bottom: 20px;
   -webkit-transition: all 0.1s ease-out;
@@ -373,13 +373,14 @@ p:not(:last-child) {
 
 code {
   display: block;
-  padding: 8px 16px;
+  padding: 12px 16px;
   background: rgba(0, 0, 0, 0.05);
   font-family: Fira Code, monospace;
   font-style: normal;
   font-weight: 300;
   font-size: 13;
   line-height: 20px;
+  margin: 20px 0;
 }
 
 /* Links */
@@ -403,6 +404,12 @@ a[href]:visited:hover {
   opacity: 1;
 }
 
+.side-note {
+  margin: 20px 0;
+  display: inline-block;
+  border-left-width: 5px;
+}
+
 /* Typography Helpers */
 .text-uppercase {
   text-transform: uppercase;
@@ -414,6 +421,82 @@ a[href]:visited:hover {
 
 .text-lowercase {
   text-transform: lowercase;
+}
+
+/* Post Styles */
+.post-content .inner h2:not(:first-child),
+.post-content .inner h3:not(:first-child),
+.post-content .inner h4:not(:first-child),
+.post-content .inner h5:not(:first-child) {
+  margin-top: 30px;
+}
+
+.post-content .inner h2 {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: 0.1em;
+  text-shadow: 8px 8px 0px rgba(0, 255, 255, 0.15);
+  -webkit-transform: rotate(-0.5deg);
+          transform: rotate(-0.5deg);
+  margin-bottom: 30px;
+}
+
+.post-content .inner h3 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: 0.05em;
+  -webkit-transform: rotate(-0.5deg);
+          transform: rotate(-0.5deg);
+  margin-bottom: 20px;
+}
+
+.post-content .inner h4 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 20px;
+  -webkit-transform: rotate(-0.5deg);
+          transform: rotate(-0.5deg);
+  margin-bottom: 10px;
+}
+
+.post-content .inner h5 {
+  font-weight: bold;
+}
+
+.post-content .inner > ul,
+.post-content .inner > ol {
+  padding-bottom: 0.5em;
+}
+
+.post-content .inner ol {
+  line-height: 1.5;
+  margin-left: 32px;
+}
+
+.post-content .inner ol li {
+  list-style: outside;
+  list-style-type: decimal;
+  padding-left: 4px;
+  margin-bottom: 0.5em;
+}
+
+.post-content .inner ul {
+  line-height: 1.5;
+  margin-left: 32px;
+}
+
+.post-content .inner ul li {
+  list-style-type: disc;
+  padding-left: 4px;
+  list-style: outside;
+  margin-bottom: 0.5em;
+}
+
+.post-content .inner img {
+  margin: 20px 0;
 }
 
 /* |x End Typography */
@@ -653,7 +736,7 @@ a[href]:visited:hover {
 }
 
 /* || Helpers */
-.border-all, body, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption, #post .edit {
+.border-all, .side-note, body, .skip-nav, #post .hero-image-wrapper, #post .hero-image figcaption {
   border: 1px solid var(--border);
 }
 
@@ -738,11 +821,11 @@ article img {
   margin-top: 10px;
 }
 
-.layout-frame, #post .hero-image figcaption, #post .edit {
+.layout-frame, .side-note, #post .hero-image figcaption {
   padding: 10px 10px;
 }
 
-.layout-frame.large, .layout-card, .skip-nav, .home-header > div, #post header, #post .hero-image figcaption.large, #post .large.edit, #post .post-content {
+.layout-frame.large, .large.side-note, .layout-card, .skip-nav, .home-header > div, #post header, #post .hero-image figcaption.large, #post .post-content {
   padding: 20px 20px;
 }
 
@@ -781,7 +864,7 @@ article img {
   margin-bottom: 10px;
 }
 
-.layout-space-large, .collapsible-card-list .card-header, .nav-top, .nav-search, #post .hero-image-wrapper, #post .edit {
+.layout-space-large, .side-note, .collapsible-card-list .card-header, .nav-top, .nav-search, #post .hero-image-wrapper {
   margin-bottom: 20px;
 }
 
@@ -1285,9 +1368,8 @@ main {
   background-color: var(--background);
 }
 
-#post .edit {
-  display: inline-block;
-  border-left-width: 5px;
+#post .post-header {
+  padding: 40px 20px;
 }
 
 #post .post-content {

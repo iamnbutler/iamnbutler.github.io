@@ -729,12 +729,8 @@ $mainNavLeftMargin: 50px;
     }
   }
 
-  .edit {
-    display: inline-block;
-    border-left-width: 5px;
-    @extend .border-all;
-    @extend .layout-frame;
-    @extend .layout-space-large;
+  .post-header {
+    padding: 40px 20px;
   }
 
   .post-content {

@@ -5,7 +5,7 @@ section: post
 
 <section class="card major e2e" id="post">
 	<article>
-    <header>
+    <header class="post-header">
       <div class="inner">
         {%- if series -%}
           <p class="post-series overline layout-space"><a href="#" class="post-series-link">{{ series }}</a>
@@ -48,7 +48,7 @@ section: post
                 alt="{{ title }}">
         {% endif %}
         {% if edit %}
-        <section class="edit">
+        <section class="side-note">
           <p>{{ edit }}</p>
         </section>
         {% endif %}
