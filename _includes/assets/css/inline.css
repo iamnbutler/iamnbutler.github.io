@@ -468,7 +468,7 @@ a[href]:visited:hover {
 
 .post-content .inner > ul,
 .post-content .inner > ol {
-  padding-bottom: 0.5em;
+  padding: 0.5em 0;
 }
 
 .post-content .inner ol {
