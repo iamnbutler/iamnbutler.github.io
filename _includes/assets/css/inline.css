@@ -1372,10 +1372,6 @@ main {
   padding: 40px 20px;
 }
 
-#post .post-content {
-  border-bottom: 1px solid var(--border);
-}
-
 #post .post-content .inner {
   max-width: 600px;
   margin: 0 auto;
