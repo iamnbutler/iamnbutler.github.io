@@ -24,7 +24,17 @@ section: home
     <div class="content">
       <h2 class="fake-h1 theme-3">work 🎒</h2>
       <p>As I work through documenting my old projects you can read more about my work on <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>!</p>
-      {% include "components/partials/work-list.njk" %}
+      <ul class="list">
+        {% set worklist = collections.work %}
+        {% for work in worklist | reverse | limit(8) %}
+        <li>
+            <h3 class="work-item link">{{ work.data.title }} – {{ work.date | yyyy }}</h3>
+        </li>
+        {% endfor %}
+        {# <li>
+            <h2 class="work-item link"><a href="/work">More Work &rarr;</a></h2>
+        </li> #}
+      </ul>
     </div>
     <footer>
       <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>
@@ -45,8 +55,8 @@ section: home
       {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
       <a href="{{ tagUrl | url }}" class="post-tag listify text-capitalize">{{ tag }}</a>
     {% endfor %}
-    <h2>topics</h2>
-    <p>wip</p>
+    {# <h2>topics</h2>
+    <p>wip</p> #}
   </div>
   </section>
 
