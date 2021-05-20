@@ -32,6 +32,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ![Example Image](https://storage.googleapis.com/yaminateo-image-bucket/img/desk_guide_hero.jpg)
 
+![Test of GLFS](/static/img/post/attachments/inspo-2017/ash-thorp_none.jpg)
+
 Lines MUST not be longer than 80 characters, except they contain a link which can not be wrapped.
 
 One SHOULD try, however, to shorten the link by stripping unnecessary parts of the link and using a provided URL shortener. (E.g. https://youtu.be/0qo78R_yYFA instead of https://www.youtube.com/watch?v=0qo78R_yYFA)
