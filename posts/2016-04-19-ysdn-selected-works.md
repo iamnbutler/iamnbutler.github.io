@@ -5,6 +5,7 @@ title: |
   YSDN: Selected Works
 subtitle: Here are a few of my selected design works spanning from 2011 — 2015.
 slug: 2016-04-19-ysdn-selected-works
+custom_slug: ysdn-selected-works
 date: '2016-04-19'
 author: Nate Butler
 primary_tag: design

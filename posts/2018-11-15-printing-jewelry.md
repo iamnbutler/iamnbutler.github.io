@@ -4,6 +4,7 @@ status: published
 title: Printing Jewelry
 subtitle: Combining modeling and 3D printing to create jewelry.
 slug: 2018-11-15-printing-jewelry
+custom_slug: printing-jewelry
 date: '2018-11-15'
 author: Nate Butler
 primary_tag: project

@@ -14,6 +14,7 @@ summary: >-
   Throughout this last year I worked on some Physical Computing projects, giving
   me a chance to explore the worlds of Raspberry Pi, Arduino, and physical
   sensing.
+featured: true
 show_thumbnail: true
 post_images: >-
   https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604debad905975736fcca389_hardware_hacking_1.jpg;

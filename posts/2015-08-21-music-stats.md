@@ -4,6 +4,7 @@ status: published
 title: Music Stats
 subtitle: Mapping music data using D3 & the Youtube API.
 slug: 2015-08-21-music-stats
+custom_slug: music-stats
 date: '2015-08-21'
 author: Nate Butler
 primary_tag: art
