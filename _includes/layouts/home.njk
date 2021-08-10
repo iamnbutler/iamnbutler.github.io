@@ -23,18 +23,13 @@ section: home
   <div class="card secondary">
     <div class="content">
       <h2 class="fake-h1 theme-3">work 🎒</h2>
-      <p>As I work through documenting my old projects you can read more about my work on <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>!</p>
       <ul class="list">
-        {% set worklist = collections.work %}
-        {% for work in worklist | reverse | limit(8) %}
-        <li>
-            <h3 class="work-item link">{{ work.data.title }} – {{ work.date | yyyy }}</h3>
-        </li>
-        {% endfor %}
-        {# <li>
-            <h2 class="work-item link"><a href="/work">More Work &rarr;</a></h2>
-        </li> #}
+        <li><h3 class="work-item link"><a href="http://zed.dev">Zed Industries</a> – 2021</h3></li>
+        <li><h3 class="work-item link"><a href="http://facebook.com">Facebook</a> – 2015</h3></li>
+        <li><h3 class="work-item link"><a href="http://format.com">Format</a> – 2014</h3></li>
+        <li><h3 class="work-item link"><a href="http://lookbook.nu">LOOKBOOK</a> – 2013</h3></li>
       </ul>
+      <p>Find more on <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>!</p>
     </div>
     <footer>
       <a href="https://read.cv/natebutler" target="_blank">Read.cv</a>
