@@ -11,7 +11,7 @@ primary_tag: editorial
 tags:
   - editorial
   - thought
-series: ADHD
+series: On ADHD
 series_number: 1
 summary: >-
   I’ve convinced myself my whole life that I’m an absolutely terrible writer.
