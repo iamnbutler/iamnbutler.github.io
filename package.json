@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/iamnbutler/iamnbutler.github.io#readme",
   "dependencies": {
+    "@tailwindcss/typography": "^0.4.1",
     "tailwindcss": "^2.2.15"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
