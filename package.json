@@ -14,11 +14,12 @@
   "homepage": "https://github.com/iamnbutler/iamnbutler.github.io#readme",
   "dependencies": {
     "@tailwindcss/typography": "^0.4.1",
+    "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.2.15"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "parcel",
+    "start": "npx parcel src/index.html",
     "build": "parcel build"
   },
   "devDependencies": {

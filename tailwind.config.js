@@ -3,7 +3,7 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'headline' : ['Spectral', 'serif'],
+      'spectral' : ['Spectral', 'serif'],
       'body' : ['Inconsolata', 'monospace'],
     }
   },
