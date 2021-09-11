@@ -1,0 +1,19 @@
+{
+  "name": "iamnbutler.github.io",
+  "version": "10.0.0",
+  "description": "Nate Butler's personal site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamnbutler/iamnbutler.github.io.git"
+  },
+  "author": "Nate Butler (iamnbutler@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamnbutler/iamnbutler.github.io/issues"
+  },
+  "homepage": "https://github.com/iamnbutler/iamnbutler.github.io#readme"
+}
