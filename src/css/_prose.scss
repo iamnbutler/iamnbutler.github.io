@@ -1,0 +1,9 @@
+// Style prose text like articles, body copy, etc.
+.prose {
+  // TODO: Prose width should be dynamically capped based on some variable.
+  max-width: 960px;
+
+  p {
+    margin: 1rem 0;
+  }
+}

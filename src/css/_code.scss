@@ -1,0 +1,41 @@
+$code-red: #f22c40;
+$code-orange: #df5320;
+$code-yellow: #c38418;
+$code-green: #7b9726;
+$code-cyan: #00ad9c;
+$code-blue: #407ee7;
+$code-violet: #6666ea;
+$code-magenta: #c33ff3;
+$code-comment: #766e6b;
+
+$code-light-base: #f1efee;
+$code-light-text: #a8a19f;
+
+$code-dark-base: #1b1918;
+$code-dark-text: #68615e;
+
+@media (prefers-color-scheme: dark) {
+  pre, code {
+    color: $code-dark-text;
+    background-color: $code-dark-base;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  pre, code {
+    color: $code-light-text;
+    background-color: $code-light-base;
+  }
+}
+
+pre, code {
+  font-family: $font-code;
+  font-size: inherit;
+  line-height: $lineheight-code;
+}
+
+pre code {
+  color: inherit;
+  background-color: inherit;
+  border: 0 none;
+}

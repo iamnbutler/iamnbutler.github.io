@@ -1,0 +1,77 @@
+@import '_variables.scss';
+@import '_reset.scss';
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: $color-light;
+    --background-color: $background-dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: $color-dark;
+    --background-color: $background-light;
+  }
+}
+
+:root {
+  font-size: 100%;
+}
+
+body {
+
+  font-family: $font-main;
+  font-size: $font-size;
+  line-height: $lineheight;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+}
+
+@import '_code.scss';
+@import '_icon.scss';
+
+@import '_prose.scss';
+
+// media query breakpoints
+$breakpoint: (
+	'small':	36rem,
+	'medium': 50rem,
+	'large':	64rem
+);
+
+/*
+responsive breakpoint mixin:
+@include respond('medium') { ... }
+*/
+@mixin respond($bp) {
+  @media (min-width: map-get($breakpoint, $bp)) {
+    @content;
+  }
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond('medium') {
+    width: 40em;
+  }
+}
+
+#menu {
+  width: 100%;
+
+  @include respond('small') {
+    width: 20rem;
+  }
+
+  @include respond('medium') {
+    width: 30rem;
+  }
+
+  @include respond('large') {
+    width: 40rem;
+  }
+}

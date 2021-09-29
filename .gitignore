@@ -1,0 +1,13 @@
+public/
+
+node_modules
+
+.npm
+package-lock.json
+npm-debug.log*
+
+logs
+*.log
+
+.DS_Store
+Thumbs.db
