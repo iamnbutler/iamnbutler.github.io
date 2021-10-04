@@ -19,6 +19,7 @@ module.exports = cfg => {
       require('postcss-assets')({
         loadPaths: ['src/images/']
       }),
+      require('postcss-automath'),
       require('autoprefixer')(),
       dev ? null : require('cssnano')()
     ]
