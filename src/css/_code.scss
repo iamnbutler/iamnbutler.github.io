@@ -1,6 +1,21 @@
 // ==
-// Set up colors & variables
+// == Set up colors & variables
 // ==
+
+$code-spacing: 1rem;
+$line-number-indent: 3.5rem;
+
+// == Code color definitions
+// Base colors from https://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest/
+
+$code-black: #1b1918;
+$code-brown: #2c2421;
+$code-gray-80: #68615e; 
+$code-gray-70: #766e6b; 
+$code-gray-60: #9c9491; 
+$code-gray-50: #a8a19f;
+$code-white-90: #f1efee;
+$code-white-80: #e6e2e0;
 
 $code-red: #f22c40;
 $code-orange: #df5320;
@@ -10,31 +25,25 @@ $code-cyan: #00ad9c;
 $code-blue: #407ee7;
 $code-violet: #6666ea;
 $code-magenta: #c33ff3;
-$code-comment: #766e6b;
 
-$code-light-base: #f1efee;
-$code-light-text: #202020;
-$code-light-selection: #b3d4fc;
+$code-blue-10: #407ee71a;
+$code-blue-20: #407ee733;
 
-$code-dark-base: #1b1918;
-$code-dark-text: #cccccc;
-$code-dark-selection: #b3d4fc;
-
-$code-spacing: 1rem;
+// == Map colors
 
 @media (prefers-color-scheme: light) {
   :root {
-    --code-base: $code-light-base;
-    --code-text: $code-light-text;
-    --code-selection: $code-dark-selection;
+    --code-base: $code-white-90;
+    --code-text: $code-black;
+    --code-selection: $code-blue-10;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --code-base: $code-dark-base;
-    --code-text: $code-dark-text;
-    --code-selection: $code-dark-selection;
+    --code-base: $code-black;
+    --code-text: $code-gray-50;
+    --code-selection: $code-blue-20;
   }
 }
 
@@ -57,6 +66,7 @@ code {
   tab-size: 2;
   hyphens: none;
   &::selection {
+    // TODO: code selection looks bad...
     background: var(--code-selection);
   }
 }
@@ -87,12 +97,11 @@ pre code {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: $code-comment;
+  color: $code-gray-70;
 }
 
 .token.punctuation {
-  //  color: #999;
-  color: $code-comment;
+  color: $code-gray-70;
 }
 
 .token.namespace {
@@ -163,7 +172,7 @@ pre code {
 // Line Numbers
 // ==
 
-$line-number-indent: 3.5rem;
+// TODO: Line number spacing should be dynamic based on variable input (shouldn't need to change multiple numbers.
 
 pre.line-numbers {
   position: relative;
@@ -196,7 +205,7 @@ pre.line-numbers {
     &:before {
       display: block;
       content: counter(linenumber);
-      color: $code-comment;
+      color: $code-gray-80;
       padding-right: ($code-spacing / 2);
       text-align: right;
     }
@@ -239,7 +248,6 @@ div.code-toolbar > .toolbar > .toolbar-item > button {
   border: 0;
   color: inherit;
   font: inherit;
-  line-height: normal;
   overflow: visible;
   padding: 0;
   user-select: none;
