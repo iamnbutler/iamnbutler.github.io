@@ -27,10 +27,14 @@
     "postcss": "^8.2.5",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-assets": "^5.0.0",
+    "postcss-automath": "^1.0.1",
     "postcss-cli": "^8.3.1",
     "postcss-map-get": "^0.2.9",
     "postcss-nested": "^5.0.3",
     "postcss-scss": "^3.0.4",
-    "postcss-sort-media-queries": "^3.3.3"
+    "postcss-sort-media-queries": "^3.3.3",
+    "prettier": "^2.4.1",
+    "stylelint": "^13.13.1",
+    "stylelint-prettier": "^1.2.0"
   }
 }
