@@ -51,11 +51,12 @@ $code-blue-20: #407ee733;
 // Style inline code & blocks
 // ==
 
+// TODO: Fix horizontal scrolling in code blocks
+
 pre,
 code {
   color: var(--code-text);
   background: var(--code-base);
-  font-family: $font-code;
   font-size: inherit;
   line-height: $lineheight-code;
   text-align: left;
@@ -65,7 +66,7 @@ code {
   word-wrap: normal;
   tab-size: 2;
   hyphens: none;
-  overflow-y: scroll;
+  overflow: hidden;
   &::selection {
     // TODO: code selection looks bad...
     background: var(--code-selection);
@@ -73,6 +74,7 @@ code {
 }
 
 pre {
+  margin: 1rem 0;
   &:not(.line-numbers) {
     padding: $code-spacing;
   }
