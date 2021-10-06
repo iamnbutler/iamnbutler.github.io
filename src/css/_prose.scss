@@ -2,10 +2,55 @@
 // TODO: Use https://www.typenugget.com/ to bootstrap initial type ramp
 
 .prose {
-  // TODO: Prose width should be dynamically capped based on some variable.
-  max-width: 960px;
+  // TODO: Prose width should be dynamically derived from $type-size.
+  max-width: 720px;
+  text-rendering: optimizeLegibility;
+
+  // Build type ramp
+  $type-size-multiplier: 1;
+  $type-size-ratio: 1.2;
+
+  $type-size: 1rem * $type-size-multiplier * $type-size-ratio;
+
+  h1 {
+    font-size: $type-size-ratio * $type-size-ratio * $type-size-ratio *
+      $type-size;
+  }
+
+  h2 {
+    font-size: $type-size-ratio * $type-size-ratio * $type-size;
+  }
+
+  h3 {
+    font-size: $type-size-ratio * $type-size;
+  }
+
+  h4 {
+    font-size: $type-size;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: $type-size-ratio * 2rem;
+    margin-bottom: 0.35em;
+    font-weight: 700;
+  }
+
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 
   p {
-    margin: 1rem 0;
+    font-size: $type-size;
+    line-height: $type-size * 1.5rem;
+    margin-bottom: 0.8em;
   }
 }

@@ -18,8 +18,35 @@
     <h3>Subhead</h3>
     <p>Reinvent the wheel can you champion this big data let's circle back to that. We don't want to boil the ocean push
       back how much bandwidth do you have and moving the goalposts, and we've got kpis for that.</p>
+    
+<pre><code class="language-rust line-numbers">// Some Rust with line numbers
+  fn main() {
+  let x = 5u32;
+
+  let y = {
+      let x_squared = x * x;
+      let x_cube = x_squared * x;
+
+      // This expression will be assigned to `y`
+      x_cube + x_squared + x
+  };
+
+  let z = {
+      // The semicolon suppresses this expression and `()` is assigned to `z`
+      2 * x;
+  };
+
+  println!("x is {:?}", x);
+  println!("y is {:?}", y);
+  println!("z is {:?}", z);
+}
+</code></pre>
+    
     <h4>Section Head</h4>
-    <p>This is a paragraph</p>
+    <p>We're ahead of the curve on that one not the long pole in my tent, nor creativity requires you to murder your
+      children. Cross functional teams enable out of the box brainstorming we have put the apim bol, temporarily so that
+      we can later put the monitors on and quick win dear hiring manager.</p>
+
   </article>
   <code class="language-rust">let x_cube = x_squared * x;</code>
 
@@ -46,40 +73,18 @@
 }
 </code></pre>
 
-<pre><code class="language-rust line-numbers">// Some Rust with line numbers
-  fn main() {
-  let x = 5u32;
-
-  let y = {
-      let x_squared = x * x;
-      let x_cube = x_squared * x;
-
-      // This expression will be assigned to `y`
-      x_cube + x_squared + x
-  };
-
-  let z = {
-      // The semicolon suppresses this expression and `()` is assigned to `z`
-      2 * x;
-  };
-
-  println!("x is {:?}", x);
-  println!("y is {:?}", y);
-  println!("z is {:?}", z);
-}
-</code></pre>
-
 <pre><code class="language-markdown line-numbers">## Setup
 
-  What we will need:
-  - A series of profile photos, names, and profile URLs for our actors
-  - Some content for our posts
-  - Same as above for our comments on each post
-  
-  The tools we will use:
-  - [Origami](origami.design)
-  - Some local JSON
-  - Some Images & Videos (Source)</code></pre>
+What we will need:
+
+- A series of profile photos, names, and profile URLs for our actors
+- Some content for our posts
+- Same as above for our comments on each post
+
+The tools we will use:
+- [Origami](origami.design)
+- Some local JSON
+- Some Images & Videos (Source)</code></pre>
 
   <script src="js/plugin/prism.js"></script>
 </body>
