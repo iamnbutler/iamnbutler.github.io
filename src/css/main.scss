@@ -1,7 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+@font-face{
+  font-family: 'JetBrains Mono';
+  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @import '_reset.scss';
 @import '_variables.scss';
+@import '_demo.scss';
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -27,19 +35,32 @@ body {
   line-height: $lineheight;
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: 'Recursive', monospace;
-  font-variation-settings: "wght" 300, "CASL" 0.2, "CRSV" 0;
+  font-family: 'Inter var experimental', 'Inter', monospace;
+  font-weight: 400;
   letter-spacing: -0.02rem;
+
+  // Play with configurations here: https://rsms.me/inter/lab/
+  // This config: https://rsms.me/inter/lab/?feat-case=1&feat-cpsp=1&feat-frac=1&feat-salt=1&feat-zero=1&sample=English&size=24&varWeight=350&varfont=1
+  font-variation-settings: "wght" 350, "case" 1, "cpsp" 1, "calt" 1, "frac" 1, "salt" 1, "zero" 1, "ss03" 1;
 }
 
+.ui {
+  font-family: 'Inter var experimental', 'Inter', monospace;
+  font-variation-settings: "wght" 400, "case" 1, "cpsp" 1, "tnum" 1, "salt" 1, "ss04" 1;
+}
+
+@import '_ui.scss';
+
 pre, code {
-  font-family: 'Recursive', monospace;
-  font-variation-settings: "MONO" 1, "wght" 400, "CASL" 0, "CRSV" 1;
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  font-variation-settings: "liga" 4100, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'JetBrains Mono';
 }
 
 @import '_code.scss';
 @import '_icon.scss';
-
 @import '_prose.scss';
 
 // media query breakpoints

@@ -9,8 +9,10 @@
   // Build type ramp
   $type-size-multiplier: 1;
   $type-size-ratio: 1.2;
+  
 
   $type-size: 1rem * $type-size-multiplier * $type-size-ratio;
+  $type-letter-spacing: -0.011 * $type-size;
 
   h1 {
     font-size: $type-size-ratio * $type-size-ratio * $type-size-ratio *
@@ -35,8 +37,7 @@
   h4 {
     line-height: $type-size-ratio * 2rem;
     margin-bottom: 0.35em;
-    font-variation-settings: "wght" 650, "CASL" 0.5, "slnt" -1, "CRSV" 1;
-    letter-spacing: -0.05rem;
+    font-variation-settings: "wght" 600, "calt" 1, "frac" 1, "case" 1, "ss03" 1;
   }
 
   p,
@@ -47,6 +48,7 @@
   h4 {
     overflow-wrap: break-word;
     hyphens: auto;
+    letter-spacing: $type-letter-spacing;
   }
 
   p {
