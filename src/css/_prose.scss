@@ -35,7 +35,8 @@
   h4 {
     line-height: $type-size-ratio * 2rem;
     margin-bottom: 0.35em;
-    font-weight: 700;
+    font-variation-settings: "wght" 650, "CASL" 0.5, "slnt" -1, "CRSV" 1;
+    letter-spacing: -0.05rem;
   }
 
   p,
