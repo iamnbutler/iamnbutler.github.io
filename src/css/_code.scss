@@ -65,6 +65,7 @@ code {
   word-wrap: normal;
   tab-size: 2;
   hyphens: none;
+  overflow-y: scroll;
   &::selection {
     // TODO: code selection looks bad...
     background: var(--code-selection);
