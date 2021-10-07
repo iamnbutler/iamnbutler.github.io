@@ -8,7 +8,7 @@
 
   // Build type ramp
   $type-size-multiplier: 1;
-  $type-size-ratio: 1.2;
+  $type-size-ratio: 1.25;
   
   $type-size: 1rem * $type-size-multiplier * $type-size-ratio;
   $type-letter-spacing: -0.011 * $type-size;
@@ -68,5 +68,12 @@
   :not(pre) > code {
     font-size: $type-size * 0.85;
     white-space: pre-wrap;
+  }
+
+  .columns {
+    columns: 2;
+    column-gap: 2rem;
+    widows: 3;
+    orphans: 3;
   }
 }
