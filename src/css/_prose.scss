@@ -10,7 +10,6 @@
   $type-size-multiplier: 1;
   $type-size-ratio: 1.2;
   
-
   $type-size: 1rem * $type-size-multiplier * $type-size-ratio;
   $type-letter-spacing: -0.011 * $type-size;
 
@@ -36,8 +35,17 @@
   h3,
   h4 {
     line-height: $type-size-ratio * 2rem;
-    margin-bottom: 0.35em;
     font-variation-settings: "wght" 600, "calt" 1, "frac" 1, "case" 1, "ss03" 1;
+  }
+
+  h1,
+  h2 {
+    margin-bottom: 0.55em;
+  }
+
+  h3,
+  h4 {
+    margin-bottom: 0.35em;
   }
 
   p,
@@ -54,6 +62,11 @@
   p {
     font-size: $type-size;
     line-height: $type-size * 1.5rem;
-    margin-bottom: 0.8em;
+    margin-bottom: 1em;
+  }
+
+  :not(pre) > code {
+    font-size: $type-size * 0.85;
+    white-space: pre-wrap;
   }
 }
