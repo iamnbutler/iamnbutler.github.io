@@ -1,0 +1,24 @@
+// TODO: Icons should be able to set a native size (i.e. icon-cross-16)
+
+@mixin icon($name) {
+  .icon-#{$name}::before {
+    background-image: inline('./src/img/icon-#{$name}.svg');
+  }
+}
+
+.icon, .icon::before {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon::before {
+  content: '';
+  width: 1.6em;
+  height: 1.6em;
+  font-weight: normal;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+@include icon(cross);

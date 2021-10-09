@@ -1,0 +1,58 @@
+@mixin reset {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin resetlist {
+  list-style-type: none;
+  @include reset;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  @include reset;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+ul[class], ol[class] {
+
+  @include resetlist;
+
+  li {
+    @include reset;
+  }
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *, *:before, *:after {
+    transition-timing-function: step-start !important;
+    animation-delay: 0s !important;
+    animation-timing-function: step-start !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "iamnbutler.github.io",
   "version": "10.0.0",
   "description": "Nate Butler's personal site.",
@@ -24,5 +25,44 @@
   },
   "devDependencies": {
     "parcel": "latest"
+=======
+  "name": "web-starter",
+  "version": "1.0.0",
+  "description": "A basic project starter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:basic": "postcss src/css/main.scss --output public/css/main.css --env development --config ./config/ --verbose",
+    "css:dev": "postcss src/css/main.scss --output public/css/main.css --env development --verbose",
+    "css:watch": "postcss src/css/main.scss --output public/css/main.css --env development --verbose --watch",
+    "css:build": "postcss src/css/main.scss --output public/css/main.css --env production --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamnbutler/web-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamnbutler/web-starter/issues"
+  },
+  "homepage": "https://github.com/iamnbutler/web-starter#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "cssnano": "^4.1.10",
+    "postcss": "^8.2.5",
+    "postcss-advanced-variables": "^3.0.1",
+    "postcss-assets": "^5.0.0",
+    "postcss-automath": "^1.0.1",
+    "postcss-cli": "^8.3.1",
+    "postcss-map-get": "^0.2.9",
+    "postcss-nested": "^5.0.3",
+    "postcss-scss": "^3.0.4",
+    "postcss-sort-media-queries": "^3.3.3",
+    "prettier": "^2.4.1",
+    "stylelint": "^13.13.1",
+    "stylelint-prettier": "^1.2.0"
+>>>>>>> web-starter/main
   }
 }

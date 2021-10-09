@@ -1,0 +1,279 @@
+// ==
+// == Set up colors & variables
+// ==
+
+$code-spacing: 1rem;
+$line-number-indent: 3.5rem;
+
+// == Code color definitions
+// Base colors from https://atelierbram.github.io/syntax-highlighting/atelier-schemes/forest/
+
+$code-black: #1b1918;
+$code-brown: #2c2421;
+$code-gray-80: #68615e; 
+$code-gray-70: #766e6b; 
+$code-gray-60: #9c9491; 
+$code-gray-50: #a8a19f;
+$code-white-90: #f1efee;
+$code-white-80: #e6e2e0;
+
+$code-red: #f22c40;
+$code-orange: #df5320;
+$code-yellow: #c38418;
+$code-green: #7b9726;
+$code-cyan: #00ad9c;
+$code-blue: #407ee7;
+$code-violet: #6666ea;
+$code-magenta: #c33ff3;
+
+$code-blue-10: #407ee71a;
+$code-blue-20: #407ee733;
+
+// == Map colors
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --code-base: $code-white-90;
+    --code-text: $code-black;
+    --code-selection: $code-blue-10;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --code-base: $code-black;
+    --code-text: $code-gray-50;
+    --code-selection: $code-blue-20;
+  }
+}
+
+// ==
+// Style inline code & blocks
+// ==
+
+// TODO: Fix horizontal scrolling in code blocks
+
+pre,
+code {
+  color: var(--code-text);
+  background: var(--code-base);
+  font-size: inherit;
+  line-height: $lineheight-code;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+  overflow: hidden;
+  &::selection {
+    // TODO: code selection looks bad...
+    background: var(--code-selection);
+  }
+}
+
+pre {
+  margin: 1rem 0;
+  &:not(.line-numbers) {
+    padding: $code-spacing;
+  }
+}
+
+:not(pre) > code {
+  padding: 0.25rem;
+}
+
+pre code {
+  color: inherit;
+  background-color: inherit;
+  border: 0 none;
+}
+
+// ==
+// Color Syntax
+// ==
+
+/* Based on PrismJS 1.25.0 */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $code-gray-70;
+}
+
+.token.punctuation {
+  color: $code-gray-70;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: $code-red;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: $code-green;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: $code-yellow;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: $code-blue;
+}
+
+.token.function,
+.token.class-name {
+  color: $code-magenta;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: $code-orange;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token a {
+  color: inherit;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+// ==
+// Line Numbers
+// ==
+
+// TODO: Line number spacing should be dynamic based on variable input (shouldn't need to change multiple numbers.
+
+pre.line-numbers {
+  position: relative;
+  padding: $code-spacing;
+  padding-left: $line-number-indent;
+  counter-reset: linenumber;
+  & > code {
+    position: relative;
+    white-space: inherit;
+  }
+}
+
+.line-numbers .line-numbers-rows {
+  // TODO: gutter background is 1-2px off for some reason
+  position: absolute;
+  top: -($code-spacing / 2);
+  padding: ($code-spacing / 2) 0;
+  left: -($line-number-indent) - ($code-spacing / 2);
+  pointer-events: none;
+  width: $line-number-indent;  
+  letter-spacing: -0.02rem;
+  user-select: none;
+  opacity: 0.4;
+
+  & > span {
+    position: relative;
+    top: -1px;
+    display: block;
+    counter-increment: linenumber; 
+    &:before {
+      display: block;
+      content: counter(linenumber);
+      color: $code-gray-80;
+      padding-right: ($code-spacing / 2);
+      text-align: right;
+    }
+  }
+}
+
+// ==
+// Toolbar
+// ==
+
+div.code-toolbar {
+  position: relative;
+}
+
+div.code-toolbar > .toolbar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: 0;
+}
+
+div.code-toolbar:hover > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar:focus-within > .toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item {
+  display: inline-block;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a {
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  overflow: visible;
+  padding: 0;
+  user-select: none;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a,
+div.code-toolbar > .toolbar > .toolbar-item > button,
+div.code-toolbar > .toolbar > .toolbar-item > span {
+  color: var(--code-text);
+  font-size: 0.875rem;
+  padding: 0.3rem 0.5rem;
+  background: none;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > a:hover,
+div.code-toolbar > .toolbar > .toolbar-item > a:focus,
+div.code-toolbar > .toolbar > .toolbar-item > button:hover,
+div.code-toolbar > .toolbar > .toolbar-item > button:focus,
+div.code-toolbar > .toolbar > .toolbar-item > span:hover,
+div.code-toolbar > .toolbar > .toolbar-item > span:focus {
+  text-decoration: none;
+  background: #FFFFFF1A;
+  opacity: 1;
+}

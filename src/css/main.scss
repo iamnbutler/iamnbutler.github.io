@@ -1,0 +1,108 @@
+@import url('https://rsms.me/inter/inter.css');
+@font-face{
+  font-family: 'JetBrains Mono';
+  src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
+       url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import '_reset.scss';
+@import '_variables.scss';
+@import '_demo.scss';
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: $color-light;
+    --background-color: $background-dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: $color-dark;
+    --background-color: $background-light;
+  }
+}
+
+:root {
+  font-size: 100%;
+}
+
+body {
+  font-family: $font-main;
+  font-size: $font-size;
+  line-height: $lineheight;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter var experimental', 'Inter', monospace;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+
+  // Play with configurations here: https://rsms.me/inter/lab/
+  // This config: https://rsms.me/inter/lab/?feat-case=1&feat-cpsp=1&feat-frac=1&feat-salt=1&feat-zero=1&sample=English&size=24&varWeight=350&varfont=1
+  font-variation-settings: "wght" 350, "case" 1, "cpsp" 1, "calt" 1, "frac" 1, "salt" 1, "zero" 1, "ss03" 1;
+}
+
+.ui {
+  font-family: 'Inter var experimental', 'Inter', monospace;
+  font-variation-settings: "wght" 400, "case" 1, "cpsp" 1, "tnum" 1, "salt" 1, "ss04" 1;
+}
+
+@import '_ui.scss';
+
+pre, code {
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  font-variation-settings: "liga" 4100, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'JetBrains Mono';
+}
+
+@import '_code.scss';
+@import '_icon.scss';
+@import '_prose.scss';
+
+// media query breakpoints
+$breakpoint: (
+	'small':	36rem,
+	'medium': 50rem,
+	'large':	64rem
+);
+
+/*
+responsive breakpoint mixin:
+@include respond('medium') { ... }
+*/
+@mixin respond($bp) {
+  @media (min-width: map-get($breakpoint, $bp)) {
+    @content;
+  }
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond('medium') {
+    width: 40em;
+  }
+}
+
+// TODO: Example, remove
+
+#menu {
+  width: 100%;
+
+  @include respond('small') {
+    width: 20rem;
+  }
+
+  @include respond('medium') {
+    width: 30rem;
+  }
+
+  @include respond('large') {
+    width: 40rem;
+  }
+}
