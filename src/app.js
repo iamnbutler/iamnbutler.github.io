@@ -1,1 +1,0 @@
-console.log('This site is pretty empty, huh? There will be updates soon, I promise!');

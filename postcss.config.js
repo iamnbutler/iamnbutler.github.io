@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-module.exports = {
-  plugins: {
-    "tailwindcss/nesting": {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
-=======
 module.exports = cfg => {
 
   // import tokens as Sass variables
@@ -36,4 +27,3 @@ module.exports = cfg => {
   };
 
 };
->>>>>>> web-starter/main

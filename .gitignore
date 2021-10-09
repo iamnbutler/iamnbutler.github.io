@@ -1,71 +1,3 @@
-<<<<<<< HEAD
-_site/
-node_modules/
-package-lock.json
-.DS_Store
-.env
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-pids
-*.pid
-*.seed
-*.pid.lock
-lib-cov
-coverage
-*.lcov
-.nyc_output
-.grunt
-bower_components
-.lock-wscript
-build/Release
-node_modules/
-jspm_packages/
-typings/
-*.tsbuildinfo
-.npm
-.eslintcache
-.stylelintcache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-.node_repl_history
-*.tgz
-.yarn-integrity
-.env
-.env.test
-.env*.local
-.cache
-.parcel-cache
-.next
-.nuxt
-dist
-.out
-.storybook-out
-storybook-static
-dist/
-.cache/
-.vuepress/dist
-.serverless/
-.fusebox/
-.dynamodb/
-.tern-port
-.vscode-test
-tmp/
-temp/
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-# Local Netlify folder
-.netlify
-=======
 public/
 
 node_modules
@@ -79,4 +11,3 @@ logs
 
 .DS_Store
 Thumbs.db
->>>>>>> web-starter/main
