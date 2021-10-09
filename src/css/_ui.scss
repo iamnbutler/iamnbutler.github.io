@@ -63,3 +63,19 @@
   font-weight: 600;
   font-variation-settings: "wght" 600;
 }
+
+// ==
+// == Interactions
+// ==
+
+.interactable {
+  cursor: pointer;
+}
+
+.interactable:not(.highlight) {
+  // TODO: Tint font color lighter in dark mode, and darker in light mode
+}
+
+.interactable.highlight:hover {
+  background: rgba(255,255,255,0.10);
+}
