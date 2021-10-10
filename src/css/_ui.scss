@@ -36,7 +36,7 @@
 }
 
 // ==
-// == Spacing
+// == Layout
 // ==
 
 .p-quarter {
@@ -55,6 +55,26 @@
   padding: 2rem;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --border: $color-dark;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --border: $color-light;
+  }
+}
+
+.b-t {
+  border-top: 1px solid var(--border);
+}
+
+.b-b {
+  border-bottom: 1px solid var(--border);
+}
+
 // ==
 // == Visual Treatments
 // ==
@@ -64,6 +84,16 @@
   font-variation-settings: "wght" 600;
 }
 
+.ui-mono {
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  font-variation-settings: "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'JetBrains Mono';
+}
+
+// TODO: Add ".theme-swap" – apply opposite theme to itself & children
+
 // ==
 // == Interactions
 // ==
@@ -72,10 +102,10 @@
   cursor: pointer;
 }
 
-.interactable:not(.highlight) {
+.interactable:not(.button) {
   // TODO: Tint font color lighter in dark mode, and darker in light mode
 }
 
-.interactable.highlight:hover {
-  background: rgba(255,255,255,0.10);
+.interactable.button:hover {
+  // background: rgba(255,255,255,0.10);
 }

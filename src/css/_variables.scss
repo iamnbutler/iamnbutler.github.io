@@ -9,12 +9,15 @@ $lineheight: 1.5 !default;
 $font-code: monospace !default;
 $lineheight-code: 1.3 !default;
 
-$color-dark: #000;
-$background-dark: #000;
+// ==
+// == Base Colors
+// ==
 
-$color-light: #fff;
-$background-light: #fff;
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-light: $color-white;
+$color-dark: $color-black;
 
-// default colors
-$color-back: #fff !default;
-$color-fore: #012 !default;
+// These drive dark and light themes.
+$background-dark: $color-black;
+$background-light: $color-white;

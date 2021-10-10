@@ -59,10 +59,21 @@
     letter-spacing: $type-letter-spacing;
   }
 
-  p {
+  p, li {
     font-size: $type-size;
     line-height: $type-size * 1.5rem;
+  }
+
+  p {
     margin-bottom: 1em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  ul,ol {
+    margin-bottom: 0.5em;
   }
 
   :not(pre) > code {

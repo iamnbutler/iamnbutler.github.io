@@ -1,0 +1,51 @@
+$color-black: #000;
+$color-white: #FFF;
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --border: $color-dark;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --border: $color-light;
+  }
+}
+
+.home {
+  
+}
+
+.home header {
+  height: 3rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+
+  & li {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.home footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-size: 0.875rem;
+  display: flex;
+  border-top: 1px solid $color-dark;
+  border-bottom: 1px solid $color-dark;
+  background: $background-light;
+
+  & li {
+    color: $color-dark;
+    padding: 0.5rem 1rem;
+    border-right: 1px solid $color-dark;
+    background: $background-light;
+    &:hover {
+      background: rgba(0,0,0,0.07);
+    }
+  }
+}
