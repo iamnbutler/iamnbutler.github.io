@@ -21,3 +21,15 @@ $color-dark: $color-black;
 // These drive dark and light themes.
 $background-dark: $color-black;
 $background-light: $color-white;
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --base-color: $color-dark;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base-color: $color-light;
+  }
+}

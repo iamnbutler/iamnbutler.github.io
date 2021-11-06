@@ -14,8 +14,9 @@ $color-white: #FFF;
   }
 }
 
-.home {
-  
+.home .wrapper {
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .home header {
@@ -42,7 +43,6 @@ $color-white: #FFF;
   & li {
     color: $color-dark;
     padding: 0.5rem 1rem;
-    border-right: 1px solid $color-dark;
     background: $background-light;
     &:hover {
       background: rgba(0,0,0,0.07);

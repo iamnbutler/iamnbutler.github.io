@@ -35,6 +35,13 @@
   justify-content: space-between;
 }
 
+.justify ul:nth-child(odd) li {
+  border-right: 1px solid $color-dark;
+}
+.justify ul:nth-child(even) li {
+  border-left: 1px solid $color-dark;
+}
+
 // ==
 // == Layout
 // ==
@@ -53,6 +60,14 @@
 
 .p-2rem {
   padding: 2rem;
+}
+
+.m-t-2 {
+  margin-top: 2rem;
+}
+
+.m-t-4 {
+  margin-top: 4rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -90,6 +105,12 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: 'JetBrains Mono';
+}
+
+.align-to-base {
+  top: 0.12rem;
+  display: inline-block;
+  position: relative;
 }
 
 // TODO: Add ".theme-swap" – apply opposite theme to itself & children
