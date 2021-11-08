@@ -1,11 +1,11 @@
 <template>
-  <div class="font-mono p-8 mr-8">
-    <nav role="navigation" class="flex flex-col p-4">
-      <NavLink to="/">Home</NavLink>
+  <div class="font-mono">
+    <nav role="navigation" class="flex flex-col mb-8">
+      <NavLink to="/" exact>Home</NavLink>
       <NavLink to="/post">Posts</NavLink>
       <NavLink to="/project">Projects</NavLink>
     </nav>
-    <div class="sandbox p-4">
+    <div class="sandbox">
       <p>{{ $colorMode.value }}</p>
       <select v-model="$colorMode.preference" class="border border-black">
         <option value="system">System</option>

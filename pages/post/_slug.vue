@@ -1,48 +1,42 @@
 <template>
-  <div class="flex flex-row">
-    <div class="font-mono p-8">
-      <nav role="section-navigation" class="sub-nav flex flex-col p-4">
-        <ul>
-          <li v-for="post of posts" :key="post.slug">
-            <!-- Remember to import the variables needed in the call below -->
-            <NavLink :to="{ name: 'post-slug', params: { slug: post.slug } }">
-                {{ post.title }}
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      <nav class="toc flex flex-col p-4">
-        <!-- Table of Contents -->
-        <ul>
-          <li v-for="link of article.toc" :key="link.id">
-            <!-- :classes are variable based on the depth of the headline using link.depth -->
-            <NuxtLink
-              :to="`#${link.id}`"
-              :class="{
-                'py-2': link.depth === 2,
-                'ml-2 pb-2': link.depth === 3,
-              }"
-              >{{ link.text }}</NuxtLink
-            >
-          </li>
-        </ul>
-      </nav>
+  <div class="content-grid max-w-5xl mx-auto">
+    <div class="content-sidebar">
+      <div class="font-mono">
+        <nav class="toc flex flex-col">
+          <!-- Table of Contents -->
+          <ul>
+            <li v-for="link of article.toc" :key="link.id">
+              <!-- :classes are variable based on the depth of the headline using link.depth -->
+              <NuxtLink
+                :to="`#${link.id}`"
+                :class="{
+                  'py-2': link.depth === 2,
+                  'ml-2 pb-2': link.depth === 3,
+                }"
+                >{{ link.text }}</NuxtLink
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
-    <article class="prose p-12 text-mono">
-      <!-- Variables from YAML -->
-      <h1>{{ article.title }}</h1>
-      <h2>{{ article.subtitle }}</h2>
-      <p>{{ article.slug }}{{ article.extension }}</p>
-      <p>{{ article.path }}</p>
-      <p>
-        posted: {{ formatDate(article.createdAt) }} – updated:
-        {{ formatDate(article.updatedAt) }}
-      </p>
-      <!-- Content -->
-      <nuxt-content :document="article" />
+    <div class="content-main">
+      <article class="prose text-mono">
+        <!-- Variables from YAML -->
+        <h1>{{ article.title }}</h1>
+        <h2>{{ article.subtitle }}</h2>
+        <p>{{ article.slug }}{{ article.extension }}</p>
+        <p>{{ article.path }}</p>
+        <p>
+          posted: {{ formatDate(article.createdAt) }} – updated:
+          {{ formatDate(article.updatedAt) }}
+        </p>
+        <!-- Content -->
+        <nuxt-content :document="article" />
 
-      <!-- Author pages, code highlighting and more still here: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component -->
-    </article>
+        <!-- Author pages, code highlighting and more still here: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component -->
+      </article>
+    </div>
   </div>
 </template>
 
@@ -69,3 +63,24 @@ export default {
   },
 };
 </script>
+
+<style>
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 16em;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "content-main content-sidebar"
+    "content-main content-sidebar";
+}
+
+.content-sidebar {
+  grid-area: content-sidebar;
+}
+
+.content-main {
+  grid-area: content-main;
+}
+</style>

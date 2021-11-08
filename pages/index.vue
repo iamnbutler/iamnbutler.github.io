@@ -1,8 +1,8 @@
 <template>
-  <Base>
-    <Nav />
-    <div class="prose"><h1>Hello World</h1></div>
-  </Base>
+<Base>
+  <div class="prose"><h1>Hello World</h1></div>
+</Base>
+    
 </template>
 
 <style>
