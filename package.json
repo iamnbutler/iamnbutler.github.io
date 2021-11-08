@@ -14,6 +14,7 @@
     "nuxt": "^2.15.7"
   },
   "devDependencies": {
+    "@nuxtjs/color-mode": "^2.1.1",
     "@nuxtjs/tailwindcss": "^4.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
