@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="to" :active-class="'active font-bold'"
+    <NuxtLink :to="to" :active-class="'active font-extrabold'"
       ><slot
     /></NuxtLink>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="font-mono p-8">
+  <div class="font-mono p-8 mr-8">
     <nav role="navigation" class="flex flex-col p-4">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/post">Posts</NavLink>
