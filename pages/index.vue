@@ -1,12 +1,13 @@
 <template>
-<Base>
-  <div class="prose"><h1>Hello World</h1></div>
-</Base>
-    
+  <Base>
+    <BaseContent>
+      <div class="prose"><h1>Hello World</h1></div>
+    </BaseContent>
+  </Base>
 </template>
 
 <style>
-body {
+/* body {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
 }
@@ -17,5 +18,5 @@ body {
 .sepia-mode body {
   background-color: #f1e7d0;
   color: #433422;
-}
+} */
 </style>

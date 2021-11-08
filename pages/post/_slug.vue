@@ -1,43 +1,54 @@
 <template>
-  <div class="content-grid max-w-5xl mx-auto">
-    <div class="content-sidebar">
-      <div class="font-mono">
-        <nav class="toc flex flex-col">
-          <!-- Table of Contents -->
-          <ul>
-            <li v-for="link of article.toc" :key="link.id">
-              <!-- :classes are variable based on the depth of the headline using link.depth -->
-              <NuxtLink
-                :to="`#${link.id}`"
-                :class="{
-                  'py-2': link.depth === 2,
-                  'ml-2 pb-2': link.depth === 3,
-                }"
-                >{{ link.text }}</NuxtLink
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <div class="content-main">
+  <Base subnav>
+  <template v-slot:header>
+      natebutler{{ article.path }}{{ article.extension }}
+    </template>
+    <template v-slot:subnav>
+      <nav role="section-navigation" class="flex flex-col">
+        <ul>
+          <li v-for="post of posts" :key="post.slug">
+            <!-- Remember to import the variables needed in the call below -->
+            <NavLink :to="{ name: 'post-slug', params: { slug: post.slug } }">
+              {{ post.title }}
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </template>
+    <BaseContent>
       <article class="prose text-mono">
         <!-- Variables from YAML -->
         <h1>{{ article.title }}</h1>
-        <h2>{{ article.subtitle }}</h2>
-        <p>{{ article.slug }}{{ article.extension }}</p>
-        <p>{{ article.path }}</p>
+        <p>{{ article.subtitle }}</p>
         <p>
-          posted: {{ formatDate(article.createdAt) }} – updated:
-          {{ formatDate(article.updatedAt) }}
+          {{ formatDate(article.date) }}
         </p>
         <!-- Content -->
         <nuxt-content :document="article" />
 
         <!-- Author pages, code highlighting and more still here: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component -->
       </article>
-    </div>
-  </div>
+      <template v-slot:sidebar>
+        <nav class="toc flex flex-col leading-loose">
+          <!-- Table of Contents -->
+          <p class="font-bold">Contents</p>
+          <ul>
+            <li v-for="link of article.toc" :key="link.id">
+              <!-- :classes are variable based on the depth of the headline using link.depth -->
+              <NuxtLink
+                :to="`#${link.id}`"
+                :class="{
+                  'py-4': link.depth === 2,
+                  'ml-6 pb-4': link.depth === 3,
+                }"
+                >{{ link.text }}</NuxtLink
+              >
+            </li>
+          </ul>
+        </nav>
+      </template>
+    </BaseContent>
+  </Base>
 </template>
 
 <script>

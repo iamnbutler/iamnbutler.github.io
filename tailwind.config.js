@@ -7,7 +7,7 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
   ],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     fontFamily: {
       'ui': 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Oxygen-Sans, Ubuntu, Cantarell, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',

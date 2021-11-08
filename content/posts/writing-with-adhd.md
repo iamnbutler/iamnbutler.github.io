@@ -18,9 +18,9 @@ edit: >-
   actually writes.](https://www.geraint.works/post/adhd-writing-styles)" I'd
   start there first!
 ---
-## Writing with ADHD
+## I'm an terrible writer.
 
-I've convinced myself my whole life that I'm an absolutely terrible writer. The things that I write flow awkwardly, and I never understand all the rules of writing and the way to make things sound immersive and natural. My writing ends up awkwardly verbose and tends to wander a lot. I tend to mix tenses constantly. 
+Or, at least, I've convinced myself of that my whole life. The things that I write flow awkwardly, and I never understand all the rules of writing and the way to make things sound immersive and natural. My writing ends up awkwardly verbose and tends to wander a lot. I tend to mix tenses constantly. 
 
 I never understood why I write the way I do, until I discovered at the beginning of the year that I have rather severe inattentive ADHD.
 
@@ -38,11 +38,11 @@ Here are the four points:
 
 We'll dive into each separately.
 
-### Impulsivity
+## Impulsivity
 
 Gotta go fast. Having my special flavor of ADHD means a mind constantly full of ideas at all times. You know that expression "drinking from the fire hose"? It's like that, but 8+ hours of the day, every day (before completely running out of energy and crashing, but that is a topic for another time.)
 
-#### A lot of ideas
+### A lot of ideas
 
 Even trying to sit down and write this out, it's hard to move to the next because there are 18 different ways I could continue this sentence, and 14 of them probably involve a complete topic change. 
 
@@ -50,7 +50,7 @@ Each idea feels like it is so incredibly pressing, and the entire world should h
 
 Writing with ADHD means TONS of edit passes on even a few paragraphs because often I've shoved so many ideas into a small space that it feels overwhelming and disjointed to read. It ends up being hard to follow because I've left out a bunch of the in-between framing context that is in my head that I forget others can't follow.
 
-#### Overly passionate
+### Overly passionate
 
 Often having this volume of ideas, and an immense, fast burning passion for a topic means things are often oversold, or phrased incorrectly.
 
@@ -62,7 +62,7 @@ Luckily, this person was highly empathetic, and explained to the email chain wha
 
 Because I feel like I've explained absolutely nothing here, that seems like a great time to move on to point two!
 
-### Attention to detail
+## Attention to detail
 
 This one's short description nails it on the head: "Yeah, probably fine, ill just post it."
 
@@ -72,7 +72,7 @@ How this often manifests is either 1) writing for hours, attempting to get thing
 
 I was never able to write papers in school because if I tried to edit a long piece of writing, rather than editing it I would just end up rewriting the whole thing on each edit pass. In the end I defaulted to writing a few hours before the deadline so I wouldn't have time to fret over the contents or writing style. I call this "Deadline Adrenaline." I found I got better grades and responses often with just throwing something out there on the first pass than trying to write in a way others would understand easily (because, of course I couldn't do that. My brain doesn't work that way.)
 
-#### Deadline Adrenaline
+### Deadline Adrenaline
 
 An aside – deadline adrenaline is something that I've come to lean on as an ADHD person throughout all parts of my life. I'm not sure if this is strictly and ADHD thing, or a me thing.
 
@@ -88,7 +88,7 @@ It makes it extremely difficult to work with others if a creative or energy high
 
 Err, we went on a bit of a tangent here though, so lets get to point 3!
 
-### Being socially inappropriate
+## Being socially inappropriate
 
 This one is pretty straight forward for me. Let me say this first, I recognize I'm VERY, SUPER privileged to be able to work this way.
 
@@ -104,7 +104,7 @@ To wrap up this section: I've always done the worst when I tried to fit myself i
 
 I have the utmost respect for managers and leaders that can utilize the odd-shaped puzzle pieces like myself and figure out where they fit.
 
-### Feeling Misunderstood
+## Feeling Misunderstood
 
 Moving on to the biggest one – Feeling misunderstood. This is the root of almost all social issues that ADHD brings for me personally.
 
@@ -116,7 +116,7 @@ When I worked at Facebook, one thing I always struggled with is there is this id
 
 The feeling of being misunderstood to and ADHD person is TERRIFYING. I still have a thousand minor slights or social awkwardness I've committed that I think about weekly, and am just begging in my head to be able to go back and explain or correct.
 
-### Wrapping Up
+## Wrapping Up
 
 Even as I start this wrap up, I basically feel like I just wrote a bunch of stuff that people won't really get anything out of because of it being highly disjointed. 
 

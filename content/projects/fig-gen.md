@@ -7,6 +7,7 @@ date: "2021-11-06"
 author: Nate Butler
 summary: >-
   Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.
+link: "https://github.com/iamnbutler/fig-gen"
 ---
 
 ## Generative Art with Figma & Automator

@@ -9,6 +9,7 @@ export default {
       },
     },
   },
+  
 
   components: true, // https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component
   // Auto importing components will not work for <nuxt-content> unless we globally register them by adding a global folder inside the components folder.
@@ -45,4 +46,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
+
+  colorMode: {
+    classSuffix: ''
+  },
 };
