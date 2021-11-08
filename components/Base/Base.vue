@@ -1,20 +1,20 @@
 <template>
   <main>
     <div class="app-container">
-      <div v-show="header" class="app-header">
+      <div v-show="header" class="app-header flex items-center pl-8 pr-8">
         <slot name="header">
             <p>Nate Butler</p>
         </slot>
       </div>
-      <div v-show="nav" class="app-nav">
+      <div v-show="nav" class="app-nav p-8">
         <slot name="nav">
           <Nav />
         </slot>
       </div>
-      <div v-show="subnav" class="app-subnav">
+      <div v-show="subnav" class="app-subnav p-8">
         <slot name="subnav"></slot>
       </div>
-      <div class="app-content">
+      <div class="app-content p-8">
         <slot></slot>
       </div>
     </div>
@@ -43,7 +43,7 @@ export default {
 <style>
 .app-container {
   display: grid;
-  grid-template-columns: 16em 16em 1fr;
+  grid-template-columns: 12em 24em 1fr;
   grid-template-rows: 4em 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
