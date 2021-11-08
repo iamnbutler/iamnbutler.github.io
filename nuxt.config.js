@@ -34,7 +34,9 @@ export default {
   buildModules: [
     '@nuxtjs/tailwindcss',
     // Color mode docs: https://color-mode.nuxtjs.org/
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    // Nuxt Content: https://content.nuxtjs.org/
+    '@nuxt/content'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
