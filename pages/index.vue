@@ -14,6 +14,7 @@
         <h2>Anyways...</h2>
         <p>Hope you can find something fun in your time here!</p>
         <p>You can check out my <a href="https://github.com/iamnbutler/vercel-nuxt/blob/main/.meta/tech.md" class="underline">tech.md</a> to see all the stuff I'll be exploring on this site.</p>
+        <p>For a less broken experience for now, you can follow me on <a href="https://twitter.com/iamnbutler" class="underline">twitter</a> here.</p>
         <p>See you around!</p>
       </div>
     </BaseContent>
