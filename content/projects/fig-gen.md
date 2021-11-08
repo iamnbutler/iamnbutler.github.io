@@ -1,19 +1,12 @@
 ---
-post_visible: true
-status: published
+visible: true
 title: Fig-gen
 subtitle: >-
   Exploring the new Automator plugin for Figma.
 date: "2021-11-06"
 author: Nate Butler
-primary_tag: art
-tags:
-  - art
-  - design
-  - automation
 summary: >-
   Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.
-featured: true
 ---
 
 ## Generative Art with Figma & Automator

@@ -2,7 +2,6 @@
 visible: true
 title: mixblocks
 subtitle: Collective creativity, without the social icky.
-status: published
 date: '2021-04-10'
 tags:
   - design

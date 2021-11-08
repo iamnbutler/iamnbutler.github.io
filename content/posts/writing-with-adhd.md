@@ -1,16 +1,9 @@
 ---
-post_visible: true
-status: published
+visible: true
 title: Writing with ADHD
 subtitle: I never understood why I write the way I do, until I found out I have ADHD.
 date: '2021-06-13'
 author: Nate Butler
-primary_tag: editorial
-tags:
-  - editorial
-  - thought
-series: On ADHD
-series_number: 1
 summary: >-
   I’ve convinced myself my whole life that I’m an absolutely terrible writer.
   The things that I write flow awkwardly, and I never understand all the rules
@@ -24,7 +17,6 @@ edit: >-
   This post is a reflection on Geraint Evans' "[This is how an ADHD person
   actually writes.](https://www.geraint.works/post/adhd-writing-styles)" I'd
   start there first!
-featured: true
 ---
 ## Writing with ADHD
 
