@@ -10,6 +10,10 @@ export default {
     },
   },
 
+  components: true, // https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component
+  // Auto importing components will not work for <nuxt-content> unless we globally register them by adding a global folder inside the components folder.
+
+
   // Global App headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'My Nuxt Application',
@@ -35,7 +39,7 @@ export default {
     '@nuxtjs/tailwindcss',
     // Color mode docs: https://color-mode.nuxtjs.org/
     '@nuxtjs/color-mode',
-    // Nuxt Content: https://content.nuxtjs.org/
+    // Nuxt Content: https://content.nuxtjs.org/ & Tutorial: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/
     '@nuxt/content'
   ],
 
