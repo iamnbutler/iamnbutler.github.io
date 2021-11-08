@@ -4,3 +4,10 @@
 - @nuxt/content – Load md files with yaml front-matter (used for rendering posts, etc)
 - @nuxtjs/color-mode – Used for switching color themes
 - Tailwind / @nuxtjs/tailwindcss – Tailwind for fast iteration and maintainable components
+
+## Look in to:
+
+TODO's and things to keep an eye on
+
+- For images: https://image.nuxtjs.org/providers/vercel
+- https://github.com/harlan-zw/nuxt-webpack-optimisations
