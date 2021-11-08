@@ -1,5 +1,8 @@
 <template>
-    <NuxtLink :to="to" :active-class="'active font-extrabold'"
+    <NuxtLink v-if="exact" :to="to" :exact-active-class="'active font-extrabold'"
+      ><slot
+    /></NuxtLink>
+    <NuxtLink v-else :to="to" :active-class="'active font-extrabold'"
       ><slot
     /></NuxtLink>
 </template>
@@ -10,6 +13,10 @@ export default {
     to: {
       type: String,
       required: true,
+    },
+    exact: {
+      type: Boolean,
+      default: false,
     },
   },
 };
