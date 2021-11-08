@@ -1,7 +1,5 @@
 <template>
-  <main class="p-8">
-    <Nuxt />
-  </main>
+  <Nuxt />
 </template>
 
 <style>
