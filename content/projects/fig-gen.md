@@ -1,5 +1,5 @@
 ---
-title: fig-gen
+title: "fig-gen: Making Generative art in Figma."
 subtitle: >-
   Exploring the new Automator plugin for Figma.
 date: "2021-11-06"

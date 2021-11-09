@@ -2,7 +2,7 @@
   <div class="font-mono h-full flex flex-col justify-between">
     <nav role="navigation" class="flex flex-col mb-8">
       <NavLink to="/" exact>Home</NavLink>
-      <NavLink to="/post">Posts</NavLink>
+      <NavLink to="/post">Writing</NavLink>
       <NavLink to="/project">Projects</NavLink>
     </nav>
     <div class="sandbox">

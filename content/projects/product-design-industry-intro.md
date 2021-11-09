@@ -1,5 +1,5 @@
 ---
-title: Getting your first job in the product design industry
+title: Getting your first job as a product designer
 subtitle: >-
   There is no "right way" to find your path in the industry, but maybe this can help just a bit.
 date: "2021-11-04"
