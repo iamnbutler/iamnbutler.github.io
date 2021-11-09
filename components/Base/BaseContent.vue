@@ -1,6 +1,9 @@
 <template>
   <div class="app-content bg-gray-200 dark:bg-gray-700">
-    <div class="content-sidebar p-8 bg-white dark:bg-gray-900">
+    <div
+      v-show="sidebarActive"
+      class="content-sidebar p-8 bg-white dark:bg-gray-900"
+    >
       <slot name="sidebar"></slot>
     </div>
     <div class="content-main p-8 bg-white dark:bg-gray-900">
@@ -11,7 +14,18 @@
   </div>
 </template>
 
-<style>
+<script>
+export default {
+  props: {
+    sidebarActive: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
+
+<style lang="scss">
 .app-content {
   grid-area: app-content;
   overflow: hidden;
@@ -20,9 +34,17 @@
   grid-template-rows: 1fr 1fr;
   gap: 1px 1px;
   grid-auto-flow: row;
-  grid-template-areas:
-    "content-main content-sidebar"
-    "content-main content-sidebar";
+  &.sidebar-active {
+    grid-template-areas:
+      "content-main content-sidebar"
+      "content-main content-sidebar";
+  }
+
+  &:not(.sidebar-active) {
+    grid-template-areas:
+      "content-main content-main"
+      "content-main content-main";
+  }
 }
 
 .content-sidebar {

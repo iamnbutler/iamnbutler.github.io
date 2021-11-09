@@ -19,7 +19,7 @@
       </nav>
     </template>
     <BaseContent>
-      <article v-if="project" class="prose text-mono">
+      <article v-if="project" class="prose mx-auto text-mono">
         <!-- Variables from YAML -->
         <h1>{{ project.title }}</h1>
         <p>{{ project.subtitle }}</p>

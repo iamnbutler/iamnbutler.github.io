@@ -19,7 +19,7 @@
       </nav>
     </template>
     <BaseContent>
-      <article v-if="project" class="prose text-mono"></article>
+      <article v-if="project" class="prose mx-auto text-mono"></article>
     </BaseContent>
   </Base>
 </template>

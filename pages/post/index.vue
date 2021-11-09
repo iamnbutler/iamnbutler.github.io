@@ -21,7 +21,7 @@
       </nav>
     </template>
     <BaseContent>
-      <article class="prose text-mono"></article>
+      <article class="prose mx-auto text-mono"></article>
     </BaseContent>
   </Base>
 </template>

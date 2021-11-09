@@ -1,7 +1,7 @@
 <template>
   <main>
     <div
-      class="app-container font-mono text-black dark:text-white bg-gray-200 dark:bg-gray-700"
+      class="app-container font-mono text-black dark:text-white bg-gray-200 dark:bg-gray-800"
       :class="[{ two: subnav === false, three: subnav === true }]"
     >
       <div
@@ -14,7 +14,7 @@
       </div>
       <div
         v-if="nav"
-        class="app-nav p-8 bg-white dark:bg-gray-900"
+        class="app-nav p-8 leading-tight bg-white dark:bg-gray-900"
       >
         <slot name="nav">
           <Nav />
@@ -22,7 +22,7 @@
       </div>
       <div
         v-if="subnav"
-        class="app-subnav p-8 bg-white dark:bg-gray-900"
+        class="app-subnav p-8 leading-tight bg-white dark:bg-gray-900"
       >
         <slot name="subnav"></slot>
       </div>

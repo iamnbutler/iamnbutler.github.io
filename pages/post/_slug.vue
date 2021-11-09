@@ -21,7 +21,7 @@
       </nav>
     </template>
     <BaseContent>
-      <article class="prose text-mono">
+      <article class="prose mx-auto text-mono">
         <!-- Variables from YAML -->
         <h1>{{ article.title }}</h1>
         <p>{{ article.subtitle }}</p>
