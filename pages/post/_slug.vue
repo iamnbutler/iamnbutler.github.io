@@ -1,6 +1,6 @@
 <template>
   <Base subnav>
-  <template v-slot:header>
+    <template v-slot:header>
       natebutler{{ article.path }}{{ article.extension }}
     </template>
     <template v-slot:subnav>
@@ -8,9 +8,13 @@
         <ul>
           <li v-for="post of posts" :key="post.slug">
             <!-- Remember to import the variables needed in the call below -->
-            <NavLink :to="{ name: 'post-slug', params: { slug: post.slug } }">
+            <NuxtLink
+              class="pb-2"
+              :to="{ name: 'post-slug', params: { slug: post.slug } }"
+              :active-class="'active font-extrabold'"
+            >
               {{ post.title }}
-            </NavLink>
+            </NuxtLink>
           </li>
         </ul>
         <p class="italic text-gray-500">(not yet ordered)</p>

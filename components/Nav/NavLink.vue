@@ -1,8 +1,8 @@
 <template>
-    <NuxtLink v-if="exact" :to="to" :exact-active-class="'active font-extrabold'"
+    <NuxtLink v-if="exact" :to="to" class="pb-2" :exact-active-class="'active font-extrabold'"
       ><slot
     /></NuxtLink>
-    <NuxtLink v-else :to="to" :active-class="'active font-extrabold'"
+    <NuxtLink v-else :to="to" class="pb-2" :active-class="'active font-extrabold'"
       ><slot
     /></NuxtLink>
 </template>

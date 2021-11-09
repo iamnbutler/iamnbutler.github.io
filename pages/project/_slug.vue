@@ -6,11 +6,13 @@
         <ul>
           <li v-for="project of projects" :key="project.slug">
             <!-- Remember to import the variables needed in the call below -->
-            <NavLink
+            <NuxtLink
               :to="{ name: 'project-slug', params: { slug: project.slug } }"
+              class="block pb-2"
+              :active-class="'active font-extrabold'"
             >
               {{ project.title }}
-            </NavLink>
+            </NuxtLink>
           </li>
         </ul>
         <p class="italic text-gray-500">(not yet ordered)</p>

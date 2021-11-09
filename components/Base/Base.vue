@@ -14,7 +14,7 @@
       </div>
       <div
         v-if="nav"
-        class="app-nav p-8 leading-loose bg-white dark:bg-gray-900"
+        class="app-nav p-8 bg-white dark:bg-gray-900"
       >
         <slot name="nav">
           <Nav />
@@ -22,7 +22,7 @@
       </div>
       <div
         v-if="subnav"
-        class="app-subnav p-8 leading-loose bg-white dark:bg-gray-900"
+        class="app-subnav p-8 bg-white dark:bg-gray-900"
       >
         <slot name="subnav"></slot>
       </div>
