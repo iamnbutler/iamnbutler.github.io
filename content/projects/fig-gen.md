@@ -14,7 +14,7 @@ link: "https://github.com/iamnbutler/fig-gen"
 
 Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.
 
-![Some select screens from my automation explorations](https://res.cloudinary.com/read-cv/image/upload/c_limit,h_2048,w_2048/v1/1/pages/506jO5gdgrYj3cUmt3ShGTp65ag2/amkK5itPyDCD8tu6ewsn/341209bd-9ffd-445e-89ac-2fc7da4ff75b.png?_a=ATAABAA0)
+![Some select screens from my automation explorations](https://res.cloudinary.com/yaminateo/image/upload/v1636435580/project/fig-gen/gen-grid_2x_d5gs3h.png)
 
 ### Process
 
