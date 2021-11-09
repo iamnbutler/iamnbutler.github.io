@@ -9,7 +9,7 @@
           <li v-for="post of posts" :key="post.slug">
             <!-- Remember to import the variables needed in the call below -->
             <NuxtLink
-              class="pb-2"
+              class="block pb-2"
               :to="{ name: 'post-slug', params: { slug: post.slug } }"
               :active-class="'active font-extrabold'"
             >

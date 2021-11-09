@@ -6,7 +6,7 @@
     >
       <div
         v-if="header"
-        class="app-header tracking-wider flex items-center pl-8 pr-8 bg-white dark:bg-gray-900"
+        class="app-header tracking-wider flex items-center pl-8 pr-8 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900"
       >
         <slot name="header">
           <p>natebutler</p>
