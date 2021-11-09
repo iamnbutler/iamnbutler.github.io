@@ -12,7 +12,7 @@ link: "https://github.com/iamnbutler/fig-gen"
 
 ## Generative Art with Figma & Automator
 
-Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.
+I spent the evening exploring the new Automator plugin for Figma from [Jordan Singer](https://twitter.com/jsngr). I thought a minimal generative series using pixels and mapping equations would be a fun way to try it out.
 
 ![Some select screens from my automation explorations](https://res.cloudinary.com/yaminateo/image/upload/v1636435580/project/fig-gen/gen-grid_2x_d5gs3h.png)
 
