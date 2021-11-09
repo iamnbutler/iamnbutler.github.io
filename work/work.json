@@ -1,6 +1,0 @@
-{
-  "layout": "layouts/post.njk",
-  "permalink": "work/{{ title | slug }}/index.html",
-  "author": "Nate Butler",
-  "tags": ["work"]
-}
