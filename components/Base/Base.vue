@@ -6,7 +6,7 @@
     >
       <div
         v-if="header"
-        class="app-header tracking-wider flex items-center pl-8 pr-8 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900"
+        class="app-header tracking-wider flex items-center pl-4 pr-4 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900"
       >
         <slot name="header">
           <p>natebutler</p>
@@ -14,7 +14,7 @@
       </div>
       <div
         v-if="nav"
-        class="app-nav p-8 leading-tight bg-white dark:bg-gray-900"
+        class="app-nav p-4 leading-tight bg-white dark:bg-gray-900"
       >
         <slot name="nav">
           <Nav />
@@ -22,7 +22,7 @@
       </div>
       <div
         v-if="subnav"
-        class="app-subnav p-8 leading-tight bg-white dark:bg-gray-900"
+        class="app-subnav p-4 leading-tight bg-white dark:bg-gray-900"
       >
         <slot name="subnav"></slot>
       </div>

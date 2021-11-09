@@ -2,11 +2,11 @@
   <div class="app-content bg-gray-200 dark:bg-gray-700">
     <div
       v-show="sidebarActive"
-      class="content-sidebar p-8 bg-white dark:bg-gray-900"
+      class="content-sidebar p-4 bg-white dark:bg-gray-900"
     >
       <slot name="sidebar"></slot>
     </div>
-    <div class="content-main p-8 bg-white dark:bg-gray-900">
+    <div class="content-main p-4 bg-white dark:bg-gray-900">
       <div class="content-inner max-w-3xl mx-auto">
         <slot></slot>
       </div>
