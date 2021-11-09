@@ -28,7 +28,7 @@ Anyways...
 
 Hope you can find something fun in your time here!
 
-You can check out my [tech.md](https://github.com/iamnbutler/vercel-nuxt/blob/main/.meta/tech.md) to see all the stuff I'll be exploring on this site.
+You can check out my [tech.md](https://github.com/iamnbutler/iamnbutler.github.io/blob/main/.meta/tech.md) to see all the stuff I'll be exploring on this site.
 
 For a less broken experience for now, you can follow me on [twitter](https://twitter.com/iamnbutler) here.
 
