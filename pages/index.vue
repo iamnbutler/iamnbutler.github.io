@@ -53,7 +53,7 @@
         <p>
           You can check out my
           <a
-            href="https://github.com/iamnbutler/vercel-nuxt/blob/main/.meta/tech.md"
+            href="https://github.com/iamnbutler/iamnbutler.github.io/blob/main/.meta/tech.md"
             class="underline"
             >tech.md</a
           >
