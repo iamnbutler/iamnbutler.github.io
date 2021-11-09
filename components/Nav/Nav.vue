@@ -8,9 +8,9 @@
     <div class="sandbox">
       <!-- https://nuxtjs.org/tutorials/going-dark-with-nuxtjs-color-mode/ -->
       <div class="color-buttons">
-        <p class="p-2 text-sm text-gray-400">theme</p>
+        <p class="text-sm pb-2 text-gray-400">theme</p>
         <button
-        class="p-2 block"
+        class="block pb-2"
         v-for="color of colors"
         :key="color"
         @click="$colorMode.preference = color"
@@ -27,7 +27,7 @@
   export default {
     data() {
       return {
-        colors: ['system', 'light', 'dark']
+        colors: ['light', 'dark', 'system']
       }
     }
   }
