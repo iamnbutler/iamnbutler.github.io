@@ -1,6 +1,6 @@
 ---
 visible: true
-title: Fig-gen
+title: fig-gen
 subtitle: >-
   Exploring the new Automator plugin for Figma.
 date: "2021-11-06"
