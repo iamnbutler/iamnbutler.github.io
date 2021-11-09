@@ -18,6 +18,9 @@ I generally want to bias towards giving direction without being overly opinionat
 
 [Visit the site](http://design-intro.nate.tips/) | [Github Repo](https://github.com/iamnbutler/design-industry-intro)
 
+![](https://res.cloudinary.com/yaminateo/image/upload/v1636493008/project/product-design-industry-intro/screen-shot-1_drgged.png)
+![](https://res.cloudinary.com/yaminateo/image/upload/v1636493008/project/product-design-industry-intro/screen-shot-2_rpwf6o.png)
+
 You can leave feedback on the project & content here:
 [Feedback – Getting your first job in the product design industry](https://forms.gle/jimgp3uAk8df8MUH9)
 
