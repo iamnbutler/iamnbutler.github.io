@@ -21,14 +21,14 @@ Structurally, my biggest personal inspiration for a website has been the Mac OS 
 
 So far I'm *part* of the way there, I've got the `.md` part going... Once the basic site is done I'll pivot to figure out how to pull things directly from my personal [data](https://github.com/iamnbutler/data) repo.
 
-Here is a rough [~mood board~](https://www.figma.com/file/VNpgDenh0jr5gin1E5YoJt/v-14-moodboard?node-id=0%3A1) of some themes I have in my head. I don't know how much will influence the site in the end... I'm starting from structure and content first before style, as I tend to get lost in the visuals and never return to finish the rest 😅
+Here is a rough [~ *mood board* ~](https://www.figma.com/file/VNpgDenh0jr5gin1E5YoJt/v-14-moodboard?node-id=0%3A1) of some themes I have in my head. I don't know how much will influence the site in the end... I'm starting from structure and content first before style, as I tend to get lost in the visuals and never return to finish the rest 😅
 
 Anyways...
 ----------
 
 Hope you can find something fun in your time here!
 
-You can check out my [tech.md](https://github.com/iamnbutler/vercel-nuxt/blob/main/.meta/tech.md) to see all the stuff I'll be exploring on this site.
+You can check out my [tech.md](https://github.com/iamnbutler/iamnbutler.github.io/blob/main/.meta/tech.md) to see all the stuff I'll be exploring on this site.
 
 For a less broken experience for now, you can follow me on [twitter](https://twitter.com/iamnbutler) here.
 
