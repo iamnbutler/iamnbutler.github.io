@@ -19,7 +19,7 @@
       </nav>
     </template>
     <BaseContent>
-      <article v-if="project" class="prose mx-auto text-mono">
+      <ArticleProse>
         <!-- Variables from YAML -->
         <h1>{{ project.title }}</h1>
         <p>{{ project.subtitle }}</p>
@@ -30,7 +30,7 @@
         <nuxt-content :document="project" />
 
         <!-- Author pages, code highlighting and more still here: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component -->
-      </article>
+      </ArticleProse>
       <template v-slot:sidebar>
         <nav class="toc flex flex-col leading-loose">
           <!-- Table of Contents -->

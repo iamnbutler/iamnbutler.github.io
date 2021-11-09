@@ -1,7 +1,7 @@
 <template>
   <Base>
     <BaseContent>
-      <div class="prose">
+      <ArticleProse>
         <h1>Hey 👋</h1>
         <p>I'm Nate!</p>
         <h2>Let's build a website</h2>
@@ -16,7 +16,7 @@
         <p>You can check out my <a href="https://github.com/iamnbutler/vercel-nuxt/blob/main/.meta/tech.md" class="underline">tech.md</a> to see all the stuff I'll be exploring on this site.</p>
         <p>For a less broken experience for now, you can follow me on <a href="https://twitter.com/iamnbutler" class="underline">twitter</a> here.</p>
         <p>See you around!</p>
-      </div>
+      </ArticleProse>
     </BaseContent>
   </Base>
 </template>
