@@ -15,7 +15,7 @@
             </NuxtLink>
           </li>
         </ul>
-        <p class="italic text-gray-500">(not yet ordered)</p>
+        
       </nav>
     </template>
     <BaseContent>
