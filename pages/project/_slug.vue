@@ -17,7 +17,7 @@
       </nav>
     </template>
     <BaseContent>
-      <article class="prose text-mono">
+      <article v-if="project" class="prose text-mono">
         <!-- Variables from YAML -->
         <h1>{{ project.title }}</h1>
         <p>{{ project.subtitle }}</p>
@@ -65,8 +65,8 @@ export default {
   async asyncData({ $content, params }) {
     const project = await $content("projects", params.slug).fetch();
     const projects = await $content("projects")
-      .only(["title", "description", "slug"])
-      .sortBy("createdAt", "asc")
+      .only(["title", "description", "slug", "date"])
+      .sortBy("date", "desc")
       .fetch();
 
     return {

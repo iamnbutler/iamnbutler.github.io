@@ -58,8 +58,8 @@ export default {
     const article = await $content("posts", params.slug).fetch();
 
     const posts = await $content("posts")
-      .only(["title", "description", "slug"])
-      .sortBy("createdAt", "asc")
+      .only(["title", "description", "slug", "date"])
+      .sortBy("date", "desc")
       .fetch();
 
     return {
