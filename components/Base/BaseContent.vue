@@ -16,7 +16,7 @@
   grid-area: app-content;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 24em;
+  grid-template-columns: 8fr 4fr;
   grid-template-rows: 1fr 1fr;
   gap: 1px 1px;
   grid-auto-flow: row;
