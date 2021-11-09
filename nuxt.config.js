@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -56,8 +58,8 @@ export default {
     },
   },
   cloudinary: {
-    cloudName: "yaminateo",
-    apiKey: "943211837148786",
-    apiSecret: "2qaEn795f4hxe-Sr-9ddHe4Hhv8",
+    cloudName: "process.env.CLOUDINARY_CLOUDNAME",
+    apiKey: "process.env.CLOUDINARY_API_KEY",
+    apiSecret: "process.env.CLOUDINARY_API_SECRET",
   },
 };
