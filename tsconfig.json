@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "types": [
+        "@nuxt/types",
+        "@nuxtjs/color-mode",
+        "@nuxt/image"
+      ]
+    }
+  }
