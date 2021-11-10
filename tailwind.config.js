@@ -33,6 +33,12 @@ module.exports = {
             h4: {
               color: theme("colors.white"),
             },
+            a: {
+              color: theme("colors.white"),
+            },
+            code: {
+              color: theme("colors.white"),
+            }
           },
         },
         DEFAULT: {
