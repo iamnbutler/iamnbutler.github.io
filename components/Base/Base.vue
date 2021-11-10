@@ -1,7 +1,7 @@
 <template>
   <main>
     <div
-      class="app-container font-mono text-black dark:text-white bg-gray-200 dark:bg-gray-800"
+      class="app-container font-mono text-black dark:text-white bg-gray-200 dark:bg-gray-800 flex flex-col md:grid"
       :class="[{ two: subnav === false, three: subnav === true }]"
     >
       <div
@@ -59,7 +59,6 @@ body {
 .app-container {
   height: 100vh;
   width: 100vw;
-  display: grid;
   grid-template-columns: 1.5fr 2.5fr 8fr;
   grid-template-rows: 4em 1fr;
   gap: 1px 1px;
