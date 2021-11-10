@@ -10,8 +10,7 @@
 
 TODO's and things to keep an eye on
 
+- For automated changelogs: https://github.com/github-changelog-generator/github-changelog-generator
 - For google fonts: https://google-fonts.nuxtjs.org/
 - Eventually hook up Storybook for easier component development: https://github.com/nuxt-community/storybook
-- https://github.com/harlan-zw/nuxt-webpack-optimisations
-
-More nuxt modules available here: https://modules.nuxtjs.org/
+- Either move to Nuxt Bridge or look into this for faster builds: https://github.com/harlan-zw/nuxt-webpack-optimisations
