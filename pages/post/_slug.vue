@@ -8,13 +8,9 @@
         <ul>
           <li v-for="post of posts" :key="post.slug">
             <!-- Remember to import the variables needed in the call below -->
-            <NuxtLink
-              class="block pb-2"
-              :to="{ name: 'post-slug', params: { slug: post.slug } }"
-              :active-class="'active font-extrabold'"
-            >
+            <NavLink dynamic :name="'post-slug'" :slug='post.slug'>
               {{ post.title }}
-            </NuxtLink>
+            </NavLink>
           </li>
         </ul>
         
