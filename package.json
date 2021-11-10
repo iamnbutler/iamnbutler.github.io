@@ -1,8 +1,8 @@
 {
-  "name": "nuxtjs",
-  "version": "1.0.0",
-  "description": "My astonishing Nuxt App",
-  "author": "msweeneydev",
+  "name": "iamnbutler.github.io",
+  "version": "14.1.0",
+  "description": "Nate Butler's personal site",
+  "author": "iamnbutler",
   "private": true,
   "scripts": {
     "dev": "nuxt",
