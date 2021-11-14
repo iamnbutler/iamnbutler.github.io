@@ -11,7 +11,7 @@ While setting up `@nuxtjs/color-mode` to work with `Tailwind.css`, I realized th
 
 Tailwind doesn't have `fill` or `stroke` colors like `text-green-500` or `bg-white`, which means that you can't do: 
 
-```
+```html
 <svg class="fill-black dark:fill-white" ...>
 	<path d="..." fill="inherit" />
 </svg>
@@ -25,7 +25,7 @@ It wasn't obvious what this would do when it popped up in my IntelliSense when I
 
 In the end, it looks like this:
 
-```
+```html
 <div class="text-black dark:text-white">
 	<svg class="fill-current" ...>
 		<path d="..." fill="inherit" />
@@ -46,7 +46,7 @@ We can add a new text color directly to the SVG (or anything else it is wrapped 
 
 Extending our example above:
 
-```
+```html
 <div class="text-black dark:text-white">
 	<svg 
 		class="fill-current"

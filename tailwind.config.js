@@ -39,6 +39,14 @@ module.exports = {
             },
             code: {
               color: theme("colors.white"),
+              background: theme("colors.gray.900"),
+              fontFamily: theme("fontFamily.mono"),
+            },
+            pre: {
+              color: theme("colors.white"),
+              background: theme("colors.gray.900"),
+              textShadow: "none",
+              fontFamily: theme("fontFamily.mono"),
             }
           },
         },
