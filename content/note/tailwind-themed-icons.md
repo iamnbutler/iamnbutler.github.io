@@ -19,9 +19,9 @@ Tailwind doesn't have `fill` or `stroke` colors like `text-green-500` or `bg-whi
 
 That is the first thing I thought of when I tried to get this working. It is possible to get this working by extending your `tailwind.config.js` (more [here](https://tailwindcss.com/docs/stroke#customizing)), but there is an easier way that allows you to style all icons at once: `stroke-current` (and `fill-current`).
 
-## Using `stroke-current`
+## Using `fill-current`
 
-It wasn't obvious what this would do when it popped up in my IntelliSense when I try to complete `stroke-` the first time. `stroke-current` takes whatever text color is on it's parent and sets it's `stroke` to that color. This also gets re-applied when the color mode changes, which gives us a really simple way to swap svg colors as the theme changes.
+It wasn't obvious what this would do when it popped up in my IntelliSense when I try to complete `fill-` the first time. `fill-current` takes whatever text color is on it's parent and sets it's `fill` to that color. This also gets re-applied when the color mode changes, which gives us a really simple way to swap svg colors as the theme changes.
 
 In the end, it looks like this:
 
@@ -37,6 +37,8 @@ In the end, it looks like this:
 ```
 
 This will give us a black icon in light mode and a white icon in dark mode. Since the color is defined on the parents, we can also add more icons, and they will all be colored the same. 
+
+`stroke-current` works exactly the same way, and the two can be combined if needed.
 
 ## Adding active state variations
 
