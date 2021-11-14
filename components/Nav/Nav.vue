@@ -4,6 +4,7 @@
       <NavLink to="/" exact>Home</NavLink>
       <NavLink to="/post">Writing</NavLink>
       <NavLink to="/project">Projects</NavLink>
+      <NavLink to="/note">Notes & tips</NavLink>
     </nav>
     <div class="sandbox">
       <div class="flex text-gray-400 theme-picker dark:text-gray-700">
