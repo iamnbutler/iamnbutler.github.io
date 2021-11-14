@@ -15,6 +15,7 @@ module.exports = {
       prose: "Lora, ui-serif, serif",
       mono:
         '"Jetbrains Mono", "SF Mono", SFMono-Regular, ui-monospace, "Roboto Mono", monospace',
+        
     },
     extend: {
       typography: (theme) => ({

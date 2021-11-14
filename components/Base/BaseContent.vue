@@ -1,13 +1,13 @@
 <template>
-  <div class="app-content bg-gray-200 dark:bg-gray-700">
+  <div class="bg-gray-200 app-content dark:bg-gray-900">
     <div
       v-show="sidebarActive"
-      class="content-sidebar p-4 bg-white dark:bg-gray-900"
+      class="p-4 bg-white content-sidebar dark:bg-black"
     >
       <slot name="sidebar"></slot>
     </div>
-    <div class="content-main p-4 bg-white dark:bg-gray-900">
-      <div class="content-inner max-w-3xl ">
+    <div class="p-4 bg-white content-main dark:bg-black">
+      <div class="max-w-3xl content-inner ">
         <slot></slot>
       </div>
     </div>

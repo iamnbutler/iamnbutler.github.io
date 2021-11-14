@@ -1,12 +1,12 @@
 <template>
   <main>
     <div
-      class="app-container font-mono text-black dark:text-white bg-gray-200 dark:bg-gray-800 flex flex-col md:grid"
+      class="flex flex-col font-mono text-black bg-gray-200 app-container dark:text-white dark:bg-gray-900 md:grid"
       :class="[{ two: subnav === false, three: subnav === true }]"
     >
       <div
         v-if="header"
-        class="app-header tracking-wider flex items-center pl-4 pr-4 text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900"
+        class="flex items-center pl-4 pr-4 tracking-wider text-gray-500 bg-white app-header dark:text-gray-400 dark:bg-black"
       >
         <slot name="header">
           <p>natebutler</p>
@@ -14,7 +14,7 @@
       </div>
       <div
         v-if="nav"
-        class="app-nav p-4 leading-tight bg-white dark:bg-gray-900"
+        class="p-4 leading-tight bg-white app-nav dark:bg-black"
       >
         <slot name="nav">
           <Nav />
@@ -22,7 +22,7 @@
       </div>
       <div
         v-if="subnav"
-        class="app-subnav p-4 leading-tight bg-white dark:bg-gray-900"
+        class="p-4 leading-tight bg-white app-subnav dark:bg-black"
       >
         <slot name="subnav"></slot>
       </div>
