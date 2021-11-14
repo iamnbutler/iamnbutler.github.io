@@ -1,7 +1,7 @@
 ---
 visible: true
 type: gist
-title: Accessing fields fin Airtable
+title: Accessing fields in Airtable
 subtitle: 
 date: '2021-04-17'
 author: Nate Butler
