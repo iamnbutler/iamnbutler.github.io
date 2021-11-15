@@ -18,7 +18,7 @@ edit: >-
   actually writes.](https://www.geraint.works/post/adhd-writing-styles)" I'd
   start there first!
 ---
-## I'm an terrible writer.
+## I'm a terrible writer.
 
 Or, at least, I've convinced myself of that my whole life. The things that I write flow awkwardly, and I never understand all the rules of writing and the way to make things sound immersive and natural. My writing ends up awkwardly verbose and tends to wander a lot. I tend to mix tenses constantly. 
 
