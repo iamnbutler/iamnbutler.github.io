@@ -20,7 +20,6 @@
       <ArticleProse>
         <!-- Variables from YAML -->
         <h1>{{ article.title }}</h1>
-        <p>{{ article.subtitle }}</p>
         <p>
           {{ formatDate(article.date) }}
         </p>

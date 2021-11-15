@@ -20,7 +20,6 @@
     <BaseContent>
       <ArticleProse>
         <!-- Variables from YAML -->
-        <p class="italic">{{ note.subtitle }}</p>
         <p>
           {{ formatDate(note.date) }}
         </p>
