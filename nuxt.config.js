@@ -30,7 +30,9 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/p5.min.js' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

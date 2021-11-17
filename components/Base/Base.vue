@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen bg-white dark:bg-black">
+  <main class="relative min-h-screen bg-white dark:bg-black">
     <div
       class="flex flex-col font-mono text-black bg-gray-200 app-container dark:text-white dark:bg-gray-900 md:h-screen md:grid"
       :class="[{ two: subnav === false, three: subnav === true }]"
@@ -113,6 +113,7 @@
         </div>
       </div>
     </div>
+    <Effect />
   </main>
 </template>
 
