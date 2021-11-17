@@ -2,8 +2,8 @@
   <div class="flex flex-col justify-between h-full font-mono">
     <nav role="navigation" class="flex flex-col mb-8">
       <NavLink to="/" exact>Home</NavLink>
-      <NavLink to="/post">Writing</NavLink>
       <NavLink to="/project">Projects</NavLink>
+      <NavLink to="/post">Writing</NavLink>
       <NavLink to="/note">Notes & tips</NavLink>
     </nav>
     <div class="sandbox">
@@ -12,7 +12,10 @@
         <button
           class="w-8 h-8 p-2 rounded theme-button dark"
           @click="$colorMode.preference = 'dark'"
-          :class="{ 'active text-black dark:text-white': $colorMode.preference === 'dark' }"
+          :class="{
+            'active text-black dark:text-white':
+              $colorMode.preference === 'dark'
+          }"
         >
           <svg
             width="18"
@@ -31,7 +34,10 @@
         <button
           class="w-8 h-8 p-2 rounded theme-button light"
           @click="$colorMode.preference = 'light'"
-          :class="{ 'active text-black dark:text-white': $colorMode.preference === 'light' }"
+          :class="{
+            'active text-black dark:text-white':
+              $colorMode.preference === 'light'
+          }"
         >
           <svg
             width="20"
@@ -50,7 +56,10 @@
         <button
           class="w-8 h-8 p-2 rounded theme-button system"
           @click="$colorMode.preference = 'system'"
-          :class="{ 'active text-black dark:text-white': $colorMode.preference === 'system' }"
+          :class="{
+            'active text-black dark:text-white':
+              $colorMode.preference === 'system'
+          }"
         >
           <svg
             width="20"
