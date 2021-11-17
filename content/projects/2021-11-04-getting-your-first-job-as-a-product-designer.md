@@ -1,14 +1,15 @@
 ---
+uuid: d21137fc-f538-44de-9f84-f24def5d929f
 title: Getting your first job as a product designer
-subtitle: >-
-  There is no "right way" to find your path in the industry, but maybe this can help just a bit.
-date: "2021-11-04"
-author: Nate Butler
-summary: >-
+status: published
+date: 2021-11-04
+excerpt: >-
+  There is no "right way" to find your path in the industry, but maybe this can
+  help just a bit.
+
+
   This is an ongoing project to help early-career designers bootstrap up to their first job in the tech industry. The goal is to be complete without being overly verbose.
-mainImage: "https://res.cloudinary.com/yaminateo/image/upload/v1636435580/project/fig-gen/gen-grid_2x_d5gs3h.png"
-link: "http://design-intro.nate.tips/"
-repo: "https://github.com/iamnbutler/design-industry-intro"
+creator: Nate Butler
 ---
 ## The Project
 

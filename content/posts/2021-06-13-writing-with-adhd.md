@@ -1,22 +1,17 @@
 ---
-visible: true
+uuid: 452d4263-60df-4c91-800c-f47431e6b3f2
 title: Writing with ADHD
-subtitle: I never understood why I write the way I do, until I found out I have ADHD.
-date: '2021-06-13'
-author: Nate Butler
-summary: >-
-  I’ve convinced myself my whole life that I’m an absolutely terrible writer.
-  The things that I write flow awkwardly, and I never understand all the rules
-  of writing and the way to make things sound immersive and natural. My writing
-  ends up awkwardly verbose and tends to wander a lot. I tend to mix tenses
-  constantly.
-
-  I never understood why I write the way I do, until I discovered at the
-  beginning of the year that I have rather severe inattentive ADHD.
-edit: >-
-  This post is a reflection on Geraint Evans' "[This is how an ADHD person
-  actually writes.](https://www.geraint.works/post/adhd-writing-styles)" I'd
-  start there first!
+status: published
+date: 2021-06-13
+edit-note: This post is a reflection on Geraint Evans' "[This is how an ADHD
+  person actually writes.](https://www.geraint.works/post/adhd-writing-styles)"
+  I'd start there first!
+excerpt: "I'm an terrible writer. Or, at least, I've convinced myself of that my
+  whole life. The things that I write flow awkwardly, and I never understand all
+  the rules of writing and the way to make things sound immersive and natural.
+  My writing ends up awkwardly verbose and tends to wander a lot. I tend to mix
+  tenses constantly. "
+creator: Nate Butler
 ---
 ## I'm a terrible writer.
 

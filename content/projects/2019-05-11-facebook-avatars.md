@@ -1,18 +1,9 @@
 ---
-title: "Launching Facebook Avatars"
-subtitle: >-
-  A first step towards virtual likeness & identity for billions.
-date: "2019-05-03"
-author: Nate Butler
-summary: >-
-  Today we launched Facebook Avatars publicly! I've been working on this for a
-  long time now. 
-
-  I never would have imagined the complexity and amount of difficult decisions
-  it takes to get a system like this off the ground. I have a lot of respect for
-  all the teams out there working on likeness systems for people...
-mainImage: ""
-link: ""
+uuid: 3d956615-3b35-42c7-9031-ba432eddfeef
+title: Facebook Avatars
+status: published
+date: 2019-05-11
+creator: Nate Butler
 ---
 Today Facbook launched [a test of Facebook Avatars](https://www.theverge.com/2019/6/3/18650685/facebook-avatar-messenger-newsfeed-bitmoji) publicly! I worked on Avatars for around 2.5 years, so it is exciting to see it finally getting into the wild.
 

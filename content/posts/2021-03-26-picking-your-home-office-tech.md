@@ -1,14 +1,12 @@
 ---
-visible: true
-title: "Picking Your Home Office Tech"
-subtitle: "Level up your desk gear, feel, and ergonomics."
-date: "2021-03-26"
-author: Nate Butler
-summary: >-
-  Recommendations for hardware, peripherals, and other desk setup stuff from
-  years of buying and trying far too many things!
+uuid: 91370aaa-68b8-4756-a3d7-2d1c84b00cd8
+title: Picking Your Home Office Tech
+status: published
+date: 2021-03-26
+excerpt: Recommendations for hardware, peripherals, and other desk setup stuff
+  from years of buying and trying far too many things!
+creator: Nate Butler
 ---
-
 In the first part of this series, we'll take a look at all the hardware you might want when setting up your desk. We'll cover computers, peripherals, VC gear & audio, and more. In the later parts, we'll cover desk setup, ergonomics, and software!
 
 ## The Gear
