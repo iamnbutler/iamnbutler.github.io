@@ -12,10 +12,7 @@
           <p>natebutler</p>
         </slot>
       </div>
-      <div
-        v-if="nav"
-        class="p-4 leading-tight bg-white app-nav dark:bg-black"
-      >
+      <div v-if="nav" class="p-4 leading-tight bg-white app-nav dark:bg-black">
         <slot name="nav">
           <Nav />
         </slot>
@@ -36,22 +33,21 @@ export default {
   props: {
     header: {
       type: Boolean,
-      default: true,
+      default: true
     },
     nav: {
       type: Boolean,
-      default: true,
+      default: true
     },
     subnav: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-
 body {
   overflow: hidden;
 }
@@ -60,20 +56,20 @@ body {
   height: 100vh;
   width: 100vw;
   grid-template-columns: 1.5fr 2.5fr 8fr;
-  grid-template-rows: 4em 1fr;
+  grid-template-rows: 1fr 2em;
   gap: 1px 1px;
   grid-auto-flow: row;
 
   &.two {
     grid-template-areas:
-    "app-header app-header app-header"
-    "app-nav app-content app-content";
+      "app-nav app-content app-content"
+      "app-header app-header app-header";
   }
 
   &.three {
     grid-template-areas:
-    "app-header app-header app-header"
-    "app-nav app-subnav app-content";
+      "app-nav app-subnav app-content"
+      "app-header app-header app-header";
   }
 }
 
