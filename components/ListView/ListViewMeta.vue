@@ -1,7 +1,7 @@
 <template>
   <nav class="flex justify-between meta">
     <div class="flex left">
-      <Icon name="ArrowDown" spaced />
+      <Icon name="ArrowDown" />
       <button class="pl-4 pr-4">id</button>
     </div>
     <div class="flex right">

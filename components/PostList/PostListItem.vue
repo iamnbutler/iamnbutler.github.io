@@ -1,5 +1,7 @@
 <template>
-  <div class="pt-2 pb-2 mt-2 post-list-item">
+  <div
+    class="pt-2 pb-2 mt-2 post-list-item mix-blend-exclusion hover:bg-white hover:mix-blend-exclusion hover:text-black"
+  >
     <header class="flex items-end justify-between">
       <div class="flex items-end left">
         <div class="w-8 font-mono text-sm leading-4 text-right id">118.</div>
@@ -14,7 +16,7 @@
     </header>
     <div class="flex justify-between mt-2 font-mono content">
       <div class="flex left">
-        <div class="pl-10 pr-8 text-sm leading-6 content-text">
+        <div class="pl-10 pr-8 text-sm leading-6 content-text opacity-80">
           An unused direction for the upcoming zed.dev site. Set in Pangram
           Pangram Foundry's Eiko and Neue Machina.
         </div>
