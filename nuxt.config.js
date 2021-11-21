@@ -32,9 +32,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     "@nuxtjs/tailwindcss",
@@ -43,6 +40,7 @@ export default {
     // Nuxt Content: https://content.nuxtjs.org/ & Tutorial: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/
     "@nuxt/content",
     "@nuxt/image",
+    'nuxt-font-loader'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -62,4 +60,12 @@ export default {
     apiKey: "process.env.CLOUDINARY_API_KEY",
     apiSecret: "process.env.CLOUDINARY_API_SECRET",
   },
+  fontLoader: {
+    url: {
+      local: '/fonts/font-face.css',
+      google: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;700&display=swap',
+    },
+    prefetch: true,
+    preconnect: true
+  }
 };

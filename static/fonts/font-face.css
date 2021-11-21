@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "NeueMachina";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/NeueMachina-Light.woff2") format("woff2");
+  /* Consider adding a 'unicode-range' CSS descriptor */
+}
+
+@font-face {
+  font-family: "NeueMachina";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/NeueMachina-Regular.woff2") format("woff2");
+  /* Consider adding a 'unicode-range' CSS descriptor */
+}
+
+@font-face {
+  font-family: "NeueMachina";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/NeueMachina-Ultrabold.woff2") format("woff2");
+  /* Consider adding a 'unicode-range' CSS descriptor */
+}
+
+@font-face {
+  font-family: "Eiko";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/PPEiko-Thin.woff2") format("woff2");
+  /* Consider adding a 'unicode-range' CSS descriptor */
+}
+
+@font-face {
+  font-family: "Eiko";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/PPEiko-Heavy.woff2") format("woff2");
+  /* Consider adding a 'unicode-range' CSS descriptor */
+}
