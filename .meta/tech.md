@@ -10,6 +10,7 @@
 
 TODO's and things to keep an eye on
 
+- For instant search: https://www.smashingmagazine.com/2021/10/search-functionality-nuxt-app-algolia-instantsearch/
 - For automated changelogs: https://github.com/github-changelog-generator/github-changelog-generator
 - For google fonts: https://google-fonts.nuxtjs.org/
 - Eventually hook up Storybook for easier component development: https://github.com/nuxt-community/storybook
