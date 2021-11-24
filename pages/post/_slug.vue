@@ -1,17 +1,37 @@
 <template>
-  <Base />
+  <Base>
+    <template v-slot:listview>
+      <ListView>
+        <li v-for="post of posts" :key="post.slug">
+          <!-- Remember to import the variables needed in the call below -->
+          <PostListItem
+            :title="post.title"
+            :excerpt="post.excerpt"
+            :date="post.date"
+            :slug="post.slug"
+          ></PostListItem>
+        </li>
+      </ListView>
+    </template>
+    <template v-slot:contentview>
+      <ContentView>
+        <template v-slot:title>{{ article.title }}</template>
+        <template v-slot:meta>{{ article.date }}</template>
+        <div class="m-5">{{ article.excerpt }}</div>
+        <nuxt-content :document="article" />
+      </ContentView>
+    </template>
+  </Base>
 </template>
 
 <script>
 export default {
   async asyncData({ $content, params }) {
     const article = await $content("posts", params.slug).fetch();
-
     const posts = await $content("posts")
-      .only(["title", "description", "slug", "date"])
+      .only(["title", "excerpt", "slug", "date"])
       .sortBy("date", "desc")
       .fetch();
-
     return {
       article,
       posts
@@ -25,24 +45,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 16em;
-  grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "content-main content-sidebar"
-    "content-main content-sidebar";
-}
-
-.content-sidebar {
-  grid-area: content-sidebar;
-}
-
-.content-main {
-  grid-area: content-main;
-}
-</style>

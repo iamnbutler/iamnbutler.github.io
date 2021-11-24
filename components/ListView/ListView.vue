@@ -2,9 +2,9 @@
   <div class="font-light list-view">
     <ListViewMeta />
     <div class="post-list">
-      <div class="post-list-item-wrapper" v-for="post in 9" :key="post">
-        <PostListItem />
-      </div>
+      <slot>
+        No posts.
+      </slot>
     </div>
   </div>
 </template>

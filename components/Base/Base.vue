@@ -4,9 +4,13 @@
     :class="[{ 'list-pane': list === true, 'content-pane': content === true }]"
   >
     <BaseNav />
-    <ListView />
+    <slot name="listview">
+      <ListView />
+    </slot>
     <BaseContentNav />
-    <ContentView />
+    <slot name="contentview">
+      <ContentView />
+    </slot>
   </main>
 </template>
 
