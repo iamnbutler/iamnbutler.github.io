@@ -2,15 +2,10 @@
   <Base>
     <template v-slot:listview>
       <ListView>
-        <li v-for="post of posts" :key="post.slug">
+        <article v-for="post of posts" :key="post.slug">
           <!-- Remember to import the variables needed in the call below -->
-          <PostListItem
-            :title="post.title"
-            :excerpt="post.excerpt"
-            :date="post.date"
-            :slug="post.slug"
-          ></PostListItem>
-        </li>
+          <PostListItem :post="post"></PostListItem>
+        </article>
       </ListView>
     </template>
     <template v-slot:contentview>
