@@ -1,8 +1,10 @@
 <template>
-  <NuxtLink :to="'/post/' + post.slug">
-    <div
-      class="pt-2 pb-2 mt-2 post-list-item mix-blend-exclusion hover:bg-white hover:mix-blend-exclusion hover:text-black"
-    >
+  <NuxtLink
+    :to="'/post/' + post.slug"
+    class="block pt-2 pb-2 mt-2 post-list-item mix-blend-exclusion hover:bg-white hover:mix-blend-exclusion hover:text-black"
+    :exact-active-class="'bg-white text-black hover:bg-transparent'"
+  >
+    <div>
       <header class="flex items-end justify-between">
         <div class="flex items-end left">
           <div class="w-8 font-mono text-sm leading-4 text-right id">118.</div>
