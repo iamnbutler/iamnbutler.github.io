@@ -2,7 +2,7 @@
   <NuxtLink
     :to="'/post/' + post.slug"
     class="block pt-2 pb-2 mt-2 post-list-item mix-blend-exclusion hover:bg-white hover:mix-blend-exclusion hover:text-black"
-    :exact-active-class="'bg-white text-black hover:bg-transparent'"
+    :exact-active-class="'bg-white text-black'"
   >
     <div>
       <header class="flex items-end justify-between">

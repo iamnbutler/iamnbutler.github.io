@@ -1,6 +1,6 @@
 <template>
   <div class="h-full overflow-hidden overflow-y-scroll content-view">
-    <div class="max-w-2xl pt-10 mx-auto content-centered">
+    <div class="max-w-2xl pt-10 pb-10 mx-auto content-centered">
       <h1 class="font-serif text-5xl font-extrabold leading-tight">
         <slot name="title">
           No post content.
@@ -17,11 +17,11 @@
         </slot>
       </div>
 
-      <slot>
-        No content.
-      </slot>
-
-      <div class="content"></div>
+      <div class="prose prose-dark content">
+        <slot>
+          No content.
+        </slot>
+      </div>
     </div>
   </div>
 </template>
