@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-between h-full content-nav">
+  <nav class="flex justify-between mb-2 content-nav">
     <div class="flex left">
       <Icon name="Edit" />
     </div>

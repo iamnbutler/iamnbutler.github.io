@@ -1,6 +1,6 @@
 <template>
-  <div class="pt-10 content-view">
-    <div class="max-w-2xl mx-auto mt-2 content-centered">
+  <div class="h-full overflow-hidden overflow-y-scroll content-view">
+    <div class="max-w-2xl pt-10 mx-auto content-centered">
       <h1 class="font-serif text-5xl font-extrabold leading-tight">
         <slot name="title">
           No post content.

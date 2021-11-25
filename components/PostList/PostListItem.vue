@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="post.slug">
+  <NuxtLink :to="'/post/' + post.slug">
     <div
       class="pt-2 pb-2 mt-2 post-list-item mix-blend-exclusion hover:bg-white hover:mix-blend-exclusion hover:text-black"
     >

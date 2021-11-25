@@ -1,5 +1,5 @@
 <template>
-  <div class="font-light list-view">
+  <div class="flex flex-col flex-grow h-full font-light list-view">
     <ListViewMeta />
     <div class="post-list">
       <slot>
@@ -8,3 +8,9 @@
     </div>
   </div>
 </template>
+
+<style>
+.post-list {
+  overflow-y: scroll;
+}
+</style>

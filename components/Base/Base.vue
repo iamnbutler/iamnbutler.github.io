@@ -1,16 +1,23 @@
 <template>
-  <main
-    class="min-h-screen p-2 text-white bg-black font-neue"
-    :class="[{ 'list-pane': list === true, 'content-pane': content === true }]"
-  >
-    <BaseNav />
-    <slot name="listview">
-      <ListView />
-    </slot>
-    <BaseContentNav />
-    <slot name="contentview">
-      <ContentView />
-    </slot>
+  <main class="flex flex-row h-full p-2 text-white bg-black font-neue">
+    <div
+      v-show="list === true"
+      class="flex flex-col flex-grow h-full pr-2 app-panel"
+    >
+      <BaseNav />
+      <slot name="listview">
+        <ListView />
+      </slot>
+    </div>
+    <div
+      v-show="content === true"
+      class="flex flex-col flex-grow h-full app-view"
+    >
+      <BaseContentNav />
+      <slot name="contentview">
+        <ContentView />
+      </slot>
+    </div>
   </main>
 </template>
 
@@ -34,12 +41,21 @@ export default {
   --color-purple: #7c0ff9;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  grid-template-rows: 2rem 1fr;
-  grid-column-gap: 8px;
-  grid-row-gap: 8px;
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+#__nuxt,
+#__layout,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: none;
+  overflow: hidden;
 }
 
 .site-nav {
@@ -48,41 +64,5 @@ main {
 
 .content-nav {
   background-color: var(--color-purple);
-}
-
-.list-pane:not(.content-pane) {
-  .site-nav {
-    grid-column: 1 / span 2;
-    grid-row: 1/1;
-  }
-  .content-nav {
-    display: none;
-  }
-  .content-view {
-    display: none;
-  }
-  .list-view {
-    grid-column: 1 / span 2;
-    grid-row: 2/2;
-  }
-}
-
-.list-pane.content-pane {
-  .site-nav {
-    grid-column: 1/2;
-    grid-row: 1/1;
-  }
-  .content-nav {
-    grid-column: 2/2;
-    grid-row: 1/1;
-  }
-  .content-view {
-    grid-column: 2/2;
-    grid-row: 2/2;
-  }
-  .list-view {
-    grid-column: 1/2;
-    grid-row: 2/2;
-  }
 }
 </style>

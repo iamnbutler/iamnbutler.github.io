@@ -1,13 +1,14 @@
 <template>
-  <nav class="flex justify-between h-full font-bold site-nav">
+  <nav class="flex justify-between h-full mb-2 font-bold site-nav">
     <div class="flex left">
-      <div
-        class="flex items-center h-full pr-4 bg-white logo mix-blend-exclusion"
-      >
-        <Icon name="Leaf" :button="false" />
-        <p class="pt-px text-black">nate butler</p>
-      </div>
-      <Icon name="Home" spaced />
+      <NuxtLink :to="'/'">
+        <div
+          class="flex items-center h-full pr-4 bg-white logo mix-blend-exclusion"
+        >
+          <Icon name="Leaf" :button="false" />
+          <p class="pt-px text-black">nate butler</p>
+        </div>
+      </NuxtLink>
       <Icon name="Folder" spaced />
       <Icon name="Tag" spaced />
       <Spacer />
