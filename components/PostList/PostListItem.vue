@@ -7,7 +7,9 @@
     <div>
       <header class="flex items-end justify-between">
         <div class="flex items-end left">
-          <div class="w-8 font-mono text-sm leading-4 text-right id">118.</div>
+          <div class="w-8 font-mono text-sm leading-4 text-right id">
+            {{ post.post_id }}.
+          </div>
           <h2 class="relative mt-px ml-2 font-bold leading-4 top-px">
             {{ post.title }}
           </h2>
@@ -36,7 +38,7 @@
 <script>
 export default {
   props: {
-    post: Object
-  }
+    post: Object,
+  },
 };
 </script>

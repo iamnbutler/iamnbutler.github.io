@@ -1,5 +1,6 @@
 ---
 uuid: d21137fc-f538-44de-9f84-f24def5d929f
+post_id: 108
 title: Getting your first job as a product designer
 status: published
 date: 2021-11-04

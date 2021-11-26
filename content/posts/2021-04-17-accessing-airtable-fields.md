@@ -1,5 +1,6 @@
 ---
 visible: true
+post_id: 106
 type: gist
 title: Accessing fields in Airtable
 subtitle: 

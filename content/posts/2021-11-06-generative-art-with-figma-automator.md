@@ -1,5 +1,6 @@
 ---
 uuid: 392a6d9c-0fb1-476a-80ce-a01af95e30ca
+post_id: 109
 title: Generative Art with Figma & Automator
 status: draft
 date: 2021-11-06

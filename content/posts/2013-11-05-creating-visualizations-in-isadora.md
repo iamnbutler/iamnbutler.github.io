@@ -1,5 +1,6 @@
 ---
 uuid: 01e3eb3e-7e6b-4e13-b0b3-3cbca1190bba
+post_id: 95
 title: Creating Motion Graphics in Isadora
 status: published
 date: 2013-11-05

@@ -1,5 +1,6 @@
 ---
 uuid: ddb7edd5-c1ef-49c7-9b4f-4242a197717d
+post_id: 100
 title: Printing Jewelry
 status: published
 date: 2018-11-15

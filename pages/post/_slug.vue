@@ -9,12 +9,7 @@
       </ListView>
     </template>
     <template v-slot:contentview>
-      <ContentView>
-        <template v-slot:title>{{ article.title }}</template>
-        <template v-slot:meta>{{ article.date }}</template>
-        <div class="m-5">{{ article.excerpt }}</div>
-        <nuxt-content :document="article" />
-      </ContentView>
+      <ContentView :article="article" />
     </template>
   </Base>
 </template>
@@ -29,14 +24,14 @@ export default {
       .fetch();
     return {
       article,
-      posts
+      posts,
     };
   },
   methods: {
     formatDate(date) {
       const options = { year: "numeric", month: "short", day: "numeric" };
       return new Date(date).toLocaleDateString("en", options);
-    }
-  }
+    },
+  },
 };
 </script>
