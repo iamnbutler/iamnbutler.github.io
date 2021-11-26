@@ -7,16 +7,24 @@
 
       <div class="flex items-end h-8 mt-2 leading-6 meta">
         <slot name="meta">
-          <span>00.</span>
+          <span>#{{ number }}</span>
           &nbsp;∫&nbsp;
-          <span>{{ article.date }}</span>
-          &nbsp;∫&nbsp;
-          <span>art,generative</span>
+          <span>{{ article.created_at }}</span>
+          <ul v-if="article.tags[0]" class="inline tags">
+            <li class="inline">&nbsp;∫&nbsp;</li>
+            <li
+              v-for="tag in article.tags"
+              :key="tag.id"
+              class="inline lowercase tag list-tag"
+            >
+              {{ tag.name }}
+            </li>
+          </ul>
         </slot>
       </div>
 
-      <div class="prose prose-dark content">
-        <nuxt-content :document="article" />
+      <div class="mt-12 prose prose-xl prose-dark content">
+        <div v-html="article.html" />
       </div>
     </div>
   </div>
@@ -26,6 +34,13 @@
 export default {
   props: {
     article: Object,
+    number: Number,
   },
 };
 </script>
+
+<style scoped>
+.list-tag:not(:last-of-type)::after {
+  content: "· ";
+}
+</style>

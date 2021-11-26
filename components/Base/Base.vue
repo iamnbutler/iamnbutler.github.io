@@ -2,7 +2,7 @@
   <main class="flex flex-row h-full p-2 text-white bg-black font-neue">
     <div
       v-show="list === true"
-      class="flex flex-col flex-grow h-full pr-2 app-panel"
+      class="flex flex-col flex-initial w-5/12 h-full pr-2 app-panel"
     >
       <BaseNav />
       <slot name="listview">
@@ -11,7 +11,7 @@
     </div>
     <div
       v-show="content === true"
-      class="flex flex-col flex-grow h-full app-view"
+      class="flex flex-col flex-initial w-7/12 h-full app-view"
     >
       <BaseContentNav />
       <slot name="contentview">
@@ -26,13 +26,13 @@ export default {
   props: {
     list: {
       type: Boolean,
-      default: true
+      default: true,
     },
     content: {
       type: Boolean,
-      default: true
-    }
-  }
+      default: true,
+    },
+  },
 };
 </script>
 

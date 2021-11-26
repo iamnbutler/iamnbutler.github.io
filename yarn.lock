@@ -1476,6 +1476,13 @@
     lodash.merge "^4.6.2"
     lodash.uniq "^4.5.0"
 
+"@tryghost/content-api@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@tryghost/content-api/-/content-api-1.5.16.tgz#04acdbcd68d279add06673d504fe47fb2e3c04ff"
+  integrity sha512-yyXEHATi0Ew0hj9rLbOYFDrO0+y+Bh1yTqrxskUmpD51gmVQWffTM8YlKikyfaw/G29WoV4vvyGmsTf4a8ljFg==
+  dependencies:
+    axios "^0.21.1"
+
 "@types/anymatch@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-3.0.0.tgz#c95ff14401dbb2869913afac3935af4ad0d37f1a"
@@ -2352,6 +2359,13 @@ autoprefixer@^9.6.1:
     picocolors "^0.2.1"
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
+
+axios@^0.21.1:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+  dependencies:
+    follow-redirects "^1.14.0"
 
 babel-loader@^8.2.2:
   version "8.2.3"
@@ -4388,6 +4402,11 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+follow-redirects@^1.14.0:
+  version "1.14.5"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.5.tgz#f09a5848981d3c772b5392309778523f8d85c381"
+  integrity sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==
 
 for-in@^1.0.2:
   version "1.0.2"
