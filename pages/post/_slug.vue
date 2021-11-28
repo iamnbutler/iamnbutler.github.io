@@ -21,7 +21,6 @@ export default {
   async asyncData({ params }) {
     const posts = await getPosts();
     const article = await getSinglePost(params.slug);
-    console.log(article);
     return { article: article, posts: posts };
   },
   data() {

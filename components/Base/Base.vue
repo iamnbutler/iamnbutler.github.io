@@ -10,7 +10,7 @@
       </slot>
     </div>
     <div
-      v-show="content === true"
+      v-if="content === true"
       class="flex flex-col flex-initial w-7/12 h-full app-view"
     >
       <BaseContentNav />

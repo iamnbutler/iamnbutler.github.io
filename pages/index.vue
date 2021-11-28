@@ -2,12 +2,8 @@
   <Base :content="false">
     <template v-slot:listview>
       <ListView>
-        <article
-          v-for="(post, number) in posts"
-          :key="post.title"
-          :number="number + 1"
-        >
-          <PostListItem :post="post" />
+        <article v-for="(post, number) in posts" :key="post.title">
+          <PostListItem :post="post" :number="posts.length - number" />
         </article>
       </ListView>
     </template>
@@ -21,6 +17,11 @@ export default {
   async asyncData() {
     const posts = await getPosts();
     return { posts: posts };
+  },
+  data() {
+    return {
+      number: 1,
+    };
   },
 };
 </script>

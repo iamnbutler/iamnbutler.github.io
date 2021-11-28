@@ -68,7 +68,12 @@ module.exports = {
               textDecoration: "underline",
             },
             code: {
+              borderRadius: '4px',
+              padding: '0.25rem',
+              background: 'rgba(255,255,255,0.1)',
               color: theme("colors.white"),
+              fontWeight: '400',
+              fontSize: '0.9em',
             },
             pre: {
               background: 'rgba(255,255,255,0.1)',
