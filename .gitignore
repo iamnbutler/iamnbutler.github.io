@@ -92,3 +92,7 @@ sw.*
 
 # Vercel
 .vercel
+
+
+# Contentlayer
+.contentlayer

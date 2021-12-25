@@ -1,21 +1,20 @@
 # A rough list of all the tech used on this site
 
-- @nuxt – Nuxt 2 for the foundational vue library/routing/component auto imports and more
-- @nuxt/content – Load md with front-matter (for posts, etc) – [Tutorial](https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/)
-- @nuxtjs/color-mode – Used for switching color themes
-- Tailwind / @nuxtjs/tailwindcss – Tailwind for fast iteration and maintainable components
-- @nuxtjs/image & @nuxtjs/cloudinary for images – [Tutorial – Cloudinary](https://cloudinary.com/blog/introducing_cloudinary_s_nuxt_module)
+- next.js for a primary framework
+- [next-themes](https://github.com/pacocoursey/next-themes) for easy mode themes
+- [contentlayer](https://github.com/contentlayerdev/contentlayer) for handling feeding mdx content where I want it
+- Vercel for hosting/previews
+- Tailwind – Tailwind for fast iteration and maintainable components
 
 ## Look in to:
 
-TODO's and things to keep an eye on
+TODO's and things to keep an eye on. Mostly to remind myseld to go back to these
 
-- For google fonts: https://google-fonts.nuxtjs.org/
-- Eventually hook up Storybook for easier component development: https://github.com/nuxt-community/storybook
-- https://github.com/harlan-zw/nuxt-webpack-optimisations
+- Fathom for analytics
+- Eventually hook up Storybook for easier component development
+- Algolia for filter/search
 - Better typography:
   - [capsize](https://seek-oss.github.io/capsize/) for predictible type sizes
   - [typography.js](https://github.com/KyleAMathews/typography.js) for typographic rythm
   - [text-balancer](https://github.com/nytimes/text-balancer) for better title wrapping
-
-More nuxt modules available here: https://modules.nuxtjs.org/
+- [planetscale](https://planetscale.com/) for database needs

@@ -1,27 +1,25 @@
 {
-  "name": "nuxtjs",
-  "version": "1.0.0",
-  "description": "My astonishing Nuxt App",
-  "author": "msweeneydev",
+  "name": "examples-mdx",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt generate",
-    "start": "nuxt start"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "@nuxt/content": "^1.15.0",
-    "@nuxtjs/cloudinary": "^1.0.3",
-    "core-js": "^3.15.0",
-    "nuxt": "^2.15.7"
+    
+    "contentlayer": "latest",
+    "next": "12.0.7",
+    "next-contentlayer": "latest",
+    "next-themes": "^0.0.15",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@nuxt/image": "^0.6.0",
-    "@nuxtjs/color-mode": "^2.1.1",
-    "@nuxtjs/tailwindcss": "^4.2.1",
-    "@tailwindcss/typography": "^0.4.1",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.3.11",
-    "sass": "^1.43.4"
+    "@types/react": "17.0.20",
+    "typescript": "4.5.2",
+    "@tailwindcss/typography": "^0.5.0",
+    "tailwindcss": "^3.0.7"
   }
 }
