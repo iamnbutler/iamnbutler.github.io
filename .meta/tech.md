@@ -13,5 +13,9 @@ TODO's and things to keep an eye on
 - For google fonts: https://google-fonts.nuxtjs.org/
 - Eventually hook up Storybook for easier component development: https://github.com/nuxt-community/storybook
 - https://github.com/harlan-zw/nuxt-webpack-optimisations
+- Better typography:
+  - [capsize](https://seek-oss.github.io/capsize/) for predictible type sizes
+  - [typography.js](https://github.com/KyleAMathews/typography.js) for typographic rythm
+  - [text-balancer](https://github.com/nytimes/text-balancer) for better title wrapping
 
 More nuxt modules available here: https://modules.nuxtjs.org/
