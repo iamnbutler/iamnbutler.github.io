@@ -1,41 +1,17 @@
-import {
-  ComputedFields,
-  defineDocumentType,
-  makeSource
-} from "contentlayer/source-files";
-import rehypeSlug from "rehype-slug";
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
-const computedFields: ComputedFields = {
-  wordCount: {
-    type: "number",
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
-  },
-  slug: {
-    type: "string",
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
-  },
-};
-
-const Fragment = defineDocumentType(() => ({
-  name: "Fragment",
-  filePathPattern: "fragment/*.mdx",
-  bodyType: "mdx",
+const Doc = defineDocumentType(() => ({
+  name: 'Doc',
+  filePathPattern: '**/*.mdx',
+  bodyType: 'mdx',
   fields: {
-    date: { type: "string", required: true },
-    fragment: { type: "string", required: true },
-    slug: { type: "string", required: true },
-    title: { type: "string", required: true },
+    title: { type: 'string', required: true },
+    category: { type: 'string', required: false },
+    date: { type: 'date', required: false },
   },
-  computedFields,
-}));
+}))
 
-const contentLayerConfig = makeSource({
-  contentDirPath: "data",
-  documentTypes: [Fragment],
-  mdx: {
-    remarkPlugins: [],
-    rehypePlugins: [rehypeSlug],
-  },
-});
-
-export default contentLayerConfig;
+export default makeSource({
+  contentDirPath: 'content',
+  documentTypes: [Doc],
+})
