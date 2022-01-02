@@ -4,9 +4,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      mono: "'Fira Code', serif",
+    },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    require('@tailwindcss/typography'), // Use the 'prose' class to format typography – https://tailwindcss.com/docs/typography/
+    require('@tailwindcss/line-clamp'), // Provides utilities for visually truncating text after a fixed number of lines – https://github.com/tailwindlabs/tailwindcss-line-clamp
   ],
 }
