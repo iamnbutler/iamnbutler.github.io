@@ -14,7 +14,7 @@ const DocPage: React.FC<StaticProps> = ({ navInfo }) => {
       <article className="py-8 px-16 prose prose-xl max-w-none dark:prose-invert border-b border-black/20 dark:border-white/20">
         <h1>hello</h1>
         <p>
-          welcome to my corner of the internet
+          welcome to my corner of the internet 🌎
         </p>
       </article>
 
