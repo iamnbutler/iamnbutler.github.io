@@ -1,9 +1,9 @@
+import { allDocs } from '.contentlayer/data'
+import { Doc } from '.contentlayer/types'
 import { GetStaticPaths } from 'next'
 import { useMDXComponent } from 'next-contentlayer/hooks'
+import { Button } from '../../components/Button'
 
-import { allDocs } from '.contentlayer/data'
-import { Button } from '../components/Button'
-import { Doc } from '.contentlayer/types'
 
 const mdxComponents = {
   Button,
@@ -38,12 +38,12 @@ export const getStaticProps = ({ params: { slug = [] } }): { props: StaticProps 
   const pagePath = slug.join('/')
   const doc = allDocs.find((doc) => doc._raw.flattenedPath === pagePath)!
 
-  const navInfo = allDocs.map((_) => ({ title: _.title, path: `/${_._raw.flattenedPath}` }))
+  const navInfo = allDocs.map((_) => ({ title: _.title, path: `/f/${_._raw.flattenedPath}` }))
 
   return { props: { doc, navInfo } }
 }
 
 export const getStaticPaths: GetStaticPaths = () => ({
-  paths: allDocs.map((_) => `/${_._raw.flattenedPath}`),
+  paths: allDocs.map((_) => `/f/${_._raw.flattenedPath}`),
   fallback: false,
 })
