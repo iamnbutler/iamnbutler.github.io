@@ -12,7 +12,7 @@ const DocPage: React.FC<StaticProps> = ({ navInfo }) => {
       {/* Header */}
 
       {/* Content */}
-      <article className="py-8 px-16 prose prose-xl max-w-none dark:prose-invert border-b border-black/20 dark:border-white/20">
+      <article className="py-8 px-16 prose max-w-none dark:prose-invert border-b border-black/20 dark:border-white/20">
         <h1>hey</h1>
         <p>welcome to my corner of the internet 🌎</p>
       </article>
@@ -29,8 +29,10 @@ const DocPage: React.FC<StaticProps> = ({ navInfo }) => {
                 <h3>{title}</h3>
               </a>
             </Link>
-            <p className="flex-initial w-32">{category}</p>
-            <p className="w-64 pr-16">{date}</p>
+            <p className="font-mono flex-initial w-32">{category}</p>
+            <p className="font-mono  w-64 pr-16">
+              <time dateTime="{date}">{new Date(date).toLocaleDateString()}</time>
+            </p>
           </li>
         ))}
       </ul>
