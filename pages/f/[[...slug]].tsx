@@ -4,6 +4,7 @@ import { GetStaticPaths } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Link from "next/link";
 import { Button } from "../../components/Button";
+import Footer from "../../components/Footer";
 
 // TODO: Remove this, left here as example for including components later
 const mdxComponents = {
@@ -35,6 +36,7 @@ const DocPage: React.FC<StaticProps> = ({ doc, navInfo }) => {
           </Link>
         </footer>
       </article>
+      <Footer />
     </div>
   );
 };

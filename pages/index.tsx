@@ -1,5 +1,6 @@
 import { allDocs } from ".contentlayer/data";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 type StaticProps = {
   navInfo: { title: string; path: string; category: string; date: string }[];
@@ -12,10 +13,8 @@ const DocPage: React.FC<StaticProps> = ({ navInfo }) => {
 
       {/* Content */}
       <article className="py-8 px-16 prose prose-xl max-w-none dark:prose-invert border-b border-black/20 dark:border-white/20">
-        <h1>hello</h1>
-        <p>
-          welcome to my corner of the internet 🌎
-        </p>
+        <h1>hey</h1>
+        <p>welcome to my corner of the internet 🌎</p>
       </article>
 
       {/* Doc List */}
@@ -37,19 +36,7 @@ const DocPage: React.FC<StaticProps> = ({ navInfo }) => {
       </ul>
 
       {/* Footer */}
-      <footer className="px-16 py-8">
-        <p>
-          say hi on{" "}
-          <a
-            href="https://twitter.com/iamnbutler"
-            target="_blank"
-            className="underline"
-          >
-            twitter
-          </a>{" "}
-          or send me an email (iamnbutler AT the mail that starts with g){" "}
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };
