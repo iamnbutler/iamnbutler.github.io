@@ -1,6 +1,8 @@
 {
-  "name": "examples-mdx",
-  "version": "0.1.0",
+  "name": "iamnbutler.github.io",
+  "version": "15.0.0",
+  "description": "Nate Butler's personal site",
+  "author": "iamnbutler",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,19 +10,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.0",
     "contentlayer": "latest",
-    "next": "12.0.7",
     "next-contentlayer": "latest",
     "next-themes": "^0.0.15",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "next": "12.0.7",
+    "react-dom": "17.0.2",
+    "react": "17.0.2"
   },
   "devDependencies": {
-    "@types/react": "17.0.20",
     "autoprefixer": "^10.4.1",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.8",
+    "@tailwindcss/typography": "^0.5.0",
+    "@types/react": "17.0.20",
     "typescript": "4.5.2"
   }
 }
