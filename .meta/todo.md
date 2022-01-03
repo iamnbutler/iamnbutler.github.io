@@ -6,6 +6,7 @@
 - [ ] Initial category needs, and single page needs
 - [ ] Components for Doc/Fragment/Etc. Whatever I call this.
 - [ ] Hook up Vercel deploy
+- [ ] Create a mini-package for [Chunk Icons](http://chunkicons.com) and add to site
 
 ## Later & Ideas
 
