@@ -7,6 +7,25 @@
 
 /* Base styles */
 
+:root {
+  /* Your default theme */
+  --background: #FFFFFF;
+  --scrollbarBG: transparent;
+  --thumbBG: rgba(0,0,0,0.15);
+  --thumbBGHover: rgba(0,0,0,0.3);
+}
+
+html.dark {
+  --background: #000000;
+  --scrollbarBG: transparent;
+  --thumbBG: rgba(255,255,255, 0.15);
+  --thumbBGHover: rgba(255,255,255,0.3);
+}
+
+html.light body {
+  -webkit-text-stroke: 0.025em;
+}
+
 html { font-family: 'Inter', sans-serif; }
 
 @supports (font-variation-settings: normal) {
@@ -20,4 +39,25 @@ body {
   text-rendering: geometricPrecision !important;
   -webkit-font-smoothing: antialiased !important;
   text-shadow:1px 1px 1px rgba(0,0,0,0.005);
+}
+
+/* Style Scrollbar */
+
+.custom-scroll-view:hover::-webkit-scrollbar-thumb {
+  background: var(--thumbBGHover);
+}
+
+.custom-scroll-view::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scroll-view {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.custom-scroll-view::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+.custom-scroll-view::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 0px;
 }
