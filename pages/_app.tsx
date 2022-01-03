@@ -6,7 +6,12 @@ import '../styles/global.css';
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
-      <ThemeProvider attribute="class">
+      // /* This enables themes/darkmode – https://github.com/pacocoursey/next-themes */
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem={true}
+      >
         <Component {...pageProps} />
       </ThemeProvider>
   );

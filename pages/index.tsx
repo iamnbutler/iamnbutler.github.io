@@ -48,7 +48,7 @@ export default DocPage;
 export const getStaticProps = (): { props: StaticProps } => {
   const navInfo = allDocs.map((_) => ({
     title: _.title,
-    path: `/f/${_._raw.flattenedPath}`,
+    path: `/${_._raw.flattenedPath}`,
     category: _.category || "",
     date: _.date || "",
   }));
