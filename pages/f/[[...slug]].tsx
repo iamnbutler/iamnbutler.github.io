@@ -22,21 +22,21 @@ const DocPage: React.FC<StaticProps> = ({ doc, navInfo }) => {
 
   return (
     <div className="flex">
-      <div className="w-2/5 border-r border-black/20 dark:border-white/20">
+      <div className="w-1/2 border-r border-black/20 dark:border-white/20">
         <SideNav />
         <ul className="w-full">
           {navInfo.map(({ path, title, category, date }) => (
             <li
               key={path}
-              className="flex space-x-4 border-b border-black/20 dark:border-white/20 items-center justify-between"
+              className="flex space-x-4 border-b border-black/20 dark:border-white/20 items-center p-4 justify-between"
             >
               <Link href={path}>
-                <a className="underline flex-grow py-4 block px-16">
+                <a className="underline flex-grow block">
                   <h3>{title}</h3>
                 </a>
               </Link>
-              <p className="font-mono flex-initial w-32">{category}</p>
-              <p className="font-mono  w-64 pr-16">
+              <p className="font-mono flex-none w-32 text-right">{category}</p>
+              <p className="font-mono flex-none w-32 text-right">
                 <time dateTime="{date}">
                   {new Date(date).toLocaleDateString()}
                 </time>
@@ -45,13 +45,8 @@ const DocPage: React.FC<StaticProps> = ({ doc, navInfo }) => {
           ))}
         </ul>
       </div>
-      <div className="w-3/5">
-        <nav className="px-16 py-8">
-          <Link href="/">
-            <a className="hover:underline">&larr; Back home</a>
-          </Link>
-        </nav>
-        <article className="py-8 px-16 prose prose-xl dark:prose-invert">
+      <div className="w-1/2">
+        <article className="p-4 prose dark:prose-invert max-w-none">
           <h1>{doc.title}</h1>
           <MDXContent components={mdxComponents} />
           <footer>
