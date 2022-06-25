@@ -1,11 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-<<<<<<< Updated upstream
-const { lg } = require("@tailwindcss/typography/src/styles")
-
-=======
 // Cave
->>>>>>> Stashed changes
 const theme = {
   base00: "#19171c",
   base01: "#26232a",
