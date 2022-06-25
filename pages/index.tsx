@@ -44,8 +44,13 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className="relative flex py-16 mx-auto max-w-7xl px-8">
-          <section className="w-full lg:w-3/5 pr-8">
+        <div className="relative flex mx-auto">
+          <section className="w-full lg:w-1/2 pr-8">
+            <PostList />
+
+          </section>
+
+          <section className="hidden lg:block w-1/2">
             {/* Main Column */}
             <nav className="flex justify-between">
               <div className="relative flex space-x-4">
@@ -58,34 +63,10 @@ export default function Home() {
             <main>
               <div className="prose">
                 <h1 className={`leading-normal relative`}>
-                  headline
+                  Welcome to my little corner of the internet
                 </h1>
-
-                <p className="text-2xl leading-normal">
-                  Created for <a href="https://zed.dev/">Zed</a>, by the team
-                  behind <a href="https://atom.io/">Atom</a>,{" "}
-                  <a href="https://github.com/tree-sitter/tree-sitter">
-                    Treesitter
-                  </a>
-                  , and more.
-                </p>
               </div>
-              <a href="/docs" className={`${ctaStyle} mt-8`}>
-                Get Started &rarr;
-              </a>
             </main>
-            <div className="my-16 prose">
-              <h2></h2>
-            </div>
-            <footer>
-              <p className="text-base05">
-                An open source project by Zed Industries.
-              </p>
-            </footer>
-          </section>
-
-          <section className="hidden lg:block w-2/5 pl-8">
-            <PostList />
           </section>
         </div>
       </div>
