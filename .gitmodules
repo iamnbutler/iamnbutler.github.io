@@ -1,0 +1,6 @@
+[submodule "content/data"]
+	path = content/data
+	url = https://github.com/iamnbutler/data
+[submodule "data"]
+	path = data
+	url = https://github.com/iamnbutler/data
