@@ -8,7 +8,7 @@ import remarkStringify from "remark-stringify"
 const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: "post/**/*.md",
-  bodyType: "md",
+  contentType: "mdx",
   fields: {
     uuid: { type: "string", required: true },
     title: { type: "string", required: true },
@@ -17,7 +17,13 @@ const Post = defineDocumentType(() => ({
     date_created: { type: "date", required: true },
     date_modified: { type: "date", required: false },
   },
-}));
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    },
+  },
+}))
 
 export default makeSource({
   contentDirPath: "data",

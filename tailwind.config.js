@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
-// Cave
 const theme = {
   base00: "#19171c",
   base01: "#26232a",

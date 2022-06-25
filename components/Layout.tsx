@@ -1,32 +1,34 @@
 import Head from "next/head"
 
 interface LayoutProps {
-  title?: string,
+  title?: string
+  nav: React.ReactNode
+  secondaryNav?: React.ReactNode
   children: React.ReactNode
 }
 
-export default function Layout({ title, children }: LayoutProps) {
+export default function Layout({
+  title,
+  nav,
+  secondaryNav,
+  children,
+}: LayoutProps) {
   if (!title) title = "Nate Butler"
 
   return (
     <>
-      <div className="relative z-10">
+      <div className="relative">
         <Head>
           <title>{title}</title>
-          <meta
-            name="description"
-            content={title}
-          />
+          <meta name="description" content={title} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="relative">
+        <div className="relative flex">
+          {nav}
+          {secondaryNav && secondaryNav}
           {children}
         </div>
       </div>
-      <div
-        id="pageBG"
-        className="top-0 left-0 fixed w-screen h-screen z-0"
-      ></div>
     </>
   )
 }
