@@ -1,16 +1,26 @@
 import { allPosts } from "contentlayer/generated"
 import Link from "next/link"
 import { format, parseISO } from "date-fns"
+import { useRouter } from "next/router"
+import { navLinkStyle } from "./Styles"
 
-interface PostListProps {}
+interface PostListProps { }
 
-export default function PostList({}: PostListProps) {
+export default function PostList({ }: PostListProps) {
+  let currentPath = useRouter().asPath
+  console.log(currentPath)
+
   return (
-    <div className="flex flex-col w-96 flex-shrink-0">
+    <div className="flex flex-col w-96 flex-shrink-0 space-y-4">
       <header className="h-8 p-2">header</header>
       {allPosts.reverse().map((post) => (
         <Link href={`/post/${post.slug}`} key={post.uuid}>
-          <a className="data-list-item flex flex-col hover:bg-base0B/20 border border-transparent hover:border-base0B px-4 py-2 space-y-2">
+          <a className={`
+            ${currentPath === `/post/${post.slug}` ? navLinkStyle.active : navLinkStyle.inactive}
+            ${navLinkStyle.common}
+            flex flex-col space-y-1
+            `}
+          >
             <time dateTime={post.date_created} className="text-sm">
               {format(parseISO(post.date_created), "LLLL d, yyyy")}
             </time>
