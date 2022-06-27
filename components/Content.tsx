@@ -6,8 +6,10 @@ interface ContentProps {
 
 export default function Content({ children }: ContentProps) {
   return (
-    <article>
-      <main>{children}</main>
-    </article>
+    <main>
+      <article>
+        {children}
+      </article>
+    </main>
   )
 }

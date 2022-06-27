@@ -4,6 +4,8 @@ import { format, parseISO } from "date-fns"
 import { useRouter } from "next/router"
 import { navLinkStyle } from "./Styles"
 
+let posts = allPosts.reverse()
+
 interface PostListProps { }
 
 export default function PostList({ }: PostListProps) {
@@ -11,7 +13,7 @@ export default function PostList({ }: PostListProps) {
 
   return (
     <div className="flex flex-col w-96 flex-shrink-0 space-y-4">
-      {allPosts.reverse().map((post) => (
+      {posts.map((post) => (
         <Link href={`/post/${post.slug}`} key={post.uuid}>
           <a className={`
             ${currentPath === `/post/${post.slug}` ? navLinkStyle.active : navLinkStyle.inactive}

@@ -62,7 +62,7 @@ function NavLinkItem({ link }: NavLinkItemProps) {
   }
 
   return (
-    <Link href={link.url ? link.url : `/${link.slug}`} key={link.slug}>
+    <Link href={link.url ? link.url : `/${link.slug}`}>
       <a className={`
         ${current ? navLinkStyle.active : navLinkStyle.inactive}
         ${navLinkStyle.common}
@@ -75,24 +75,20 @@ function NavLinkItem({ link }: NavLinkItemProps) {
 
 export default function Navigation() {
   return (
-    <div className="flex space-x-4 flex-shrink-0 py-4 px-8 justify-between items-center">
+    <nav className="flex space-x-4 flex-shrink-0 py-4 px-8 justify-between items-center">
       <header className="font-bold">
         <Link href="/">Nate Butler</Link>
       </header>
-      <nav className="">
-        <ul className="flex space-x-1">
-          {nav.map((item) => (
-            <NavLinkItem link={item} />
-          ))}
-        </ul>
-      </nav>
-      <nav>
-        <ul className="flex space-x-1">
-          {social.map((item) => (
-            <NavLinkItem link={item} />
-          ))}
-        </ul>
-      </nav>
-    </div>
+      <menu className="flex space-x-1">
+        {nav.map((item) => (
+          <NavLinkItem link={item} key={item.slug} />
+        ))}
+      </menu>
+      <menu className="flex space-x-1">
+        {social.map((item) => (
+          <NavLinkItem link={item} key={item.url} />
+        ))}
+      </menu>
+    </nav>
   )
 }
