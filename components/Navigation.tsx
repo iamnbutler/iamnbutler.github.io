@@ -73,25 +73,23 @@ function NavLinkItem({ link }: NavLinkItemProps) {
   )
 }
 
-export default function NavigationSidebar() {
+export default function Navigation() {
   return (
-    <div className="flex flex-col space-y-4 w-80 flex-shrink-0 px-4">
-      <header className="h-8 py-2">
+    <div className="flex space-x-4 flex-shrink-0 py-4 px-8 justify-between items-center">
+      <header className="font-bold">
         <Link href="/">Nate Butler</Link>
       </header>
       <nav className="">
-        <ul className="flex flex-col space-y-1">
+        <ul className="flex space-x-1">
           {nav.map((item) => (
             <NavLinkItem link={item} />
           ))}
         </ul>
       </nav>
       <nav>
-        <ul className="flex flex-col space-y-1">
+        <ul className="flex space-x-1">
           {social.map((item) => (
-            <a href={`/${item.url}`} key={item.url}>
-              {item.name}
-            </a>
+            <NavLinkItem link={item} />
           ))}
         </ul>
       </nav>

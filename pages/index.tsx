@@ -1,11 +1,11 @@
 import Content from "components/Content"
 import Layout from "components/Layout"
-import NavigationSidebar from "components/NavigationSidebar"
+import Navigation from "components/Navigation"
 import PostList from "components/PostList"
 
 export default function Home() {
   return (
-    <Layout nav={<NavigationSidebar />} secondaryNav={<PostList />}>
+    <Layout nav={<Navigation />} secondaryNav={<PostList />}>
       <Content>
         <header className="flex flex-col border border-transparent px-4 py-2 space-y-2 prose">
           <h1>Welcome to my corner of the internet</h1>

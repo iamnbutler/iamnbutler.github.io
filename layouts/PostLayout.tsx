@@ -1,5 +1,5 @@
 import Layout from "components/Layout"
-import NavigationSidebar from "components/NavigationSidebar"
+import Navigation from "components/Navigation"
 import PostList from "components/PostList"
 import { Post } from "contentlayer/generated"
 import { ReactNode } from "react"
@@ -11,9 +11,8 @@ interface PostProps {
 
 export default function PostLayout({ post, children }: PostProps) {
   return (
-    <Layout nav={<NavigationSidebar />} secondaryNav={<PostList />}>
+    <Layout nav={<Navigation />} secondaryNav={<PostList />}>
       <article>
-        <header className="h-8 p-2">header</header>
         <main className="prose max-w-5xl mx-auto my-16">
           <div>
             <h1 className={`leading-normal`}>{post.title}</h1>

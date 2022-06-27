@@ -23,10 +23,12 @@ export default function Layout({
           <meta name="description" content={title} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="relative flex">
-          {nav}
-          {secondaryNav && secondaryNav}
-          {children}
+        <div className="relative flex flex-col">
+          <header>{nav}</header>
+          <section className="flex max-w-7xl mx-auto space-x-4">
+            {secondaryNav && secondaryNav}
+            {children}
+          </section>
         </div>
       </div>
     </>
