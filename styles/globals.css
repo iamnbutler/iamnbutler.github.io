@@ -21,7 +21,6 @@
     --accent-blue:     theme("colors.base0D");
     --accent-violet:   theme("colors.base0E");
     --accent-magenta:  theme("colors.base0F");
-    --background: #191724;
     --scrollbarBG: transparent;
   }
 
@@ -31,7 +30,6 @@ html {
 
 body {
   scrollbar-gutter: stable;
-  background-color: var(--background);
   text-rendering: optimizeLegibility;
   text-rendering: geometricPrecision !important;
   -webkit-font-smoothing: antialiased !important;

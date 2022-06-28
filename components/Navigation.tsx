@@ -77,19 +77,19 @@ function NavLinkItem({ link }: NavLinkItemProps) {
 
 export default function Navigation() {
   return (
-    <nav className="flex flex-shrink-0 py-4 px-8 justify-between items-center">
-      <header className="flex space-x-8 items-center">
+    <nav className="flex flex-col md:w-48 lg:w-64 flex-shrink-0 p-4 content-between h-screen">
+      <header className="flex flex-col space-y-4">
         <Link href="/">
-          <a className="flex font-bold font-mono">Nate Butler</a>
+          <a className="flex font-bold font-mono px-4">Nate Butler</a>
         </Link>
-        <menu className="flex space-x-2">
+        <menu className="flex flex-col space-y-2">
           {nav.map((item) => (
             <NavLinkItem link={item} key={item.slug} />
           ))}
         </menu>
       </header>
 
-      <menu className="flex space-x-1">
+      <menu className="flex flex-col space-y-2">
         {social.map((item) => (
           <NavLinkItem link={item} key={item.url} />
         ))}

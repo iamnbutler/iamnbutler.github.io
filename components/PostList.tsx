@@ -3,8 +3,34 @@ import Link from "next/link"
 import { format, parseISO } from "date-fns"
 import { useRouter } from "next/router"
 import { navLinkStyle } from "./Styles"
+import { CodeIcon, PenNibIcon, RulerIcon, MusicIcon } from "assets/Icons"
+import { ButtonItem } from "./Button"
+import Button from "./Button"
 
 let posts = allPosts.reverse()
+
+let filters: ButtonItem[] = [
+  {
+    name: "Music",
+    icon: <MusicIcon />,
+    tooltip: "Show all music related posts",
+  },
+  {
+    name: "Writing",
+    icon: <PenNibIcon />,
+    tooltip: "Show all writing",
+  },
+  {
+    name: "Code",
+    icon: <CodeIcon />,
+    tooltip: "Show all code related posts",
+  },
+  {
+    name: "Design",
+    icon: <RulerIcon />,
+    tooltip: "Show all design related posts",
+  }
+]
 
 interface PostListProps { }
 
@@ -13,6 +39,14 @@ export default function PostList({ }: PostListProps) {
 
   return (
     <div className="flex flex-col md:w-72 lg:w-96 flex-shrink-0 space-y-2 p-4">
+      <header className="h-12 flex justify-between">
+        <div>left</div>
+        <menu className="flex space-x-1 h-8">
+          {filters.map((filter) => (
+            <Button button={filter} />
+          ))}
+        </menu>
+      </header>
       {posts.map((post) => (
         <Link href={`/post/${post.slug}`} key={post.uuid}>
           <a
