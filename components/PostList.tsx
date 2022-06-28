@@ -12,20 +12,32 @@ export default function PostList({ }: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
-    <div className="flex flex-col w-96 flex-shrink-0 space-y-4">
+    <div className="flex flex-col md:w-72 lg:w-96 flex-shrink-0 space-y-2 p-4">
       {posts.map((post) => (
         <Link href={`/post/${post.slug}`} key={post.uuid}>
-          <a className={`
-            ${currentPath === `/post/${post.slug}` ? navLinkStyle.active : navLinkStyle.inactive}
+          <a
+            className={`
+            ${currentPath === `/post/${post.slug}`
+                ? navLinkStyle.active
+                : navLinkStyle.inactive
+              }
             ${navLinkStyle.common}
             flex flex-col space-y-1
             `}
           >
-            <time dateTime={post.date_created} className="text-sm">
-              {format(parseISO(post.date_created), "LLLL d, yyyy")}
-            </time>
             <h3>{post.title}</h3>
-            <div className="flex flex-col text-xs">{post.uuid}</div>
+            <div className="flex space-x-2 text-xs truncate opacity-60">
+              <time
+                dateTime={post.date_created}
+                className="inline-flex text-xs text-base09"
+              >
+                {format(parseISO(post.date_created), "yyyy.MM.dd")}
+              </time>
+              <span className="inline-flex text-base03">&frasl;</span>
+              <span className="inline-flex text-base03 uppercase">
+                {post.uuid}
+              </span>
+            </div>
           </a>
         </Link>
       ))}

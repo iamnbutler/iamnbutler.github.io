@@ -7,9 +7,7 @@ interface ContentProps {
 export default function Content({ children }: ContentProps) {
   return (
     <main>
-      <article>
-        {children}
-      </article>
+      <article>{children}</article>
     </main>
   )
 }

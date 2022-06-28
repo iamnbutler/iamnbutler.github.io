@@ -38,9 +38,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: `system-ui, -apple-system, blinkmacsystemfont, segoe ui, helvetica neue, helvetica, ubuntu, roboto, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;`,
-      display: `PPAgrandirGrandVariable, system-ui, -apple-system, blinkmacsystemfont, segoe ui, helvetica neue, helvetica, ubuntu, roboto, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;`,
-      mono: `Fira Code, fira code, ui-monospace, hack, ibm plex mono, monospace, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji`,
-      code: `Fira Code, hack, ibm plex mono, monospace, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji`,
+      display: `Jetbrains Mono, system-ui, -apple-system, blinkmacsystemfont, segoe ui, helvetica neue, helvetica, ubuntu, roboto, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;`,
+      mono: `Jetbrains Mono, fira code, ui-monospace, hack, ibm plex mono, monospace, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji`,
     },
     extend: {
       colors: theme,
@@ -53,7 +52,7 @@ module.exports = {
           lineHeight: round(28 / 16),
           // Links
           a: {
-            color: theme.base0E,
+            color: theme.base0A,
             "&:hover": {
               color: theme.base0C,
             },
@@ -62,23 +61,24 @@ module.exports = {
           },
           // Headlines
           h1: {
-            color: theme.base07,
-            fontSize: rem(32),
-            marginTop: em(36, 20),
+            color: theme.base0E,
+            fontSize: rem(64),
+            marginTop: em(12, 20),
             marginBottom: em(12, 20),
-            fontWeight: "800",
+            lineHeight: round(24 / 20),
+            fontWeight: "100",
           },
           h2: {
             color: theme.base0D,
             fontSize: rem(24),
-            fontWeight: "700",
-            marginTop: em(36, 20),
+            fontWeight: "500",
+            marginTop: em(32, 20),
             marginBottom: em(12, 20),
           },
           h3: {
             color: theme.base0D,
             fontSize: rem(20),
-            fontWeight: "700",
+            fontWeight: "500",
             marginTop: em(36, 20),
             marginBottom: em(12, 20),
           },

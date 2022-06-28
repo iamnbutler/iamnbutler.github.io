@@ -12,13 +12,9 @@ interface PostProps {
 export default function PostLayout({ post, children }: PostProps) {
   return (
     <Layout nav={<Navigation />} secondaryNav={<PostList />}>
-      <article>
-        <main className="prose max-w-5xl mx-auto my-16">
-          <div>
-            <h1 className={`leading-normal`}>{post.title}</h1>
-            {children}
-          </div>
-        </main>
+      <article className="prose px-4 mr-4">
+        <h1 className="leading-normal">{post.title}</h1>
+        {children}
       </article>
     </Layout>
   )

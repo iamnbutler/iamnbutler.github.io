@@ -17,8 +17,8 @@ const projects = [
   {
     name: "Design Docs",
     slug: "design-docs",
-    url: "https://designdocs.co/"
-  }
+    url: "https://designdocs.co/",
+  },
 ]
 
 const social = [
@@ -47,12 +47,12 @@ interface NavLinkItemProps {
 }
 
 /**
-* Build nav link items.
-* If a `url` isn't passed, use `slug` to create an link
-**/
+ * Build nav link items.
+ * If a `url` isn't passed, use `slug` to create an link
+ **/
 function NavLinkItem({ link }: NavLinkItemProps) {
   let href = ""
-  link.url ? href = link.url : href = `/${link.slug}`
+  link.url ? (href = link.url) : (href = `/${link.slug}`)
 
   let current = false
   let currentPath = useRouter().asPath
@@ -63,10 +63,12 @@ function NavLinkItem({ link }: NavLinkItemProps) {
 
   return (
     <Link href={link.url ? link.url : `/${link.slug}`}>
-      <a className={`
+      <a
+        className={`
         ${current ? navLinkStyle.active : navLinkStyle.inactive}
         ${navLinkStyle.common}
-      `}>
+      `}
+      >
         {link.name}
       </a>
     </Link>
@@ -75,15 +77,18 @@ function NavLinkItem({ link }: NavLinkItemProps) {
 
 export default function Navigation() {
   return (
-    <nav className="flex space-x-4 flex-shrink-0 py-4 px-8 justify-between items-center">
-      <header className="font-bold">
-        <Link href="/">Nate Butler</Link>
+    <nav className="flex flex-shrink-0 py-4 px-8 justify-between items-center">
+      <header className="flex space-x-8 items-center">
+        <Link href="/">
+          <a className="flex font-bold font-mono">Nate Butler</a>
+        </Link>
+        <menu className="flex space-x-2">
+          {nav.map((item) => (
+            <NavLinkItem link={item} key={item.slug} />
+          ))}
+        </menu>
       </header>
-      <menu className="flex space-x-1">
-        {nav.map((item) => (
-          <NavLinkItem link={item} key={item.slug} />
-        ))}
-      </menu>
+
       <menu className="flex space-x-1">
         {social.map((item) => (
           <NavLinkItem link={item} key={item.url} />

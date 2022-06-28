@@ -24,10 +24,12 @@ export default function Layout({
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="relative flex flex-col">
-          <header>{nav}</header>
-          <section className="flex max-w-7xl mx-auto space-x-4">
-            {secondaryNav && secondaryNav}
-            {children}
+          <header className="border-b border-base02/50">{nav}</header>
+          <section className="flex">
+            {secondaryNav && (
+              <div className="border-r border-base02/50">{secondaryNav}</div>
+            )}
+            <div className="w-full lg:max-w-4xl px-8 mx-auto">{children}</div>
           </section>
         </div>
       </div>

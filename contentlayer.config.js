@@ -16,7 +16,7 @@ const Post = defineDocumentType(() => ({
     status: { type: "string", required: true },
     date_created: { type: "date", required: true },
     date_modified: { type: "date", required: false },
-  }
+  },
 }))
 
 export default makeSource({
