@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,350;0,500;0,800;1,100;1,350;1,500;1,800&display=swap");
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+/* prettier-ignore */
+:root {
+    --accent-darkest:  theme("colors.base00");
+    --accent-darker:   theme("colors.base01");
+    --accent-dark:     theme("colors.base02");
+    --accent-light:    theme("colors.base05");
+    --accent-lighter:  theme("colors.base06");
+    --accent-lightest: theme("colors.base07");
+    --accent-red:      theme("colors.base08");
+    --accent-orange:   theme("colors.base09");
+    --accent-yellow:   theme("colors.base0A");
+    --accent-green:    theme("colors.base0B");
+    --accent-cyan:     theme("colors.base0C");
+    --accent-blue:     theme("colors.base0D");
+    --accent-violet:   theme("colors.base0E");
+    --accent-magenta:  theme("colors.base0F");
+    --scrollbarBG: transparent;
+  }
+
+html {
+  background: var(--accent-darkest);
+}
+
+body {
+  scrollbar-gutter: stable;
+  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.005);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "JetBrains Mono", serif;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h2,
+h3 {
+  font-weight: 700;
+}
+
+/* Syntax highlighting styles start here */
+/* For search: remark-highlight, syntax-highlight */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+.token.block-comment,
+.token.cdata,
+.token.comment,
+.token.doctype,
+.token.prolog {
+  color: var(--accent-light) !important;
+}
+.token.punctuation {
+  color: var(--accent-lighter) !important;
+}
+.token.attr-name,
+.token.deleted,
+.token.namespace,
+.token.tag {
+  color: var(--accent-blue) !important;
+}
+
+.token.function,
+.token.function-name {
+  color: var(--accent-yellow) !important;
+}
+.token.boolean,
+.token.number {
+  color: var(--accent-green) !important;
+}
+.token.class-name,
+.token.constant,
+.token.property,
+.token.symbol {
+  color: var(--accent-cyan) !important;
+}
+.token.atrule,
+.token.builtin,
+.token.important,
+.token.keyword,
+.token.selector {
+  color: var(--accent-blue) !important;
+}
+
+.token.attr-value,
+.token.char,
+.token.regex,
+.token.string,
+.token.variable {
+  color: var(--accent-orange) !important;
+}
+.token.entity,
+.token.operator,
+.token.url {
+  color: var(--accent-green) !important;
+}
+.token.bold,
+.token.important {
+  font-weight: 700 !important;
+}
+.token.italic {
+  font-style: italic !important;
+}
+.token.entity {
+  cursor: help !important;
+}
+.token.inserted {
+  color: var(--accent-green) !important;
+}
