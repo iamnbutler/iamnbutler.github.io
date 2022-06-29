@@ -1,10 +1,8 @@
 # A rough list of all the tech used on this site
 
-- @nuxt – Nuxt 2 for the foundational vue library/routing/component auto imports and more
-- @nuxt/content – Load md with front-matter (for posts, etc) – [Tutorial](https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/)
-- @nuxtjs/color-mode – Used for switching color themes
-- Tailwind / @nuxtjs/tailwindcss – Tailwind for fast iteration and maintainable components
-- @nuxtjs/image & @nuxtjs/cloudinary for images – [Tutorial – Cloudinary](https://cloudinary.com/blog/introducing_cloudinary_s_nuxt_module)
+- Next
+- Tailwind – Tailwind for fast iteration and maintainable components
+- [`floating-ui`](https://floating-ui.com/): Used for positioning tooltips, other floating elements in a way that they don't overflow the UI. 
 
 ## Look in to:
 
