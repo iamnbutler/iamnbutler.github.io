@@ -38,12 +38,12 @@ export default function PostList({ }: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
-    <div className="flex flex-col md:w-72 lg:w-96 flex-shrink-0 space-y-2 p-4">
-      <header className="h-12 flex justify-between">
-        <div>left</div>
+    <div className="flex flex-col md:w-72 lg:w-96 flex-shrink-0 px-4">
+      <header className="h-12 flex justify-between items-center py-4">
+        <h2 className="font-bold ml-4">Posts</h2>
         <menu className="flex space-x-1 h-8">
           {filters.map((filter) => (
-            <Button button={filter} />
+            <Button button={filter} key={filter.name} />
           ))}
         </menu>
       </header>
@@ -56,7 +56,7 @@ export default function PostList({ }: PostListProps) {
                 : navLinkStyle.inactive
               }
             ${navLinkStyle.common}
-            flex flex-col space-y-1
+            flex flex-col space-y-1 mb-2
             `}
           >
             <h3>{post.title}</h3>
