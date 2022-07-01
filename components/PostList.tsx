@@ -21,25 +21,25 @@ let filters: ButtonItem[] = [
     tooltip: "Show all writing",
   },
   {
+    name: "Design",
+    icon: <RulerIcon />,
+    tooltip: "Show all design related posts",
+  },
+  {
     name: "Code",
     icon: <CodeIcon />,
     tooltip: "Show all code related posts",
   },
-  {
-    name: "Design",
-    icon: <RulerIcon />,
-    tooltip: "Show all design related posts",
-  }
 ]
 
-interface PostListProps { }
+interface PostListProps {}
 
-export default function PostList({ }: PostListProps) {
+export default function PostList({}: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
-    <div className="flex flex-col md:w-72 lg:w-96 flex-shrink-0 px-4">
-      <header className="h-12 flex justify-between items-center py-4">
+    <div className="flex flex-col md:w-72 lg:w-96 flex-shrink-0 relative h-screen overflow-y-scroll styled-scrollbars">
+      <header className="sticky top-0 bg-base00/70 backdrop-blur-md h-12 flex justify-between items-center py-8 z-20 px-4">
         <h2 className="font-bold ml-4">Posts</h2>
         <menu className="flex space-x-1 h-8">
           {filters.map((filter) => (
@@ -47,34 +47,37 @@ export default function PostList({ }: PostListProps) {
           ))}
         </menu>
       </header>
-      {posts.map((post) => (
-        <Link href={`/post/${post.slug}`} key={post.uuid}>
-          <a
-            className={`
-            ${currentPath === `/post/${post.slug}`
+      <div className="px-4">
+        {posts.map((post) => (
+          <Link href={`/post/${post.slug}`} key={post.uuid}>
+            <a
+              className={`
+            ${
+              currentPath === `/post/${post.slug}`
                 ? navLinkStyle.active
                 : navLinkStyle.inactive
-              }
+            }
             ${navLinkStyle.common}
             flex flex-col space-y-1 mb-2
             `}
-          >
-            <h3>{post.title}</h3>
-            <div className="flex space-x-2 text-xs truncate opacity-60">
-              <time
-                dateTime={post.date_created}
-                className="inline-flex text-xs text-base09"
-              >
-                {format(parseISO(post.date_created), "yyyy.MM.dd")}
-              </time>
-              <span className="inline-flex text-base03">&frasl;</span>
-              <span className="inline-flex text-base03 uppercase">
-                {post.uuid}
-              </span>
-            </div>
-          </a>
-        </Link>
-      ))}
+            >
+              <h3>{post.title}</h3>
+              <div className="flex space-x-2 text-xs truncate opacity-60">
+                <time
+                  dateTime={post.date_created}
+                  className="inline-flex text-xs text-base09"
+                >
+                  {format(parseISO(post.date_created), "yyyy.MM.dd")}
+                </time>
+                <span className="inline-flex text-base03">&frasl;</span>
+                <span className="inline-flex text-base03 uppercase">
+                  {post.uuid}
+                </span>
+              </div>
+            </a>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

@@ -16,5 +16,5 @@ const theme = {
   base0C: "#286983",
   base0D: "#56949f",
   base0E: "#907aa9",
-  base0F: "#c5c3ce"
+  base0F: "#c5c3ce",
 }

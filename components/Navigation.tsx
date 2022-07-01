@@ -1,24 +1,38 @@
 import Link from "next/link"
 import { navLinkStyle } from "./Styles"
 import { useRouter } from "next/router"
-import { CodepenIcon, TwitterIcon, GithubIcon, ReadmeIcon, TimelineIcon, PencilIcon, ListIcon } from "assets/Icons"
+import {
+  CodepenIcon,
+  TwitterIcon,
+  GithubIcon,
+  ReadmeIcon,
+  TimelineIcon,
+  PencilIcon,
+  ListIcon,
+  AlienIcon,
+} from "assets/Icons"
 import { ReactNode } from "react"
 
 const nav = [
   {
+    name: "Nate Butler",
+    src: "index",
+    icon: <AlienIcon />,
+  },
+  {
     name: "Timline",
     src: "timeline",
-    icon: (<TimelineIcon />)
+    icon: <TimelineIcon />,
   },
   {
     name: "Writing",
     slug: "writing",
-    icon: (<PencilIcon />)
+    icon: <PencilIcon />,
   },
   {
     name: "Lists",
     slug: "list",
-    icon: (<ListIcon />)
+    icon: <ListIcon />,
   },
 ]
 
@@ -34,23 +48,23 @@ const social = [
   {
     name: "Github",
     url: "https://github.com/iamnbutler/",
-    icon: (<GithubIcon />)
+    icon: <GithubIcon />,
   },
   {
     name: "Twitter",
     url: "https://twitter.com/iamnbutler",
-    icon: (<TwitterIcon />)
+    icon: <TwitterIcon />,
   },
   {
     name: "Codepen",
     url: "https://codepen.io/iamnbutler",
-    icon: (<CodepenIcon />)
+    icon: <CodepenIcon />,
   },
   {
     name: "Read.cv",
     url: "https://read.cv/natebutler",
-    icon: (<ReadmeIcon />)
-  }
+    icon: <ReadmeIcon />,
+  },
 ]
 
 interface NavLink {
@@ -99,9 +113,6 @@ export default function Navigation() {
   return (
     <nav className="flex flex-col md:w-32 lg:w-48 flex-shrink-0 p-4 justify-between h-screen">
       <header className="flex flex-col space-y-4">
-        <Link href="/">
-          <a className="flex font-bold font-mono px-4">Nate Butler</a>
-        </Link>
         <menu className="flex flex-col space-y-2">
           {nav.map((item) => (
             <NavLinkItem link={item} key={item.slug} />
@@ -110,6 +121,14 @@ export default function Navigation() {
       </header>
 
       <menu className="flex flex-col space-y-2">
+        <h2>Projects</h2>
+        {projects.map((item) => (
+          <NavLinkItem link={item} key={item.url} />
+        ))}
+      </menu>
+
+      <menu className="flex flex-col space-y-2">
+        <h2>Social</h2>
         {social.map((item) => (
           <NavLinkItem link={item} key={item.url} />
         ))}

@@ -7,7 +7,7 @@ import remarkStringify from "remark-stringify"
 
 const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: "post/**/*.md",
+  filePathPattern: "**/*.md",
   contentType: "mdx",
   fields: {
     uuid: { type: "string", required: true },
@@ -20,7 +20,7 @@ const Post = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: "data",
+  contentDirPath: "data/post",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [

@@ -8,9 +8,9 @@
 /* prettier-ignore */
 :root {
     --accent-darkest:  theme("colors.base00");
-    --accent-darker:   theme("colors.base01");
-    --accent-dark:     theme("colors.base02");
-    --accent-light:    theme("colors.base05");
+    --accent-darker:   theme("colors.base02");
+    --accent-dark:     theme("colors.base03");
+    --accent-light:    theme("colors.base04");
     --accent-lighter:  theme("colors.base06");
     --accent-lightest: theme("colors.base07");
     --accent-red:      theme("colors.base08");
@@ -21,11 +21,28 @@
     --accent-blue:     theme("colors.base0D");
     --accent-violet:   theme("colors.base0E");
     --accent-magenta:  theme("colors.base0F");
-    --scrollbarBG: transparent;
-  }
+    --transparent: rgba(0,0,0,0);
+}
 
 html {
   background: var(--accent-darkest);
+}
+
+.styled-scrollbars {
+  /* Foreground, Background */
+  scrollbar-color: var(--accent-light) var(--accent-transparent);
+}
+.styled-scrollbars::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.styled-scrollbars::-webkit-scrollbar-thumb {
+  /* Foreground */
+  background: var(--accent-light);
+}
+.styled-scrollbars::-webkit-scrollbar-track {
+  /* Background */
+  background: var(--accent-transparent);
 }
 
 body {

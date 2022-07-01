@@ -2,14 +2,12 @@
 
 - Next
 - Tailwind – Tailwind for fast iteration and maintainable components
-- [`floating-ui`](https://floating-ui.com/): Used for positioning tooltips, other floating elements in a way that they don't overflow the UI. 
+- [`floating-ui`](https://floating-ui.com/): Used for positioning tooltips, other floating elements in a way that they don't overflow the UI.
 
 ## Look in to:
 
 TODO's and things to keep an eye on
 
 - For automated changelogs: https://github.com/github-changelog-generator/github-changelog-generator
-- For google fonts: https://google-fonts.nuxtjs.org/
 - Eventually hook up Storybook for easier component development: https://github.com/nuxt-community/storybook
-- Either move to Nuxt Bridge or look into this for faster builds: https://github.com/harlan-zw/nuxt-webpack-optimisations
 - OverlayScrollbars for styling scrollbars without messing with their native behavior: https://github.com/KingSora/OverlayScrollbars/tree/master/packages/overlayscrollbars-vue

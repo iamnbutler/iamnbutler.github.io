@@ -19,6 +19,7 @@ export interface ButtonItem {
   name: string
   icon: ReactNode
   tooltip: String
+  disabled?: boolean
 }
 
 interface ButtonGroupProps {
@@ -38,12 +39,13 @@ export default function Button({ button, placement = "bottom" }: ButtonGroupProp
   });
 
   return (
-    <li key={button.name} className="relative">
+    <li key={button.name} className={`relative`}>
       <button
         className={`
               ${active ? buttonStyle.active : buttonStyle.inactive}
               ${buttonStyle.common}
-              peer relative
+              ${button.disabled && `opacity-25`}
+              peer relative 
             `}
         onClick={toggleActive}
         ref={reference}
@@ -51,7 +53,7 @@ export default function Button({ button, placement = "bottom" }: ButtonGroupProp
         {button.icon}
       </button>
       <div
-        className="bg-base01/40 text-base05 text-sm px-2 py-0.5 rounded-md shadow-md backdrop-blur-sm font-mono hidden whitespace-nowrap absolute top-0 left-0 peer-hover:flex"
+        className="bg-base00 border border-base01 text-base06 text-sm px-2 py-0.5 rounded-md shadow-lg backdrop-blur-sm font-mono hidden whitespace-nowrap absolute top-0 left-0 peer-hover:flex"
         ref={floating}
         style={{
           position: 'absolute',
