@@ -1,15 +1,24 @@
 import Link from "next/link"
 import { navLinkStyle } from "./Styles"
 import { useRouter } from "next/router"
+import { CodepenIcon, TwitterIcon, GithubIcon, ReadmeIcon, TimelineIcon, PencilIcon, ListIcon } from "assets/Icons"
+import { ReactNode } from "react"
 
 const nav = [
   {
-    name: "Posts",
-    slug: "post",
+    name: "Timline",
+    src: "timeline",
+    icon: (<TimelineIcon />)
+  },
+  {
+    name: "Writing",
+    slug: "writing",
+    icon: (<PencilIcon />)
   },
   {
     name: "Lists",
     slug: "list",
+    icon: (<ListIcon />)
   },
 ]
 
@@ -25,21 +34,30 @@ const social = [
   {
     name: "Github",
     url: "https://github.com/iamnbutler/",
+    icon: (<GithubIcon />)
   },
   {
     name: "Twitter",
     url: "https://twitter.com/iamnbutler",
+    icon: (<TwitterIcon />)
+  },
+  {
+    name: "Codepen",
+    url: "https://codepen.io/iamnbutler",
+    icon: (<CodepenIcon />)
   },
   {
     name: "Read.cv",
     url: "https://read.cv/natebutler",
-  },
+    icon: (<ReadmeIcon />)
+  }
 ]
 
 interface NavLink {
   name: string
   slug?: string
   url?: string
+  icon?: ReactNode
 }
 
 interface NavLinkItemProps {
@@ -67,9 +85,11 @@ function NavLinkItem({ link }: NavLinkItemProps) {
         className={`
         ${current ? navLinkStyle.active : navLinkStyle.inactive}
         ${navLinkStyle.common}
+        space-x-4 items-center
       `}
       >
-        {link.name}
+        {link.icon && <span>{link.icon}</span>}
+        <span>{link.name}</span>
       </a>
     </Link>
   )
@@ -77,7 +97,7 @@ function NavLinkItem({ link }: NavLinkItemProps) {
 
 export default function Navigation() {
   return (
-    <nav className="flex flex-col md:w-48 lg:w-64 flex-shrink-0 p-4 content-between h-screen">
+    <nav className="flex flex-col md:w-32 lg:w-48 flex-shrink-0 p-4 justify-between h-screen">
       <header className="flex flex-col space-y-4">
         <Link href="/">
           <a className="flex font-bold font-mono px-4">Nate Butler</a>
