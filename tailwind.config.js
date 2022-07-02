@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
 const theme = {
   scheme: "Rosé Pine Moon",
   author: "Emilia Dunfelt <sayhi@dunfelt.se>",
