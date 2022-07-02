@@ -11,31 +11,27 @@ import {
   ListIcon,
   AlienIcon,
 } from "assets/Icons"
-import {
-  Placement,
-  offset,
-  flip,
-  shift,
-  autoUpdate,
-  useFloating,
-} from '@floating-ui/react-dom';
 import { ReactNode } from "react"
+import WithTooltip from "./WithTooltip"
 
 const nav = [
   {
     name: "Timline",
     href: "timeline",
     icon: <TimelineIcon />,
+    tooltip: "Go to Timeline"
   },
   {
     name: "Writing",
     href: "writing",
     icon: <PencilIcon />,
+    tooltip: "Go to Writing"
   },
   {
     name: "Lists",
     href: "list",
     icon: <ListIcon />,
+    tooltip: "Go to Lists"
   },
 ]
 
@@ -113,7 +109,6 @@ function NavLinkItem({ link }: NavLinkItemProps) {
 }
 
 export default function Header() {
-  const placement = "bottom"
   return (
     <nav className="flex flex-row border-b border-base02/50 justify-between">
       <header className="flex">
@@ -125,11 +120,13 @@ export default function Header() {
         <menu className="flex items-center">
           {nav.map((item) => (
             <li key={item.name} className="h-full">
-              <Link href={`/${item.href}`}>
-                <a className="bg-base0B  text-base00 flex h-full items-center text-base00  px-3 hover:bg-base0C">
-                  {item.icon}
-                </a>
-              </Link>
+              <WithTooltip tooltip={item.tooltip}>
+                <Link href={`/${item.href}`}>
+                  <a className="bg-base0B text-base00 flex h-full items-center text-base00  px-3 hover:bg-base0C">
+                    {item.icon}
+                  </a>
+                </Link>
+              </WithTooltip>
             </li>
           ))}
         </menu>
