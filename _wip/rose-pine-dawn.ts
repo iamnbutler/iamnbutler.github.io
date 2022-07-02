@@ -18,3 +18,5 @@ const theme = {
   base0E: "#c4a7e7",
   base0F: "#b9b9bc",
 }
+
+export default theme;

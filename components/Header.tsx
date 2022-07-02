@@ -112,10 +112,12 @@ export default function Header() {
   return (
     <nav className="flex flex-row border-b border-base02/50 justify-between">
       <header className="flex">
-        <a href="/" className="flex space-x-2 items-center px-4 h-9 bg-base0B hover:bg-base0C text-base00">
-          <AlienIcon />
-          <span className="font-bold">Nate Butler</span>
-        </a>
+        <Link href={'/'}>
+          <a className="flex space-x-2 items-center px-4 h-9 bg-base0B hover:bg-base0C text-base00">
+            <AlienIcon />
+            <span className="font-bold">Nate Butler</span>
+          </a>
+        </Link>
 
         <menu className="flex items-center">
           {nav.map((item) => (
