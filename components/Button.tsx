@@ -6,8 +6,7 @@ import {
   shift,
   autoUpdate,
   useFloating,
-} from '@floating-ui/react-dom';
-
+} from "@floating-ui/react-dom"
 
 const buttonStyle = {
   active: `text-base0A bg-base0A/10 hover:bg-base0A/20 border-base0A/40 shadow-inner hover:shadow-inner`,
@@ -27,16 +26,19 @@ interface ButtonGroupProps {
   placement?: Placement
 }
 
-export default function Button({ button, placement = "bottom" }: ButtonGroupProps) {
-  const [active, setActive] = useState(false);
-  const toggleActive = () => setActive(active => !active);
+export default function Button({
+  button,
+  placement = "bottom",
+}: ButtonGroupProps) {
+  const [active, setActive] = useState(false)
+  const toggleActive = () => setActive((active) => !active)
 
   // Position floating-ui tooltip
   const { x, y, reference, floating } = useFloating({
     placement,
     middleware: [offset(6), flip(), shift({ padding: 8 })],
-    whileElementsMounted: autoUpdate
-  });
+    whileElementsMounted: autoUpdate,
+  })
 
   return (
     <li key={button.name} className={`relative`}>
@@ -56,7 +58,7 @@ export default function Button({ button, placement = "bottom" }: ButtonGroupProp
         className="bg-base00 border border-base01 text-base06 text-sm px-2 py-0.5 rounded-md shadow-lg backdrop-blur-sm font-mono hidden whitespace-nowrap absolute top-0 left-0 peer-hover:flex"
         ref={floating}
         style={{
-          position: 'absolute',
+          position: "absolute",
           top: y ?? 0,
           left: x ?? 0,
         }}

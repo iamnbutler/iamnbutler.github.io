@@ -19,4 +19,4 @@ const theme = {
   base0F: "#c5c3ce",
 }
 
-export default theme;
+export default theme

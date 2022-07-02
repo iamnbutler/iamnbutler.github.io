@@ -19,19 +19,19 @@ const nav = [
     name: "Timline",
     href: "timeline",
     icon: <TimelineIcon />,
-    tooltip: "Go to Timeline"
+    tooltip: "Go to Timeline",
   },
   {
     name: "Writing",
     href: "writing",
     icon: <PencilIcon />,
-    tooltip: "Go to Writing"
+    tooltip: "Go to Writing",
   },
   {
     name: "Lists",
     href: "list",
     icon: <ListIcon />,
-    tooltip: "Go to Lists"
+    tooltip: "Go to Lists",
   },
 ]
 
@@ -112,7 +112,7 @@ export default function Header() {
   return (
     <nav className="flex flex-row border-b border-base02/50 justify-between">
       <header className="flex">
-        <Link href={'/'}>
+        <Link href={"/"}>
           <a className="flex space-x-2 items-center px-4 h-9 bg-base0B hover:bg-base0C text-base00">
             <AlienIcon />
             <span className="font-bold">Nate Butler</span>
@@ -136,7 +136,14 @@ export default function Header() {
 
       <menu className="flex">
         {social.map((item) => (
-          <li key={item.name}><a href={item.url} className="flex w-9 h-9 items-center justify-center">{item.icon}</a></li>
+          <li key={item.name}>
+            <a
+              href={item.url}
+              className="flex w-9 h-9 items-center justify-center"
+            >
+              {item.icon}
+            </a>
+          </li>
         ))}
       </menu>
     </nav>

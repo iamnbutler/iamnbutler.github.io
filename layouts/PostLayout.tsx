@@ -31,7 +31,7 @@ let feedback: ButtonItem[] = [
     icon: <CommentIcon />,
     tooltip: "Comming soon: Add a comment or view all comments",
     disabled: true,
-  }
+  },
 ]
 
 let tools: ButtonItem[] = [
