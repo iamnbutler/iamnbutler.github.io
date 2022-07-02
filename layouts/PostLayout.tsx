@@ -10,6 +10,8 @@ import PostList from "components/PostList"
 import { Post } from "contentlayer/generated"
 import { ReactNode } from "react"
 import { data } from "assets/data"
+import WithTooltip from "components/WithTooltip"
+import { buttonStyle } from "components/Styles"
 
 interface PostProps {
   post: Post
@@ -34,7 +36,7 @@ let feedback: ButtonItem[] = [
 interface Tool {
   name: string
   icon: ReactNode,
-  tooltip: String,
+  tooltip: string,
   link?: string,
   onClick?: React.MouseEvent<HTMLButtonElement>
   disabled?: boolean
@@ -65,14 +67,28 @@ export default function PostLayout({ post, children }: PostProps) {
           ))}
         </menu>
         <menu className="flex flex-row space-x-2 h-8">
-          <a href={editTool.link}>
-            {editTool.icon}
-          </a>
-          <button onClick={() => {
-            navigator.clipboard.writeText(copyLinkTool.link)
-          }}>
-            {copyLinkTool.icon}
-          </button>
+
+          {/* 
+            Link to raw markdown in data repository for directly editing, or adding issues.
+            TODO: Later this could become an option picker with edit, create issue 
+          */}
+          <WithTooltip tooltip={editTool.tooltip}>
+            <a href={editTool.link} className={`${buttonStyle.inactive} ${buttonStyle.common}`}>
+              {editTool.icon}
+            </a>
+          </WithTooltip>
+
+          {/* Copy post link to clipboard for sharing, etc. */}
+          <WithTooltip tooltip={copyLinkTool.tooltip}>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(copyLinkTool.link)
+              }}
+              className={`${buttonStyle.inactive} ${buttonStyle.common}`}
+            >
+              {copyLinkTool.icon}
+            </button>
+          </WithTooltip>
         </menu>
       </header>
       <article className="prose px-4 mr-4 w-full lg:max-w-4xl mx-auto">

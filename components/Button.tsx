@@ -8,7 +8,7 @@ import {
   useFloating,
 } from "@floating-ui/react-dom"
 
-const buttonStyle = {
+export const buttonStyle = {
   active: `text-base0A bg-base0A/10 hover:bg-base0A/20 border-base0A/40 shadow-inner hover:shadow-inner`,
   inactive: `text-base05/40 hover:bg-base0A/10 hover:border-base0A/20 hover:text-base0A`,
   common: `flex px-2 h-full items-center flex rounded-lg border border-transparent hover:shadow-xl transition-all p-2`,
