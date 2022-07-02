@@ -17,6 +17,16 @@ const Post = defineDocumentType(() => ({
     date_created: { type: "date", required: true },
     date_modified: { type: "date", required: false },
   },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
+    },
+    edit_url: {
+      type: 'string',
+      resolve: (doc) => `https://github.com/iamnbutler/data/tree/main/post/${doc._raw.sourceFileName}`,
+    },
+  },
 }))
 
 export default makeSource({

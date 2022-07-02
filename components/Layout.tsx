@@ -3,14 +3,12 @@ import Header from "./Header"
 
 interface LayoutProps {
   title?: string
-  nav: React.ReactNode
   secondaryNav?: React.ReactNode
   children: React.ReactNode
 }
 
 export default function Layout({
   title,
-  nav,
   secondaryNav,
   children,
 }: LayoutProps) {
@@ -27,11 +25,11 @@ export default function Layout({
         <Header />
         <div className="relative flex flex-grow overflow-hidden">
           {secondaryNav && (
-            <div className="border-r border-base02/50 h-full relative">
+            <div className="w-5/12 border-r border-base02/50 h-full relative">
               {secondaryNav}
             </div>
           )}
-          <div className="w-full px-2 mx-auto relative h-screen overflow-y-scroll styled-scrollbars">
+          <div className="w-7/12 px-2 mx-auto relative h-screen overflow-y-scroll styled-scrollbars">
             {children}
           </div>
         </div>
