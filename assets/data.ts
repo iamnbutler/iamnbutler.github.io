@@ -1,3 +1,3 @@
 export const data = {
-  site_url: 'localhost:3000'
+  site_url: "localhost:3000",
 }

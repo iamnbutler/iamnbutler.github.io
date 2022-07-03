@@ -3,41 +3,38 @@ import {
   CodepenIcon,
   TwitterIcon,
   GithubIcon,
-  ReadmeIcon,
-  PencilIcon,
   AlienIcon,
+  PenNibIcon,
 } from "assets/Icons"
-import WithTooltip from "./WithTooltip"
+import ToolButton from "./ToolButton"
 
 const nav = [
   {
-    name: "Posts",
+    label: "Posts",
     href: "posts",
-    icon: <PencilIcon />,
+    icon: <PenNibIcon />,
     tooltip: "See all posts",
-  }
+  },
 ]
 
 const social = [
   {
-    name: "Github",
-    url: "https://github.com/iamnbutler/",
+    name: "GitHub",
+    href: "https://github.com/iamnbutler/",
     icon: <GithubIcon />,
+    tooltip: "GitHub ↗️",
   },
   {
     name: "Twitter",
-    url: "https://twitter.com/iamnbutler",
+    href: "https://twitter.com/iamnbutler",
     icon: <TwitterIcon />,
+    tooltip: "Twitter ↗️",
   },
   {
     name: "Codepen",
-    url: "https://codepen.io/iamnbutler",
+    href: "https://codepen.io/iamnbutler",
     icon: <CodepenIcon />,
-  },
-  {
-    name: "Read.cv",
-    url: "https://read.cv/natebutler",
-    icon: <ReadmeIcon />,
+    tooltip: "Codepen ↗️",
   },
 ]
 
@@ -54,28 +51,27 @@ export default function Header() {
 
         <menu className="flex items-center">
           {nav.map((item) => (
-            <li key={item.name} className="h-full">
-              <WithTooltip tooltip={item.tooltip}>
-                <Link href={`/${item.href}`}>
-                  <a className="text-base0B flex h-full items-center px-3 hover:text-base0C">
-                    {item.icon}
-                  </a>
-                </Link>
-              </WithTooltip>
+            <li key={item.tooltip}>
+              <ToolButton
+                type="link"
+                href={item.href}
+                icon={item.icon}
+                tooltip={item.tooltip}
+              />
             </li>
           ))}
         </menu>
       </header>
 
-      <menu className="flex">
+      <menu className="flex space-x-1">
         {social.map((item) => (
-          <li key={item.name}>
-            <a
-              href={item.url}
-              className="flex w-9 h-9 items-center justify-center"
-            >
-              {item.icon}
-            </a>
+          <li key={item.tooltip}>
+            <ToolButton
+              type="link"
+              href={item.href}
+              icon={item.icon}
+              tooltip={item.tooltip}
+            />
           </li>
         ))}
       </menu>

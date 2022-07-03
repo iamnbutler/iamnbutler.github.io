@@ -9,12 +9,11 @@ const navLinkStyle = {
   common: `flex rounded-lg border border-transparent hover:shadow-xl transition-all text-base flex font-bold px-2 py-1.5 shadow-base0D/10 hover:shadow-base0D/10`,
 }
 
-
 let posts = allPosts.reverse()
 
-interface PostListProps { }
+interface PostListProps {}
 
-export default function PostList({ }: PostListProps) {
+export default function PostList({}: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
@@ -24,10 +23,11 @@ export default function PostList({ }: PostListProps) {
           <Link href={`/post/${post.slug}`} key={post.uuid}>
             <a
               className={`
-            ${currentPath === `/post/${post.slug}`
-                  ? navLinkStyle.active
-                  : navLinkStyle.inactive
-                }
+            ${
+              currentPath === `/post/${post.slug}`
+                ? navLinkStyle.active
+                : navLinkStyle.inactive
+            }
             ${navLinkStyle.common}
             flex-col space-y-1 m-2
             `}

@@ -1,64 +1,23 @@
 /** @type {import('tailwindcss').Config} */
+
 const theme = {
-  scheme: "Midnight",
-  author: "Nate Butler <iamnbutler@gmail.com>",
-  base00: "#111111",
-  base01: "#1D1D1D",
-  base02: "#292929",
-  base03: "#414141",
-  base04: "#CCCCCC",
-  base05: "#E5E5E5",
-  base06: "#F2F2F2",
-  base07: "#FFFFFF",
-  base08: "#FF3737",
-  base09: "#FF7A00",
-  base0A: "#F8FD22",
-  base0B: "#82E116",
-  base0C: "#132BFF",
-  base0D: "#0FEBF9",
-  base0E: "#7C0FF9",
-  base0F: "#D80FF9",
+  base00: "#282828", // ----
+  base01: "#3c3836", // ---
+  base02: "#504945", // --
+  base03: "#665c54", // -
+  base04: "#bdae93", // +
+  base05: "#d5c4a1", // ++
+  base06: "#ebdbb2", // +++
+  base07: "#fbf1c7", // ++++
+  base08: "#fb4934", // red
+  base09: "#fe8019", // orange
+  base0A: "#fabd2f", // yellow
+  base0B: "#b8bb26", // green
+  base0C: "#8ec07c", // aqua/cyan
+  base0D: "#83a598", // blue
+  base0E: "#d3869b", // purple
+  base0F: "#d65d0e", // brown
 }
-
-// // Dark
-// const theme = {
-//   base00: "#282828", // ----
-//   base01: "#3c3836", // ---
-//   base02: "#504945", // --
-//   base03: "#665c54", // -
-//   base04: "#bdae93", // +
-//   base05: "#d5c4a1", // ++
-//   base06: "#ebdbb2", // +++
-//   base07: "#fbf1c7", // ++++
-//   base08: "#fb4934", // red
-//   base09: "#fe8019", // orange
-//   base0A: "#fabd2f", // yellow
-//   base0B: "#b8bb26", // green
-//   base0C: "#8ec07c", // aqua/cyan
-//   base0D: "#83a598", // blue
-//   base0E: "#d3869b", // purple
-//   base0F: "#d65d0e", // brown
-// }
-
-// // Light
-// const theme = {
-//   base00: "#f9f5d7", // ----
-//   base01: "#ebdbb2", // ---
-//   base02: "#d5c4a1", // --
-//   base03: "#bdae93", // -
-//   base04: "#665c54", // +
-//   base05: "#504945", // ++
-//   base06: "#3c3836", // +++
-//   base07: "#282828", // ++++
-//   base08: "#9d0006", // red
-//   base09: "#af3a03", // orange
-//   base0A: "#b57614", // yellow
-//   base0B: "#79740e", // green
-//   base0C: "#427b58", // aqua/cyan
-//   base0D: "#076678", // blue
-//   base0E: "#8f3f71", // purple
-//   base0F: "#d65d0e", // brown
-// }
 
 // Utilities from tailwind typography's default config
 // https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js

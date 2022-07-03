@@ -7,11 +7,7 @@ interface LayoutProps {
   children: React.ReactNode
 }
 
-export default function Layout({
-  title,
-  secondaryNav,
-  children,
-}: LayoutProps) {
+export default function Layout({ title, secondaryNav, children }: LayoutProps) {
   if (!title) title = "Nate Butler"
 
   return (
@@ -23,7 +19,7 @@ export default function Layout({
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="relative flex flex-grow overflow-hidden">
-          <div className="w-5/12 h-full relative space-y-2 overflow-y-scroll styled-scrollbars">
+          <div className="w-5/12 h-full relative space-y-2 overflow-y-scroll styled-scrollbars pr-1">
             <Header />
             {secondaryNav}
           </div>

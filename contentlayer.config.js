@@ -19,12 +19,13 @@ const Post = defineDocumentType(() => ({
   },
   computedFields: {
     url: {
-      type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ''),
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.replace(/pages\/?/, ""),
     },
     edit_url: {
-      type: 'string',
-      resolve: (doc) => `https://github.com/iamnbutler/data/tree/main/post/${doc._raw.sourceFileName}`,
+      type: "string",
+      resolve: (doc) =>
+        `https://github.com/iamnbutler/data/tree/main/post/${doc._raw.sourceFileName}`,
     },
   },
 }))
