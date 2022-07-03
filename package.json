@@ -37,6 +37,7 @@
     "build": "next build",
     "dev": "next",
     "format": "prettier --write .",
-    "start": "next start"
+    "start": "next start",
+    "build-index": "node --experimental-json-modules scripts/buildPostIndex.mjs"
   }
 }
