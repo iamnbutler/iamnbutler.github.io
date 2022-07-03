@@ -20,7 +20,7 @@ json.map(
     delete item._id,
     delete item._raw,
     delete item.type,
-    delete item.url,
+    delete item.slug,
     delete item.edit_url
   )
 )
