@@ -1,17 +1,15 @@
 # TODO
 
-- [ ] Figure out why font isn't rendering
-- [x] Move repo into site branch
+- [ ] Get fonts rendering in all browsers, local and remote
 - [ ] Switch tailwind to CSS variables
-- [x] Move navigation columns to fixed position
-- [x] Add disabled state to buttons
 - [ ] Update post header
-- [ ] Finish site navigation / social links
+- [ ] Hook up posts root page
 - [ ] Add meta/social cards/etc
 - [ ] Add edit on github link
 - [ ] Add tags to data
 - [ ] Hook up filters
 - [ ] Add RSS feed
+  - https://dev.to/j471n/how-to-add-rss-feed-in-nextjs-blog-34j1
 - [ ] Add delay to tooltips
 
 ## Ship Polish

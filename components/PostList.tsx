@@ -11,9 +11,9 @@ const navLinkStyle = {
 
 let posts = allPosts.reverse()
 
-interface PostListProps {}
+interface PostListProps { }
 
-export default function PostList({}: PostListProps) {
+export default function PostList({ }: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
@@ -23,11 +23,10 @@ export default function PostList({}: PostListProps) {
           <Link href={`/post/${post.slug}`} key={post.uuid}>
             <a
               className={`
-            ${
-              currentPath === `/post/${post.slug}`
-                ? navLinkStyle.active
-                : navLinkStyle.inactive
-            }
+            ${currentPath === `/post/${post.slug}`
+                  ? navLinkStyle.active
+                  : navLinkStyle.inactive
+                }
             ${navLinkStyle.common}
             flex-col space-y-1 m-2
             `}
@@ -42,7 +41,6 @@ export default function PostList({}: PostListProps) {
                 </time>
               </div>
               <div className="flex space-x-2 text-xs truncate opacity-60">
-                <span className="inline-flex text-base03">&frasl;</span>
                 <span className="inline-flex text-base03 uppercase">
                   {post.uuid}
                 </span>

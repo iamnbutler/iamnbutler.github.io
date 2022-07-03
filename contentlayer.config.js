@@ -25,7 +25,7 @@ const Post = defineDocumentType(() => ({
     edit_url: {
       type: "string",
       resolve: (doc) =>
-        `https://github.com/iamnbutler/data/tree/main/post/${doc._raw.sourceFileName}`,
+        `https://github.com/iamnbutler/data/edit/main/post/${doc._raw.sourceFileName}`,
     },
   },
 }))

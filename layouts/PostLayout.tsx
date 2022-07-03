@@ -21,7 +21,7 @@ export default function PostLayout({ post, children }: PostProps) {
   let editTool: Tool = {
     icon: <PencilIcon />,
     href: post.edit_url,
-    tooltip: "Edit on Github",
+    tooltip: "Propose a change to this page on GitHub.",
   }
 
   return (

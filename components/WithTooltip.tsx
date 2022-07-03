@@ -33,7 +33,7 @@ export default function WithTooltip({
         {children}
       </div>
       <div
-        className="flex pointer-events-none bg-base00 border border-base01 text-base06 text-sm px-2 py-0.5 rounded-md shadow-lg backdrop-blur-sm font-mono opacity-0 whitespace-nowrap absolute top-0 left-0 peer-hover:opacity-100 z-50 delay-200 hover:delay-0"
+        className="flex pointer-events-none bg-base00 border border-base01 text-base06 text-sm max-w-sm px-2 py-0.5 rounded-md shadow-lg backdrop-blur-sm font-mono opacity-0 absolute top-0 left-0 peer-hover:opacity-100 z-50 delay-200 hover:delay-0"
         ref={floating}
         style={{
           position: "absolute",
