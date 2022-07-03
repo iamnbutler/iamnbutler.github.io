@@ -26,7 +26,7 @@ export default function PostLayout({ post, children }: PostProps) {
 
   return (
     <Layout secondaryNav={<PostList />}>
-      <header className="sticky top-0 bg-base00/70 backdrop-blur-md h-12 flex justify-between items-center py-8 z-20 px-4">
+      <header className="sticky top-0  bg-base00/70 backdrop-blur z-30 h-12 flex justify-between items-center py-8 z-20 p-1">
         <menu className="flex flex-row space-x-2 h-8">
           <li>
             <ToolButton

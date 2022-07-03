@@ -19,7 +19,7 @@ export default function Layout({ title, secondaryNav, children }: LayoutProps) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="relative flex flex-grow overflow-hidden">
-          <div className="w-5/12 h-full relative space-y-2 overflow-y-scroll styled-scrollbars pr-1">
+          <div className="w-5/12 h-full relative space-y-2 overflow-y-scroll styled-scrollbars px-2">
             <Header />
             {secondaryNav}
           </div>
