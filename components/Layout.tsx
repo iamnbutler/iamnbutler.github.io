@@ -22,13 +22,11 @@ export default function Layout({
           <meta name="description" content={title} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Header />
         <div className="relative flex flex-grow overflow-hidden">
-          {secondaryNav && (
-            <div className="w-5/12 border-r border-base02/50 h-full relative">
-              {secondaryNav}
-            </div>
-          )}
+          <div className="w-5/12 h-full relative space-y-2 overflow-y-scroll styled-scrollbars">
+            <Header />
+            {secondaryNav}
+          </div>
           <div className="w-7/12 px-2 mx-auto relative h-screen overflow-y-scroll styled-scrollbars">
             {children}
           </div>
