@@ -9,7 +9,17 @@ const navLinkStyle = {
   common: `flex rounded-lg border border-transparent hover:shadow-xl transition-all text-base flex font-bold px-2 py-1.5 shadow-base0D/10 hover:shadow-base0D/10`,
 }
 
-let posts = allPosts.reverse()
+function sortByDateCreated(a, b) {
+  if (a.date_created > b.date_created) {
+    return -1;
+  }
+  if (a.date_created < b.date_created) {
+    return 1;
+  }
+  return 0;
+}
+
+let posts = allPosts.sort(sortByDateCreated);
 
 interface PostListProps { }
 
@@ -18,37 +28,31 @@ export default function PostList({ }: PostListProps) {
 
   return (
     <div className="flex flex-col relative">
-      <div className="">
-        {posts.map((post) => (
-          <Link href={`/post/${post.slug}`} key={post.uuid}>
-            <a
-              className={`
+      {posts.map((post) => (
+        <Link href={`/post/${post.slug}`} key={post.uuid}>
+          <a
+            className={`
             ${currentPath === `/post/${post.slug}`
-                  ? navLinkStyle.active
-                  : navLinkStyle.inactive
-                }
+                ? navLinkStyle.active
+                : navLinkStyle.inactive
+              }
             ${navLinkStyle.common}
-            flex-col space-y-1 m-2
+            flex space-y-1 m-1 items-center justify-between
             `}
-            >
-              <div className="flex justify-between">
-                <h3>{post.title}</h3>
-                <time
-                  dateTime={post.date_created}
-                  className="inline-flex text-sm text-base04"
-                >
-                  {format(parseISO(post.date_created), "yyyy.MM.dd")}
-                </time>
-              </div>
-              <div className="flex space-x-2 text-xs truncate opacity-60">
-                <span className="inline-flex text-base03 uppercase">
-                  {post.uuid}
-                </span>
-              </div>
-            </a>
-          </Link>
-        ))}
-      </div>
+          >
+            <h3>{post.title}</h3>
+            <div className="flex space-x-2 truncate text-base07 opacity-50 uppercase font-mono text-xs">
+              <time
+                dateTime={post.date_created}
+                className="inline-flex"
+              >
+                {format(parseISO(post.date_created), "yyyy.MM.dd")}
+              </time>
+            </div>
+
+          </a>
+        </Link>
+      ))}
     </div>
   )
 }

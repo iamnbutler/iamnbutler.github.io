@@ -53,10 +53,8 @@ body {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.005);
 }
 
-h1,
-h2,
-h3 {
-  font-family: "JetBrains Mono", serif;
+h1 {
+  font-family: "STDIN", serif;
 }
 
 h1 {

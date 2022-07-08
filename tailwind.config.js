@@ -39,7 +39,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: `system-ui, -apple-system, blinkmacsystemfont, segoe ui, helvetica neue, helvetica, ubuntu, roboto, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;`,
-      display: `Jetbrains Mono, system-ui, -apple-system, blinkmacsystemfont, segoe ui, helvetica neue, helvetica, ubuntu, roboto, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;`,
+      display: `STDIN, Jetbrains Mono, system-ui, -apple-system, blinkmacsystemfont, segoe ui, helvetica neue, helvetica, ubuntu, roboto, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;`,
       mono: `Jetbrains Mono, fira code, ui-monospace, hack, ibm plex mono, monospace, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji`,
     },
     extend: {
@@ -63,9 +63,7 @@ module.exports = {
           // Headlines
           h1: {
             color: theme.base0E,
-            fontSize: rem(64),
-            marginTop: em(12, 20),
-            marginBottom: em(12, 20),
+            fontSize: rem(72),
             lineHeight: round(24 / 20),
             fontWeight: "100",
           },
