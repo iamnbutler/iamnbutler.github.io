@@ -1,0 +1,10 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Chunk/Grid">
+<g id="Icon">
+<path d="M1 1H7V7H1V1Z" fill="#F7F0EA"/>
+<path d="M9 1H15V7H9V1Z" fill="#F7F0EA"/>
+<path d="M1 9H7V15H1V9Z" fill="#F7F0EA"/>
+<path d="M9 9H15V15H9V9Z" fill="#F7F0EA"/>
+</g>
+</g>
+</svg>
