@@ -1,138 +1,107 @@
 import Link from "next/link"
-import { navLinkStyle } from "./Styles"
-import { useRouter } from "next/router"
 import {
   CodepenIcon,
   TwitterIcon,
   GithubIcon,
-  ReadmeIcon,
-  TimelineIcon,
-  PencilIcon,
-  ListIcon,
   AlienIcon,
+  RulerIcon,
+  CodeIcon,
+  MusicIcon,
+  PenNibIcon,
 } from "assets/Icons"
-import { ReactNode } from "react"
+import ToolButton from "./ToolButton"
+import { navLinkStyle } from "./PostList"
 
-const nav = [
+const folders = [
   {
-    name: "Nate Butler",
-    src: "index",
-    icon: <AlienIcon />,
-  },
-  {
-    name: "Timline",
-    src: "timeline",
-    icon: <TimelineIcon />,
+    name: "All Notes",
+    icon: (<AlienIcon />)
   },
   {
     name: "Writing",
-    slug: "writing",
-    icon: <PencilIcon />,
+    icon: (<PenNibIcon />)
   },
   {
-    name: "Lists",
-    slug: "list",
-    icon: <ListIcon />,
+    name: "Design",
+    icon: (<RulerIcon />)
   },
-]
-
-const projects = [
   {
-    name: "Design Docs",
-    slug: "design-docs",
-    url: "https://designdocs.co/",
+    name: "Code",
+    icon: (<CodeIcon />)
+  },
+  {
+    name: "Music",
+    icon: (<MusicIcon />)
   },
 ]
 
 const social = [
   {
-    name: "Github",
-    url: "https://github.com/iamnbutler/",
+    name: "GitHub",
+    href: "https://github.com/iamnbutler/",
     icon: <GithubIcon />,
+    tooltip: "GitHub ↗️",
   },
   {
     name: "Twitter",
-    url: "https://twitter.com/iamnbutler",
+    href: "https://twitter.com/iamnbutler",
     icon: <TwitterIcon />,
+    tooltip: "Twitter ↗️",
   },
   {
     name: "Codepen",
-    url: "https://codepen.io/iamnbutler",
+    href: "https://codepen.io/iamnbutler",
     icon: <CodepenIcon />,
-  },
-  {
-    name: "Read.cv",
-    url: "https://read.cv/natebutler",
-    icon: <ReadmeIcon />,
+    tooltip: "Codepen ↗️",
   },
 ]
 
-interface NavLink {
-  name: string
-  slug?: string
-  url?: string
-  icon?: ReactNode
-}
-
-interface NavLinkItemProps {
-  link: NavLink
-}
-
-/**
- * Build nav link items.
- * If a `url` isn't passed, use `slug` to create an link
- **/
-function NavLinkItem({ link }: NavLinkItemProps) {
-  let href = ""
-  link.url ? (href = link.url) : (href = `/${link.slug}`)
-
-  let current = false
-  let currentPath = useRouter().asPath
-
-  if (currentPath.includes(href)) {
-    current = true
-  }
-
-  return (
-    <Link href={link.url ? link.url : `/${link.slug}`}>
-      <a
-        className={`
-        ${current ? navLinkStyle.active : navLinkStyle.inactive}
-        ${navLinkStyle.common}
-        space-x-4 items-center
-      `}
-      >
-        {link.icon && <span>{link.icon}</span>}
-        <span>{link.name}</span>
-      </a>
-    </Link>
-  )
-}
-
 export default function Navigation() {
   return (
-    <nav className="flex flex-col md:w-32 lg:w-48 flex-shrink-0 p-4 justify-between h-screen">
-      <header className="flex flex-col space-y-4">
-        <menu className="flex flex-col space-y-2">
-          {nav.map((item) => (
-            <NavLinkItem link={item} key={item.slug} />
-          ))}
-        </menu>
+    <nav className="h-full w-full flex flex-col">
+      <header className="flex sticky top-0 bg-base00/70 backdrop-blur z-30 p-1">
+        <Link href={"/"}>
+          <a className="flex space-x-2 items-center px-2 h-9 text-base0B hover:text-base0C">
+            <AlienIcon />
+            <span className="font-bold">Nate Butler</span>
+          </a>
+        </Link>
       </header>
 
-      <menu className="flex flex-col space-y-2">
-        <h2>Projects</h2>
-        {projects.map((item) => (
-          <NavLinkItem link={item} key={item.url} />
-        ))}
-      </menu>
+      <section className="flex-grow my-4">
+        <menu>
+          <h3 className="px-2 mb-2 text-xs">Folders</h3>
+          {folders.map((folder) => (
+            <li key={folder.name}>
+              <button
+                className={`
+                ${navLinkStyle.inactive}
+                ${navLinkStyle.common}
+                flex space-x-2 m-1 items-center w-full
+                `}
+              >
+                <span>{folder.icon}</span>
+                <span>{folder.name}</span>
+              </button>
+            </li>
+          ))}
+        </menu>
+      </section>
 
-      <menu className="flex flex-col space-y-2">
-        <h2>Social</h2>
-        {social.map((item) => (
-          <NavLinkItem link={item} key={item.url} />
-        ))}
-      </menu>
+      <footer className="p-1">
+        <menu className="flex space-x-1">
+          {social.map((item) => (
+            <li key={item.tooltip}>
+              <ToolButton
+                type="link"
+                href={item.href}
+                icon={item.icon}
+                tooltip={item.tooltip}
+              />
+            </li>
+          ))}
+        </menu>
+      </footer>
     </nav>
   )
 }

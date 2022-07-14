@@ -5,7 +5,7 @@ import PostList from "components/PostList"
 
 export default function Home() {
   return (
-    <Layout nav={<Navigation />} secondaryNav={<PostList />}>
+    <Layout secondaryNav={<PostList />}>
       <Content>
         <header className="flex flex-col border border-transparent px-4 py-2 space-y-2 prose">
           <h1>Welcome to my corner of the internet</h1>

@@ -3,7 +3,7 @@ import Link from "next/link"
 import { format, parseISO } from "date-fns"
 import { useRouter } from "next/router"
 
-const navLinkStyle = {
+export const navLinkStyle = {
   active: `text-base0D bg-base0D/10 hover:bg-base0D/20 border-base0D/40`,
   inactive: `hover:bg-base0D/10 hover:border-base0D/20 hover:text-base0D text-base0D/70`,
   common: `flex rounded-lg border border-transparent hover:shadow-xl transition-all text-base flex font-bold px-2 py-1.5 shadow-base0D/10 hover:shadow-base0D/10`,
@@ -37,7 +37,7 @@ export default function PostList({ }: PostListProps) {
                 : navLinkStyle.inactive
               }
             ${navLinkStyle.common}
-            flex space-y-1 m-1 items-center justify-between
+            flex-col xl:flex-row xl:space-y-1 m-1 xl:items-center xl:justify-between
             `}
           >
             <h3>{post.title}</h3>
