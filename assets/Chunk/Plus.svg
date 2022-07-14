@@ -1,5 +1,5 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/Plus">
-<path id="Icon" d="M10 1H6V6L1 6V10H6V15H10V10H15V6L10 6V1Z" fill="#F7F0EA"/>
+<path id="Icon" d="M10 1H6V6L1 6V10H6V15H10V10H15V6L10 6V1Z" fill="inherit"/>
 </g>
 </svg>

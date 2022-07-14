@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/VideoOff">
 <g id="Icon">
-<path d="M16 16H13L10.5625 13H0V3H2.4375L0 0H3L16 16Z" fill="#F7F0EA"/>
-<path d="M12 7.38462L16 12.3077V3H15L12 6V7.38462Z" fill="#F7F0EA"/>
+<path d="M16 16H13L10.5625 13H0V3H2.4375L0 0H3L16 16Z" fill="inherit"/>
+<path d="M12 7.38462L16 12.3077V3H15L12 6V7.38462Z" fill="inherit"/>
 </g>
 </g>
 </svg>

@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/File">
 <g id="Icon">
-<path d="M7 0H2V16H14V7H7V0Z" fill="#F7F0EA"/>
-<path d="M9 0V5H14L9 0Z" fill="#F7F0EA"/>
+<path d="M7 0H2V16H14V7H7V0Z" fill="inherit"/>
+<path d="M9 0V5H14L9 0Z" fill="inherit"/>
 </g>
 </g>
 </svg>

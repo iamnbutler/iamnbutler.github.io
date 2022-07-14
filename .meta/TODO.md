@@ -12,8 +12,9 @@
 - [ ] Add RSS feed
   - https://dev.to/j471n/how-to-add-rss-feed-in-nextjs-blog-34j1
 - [ ] Add delay to tooltips
-- [ ] Look at https://mantine.dev/getting-started/
+- [x] Look at https://mantine.dev/getting-started/
 - [ ] https://css-tricks.com/emoji-as-a-favicon/
+- [ ] Process SVGs using https://github.com/svg/svgo
 
 ## Ship Polish
 

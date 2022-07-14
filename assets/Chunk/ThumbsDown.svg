@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/ThumbsDown">
 <g id="Icon">
-<path d="M7 16L5 11V2H14L16 8V11H10V14C10 15.1046 9.10457 16 8 16H7Z" fill="#F7F0EA"/>
-<path d="M3 11H0V2H3V11Z" fill="#F7F0EA"/>
+<path d="M7 16L5 11V2H14L16 8V11H10V14C10 15.1046 9.10457 16 8 16H7Z" fill="inherit"/>
+<path d="M3 11H0V2H3V11Z" fill="inherit"/>
 </g>
 </g>
 </svg>

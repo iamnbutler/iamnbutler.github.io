@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/LogOut">
 <g id="Icon">
-<path d="M1 1H9V5H4L4 11H9V15H1V1Z" fill="#F7F0EA"/>
-<path d="M11 7V4H12L16 8L12 12H11V9H6V7L11 7Z" fill="#F7F0EA"/>
+<path d="M1 1H9V5H4L4 11H9V15H1V1Z" fill="inherit"/>
+<path d="M11 7V4H12L16 8L12 12H11V9H6V7L11 7Z" fill="inherit"/>
 </g>
 </g>
 </svg>

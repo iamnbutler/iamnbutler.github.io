@@ -1,9 +1,9 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/BellOff">
 <g id="Icon">
-<path d="M13 16H16L3 0H0L3 3.69231V7L1 9V11H8.9375L13 16Z" fill="#F7F0EA"/>
-<path d="M6.25444 0.31315L13 8.61539V5C13 2.23858 10.7614 0 8.00001 0C7.38602 0 6.79787 0.11067 6.25444 0.31315Z" fill="#F7F0EA"/>
-<path d="M9.61633 15.5278L7.5625 13H5C5 14.6569 6.34315 16 8 16C8.59516 16 9.14984 15.8267 9.61633 15.5278Z" fill="#F7F0EA"/>
+<path d="M13 16H16L3 0H0L3 3.69231V7L1 9V11H8.9375L13 16Z" fill="inherit"/>
+<path d="M6.25444 0.31315L13 8.61539V5C13 2.23858 10.7614 0 8.00001 0C7.38602 0 6.79787 0.11067 6.25444 0.31315Z" fill="inherit"/>
+<path d="M9.61633 15.5278L7.5625 13H5C5 14.6569 6.34315 16 8 16C8.59516 16 9.14984 15.8267 9.61633 15.5278Z" fill="inherit"/>
 </g>
 </g>
 </svg>

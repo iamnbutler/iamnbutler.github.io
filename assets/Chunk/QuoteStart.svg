@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/QuoteStart">
 <g id="Icon">
-<path d="M5.29289 1.29289L6.70711 2.70711L3 6.41421V7H7V14H1V5.58579L5.29289 1.29289Z" fill="#F7F0EA"/>
-<path d="M15 7H11V6.41421L14.7071 2.70711L13.2929 1.29289L9 5.58579V14H15V7Z" fill="#F7F0EA"/>
+<path d="M5.29289 1.29289L6.70711 2.70711L3 6.41421V7H7V14H1V5.58579L5.29289 1.29289Z" fill="inherit"/>
+<path d="M15 7H11V6.41421L14.7071 2.70711L13.2929 1.29289L9 5.58579V14H15V7Z" fill="inherit"/>
 </g>
 </g>
 </svg>

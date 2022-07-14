@@ -1,5 +1,5 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/Cloud">
-<path id="Icon" d="M12 6C12 3.79086 10.2091 2 8 2C5.79086 2 4 3.79086 4 6C1.79086 6 0 7.79086 0 10V13H16V11C16 8.79086 14.2091 7 12 7V6Z" fill="#F7F0EA"/>
+<path id="Icon" d="M12 6C12 3.79086 10.2091 2 8 2C5.79086 2 4 3.79086 4 6C1.79086 6 0 7.79086 0 10V13H16V11C16 8.79086 14.2091 7 12 7V6Z" fill="inherit"/>
 </g>
 </svg>

@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/ExternalLink">
 <g id="Icon">
-<path d="M10 0L9 1L11.2929 3.29289L6.2929 8.29289L7.70712 9.70711L12.7071 4.70711L15 7L16 6V0H10Z" fill="#F7F0EA"/>
-<path d="M1 2H6V4H3V13H12V10H14V15H1V2Z" fill="#F7F0EA"/>
+<path d="M10 0L9 1L11.2929 3.29289L6.2929 8.29289L7.70712 9.70711L12.7071 4.70711L15 7L16 6V0H10Z" fill="inherit"/>
+<path d="M1 2H6V4H3V13H12V10H14V15H1V2Z" fill="inherit"/>
 </g>
 </g>
 </svg>

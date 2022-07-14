@@ -1,9 +1,9 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/AlignBottom">
 <g id="Icon">
-<path d="M13 11V1H9L9 11H13Z" fill="#F7F0EA"/>
-<path d="M15 15V13L1 13V15L15 15Z" fill="#F7F0EA"/>
-<path d="M7 5L7 11H3L3 5H7Z" fill="#F7F0EA"/>
+<path d="M13 11V1H9L9 11H13Z" fill="inherit"/>
+<path d="M15 15V13L1 13V15L15 15Z" fill="inherit"/>
+<path d="M7 5L7 11H3L3 5H7Z" fill="inherit"/>
 </g>
 </g>
 </svg>

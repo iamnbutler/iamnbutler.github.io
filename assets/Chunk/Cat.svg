@@ -1,8 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="16" height="16" viewBox="0 0 16 16" class="h-4 w-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <g id="Chunk/Cat">
 <g id="Icon">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1 7L4.80061 1.43926C5.56059 0.527292 6.68638 0 7.8735 0H8V4L12 5L15 10L14.1875 11.2188C13.4456 12.3316 12.1967 13 10.8593 13H9L7 16H5L1 7ZM11 8C11 8.55229 10.5523 9 10 9C9.44771 9 9 8.55229 9 8C9 7.44772 9.44771 7 10 7C10.5523 7 11 7.44772 11 8Z" fill="#F7F0EA"/>
-<path d="M10 2.43845V0.465878C10.5704 0.163501 11.2125 0 11.8735 0H12V2.93845L10 2.43845Z" fill="#F7F0EA"/>
+<path fillRule="evenodd" clipRule="evenodd" d="M1 7L4.80061 1.43926C5.56059 0.527292 6.68638 0 7.8735 0H8V4L12 5L15 10L14.1875 11.2188C13.4456 12.3316 12.1967 13 10.8593 13H9L7 16H5L1 7ZM11 8C11 8.55229 10.5523 9 10 9C9.44771 9 9 8.55229 9 8C9 7.44772 9.44771 7 10 7C10.5523 7 11 7.44772 11 8Z" fill="inherit"/>
+<path d="M10 2.43845V0.465878C10.5704 0.163501 11.2125 0 11.8735 0H12V2.93845L10 2.43845Z" fill="inherit"/>
 </g>
 </g>
 </svg>
