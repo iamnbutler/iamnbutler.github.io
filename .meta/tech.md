@@ -11,4 +11,3 @@ TODO's and things to keep an eye on
 
 - For automated changelogs: https://github.com/github-changelog-generator/github-changelog-generator
 - Eventually hook up Storybook for easier component development: https://github.com/nuxt-community/storybook
-

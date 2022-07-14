@@ -1,6 +1,7 @@
 const theme = {
   scheme: "Dracula",
-  author: "Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)",
+  author:
+    "Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)",
   base00: "#282936",
   base01: "#3a3c4e",
   base02: "#4d4f68",
@@ -16,7 +17,7 @@ const theme = {
   base0C: "#a1efe4",
   base0D: "#62d6e8",
   base0E: "#b45bcf",
-  base0F: "#00f769"
+  base0F: "#00f769",
 }
 
 export default theme

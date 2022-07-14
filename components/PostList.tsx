@@ -11,19 +11,19 @@ export const navLinkStyle = {
 
 function sortByDateCreated(a, b) {
   if (a.date_created > b.date_created) {
-    return -1;
+    return -1
   }
   if (a.date_created < b.date_created) {
-    return 1;
+    return 1
   }
-  return 0;
+  return 0
 }
 
-let posts = allPosts.sort(sortByDateCreated);
+let posts = allPosts.sort(sortByDateCreated)
 
-interface PostListProps { }
+interface PostListProps {}
 
-export default function PostList({ }: PostListProps) {
+export default function PostList({}: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
@@ -32,24 +32,21 @@ export default function PostList({ }: PostListProps) {
         <Link href={`/post/${post.slug}`} key={post.uuid}>
           <a
             className={`
-            ${currentPath === `/post/${post.slug}`
+            ${
+              currentPath === `/post/${post.slug}`
                 ? navLinkStyle.active
                 : navLinkStyle.inactive
-              }
+            }
             ${navLinkStyle.common}
             flex-col xl:flex-row xl:space-y-1 m-1 xl:items-center xl:justify-between
             `}
           >
             <h3>{post.title}</h3>
             <div className="flex space-x-2 truncate text-base07 opacity-50 uppercase font-mono text-xs">
-              <time
-                dateTime={post.date_created}
-                className="inline-flex"
-              >
+              <time dateTime={post.date_created} className="inline-flex">
                 {format(parseISO(post.date_created), "yyyy.MM.dd")}
               </time>
             </div>
-
           </a>
         </Link>
       ))}

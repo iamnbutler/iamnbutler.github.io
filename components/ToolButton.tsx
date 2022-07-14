@@ -35,15 +35,16 @@ export default function ToolButton({
   switch (state) {
     case 1:
       // Active
-      buttonClasses = "text-base0D";
-      break;
+      buttonClasses = "text-base0D"
+      break
     case 2:
       // Disabled
-      buttonClasses = "text-base03 cursor-not-allowed";
-      break;
+      buttonClasses = "text-base03 cursor-not-allowed"
+      break
     default:
       // Default
-      buttonClasses = "text-base06 hover:bg-base0D/10 hover:border-base0D/10 hover:text-base0D hover:shadow-lg"
+      buttonClasses =
+        "text-base06 hover:bg-base0D/10 hover:border-base0D/10 hover:text-base0D hover:shadow-lg"
   }
 
   const slot: ReactNode = (

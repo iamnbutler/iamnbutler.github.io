@@ -1,6 +1,4 @@
-import {
-  ListIcon,
-} from "assets/Icons"
+import { ListIcon } from "assets/Icons"
 import ToolButton from "./ToolButton"
 
 const tools = [

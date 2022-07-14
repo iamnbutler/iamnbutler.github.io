@@ -73,11 +73,12 @@ export default function PostLayout({ post, children }: PostProps) {
       <article className="prose px-4 mr-4 w-full lg:max-w-4xl mx-auto">
         <h1 className="leading-normal">{post.title}</h1>
         <div className="text-base02 text-base font-mono space-x-2">
-          <time
-            dateTime={post.date_created}
-            className="inline-flex"
-          >
-            {format(parseISO(post.date_created), "MMMM do, uuuu")} ({formatDistanceToNow(parseISO(post.date_created), { addSuffix: true })})
+          <time dateTime={post.date_created} className="inline-flex">
+            {format(parseISO(post.date_created), "MMMM do, uuuu")} (
+            {formatDistanceToNow(parseISO(post.date_created), {
+              addSuffix: true,
+            })}
+            )
           </time>
           <span className="inline-flex">∫</span>
         </div>

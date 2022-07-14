@@ -15,23 +15,23 @@ import { navLinkStyle } from "./PostList"
 const folders = [
   {
     name: "All Notes",
-    icon: (<AlienIcon />)
+    icon: <AlienIcon />,
   },
   {
     name: "Writing",
-    icon: (<PenNibIcon />)
+    icon: <PenNibIcon />,
   },
   {
     name: "Design",
-    icon: (<RulerIcon />)
+    icon: <RulerIcon />,
   },
   {
     name: "Code",
-    icon: (<CodeIcon />)
+    icon: <CodeIcon />,
   },
   {
     name: "Music",
-    icon: (<MusicIcon />)
+    icon: <MusicIcon />,
   },
 ]
 
