@@ -15,6 +15,8 @@
 - [x] Look at https://mantine.dev/getting-started/
 - [ ] https://css-tricks.com/emoji-as-a-favicon/
 - [ ] Process SVGs using https://github.com/svg/svgo
+- [ ] Convert global types to local ones
+- [ ] Look into https://react-svgr.com/docs/next/
 
 ## Ship Polish
 

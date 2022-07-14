@@ -1,5 +1,6 @@
 import { ListIcon } from "assets/Icons"
 import ToolButton from "./ToolButton"
+import IconButton from "./IconButton"
 
 const tools = [
   {
@@ -10,10 +11,21 @@ const tools = [
   },
 ]
 
+function showListView() {
+  console.log('Show list view')
+}
+
 export default function Header() {
   return (
     <nav className="flex flex-row justify-between sticky top-0 bg-base00/70 backdrop-blur z-30 p-1">
       <menu className="flex space-x-1">
+        <IconButton
+          label={"List"}
+          icon={"SVG"} // TODO: Get this rendering from an SVG
+          onClick={showListView}
+          tooltip={"View notes as list"}
+        />
+
         {tools.map((tool) => (
           <li key={tool.tooltip}>
             <ToolButton
