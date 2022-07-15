@@ -3,35 +3,36 @@ import {
   CodepenIcon,
   TwitterIcon,
   GithubIcon,
-  AlienIcon,
-  RulerIcon,
-  CodeIcon,
-  MusicIcon,
-  PenNibIcon,
 } from "assets/Icons"
+import Image from "../assets/Chunk/Image.svg"
+import Music from "../assets/Chunk/Music.svg"
+import Folder from "../assets/Chunk/Folder.svg"
+import Pen from "../assets/Chunk/Pen.svg"
+import Code from "../assets/Chunk/Code.svg"
+import Planet from "../assets/Chunk/Planet.svg"
 import ToolButton from "./ToolButton"
 import { navLinkStyle } from "./PostList"
 
 const folders = [
   {
     name: "All Notes",
-    icon: <AlienIcon />,
+    icon: <Folder />,
   },
   {
     name: "Writing",
-    icon: <PenNibIcon />,
+    icon: <Pen />,
   },
   {
     name: "Design",
-    icon: <RulerIcon />,
+    icon: <Image />,
   },
   {
     name: "Code",
-    icon: <CodeIcon />,
+    icon: <Code />,
   },
   {
     name: "Music",
-    icon: <MusicIcon />,
+    icon: <Music />,
   },
 ]
 
@@ -58,11 +59,11 @@ const social = [
 
 export default function Navigation() {
   return (
-    <nav className="h-full w-full flex flex-col">
+    <nav className="h-full w-full flex flex-col px-2">
       <header className="flex sticky top-0 bg-base00/70 backdrop-blur z-30 p-1">
         <Link href={"/"}>
-          <a className="flex space-x-2 items-center px-2 h-9 text-base0B hover:text-base0C">
-            <AlienIcon />
+          <a className="flex space-x-2 items-center whitespace-nowrap px-2 h-9 text-base0B hover:text-base0C">
+            <Planet />
             <span className="font-bold">Nate Butler</span>
           </a>
         </Link>
@@ -70,7 +71,6 @@ export default function Navigation() {
 
       <section className="flex-grow my-4">
         <menu>
-          <h3 className="px-2 mb-2 text-xs">Folders</h3>
           {folders.map((folder) => (
             <li key={folder.name}>
               <button
