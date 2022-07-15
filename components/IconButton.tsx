@@ -6,14 +6,15 @@ const classes = `
   flex h-9 items-center px-2 rounded-lg border border-transparent space-x-2
   `
 
-export default function IconButton({ label, icon, onClick, tooltip, tooltipPosition }: Button) {
-
+export default function IconButton({
+  label,
+  icon,
+  onClick,
+  tooltip,
+  tooltipPosition,
+}: Button) {
   const button = (
-    <button
-      className={classes}
-      aria-label={label}
-      onClick={onClick}
-    >
+    <button className={classes} aria-label={label} onClick={onClick}>
       {icon}
     </button>
   )

@@ -39,5 +39,8 @@
     "format": "prettier --write .",
     "start": "next start",
     "build-index": "node --experimental-json-modules scripts/buildPostIndex.mjs"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.2.1"
   }
 }

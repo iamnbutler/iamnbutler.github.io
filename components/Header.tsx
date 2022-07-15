@@ -1,18 +1,8 @@
-import { ListIcon } from "assets/Icons"
-import ToolButton from "./ToolButton"
 import IconButton from "./IconButton"
-
-const tools = [
-  {
-    name: "List",
-    href: "https://github.com/iamnbutler/",
-    icon: <ListIcon />,
-    tooltip: "List View",
-  },
-]
+import List from "../assets/Chunk/List.svg"
 
 function showListView() {
-  console.log('Show list view')
+  console.log("Show list view")
 }
 
 export default function Header() {
@@ -21,21 +11,10 @@ export default function Header() {
       <menu className="flex space-x-1">
         <IconButton
           label={"List"}
-          icon={"SVG"} // TODO: Get this rendering from an SVG
+          icon={<List />}
           onClick={showListView}
           tooltip={"View notes as list"}
         />
-
-        {tools.map((tool) => (
-          <li key={tool.tooltip}>
-            <ToolButton
-              type="link"
-              href={tool.href}
-              icon={tool.icon}
-              tooltip={tool.tooltip}
-            />
-          </li>
-        ))}
       </menu>
     </nav>
   )
