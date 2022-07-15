@@ -2,8 +2,12 @@ import { Button } from "types/index"
 import WithTooltip from "./WithTooltip"
 
 const classes = `
-  text-base06 hover:bg-base0D/10 hover:border-base0D/10 hover:text-base0D hover:shadow-lg
-  flex h-9 items-center px-2 rounded-lg border border-transparent space-x-2
+  flex items-center w-8 h-8
+  p-2 rounded-lg
+  text-base05 hover:text-base07
+  bg-base05/10 hover:bg-base05/20 
+  border border-base05/20 hover:border-base05/40 
+  shadow-lg hover:shadow-xl
   `
 
 export default function IconButton({

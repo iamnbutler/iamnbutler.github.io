@@ -60,7 +60,7 @@ const social = [
 export default function Navigation() {
   return (
     <nav className="h-full w-full flex flex-col px-2">
-      <header className="flex sticky top-0 bg-base00/70 backdrop-blur z-30 p-1">
+      <header className="flex sticky top-0 bg-base00/70 backdrop-blur z-30 p-1.5">
         <Link href={"/"}>
           <a className="flex space-x-2 items-center whitespace-nowrap px-2 h-9 text-base0B hover:text-base0C">
             <Planet />
@@ -69,7 +69,7 @@ export default function Navigation() {
         </Link>
       </header>
 
-      <section className="flex-grow my-4">
+      <section className="flex-grow">
         <menu>
           {folders.map((folder) => (
             <li key={folder.name}>

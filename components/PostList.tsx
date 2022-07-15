@@ -9,6 +9,9 @@ export const navLinkStyle = {
   common: `flex rounded-lg border border-transparent hover:shadow-xl transition-all text-base flex font-bold px-2 py-1.5 shadow-base0D/10 hover:shadow-base0D/10`,
 }
 
+/**
+ * Sort notes by most to least recent.
+ */
 function sortByDateCreated(a, b) {
   if (a.date_created > b.date_created) {
     return -1
@@ -21,24 +24,23 @@ function sortByDateCreated(a, b) {
 
 let posts = allPosts.sort(sortByDateCreated)
 
-interface PostListProps {}
+interface PostListProps { }
 
-export default function PostList({}: PostListProps) {
+export default function PostList({ }: PostListProps) {
   let currentPath = useRouter().asPath
 
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col px-2 relative">
       {posts.map((post) => (
         <Link href={`/post/${post.slug}`} key={post.uuid}>
           <a
             className={`
-            ${
-              currentPath === `/post/${post.slug}`
+            ${currentPath === `/post/${post.slug}`
                 ? navLinkStyle.active
                 : navLinkStyle.inactive
-            }
+              }
             ${navLinkStyle.common}
-            flex-col xl:flex-row xl:space-y-1 m-1 xl:items-center xl:justify-between
+            flex-col space-y-1 my-1
             `}
           >
             <h3>{post.title}</h3>
