@@ -1,11 +1,11 @@
 import { allPosts } from "contentlayer/generated"
 import Link from "next/link"
-import { format, parseISO } from "date-fns"
+import { format, formatDistanceToNow, parseISO } from "date-fns"
 import { useRouter } from "next/router"
 
 export const navLinkStyle = {
   active: `text-base0D bg-base0D/10 hover:bg-base0D/20 border-base0D/40`,
-  inactive: `hover:bg-base0D/10 hover:border-base0D/20 hover:text-base0D text-base0D/70`,
+  inactive: `hover:bg-base0D/10 hover:border-base0D/20 hover:text-base0D text-base06`,
   common: `flex rounded-lg border border-transparent hover:shadow-xl transition-all text-base flex font-bold px-2 py-1.5 shadow-base0D/10 hover:shadow-base0D/10`,
 }
 
@@ -44,10 +44,26 @@ export default function PostList({ }: PostListProps) {
             `}
           >
             <h3>{post.title}</h3>
-            <div className="flex space-x-2 truncate text-base07 opacity-50 uppercase font-mono text-xs">
+            <div className="flex space-x-2 truncate text-base04 capitalize font-mono text-xs">
               <time dateTime={post.date_created} className="inline-flex">
-                {format(parseISO(post.date_created), "yyyy.MM.dd")}
+                {formatDistanceToNow(parseISO(post.date_created), {
+                  addSuffix: true,
+                })}
               </time>
+              <span className="inline-flex">🞨</span>
+              <div className="inline-flex lowercase">
+                {
+                  post.tags.map((tag, i) => (
+                    <div className="" key={tag._id}>
+                      {tag.title}
+                      {
+                        i != post.tags.length - 1 &&
+                        (<span className="mr-1">,</span>)
+                      }
+                    </div>
+                  ))
+                }
+              </div>
             </div>
           </a>
         </Link>

@@ -1,7 +1,7 @@
-import { CommentIcon, HeartIcon, LinkIcon, PencilIcon } from "assets/Icons"
+import { LinkIcon, PencilIcon } from "assets/Icons"
 import Layout from "components/Layout"
 import PostList from "components/PostList"
-import { Post } from "contentlayer/generated"
+import { Post, Tag } from "contentlayer/generated"
 import { ReactNode } from "react"
 import { data } from "assets/data"
 import ToolButton, { Tool } from "components/ToolButton"
@@ -25,24 +25,23 @@ export default function PostLayout({ post, children }: PostProps) {
     tooltip: "Propose a change to this page on GitHub.",
   }
 
+  let tags = (
+    post.tags.map((tag, i) => (
+      <div className="" key={tag._id}>
+        {tag.title}
+        {
+          i != post.tags.length - 1 &&
+          (<span className="mr-1">,</span>)
+        }
+      </div>
+    ))
+  )
+
   return (
     <Layout secondaryNav={<PostList />}>
-      <header className="sticky top-0  bg-base00/70 backdrop-blur z-30 h-12 flex justify-between items-center py-8 z-20 p-1">
+      <header className="sticky top-0 bg-base00/70 backdrop-blur z-30 flex justify-between items-center p-2 border-b border-base01">
         <menu className="flex flex-row space-x-2 h-8">
-          <li>
-            <ToolButton
-              icon={<HeartIcon />}
-              tooltip={"Comming soon: Like post"}
-              state={2}
-            />
-          </li>
-          <li>
-            <ToolButton
-              icon={<CommentIcon />}
-              tooltip={"Comming soon: Add a comment or view all comments"}
-              state={2}
-            />
-          </li>
+          {/* Placeholder for heart/comment */}
         </menu>
         <menu className="flex flex-row space-x-2 h-8">
           {/* 
@@ -70,9 +69,9 @@ export default function PostLayout({ post, children }: PostProps) {
           </li>
         </menu>
       </header>
-      <article className="prose px-4 mr-4 w-full lg:max-w-4xl mx-auto">
-        <h1 className="leading-normal">{post.title}</h1>
-        <div className="text-base02 text-base font-mono space-x-2">
+      <article className="prose lg:max-w-3xl mx-auto my-16">
+        <h1 className="leading-none">{post.title}</h1>
+        <div className="text-base05 text-base font-mono space-x-2 mt-4">
           <time dateTime={post.date_created} className="inline-flex">
             {format(parseISO(post.date_created), "MMMM do, uuuu")} (
             {formatDistanceToNow(parseISO(post.date_created), {
@@ -80,7 +79,10 @@ export default function PostLayout({ post, children }: PostProps) {
             })}
             )
           </time>
-          <span className="inline-flex">∫</span>
+          <span className="inline-flex text-base04">🞨</span>
+          <div className="inline-flex">
+            {tags}
+          </div>
         </div>
         {children}
       </article>

@@ -59,8 +59,8 @@ const social = [
 
 export default function Navigation() {
   return (
-    <nav className="h-full w-full flex flex-col px-2">
-      <header className="flex sticky top-0 bg-base00/70 backdrop-blur z-30 p-1.5">
+    <nav className="h-full w-full flex flex-col">
+      <header className="flex sticky top-0 bg-base00/70 backdrop-blur z-30 p-1.5 border-b border-base01">
         <Link href={"/"}>
           <a className="flex space-x-2 items-center whitespace-nowrap px-2 h-9 text-base0B hover:text-base0C">
             <Planet />
@@ -72,12 +72,12 @@ export default function Navigation() {
       <section className="flex-grow">
         <menu>
           {folders.map((folder) => (
-            <li key={folder.name}>
+            <li key={folder.name} className="m-1">
               <button
                 className={`
                 ${navLinkStyle.inactive}
                 ${navLinkStyle.common}
-                flex space-x-2 m-1 items-center w-full
+                flex space-x-2 items-center w-full
                 `}
               >
                 <span>{folder.icon}</span>

@@ -1,22 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 
 const theme = {
-  base00: "#282828", // ----
-  base01: "#3c3836", // ---
-  base02: "#504945", // --
-  base03: "#665c54", // -
-  base04: "#bdae93", // +
-  base05: "#d5c4a1", // ++
-  base06: "#ebdbb2", // +++
-  base07: "#fbf1c7", // ++++
-  base08: "#fb4934", // red
-  base09: "#fe8019", // orange
-  base0A: "#fabd2f", // yellow
-  base0B: "#b8bb26", // green
-  base0C: "#8ec07c", // aqua/cyan
-  base0D: "#83a598", // blue
-  base0E: "#d3869b", // purple
-  base0F: "#d65d0e", // brown
+  base00: "#1c1810",
+  base01: "#2a261c",
+  base02: "#3a3527",
+  base03: "#504b38",
+  base04: "#5f5b45",
+  base05: "#736e55",
+  base06: "#bab696",
+  base07: "#f8f5de",
+  base08: "#e35142",
+  base09: "#fba11b",
+  base0A: "#f2ff27",
+  base0B: "#5ceb5a",
+  base0C: "#5aebbc",
+  base0D: "#489bf0",
+  base0E: "#FF8080",
+  base0F: "#F69BE7",
 }
 
 // Utilities from tailwind typography's default config
@@ -35,6 +35,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./styles/**/*.{ts,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     fontFamily: {

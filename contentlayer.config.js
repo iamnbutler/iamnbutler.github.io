@@ -1,9 +1,16 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files"
+import { defineDocumentType, defineNestedType, makeSource } from "contentlayer/source-files"
 import remarkGfm from "remark-gfm"
 import remarkHtml from "remark-html"
 import remarkParse from "remark-parse"
 import remarkPrism from "remark-prism"
 import remarkStringify from "remark-stringify"
+
+const Tag = defineNestedType(() => ({
+  name: 'Tag',
+  fields: {
+    title: { type: "string", required: true },
+  },
+}))
 
 const Post = defineDocumentType(() => ({
   name: "Post",
@@ -16,6 +23,11 @@ const Post = defineDocumentType(() => ({
     status: { type: "string", required: true },
     date_created: { type: "date", required: true },
     date_modified: { type: "date", required: false },
+    tags: {
+      type: 'list',
+      of: Tag,
+      required: true
+    },
   },
   computedFields: {
     url: {

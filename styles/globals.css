@@ -38,7 +38,7 @@ html {
 }
 .styled-scrollbars::-webkit-scrollbar-thumb {
   /* Foreground */
-  background: var(--accent-light);
+  background: var(--accent-dark);
 }
 .styled-scrollbars::-webkit-scrollbar-track {
   /* Background */

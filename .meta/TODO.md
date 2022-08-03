@@ -22,3 +22,7 @@
 
 - [ ] Full accessibility pass
 - [ ] Semantic HTML pass
+
+## Other stuff:
+- https://stitches.dev/
+- https://www.radix-ui.com/
