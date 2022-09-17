@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-export default {
+export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
 
@@ -65,4 +65,4 @@ export default {
     apiKey: "process.env.CLOUDINARY_API_KEY",
     apiSecret: "process.env.CLOUDINARY_API_SECRET",
   },
-};
+});
