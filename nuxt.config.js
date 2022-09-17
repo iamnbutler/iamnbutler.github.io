@@ -38,12 +38,12 @@ export default defineNuxtConfig({
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   modules: [
-    "@nuxt/postcss8",
+    "@nuxt/postcss8", // n3??
     // Color mode docs: https://color-mode.nuxtjs.org/
     "@nuxtjs/color-mode",
     // Nuxt Content: https://content.nuxtjs.org/ & Tutorial: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/
     "@nuxt/content",
-    "@nuxt/image",
+    "@nuxt/image", // n3??
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
