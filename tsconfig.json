@@ -1,9 +1,6 @@
 {
-    "compilerOptions": {
-      "types": [
-        "@nuxt/types",
-        "@nuxtjs/color-mode",
-        "@nuxt/image"
-      ]
-    }
+  "compilerOptions": {
+    "jsx": "preserve",
+    "types": ["@nuxt/types", "@nuxtjs/color-mode", "@nuxt/image"]
   }
+}
