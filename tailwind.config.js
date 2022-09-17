@@ -1,12 +1,5 @@
 module.exports = {
-  mode: "jit",
-  purge: [
-    "./components/**/*.{vue,js}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
-  ],
+  content: ['./**/*.{vue,html,js,ts}'],
   darkMode: "class",
   theme: {
     fontFamily: {
@@ -15,7 +8,7 @@ module.exports = {
       prose: "Lora, ui-serif, serif",
       mono:
         '"Jetbrains Mono", "SF Mono", SFMono-Regular, ui-monospace, "Roboto Mono", monospace',
-        
+
     },
     extend: {
       typography: (theme) => ({
