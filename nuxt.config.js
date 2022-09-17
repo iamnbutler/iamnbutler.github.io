@@ -37,7 +37,7 @@ export default defineNuxtConfig({
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
+  modules: [
     "@nuxt/postcss8",
     // Color mode docs: https://color-mode.nuxtjs.org/
     "@nuxtjs/color-mode",
