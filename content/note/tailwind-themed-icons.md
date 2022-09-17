@@ -3,17 +3,18 @@ visible: true
 type: tip
 title: Adding themed icons in Tailwind
 subtitle: Using Tailind's fill-current to color svg icons in dark mode.
-date: '2021-11-13'
+date: "2021-11-13"
 author: Nate Butler
 summary: >-
 ---
+
 While setting up `@nuxtjs/color-mode` to work with `Tailwind.css`, I realized that getting SVG icons to respect the color mode was weird without writing extra css outside Tailwind.
 
-Tailwind doesn't have `fill` or `stroke` colors like `text-green-500` or `bg-white`, which means that you can't do: 
+Tailwind doesn't have `fill` or `stroke` colors like `text-green-500` or `bg-white`, which means that you can't do:
 
 ```html
 <svg class="fill-black dark:fill-white" ...>
-	<path d="..." fill="inherit" />
+  <path d="..." fill="inherit" />
 </svg>
 ```
 
@@ -27,16 +28,16 @@ In the end, it looks like this:
 
 ```html
 <div class="text-black dark:text-white">
-	<svg class="fill-current" ...>
-		<path d="..." fill="inherit" />
-	</svg>
-	<svg class="fill-current" ...>
-		<path d="..." fill="inherit" />
-	</svg>
+  <svg class="fill-current" ...>
+    <path d="..." fill="inherit" />
+  </svg>
+  <svg class="fill-current" ...>
+    <path d="..." fill="inherit" />
+  </svg>
 </div>
 ```
 
-This will give us a black icon in light mode and a white icon in dark mode. Since the color is defined on the parents, we can also add more icons, and they will all be colored the same. 
+This will give us a black icon in light mode and a white icon in dark mode. Since the color is defined on the parents, we can also add more icons, and they will all be colored the same.
 
 `stroke-current` works exactly the same way, and the two can be combined if needed.
 
@@ -50,18 +51,20 @@ Extending our example above:
 
 ```html
 <div class="text-black dark:text-white">
-	<svg 
-		class="fill-current"
-		:class="{ 'active text-black dark:text-white': $colorMode.preference === 'dark' }" 
-	...>
-		<path d="..." fill="inherit" />
-	</svg>
-	<svg 
-		class="fill-current"
-		:class="{ 'active text-black dark:text-white': $colorMode.preference === 'dark' }" 
-	...>
-		<path d="..." fill="inherit" />
-	</svg>
+  <svg
+    class="fill-current"
+    :class="{ 'active text-black dark:text-white': $colorMode.preference === 'dark' }"
+    ...
+  >
+    <path d="..." fill="inherit" />
+  </svg>
+  <svg
+    class="fill-current"
+    :class="{ 'active text-black dark:text-white': $colorMode.preference === 'dark' }"
+    ...
+  >
+    <path d="..." fill="inherit" />
+  </svg>
 </div>
 ```
 

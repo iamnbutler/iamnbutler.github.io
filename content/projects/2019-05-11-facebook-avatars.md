@@ -5,11 +5,12 @@ status: published
 date: 2019-05-11
 creator: Nate Butler
 ---
+
 Today Facbook launched [a test of Facebook Avatars](https://www.theverge.com/2019/6/3/18650685/facebook-avatar-messenger-newsfeed-bitmoji) publicly! I worked on Avatars for around 2.5 years, so it is exciting to see it finally getting into the wild.
 
-I never would have imagined the complexity and amount of difficult decisions it takes to get a system like this off the ground. I have a lot of respect for all the teams out there working on likeness systems for people. 
+I never would have imagined the complexity and amount of difficult decisions it takes to get a system like this off the ground. I have a lot of respect for all the teams out there working on likeness systems for people.
 
-We have such a long way to go towards representing the incredibly diverse and special population of the world, and I wish we could have won more of the fights towards further representation towards disabilities before launching. 
+We have such a long way to go towards representing the incredibly diverse and special population of the world, and I wish we could have won more of the fights towards further representation towards disabilities before launching.
 
 However, this is the first leg of the race, not crossing the finish line. I'm so incredibly proud of this team and can't wait to see this product evolve over time.
 

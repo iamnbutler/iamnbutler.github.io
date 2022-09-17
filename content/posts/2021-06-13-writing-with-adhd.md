@@ -13,19 +13,21 @@ excerpt: "I'm an terrible writer. Or, at least, I've convinced myself of that my
   tenses constantly. "
 creator: Nate Butler
 ---
+
 ## I'm a terrible writer.
 
-Or, at least, I've convinced myself of that my whole life. The things that I write flow awkwardly, and I never understand all the rules of writing and the way to make things sound immersive and natural. My writing ends up awkwardly verbose and tends to wander a lot. I tend to mix tenses constantly. 
+Or, at least, I've convinced myself of that my whole life. The things that I write flow awkwardly, and I never understand all the rules of writing and the way to make things sound immersive and natural. My writing ends up awkwardly verbose and tends to wander a lot. I tend to mix tenses constantly.
 
 I never understood why I write the way I do, until I discovered at the beginning of the year that I have rather severe inattentive ADHD.
 
---- 
+---
 
 Coming across [this tweet](https://twitter.com/GeraintWorks/status/1383745091114717194) was pretty mind blowing for me. It was like someone speaking to the way I write for the first time in my life. Then seeing tons of replies under it validating the way ADHD people write I realized I wasn't alone in this. Honestly, you should probably just go read Geraint's article ["This is how an ADHD person actually writes."](https://www.geraint.works/post/adhd-writing-styles) instead of reading this, but I'll do my best to share my thoughts on top of it.
 
 In his article Geraint calls out four main points in his concussion, so I'll use that as a starting point. (And sorry if this structure doesn't make sense... You know. ADHD `¯\_(ツ)_/¯`)
 
 Here are the four points:
+
 - Impulsivity – "Impulsivity & rushing through tasks - I need to say this now!"
 - Attention to detail - "Yeah, probably fine, ill just post it."
 - Being socially inappropriate – "Sorry, why do I have to change how I communicate when you clearly understand what I mean?"
@@ -39,7 +41,7 @@ Gotta go fast. Having my special flavor of ADHD means a mind constantly full of 
 
 ### A lot of ideas
 
-Even trying to sit down and write this out, it's hard to move to the next because there are 18 different ways I could continue this sentence, and 14 of them probably involve a complete topic change. 
+Even trying to sit down and write this out, it's hard to move to the next because there are 18 different ways I could continue this sentence, and 14 of them probably involve a complete topic change.
 
 Each idea feels like it is so incredibly pressing, and the entire world should hear about this – only to be frustrated after tweeting it out to the world, bugging a coworker or talking to my partner, and finding no interest at all in it.
 
@@ -49,7 +51,7 @@ Writing with ADHD means TONS of edit passes on even a few paragraphs because oft
 
 Often having this volume of ideas, and an immense, fast burning passion for a topic means things are often oversold, or phrased incorrectly.
 
-I remember once writing an email to a director at my then-work flagging that a product decision was "unethical" because I believed strongly we were making the wrong decision. In reality, while it was a bad decision, unethical was both the incorrect framing AND severity. Would both craft and inclusivity suffer from this decision? 
+I remember once writing an email to a director at my then-work flagging that a product decision was "unethical" because I believed strongly we were making the wrong decision. In reality, while it was a bad decision, unethical was both the incorrect framing AND severity. Would both craft and inclusivity suffer from this decision?
 
 Yes. However, was this a decision that was any more or less severe from the thousands made at the company every day? No, not really. In the moment though, it seemed like the most important thing in the universe, and my passion was dialed to 11.
 
@@ -75,9 +77,9 @@ Deadline adrenaline is roughly leaving something so late to the last minute that
 
 Often tasks that seem impossible I'm able to pull off with ease leaning on this, but it means it can be difficult to worth with others effectively. My managers are always terrified and then shocked when in a day I turn around an entire project, or complete what seems like an impossible amount of work in a short time.
 
-This process I go through is part of the ADHD cycles I experience, which I'd love to write about more later. 
+This process I go through is part of the ADHD cycles I experience, which I'd love to write about more later.
 
-The super TL;DR is when not on medication I experience pretty severe cycles on both roughly a daily and monthly basis. These cover energy, creative output, focus and more. 
+The super TL;DR is when not on medication I experience pretty severe cycles on both roughly a daily and monthly basis. These cover energy, creative output, focus and more.
 
 It makes it extremely difficult to work with others if a creative or energy high doesn't align with where others are at the time, but also when my cycle highs align with a project or collaboration people are often amazed at both the volume and quality of my output (and then probably confused why a week later I can't seem to create two screens.)
 
@@ -95,7 +97,7 @@ I was blessed with some incredible teachers and mentors that saw the value in me
 
 I think we leave a lot of great people behind because they can't or don't work the way the world wants them to. I'd be still in my parents basement if my only options were suit & tie or on my feet at 8am in retail. (Y'all are the unsung heroes, doing some of the hardest work with completely unjust levels of compensation. Thank you, and I hope we can improve the way you all have to work in my lifetime.)
 
-To wrap up this section: I've always done the worst when I tried to fit myself into the mould of the "Normal." I end up coming off just as a slightly ok-ish designer. I've found resounding success in the past few years when I've leaned into the me unapologetically, even though I recognize it can be hard to work with and around. 
+To wrap up this section: I've always done the worst when I tried to fit myself into the mould of the "Normal." I end up coming off just as a slightly ok-ish designer. I've found resounding success in the past few years when I've leaned into the me unapologetically, even though I recognize it can be hard to work with and around.
 
 I have the utmost respect for managers and leaders that can utilize the odd-shaped puzzle pieces like myself and figure out where they fit.
 
@@ -113,7 +115,7 @@ The feeling of being misunderstood to and ADHD person is TERRIFYING. I still hav
 
 ## Wrapping Up
 
-Even as I start this wrap up, I basically feel like I just wrote a bunch of stuff that people won't really get anything out of because of it being highly disjointed. 
+Even as I start this wrap up, I basically feel like I just wrote a bunch of stuff that people won't really get anything out of because of it being highly disjointed.
 
 But I'll throw it out there since I'm trying to get better at challenging my assumptions and learning more about myself and my ADHD through sharing with others and getting feedback.
 

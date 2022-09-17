@@ -7,6 +7,7 @@ excerpt: Using the visualization software Isadora to make creative, interactive
   visualizations.
 creator: Nate Butler
 ---
+
 ![](https://res.cloudinary.com/yaminateo/video/upload/v1637120269/project/isadora/academy-leader_eryomr.mp4)
 
 These are a few outputs from a project using Isadora to create motion visuals.

@@ -7,6 +7,7 @@ excerpt: Recommendations for hardware, peripherals, and other desk setup stuff
   from years of buying and trying far too many things!
 creator: Nate Butler
 ---
+
 In the first part of this series, we'll take a look at all the hardware you might want when setting up your desk. We'll cover computers, peripherals, VC gear & audio, and more. In the later parts, we'll cover desk setup, ergonomics, and software!
 
 ## The Gear

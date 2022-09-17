@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -12,10 +12,8 @@ export default {
       },
     },
   },
-  
-  css: [
-    '@/assets/css/main.css',
-  ],
+
+  css: ["@/assets/css/main.css"],
 
   components: true, // https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/#adding-a-vue-component
   // Auto importing components will not work for <nuxt-content> unless we globally register them by adding a global folder inside the components folder.
@@ -42,7 +40,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxt/postcss8',
+    "@nuxt/postcss8",
     // Color mode docs: https://color-mode.nuxtjs.org/
     "@nuxtjs/color-mode",
     // Nuxt Content: https://content.nuxtjs.org/ & Tutorial: https://nuxtjs.org/tutorials/creating-blog-with-nuxt-content/

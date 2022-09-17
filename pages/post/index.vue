@@ -1,19 +1,16 @@
 <template>
   <Base subnav>
-    <template v-slot:header>
-      natebutler/post
-    </template>
+    <template v-slot:header> natebutler/post </template>
     <template v-slot:subnav>
       <nav role="section-navigation" class="flex flex-col">
         <ul>
           <li v-for="post of posts" :key="post.slug">
             <!-- Remember to import the variables needed in the call below -->
-            <NavLink dynamic :name="'post-slug'" :slug='post.slug'>
+            <NavLink dynamic :name="'post-slug'" :slug="post.slug">
               {{ post.title }}
             </NavLink>
           </li>
         </ul>
-        
       </nav>
     </template>
     <BaseContent>

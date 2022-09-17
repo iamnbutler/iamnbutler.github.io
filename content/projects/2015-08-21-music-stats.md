@@ -5,6 +5,7 @@ status: published
 date: 2015-08-21
 creator: Nate Butler
 ---
+
 ## The Project
 
 Music Stats is a visual art & infographic site. It's generated from my personal music listening history, showing 3 axis of data – total plays, recency of track, and "hotness" – custom score based on how frequently a song is played in relation to when it was added.
@@ -21,11 +22,9 @@ Clicking on a bar opens a modal with its info, and does a search for the song on
 
 ![](https://res.cloudinary.com/yaminateo/image/upload/v1636936182/post/music-stats/Screenshot_2015-10-17_05.02.35_p6cfwi.jpg)
 
-
-The site is built in Javascript using [d3.js](https://d3js.org/) to generate the charts from TSV data sets, and a custom implementation of the Youtube API & I'm Feeling Lucky to grab the first video available. [Check out the script](https://github.com/iamnbutler/music-stats/blob/master/js/scripts.js). 
+The site is built in Javascript using [d3.js](https://d3js.org/) to generate the charts from TSV data sets, and a custom implementation of the Youtube API & I'm Feeling Lucky to grab the first video available. [Check out the script](https://github.com/iamnbutler/music-stats/blob/master/js/scripts.js).
 
 ![](https://res.cloudinary.com/yaminateo/image/upload/v1636936183/post/music-stats/Screenshot_2015-10-17_19.23.28_yl2nli.png)
-
 
 The gradient on each bar is unique – it's created by an SVG polyfill filter generated using each song's plays, recency and hotness.
 

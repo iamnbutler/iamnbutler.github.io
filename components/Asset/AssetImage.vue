@@ -10,17 +10,17 @@
 
 <script>
 export default {
-    props: {
-        src: {
-            type: String,
-            required: true
-        },
-        alt: String,
-        width: String,
-        height: {
-            String,
-            default: 'auto'
-        }
-    }
-}
+  props: {
+    src: {
+      type: String,
+      required: true,
+    },
+    alt: String,
+    width: String,
+    height: {
+      String,
+      default: "auto",
+    },
+  },
+};
 </script>

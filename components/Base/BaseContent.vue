@@ -7,7 +7,7 @@
       <slot name="sidebar"></slot>
     </div>
     <div class="p-4 bg-white content-main dark:bg-black">
-      <div class="max-w-3xl content-inner ">
+      <div class="max-w-3xl content-inner">
         <slot></slot>
       </div>
     </div>

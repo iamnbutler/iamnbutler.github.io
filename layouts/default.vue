@@ -2,6 +2,4 @@
   <Nuxt />
 </template>
 
-<style>
-
-</style>
+<style></style>

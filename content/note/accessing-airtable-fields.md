@@ -2,8 +2,8 @@
 visible: true
 type: gist
 title: Accessing fields in Airtable
-subtitle: 
-date: '2021-04-17'
+subtitle:
+date: "2021-04-17"
 author: Nate Butler
 summary: >-
 ---
@@ -21,28 +21,28 @@ summary: >-
 const p = record.fields;
 
 let frontMatter = {
-  'post_visible': p.post_visible,
+  post_visible: p.post_visible,
   status: p.status,
 
   title: title,
   subtitle: p.subtitle,
   slug: slug,
-  'custom_slug': p.custom_slug,
+  custom_slug: p.custom_slug,
 
   date: date,
-  'date_updated': p.date_updated,
+  date_updated: p.date_updated,
   author: p.author,
 
-  'primary_tag': p.primary_tag,
+  primary_tag: p.primary_tag,
   tags: p.tags,
 
   summary: p.summary,
   edit: p.edit,
 
   featured: p.featured,
-  'show_thumbnail': p.show_thumbnail,
+  show_thumbnail: p.show_thumbnail,
   thumbnail: p.thumbnail,
-  'prefer_wide_thumbnail': p.prefer_wide_thumbnail,
+  prefer_wide_thumbnail: p.prefer_wide_thumbnail,
   wide_thumbnail: p.wide_thumbnail,
   hero_image: p.hero_image,
   post_images: p.post_images,

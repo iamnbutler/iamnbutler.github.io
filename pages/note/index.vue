@@ -1,22 +1,21 @@
 <template>
   <Base subnav>
-    <template v-slot:header>
-      natebutler/note
-    </template>
+    <template v-slot:header> natebutler/note </template>
     <template v-slot:subnav>
       <nav role="section-navigation" class="flex flex-col">
         <ul>
           <li v-for="note of notes" :key="note.slug">
             <!-- Remember to import the variables needed in the call below -->
-            <NavLink dynamic :name="'note-slug'" :slug='note.slug'>
+            <NavLink dynamic :name="'note-slug'" :slug="note.slug">
               <div class="flex flex-col item">
                 <p>{{ note.title }}</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">{{note.type}}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                  {{ note.type }}
+                </p>
               </div>
             </NavLink>
           </li>
         </ul>
-        
       </nav>
     </template>
     <BaseContent>

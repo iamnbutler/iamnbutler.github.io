@@ -30,7 +30,7 @@
             @click="$colorMode.preference = 'dark'"
             :class="{
               'active text-black dark:text-white':
-                $colorMode.preference === 'dark'
+                $colorMode.preference === 'dark',
             }"
           >
             <svg
@@ -52,7 +52,7 @@
             @click="$colorMode.preference = 'light'"
             :class="{
               'active text-black dark:text-white':
-                $colorMode.preference === 'light'
+                $colorMode.preference === 'light',
             }"
           >
             <svg
@@ -74,7 +74,7 @@
             @click="$colorMode.preference = 'system'"
             :class="{
               'active text-black dark:text-white':
-                $colorMode.preference === 'system'
+                $colorMode.preference === 'system',
             }"
           >
             <svg
@@ -121,17 +121,17 @@ export default {
   props: {
     header: {
       type: Boolean,
-      default: true
+      default: true,
     },
     nav: {
       type: Boolean,
-      default: true
+      default: true,
     },
     subnav: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>
 

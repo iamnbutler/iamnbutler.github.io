@@ -1,13 +1,25 @@
 <template>
-    <NuxtLink v-if="exact" :to="to" class="leading-normal pb-3" :exact-active-class="'active font-extrabold'"
-      ><slot
-    /></NuxtLink>
-    <NuxtLink v-else-if="dynamic" class="block leading-normal pb-3" :to="{ name: name, params: { slug: slug } }" :active-class="'active font-extrabold'"
-      ><slot
-    /></NuxtLink>
-    <NuxtLink v-else :to="to" class="leading-normal pb-3" :active-class="'active font-extrabold'"
-      ><slot
-    /></NuxtLink>
+  <NuxtLink
+    v-if="exact"
+    :to="to"
+    class="leading-normal pb-3"
+    :exact-active-class="'active font-extrabold'"
+    ><slot
+  /></NuxtLink>
+  <NuxtLink
+    v-else-if="dynamic"
+    class="block leading-normal pb-3"
+    :to="{ name: name, params: { slug: slug } }"
+    :active-class="'active font-extrabold'"
+    ><slot
+  /></NuxtLink>
+  <NuxtLink
+    v-else
+    :to="to"
+    class="leading-normal pb-3"
+    :active-class="'active font-extrabold'"
+    ><slot
+  /></NuxtLink>
 </template>
 
 <script>

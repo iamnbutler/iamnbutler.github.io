@@ -7,6 +7,7 @@ excerpt: After finding out Shapeways can 3D print & cast metal jewelery I
   couldn't resist doing a project with this.
 creator: Nate Butler
 ---
+
 My wife is a huge Kingdom Hearts fan, so once I discovered that 3D printing metal was not only possible, but also not overly expensive, I decided I'd make her a custom Keyblade piece.
 
 ## Sketching

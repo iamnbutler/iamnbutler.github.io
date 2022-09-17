@@ -9,11 +9,12 @@ excerpt: Learn, create & remix with light and sound. mixblocks lets you create
   Matrices.
 creator: Nate Butler
 ---
+
 ![](https://res.cloudinary.com/yaminateo/image/upload/v1637124653/project/mixblocks/thumbnail-2x1_yyknqu.jpg)
 
 ## The Concept
 
-Inspired by a project a friend did recently about a display that reacts to your music, I started exploring *mixblocks.* A creation & remix tool focused around collaborative creation through the sharing of 'blocks.' 
+Inspired by a project a friend did recently about a display that reacts to your music, I started exploring *mixblocks.* A creation & remix tool focused around collaborative creation through the sharing of 'blocks.'
 
 While Mixblocks has a feed of creations that you can grab and remix from, it has no likes, no connected identities, and no custom user names.
 
@@ -32,7 +33,7 @@ The new person flow for mixblocks focuses on getting you in and creating as soon
 
 ## Your First Block
 
-Dropping into the app for the first time, you will walk through creating your first block. This can be a lightblock or a soundblock, but you have to create something to enter the rest of the app. 
+Dropping into the app for the first time, you will walk through creating your first block. This can be a lightblock or a soundblock, but you have to create something to enter the rest of the app.
 
 You can walk through your first block guided (think the first level of Sound Shapes) or choose to jump straight into creation.
 

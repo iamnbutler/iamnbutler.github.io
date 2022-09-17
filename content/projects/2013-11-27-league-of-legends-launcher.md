@@ -6,14 +6,15 @@ date: 2013-11-27
 excerpt: A quick exploration of a more visual and accessible League launcher.
 creator: Nate Butler
 ---
+
 A sketch exploring some small improvements to the League of Legends game launcher.
 
 ## The Problem
 
 There are a few easily addressable problems with the current launcher:
 
-* It plays music when launched, and has no option to mute. Sometimes the volume is loud and you don't realize it, and this is super shocking. You end up either having to mute your system or listen to the music while the game patches. 
-* On lower end machines the launcher animations can be a bit heavy, especially if you are doing something else at the same time.
+- It plays music when launched, and has no option to mute. Sometimes the volume is loud and you don't realize it, and this is super shocking. You end up either having to mute your system or listen to the music while the game patches.
+- On lower end machines the launcher animations can be a bit heavy, especially if you are doing something else at the same time.
 
 ![](https://res.cloudinary.com/yaminateo/image/upload/v1636936179/post/lol-launcher/old-launcher_cqahv4.jpg)
 

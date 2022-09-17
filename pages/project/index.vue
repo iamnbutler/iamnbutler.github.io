@@ -1,17 +1,16 @@
 <template>
-    <Base subnav>
+  <Base subnav>
     <template v-slot:header> natebutler/projects </template>
     <template v-slot:subnav>
       <nav role="section-navigation" class="flex flex-col">
         <ul>
           <li v-for="project of projects" :key="project.slug">
             <!-- Remember to import the variables needed in the call below -->
-            <NavLink dynamic :name="'project-slug'" :slug='project.slug'>
+            <NavLink dynamic :name="'project-slug'" :slug="project.slug">
               {{ project.title }}
             </NavLink>
           </li>
         </ul>
-        
       </nav>
     </template>
     <BaseContent>

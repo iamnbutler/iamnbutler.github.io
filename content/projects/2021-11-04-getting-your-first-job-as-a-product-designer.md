@@ -11,6 +11,7 @@ excerpt: >-
   This is an ongoing project to help early-career designers bootstrap up to their first job in the tech industry. The goal is to be complete without being overly verbose.
 creator: Nate Butler
 ---
+
 ## The Project
 
 This is an ongoing project to help early career designers bootstrap their up to their first job in the tech industry. The goal is to be complete without being overly verbose.
@@ -24,7 +25,6 @@ I generally want to bias towards giving direction without being overly opinionat
 
 You can leave feedback on the project & content here:
 [Feedback – Getting your first job in the product design industry](https://forms.gle/jimgp3uAk8df8MUH9)
-
 
 ### Contributing
 

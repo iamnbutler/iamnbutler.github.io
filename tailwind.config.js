@@ -10,12 +10,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     fontFamily: {
-      ui:
-        'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Oxygen-Sans, Ubuntu, Cantarell, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+      ui: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Oxygen-Sans, Ubuntu, Cantarell, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       prose: "Lora, ui-serif, serif",
-      mono:
-        '"Jetbrains Mono", "SF Mono", SFMono-Regular, ui-monospace, "Roboto Mono", monospace',
-
+      mono: '"Jetbrains Mono", "SF Mono", SFMono-Regular, ui-monospace, "Roboto Mono", monospace',
     },
     extend: {
       typography: (theme) => ({
@@ -47,7 +44,7 @@ module.exports = {
               background: theme("colors.gray.900"),
               textShadow: "none",
               fontFamily: theme("fontFamily.mono"),
-            }
+            },
           },
         },
         DEFAULT: {
@@ -62,4 +59,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/typography")],
-}
+};

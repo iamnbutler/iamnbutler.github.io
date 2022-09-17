@@ -8,6 +8,7 @@ excerpt: Exploring the new Automator plugin for Figma. I thought exploring a
   way to try it out.
 creator: Nate Butler
 ---
+
 ## Generative Art with Figma & Automator
 
 Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.
@@ -52,7 +53,6 @@ Here are some of my favorite gens:
 
 I'm looking forward to exploring another generative series soon, following everything I learned with this one!
 
-You can find some of the JSON import files I saved as I was exploring in the [fig-gen](https://github.com/iamnbutler/fig-gen) repo.
----
+## You can find some of the JSON import files I saved as I was exploring in the [fig-gen](https://github.com/iamnbutler/fig-gen) repo.
 
 [Jordan Singer](https://twitter.com/jsngr)'s [Automator](https://automator.design/) plugin is currently in closed beta. I can't wait to see what everyone is able to create once they get their hands on this!
