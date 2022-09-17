@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
