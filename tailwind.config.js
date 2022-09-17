@@ -1,7 +1,7 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: "jit",
-  purge: [
-    "./components/**/*.{vue,js}",
+  content: [
+    "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
@@ -15,7 +15,7 @@ module.exports = {
       prose: "Lora, ui-serif, serif",
       mono:
         '"Jetbrains Mono", "SF Mono", SFMono-Regular, ui-monospace, "Roboto Mono", monospace',
-        
+
     },
     extend: {
       typography: (theme) => ({
@@ -62,4 +62,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/typography")],
-};
+}
