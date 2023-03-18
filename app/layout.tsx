@@ -1,4 +1,4 @@
-import '@/app/globals.css'
+import '@/app/styles/global.css'
 import '@/app/styles/tailwind.css';
 import { Lora } from 'next/font/google'
 const lora = Lora({ subsets: ['latin'] })
@@ -15,7 +15,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={lora.className}>{children}</body>
+            <body className={lora.className}>
+                <div className='site-background fixed z-0 top-0 bottom-0 left-0 right-0' />
+                <div className='relative z-10'>{children}</div>
+            </body>
         </html>
     )
 }
