@@ -62,9 +62,9 @@ export default function Home() {
     return (
         <div
             className={clsx(
-                "max-w-[1500px]",
+                "max-w-[1600px] 2xl:mt-10",
                 "gap-px bg-black border border-black",
-                "sm:flex sm:flex-col md:grid md:grid-cols-4 md:mx-auto lg:grid-cols-2 xl:grid-rows-auto 2xl:grid-cols-4"
+                "sm:flex sm:flex-col md:grid md:grid-cols-4 md:mx-auto md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
             )}
         >
             <GridItem>
@@ -102,7 +102,7 @@ export default function Home() {
                             <p>Building the world's best code editor - 2021++</p>
                         </li>
                         <li>
-                            <h3 className="my-0">Internal Tools at Facebook</h3>
+                            <h3 className="my-0">Design at Facebook</h3>
                             <p>Helping product teams build more efficiently – 2020</p>
                         </li>
                         <li>
