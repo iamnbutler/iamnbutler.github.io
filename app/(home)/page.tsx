@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import Link from "next/link";
 import { PropsWithChildren } from "react";
 import UserMenu from "@/app/(home)/userMenu";
 import { projects } from "@/content";
@@ -31,9 +30,9 @@ export default function Home() {
                 "sm:flex sm:flex-col md:grid md:mx-auto md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
             )}
         >
-            <GridItem>
+            <span className="hidden md:block"><GridItem>
                 <NavCard />
-            </GridItem>
+            </GridItem></span>
             <GridItem>
                 <div className="prose shrink-1">
                     <h2 className="text-shadow-green">hey ✌️</h2>

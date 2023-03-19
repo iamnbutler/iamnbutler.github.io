@@ -25,7 +25,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     return (
         <div>
             <header className="relative border-b border-black">
-                <div className="absolute top-2 right-2">
+                <div className="absolute top-5 right-5">
                     <CopyToClipboard />
                 </div>
                 <div className="mx-auto p-5 prose">

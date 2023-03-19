@@ -12,19 +12,19 @@ export default function ProjectLayout({
             className={clsx(
                 "max-w-[1600px] 2xl:my-10 mx-auto",
                 "gap-px bg-black border border-black",
-                "grid grid-cols-5"
+                "sm:flex sm:flex-col md:grid md:mx-auto md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5"
             )}
         >
-            <div className="flex flex-col">
+            <div className="flex flex-col col-span-1">
                 <nav className="p-5 bg-white border-b border-black">
                     <NavCard />
                 </nav>
-                <menu className="p-5 bg-white">
+                <menu className="hidden md:flex p-5 bg-white">
                     <TableOfContents id="project" />
                 </menu>
-                <div className="flex flex-grow bg-white" />
+                <div className="hidden md:flex flex-grow bg-white" />
             </div>
-            <div className="col-span-4 bg-white">{children}</div>
+            <div className="md:col-span-2 lg:col-span-3 2xl:col-span-4 bg-white">{children}</div>
         </div>
     );
 }

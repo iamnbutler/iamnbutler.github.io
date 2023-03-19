@@ -27,3 +27,27 @@
 .text-shadow-cyan {
   text-shadow: 8px 8px rgba(0, 255, 255, 0.3);
 }
+
+.box-shadow-red {
+  box-shadow: 8px 8px rgba(255, 0, 0, 0.3);
+}
+
+.box-shadow-green {
+  box-shadow: 8px 8px rgba(0, 255, 0, 0.3);
+}
+
+.box-shadow-blue {
+  box-shadow: 8px 8px rgba(0, 0, 255, 0.3);
+}
+
+.box-shadow-magenta {
+  box-shadow: 8px 8px rgba(255, 0, 255, 0.3);
+}
+
+.box-shadow-yellow {
+  box-shadow: 8px 8px rgba(255, 255, 0, 0.3);
+}
+
+.box-shadow-cyan {
+  box-shadow: 8px 8px rgba(0, 255, 255, 0.3);
+}

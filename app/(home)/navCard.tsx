@@ -1,4 +1,5 @@
 import MotionHeadline from "@/components/MotionHeadline";
+import clsx from "clsx";
 import Link from "next/link";
 
 interface INavItem {
@@ -55,7 +56,7 @@ const NavItem = ({ icon, href, label, description }: INavItem) => (
 
 function NavCard() {
     return (
-        <header>
+        <header className={clsx('flex justify-between', 'md:justify-start md:flex-col')}>
             <MotionHeadline
                 initial={{
                     rotate: -3,
@@ -68,7 +69,7 @@ function NavCard() {
                 }}
                 transition={{ ease: "linear", duration: 7, repeat: 99, repeatType: "mirror" }}
             >
-                <Link href="/" className="ml-12 flex items-center mb-6 text-h1 font-bold">
+                <Link href="/" className="md:ml-12 flex items-center mb-6 text-h1 font-bold">
                     <h2 className="text-shadow-cyan underline underline-offset-[6px] decoration-2">nate.⚰️</h2>
                 </Link>
             </MotionHeadline>

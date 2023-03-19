@@ -15,7 +15,7 @@ export const designDocsV2: IProject = {
         relative: "9 months ago", // You will need to calculate this using a library like date-fns or moment.js
     },
     cover: {
-        src: "https://user-images.githubusercontent.com/1714999/176328180-bc4581da-d248-41e4-ac42-b590dbaa68bb.png",
+        src: "/project/design-docs-v2/thumbnail.jpg",
         alt: "A screenshot of the Design Docs V2 site",
     },
     tags: [
