@@ -8,14 +8,16 @@ import NavCard from "./navCard";
 interface IGridItem extends PropsWithChildren {
     /** Card should go all the way to the edges */
     e2e?: boolean;
+    className?: string;
 }
 
-const GridItem = ({ e2e, children }: IGridItem) => (
+const GridItem = ({ e2e, className, children }: IGridItem) => (
     <section
         className={clsx(
             !e2e && "p-5",
             "bg-white min-h-[780px] flex flex-col justify-between",
-            "border-b md:border-b-0 border-black"
+            "border-b md:border-b-0 md:border-black",
+            className
         )}
     >
         {children}
@@ -31,9 +33,9 @@ export default function Home() {
                 "sm:flex sm:flex-col md:grid md:mx-auto md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
             )}
         >
-            <span className="hidden md:block"><GridItem>
+            <GridItem className="hidden md:block">
                 <NavCard />
-            </GridItem></span>
+            </GridItem>
             <GridItem>
                 <div className="prose shrink-1">
                     <h2 className="text-shadow-green">hey ✌️</h2>
