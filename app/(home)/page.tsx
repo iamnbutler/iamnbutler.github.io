@@ -36,7 +36,7 @@ export default function Home() {
             </GridItem>
             <GridItem>
                 <div className="prose shrink-1">
-                    <h2>hey ✌️</h2>
+                    <h2 className="text-shadow-green">hey ✌️</h2>
                     <p className="italic font-semibold">
                         I’m nate butler, a designer & maker enabling people’s creativity and
                         ability share knowledge.
@@ -59,7 +59,7 @@ export default function Home() {
             </GridItem>
             <GridItem>
                 <div className="prose shrink-1">
-                    <h2>work 🎒</h2>
+                    <h2 className="text-shadow-yellow">work 🎒</h2>
                     <ul>
                         <li>
                             <h3 className="my-0">Design at Zed</h3>

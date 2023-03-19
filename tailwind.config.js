@@ -24,6 +24,14 @@ module.exports = {
             fontWeight: {
                 bold: "bold",
             },
+            color: {
+                brightRed: "#FF0000",
+                brightGreen: "#00FF00",
+                brightBlue: "#0000FF",
+                brightMagenta: "#FF00FF",
+                brightYellow: "#FFFF00",
+                brightCyan: "#00FFFF",
+            },
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
