@@ -22,5 +22,5 @@ export const zedPublicBeta: IProject = {
         { title: "brand", slug: "dev", url: "/tags/brand" },
         { title: "dev", slug: "dev", url: "/tags/dev" },
     ],
-    content: `TBD`,
+    content: `WIP`,
 };
