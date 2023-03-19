@@ -16,7 +16,7 @@ export default function ProjectLayout({
             )}
         >
             <div className="flex flex-col col-span-1">
-                <nav className="p-5 bg-white border-b border-black">
+                <nav className="hidden md:block p-5 bg-white border-b border-black">
                     <NavCard />
                 </nav>
                 <menu className="hidden md:flex p-5 bg-white">

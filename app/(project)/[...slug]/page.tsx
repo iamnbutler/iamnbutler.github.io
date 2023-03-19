@@ -44,7 +44,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                         </ul>
                         <h1 className="text-shadow-cyan mb-0">{project.title}</h1>
                     </MotionHeadline>
-                    <p>{project.preview}</p>
+                    {project.tagline && <p>{project.tagline}</p>}
                     <div>Posted {project.date.mmddyy} ({project.date.relative})</div>
                 </div>
             </header>
