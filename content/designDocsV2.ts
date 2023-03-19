@@ -20,19 +20,9 @@ export const designDocsV2: IProject = {
     },
     tags: [
         {
-            title: "Next.js",
-            slug: "nextjs",
-            url: "/tags/nextjs",
-        },
-        {
-            title: "Design",
+            title: "design",
             slug: "design",
             url: "/tags/design",
-        },
-        {
-            title: "Resource",
-            slug: "resource",
-            url: "/tags/resource",
         },
     ],
     content: `
