@@ -1,38 +1,41 @@
-import { IProject } from "@/app/(home)/card";
+import { IProject } from "@/types/project";
 
 export const designDocsV2: IProject = {
-    title: "Releasing Design Docs V2",
-    url: "https://www.designdocs.co/",
-    tagline: "Design Docs aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry.",
-    preview: "Design Docs V2.0 brings a new site build in Next.js, refined content, and a dedicated domain at designdocs.co. It aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry.",
-    date: {
-        raw: new Date("2022-05-28"),
-        year: "2022",
-        mmddyy: "05/28/22",
-        relative: "9 months ago" // You will need to calculate this using a library like date-fns or moment.js
+  title: "Releasing Design Docs V2",
+  slug: "design-docs-v2",
+  url: "/design-docs-v2",
+  tagline:
+    "Design Docs aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry.",
+  preview:
+    "Design Docs V2.0 brings a new site build in Next.js, refined content, and a dedicated domain at designdocs.co. It aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry.",
+  date: {
+    raw: new Date("2022-05-28"),
+    year: "2022",
+    mmddyy: "05/28/22",
+    relative: "9 months ago", // You will need to calculate this using a library like date-fns or moment.js
+  },
+  cover: {
+    src: "https://user-images.githubusercontent.com/1714999/176328180-bc4581da-d248-41e4-ac42-b590dbaa68bb.png",
+    alt: "A screenshot of the Design Docs V2 site",
+  },
+  tags: [
+    {
+      title: "Next.js",
+      slug: "nextjs",
+      url: "/tags/nextjs",
     },
-    cover: {
-        src: "https://user-images.githubusercontent.com/1714999/176328180-bc4581da-d248-41e4-ac42-b590dbaa68bb.png",
-        alt: "A screenshot of the Design Docs V2 site"
+    {
+      title: "Design",
+      slug: "design",
+      url: "/tags/design",
     },
-    tags: [
-        {
-            title: "Next.js",
-            slug: "nextjs",
-            url: "/tags/nextjs"
-        },
-        {
-            title: "Design",
-            slug: "design",
-            url: "/tags/design"
-        },
-        {
-            title: "Resource",
-            slug: "resource",
-            url: "/tags/resource"
-        }
-    ],
-    content: `
+    {
+      title: "Resource",
+      slug: "resource",
+      url: "/tags/resource",
+    },
+  ],
+  content: `
 Design Docs V2.0 brings a new site build in Next.js, refined content, and a dedicated domain at [designdocs.co](https://www.designdocs.co/).
 
 ![A screenshot of the Design Docs V2 site](https://user-images.githubusercontent.com/1714999/176328180-bc4581da-d248-41e4-ac42-b590dbaa68bb.png)
@@ -61,4 +64,5 @@ I look forward to the future of Design Docs as a resource for students and desig
 - @maxdeviant made their first contribution in https://github.com/iamnbutler/design-docs/pull/1
 
 **Full Changelog**: https://github.com/iamnbutler/design-docs/compare/v1.0...v2.0.0
-`}
+`,
+};
