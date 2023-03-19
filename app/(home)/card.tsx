@@ -6,17 +6,17 @@ function Card({ title, url, tagline, preview, date, cover, tags }: IProject) {
     return (
         <div className="flex flex-col h-full">
             {cover && (
-                <Link href={url}>
+                <Link href={url} className="aspect-square flex shrink-0 items-center border-b border-black bg-black/5">
                     <img
                         src={cover.src}
                         alt={cover.alt}
-                        className="w-full border-b border-black"
+                        className="w-full"
                     />
                 </Link>
             )}
             <div className="flex flex-col flex-grow p-4 prose">
                 <Link href={url}>
-                    <h3 className="m-0">{title}</h3>
+                    <h2 className="m-0">{title}</h2>
                 </Link>
                 {tagline && <p className="mb-0 italic font-semibold">{tagline}</p>}
                 <ReactMarkdown className="flex-grow overflow-hidden">{preview}</ReactMarkdown>

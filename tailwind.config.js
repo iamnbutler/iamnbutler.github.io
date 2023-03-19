@@ -11,12 +11,21 @@ module.exports = {
     theme: {
         extend: {
             fontSize: {
-                "h1-h2": "2.625rem", // 42px
-                "h3-h4": "1.5rem", // 24px
+                xs: '14px',    // 0.875rem
+                base: '16px',  // 1rem
+                lg: '20px',    // 1.25rem
+                xl: '24px',    // 1.5rem
+                '2xl': '30px', // 1.875rem
+                '3xl': '36px', // 2.25rem
+                "h1": "2.625rem", // 42px
+                "h2": "2.25rem", // 42px
+                "h3": "1.5rem", // 24px
+                "h4": "1.5rem", // 24px
                 default: "1.25rem", // 20px
             },
             lineHeight: {
-                "h1-h2": "3.75rem", // 60px
+                "h1": "3.75rem", // 60px
+                "h2": "2.75rem", // 60px
                 h3: "2.25rem", // 36px
                 h4: "2rem", // 32px
                 default: "1.875rem", // 30px
@@ -36,22 +45,22 @@ module.exports = {
                 DEFAULT: {
                     css: {
                         h1: {
-                            fontSize: theme("fontSize.h1-h2"),
-                            lineHeight: theme("lineHeight.h1-h2"),
+                            fontSize: theme("fontSize.h1"),
+                            lineHeight: theme("lineHeight.h1"),
                             fontWeight: theme("fontWeight.bold"),
                         },
                         h2: {
-                            fontSize: theme("fontSize.h1-h2"),
-                            lineHeight: theme("lineHeight.h1-h2"),
+                            fontSize: theme("fontSize.h2"),
+                            lineHeight: theme("lineHeight.h2"),
                             fontWeight: theme("fontWeight.bold"),
                         },
                         h3: {
-                            fontSize: theme("fontSize.h3-h4"),
+                            fontSize: theme("fontSize.h3"),
                             lineHeight: theme("lineHeight.h3"),
                             fontWeight: theme("fontWeight.bold"),
                         },
                         h4: {
-                            fontSize: theme("fontSize.h3-h4"),
+                            fontSize: theme("fontSize.h4"),
                             lineHeight: theme("lineHeight.h4"),
                             fontWeight: theme("fontWeight.bold"),
                         },
@@ -67,8 +76,11 @@ module.exports = {
                                 textDecoration: "underline",
                             },
                             '&:visited': {
-                                color: theme("colors.purple.500"),
                                 textDecoration: "underline",
+                                "&:hover": {
+                                    color: theme("colors.purple.500"),
+                                    textDecoration: "underline",
+                                },
                             }
                         },
                         'code': {

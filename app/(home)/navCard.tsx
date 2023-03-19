@@ -1,3 +1,4 @@
+import MotionHeadline from "@/components/MotionHeadline";
 import Link from "next/link";
 
 interface INavItem {
@@ -43,10 +44,10 @@ const navItems: INavItem[] = [
 const NavItem = ({ icon, href, label, description }: INavItem) => (
     <li key={href}>
         <Link href={href} className="flex text-xl">
-            <span className="mr-2">{icon}</span>
+            <div className="mr-5 w-8 h-8 flex shrink-0 justify-center items-center">{icon}</div>
             <div className="flex flex-col">
-                <span className="font-bold">{label}</span>
-                <span className="block text-sm">{description}</span>
+                <h3 className="font-bold underline underline-offset-2 decoration-1">{label}</h3>
+                <span className="block text-sm italic">{description}</span>
             </div>
         </Link>
     </li>
@@ -55,9 +56,22 @@ const NavItem = ({ icon, href, label, description }: INavItem) => (
 function NavCard() {
     return (
         <header>
-            <Link href="/" className="flex items-center mb-6 text-3xl font-bold">
-                <h2 className="text-shadow-cyan">nate.⚰️</h2>
-            </Link>
+            <MotionHeadline
+                initial={{
+                    rotate: -3,
+                    originX: 0, // Relative to the left edge (0%)
+                    originY: 1, // Relative to the bottom edge (100%)
+                }}
+                animate={{
+                    rotate: [-3, 1],
+                    y: [0, 3],
+                }}
+                transition={{ ease: "linear", duration: 7, repeat: 99, repeatType: "mirror" }}
+            >
+                <Link href="/" className="ml-12 flex items-center mb-6 text-h1 font-bold">
+                    <h2 className="text-shadow-cyan underline underline-offset-[6px] decoration-2">nate.⚰️</h2>
+                </Link>
+            </MotionHeadline>
             <nav aria-label="Primary">
                 <ul className="space-y-4">
                     {navItems.map((item) => (
