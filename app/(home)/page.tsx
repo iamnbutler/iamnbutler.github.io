@@ -14,7 +14,8 @@ const GridItem = ({ e2e, children }: IGridItem) => (
     <section
         className={clsx(
             !e2e && "p-5",
-            "bg-white min-h-[780px] flex flex-col justify-between"
+            "bg-white min-h-[780px] flex flex-col justify-between",
+            "border-b md:border-b-0 border-black"
         )}
     >
         {children}

@@ -9,7 +9,7 @@ interface INavItem {
     icon: string;
 }
 
-const navItems: INavItem[] = [
+export const navItems: INavItem[] = [
     {
         href: "/posts",
         label: "Posts & Tags",
@@ -42,7 +42,7 @@ const navItems: INavItem[] = [
     },
 ];
 
-const NavItem = ({ icon, href, label, description }: INavItem) => (
+export const NavItem = ({ icon, href, label, description }: INavItem) => (
     <li key={href}>
         <Link href={href} className="flex text-xl">
             <div className="mr-5 w-8 h-8 flex shrink-0 justify-center items-center">{icon}</div>
