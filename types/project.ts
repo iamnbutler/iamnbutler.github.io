@@ -1,4 +1,4 @@
-type TagTitle = "ai" | "design" | "dev" | "art" | "brand"
+type TagTitle = "ai" | "design" | "dev" | "art" | "brand" | "writing" | "adhd"
 
 export interface ITag {
     title: TagTitle;
