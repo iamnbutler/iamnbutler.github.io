@@ -7,6 +7,7 @@ import { dalleWorlds } from "./dalleWorlds";
 import { zedDotDev } from "./zed-dot-dev";
 import { designWorkshop } from "./design-workshop";
 import { writingWithADHD } from "./writing-with-adhd";
+import { printingJewelry } from "./printing-jewelry";
 
 export const projects: IProject[] = [
     // zedPublicBeta,
@@ -16,5 +17,6 @@ export const projects: IProject[] = [
     figGen,
     writingWithADHD,
     mixblocks,
+    printingJewelry,
     designWorkshop,
 ];
