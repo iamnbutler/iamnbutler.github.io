@@ -62,24 +62,29 @@ export default function Home() {
             <GridItem>
                 <div className="prose shrink-1">
                     <h2 className="text-shadow-yellow">work 🎒</h2>
-                    <ul>
+                    <ul className="-ml-1 mr-3">
                         <li>
-                            <h3 className="my-0">Design at Zed</h3>
+                            <h3 className="my-0">Zed Industries</h3>
                             <p>Building the world&apos;s best code editor - 2021++</p>
                         </li>
                         <li>
-                            <h3 className="my-0">Design at Facebook</h3>
+                            <h3 className="my-0">Facebook Internal Tools</h3>
                             <p>Helping product teams build more efficiently – 2020</p>
                         </li>
                         <li>
-                            <h3 className="my-0">Avatars at Facebook</h3>
-                            <p>The groundwork for an identity system for billions – 2018</p>
+                            <h3 className="my-0">Facebook Avatars</h3>
+                            <p>Laying groundwork for an identity system for billions – 2018</p>
                         </li>
                         <li>
-                            <h3 className="my-0">News Feed at Facebook</h3>
+                            <h3 className="my-0">Facebook News Feed</h3>
                             <p>
-                                In an increasingly visual feed, how can we help people level up
-                                their posts? – 2016
+                                Helping people find their voice in an increasinly visual feed – 2016
+                            </p>
+                        </li>
+                        <li>
+                            <h3 className="my-0">Format</h3>
+                            <p>
+                                Enabling people to create the sites they want – 2014
                             </p>
                         </li>
                     </ul>

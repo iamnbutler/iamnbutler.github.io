@@ -24,8 +24,8 @@ function Card({ title, url, tagline, preview, date, cover, tags }: IProject) {
             <div className="flex items-center justify-between p-4">
                 <ul className="flex space-x-2">
                     {tags.slice(0, 3).map((tag, i) => (
-                        <li key={tag.slug + title} className="text-sm italic underline">
-                            <Link href={tag.url}>{tag.title}</Link>
+                        <li key={tag.slug + title} className="text-sm italic">
+                            {tag.title}
                             {i < tags.slice(0, 3).length - 1 && <span>, </span>}
                         </li>
                     ))}

@@ -2,7 +2,6 @@ import CopyToClipboard from "@/components/CopyToClipboard";
 import MotionHeadline from "@/components/MotionHeadline";
 import { projects } from "@/content";
 import { IProject } from "@/types/project";
-import Link from "next/link";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 // Assuming IProject is already defined and imported
@@ -36,8 +35,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                     }}>
                         <ul className="text-shadow-cyan flex space-x-2 m-0 p-0">
                             {project.tags.slice(0, 3).map((tag, i) => (
-                                <li key={tag.slug} className="text-sm underline list-none m-0 p-0">
-                                    <Link href={tag.url}>{tag.title}</Link>
+                                <li key={tag.slug} className="text-sm list-none m-0 p-0">
+                                    {tag.title}
                                     {i < project.tags.slice(0, 3).length - 1 && <span>, </span>}
                                 </li>
                             ))}
