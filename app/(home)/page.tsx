@@ -51,7 +51,13 @@ export default function Home() {
                     </p>
                     <p>
                         I post about all types of things here. You will find a mix of work,
-                        top of mind, reflections, & process. Enjoy!
+                        top of mind, reflections, & process.
+                    </p>
+                    <p>
+                        For more granular content you can follow me on <a href="https://twitter.com/iamnbutler">twitter</a>.
+                    </p>
+                    <p>
+                        Enjoy!
                     </p>
                 </div>
                 <footer className="flex justify-between shrink-0">
