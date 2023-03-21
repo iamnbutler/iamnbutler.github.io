@@ -11,33 +11,33 @@ interface INavItem {
 
 export const navItems: INavItem[] = [
     {
-        href: "/posts",
-        label: "Posts & Tags",
+        href: "/#coming-soon",
+        label: "Posts",
         description: "Top of mind, updates & side projects",
         icon: "✏️",
     },
     {
-        href: "/work",
+        href: "/#coming-soon",
         label: "Selected Work",
-        description: "I do real work, sometimes...",
+        description: "You know, the boring stuff 😏",
         icon: "🎒",
     },
     {
-        href: "/tips",
+        href: "/#coming-soon",
         label: "Tips & Guides",
         description: "Hardware, dev, design & more",
         icon: "🍎",
     },
     {
-        href: "/lists",
+        href: "/#coming-soon",
         label: "Lists",
         description: "Resources, games, gear, etc.",
         icon: "📒",
     },
     {
-        href: "/about",
+        href: "https://read.cv/natebutler",
         label: "About Me",
-        description: "Does anyone read these?",
+        description: "In case you want to know 🤷",
         icon: "🌱",
     },
 ];
