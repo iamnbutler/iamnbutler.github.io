@@ -18,6 +18,8 @@ export default function RootLayout({
         <html lang="en">
             <body className={lora.className}>
                 <div className='site-background fixed z-0 top-0 bottom-0 left-0 right-0' />
+                <div className='relative z-10 mb-10 p-5 border border-black bg-[#FFFFD9] prose max-w-none flex justify-center'>
+                    <p>Hey thanks for coming by, this site is very wip!. You can report weird issues <a href='https://github.com/iamnbutler/iamnbutler.github.io'>here.</a></p></div>
                 <div className='relative z-10'>
                     <MobileNav />
                     {children}

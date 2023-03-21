@@ -4,7 +4,6 @@ import { projects } from "@/content";
 import { IProject } from "@/types/project";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
-// Assuming IProject is already defined and imported
 function findProject(slug: string, projects: IProject[]): IProject {
     const project = projects.find((project) => project.slug === slug);
     if (!project) {
