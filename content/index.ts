@@ -5,6 +5,7 @@ import { IProject } from "@/types/project";
 // import { zedPublicBeta } from "./zed-public-beta";
 import { dalleWorlds } from "./dalleWorlds";
 import { zedDotDev } from "./zed-dot-dev";
+import { designWorkshop } from "./design-workshop";
 
 export const projects: IProject[] = [
     // zedPublicBeta,
@@ -13,4 +14,5 @@ export const projects: IProject[] = [
     zedDotDev,
     figGen,
     mixblocks,
+    designWorkshop,
 ];
