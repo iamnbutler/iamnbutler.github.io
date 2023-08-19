@@ -103,7 +103,7 @@ export default function About() {
                             icon={MailIcon}
                             className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
                         >
-                            spencer@planetaria.tech
+                            iamnbutler(at)gmail.com
                         </SocialLink>
                     </ul>
                 </div>
