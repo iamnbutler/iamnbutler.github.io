@@ -49,11 +49,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
       <Card.Title href={`/articles/${article.slug}`}>
         {article.title}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
     </Card>
   )
 }
@@ -235,7 +231,7 @@ const SocialItem = ({ label, href, emoji }: SocialLink) => {
   return (
     <li className='group'><Link href={href} aria-label={label}
       className={clsx(
-        'flex-none w-12 h-12 border-2 border-transparent hover:border-indigo-500 hover:dark:border-indigo-400 rounded-full flex items-center justify-center',
+        'flex-none w-12 h-12 border-2 border-transparent hover:border-violet-500 hover:dark:border-violet-400 rounded-full flex items-center justify-center',
         'rotate-0 group-hover:-rotate-12 transition scale-100 group-hover:scale-110',
       )}
     >{emoji}</Link></li>
