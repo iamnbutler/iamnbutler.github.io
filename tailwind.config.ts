@@ -8,6 +8,10 @@ export default {
   darkMode: 'class',
   plugins: [typographyPlugin],
   theme: {
+    fontFamily: {
+      sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+      serif: ['var(--font-lora)', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+    },
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
       sm: ['0.875rem', { lineHeight: '1.5rem' }],
@@ -23,6 +27,6 @@ export default {
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
     },
-    typography: typographyStyles,
+    typography: typographyStyles
   },
 } satisfies Config
