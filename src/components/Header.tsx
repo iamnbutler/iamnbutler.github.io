@@ -156,15 +156,16 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative flex gap-2 no-shrink no-grow items-center px-3 py-2 transition',
+          'relative flex gap-2 no-shrink no-grow items-center px-3 py-1 my-1 h-10 transition border-2 border-transparent hover:border-violet-500 hover:dark:border-violet-400 rounded-xl',
           isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400',
+            ? 'text-violet-500 dark:text-violet-400'
+            : '',
         )}
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
+          // Can use this for an active state later if wanted
+          <span className="absolute inset-x-1" />
         )}
       </Link>
     </li>
@@ -174,7 +175,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex px-1 text-md font-medium font-serif text-zinc-800 ring-1 ring-zinc-900/5 bg-white border border-black">
+      <ul className="flex px-1 gap-0.5 text-md font-semibold font-serif text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-900">
         <NavItem href="/"><span className='text-lg'>🏡</span> Home</NavItem>
         <NavItem href="/articles"><span className='text-lg'>✏️</span>Notes</NavItem>
         <NavItem href="/projects"><span className='text-lg'>🎒</span>Work</NavItem>
@@ -197,11 +198,11 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className='relative flex gap-2 no-shrink no-grow items-center px-3 py-1 h-10 my-1 transition border-2 border-transparent hover:border-violet-500 hover:dark:border-violet-400 rounded-xl'
       onClick={() => setTheme(otherTheme)}
     >
-      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
+      <SunIcon className="h-6 w-6 p-0.5 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden" />
+      <MoonIcon className="hidden h-6 w-6 p-0.5 fill-zinc-700 stroke-zinc-500 transition dark:block" />
     </button>
   )
 }
