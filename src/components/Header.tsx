@@ -175,7 +175,7 @@ function NavItem({
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
-      <ul className="flex px-1 gap-0.5 text-md font-semibold font-serif text-zinc-800 dark:text-zinc-100 bg-white dark:bg-zinc-900">
+      <ul className="flex px-1 gap-0.5 text-md font-semibold font-serif text-zinc-800 dark:text-zinc-100">
         <NavItem href="/"><span className='text-lg'>🏡</span> Home</NavItem>
         <NavItem href="/articles"><span className='text-lg'>✏️</span>Notes</NavItem>
         <NavItem href="/projects"><span className='text-lg'>🎒</span>Work</NavItem>

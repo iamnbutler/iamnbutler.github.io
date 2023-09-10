@@ -3,6 +3,12 @@ import { type Config } from 'tailwindcss'
 
 import typographyStyles from './typography'
 
+// tailwind.config.ts
+// tailwind.config.js
+// tailwind.config.json
+// tailwind.config.mjs
+// tailwind.config.cjs
+
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
