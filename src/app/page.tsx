@@ -9,11 +9,6 @@ import logoFacebook from '@/images/logos/facebook.svg'
 import logoLookbook from '@/images/logos/lookbook.png'
 import logoFormat from '@/images/logos/format.png'
 import logoZed from '@/images/logos/zed.png'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
@@ -170,7 +165,7 @@ function Resume() {
 const socialLinks: Readonly<SocialLink>[] = [
   {
     label: 'Find me on Twitter',
-    href: 'https://twitter.com/natebutler',
+    href: 'https://twitter.com/iamnbutler',
     emoji: '🐦',
   },
   {
