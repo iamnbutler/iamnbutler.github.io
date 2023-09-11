@@ -24,6 +24,14 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: 'Leetcode',
+    lastUpdate: 2023,
+    description:
+      'A collection of my Leetcode solutions',
+    link: { href: 'https://github.com/iamnbutler/leetcode', label: 'iamnbutler/leetcode' },
+    logo: logoCode,
+  },
+  {
     name: 'Zed',
     lastUpdate: 2023,
     description:
@@ -82,12 +90,62 @@ const projects: Project[] = [
     logo: logoZed,
   },
   {
+    name: 'Explorer',
+    lastUpdate: 2016,
+    description: 'A python pi-powered roverbot',
+    github: {
+      href: 'https://github.com/iamnbutler/explorer',
+      label: 'iamnbutler/explorer',
+    },
+    logo: logoCode,
+  },
+  {
+    name: 'Tetris',
+    lastUpdate: 2015,
+    description: 'Tetris written in processing, to be played on an LED matrix.',
+    github: {
+      href: 'https://github.com/iamnbutler/tetris',
+      label: 'iamnbutler/tetris',
+    },
+    logo: logoCode,
+  },
+  {
+    name: 'Music Stats',
+    lastUpdate: 2015,
+    description: 'A music stat charting experiment. Uses D3 and TSVs generated from iTunes playlists.',
+    github: {
+      href: 'https://github.com/iamnbutler/music-stats',
+      label: 'iamnbutler/music-stats',
+    },
+    logo: logoCode,
+  },
+  {
+    name: 'Kaishi',
+    lastUpdate: 2015,
+    description: 'A minimal HTML/CSS project starter',
+    github: {
+      href: 'https://github.com/iamnbutler/kaishi',
+      label: 'iamnbutler/kaishi',
+    },
+    logo: logoCode,
+  },
+  {
+    name: 'Stagout',
+    lastUpdate: 2013,
+    description: 'A website for the rap/hip-hop duo Sandy Pearlman & Bones',
+    github: {
+      href: 'https://github.com/iamnbutler/stagout',
+      label: 'iamnbutler/stagout',
+    },
+    logo: logoCode,
+  },
+  {
     name: 'Splash Page',
     lastUpdate: 2012,
     description: 'A simple splash page for my upcoming site',
     github: {
       href: 'https://github.com/iamnbutler/splash-page',
-      label: 'zed-industries/iamnbutler/splash-page',
+      label: 'iamnbutler/splash-page',
     },
     logo: logoCode,
   },
