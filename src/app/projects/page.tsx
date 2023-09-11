@@ -36,7 +36,7 @@ const projects: Project[] = [
     lastUpdate: 2023,
     description:
       'A native text editor turned collaboration platform to help developers build software together.',
-    link: { href: 'https://zed.dev/', label: 'zed.dev' },
+    link: { href: 'https://zed.dev/download', label: 'zed.dev/download' },
     logo: logoZed,
   },
   {
