@@ -1,4 +1,4 @@
-import { type Metadata } from 'next'
+'use client'
 import Image, { StaticImageData } from 'next/image'
 
 import { Card } from '@/components/Card'
@@ -7,11 +7,24 @@ import logoZed from '@/images/logos/zed.png'
 import logoDesignDocs from '@/images/logos/designdocs.svg'
 import logoCode from '@/images/logos/code.svg'
 import logoDesign from '@/images/logos/design.svg'
+import { useState } from 'react'
+import { Button } from '@/components/Button'
+import clsx from 'clsx'
+
+const projectType = {
+  code: 'Code',
+  design: 'Design',
+  art: 'Art',
+  writing: 'Writing',
+} as const
+
+type ProjectType = typeof projectType[keyof typeof projectType]
 
 interface Project {
   name: string
   lastUpdate: number
   description: string
+  type: ProjectType[]
   link?: {
     href: string
     label: string
@@ -30,6 +43,7 @@ const projects: Project[] = [
     description:
       'A collection of my Leetcode solutions',
     link: { href: 'https://github.com/iamnbutler/leetcode', label: 'iamnbutler/leetcode' },
+    type: ['Code'],
     logo: logoCode,
   },
   {
@@ -38,6 +52,7 @@ const projects: Project[] = [
     description:
       'A native text editor turned collaboration platform to help developers build software together.',
     link: { href: 'https://zed.dev/download', label: 'zed.dev/download' },
+    type: ['Code', 'Design'],
     logo: logoZed,
   },
   {
@@ -48,6 +63,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/gpt-tools',
       label: 'iamnbutler/gpt-tools',
     },
+    type: ['Code'],
     logo: logoCode,
   },
   {
@@ -55,6 +71,7 @@ const projects: Project[] = [
     lastUpdate: 2023,
     description: 'A Next.js site for Zed',
     link: { href: 'https://zed.dev/', label: 'zed.dev' },
+    type: ['Code', 'Design'],
     logo: logoZed,
   },
   {
@@ -67,6 +84,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/design-docs',
       label: 'iamnbutler/design-docs',
     },
+    type: ['Code'],
     logo: logoDesignDocs,
   },
   {
@@ -78,6 +96,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/fig-gen',
       label: 'iamnbutler/fig-gen',
     },
+    type: ['Code', 'Art'],
     logo: logoCode,
   },
   {
@@ -88,6 +107,7 @@ const projects: Project[] = [
       href: 'https://github.com/zed-industries/zed-fonts',
       label: 'zed-industries/zed-fonts',
     },
+    type: ['Design'],
     logo: logoZed,
   },
   {
@@ -98,6 +118,7 @@ const projects: Project[] = [
       href: 'https://design.facebook.com/toolsandresources/ios-11-iphone-gui/',
       label: 'design.fb/ios-11-gui',
     },
+    type: ['Design', 'Art'],
     logo: logoDesign,
   },
   {
@@ -108,6 +129,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/explorer',
       label: 'iamnbutler/explorer',
     },
+    type: ['Code'],
     logo: logoCode,
   },
   {
@@ -118,6 +140,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/tetris',
       label: 'iamnbutler/tetris',
     },
+    type: ['Code'],
     logo: logoCode,
   },
   {
@@ -128,6 +151,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/music-stats',
       label: 'iamnbutler/music-stats',
     },
+    type: ['Code', 'Art'],
     logo: logoCode,
   },
   {
@@ -138,6 +162,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/kaishi',
       label: 'iamnbutler/kaishi',
     },
+    type: ['Code'],
     logo: logoCode,
   },
   {
@@ -148,6 +173,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/stagout',
       label: 'iamnbutler/stagout',
     },
+    type: ['Code', 'Design'],
     logo: logoCode,
   },
   {
@@ -158,6 +184,7 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/splash-page',
       label: 'iamnbutler/splash-page',
     },
+    type: ['Code', 'Design'],
     logo: logoCode,
   },
 ]
@@ -173,22 +200,50 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Things I’ve made.',
-}
+// export const metadata: Metadata = {
+//   title: 'Projects',
+//   description: 'Things I’ve made.',
+// }
 
 export default function Projects() {
+  const [filter, setFilter] = useState<ProjectType | 'all'>('all');
+
+  const filteredProjects = filter === 'all' ? projects : projects.filter((p) => p.type.includes(filter));
+
+  const handleFilterChange = (type: ProjectType | 'all') => {
+    setFilter(type);
+  }
+
   return (
     <SimpleLayout
       title="Just a few projects"
       intro="A non-exhaustive list of things I've worked on, or ongoing things."
     >
+      <div className='-mt-8 mb-16 flex gap-1'>
+        <Button
+          variant={filter === 'all' ? 'primary' : 'secondary'}
+          className={'rounded-md'}
+          onClick={() => handleFilterChange('all')}
+        >
+          All
+        </Button>
+        {Object.values(projectType).map((type) => (
+          <Button
+            key={type}
+            variant={filter === type ? 'primary' : 'secondary'}
+            disabled={projects.filter((p) => p.type.includes(type)).length === 0}
+            className={clsx(projects.filter((p) => p.type.includes(type)).length === 0 && 'opacity-50', 'rounded-md')}
+            onClick={() => handleFilterChange(type)}
+          >
+            {type}
+          </Button>
+        ))}
+      </div>
       <ul
         role="list"
         className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {projects.map((project) => (
+        {filteredProjects.map((project) => (
           <Card as="li" key={project.name}>
             <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
               <Image
