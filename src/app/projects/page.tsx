@@ -7,6 +7,7 @@ import logoZed from '@/images/logos/zed.png'
 import logoDesignDocs from '@/images/logos/designdocs.svg'
 import logoCode from '@/images/logos/code.svg'
 import logoDesign from '@/images/logos/design.svg'
+import logoArt from '@/images/logos/art.svg'
 import { useState } from 'react'
 import { Button } from '@/components/Button'
 import clsx from 'clsx'
@@ -96,8 +97,8 @@ const projects: Project[] = [
       href: 'https://github.com/iamnbutler/fig-gen',
       label: 'iamnbutler/fig-gen',
     },
-    type: ['Code', 'Art'],
-    logo: logoCode,
+    type: ['Art', 'Code'],
+    logo: logoArt,
   },
   {
     name: 'Zed Fonts',
@@ -118,8 +119,8 @@ const projects: Project[] = [
       href: 'https://design.facebook.com/toolsandresources/ios-11-iphone-gui/',
       label: 'design.fb/ios-11-gui',
     },
-    type: ['Design', 'Art'],
-    logo: logoDesign,
+    type: ['Art', 'Design'],
+    logo: logoArt,
   },
   {
     name: 'Explorer',
