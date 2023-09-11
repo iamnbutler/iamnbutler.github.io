@@ -6,6 +6,7 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import logoZed from '@/images/logos/zed.png'
 import logoDesignDocs from '@/images/logos/designdocs.svg'
 import logoCode from '@/images/logos/code.svg'
+import logoDesign from '@/images/logos/design.svg'
 
 interface Project {
   name: string
@@ -88,6 +89,16 @@ const projects: Project[] = [
       label: 'zed-industries/zed-fonts',
     },
     logo: logoZed,
+  },
+  {
+    name: 'FB iOS11 GUI Backgrounds',
+    lastUpdate: 2017,
+    description: 'A set of abstract 3D backgrounds for the Facebook iOS 11 GUI resource.',
+    github: {
+      href: 'https://design.facebook.com/toolsandresources/ios-11-iphone-gui/',
+      label: 'design.fb/ios-11-gui',
+    },
+    logo: logoDesign,
   },
   {
     name: 'Explorer',
