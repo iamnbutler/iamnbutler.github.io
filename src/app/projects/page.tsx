@@ -8,7 +8,7 @@ import logoDesignDocs from '@/images/logos/designdocs.svg'
 import logoCode from '@/images/logos/code.svg'
 import logoDesign from '@/images/logos/design.svg'
 import logoArt from '@/images/logos/art.svg'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Button } from '@/components/Button'
 import clsx from 'clsx'
 
@@ -21,6 +21,13 @@ const projectType = {
 
 type ProjectType = typeof projectType[keyof typeof projectType]
 
+const withFilterType = {
+  details: 'Details',
+  code: 'Code',
+} as const
+
+type WithFilterType = typeof withFilterType[keyof typeof withFilterType]
+
 interface Project {
   name: string
   lastUpdate: number
@@ -31,6 +38,10 @@ interface Project {
     label: string
   }
   github?: {
+    href: string
+    label: string
+  }
+  details?: {
     href: string
     label: string
   }
@@ -208,37 +219,75 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export default function Projects() {
   const [filter, setFilter] = useState<ProjectType | 'all'>('all');
+  const [withFilters, setWithFilters] = useState<WithFilterType[]>([]);
 
-  const filteredProjects = filter === 'all' ? projects : projects.filter((p) => p.type.includes(filter));
+  const filteredProjects = useMemo(() => {
+    let result = projects;
 
-  const handleFilterChange = (type: ProjectType | 'all') => {
-    setFilter(type);
-  }
+    if (filter !== 'all') {
+      result = result.filter((p) => p.type.includes(filter));
+    }
+
+    withFilters.forEach((filter) => {
+      if (filter === 'Code') {
+        result = result.filter((p) => p.type.includes('Code'));
+      } else if (filter === 'Details') {
+        result = result.filter((p) => p.details);
+      }
+    });
+
+    return result;
+  }, [filter, withFilters]);
 
   return (
     <SimpleLayout
       title="Just a few projects"
       intro="A non-exhaustive list of things I've worked on, or ongoing things."
     >
-      <div className='-mt-8 mb-16 flex gap-1'>
-        <Button
-          variant={filter === 'all' ? 'primary' : 'secondary'}
-          className={'rounded-md'}
-          onClick={() => handleFilterChange('all')}
-        >
-          All
-        </Button>
-        {Object.values(projectType).map((type) => (
-          <Button
-            key={type}
-            variant={filter === type ? 'primary' : 'secondary'}
-            disabled={projects.filter((p) => p.type.includes(type)).length === 0}
-            className={clsx(projects.filter((p) => p.type.includes(type)).length === 0 && 'opacity-50', 'rounded-md')}
-            onClick={() => handleFilterChange(type)}
-          >
-            {type}
-          </Button>
-        ))}
+      <div className='-mt-8 mb-16 flex gap-8 items-center'>
+        <div className='flex flex-col'>
+          <p className='text-xs text-zinc-400 dark:text-zinc-500'>Filter</p>
+          <div className='flex gap-px items-center border border-zinc-200 dark:border-zinc-800 overflow-hidden rounded-lg'>
+            <Button
+              variant={filter === 'all' ? 'primary' : 'secondary'}
+              className={'rounded-md'}
+              onClick={() => setFilter('all')}
+            >
+              All
+            </Button>
+            {Object.values(projectType).map((type) => (
+              <Button
+                key={type}
+                variant={filter === type ? 'primary' : 'secondary'}
+                disabled={projects.filter((p) => p.type.includes(type)).length === 0}
+                className={clsx(
+                  projects.filter((p) => p.type.includes(type)).length === 0 && 'opacity-40 cursor-not-allowed',
+                  'rounded-md')}
+                onClick={() => setFilter(type)}
+              >
+                {type}
+              </Button>
+            ))}
+          </div>
+        </div>
+        <div className='flex flex-col'>
+          <p className='text-xs text-zinc-400 dark:text-zinc-500'>With</p>
+          <div className='flex gap-3'>
+            {/* With Filters */}
+            {Object.values(withFilterType).map((type) => (
+              <Button
+                key={type}
+                variant={withFilters.includes(type) ? 'primary' : 'secondary'}
+                className='rounded-md'
+                onClick={() => setWithFilters(withFilters.includes(type)
+                  ? withFilters.filter((f) => f !== type)
+                  : [...withFilters, type])}
+              >
+                {type}
+              </Button>
+            ))}
+          </div>
+        </div>
       </div>
       <ul
         role="list"
@@ -256,7 +305,7 @@ export default function Projects() {
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link
-                href={(project.link?.href || project.github?.href) ?? ''}
+                href={(project.link?.href || project.github?.href || project.details?.label) ?? ''}
               >
                 {project.name}
               </Card.Link>
@@ -268,11 +317,16 @@ export default function Projects() {
             <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
               <LinkIcon className="h-6 w-6 flex-none" />
               <span className="ml-2">
-                {(project.link?.label || project.github?.label) ?? ''}
+                {(project.link?.label || project.github?.label || project.details?.label) ?? ''}
               </span>
             </p>
           </Card>
         ))}
+        {filteredProjects.length === 0 && (
+          <div className='col-span-full flex flex-col items-center justify-center'>
+            <p className='text-zinc-400 dark:text-zinc-600'>No projects found.</p>
+          </div>
+        )}
       </ul>
     </SimpleLayout>
   )
