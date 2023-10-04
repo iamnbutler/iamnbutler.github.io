@@ -1,0 +1,24 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { FullImageWithDetails } from '@/components/FullImageWithDetails'
+import mobile_home_2 from '@/images/project/mobile-home-2/work_home_desktop.png'
+
+export const article = {
+  author: 'Nate Butler',
+  date: '2019-11-28',
+  title: 'Mobile Home 2',
+  description:
+    'WIP',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Mobile Home is an internal tool at Facebook that helps you do all the things you need to do in a day – Get the shuttle schedule, see any urgent tasks assigned to you, or find out what is being served for lunch on campus (and even how many people are in line!)
+
+<FullImageWithDetails image={mobile_home_2}>
+A desktop concept for the Mobile Home 2 called "Work Home".
+</FullImageWithDetails>

@@ -123,6 +123,17 @@ const projects: Project[] = [
     logo: logoZed,
   },
   {
+    name: 'Mobile Home 2',
+    lastUpdate: 2019,
+    description: 'Helping Facebook employees be productive on the go.',
+    type: ['Design'],
+    details: {
+      href: '/projects/mobile-home-2',
+      label: 'projects/mobile-home-2',
+    },
+    logo: logoDesign,
+  },
+  {
     name: 'FB iOS11 GUI Backgrounds',
     lastUpdate: 2017,
     description: 'A set of abstract 3D backgrounds for the Facebook iOS 11 GUI resource.',
