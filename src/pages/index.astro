@@ -1,0 +1,34 @@
+---
+import Navigation from "../components/nav.astro";
+import FragmentID from "../components/fragment-id.astro";
+import "./style.css";
+import { getCollection, getEntry } from "astro:content";
+const allFragments = await getCollection("fragment");
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <Navigation />
+        <section class="card-grid">
+            {
+                allFragments.map((f, ix) => (
+                    <a href={f.slug} class="card">
+                        <header>
+                            <div class="f-number">{ix}</div>
+                            <FragmentID slug={f.slug} />
+                        </header>
+                        <h2>{f.data.title}</h2>
+                        <p class="caption">{f.data.preview}</p>
+                    </a>
+                ))
+            }
+        </section>
+    </body>
+</html>

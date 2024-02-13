@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background: #1a1b24;
+}
+
+body {
+    font-family: "PP Supply Mono", monospace;
+    font-size: 14px;
+    text-underline-offset: 2px;
+    color: #948e98;
+}
+
+.caption {
+    color: #a3aeaf;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+a,
+a:visited,
+a:active {
+    color: #e9dbd4;
+    text-decoration: none;
+}
+
+.card {
+    border: 1px solid #5d636e;
+    /* background: #30384c; */
+    padding: 4px;
+    aspect-ratio: 9/16;
+}
+
+.card:active {
+    border: 1px solid #90fcf1;
+}
+
+.card header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.f-number {
+    color: #f4d26c;
+    font-size: 4rem;
+    font-weight: 200;
+    text-decoration: none;
+}
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}

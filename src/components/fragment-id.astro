@@ -1,0 +1,64 @@
+---
+import { createHash } from "crypto";
+
+function hashStringToNumber(str) {
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        var charCode = str.charCodeAt(i);
+        hash = (hash << 5) - hash + charCode;
+        hash = hash & hash;
+    }
+    return hash;
+}
+
+function seedRandom(seed) {
+    return function () {
+        var x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+    };
+}
+
+function rotateGrid(grid) {
+    const size = grid.length;
+    return grid[0].map((col, i) => grid.map((row, j) => grid[size - j - 1][i]));
+}
+
+function getFragmentID(slug) {
+    const seed = createHash("sha256").update(slug).digest("hex");
+    const size = 32;
+    let pixels = Array(size)
+        .fill()
+        .map(() => Array(size).fill("none"));
+    const seedRandomWithSeed = seedRandom(hashStringToNumber(seed));
+
+    const getPixelSeed = (index) => {
+        const char = seed[index % seed.length];
+        return parseInt(char, 16) % 2 === 0 ? 0.7 : 0.3;
+    };
+
+    const getSubtractionSeed = () => seedRandomWithSeed() < 0.2;
+
+    for (let i = 0; i < size * size; i++) {
+        const x = i % size;
+        const y = Math.floor(i / size);
+        const noise = (Math.sin((x / size) * Math.PI * 2) + Math.cos((y / size) * Math.PI * 2)) / 2;
+        if (noise > getPixelSeed(y * size + x)) pixels[y][x] = "#60FFEF";
+
+        // Subtraction algorithm
+        if (getSubtractionSeed()) pixels[y][x] = "none";
+    }
+
+    return { pixels, size };
+}
+---
+
+<svg width={64} height={64} xmlns="http://www.w3.org/2000/svg">
+    {
+        Astro.props.slug &&
+            getFragmentID(Astro.props.slug).pixels.flatMap((row, y) =>
+                row.map((color, x) => (
+                    <rect key={`${x}-${y}`} x={x * 2} y={y * 2} width="2" height="2" fill={color} />
+                )),
+            )
+    }
+</svg>
