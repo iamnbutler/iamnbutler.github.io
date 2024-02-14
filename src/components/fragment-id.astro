@@ -1,63 +1,114 @@
 ---
 import { createHash } from "crypto";
 
-function hashStringToNumber(str) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-        var charCode = str.charCodeAt(i);
+type Grid = number[][];
+
+function hashStringToNumber(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const charCode = str.charCodeAt(i);
         hash = (hash << 5) - hash + charCode;
-        hash = hash & hash;
+        hash |= 0;
     }
     return hash;
 }
 
-function seedRandom(seed) {
+function seedRandom(seed: number): () => number {
     return function () {
-        var x = Math.sin(seed++) * 10000;
+        const x = Math.sin(seed++) * 10000;
         return x - Math.floor(x);
     };
 }
 
-function rotateGrid(grid) {
-    const size = grid.length;
-    return grid[0].map((col, i) => grid.map((row, j) => grid[size - j - 1][i]));
+function createEmptyGrid(size: number): Grid {
+    return Array(size)
+        .fill(0)
+        .map(() => Array(size).fill(0));
 }
 
-function getFragmentID(slug) {
+function randomFill(grid: Grid, rand: () => number): Grid {
+    for (let y = 0; y < grid.length; y++) {
+        for (let x = 0; x < grid[y].length; x++) {
+            if (rand() > 0.95) {
+                grid[y][x] = 1;
+            }
+        }
+    }
+    return grid;
+}
+
+function drawUsingTrig(
+    grid: Grid,
+    rand: () => number,
+    frequency: number,
+    amplitude: number,
+    phase: number,
+    trigFunction: (x: number) => number,
+): Grid {
+    const height = grid.length;
+    const width = grid[0].length;
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const value = trigFunction((x / width) * frequency + phase) * amplitude;
+            if (y / height < value + 0.5 && y / height > 0.5 - value) {
+                grid[y][x] = 1;
+            }
+        }
+    }
+    return grid;
+}
+
+function randomSubtract(grid: Grid, rand: () => number): Grid {
+    for (let y = 0; y < grid.length; y++) {
+        for (let x = 0; x < grid[y].length; x++) {
+            if (rand() < 0.2 && grid[y][x] !== 0) {
+                grid[y][x] = 0;
+            }
+        }
+    }
+    return grid;
+}
+
+function rotateGrid(grid: Grid): Grid {
+    const size = grid.length;
+    const newGrid: Grid = [];
+    for (let i = 0; i < size; i++) {
+        newGrid.push([]);
+        for (let j = 0; j < size; j++) {
+            newGrid[i][j] = grid[size - j - 1][i];
+        }
+    }
+    return newGrid;
+}
+
+function getFragmentID(slug: string): { grid: Grid; size: number } {
     const seed = createHash("sha256").update(slug).digest("hex");
     const size = 32;
-    let pixels = Array(size)
-        .fill()
-        .map(() => Array(size).fill("none"));
-    const seedRandomWithSeed = seedRandom(hashStringToNumber(seed));
+    let grid = createEmptyGrid(size);
+    const rand = seedRandom(hashStringToNumber(seed));
 
-    const getPixelSeed = (index) => {
-        const char = seed[index % seed.length];
-        return parseInt(char, 16) % 2 === 0 ? 0.7 : 0.3;
-    };
+    grid = randomFill(grid, rand);
+    grid = drawUsingTrig(grid, rand, 6, 0.3, 1.3, Math.cos);
+    grid = rotateGrid(grid);
+    grid = randomSubtract(grid, rand);
 
-    const getSubtractionSeed = () => seedRandomWithSeed() < 0.2;
-
-    for (let i = 0; i < size * size; i++) {
-        const x = i % size;
-        const y = Math.floor(i / size);
-        const noise = (Math.sin((x / size) * Math.PI * 2) + Math.cos((y / size) * Math.PI * 2)) / 2;
-        if (noise > getPixelSeed(y * size + x)) pixels[y][x] = "#60FFEF";
-
-        // Subtraction algorithm
-        if (getSubtractionSeed()) pixels[y][x] = "none";
-    }
-
-    return { pixels, size };
+    return { grid, size };
 }
 ---
 
 <svg width={64} height={64} xmlns="http://www.w3.org/2000/svg">
     {
         Astro.props.slug &&
-            getFragmentID(Astro.props.slug).pixels.flatMap((row, y) =>
+            getFragmentID(Astro.props.slug).grid.flatMap((row, y) =>
                 row.map((color, x) => (
-                    <rect key={`${x}-${y}`} x={x * 2} y={y * 2} width="2" height="2" fill={color} />
+                    <rect
+                        key={`${x}-${y}`}
+                        x={x * 2}
+                        y={y * 2}
+                        width="2"
+                        height="2"
+                        fill={color === 0 ? "none" : "#60FFEF"}
+                    />
                 )),
             )
     }
