@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+const allFragments = await getCollection("fragment");
+allFragments.reverse();
+---
+
+<style>
+    nav {
+        padding: 1rem;
+    }
+</style>
+
+<nav>
+    {allFragments.map((f, ix) => <a href={`f/${f.slug}`}>{ix}</a>)}
+</nav>

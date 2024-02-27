@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/base-layout.astro";
+import { getCollection, getEntry } from "astro:content";
+const allFragments = await getCollection("fragment");
+---
+
+<BaseLayout title="nate.rip">
+    <section class="card-grid">
+        {
+            allFragments.map((f, ix) => (
+                <a href={`f/${f.slug}`} class="card">
+                    <header>
+                        <div class="f-number">{ix}</div>
+                    </header>
+                    <h2>{f.data.title}</h2>
+                    <p class="caption">{f.data.preview}</p>
+                </a>
+            ))
+        }
+    </section>
+</BaseLayout>
