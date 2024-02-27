@@ -6,6 +6,7 @@ const fragmentCollection = defineCollection({
     date_published: z.date(),
     title: z.string(),
     preview: z.string(),
+    tags: z.array(z.string()),
   }),
 });
 

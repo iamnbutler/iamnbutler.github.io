@@ -34,7 +34,8 @@ def create_content_index(src_folder: str) -> None:
                         'slug': slug,
                         'date_published': metadata.get('date_published', 'No Date Published'),
                         'title': metadata.get('title', 'No Title'),
-                        'preview': metadata.get('preview', 'No Preview')
+                        'preview': metadata.get('preview', 'No Preview'),
+                        'tags': json.loads(metadata.get('tags', '[]'))
                     }
 
     with open('index/content.json', 'w', encoding='utf-8') as f:
