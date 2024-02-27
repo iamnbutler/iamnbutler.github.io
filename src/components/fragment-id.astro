@@ -102,7 +102,6 @@ function getFragmentID(slug: string): { grid: Grid; size: number } {
             getFragmentID(Astro.props.slug).grid.flatMap((row, y) =>
                 row.map((color, x) => (
                     <rect
-                        key={`${x}-${y}`}
                         x={x * 2}
                         y={y * 2}
                         width="2"
