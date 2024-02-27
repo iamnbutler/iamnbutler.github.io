@@ -1,15 +1,31 @@
 ---
 import { getCollection } from "astro:content";
 const allFragments = await getCollection("fragment");
-allFragments.reverse();
+const maxLength = Math.max(2, String(allFragments.length - 1).length);
 ---
 
 <style>
-    nav {
+    section {
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 200px;
+    }
+    nav {
+        display: flex;
+        gap: 1rem;
     }
 </style>
 
-<nav>
-    {allFragments.map((f, ix) => <a href={`f/${f.slug}`}>{ix}</a>)}
-</nav>
+<section>
+    <h3>Fragments</h3>
+    <nav>
+        {
+            allFragments.map((f, ix) => {
+                const paddedIndex = String(ix).padStart(maxLength, "0");
+                return <a href={`f/${f.slug}`}>{paddedIndex}</a>;
+            })
+        }
+    </nav>
+</section>
