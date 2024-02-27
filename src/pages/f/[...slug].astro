@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/base-layout.astro";
 import FragmentSidebar from "../../components/fragment-sidebar.astro";
 import { getCollection } from "astro:content";
+import { format } from "date-fns";
 export async function getStaticPaths() {
     const allFragments = await getCollection("fragment");
     return allFragments.map((entry) => ({
@@ -20,12 +21,31 @@ const { Content } = await entry.render();
         gap: 1rem;
         flex-wrap: wrap;
     }
+    h1 {
+        font-size: 2rem;
+        font-weight: 300;
+    }
+    .meta {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        font-size: 0.8rem;
+    }
 </style>
 
 <BaseLayout title={`${entry.data.title} - nate.rip`}>
     <section>
         <article>
-            <h1>{entry.data.title}</h1>
+            <header>
+                <h1>{entry.data.title}</h1>
+                <div class="meta">
+                    <time datetime={entry.data.date_published}
+                        >{format(new Date(entry.data.date_published), "PPP")}</time
+                    >
+                    <span>•</span>
+                    <p>{entry.data.tags.join(", ")}</p>
+                </div>
+            </header>
             <Content />
         </article>
         <FragmentSidebar />
