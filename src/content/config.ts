@@ -5,7 +5,6 @@ const fragmentCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     preview: z.string(),
-    body: z.string(),
   }),
 });
 

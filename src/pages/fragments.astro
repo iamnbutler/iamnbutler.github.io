@@ -1,8 +1,0 @@
----
-import { getCollection, getEntry } from "astro:content";
-const allFragments = await getCollection("fragment");
----
-
-<h1>Fragment</h1>
-
-{allFragments.map((f) => <a href={f.slug}>{f.data.title}</a>)}
