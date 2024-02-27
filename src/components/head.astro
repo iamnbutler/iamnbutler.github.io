@@ -3,13 +3,21 @@ interface HeadProps {
     title: string;
 }
 
+const is_dev = import.meta.env.DEV;
 const { title } = Astro.props as HeadProps;
 ---
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <!-- Show a different favicon if in development env -->
+    <link rel="icon" href={`/icon${is_dev && "-dev"}.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
 </head>
