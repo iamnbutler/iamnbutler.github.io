@@ -39,7 +39,7 @@ const { Content } = await entry.render();
             <header>
                 <h1>{entry.data.title}</h1>
                 <div class="meta">
-                    <time datetime={entry.data.date_published}
+                    <time datetime={entry.data.date_published.toISOString()}
                         >{format(new Date(entry.data.date_published), "PPP")}</time
                     >
                     <span>•</span>

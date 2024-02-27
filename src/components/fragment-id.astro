@@ -39,7 +39,6 @@ function randomFill(grid: Grid, rand: () => number): Grid {
 
 function drawUsingTrig(
     grid: Grid,
-    rand: () => number,
     frequency: number,
     amplitude: number,
     phase: number,
@@ -88,7 +87,7 @@ function getFragmentID(slug: string): { grid: Grid; size: number } {
     const rand = seedRandom(hashStringToNumber(seed));
 
     grid = randomFill(grid, rand);
-    grid = drawUsingTrig(grid, rand, 6, 0.3, 1.3, Math.cos);
+    grid = drawUsingTrig(grid, 6, 0.3, 1.3, Math.cos);
     grid = rotateGrid(grid);
     grid = randomSubtract(grid, rand);
 
