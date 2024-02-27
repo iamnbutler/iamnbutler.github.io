@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/base-layout.astro";
+import FragmentSidebar from "../../components/fragment-sidebar.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
     const allFragments = await getCollection("fragment");
@@ -12,9 +13,21 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
+<style>
+    section {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+</style>
+
 <BaseLayout title={entry.data.title}>
-    <article>
-        <h1>{entry.data.title}</h1>
-        <Content />
-    </article>
+    <section>
+        <article>
+            <h1>{entry.data.title}</h1>
+            <Content />
+        </article>
+        <FragmentSidebar />
+    </section>
 </BaseLayout>
