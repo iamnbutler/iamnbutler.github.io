@@ -24,7 +24,7 @@ const maxLength = Math.max(2, String(allFragments.length - 1).length);
         {
             allFragments.map((f, ix) => {
                 const paddedIndex = String(ix).padStart(maxLength, "0");
-                return <a href={`f/${f.slug}`}>{paddedIndex}</a>;
+                return <a href={`${f.slug}`}>{paddedIndex}</a>;
             })
         }
     </nav>
