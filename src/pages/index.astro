@@ -4,8 +4,10 @@ import { getCollection } from "astro:content";
 const allFragments = await getCollection("fragment");
 ---
 
-<BaseLayout title="nate.rip">
-    <section class="card-grid">
+<BaseLayout title="nate.rip" fullWidth>
+    <section
+        class="flex-none grid grid-cols-6 gap-4 p-4 md:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1"
+    >
         {
             allFragments
                 .slice()
@@ -13,7 +15,9 @@ const allFragments = await getCollection("fragment");
                 .map((f, ix) => (
                     <a href={`f/${f.slug}`} class="card">
                         <header>
-                            <div class="f-number">{allFragments.length - 1 - ix}</div>
+                            <div class="f-number">
+                                {allFragments.length - 1 - ix}
+                            </div>
                         </header>
                         <h2>{f.data.title}</h2>
                         <p class="caption">{f.data.preview}</p>

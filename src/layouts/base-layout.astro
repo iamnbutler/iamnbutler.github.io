@@ -3,14 +3,46 @@ import "../style.css";
 import Head from "../components/head.astro";
 import Footer from "../components/footer.astro";
 import Nav from "../components/nav.astro";
-const { title } = Astro.props;
+
+interface Props {
+    title: string;
+    fullWidth?: boolean;
+}
+
+const { title, fullWidth } = Astro.props;
+
+const lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas efficitur faucibus vestibulum. Ut ac ipsum at libero vehicula scelerisque ut quis nisl. In hac habitasse platea dictumst. Sed finibus, eros sed bibendum sagittis, arcu neque ornare turpis, in feugiat odio justo ac est. Nunc lacus dolor, pharetra et interdum eget, euismod pretium libero. Phasellus ut augue luctus, pulvinar tellus ut, blandit sapien. Mauris gravida, est a posuere tempus, leo nisi tempor felis, eget laoreet erat elit eu velit. Suspendisse non posuere ipsum, quis congue odio. Ut sed nulla mollis, convallis tortor sit amet, pellentesque neque. Etiam augue lacus, semper at pretium in, maximus quis dui. Nunc vitae nulla eu ex semper porttitor eget facilisis leo. Ut volutpat quam sit amet ornare posuere.
+
+Praesent vestibulum arcu augue, id bibendum augue suscipit at. In in mauris id massa ornare mattis sed id mi. Nullam malesuada sapien sem, ac auctor metus condimentum aliquet. Aliquam nec sem dolor. Integer tortor arcu, consequat a eros vitae, mollis feugiat libero. Aliquam in mi id turpis vestibulum suscipit non at magna. Nam vestibulum ex ac faucibus porta. Sed in leo finibus, convallis eros ut, suscipit tortor. Fusce a lorem id nisl finibus gravida in ac velit. Integer eu iaculis turpis. Etiam et malesuada neque, in molestie ipsum. Pellentesque dictum viverra diam, sed porttitor turpis congue at. Proin sed nisi ullamcorper, porttitor sapien id, tempor nisi. Vestibulum aliquam lacinia urna, vitae mattis magna iaculis ut. Duis quis ullamcorper nibh.
+
+Pellentesque accumsan turpis mi, non cursus eros bibendum nec. Nullam porttitor, nulla quis laoreet convallis, erat eros maximus diam, a dignissim neque tellus quis turpis. Sed libero justo, finibus ac sollicitudin id, semper in lectus. Ut bibendum mauris convallis metus congue, non pharetra elit convallis. Suspendisse et aliquet dui. Suspendisse potenti. Aliquam vel finibus eros. Donec ac neque sed ante molestie rutrum eu luctus enim.
+
+Nunc non tortor vitae ligula facilisis varius eget nec nunc. Aenean id enim eget arcu posuere semper. Ut dictum facilisis risus sit amet cursus. Duis in ligula eu mauris posuere sagittis eu sit amet nisl. Fusce vestibulum tincidunt tellus, non hendrerit lectus tincidunt eu. Phasellus eu justo consectetur leo maximus viverra eu vitae arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed iaculis vehicula quam sed dictum.`;
 ---
 
 <html lang="en">
     <Head title={title} />
     <body>
         <Nav />
-        <slot />
+        {
+            fullWidth ? (
+                <main class="h-screen flex w-full overflow-hidden">
+                    <div class="w-1/3 overflow-y-scroll">
+                        <slot />
+                    </div>
+                    <div class="w-2/3 flex-grow overflow-hidden" id="art">
+                        {lipsum}
+                        {lipsum}
+                        {lipsum}
+                        {lipsum}
+                    </div>
+                </main>
+            ) : (
+                <main>
+                    <slot />
+                </main>
+            )
+        }
         <Footer />
     </body>
 </html>
