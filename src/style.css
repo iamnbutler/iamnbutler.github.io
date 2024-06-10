@@ -91,9 +91,14 @@ article p {
 }
 
 #art {
-    font-size: 0.8rem;
+    width: 800px;
+    height: 800px;
+    font-size: 0.8em;
+    font-style: italic;
+    font-family: monospace;
     -webkit-text-fill-color: transparent;
-    background: url("/img/kuroneko-transparent.png");
+    background: url("/img/kuroneko.png");
+    background-size: 800px;
     -webkit-background-clip: text;
     background-size: 50;
     background-position: top left;

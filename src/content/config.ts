@@ -1,5 +1,4 @@
 import { z, defineCollection } from "astro:content";
-
 const fragmentCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -10,6 +9,14 @@ const fragmentCollection = defineCollection({
   }),
 });
 
+const pageCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   fragment: fragmentCollection,
+  page: pageCollection,
 };
