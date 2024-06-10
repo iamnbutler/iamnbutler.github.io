@@ -3,7 +3,8 @@ import "../style.css";
 import Head from "../components/head.astro";
 import Footer from "../components/footer.astro";
 import Nav from "../components/nav.astro";
-import { lipsum } from "../lib/content.ts";
+import Kuroneko from "../components/kuroneko.astro";
+import FragmentList from "../components/fragment-list.astro";
 
 interface Props {
     title: string;
@@ -13,34 +14,25 @@ interface Props {
 const { title, fullWidth } = Astro.props;
 ---
 
+<style>
+    * {
+        font-family: "Visitor TT1 (BRK)";
+    }
+</style>
+
 <html lang="en">
     <Head title={title} />
-    <body
-        class="dark bg-white text-black dark:bg-black dark:text-white min-h-screen w-screen overflow-x-hidden flex flex-col justify-between"
-    >
-        <Nav />
-        {
-            fullWidth ? (
-                <main class="flex w-full">
-                    <div class="w-1/3 overflow-y-scroll">
-                        <slot />
-                    </div>
-                    <div class="w-2/3 flex-grow overflow-hidden">
-                        <div
-                            id="art"
-                            class="max-w-900px mx-auto h-full"
-                            style={`background-image: url('/img/frames/kuroneko_blink_0.png')`}
-                        >
-                            {lipsum}
-                        </div>
-                    </div>
-                </main>
-            ) : (
-                <main>
+    <body class="h-screen max-h-screen w-screen overflow-hidden p-4 relative">
+        <div class="flex flex-col h-full gap-4">
+            <Nav />
+            <div class="flex h-full w-full gap-12 flex-grow">
+                <FragmentList />
+                <main class="flex-none w-1/2 overflow-y-scroll">
                     <slot />
                 </main>
-            )
-        }
-        <Footer />
+            </div>
+            <Footer />
+        </div>
+        <Kuroneko />
     </body>
 </html>

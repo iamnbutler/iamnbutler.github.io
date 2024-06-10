@@ -1,0 +1,33 @@
+---
+import { format } from "date-fns";
+
+type ArticleProps = {
+    title: string;
+    date_published?: Date;
+    tags?: string[];
+};
+
+let { title, date_published, tags } = Astro.props as ArticleProps;
+---
+
+<article class="py-12 mx-auto max-w-[552px] flex flex-col gap-12">
+    <header class="flex flex-col gap-2">
+        <h1 class="text-4xl">{title}</h1>
+        <div class="meta">
+            {
+                date_published && (
+                    <>
+                        <time datetime={date_published.toISOString()}>
+                            {format(new Date(date_published), "PPP")}
+                        </time>
+                        <span>•</span>
+                    </>
+                )
+            }
+            {tags && <p>{tags.join(", ")}</p>}
+        </div>
+    </header>
+    <div>
+        <slot />
+    </div>
+</article>

@@ -1,0 +1,9 @@
+---
+type IconProps = {
+    name: string;
+};
+
+const { name } = Astro.props as IconProps;
+---
+
+<img src=`/src/icons/src/chunk/${name}.svg` width="12" height="12" class="" />

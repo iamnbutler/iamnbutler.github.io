@@ -1,0 +1,36 @@
+---
+import { lipsum } from "../lib/content.ts";
+---
+
+<style>
+    #art {
+        width: 256px;
+        height: 256px;
+        font-size: 0.8em;
+        line-height: 0.8;
+        font-style: italic;
+        /* font-family: monospace; */
+        -webkit-text-fill-color: transparent;
+        background: url("/img/kuroneko.png");
+        background-size: 256px;
+        -webkit-background-clip: text;
+        background-size: 50;
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<section class="fixed bottom-24 right-24 border border-black">
+    <header
+        class="h-4 border-b border-black w-full justify-end items-center pr-1 flex text-black/50"
+    >
+        x
+    </header>
+    <div
+        id="art"
+        class="p-4"
+        style={`background-image: url('/img/frames/kuroneko_blink_0.png')`}
+    >
+        {lipsum}
+    </div>
+</section>

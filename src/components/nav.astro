@@ -1,15 +1,23 @@
 ---
-
+import Icon from "./icon.astro";
 ---
 
 <style>
     nav {
-        display: flex;
-        gap: 2em;
-        padding: 1em;
+        font-family: "Visitor TT1 (BRK)";
     }
 </style>
 
-<nav>
-    <a href="/">nate.rip</a>
+<nav class="w-full flex gap-2 justify-between">
+    <!-- Left -->
+    <section class="flex gap-2">
+        <Icon name="arrow-left" />
+        <p>nate.rip</p>
+    </section>
+    <!-- Left -->
+    <section class="flex gap-2">
+        <a href="/">index</a>
+        <a href="/f/00">fragments</a>
+        <a href="/f/00">bio</a>
+    </section>
 </nav>
