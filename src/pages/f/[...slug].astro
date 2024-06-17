@@ -1,9 +1,11 @@
 ---
+import { getCollection } from "astro:content";
+const allFragments = await getCollection("fragment");
+const allSets = await getCollection("fragmentSet");
+
 import BaseLayout from "../../layouts/base-layout.astro";
 import FragmentSidebar from "../../components/fragment-sidebar.astro";
-import { getCollection } from "astro:content";
 import { format } from "date-fns";
-import Article from "../../components/article.astro";
 export async function getStaticPaths() {
     const allFragments = await getCollection("fragment");
     return allFragments.map((entry) => ({
@@ -12,6 +14,7 @@ export async function getStaticPaths() {
     }));
 }
 const { entry } = Astro.props;
+const set_title = allSets.find((s) => s.slug === entry.set)?.data.title;
 const { Content } = await entry.render();
 ---
 
@@ -26,6 +29,7 @@ const { Content } = await entry.render();
         font-size: 2rem;
         font-weight: 300;
     }
+
     .meta {
         display: flex;
         gap: 0.5rem;
@@ -35,29 +39,34 @@ const { Content } = await entry.render();
 </style>
 
 <BaseLayout title={`${entry.data.title} - nate.rip`}>
-    <Article
-        title={entry.data.title}
-        date_published={entry.data.date_published}
-        tags={entry.data.tags}
-    >
+    <article class="mx-auto max-w-[552px] flex flex-col">
+        <header class="flex flex-col gap-2">
+            <h1 class="type-large-3">{entry.data.title}</h1>
+
+            <div class="meta type-small-1 muted-text">
+                {
+                    entry.data.date_published && (
+                        <>
+                            <time
+                                datetime={entry.data.date_published.toISOString()}
+                            >
+                                {format(
+                                    new Date(entry.data.date_published),
+                                    "PPP",
+                                )}
+                            </time>
+                            <span>•</span>
+                        </>
+                    )
+                }
+                {entry.data.tags && <p>{entry.data.tags.join(", ")}</p>}
+            </div>
+            {
+                set_title ? (
+                    <p class="text-sm low-contrast-text">Part of {set_title}</p>
+                ) : null
+            }
+        </header>
         <Content />
-    </Article>
-    <!-- <section>
-        <article>
-            <header>
-                <h1>{entry.data.title}</h1>
-                <div class="meta">
-                    <time datetime={entry.data.date_published.toISOString()}
-                        >{
-                            format(new Date(entry.data.date_published), "PPP")
-                        }</time
-                    >
-                    <span>•</span>
-                    <p>{entry.data.tags.join(", ")}</p>
-                </div>
-            </header>
-            <Content />
-        </article>
-        <FragmentSidebar />
-    </section> -->
+    </article>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 const allFragments = await getCollection("fragment");
+const allSets = await getCollection("fragmentSet");
 
 type Fragment = (typeof allFragments)[0];
 
@@ -10,19 +11,11 @@ type FragmentProps = {
 };
 
 const { f, ix } = Astro.props as FragmentProps;
-
-const fragmentNumber = ix.toString().padStart(3, "0");
 ---
 
-<a
-    href={`/f/${f.slug}`}
-    class="border border-transparent h-20 flex gap-12 w-full"
->
-    <div class="flex-none w-20 h-20">
-        {fragmentNumber}
-    </div>
+<a href={`/f/${f.slug}`} class="border border-transparent flex gap-12 w-full">
     <div class="flex flex-col h-full flex-grow">
-        <h2>{f.data.title}</h2>
-        <p class="opacity-60">{f.data.preview}</p>
+        <h2 class="type-large-1">{f.data.title}</h2>
+        <p class="type-default muted-text">{f.data.preview}</p>
     </div>
 </a>

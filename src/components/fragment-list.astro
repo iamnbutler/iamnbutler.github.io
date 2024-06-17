@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 const allFragments = await getCollection("fragment");
 ---
 
-<section class="flex flex-col flex-none w-1/2 overflow-y-scroll">
+<section class="flex flex-col gap-2 flex-none max-w-80 overflow-y-scroll">
     {
         allFragments
             .slice()

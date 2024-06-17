@@ -14,12 +14,6 @@ interface Props {
 const { title, fullWidth } = Astro.props;
 ---
 
-<style>
-    * {
-        font-family: "Visitor TT1 (BRK)";
-    }
-</style>
-
 <html lang="en">
     <Head title={title} />
     <body class="h-screen max-h-screen w-screen overflow-hidden p-4 relative">
@@ -27,12 +21,10 @@ const { title, fullWidth } = Astro.props;
             <Nav />
             <div class="flex h-full w-full gap-12 flex-grow">
                 <FragmentList />
-                <main class="flex-none w-1/2 overflow-y-scroll">
+                <main class="flex-grow overflow-y-scroll">
                     <slot />
                 </main>
             </div>
-            <Footer />
         </div>
-        <Kuroneko />
     </body>
 </html>
