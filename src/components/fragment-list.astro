@@ -8,7 +8,11 @@ const allFragments = await getCollection("fragment");
     {
         allFragments
             .slice()
-            .reverse()
+            .sort(
+                (a, b) =>
+                    new Date(b.data.date_published).getTime() -
+                    new Date(a.data.date_published).getTime(),
+            )
             .map((f, ix) => <FragmentListItem f={f} ix={ix} />)
     }
 </section>
