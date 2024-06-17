@@ -6,11 +6,9 @@ const allFragments = await getCollection("fragment");
 
 <section class="flex flex-col flex-none w-1/2 overflow-y-scroll">
     {
-        Array.from({ length: 10 }).flatMap(() =>
-            allFragments
-                .slice()
-                .reverse()
-                .map((f, ix) => <FragmentListItem f={f} ix={ix} />),
-        )
+        allFragments
+            .slice()
+            .reverse()
+            .map((f, ix) => <FragmentListItem f={f} ix={ix} />)
     }
 </section>
