@@ -6,4 +6,17 @@ type IconProps = {
 const { name } = Astro.props as IconProps;
 ---
 
-<img src=`/src/icons/src/chunk/${name}.svg` width="12" height="12" class="" />
+<style>
+    .icon-element {
+        display: inline-block;
+        vertical-align: middle;
+        fill: currentColor;
+    }
+</style>
+
+<img
+    src=`/src/icons/src/chunk/${name}.svg`
+    width="12"
+    height="12"
+    class="icon-element icon-primary"
+/>

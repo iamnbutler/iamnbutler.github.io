@@ -124,6 +124,10 @@
         color: var(--text-link);
     }
 
+    .icon-primary {
+        fill: var(--primary-text);
+    }
+
     .background-color {
         background-color: var(--background-color);
     }
