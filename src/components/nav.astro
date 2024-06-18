@@ -3,6 +3,10 @@ import * as Icon from "../icons";
 ---
 
 <style>
+    nav {
+        background: var(--background-color);
+    }
+
     .text-nav-link,
     .text-nav-link:visited,
     .text-nav-link:active {
@@ -14,7 +18,10 @@ import * as Icon from "../icons";
     }
 </style>
 
-<nav class="w-full flex gap-2 justify-between">
+<nav
+    id="top-nav"
+    class="sticky top-0 w-full flex items-center gap-2 justify-between pb-2"
+>
     <!-- Left -->
     <section class="flex gap-3">
         <a class="text-nav-link" href="/">nate.rip</a>
@@ -22,7 +29,7 @@ import * as Icon from "../icons";
         <!-- <a class="text-nav-link" href="/tags">tags</a> -->
     </section>
     <!-- Left -->
-    <section class="flex gap-2">
+    <section class="flex gap-4">
         <a
             class="text-nav-link icon-primary"
             href="https://twitter.com/iamnbutler"

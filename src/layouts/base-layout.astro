@@ -12,16 +12,35 @@ interface Props {
 }
 
 const { title, fullWidth } = Astro.props;
+const not_index = Astro.url.pathname !== "/";
 ---
 
 <html lang="en">
     <Head title={title} />
     <body class="h-screen max-h-screen w-screen overflow-hidden p-4 relative">
-        <div class="flex flex-col h-full gap-4">
-            <Nav />
-            <div class="flex h-full w-full gap-12 flex-grow">
+        <div class="flex flex-col md:flex-row h-full gap-4">
+            <div class="md:hidden">
+                <Nav />
+            </div>
+            <div
+                id="main-nav"
+                class="hidden md:flex flex-col max-w-96 gap-2 overflow-y-scroll"
+            >
+                <Nav />
+
                 <FragmentList />
+            </div>
+            <div class="flex h-full w-full gap-12 flex-grow">
                 <main class="flex-grow overflow-y-scroll">
+                    {
+                        not_index ? (
+                            <a class="block md:hidden mb-4" href="/">
+                                {" "}
+                                &larr; Back{" "}
+                            </a>
+                        ) : null
+                    }
+
                     <slot />
                 </main>
             </div>

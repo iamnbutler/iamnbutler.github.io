@@ -222,4 +222,9 @@
         border: 1px solid var(--bg1);
         margin: 1rem 0;
     }
+
+    article img {
+        width: 100%;
+        margin: 1rem 0;
+    }
 }

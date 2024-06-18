@@ -1,14 +1,18 @@
 ---
+import FragmentList from "../components/fragment-list.astro";
 import BaseLayout from "../layouts/base-layout.astro";
 ---
 
 <BaseLayout title="nate.rip"
-    ><div class="size-full">
+    ><div class="h-96 md:h-full w-full">
         <div
             class="w-64 flex flex-col items-center justify-center h-full mx-auto"
         >
             <img src="/under_construction.webp" alt="Under construction!" />
             <h2 class="type-large-3 text-center">Under construction!</h2>
         </div>
-    </div></BaseLayout
->
+    </div>
+    <div class="flex md:hidden">
+        <FragmentList />
+    </div>
+</BaseLayout>
