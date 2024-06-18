@@ -1,15 +1,14 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import gruvboxDark from "./shiki_gruvbox_dark.json";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
   markdown: {
     shikiConfig: {
-      themes: {
-        light: "github-light",
-        dark: "github-dark",
-      },
+      defaultColor: false,
+      theme: gruvboxDark,
       langs: [
         "astro",
         "yaml",
