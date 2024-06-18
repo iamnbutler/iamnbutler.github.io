@@ -2,7 +2,7 @@
 date_published: 2022-05-28
 title: "Design Docs V2"
 preview: "Design Docs V2.0 brings a new site built in Next.js, refined content, and a dedicated domain at designdocs.co. It aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry."
-tags: ["design", "web-dev", "js"]
+tags: ["design", "webdev", "js"]
 kind: "post"
 ---
 

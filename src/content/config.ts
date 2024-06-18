@@ -8,13 +8,18 @@ const fragmentKind = {
 export type FragmentKind = keyof typeof fragmentKind;
 
 const tags = {
-  WEB_DEV: "web-dev",
-  PYTHON: "python",
-  JAVASCRIPT: "js",
-  DESIGN: "design",
+  art: "art",
+  design: "design",
+  figma: "figma",
+  javascript: "js",
+  python: "python",
+  rust: "rust",
+  webdev: "webdev",
 };
 
 export type Tag = keyof typeof tags;
+
+export const allTags = Object.keys(tags) as Tag[];
 
 const fragmentCollection = defineCollection({
   type: "content",
