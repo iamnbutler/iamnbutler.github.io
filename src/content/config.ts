@@ -2,13 +2,14 @@ import { z, defineCollection } from "astro:content";
 
 const fragmentKind = {
   POST: "post",
-  IMAGES: "images",
+  IMAGE_SET: "image-set",
 } as const;
 
 export type FragmentKind = keyof typeof fragmentKind;
 
 const tags = {
   art: "art",
+  "3d": "3d",
   design: "design",
   figma: "figma",
   javascript: "js",
