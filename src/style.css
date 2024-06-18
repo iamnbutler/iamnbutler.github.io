@@ -3,189 +3,189 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --red: #cc241d;
+    --red-light: #fb4934;
+    --green: #98971a;
+    --green-light: #b8bb26;
+    --yellow: #d79921;
+    --yellow-light: #fabd2f;
+    --blue: #458588;
+    --blue-light: #83a598;
+    --purple: #b16286;
+    --purple-light: #d3869b;
+    --aqua: #689d6a;
+    --aqua-light: #8ec07c;
+    --orange: #d65d0e;
+    --orange-light: #fe8019;
+    --gray: #928374;
+    --light-gray: #a89984;
+    --bg0_h: #f9f5d7;
+    --bg0_s: #f2e5bc;
+    --bg0: #fbf1c7;
+    --bg1: #ebdbb2;
+    --bg2: #d5c4a1;
+    --bg3: #bdae93;
+    --bg4: #a89984;
+    --fg0: #3c3836;
+    --fg1: #504945;
+    --fg2: #665c54;
+    --fg3: #7c6f64;
+    --fg4: #928374;
+    --fg: #3c3836;
+  }
+
+  /* Gruvbox Dark */
+  @media (prefers-color-scheme: dark) {
     :root {
-        --red: #cc241d;
-        --red-light: #fb4934;
-        --green: #98971a;
-        --green-light: #b8bb26;
-        --yellow: #d79921;
-        --yellow-light: #fabd2f;
-        --blue: #458588;
-        --blue-light: #83a598;
-        --purple: #b16286;
-        --purple-light: #d3869b;
-        --aqua: #689d6a;
-        --aqua-light: #8ec07c;
-        --orange: #d65d0e;
-        --orange-light: #fe8019;
-        --gray: #928374;
-        --light-gray: #a89984;
-        --bg0_h: #f9f5d7;
-        --bg0_s: #f2e5bc;
-        --bg0: #fbf1c7;
-        --bg1: #ebdbb2;
-        --bg2: #d5c4a1;
-        --bg3: #bdae93;
-        --bg4: #a89984;
-        --fg0: #3c3836;
-        --fg1: #504945;
-        --fg2: #665c54;
-        --fg3: #7c6f64;
-        --fg4: #928374;
-        --fg: #3c3836;
+      --red: #9d0006;
+      --red-light: #cc241d;
+      --green: #79740e;
+      --green-light: #98971a;
+      --yellow: #b57614;
+      --yellow-light: #d79921;
+      --blue: #076678;
+      --blue-light: #458588;
+      --purple: #8f3f71;
+      --purple-light: #b16286;
+      --aqua: #427b58;
+      --aqua-light: #689d6a;
+      --orange: #af3a03;
+      --orange-light: #d65d0e;
+      --gray: #665c54;
+      --light-gray: #7c6f64;
+      --bg0_h: #1d2021;
+      --bg0_s: #282828;
+      --bg0: #282828;
+      --bg1: #3c3836;
+      --bg2: #504945;
+      --bg3: #665c54;
+      --bg4: #7c6f64;
+      --fg0: #fbf1c7;
+      --fg1: #ebdbb2;
+      --fg2: #d5c4a1;
+      --fg3: #bdae93;
+      --fg4: #a89984;
+      --fg: #fbf1c7;
     }
+  }
 
-    /* Gruvbox Dark */
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --red: #9d0006;
-            --red-light: #cc241d;
-            --green: #79740e;
-            --green-light: #98971a;
-            --yellow: #b57614;
-            --yellow-light: #d79921;
-            --blue: #076678;
-            --blue-light: #458588;
-            --purple: #8f3f71;
-            --purple-light: #b16286;
-            --aqua: #427b58;
-            --aqua-light: #689d6a;
-            --orange: #af3a03;
-            --orange-light: #d65d0e;
-            --gray: #665c54;
-            --light-gray: #7c6f64;
-            --bg0_h: #1d2021;
-            --bg0_s: #282828;
-            --bg0: #282828;
-            --bg1: #3c3836;
-            --bg2: #504945;
-            --bg3: #665c54;
-            --bg4: #7c6f64;
-            --fg0: #fbf1c7;
-            --fg1: #ebdbb2;
-            --fg2: #d5c4a1;
-            --fg3: #bdae93;
-            --fg4: #a89984;
-            --fg: #fbf1c7;
-        }
-    }
+  :root {
+    --font-family-base: "Lexend", sans-serif;
+    --font-size-base: 18px;
+    --font-weight-base: 350;
+    --line-height-base: 1.5;
 
-    :root {
-        --font-family-base: "Lexend", sans-serif;
-        --font-size-base: 18px;
-        --font-weight-base: 350;
-        --line-height-base: 1.5;
+    --primary-text: var(--fg0);
+    --secondary-text: var(--fg1);
+    --muted-text: var(--fg2);
+    --low-contrast-text: var(--fg3);
+    --text-link: var(--aqua-light);
+    --background-color: var(--bg0_h);
+  }
 
-        --primary-text: var(--fg0);
-        --secondary-text: var(--fg1);
-        --muted-text: var(--fg2);
-        --low-contrast-text: var(--fg3);
-        --text-link: var(--aqua-light);
-        --background-color: var(--bg0_h);
-    }
+  .font-family-base {
+    font-family: var(--font-family-base);
+  }
+  .font-size-base {
+    font-size: var(--font-size-base);
+  }
+  .font-weight-base {
+    font-weight: var(--font-weight-base);
+  }
+  .line-height-base {
+    line-height: var(--line-height-base);
+  }
 
-    .font-family-base {
-        font-family: var(--font-family-base);
-    }
-    .font-size-base {
-        font-size: var(--font-size-base);
-    }
-    .font-weight-base {
-        font-weight: var(--font-weight-base);
-    }
-    .line-height-base {
-        line-height: var(--line-height-base);
-    }
+  .primary-text {
+    color: var(--primary-text);
+  }
+  .secondary-text {
+    color: var(--secondary-text);
+  }
+  .muted-text {
+    color: var(--muted-text);
+  }
+  .low-contrast-text {
+    color: var(--low-contrast-text);
+  }
+  .text-link,
+  .text-link:visited,
+  .text-link:active {
+    color: var(--text-link);
+  }
+  .background-color {
+    background-color: var(--background-color);
+  }
 
-    .primary-text {
-        color: var(--primary-text);
-    }
-    .secondary-text {
-        color: var(--secondary-text);
-    }
-    .muted-text {
-        color: var(--muted-text);
-    }
-    .low-contrast-text {
-        color: var(--low-contrast-text);
-    }
-    .text-link,
-    .text-link:visited,
-    .text-link:active {
-        color: var(--text-link);
-    }
-    .background-color {
-        background-color: var(--background-color);
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+  body {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-base);
+    font-family: var(--font-family-base);
+    line-height: var(--line-height-base);
+    color: var(--primary-text);
+    background-color: var(--background-color);
+  }
 
-    body {
-        font-size: var(--font-size-base);
-        font-weight: var(--font-weight-base);
-        font-family: var(--font-family-base);
-        line-height: var(--line-height-base);
-        color: var(--primary-text);
-        background-color: var(--background-color);
-    }
+  a,
+  a:visited,
+  a:active {
+    color: var(--text-link);
+    text-decoration: none;
+  }
 
-    a,
-    a:visited,
-    a:active {
-        color: var(--text-link);
-        text-decoration: none;
-    }
+  article p {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
 
-    article p {
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
-    }
+  .type-large-6 {
+    font-size: 2.986rem;
+    font-weight: 450;
+  }
 
-    .type-large-6 {
-        font-size: 2.986rem;
-        font-weight: 450;
-    }
+  .type-large-5 {
+    font-size: 2.488rem;
+    font-weight: 450;
+  }
 
-    .type-large-5 {
-        font-size: 2.488rem;
-        font-weight: 450;
-    }
+  .type-large-4 {
+    font-size: 2.074rem;
+    font-weight: 450;
+  }
 
-    .type-large-4 {
-        font-size: 2.074rem;
-        font-weight: 450;
-    }
+  .type-large-3 {
+    font-size: 1.728rem;
+    font-weight: 450;
+    line-height: 1.2;
+  }
 
-    .type-large-3 {
-        font-size: 1.728rem;
-        font-weight: 450;
-        line-height: 1.2;
-    }
+  .type-large-2 {
+    font-size: 1.44rem;
+    font-weight: 450;
+    line-height: 1.2;
+  }
 
-    .type-large-2 {
-        font-size: 1.44rem;
-        font-weight: 450;
-        line-height: 1.2;
-    }
+  .type-large-1 {
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
 
-    .type-large-1 {
-        font-weight: 400;
-        font-size: 1.2rem;
-    }
+  .type-default {
+    font-size: 1rem;
+  }
 
-    .type-default {
-        font-size: 1rem;
-    }
+  .type-small-1 {
+    font-size: 0.833rem;
+  }
 
-    .type-small-1 {
-        font-size: 0.833rem;
-    }
-
-    .type-small-2 {
-        font-size: 0.694rem;
-    }
+  .type-small-2 {
+    font-size: 0.694rem;
+  }
 }

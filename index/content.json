@@ -1,18 +1,18 @@
 {
-    "fragment": {
-        "00": {
-            "slug": "00",
-            "date_published": "2024-02-27",
-            "title": "Building a new site with Astro",
-            "preview": "It's that time of year again \u2013 time to build a new site. This time, I'm using Astro. Here's how it's going.",
-            "tags": ["webdev", "js"]
-        },
-        "01": {
-            "slug": "01",
-            "date_published": "2024-02-27",
-            "title": "Generating a Content Index",
-            "preview": "Ahead of some schemes of building site-wide content search, and perhaps an RSS feed, let's build a content index.",
-            "tags": ["webdev", "python"]
-        }
+  "fragment": {
+    "00": {
+      "slug": "00",
+      "date_published": "2024-02-27",
+      "title": "Building a new site with Astro",
+      "preview": "It's that time of year again \u2013 time to build a new site. This time, I'm using Astro. Here's how it's going.",
+      "tags": ["webdev", "js"]
+    },
+    "01": {
+      "slug": "01",
+      "date_published": "2024-02-27",
+      "title": "Generating a Content Index",
+      "preview": "Ahead of some schemes of building site-wide content search, and perhaps an RSS feed, let's build a content index.",
+      "tags": ["webdev", "python"]
     }
+  }
 }
