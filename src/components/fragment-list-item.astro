@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { formatDistanceToNow } from "date-fns";
 const allFragments = await getCollection("fragment");
 const allSets = await getCollection("fragmentSet");
 
@@ -11,11 +12,15 @@ type FragmentProps = {
 };
 
 const { f, ix } = Astro.props as FragmentProps;
+const date_published = f.data.date_published;
 ---
 
 <a href={`/f/${f.slug}`} class="border border-transparent flex gap-12 w-full">
     <div class="flex flex-col h-full flex-grow">
         <h2 class="type-large-1">{f.data.title}</h2>
         <p class="type-default muted-text">{f.data.preview}</p>
+        <p class="type-small-2 low-contrast-text">
+            {formatDistanceToNow(new Date(date_published), { addSuffix: true })}
+        </p>
     </div>
 </a>

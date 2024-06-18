@@ -14,7 +14,8 @@ export async function getStaticPaths() {
     }));
 }
 const { entry } = Astro.props;
-const set_title = allSets.find((s) => s.slug === entry.set)?.data.title;
+const fragment_set_title = allSets.find((s) => s.slug === entry.data.set)?.data
+    .title;
 const { Content } = await entry.render();
 ---
 
@@ -62,8 +63,10 @@ const { Content } = await entry.render();
                 {entry.data.tags && <p>{entry.data.tags.join(", ")}</p>}
             </div>
             {
-                set_title ? (
-                    <p class="text-sm low-contrast-text">Part of {set_title}</p>
+                fragment_set_title ? (
+                    <p class="text-sm low-contrast-text">
+                        Part of {fragment_set_title}
+                    </p>
                 ) : null
             }
         </header>
