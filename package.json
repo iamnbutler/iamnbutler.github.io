@@ -8,6 +8,7 @@
         "build": "astro check && astro build",
         "preview": "astro preview",
         "astro": "astro",
+        "build-index": "python3 script/content-index.py",
         "icons": "npx @svgr/cli --typescript --icon --out-dir ./src/icons/dist --filename-case snake --expand-props start --replace-attr-values '#000=currentColor' -- ./src/icons/chunk_src"
     },
     "dependencies": {
