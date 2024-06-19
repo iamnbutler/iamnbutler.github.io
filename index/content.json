@@ -1,94 +1,90 @@
-{
-    "fragmentSet": {
-        "astro_site": {
-            "slug": "astro_site",
-            "date_published": "No Date Published",
-            "title": "Astro Site 2024",
-            "preview": "No Preview",
-            "tags": [
-                "webdev",
-                "js",
-                "python"
-            ],
-            "set": "No Set"
-        }
+[
+    {
+        "title": "Astro Site 2024",
+        "url": "/f/astro_site",
+        "body": "No Preview",
+        "date_published": "No Date Published",
+        "tags": [
+            "webdev",
+            "js",
+            "python"
+        ],
+        "set": "No Set"
     },
-    "fragment": {
-        "design_workshop": {
-            "slug": "design_workshop",
-            "date_published": "2015-03-12",
-            "title": "Design Workshop",
-            "preview": "A two part project: one part illustration, one part narrative. It was born out of a desire to make without a problem, to make for the sake of making.",
-            "tags": [
-                "design"
-            ],
-            "set": "No Set"
-        },
-        "design_docs_v2": {
-            "slug": "design_docs_v2",
-            "date_published": "2022-05-28",
-            "title": "Design Docs V2",
-            "preview": "Design Docs V2.0 brings a new site built in Next.js, refined content, and a dedicated domain at designdocs.co. It aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry.",
-            "tags": [
-                "design",
-                "webdev",
-                "js"
-            ],
-            "set": "No Set"
-        },
-        "02": {
-            "slug": "02",
-            "date_published": "2024-02-27",
-            "title": "Adding a Favicon in 2024",
-            "preview": "What do we actually need to do to add a favicon to a site in 2024? With a little Astro flavor.",
-            "tags": [
-                "webdev"
-            ],
-            "set": "astro_site"
-        },
-        "fig-gen": {
-            "slug": "fig-gen",
-            "date_published": "2021-11-06",
-            "title": "fig-gen: Making Generative art in Figma.",
-            "preview": "Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.",
-            "tags": [
-                "figma",
-                "art"
-            ],
-            "set": "fig-gen"
-        },
-        "ios_11_gui_wallpapers": {
-            "slug": "ios_11_gui_wallpapers",
-            "date_published": "2017-11-28",
-            "title": "iOS 11 GUI Wallpapers",
-            "preview": "A set of wallpapers bundled with the Facebook.design iOS 11 GUI.",
-            "tags": [
-                "3d",
-                "art"
-            ],
-            "set": "No Set"
-        },
-        "00": {
-            "slug": "00",
-            "date_published": "2024-02-26",
-            "title": "Building a new site with Astro",
-            "preview": "It's that time of year again \u2013 time to build a new site. This time, I'm using Astro. Here's how it's going.",
-            "tags": [
-                "webdev",
-                "js"
-            ],
-            "set": "astro_site"
-        },
-        "01": {
-            "slug": "01",
-            "date_published": "2024-02-26",
-            "title": "Generating a Content Index",
-            "preview": "Ahead of some schemes of building site-wide content search, and perhaps an RSS feed, let's build a content index.",
-            "tags": [
-                "webdev",
-                "python"
-            ],
-            "set": "astro_site"
-        }
+    {
+        "title": "Design Workshop",
+        "url": "/f/design_workshop",
+        "body": "A two part project: one part illustration, one part narrative. It was born out of a desire to make without a problem, to make for the sake of making.",
+        "date_published": "2015-03-12",
+        "tags": [
+            "design"
+        ],
+        "set": "No Set"
+    },
+    {
+        "title": "Design Docs V2",
+        "url": "/f/design_docs_v2",
+        "body": "Design Docs V2.0 brings a new site built in Next.js, refined content, and a dedicated domain at designdocs.co. It aims to give early career designers resources and a roadmap to improve their craft, prepare a portfolio, and get their first job in the industry.",
+        "date_published": "2022-05-28",
+        "tags": [
+            "design",
+            "webdev",
+            "js"
+        ],
+        "set": "No Set"
+    },
+    {
+        "title": "Adding a Favicon in 2024",
+        "url": "/f/02",
+        "body": "What do we actually need to do to add a favicon to a site in 2024? With a little Astro flavor.",
+        "date_published": "2024-02-27",
+        "tags": [
+            "webdev"
+        ],
+        "set": "astro_site"
+    },
+    {
+        "title": "fig-gen: Making Generative art in Figma.",
+        "url": "/f/fig-gen",
+        "body": "Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out.",
+        "date_published": "2021-11-06",
+        "tags": [
+            "figma",
+            "art"
+        ],
+        "set": "fig-gen"
+    },
+    {
+        "title": "iOS 11 GUI Wallpapers",
+        "url": "/f/ios_11_gui_wallpapers",
+        "body": "A set of wallpapers bundled with the Facebook.design iOS 11 GUI.",
+        "date_published": "2017-11-28",
+        "tags": [
+            "3d",
+            "art"
+        ],
+        "set": "No Set"
+    },
+    {
+        "title": "Building a new site with Astro",
+        "url": "/f/00",
+        "body": "It's that time of year again \u2013 time to build a new site. This time, I'm using Astro. Here's how it's going.",
+        "date_published": "2024-02-26",
+        "tags": [
+            "webdev",
+            "js"
+        ],
+        "set": "astro_site"
+    },
+    {
+        "title": "Generating a Content Index",
+        "url": "/f/01",
+        "body": "Ahead of some schemes of building site-wide content search, and perhaps an RSS feed, let's build a content index.",
+        "date_published": "2024-02-26",
+        "tags": [
+            "webdev",
+            "python"
+        ],
+        "set": "astro_site"
     }
-}
+]

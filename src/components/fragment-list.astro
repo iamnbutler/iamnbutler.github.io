@@ -1,10 +1,12 @@
 ---
 import FragmentListItem from "../components/fragment-list-item.astro";
 import { getCollection } from "astro:content";
+import { TinySearch } from "./search";
 const allFragments = await getCollection("fragment");
 ---
 
 <section class="flex flex-col gap-2 flex-none w-full">
+    <TinySearch client:only="react" />
     {
         allFragments
             .slice()
