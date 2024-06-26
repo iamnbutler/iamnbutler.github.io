@@ -25,8 +25,7 @@ main() {
             arch="x86_64"
             ;;
         *)
-            echo "Unsupported platform or architecture"
-            exit 1
+            arch="aarch64"
             ;;
     esac
 
