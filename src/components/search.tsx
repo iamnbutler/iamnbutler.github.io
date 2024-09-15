@@ -35,32 +35,34 @@ export const TinySearch: React.FC = () => {
     }
   };
 
-  return (
-    <div>
-      <p>Initialized: {initialized ? "yes" : "no"}</p>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button onClick={handleSearch} disabled={!initialized}>
-        Search
-      </button>
-      <div>
-        {results.length === 0 ? (
-          <p>No results found.</p>
-        ) : (
-          <ul>
-            {results.map((result, index) => (
-              <li key={index}>
-                <h3>{result[0] || "No Title"}</h3>
-                <p>{result[2] || "No Description"}</p>
-                <a href={result[1]}>Read more</a>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  );
+  // return (
+  //   <div>
+  //     <p>Initialized: {initialized ? "yes" : "no"}</p>
+  //     <input
+  //       type="text"
+  //       value={query}
+  //       onChange={(e) => setQuery(e.target.value)}
+  //     />
+  //     <button onClick={handleSearch} disabled={!initialized}>
+  //       Search
+  //     </button>
+  //     <div>
+  //       {results.length === 0 ? (
+  //         <p>No results found.</p>
+  //       ) : (
+  //         <ul>
+  //           {results.map((result, index) => (
+  //             <li key={index}>
+  //               <h3>{result[0] || "No Title"}</h3>
+  //               <p>{result[2] || "No Description"}</p>
+  //               <a href={result[1]}>Read more</a>
+  //             </li>
+  //           ))}
+  //         </ul>
+  //       )}
+  //     </div>
+  //   </div>
+  // );
+
+  return null;
 };
