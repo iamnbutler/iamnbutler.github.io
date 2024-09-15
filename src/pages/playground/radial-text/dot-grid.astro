@@ -1,0 +1,42 @@
+---
+const DOT_GRID_SIZE = 1800;
+const DOT_COUNT_PER_AXIS = 24;
+const DOT_SIZE = 2;
+const DOT_COLOR = "#fefefe";
+const DOT_SPACING = DOT_GRID_SIZE / DOT_COUNT_PER_AXIS;
+
+const dots = [];
+for (let i = 0; i <= DOT_GRID_SIZE; i += DOT_SPACING) {
+    for (let j = 0; j <= DOT_GRID_SIZE; j += DOT_SPACING) {
+        const randomValue = Math.random();
+        let opacity = 0.3;
+        if (randomValue < 0.05) {
+            opacity = 0;
+        } else if (randomValue < 0.25) {
+            opacity = 0.2;
+        }
+        dots.push({ x: j, y: i, opacity });
+    }
+}
+---
+
+<div id="dot-grid" style="pointer-events: none;">
+    <svg
+        width={DOT_GRID_SIZE + DOT_SIZE}
+        height={DOT_GRID_SIZE + DOT_SIZE}
+        style="z-index: 1;"
+    >
+        {
+            dots.map((dot) => (
+                <rect
+                    x={dot.x}
+                    y={dot.y}
+                    width={DOT_SIZE}
+                    height={DOT_SIZE}
+                    fill={DOT_COLOR}
+                    opacity={dot.opacity}
+                />
+            ))
+        }
+    </svg>
+</div>

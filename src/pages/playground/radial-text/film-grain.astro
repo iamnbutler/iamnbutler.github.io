@@ -1,0 +1,93 @@
+---
+interface Props {
+    baseIndex?: number;
+}
+
+const { baseIndex = 4 } = Astro.props;
+---
+
+<div class="film-grain"></div>
+
+<script define:vars={{ baseIndex }}>
+    const filmGrain = (baseIndex) => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        if (!ctx) {
+            console.error("Unable to get 2D context");
+            return document.createElement("div");
+        }
+
+        const scaleFactor = 0.5; // Scale down to half size
+        let animationFrameId;
+
+        const resizeCanvas = () => {
+            canvas.width = Math.ceil(window.innerWidth * scaleFactor);
+            canvas.height = Math.ceil(window.innerHeight * scaleFactor);
+            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.height = `${window.innerHeight}px`;
+        };
+
+        const createGrain = () => {
+            const imageData = ctx.createImageData(canvas.width, canvas.height);
+            const pixels = imageData.data;
+            const pixelCount = pixels.length / 4;
+
+            for (let i = 0; i < pixelCount; i++) {
+                const gray = Math.random() * 255;
+                const index = i * baseIndex;
+                pixels[index] = gray;
+                pixels[index + 1] = gray;
+                pixels[index + 2] = gray;
+                pixels[index + 3] = 20; // Use the baseIndex prop for opacity
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+        };
+
+        const animate = () => {
+            createGrain();
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        // Start animation
+        animate();
+
+        // Throttle updates to every 50ms
+        setInterval(() => {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(animate);
+        }, 50);
+
+        return canvas;
+    };
+
+    const filmGrainContainer = document.querySelector(".film-grain");
+
+    if (filmGrainContainer) {
+        filmGrainContainer.appendChild(filmGrain(baseIndex));
+    } else {
+        console.error("Film grain container not found");
+    }
+</script>
+
+<style>
+    .film-grain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    .film-grain canvas {
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: color-burn;
+    }
+</style>
