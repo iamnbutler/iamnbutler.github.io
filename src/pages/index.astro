@@ -35,7 +35,7 @@ const work = await Promise.all(
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
     <Container>
-        <h4 class="font-semibold text-black dark:text-white">
+        <h4 class="font-semibold text-black">
             Hey, I'm Nate <span class="text-xl">👋🏻</span>
         </h4>
         <div class="space-y-16">
@@ -63,7 +63,7 @@ const work = await Promise.all(
                 <div
                     class="flex flex-wrap gap-y-2 items-center justify-between"
                 >
-                    <h5 class="font-semibold text-black dark:text-white">
+                    <h5 class="font-semibold text-black">
                         Shower Thoughts & More Substantial Posts
                     </h5>
                     <Link href="/blog"> See all posts </Link>
@@ -83,7 +83,7 @@ const work = await Promise.all(
                 <div
                     class="flex flex-wrap gap-y-2 items-center justify-between"
                 >
-                    <h5 class="font-semibold text-black dark:text-white">
+                    <h5 class="font-semibold text-black">
                         Projects, Side Projects & More
                     </h5>
                     <Link href="/projects"> See all projects </Link>
@@ -103,9 +103,7 @@ const work = await Promise.all(
                 <div
                     class="flex flex-wrap gap-y-2 items-center justify-between"
                 >
-                    <h5 class="font-semibold text-black dark:text-white">
-                        Places I've worked
-                    </h5>
+                    <h5 class="font-semibold text-black">Places I've worked</h5>
                 </div>
                 <ul class="flex flex-col space-y-4">
                     {
@@ -113,7 +111,7 @@ const work = await Promise.all(
                             <li>
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="font-semibold text-black dark:text-white">
+                                        <div class="font-semibold text-black">
                                             {entry.data.company}
                                         </div>
                                         <div class="text-sm opacity-75">
@@ -135,9 +133,7 @@ const work = await Promise.all(
             </section>
 
             <section class="space-y-4">
-                <h5 class="font-semibold text-black dark:text-white">
-                    Let's Connect
-                </h5>
+                <h5 class="font-semibold text-black">Let's Connect</h5>
                 <article>
                     <p>
                         If you want to get in touch with me about something or
