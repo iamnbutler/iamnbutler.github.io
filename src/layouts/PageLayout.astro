@@ -1,8 +1,9 @@
 ---
+import Footer from "@components/Footer.astro";
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
 import Kuroneko from "@components/Kuroneko.astro";
+import Stickers from "@components/Stickers.astro";
 import { SITE } from "@consts";
 
 type Props = {
@@ -21,6 +22,7 @@ const { title, description } = Astro.props;
     <body>
         <Header />
         <main class="relative">
+            <Stickers />
             <Kuroneko />
             <slot />
         </main>
