@@ -1,0 +1,37 @@
+{
+  "name": "nate-rip",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "dev:network": "astro dev --host",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "preview:network": "astro preview --host",
+    "astro": "astro",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.9",
+    "@astrojs/mdx": "^2.2.0",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource/inter": "^5.0.17",
+    "@fontsource/lora": "^5.0.16",
+    "@tailwindcss/typography": "^0.5.10",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "astro": "^4.5.6",
+    "clsx": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.32.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "sharp": "^0.33.3",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.2"
+  },
+  "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a"
+}

@@ -1,0 +1,40 @@
+---
+import Container from "@components/Container.astro";
+import { SITE, SOCIALS } from "@consts";
+import BackToTop from "@components/BackToTop.astro";
+import Link from "./Link.astro";
+---
+
+<footer>
+    <Container>
+        <div class="relative">
+            <div class="absolute right-0 -top-20">
+                <BackToTop />
+            </div>
+        </div>
+        <div class="flex justify-between items-center">
+            <div>
+                &copy; 2024 {`|`}
+                {SITE.NAME}
+            </div>
+            <div class="flex flex-wrap gap-1 items-center">
+                <ul class="flex flex-wrap gap-2">
+                    {
+                        SOCIALS.map((SOCIAL, index) => (
+                            <li class="flex gap-x-2 text-nowrap">
+                                <Link
+                                    href={SOCIAL.HREF}
+                                    external
+                                    aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                                >
+                                    {SOCIAL.NAME}
+                                </Link>
+                                {index !== SOCIALS.length - 1 && "/"}
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </Container>
+</footer>
