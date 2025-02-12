@@ -9,61 +9,61 @@ importers:
   .:
     dependencies:
       '@astrojs/check':
-        specifier: ^0.5.9
+        specifier: 0.5.9
         version: 0.5.9(typescript@5.4.2)
       '@astrojs/mdx':
-        specifier: ^2.2.0
-        version: 2.2.0(astro@4.5.6)
+        specifier: 2.2.0
+        version: 2.2.0(astro@4.5.6(typescript@5.4.2))
       '@astrojs/rss':
-        specifier: ^4.0.5
+        specifier: 4.0.5
         version: 4.0.5
       '@astrojs/sitemap':
-        specifier: ^3.1.1
+        specifier: 3.1.1
         version: 3.1.1
       '@astrojs/tailwind':
-        specifier: ^5.1.0
-        version: 5.1.0(astro@4.5.6)(tailwindcss@3.4.1)
+        specifier: 5.1.0
+        version: 5.1.0(astro@4.5.6(typescript@5.4.2))(tailwindcss@3.4.1)
       '@fontsource/inter':
-        specifier: ^5.0.17
+        specifier: 5.0.17
         version: 5.0.17
       '@fontsource/lora':
-        specifier: ^5.0.16
+        specifier: 5.0.16
         version: 5.0.16
       '@tailwindcss/typography':
-        specifier: ^0.5.10
+        specifier: 0.5.10
         version: 0.5.10(tailwindcss@3.4.1)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^7.3.1
-        version: 7.3.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)(typescript@5.4.2)
+        specifier: 7.3.1
+        version: 7.3.1(@typescript-eslint/parser@7.3.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser':
-        specifier: ^7.3.1
+        specifier: 7.3.1
         version: 7.3.1(eslint@8.57.0)(typescript@5.4.2)
       astro:
-        specifier: ^4.5.6
+        specifier: 4.5.6
         version: 4.5.6(typescript@5.4.2)
       clsx:
-        specifier: ^2.1.0
+        specifier: 2.1.0
         version: 2.1.0
       eslint:
-        specifier: ^8.57.0
+        specifier: 8.57.0
         version: 8.57.0
       eslint-plugin-astro:
-        specifier: ^0.32.0
+        specifier: 0.32.0
         version: 0.32.0(eslint@8.57.0)
       eslint-plugin-jsx-a11y:
-        specifier: ^6.8.0
+        specifier: 6.8.0
         version: 6.8.0(eslint@8.57.0)
       sharp:
-        specifier: ^0.33.3
+        specifier: 0.33.3
         version: 0.33.3
       tailwind-merge:
-        specifier: ^2.2.2
+        specifier: 2.2.2
         version: 2.2.2
       tailwindcss:
-        specifier: ^3.4.1
+        specifier: 3.4.1
         version: 3.4.1
       typescript:
-        specifier: ^5.4.2
+        specifier: 5.4.2
         version: 5.4.2
 
 packages:
@@ -421,6 +421,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -428,6 +429,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.2':
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
+    deprecated: Use @eslint/object-schema instead
 
   '@img/sharp-darwin-arm64@0.33.3':
     resolution: {integrity: sha512-FaNiGX1MrOuJ3hxuNzWgsT/mg5OHG/Izh59WW2mk1UwYHUwtfbhk5QNKYZgxf0pLOhx9ctGiGa2OykD71vOnSw==}
@@ -1253,10 +1255,6 @@ packages:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
 
-  es-abstract@1.22.5:
-    resolution: {integrity: sha512-oW69R+4q2wG+Hc3KZePPZxOiisRIqfKBVo/HLx94QcJeWGU/8sZhCvc829rd1kS366vlJbzBfXf9yWwf0+Ko7w==}
-    engines: {node: '>= 0.4'}
-
   es-abstract@1.23.2:
     resolution: {integrity: sha512-60s3Xv2T2p1ICykc7c+DNDPLDMm9t4QxCOUU0K9JxiLjM3C1zB9YVdN7tjxrFd4+AkZ8CdX1ovUga4P2+1e+/w==}
     engines: {node: '>= 0.4'}
@@ -1341,6 +1339,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -1533,6 +1532,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -1662,6 +1662,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -2564,6 +2565,7 @@ packages:
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.13.0:
@@ -3243,7 +3245,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@2.2.0(astro@4.5.6)':
+  '@astrojs/mdx@2.2.0(astro@4.5.6(typescript@5.4.2))':
     dependencies:
       '@astrojs/markdown-remark': 4.3.0
       '@mdx-js/mdx': 3.0.1
@@ -3278,7 +3280,7 @@ snapshots:
       sitemap: 7.1.1
       zod: 3.22.4
 
-  '@astrojs/tailwind@5.1.0(astro@4.5.6)(tailwindcss@3.4.1)':
+  '@astrojs/tailwind@5.1.0(astro@4.5.6(typescript@5.4.2))(tailwindcss@3.4.1)':
     dependencies:
       astro: 4.5.6(typescript@5.4.2)
       autoprefixer: 10.4.18(postcss@8.4.37)
@@ -3833,7 +3835,7 @@ snapshots:
 
   '@types/unist@3.0.2': {}
 
-  '@typescript-eslint/eslint-plugin@7.3.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)(typescript@5.4.2)':
+  '@typescript-eslint/eslint-plugin@7.3.1(@typescript-eslint/parser@7.3.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)':
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       '@typescript-eslint/parser': 7.3.1(eslint@8.57.0)(typescript@5.4.2)
@@ -3848,6 +3850,7 @@ snapshots:
       natural-compare: 1.4.0
       semver: 7.6.0
       ts-api-utils: 1.3.0(typescript@5.4.2)
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -3860,6 +3863,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 7.3.1
       debug: 4.3.4
       eslint: 8.57.0
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -3881,6 +3885,7 @@ snapshots:
       debug: 4.3.4
       eslint: 8.57.0
       ts-api-utils: 1.3.0(typescript@5.4.2)
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -3899,6 +3904,7 @@ snapshots:
       minimatch: 9.0.3
       semver: 7.6.0
       ts-api-utils: 1.3.0(typescript@5.4.2)
+    optionalDependencies:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -4048,7 +4054,7 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
       define-properties: 1.2.1
-      es-abstract: 1.22.5
+      es-abstract: 1.23.2
       get-intrinsic: 1.2.4
       is-string: 1.0.7
 
@@ -4060,14 +4066,14 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
       define-properties: 1.2.1
-      es-abstract: 1.22.5
+      es-abstract: 1.23.2
       es-shim-unscopables: 1.0.2
 
   array.prototype.flatmap@1.3.2:
     dependencies:
       call-bind: 1.0.7
       define-properties: 1.2.1
-      es-abstract: 1.22.5
+      es-abstract: 1.23.2
       es-shim-unscopables: 1.0.2
 
   arraybuffer.prototype.slice@1.0.3:
@@ -4075,7 +4081,7 @@ snapshots:
       array-buffer-byte-length: 1.0.1
       call-bind: 1.0.7
       define-properties: 1.2.1
-      es-abstract: 1.22.5
+      es-abstract: 1.23.2
       es-errors: 1.3.0
       get-intrinsic: 1.2.4
       is-array-buffer: 3.0.4
@@ -4512,50 +4518,6 @@ snapshots:
 
   entities@4.5.0: {}
 
-  es-abstract@1.22.5:
-    dependencies:
-      array-buffer-byte-length: 1.0.1
-      arraybuffer.prototype.slice: 1.0.3
-      available-typed-arrays: 1.0.7
-      call-bind: 1.0.7
-      es-define-property: 1.0.0
-      es-errors: 1.3.0
-      es-set-tostringtag: 2.0.3
-      es-to-primitive: 1.2.1
-      function.prototype.name: 1.1.6
-      get-intrinsic: 1.2.4
-      get-symbol-description: 1.0.2
-      globalthis: 1.0.3
-      gopd: 1.0.1
-      has-property-descriptors: 1.0.2
-      has-proto: 1.0.3
-      has-symbols: 1.0.3
-      hasown: 2.0.2
-      internal-slot: 1.0.7
-      is-array-buffer: 3.0.4
-      is-callable: 1.2.7
-      is-negative-zero: 2.0.3
-      is-regex: 1.1.4
-      is-shared-array-buffer: 1.0.3
-      is-string: 1.0.7
-      is-typed-array: 1.1.13
-      is-weakref: 1.0.2
-      object-inspect: 1.13.1
-      object-keys: 1.1.1
-      object.assign: 4.1.5
-      regexp.prototype.flags: 1.5.2
-      safe-array-concat: 1.1.2
-      safe-regex-test: 1.0.3
-      string.prototype.trim: 1.2.9
-      string.prototype.trimend: 1.0.8
-      string.prototype.trimstart: 1.0.7
-      typed-array-buffer: 1.0.2
-      typed-array-byte-length: 1.0.1
-      typed-array-byte-offset: 1.0.2
-      typed-array-length: 1.0.5
-      unbox-primitive: 1.0.2
-      which-typed-array: 1.1.15
-
   es-abstract@1.23.2:
     dependencies:
       array-buffer-byte-length: 1.0.1
@@ -4927,7 +4889,7 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
       define-properties: 1.2.1
-      es-abstract: 1.22.5
+      es-abstract: 1.23.2
       functions-have-names: 1.2.3
 
   functions-have-names@1.2.3: {}
@@ -6155,8 +6117,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.37):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.37
       yaml: 2.4.1
+    optionalDependencies:
+      postcss: 8.4.37
 
   postcss-nested@6.0.1(postcss@8.4.37):
     dependencies:
@@ -6603,7 +6566,7 @@ snapshots:
     dependencies:
       call-bind: 1.0.7
       define-properties: 1.2.1
-      es-abstract: 1.22.5
+      es-abstract: 1.23.2
 
   string_decoder@1.3.0:
     dependencies:
@@ -6759,7 +6722,7 @@ snapshots:
   ts-interface-checker@0.1.13: {}
 
   tsconfck@3.0.3(typescript@5.4.2):
-    dependencies:
+    optionalDependencies:
       typescript: 5.4.2
 
   tslib@2.6.2: {}
@@ -6960,46 +6923,51 @@ snapshots:
       fsevents: 2.3.3
 
   vitefu@0.2.5(vite@5.1.6):
-    dependencies:
+    optionalDependencies:
       vite: 5.1.6
 
   volar-service-css@0.0.34(@volar/language-service@2.1.2):
     dependencies:
-      '@volar/language-service': 2.1.2
       vscode-css-languageservice: 6.2.12
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.2
 
   volar-service-emmet@0.0.34(@volar/language-service@2.1.2):
     dependencies:
-      '@volar/language-service': 2.1.2
       '@vscode/emmet-helper': 2.9.2
       vscode-html-languageservice: 5.1.2
+    optionalDependencies:
+      '@volar/language-service': 2.1.2
 
   volar-service-html@0.0.34(@volar/language-service@2.1.2):
     dependencies:
-      '@volar/language-service': 2.1.2
       vscode-html-languageservice: 5.1.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.2
 
   volar-service-prettier@0.0.34(@volar/language-service@2.1.2):
     dependencies:
-      '@volar/language-service': 2.1.2
       vscode-uri: 3.0.8
+    optionalDependencies:
+      '@volar/language-service': 2.1.2
 
   volar-service-typescript-twoslash-queries@0.0.34(@volar/language-service@2.1.2):
-    dependencies:
+    optionalDependencies:
       '@volar/language-service': 2.1.2
 
   volar-service-typescript@0.0.34(@volar/language-service@2.1.2):
     dependencies:
-      '@volar/language-service': 2.1.2
       path-browserify: 1.0.1
       semver: 7.6.0
       typescript-auto-import-cache: 0.3.2
       vscode-languageserver-textdocument: 1.0.11
       vscode-nls: 5.2.0
+    optionalDependencies:
+      '@volar/language-service': 2.1.2
 
   vscode-css-languageservice@6.2.12:
     dependencies:
