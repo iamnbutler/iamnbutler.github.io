@@ -1,0 +1,92 @@
+---
+const DOCUMENT_BLEED = "2em";
+const DOCUMENT_MARGINS = "2em";
+const COLUMNS_NUMBER = 7;
+const COLUMNS_GUTTER = "1em";
+const PAGE_HEIGHT = "100vh";
+---
+
+<div
+    class="wrapper"
+    style={`padding: ${DOCUMENT_BLEED}; height: ${PAGE_HEIGHT};`}
+>
+    <div
+        id="layout-bleed"
+        class="full-height"
+        style="border: 1px solid hsla(0, 100%, 50%, 0.25);"
+    >
+        <div
+            id="layout-margins"
+            class="full-height"
+            style={`border: 1px solid black; padding: ${DOCUMENT_MARGINS};`}
+        >
+            <div
+                id="layout-content"
+                class="full-height"
+                style={`border: 1px solid hsla(300, 100%, 50%, 0.25);`}
+            >
+                <div
+                    id="columns-grid"
+                    class="full-height"
+                    style={`
+                    display: grid;
+                    grid-template-columns: repeat(${COLUMNS_NUMBER}, 1fr);
+                    gap: ${COLUMNS_GUTTER};
+                    width: calc(100% + 2px);
+                    margin: -1px;
+                    `}
+                >
+                    {
+                        Array.from({ length: COLUMNS_NUMBER }, () => (
+                            <div
+                                class="column"
+                                style="border-left: 1px solid hsla(270, 100%, 50%, 0.25); border-right: 1px solid hsla(270, 100%, 50%, 0.25);"
+                            />
+                        ))
+                    }
+                </div>
+                <div id="content-slot">
+                    <slot />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .wrapper {
+        box-sizing: border-box;
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    .full-height {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #layout-content {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #columns-grid {
+        flex: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .column {
+        height: 100%;
+    }
+
+    #content-slot {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+    }
+</style>
