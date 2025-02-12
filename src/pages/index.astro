@@ -1,18 +1,147 @@
 ---
-import FragmentList from "../components/fragment-list.astro";
-import BaseLayout from "../layouts/base-layout.astro";
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { dateRangeYears } from "@lib/utils";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+const blog = (await getCollection("blog"))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+    .filter((project) => !project.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const allwork = (await getCollection("work"))
+    .sort(
+        (a, b) =>
+            new Date(b.data.dateStart).valueOf() -
+            new Date(a.data.dateStart).valueOf(),
+    )
+    .slice(0, SITE.NUM_WORKS_ON_HOMEPAGE);
+
+const work = await Promise.all(
+    allwork.map(async (item) => {
+        const { Content } = await item.render();
+        return { ...item, Content };
+    }),
+);
 ---
 
-<BaseLayout title="nate.rip"
-    ><div class="h-96 md:h-full w-full">
-        <div
-            class="w-64 flex flex-col items-center justify-center h-full mx-auto"
-        >
-            <img src="/under_construction.webp" alt="Under construction!" />
-            <h2 class="type-large-3 text-center">Under construction!</h2>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+    <Container>
+        <h4 class="font-semibold text-black">
+            Hey, I'm Nate <span class="text-xl">👋🏻</span>
+        </h4>
+        <div class="space-y-16">
+            <section>
+                <article class="space-y-4">
+                    <p>
+                        I'm a designer & maker enabling people's creativity and
+                        ability share knowledge. Chances are you have probably
+                        used something I've built.
+                    </p>
+                    <p>
+                        I want to help people create the things important to
+                        them—To empower them to create something themselves and
+                        feel the euphoria it brings. My goal is always to help
+                        the people around me level up, in their careers & lives.
+                    </p>
+                    <p>
+                        I post about all types of things here. You will find a
+                        mix of work, top of mind, reflections, & process. Enjoy!
+                    </p>
+                </article>
+            </section>
+
+            <section class="space-y-6">
+                <div
+                    class="flex flex-wrap gap-y-2 items-center justify-between"
+                >
+                    <h5 class="font-semibold text-black">
+                        Shower Thoughts & More Substantial Posts
+                    </h5>
+                    <Link href="/blog"> See all posts </Link>
+                </div>
+                <ul class="flex flex-col gap-4">
+                    {
+                        blog.map((post) => (
+                            <li>
+                                <ArrowCard entry={post} />
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+
+            <section class="space-y-6">
+                <div
+                    class="flex flex-wrap gap-y-2 items-center justify-between"
+                >
+                    <h5 class="font-semibold text-black">
+                        Projects, Side Projects & More
+                    </h5>
+                    <Link href="/projects"> See all projects </Link>
+                </div>
+                <ul class="flex flex-col gap-4">
+                    {
+                        projects.map((project) => (
+                            <li>
+                                <ArrowCard entry={project} />
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+
+            <section class="space-y-6">
+                <div
+                    class="flex flex-wrap gap-y-2 items-center justify-between"
+                >
+                    <h5 class="font-semibold text-black">Places I've worked</h5>
+                </div>
+                <ul class="flex flex-col space-y-4">
+                    {
+                        work.map((entry) => (
+                            <li>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-semibold text-black">
+                                            {entry.data.company}
+                                        </div>
+                                        <div class="text-sm opacity-75">
+                                            {entry.data.role}
+                                        </div>
+                                    </div>
+                                    <div class="text-sm opacity-75">
+                                        {dateRangeYears(
+                                            entry.data.dateStart,
+                                            entry.data.dateEnd,
+                                        )}
+                                    </div>
+                                </div>
+                            </li>
+                        ))
+                    }
+                </ul>
+                <Link href="/work"> See all &rarr; </Link>
+            </section>
+
+            <section class="space-y-4">
+                <h5 class="font-semibold text-black">Let's Connect</h5>
+                <article>
+                    <p>
+                        If you want to get in touch with me about something or
+                        just to say hi, reach out on social media or send me an
+                        email.
+                    </p>
+                </article>
+            </section>
         </div>
-    </div>
-    <div class="flex md:hidden">
-        <FragmentList />
-    </div>
-</BaseLayout>
+    </Container>
+</PageLayout>

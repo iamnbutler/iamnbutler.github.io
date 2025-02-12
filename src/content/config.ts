@@ -1,50 +1,35 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
 
-const fragmentKind = {
-  POST: "post",
-  IMAGE_SET: "image-set",
-} as const;
-
-export type FragmentKind = keyof typeof fragmentKind;
-
-const tags = {
-  art: "art",
-  "3d": "3d",
-  design: "design",
-  figma: "figma",
-  javascript: "js",
-  python: "python",
-  rust: "rust",
-  webdev: "webdev",
-};
-
-export type Tag = keyof typeof tags;
-
-export const allTags = Object.keys(tags) as Tag[];
-
-const fragmentCollection = defineCollection({
+const blog = defineCollection({
   type: "content",
   schema: z.object({
-    date_published: z.date(),
     title: z.string(),
-    preview: z.string(),
-    tags: z.array(z.nativeEnum(tags)),
-    kind: z.nativeEnum(fragmentKind),
-    set: z.string().optional(),
+    description: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional()
   }),
 });
 
-const fragmentSetCollection = defineCollection({
+const work = defineCollection({
   type: "content",
   schema: z.object({
-    id: z.string(),
-    title: z.string(),
-    fragments: z.array(z.string()),
-    tags: z.array(z.nativeEnum(tags)),
+    company: z.string(),
+    role: z.string(),
+    dateStart: z.coerce.date(),
+    dateEnd: z.union([z.coerce.date(), z.string()]),
   }),
 });
 
-export const collections = {
-  fragment: fragmentCollection,
-  fragmentSet: fragmentSetCollection,
-};
+const projects = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional(),
+    demoURL: z.string().optional(),
+    repoURL: z.string().optional()
+  }),
+});
+
+export const collections = { blog, work, projects };
