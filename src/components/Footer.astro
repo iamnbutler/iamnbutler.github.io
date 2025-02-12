@@ -20,7 +20,7 @@ import Link from "./Link.astro";
             <div class="flex flex-wrap gap-1 items-center">
                 <ul class="flex flex-wrap gap-2">
                     {
-                        SOCIALS.map((SOCIAL) => (
+                        SOCIALS.map((SOCIAL, index) => (
                             <li class="flex gap-x-2 text-nowrap">
                                 <Link
                                     href={SOCIAL.HREF}
@@ -29,7 +29,7 @@ import Link from "./Link.astro";
                                 >
                                     {SOCIAL.NAME}
                                 </Link>
-                                {"/"}
+                                {index !== SOCIALS.length - 1 && "/"}
                             </li>
                         ))
                     }
