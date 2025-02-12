@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import { frameData } from "../lib/kuronekoAnimation";
+---
+
+<div
+    class="fixed cat-container z-50 top-2 right-2 border border-black bg-white"
+>
+    <Image
+        src={frameData[0]}
+        alt="Kuroneko"
+        width={229}
+        height={101}
+        id="catImage"
+    />
+</div>
+
+<style>
+    .cat-container {
+        width: 229px;
+        height: 101px;
+    }
+</style>
+
+<script>
+    import { animateKuroneko } from "../lib/kuronekoAnimation";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const catImage = document.getElementById(
+            "catImage",
+        ) as HTMLImageElement;
+        if (catImage) {
+            animateKuroneko(catImage);
+        }
+    });
+</script>
