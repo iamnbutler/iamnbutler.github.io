@@ -3,9 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime, slugify } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
-import Link from "@components/Link.astro";
 
 export async function getStaticPaths() {
     const shots = (await getCollection("shots")).sort(
@@ -34,10 +32,6 @@ const dateString = shot.data.date.toString();
             <div class="flex items-center gap-1.5">
                 <div class="font-base text-sm">
                     <FormattedDate date={shot.data.date} />
-                </div>
-                &bull;
-                <div class="font-base text-sm">
-                    {readingTime(shot.body)}
                 </div>
             </div>
             <div class="text-2xl font-semibold text-black">
