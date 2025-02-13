@@ -53,6 +53,10 @@ article {
         @apply text-black;
         @apply decoration-black/25;
     }
+
+    article img {
+        @apply my-1
+    }
 }
 
 html #back-to-top {
