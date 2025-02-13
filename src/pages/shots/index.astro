@@ -7,22 +7,50 @@ import Link from "@components/Link.astro";
 const shots = (await getCollection("shots")).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
+
+const shotImages = await Promise.all(
+    shots.map(async (shot) => {
+        try {
+            const content = shot.body;
+            const imageMatch = content.match(/!\[.*?\]\((\.\/.*?)\)/);
+            let result = null;
+            if (imageMatch) {
+                // Construct the correct path for the image
+                result = `/src/content/shots/${shot.slug}/${imageMatch[1].replace('./', '')}`;
+            }
+            return result;
+        } catch (error) {
+            return null;
+        }
+    })
+);
+
+const shotsWithImages = shots.map((shot, index) => ({
+    ...shot,
+    image: shotImages[index]
+})).filter(shot => shot.image);
 ---
 
 <PageLayout title={"Shots"} description={"Mini projects and works in progress"}>
     <Container>
         <div class="space-y-10">
-            <div class="font-semibold text-black">Shots</div>
-            <ul class="flex flex-col gap-4">
-                {
-                    shots.map((shot) => (
-                        <li>
-                            <Link href={`/shots/${shot.slug}`}>
-                                {shot.data.title || shot.data.date}
-                            </Link>
+            <article>
+                <h2 class="font-semibold text-black">Shots</h2>
+                <p>Single image works, quick projects, visual explorations, and more - a space where I focus less on process and more on sharing cool visuals.</p>
+                <p>While Dribbble had its issues, there's something satisfying about dedicating time to making things look good, which is what this shots are all about.</p>
+            </article>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px">
+            {
+                shotsWithImages.map((shot) => (
+                    shot.image && (
+                        <li class="aspect-square">
+                            <a href={`/shots/${shot.slug}`} class="block w-full h-full">
+                                <img src={shot.image} alt={shot.data.title || "Untitled"} class="w-full h-full object-cover" />
+                            </a>
                         </li>
-                    ))
-                }
+                    )
+                ))
+            }
             </ul>
         </div>
     </Container>

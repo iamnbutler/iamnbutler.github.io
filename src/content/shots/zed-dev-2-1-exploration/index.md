@@ -1,5 +1,5 @@
 ---
-title: Zed.dev 2.1.0 Exploration
+title: Zed.dev 2.1
 date: 11-19-2021
 img: 4ec5b0cad1f9fa706acfe3fd46f64a9b.webp
 ---
