@@ -3,32 +3,14 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import { Image } from "astro:assets";
 
 const shots = (await getCollection("shots")).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const shotImages = await Promise.all(
-    shots.map(async (shot) => {
-        try {
-            const content = shot.body;
-            const imageMatch = content.match(/!\[.*?\]\((\.\/.*?)\)/);
-            let result = null;
-            if (imageMatch) {
-                // Construct the correct path for the image
-                result = `/src/content/shots/${shot.slug}/${imageMatch[1].replace('./', '')}`;
-            }
-            return result;
-        } catch (error) {
-            return null;
-        }
-    })
-);
+const shotsWithImages = shots.filter(shot => shot.data.img);
 
-const shotsWithImages = shots.map((shot, index) => ({
-    ...shot,
-    image: shotImages[index]
-})).filter(shot => shot.image);
 ---
 
 <PageLayout title={"Shots"} description={"Mini projects and works in progress"}>
@@ -42,13 +24,11 @@ const shotsWithImages = shots.map((shot, index) => ({
             <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px">
             {
                 shotsWithImages.map((shot) => (
-                    shot.image && (
-                        <li class="aspect-square">
-                            <a href={`/shots/${shot.slug}`} class="block w-full h-full">
-                                <img src={shot.image} alt={shot.data.title || "Untitled"} class="w-full h-full object-cover" />
-                            </a>
-                        </li>
-                    )
+                    <li class="aspect-square">
+                        <a href={`/shots/${shot.slug}`} class="block w-full h-full">
+                            <Image src={shot.data.img} alt={shot.data.title || "Untitled"} class="w-full h-full object-cover" />
+                        </a>
+                    </li>
                 ))
             }
             </ul>

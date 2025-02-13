@@ -34,10 +34,10 @@ const projects = defineCollection({
 
 const shots = defineCollection({
   type: "content",
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string().optional(),
     date: z.coerce.date(),
-    img: z.string(),
+    img: image(),
   }),
 });
 

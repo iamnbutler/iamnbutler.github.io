@@ -1,8 +1,7 @@
 ---
 title: Mixblocks
 date: Dec 15, 2021
-img: ""
+img: "./thumbnail.jpg"
 ---
 
-![](./thumbnail.jpg)
-![](./frame_28.png)
+![](./mix_blocks_1.png)

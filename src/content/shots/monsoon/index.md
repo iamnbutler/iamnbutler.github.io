@@ -1,7 +1,7 @@
 ---
 title: Monsoon
 date: Feb 13, 2024
-img: ""
+img: "./monsoon.png"
 ---
 
 ![](./monsoon.png)

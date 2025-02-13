@@ -1,9 +1,9 @@
 ---
 title: Infinity Ring
 date: Oct 26, 2019
-img: ""
+img: "./infinity_ring_1.webp"
 ---
 
-![](./original-5ab0c707b1c075700a4d4a75f72b8cfe.webp)
+![](./infinity_ring_1.webp)
 
 A piece I made a while back. Looking at this always makes me want to make a physical version.

@@ -1,7 +1,7 @@
 ---
 title: Synthesize
 date: Dec 12, 2024
-img: ""
+img: "./synthesize_1.png"
 ---
 
 ![](./synthesize_1.png)
