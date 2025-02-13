@@ -2,8 +2,6 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import { Image } from "astro:assets";
 import Link from "@components/Link.astro";
 
 const shots = (await getCollection("shots")).sort(
@@ -20,10 +18,7 @@ const shots = (await getCollection("shots")).sort(
                     shots.map((shot) => (
                         <li>
                             <Link href={`/shots/${shot.slug}`}>
-                                <img
-                                    src={`../content/shots/${shot.slug}/${shot.data.img}`}
-                                    alt={shot.data.title || ""}
-                                />
+                                {shot.data.title || shot.data.date}
                             </Link>
                         </li>
                     ))

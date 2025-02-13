@@ -19,7 +19,7 @@ const { title, description } = Astro.props;
     <head>
         <Head title={`${title} | ${SITE.NAME}`} description={description} />
     </head>
-    <body>
+    <body class="relative w-screen overflow-x-hidden">
         <Header />
         <main class="relative">
             <Stickers />
