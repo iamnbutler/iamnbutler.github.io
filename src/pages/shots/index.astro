@@ -9,8 +9,7 @@ const shots = (await getCollection("shots")).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const shotsWithImages = shots.filter(shot => shot.data.img);
-
+const shotsWithImages = shots.filter((shot) => shot.data.img);
 ---
 
 <PageLayout title={"Shots"} description={"Mini projects and works in progress"}>
@@ -18,22 +17,34 @@ const shotsWithImages = shots.filter(shot => shot.data.img);
         <div class="space-y-10">
             <article>
                 <h2 class="font-semibold text-black">Shots</h2>
-                <p>Single image works, quick projects, visual explorations, and more - a space where I focus less on process and more on sharing cool visuals.</p>
+                <p>
+                    Single image works, quick projects, visual explorations, and
+                    more - a space where I focus less on process and more on
+                    sharing cool visuals.
+                </p>
             </article>
             <OutsetContainer>
-
-            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px">
-            {
-                shotsWithImages.map((shot) => (
-                    <li class="aspect-[4/3] group">
-                        <a href={`/shots/${shot.slug}`} class="block w-full h-full relative">
-                            <Image src={shot.data.img} alt={shot.data.title || "Untitled"} class="w-full h-full object-cover" />
-                            <div class="absolute group-hover:hidden bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString('en-US', { month: 'short' })}`}</div>
-                        </a>
-                    </li>
-                ))
-            }
-            </ul>
+                <ul
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px"
+                >
+                    {
+                        shotsWithImages.map((shot) => (
+                            <li class="aspect-square group">
+                                <a
+                                    href={`/shots/${shot.slug}`}
+                                    class="block w-full h-full relative"
+                                >
+                                    <Image
+                                        src={shot.data.img}
+                                        alt={shot.data.title || "Untitled"}
+                                        class="w-full h-full object-cover"
+                                    />
+                                    <div class="absolute group-hover:hidden bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
             </OutsetContainer>
         </div>
     </Container>
