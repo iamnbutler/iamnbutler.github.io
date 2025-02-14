@@ -6,4 +6,4 @@ img: "./infinity_ring_1.webp"
 
 ![](./infinity_ring_1.webp)
 
-A piece I made a while back. Looking at this always makes me want to make a physical version.
+Made in Cinema4d. A piece I made a while back. Looking at this always makes me want to make a physical version.
