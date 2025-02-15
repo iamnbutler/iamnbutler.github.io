@@ -6,6 +6,7 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRangeYears } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
+import { Image } from "astro:assets";
 
 const blog = (await getCollection("blog"))
     .filter((post) => !post.data.draft)
@@ -16,6 +17,11 @@ const projects = (await getCollection("projects"))
     .filter((project) => !project.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const shots = (await getCollection("shots"))
+    .filter((shot) => shot.data.img)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 12);
 
 const allwork = (await getCollection("work"))
     .sort(
@@ -63,29 +69,7 @@ const work = await Promise.all(
                 <div
                     class="flex flex-wrap gap-y-2 items-center justify-between"
                 >
-                    <h5 class="font-semibold text-black">
-                        Shower Thoughts & More Substantial Posts
-                    </h5>
-                    <Link href="/blog"> See all posts </Link>
-                </div>
-                <ul class="flex flex-col gap-4">
-                    {
-                        blog.map((post) => (
-                            <li>
-                                <ArrowCard entry={post} />
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-
-            <section class="space-y-6">
-                <div
-                    class="flex flex-wrap gap-y-2 items-center justify-between"
-                >
-                    <h5 class="font-semibold text-black">
-                        Projects, Side Projects & More
-                    </h5>
+                    <h5 class="font-semibold text-black">Projects</h5>
                     <Link href="/projects"> See all projects </Link>
                 </div>
                 <ul class="flex flex-col gap-4">
@@ -103,7 +87,54 @@ const work = await Promise.all(
                 <div
                     class="flex flex-wrap gap-y-2 items-center justify-between"
                 >
-                    <h5 class="font-semibold text-black">Places I've worked</h5>
+                    <h5 class="font-semibold text-black">Shots</h5>
+                    <Link href="/shots"> See all shots </Link>
+                </div>
+                <ul
+                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px"
+                >
+                    {
+                        shots.map((shot) => (
+                            <li class="aspect-square group">
+                                <a
+                                    href={`/shots/${shot.slug}`}
+                                    class="block w-full h-full relative"
+                                >
+                                    <Image
+                                        src={shot.data.img}
+                                        alt={shot.data.title || "Untitled"}
+                                        class="w-full h-full object-cover"
+                                    />
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+
+            <section class="space-y-6">
+                <div
+                    class="flex flex-wrap gap-y-2 items-center justify-between"
+                >
+                    <h5 class="font-semibold text-black">Posts</h5>
+                    <Link href="/blog"> See all posts </Link>
+                </div>
+                <ul class="flex flex-col gap-4">
+                    {
+                        blog.map((post) => (
+                            <li>
+                                <ArrowCard entry={post} />
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+
+            <section class="space-y-6">
+                <div
+                    class="flex flex-wrap gap-y-2 items-center justify-between"
+                >
+                    <h5 class="font-semibold text-black">Work</h5>
                 </div>
                 <ul class="flex flex-col space-y-4">
                     {
@@ -130,17 +161,6 @@ const work = await Promise.all(
                     }
                 </ul>
                 <Link href="/work"> See all &rarr; </Link>
-            </section>
-
-            <section class="space-y-4">
-                <h5 class="font-semibold text-black">Let's Connect</h5>
-                <article>
-                    <p>
-                        If you want to get in touch with me about something or
-                        just to say hi, reach out on social media or send me an
-                        email.
-                    </p>
-                </article>
             </section>
         </div>
     </Container>
