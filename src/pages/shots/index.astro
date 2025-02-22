@@ -39,7 +39,7 @@ const shotsWithImages = shots.filter((shot) => shot.data.img);
                                         alt={shot.data.title || "Untitled"}
                                         class="w-full h-full object-cover"
                                     />
-                                    <div class="absolute group-hover:hidden bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
+                                    <div class="absolute bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
                                 </a>
                             </li>
                         ))
