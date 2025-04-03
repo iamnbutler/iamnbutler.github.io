@@ -8,13 +8,13 @@ date: "2021-11-06"
 
 I spent the evening exploring the new Automator plugin for Figma from [Jordan Singer](https://twitter.com/jsngr). I thought a minimal generative series using pixels and mapping equations would be a fun way to try it out.
 
-![Some select screens from my automation explorations](https://github.com/iamnbutler/data/blob/main/asset/automator/tiles.png?raw=true)
+![Some select screens from my automation explorations](images/tiles.png)
 
 ### Process
 
 I started by pushing on nesting shapes – How does it look when you nest and rotate shapes continuously? I got some cool outcomes like below, but I realized that most of the gens would end up looking pretty similar, relying so heavily on rotation.
 
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/first-gen-process.png?raw=true)
+![](images/first-gen-process.png)
 
 Exploring a different direction, I remembered playing with graphing calculators back in high school – Using trig functions like sin, cos, and tan, I got some exciting results right off the bat.
 
@@ -26,16 +26,16 @@ The generative functions are mostly created using sin, cos, tan, a randomizer va
 
 My favorite thing so far about Automator is how quickly I was able to explore a ton of variations. I was able to create over 60 gens with some really wide variation in under 2 hours.
 
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/tiles-2.png?raw=true)
+![](images/tiles-2.png)
 
 Here are some of my favorite gens:
 
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/gen-1.png?raw=true)
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/gen-2.png?raw=true)
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/gen-3.png?raw=true)
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/gen-4.png?raw=true)
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/gen-5.png?raw=true)
-![](https://github.com/iamnbutler/data/blob/main/asset/automator/gen-6.png?raw=true)
+![](images/gen-1.png)
+![](images/gen-2.png)
+![](images/gen-3.png)
+![](images/gen-4.png)
+![](images/gen-5.png)
+![](images/gen-6.png)
 
 I'm looking forward to exploring another generative series soon, following everything I learned with this one!
 

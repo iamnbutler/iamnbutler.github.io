@@ -16,10 +16,10 @@ I wanted to focus to be more around series, building out a robust model for hand
 
 This is how far I got:
 
-![Juice audiobooks UI](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bd1a1aa1b182021bb3eea_Screen%20Shot%202021-03-12%20at%2012.38.08%20PM.png)
+![Juice audiobooks UI](images/juice-audiobooks-1.png)
 
-![Juice audiobooks UI](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bd1b27caca82c5ab5e9cb_Screen%20Shot%202021-03-12%20at%2012.38.18%20PM.png)
+![Juice audiobooks UI](images/juice-audiobooks-2.png)
 
-![Juice audiobooks UI](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bd1c09c9a8b3b24dd96c0_Screen%20Shot%202021-03-12%20at%2012.38.30%20PM.png)
+![Juice audiobooks UI](images/juice-audiobooks-3.png)
 
-![Juice audiobooks UI](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604bd1cc55e121521c7bd0fe_Screen%20Shot%202021-03-12%20at%2012.39.14%20PM.png)
+![Juice audiobooks UI](images/juice-audiobooks-4.png)

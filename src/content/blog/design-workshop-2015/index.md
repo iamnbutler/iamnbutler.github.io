@@ -18,7 +18,7 @@ I had initially planned to do my workshop on the concept of telepresence in virt
 
 This two-part project (one part illustration, one part narrative) was born out of a desire to make without a problem, to make for the sake of making. The illustrations began by exploring the ideas of lost worlds and alternate realities, but as the project continued, it gradually changed form.
 
-![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604de9c7045b2871f8dd2937_3cad372114c195ca0b4b871146abe869f2b9c6c5-intro_quote.8b6ff64a31790288f1b061ccc4fe027a54591f84.jpeg)
+![](images/intro-quote.jpeg)
 
 The idea of making without a goal or problem in mind was both terrifying and liberating. Designers are used to the idea of making from a brief or a set of instructions, or finding a solution to a problem. Here I sought to explore the scope of possibilities outside the prototypical design process. The project is a rejection of all that is design: creating using a problem and solution formula. It is a dive into the concept of design as making, creating to discover about the world and one's self.
 
@@ -38,7 +38,7 @@ This week was all about exploring a new direction for my design workshop – piv
 
 Sketching came first in the form of simple geometric illustrations. There was an idea of geometric shapes and forms right from the beginning. The direction pursued was one of exploring an unknown world, of teleportation and [telepresence](https://www.google.ca/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#newwindow=1&q=define+telepresence).
 
-![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604de9e326e7a46c887a1f6d_1b5f46c97973dab91d5b86d136518cf8ca8e71cc-workshop_process_1.8b6ff64a31790288f1b061ccc4fe027a54591f84.png)
+![](images/workshop-process-1.png)
 
 This idea manifested itself in the work through form, layering and artistic direction. Rather than focus on designing to these ideas, they simply existed as a springboard into a deep process of making.
 
@@ -46,11 +46,11 @@ This idea manifested itself in the work through form, layering and artistic dire
 
 I began exploring various 3D softwares. I stumbled upon a delightful voxel design program called [MagicaVoxel](https://ephtracy.github.io/) (a voxel is the 3D equivalent of a 2D pixel). It was a simple, very lightweight program that allowed quick prototyping of ideas, with rather straightforward rendering tools.
 
-![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604dea0ef02e1e5b9a35ed5a_55ead82dee7cfe24bdaa6ff7affb0dceb4b8e8ef-workshop_process_2b_four.8b6ff64a31790288f1b061ccc4fe027a54591f84.png)
+![](images/workshop-process-2.png)
 
 The process of designing work was a form of visual research for me. By first creating, then observing work out in the world and then reflecting and creating again I could see a shift in the voice of the work I created. This was a strange but exciting feeling to me as I had not worked in this fashion intensely before, discovering new ideas by creating rather than doing formal research.
 
-![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604dea2894532bee05ab0371_314537295b7dcdf0ed114acd530a129b4f51c83f-workshop_process_3.8b6ff64a31790288f1b061ccc4fe027a54591f84.png)
+![](images/workshop-process-3.png)
 
 I quickly desired more depth in my 3D software so I explored [Blender](https://www.blender.org/) and [Maya](http://www.autodesk.com/products/maya/overview). I spent a large amount of time working on learning the new workflows of these platforms, but noticed that the quality of the work I produced week to week was less. I was spending less time on finding exciting compositions and interactions and more on developing new techniques and learning how to do more complex rendering. While this in itself is not a bad thing, because of the short nature of the project I decided to go back to the simpler software I worked with to continue to develop my ideas.
 
@@ -68,7 +68,7 @@ I became more attracted to explorations of light and reflection through creating
 
 The joy of working in 3D tools versus traditional tools like Photoshop or Illustrator is that the compositions can be rotated and manipulated in 3D, which often returns interesting and unexpected results. This process greatly aids discovery through making.
 
-![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604dea384fc50c0b5bd7715e_0307581492c202dfc6d39d47d2d5dd03794fbb17-workshop_semseter_1.8b6ff64a31790288f1b061ccc4fe027a54591f84.png)
+![](images/workshop-semester-1.png)
 
 ## Workshop Posters
 
@@ -122,7 +122,7 @@ Why finding a balance between collecting knowledge and making is important
 
 There is no such thing as a design superstar, just those with more experience, and those that put the work in
 
-![](https://uploads-ssl.webflow.com/60453108a750bf32c24d79eb/604dea7c0c8132119d3eeaaf_034824e6ec19ef9e776bf805abd6aaf93ddb38fc-workshop_writing_1.8b6ff64a31790288f1b061ccc4fe027a54591f84.jpeg)
+![](images/workshop-writing-1.jpeg)
 
 ## Making By Reflecting
 

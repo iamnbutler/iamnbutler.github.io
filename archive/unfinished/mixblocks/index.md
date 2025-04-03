@@ -4,7 +4,7 @@ date: "2021-04-10"
 description: "Learn, create & remix with light and sound. mixblocks lets you create small, open source blocks that anyone can use to make creations, license-free–with a focus on physical output to displays like LED Dot Matrices."
 ---
 
-![Mixblocks thumbnail](https://res.cloudinary.com/yaminateo/image/upload/v1637124653/project/mixblocks/thumbnail-2x1_yyknqu.jpg)
+![Mixblocks thumbnail](/projects/mixblocks/images/thumbnail-2x1.jpg)
 
 ## The Concept
 
@@ -12,9 +12,9 @@ Inspired by a project a friend did recently about a display that reacts to your 
 
 While Mixblocks has a feed of creations that you can grab and remix from, it has no likes, no connected identities, and no custom user names.
 
-![Mixblocks branding](https://res.cloudinary.com/yaminateo/image/upload/v1637124910/project/mixblocks/Frame_28_mjppaj.png)
+![Mixblocks branding](/projects/mixblocks/images/branding.png)
 
-![Mixblocks branding exploration](https://res.cloudinary.com/yaminateo/image/upload/v1637124910/project/mixblocks/CleanShot_-_2021-11-16_at_23.49.48_2x_gy2rcd.png)
+![Mixblocks branding exploration](/projects/mixblocks/images/exploration.png)
 (Some branding exploration fun)
 
 ## Joining Mixblocks

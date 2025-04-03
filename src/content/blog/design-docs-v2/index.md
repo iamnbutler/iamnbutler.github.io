@@ -6,7 +6,7 @@ date: "2022-05-28"
 
 Design Docs V2.0 brings a new site built in Next.js, refined content, and a dedicated domain at [designdocs.co](https://www.designdocs.co/).
 
-![A screenshot of the Design Docs V2 site](https://user-images.githubusercontent.com/1714999/176328180-bc4581da-d248-41e4-ac42-b590dbaa68bb.png)
+![A screenshot of the Design Docs V2 site](/blog/design-docs-v2/images/design-docs-v2.png)
 
 I've been working on updating resources to make it easy for people to contribute to the project and plan over the following few versions to have clear tasks for people to pick up.
 
