@@ -1,5 +1,5 @@
 ---
-import { getMediaUrl } from '../lib/b2Media';
+import { getHostedMediaUrl } from "../lib/b2Media";
 
 interface Props {
   src: string;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { src, alt, width, height, class: className, ...rest } = Astro.props;
-const imageUrl = getMediaUrl(src);
+const imageUrl = getHostedMediaUrl(src);
 ---
 
 <img 

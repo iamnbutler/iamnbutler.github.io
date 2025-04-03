@@ -13,7 +13,7 @@ class B2Client {
     });
     this.bucketName = process.env.B2_BUCKET_NAME;
     this.bucketId = null;
-    this.endpoint = process.env.B2_ENDPOINT;
+    this.downloadUrl = null; // Will be set during authorization
   }
 
   async init() {
@@ -22,8 +22,12 @@ class B2Client {
       console.log(`Using key ID: ${process.env.B2_APPLICATION_KEY_ID}`);
       console.log(`Using bucket name: ${this.bucketName}`);
 
-      await this.b2.authorize();
+      const authResponse = await this.b2.authorize();
       console.log("Authorization successful");
+      
+      // Store the download URL from the auth response
+      this.downloadUrl = authResponse.data.downloadUrl;
+      console.log(`Using download URL: ${this.downloadUrl}`);
 
       console.log("Getting bucket info...");
       const response = await this.b2.getBucket({ bucketName: this.bucketName });
@@ -83,7 +87,8 @@ class B2Client {
         contentType: mimeType,
       });
 
-      const fileUrl = `${this.endpoint}/file/${this.bucketName}/${fileName}`;
+      // Use the direct download URL from B2 response or construct it from the download URL from auth
+      const fileUrl = `${this.downloadUrl}/file/${this.bucketName}/${fileName}`;
 
       return {
         success: true,
@@ -134,11 +139,11 @@ class B2Client {
   }
 
   getPublicUrl(fileName) {
-    // Ensure fileName doesn't start with a slash for B2 paths
+    // Ensure fileName doesnt start with a slash for B2 paths
     const b2FileName = fileName.startsWith("/")
       ? fileName.substring(1)
       : fileName;
-    return `${this.endpoint}/file/${this.bucketName}/${b2FileName}`;
+    return `${this.downloadUrl}/file/${this.bucketName}/${b2FileName}`;
   }
 }
 

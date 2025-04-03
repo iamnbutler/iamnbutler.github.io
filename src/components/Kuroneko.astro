@@ -1,18 +1,22 @@
 ---
-import { Image } from "astro:assets";
-import { frameData } from "../lib/kuronekoAnimation";
+import { getHostedMediaUrl } from "../lib/b2Media";
+
+// Get the first frame URL from B2
+const firstFrameHostedUrl = getHostedMediaUrl("kuro/kuroneko_blink_01.svg");
 ---
 
 <div
     class="fixed cat-container z-50 top-2 right-2 border border-black bg-white hidden lg:block"
 >
-    <Image
-        src={frameData[0]}
-        alt="Kuroneko"
-        width={229}
-        height={101}
-        id="catImage"
-    />
+    {firstFrameHostedUrl && (
+        <img
+            src={firstFrameHostedUrl}
+            alt="Kuroneko"
+            width={229}
+            height={101}
+            id="catImage"
+        />
+    )}
 </div>
 
 <style>
@@ -23,14 +27,48 @@ import { frameData } from "../lib/kuronekoAnimation";
 </style>
 
 <script>
-    import { animateKuroneko } from "../lib/kuronekoAnimation";
+    import { getHostedMediaUrl } from "../lib/b2Media";
 
     document.addEventListener("DOMContentLoaded", () => {
         const catImage = document.getElementById(
             "catImage",
         ) as HTMLImageElement;
+        
         if (catImage) {
-            animateKuroneko(catImage);
+            // Custom animation function for hosted images
+            let currentFrame = 0;
+            
+            function animateFrames() {
+                const totalFrames = 15;
+                const nextFrame = (currentFrame + 1) % totalFrames;
+                
+                // Generate the correct frame URL
+                const frameNum = (currentFrame + 1).toString().padStart(2, "0");
+                const frameUrl = getHostedMediaUrl(`kuro/kuroneko_blink_${frameNum}.svg`);
+                
+                if (frameUrl) {
+                    catImage.src = frameUrl;
+                }
+                
+                currentFrame = nextFrame;
+                
+                if (currentFrame === 0) {
+                    setTimeout(startAnimation, 12000);
+                } else {
+                    setTimeout(animateFrames, 40); // Use default frame duration
+                }
+            }
+            
+            function startAnimation() {
+                currentFrame = 0;
+                const frameUrl = getHostedMediaUrl("kuro/kuroneko_blink_01.svg");
+                if (frameUrl) {
+                    catImage.src = frameUrl;
+                }
+                animateFrames();
+            }
+            
+            startAnimation();
         }
     });
 </script>

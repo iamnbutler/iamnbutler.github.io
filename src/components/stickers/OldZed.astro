@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import HostedImage from "../HostedImage.astro";
 
 interface Props {
     className?: string;
@@ -10,10 +10,10 @@ const {
 } = Astro.props;
 ---
 
-<Image
+<HostedImage
     width="192"
     height="192"
     class={className}
-    src="/old_zed_sticker.png"
+    src="stickers/old_zed_sticker.png"
     alt=""
 />
