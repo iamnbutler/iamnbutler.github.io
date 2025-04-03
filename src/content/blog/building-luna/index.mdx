@@ -1,0 +1,45 @@
+---
+title: "Building Luna"
+description: "A journey through how to canvas"
+date: "2025-04-02"
+---
+import april_3_resizing from './images/april_3_resizing.mp4';
+
+
+This post tracks my progress building [Luna](https://github.com/iamnbutler/luna), a software design tool for technical designers and design-savvy developers.
+
+Updates are organized in reverse chronological order.
+
+## April 3, 2025
+
+Implemented [single node resizing](https://github.com/iamnbutler/luna/pull/5).
+
+<video src={april_3_resizing} controls autoPlay muted loop></video>
+
+Not being able to capture keyboard events, or have ui elements with mouse events is quickly becoming the most pressing issue for moving forward.
+
+I took one stab at this, but there is some sort of awkwardness with the custom `gpui::Element` we implemented for the canvas and the keyboard events we need to solve.
+
+## March 30, 2025
+
+<bsky>https://bsky.app/profile/nate.rip/post/3lljot7bds22d</bsky>
+
+## March 29, 2025
+
+<bsky>https://bsky.app/profile/nate.rip/post/3lljot7bds22d</bsky>
+
+## March 27, 2025
+
+I'm finally getting started on something I've always wanted to start: Building a software design tool that fluidly can swap between canvas editing and editing components directly in code.
+
+To enable that we would need to not use abstractions from the flexbox or grid layout systems css uses if the goal is to support web ui... I'm getting ahead of myself however.
+
+We'll be building in Rust using [gpui](gpui.rs) and I'm hoping by the time the canvas is at the point we want to start enabling editing via element code directly we can use some sort of headless Zed editor, and I can get a lot of the editor portion for free (🤞)
+
+Here is the first drag-aware element I ever built in gpui:
+
+<video src="./images/early_selection.mov" controls></video>
+
+And testing rendering 10k nodes on the canvas:
+
+![](./images/10k_nodes.png)

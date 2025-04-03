@@ -2,22 +2,22 @@
 import { getHostedMediaUrl } from "../lib/b2Media";
 
 interface Props {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  class?: string;
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    class?: string;
 }
 
 const { src, alt, width, height, class: className, ...rest } = Astro.props;
 const imageUrl = getHostedMediaUrl(src);
 ---
 
-<img 
-  src={imageUrl} 
-  alt={alt} 
-  width={width} 
-  height={height} 
-  class={className}
-  {...rest}
+<img
+    src={imageUrl}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    {...rest}
 />

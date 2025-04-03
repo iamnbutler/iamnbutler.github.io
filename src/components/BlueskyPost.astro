@@ -1,0 +1,15 @@
+---
+// Get the post URL from the slot content
+const postUrl = await Astro.slots.render("default").then(content => content.trim());
+---
+
+<div class="bsky-embed-container not-prose my-4 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden p-4">
+  <div>
+    <a href={postUrl} target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">
+      View this post on Bluesky
+    </a>
+  </div>
+  <p class="text-sm text-gray-500 mt-2">
+    Bluesky embeds will render when official embed support becomes available.
+  </p>
+</div>

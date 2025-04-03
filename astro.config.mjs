@@ -10,6 +10,7 @@ export default defineConfig({
       // Enable custom MDX components
       components: {
         "img": "src/components/HostedImage.astro",
+        "bsky": "src/components/BlueskyPost.astro",
       }
     }),
     sitemap(),
