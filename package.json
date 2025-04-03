@@ -10,7 +10,9 @@
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "b2:upload": "node scripts/b2/uploadMedia.js",
+    "prebuild": "pnpm run b2:upload"
   },
   "dependencies": {
     "@astrojs/check": "0.5.9",
@@ -24,10 +26,14 @@
     "@typescript-eslint/eslint-plugin": "7.3.1",
     "@typescript-eslint/parser": "7.3.1",
     "astro": "4.5.6",
+    "astro-imagetools": "^0.9.0",
+    "backblaze-b2": "^1.7.0",
     "clsx": "2.1.0",
+    "dotenv": "^16.4.7",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "0.32.0",
     "eslint-plugin-jsx-a11y": "6.8.0",
+    "glob": "^11.0.1",
     "sharp": "0.33.3",
     "tailwind-merge": "2.2.2",
     "tailwindcss": "3.4.1",
