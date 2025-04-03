@@ -16,6 +16,7 @@ interface Props {
     image?: string;
 }
 
+const is_dev = import.meta.env.DEV;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/nano.png" } = Astro.props;
@@ -24,7 +25,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="icon" href={`/icon${is_dev && "-dev"}.svg`} type="image/svg+xml" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.webmanifest" />
