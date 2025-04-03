@@ -4,6 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  site: "https://iamnbutler.github.io",
+  site: "https://nate.rip",
   integrations: [mdx(), sitemap(), tailwind()],
 });
