@@ -4,6 +4,8 @@ description: "Exploring the line between responsibility and censorship for platf
 date: "2020-05-31"
 ---
 
+Context: When this was written I was working at Facebook (2020).
+
 ## Doing nothing isn't Being Bold.
 
 Where is the line between responsibility and censorship?

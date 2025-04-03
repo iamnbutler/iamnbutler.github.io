@@ -12,7 +12,7 @@ Check them out here:
 - [Download directly](https://drive.google.com/file/d/16em0EMSvXmxKbJW1nP1GS25zTOMBPShh/view?usp=sharing)
 - [On Twitter](https://twitter.com/iamnbutler/status/940640473227526144)
 
-![3D rendered wallpaper](./wallpaper1.jpg)
+<!-- ![3D rendered wallpaper](./wallpaper1.jpg)
 ![3D rendered wallpaper](./wallpaper2.jpg)
 ![3D rendered wallpaper](./wallpaper3.png)
 ![3D rendered wallpaper](./wallpaper4.jpg)
@@ -30,4 +30,4 @@ Check them out here:
 ![3D rendered wallpaper](./wallpaper16.jpg)
 ![3D rendered wallpaper](./wallpaper17.jpg)
 ![3D rendered wallpaper](./wallpaper18.jpg)
-![3D rendered wallpaper](./wallpaper19.jpg)
+![3D rendered wallpaper](./wallpaper19.jpg) -->
