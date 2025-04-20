@@ -3,7 +3,8 @@ import Footer from "@components/Footer.astro";
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Kuroneko from "@components/Kuroneko.astro";
-import Stickers from "@components/Stickers.astro";
+import OldZed from "@components/stickers/OldZed.astro";
+import Feris from "@components/stickers/Feris.astro";
 import { SITE } from "@consts";
 
 type Props = {
@@ -22,7 +23,8 @@ const { title, description } = Astro.props;
     <body class="relative w-screen overflow-x-hidden">
         <Header />
         <main class="relative">
-            <Stickers />
+            <Feris />
+            <OldZed />
             <Kuroneko />
             <slot />
         </main>
