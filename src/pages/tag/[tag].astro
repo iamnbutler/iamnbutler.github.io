@@ -113,6 +113,52 @@ const totalItems = blogItems.length + projectItems.length + listItems.length + s
                 </div>
             )}
             
+            {/* Shots Section - Shown at the top */}
+            {shotsWithImages.length > 0 && (
+                <div class="space-y-6">
+                    <h2 class="font-semibold text-lg text-black">Shots</h2>
+                    {shotsWithImages.length >= 4 ? (
+                        <OutsetContainer>
+                            <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px">
+                                {shotsWithImages.map((shot) => (
+                                    <li class="aspect-square group">
+                                        <a
+                                            href={`/shots/${shot.slug}`}
+                                            class="block w-full h-full relative"
+                                        >
+                                            <Image
+                                                src={shot.data.img}
+                                                alt={shot.data.title || "Untitled"}
+                                                class="w-full h-full object-cover"
+                                            />
+                                            <div class="absolute bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </OutsetContainer>
+                    ) : (
+                        <ul class="grid grid-cols-2 md:grid-cols-3 gap-px">
+                            {shotsWithImages.map((shot) => (
+                                <li class="aspect-square group">
+                                    <a
+                                        href={`/shots/${shot.slug}`}
+                                        class="block w-full h-full relative"
+                                    >
+                                        <Image
+                                            src={shot.data.img}
+                                            alt={shot.data.title || "Untitled"}
+                                            class="w-full h-full object-cover"
+                                        />
+                                        <div class="absolute bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            )}
+            
             {/* Blog Posts Section */}
             {blogItems.length > 0 && (
                 <div class="space-y-6">
@@ -179,32 +225,6 @@ const totalItems = blogItems.length + projectItems.length + listItems.length + s
                             </section>
                         ))}
                     </div>
-                </div>
-            )}
-            
-            {/* Shots Section */}
-            {shotsWithImages.length > 0 && (
-                <div class="space-y-6">
-                    <h2 class="font-semibold text-lg text-black">Shots</h2>
-                    <OutsetContainer>
-                        <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px">
-                            {shotsWithImages.map((shot) => (
-                                <li class="aspect-square group">
-                                    <a
-                                        href={`/shots/${shot.slug}`}
-                                        class="block w-full h-full relative"
-                                    >
-                                        <Image
-                                            src={shot.data.img}
-                                            alt={shot.data.title || "Untitled"}
-                                            class="w-full h-full object-cover"
-                                        />
-                                        <div class="absolute bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </OutsetContainer>
                 </div>
             )}
         </div>

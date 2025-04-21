@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+
+// Get all unique tags from all collections
+async function getAllTags() {
+  const [blogPosts, projects, lists, shots] = await Promise.all([
+    getCollection("blog"),
+    getCollection("projects"),
+    getCollection("lists"),
+    getCollection("shots")
+  ]);
+  
+  // Gather all items with tags
+  const allTaggedItems = [
+    ...blogPosts.filter(item => item.data.tags && item.data.tags.length > 0),
+    ...projects.filter(item => item.data.tags && item.data.tags.length > 0),
+    ...lists.filter(item => item.data.tags && item.data.tags.length > 0),
+    ...shots.filter(item => item.data.tags && item.data.tags.length > 0)
+  ];
+  
+  // Get all unique tags
+  const uniqueTags = [...new Set(
+    allTaggedItems.flatMap(item => item.data.tags || [])
+  )];
+  
+  // Count items for each tag
+  const tagCounts = uniqueTags.reduce((acc, tag) => {
+    const count = allTaggedItems.filter(item => 
+      item.data.tags && item.data.tags.includes(tag)
+    ).length;
+    acc[tag] = count;
+    return acc;
+  }, {} as Record<string, number>);
+  
+  // Sort tags alphabetically
+  return uniqueTags.sort().map(tag => ({
+    tag,
+    count: tagCounts[tag]
+  }));
+}
+
+const tags = await getAllTags();
+---
+
+<PageLayout title="Tags" description="Browse content by tags">
+  <Container>
+    <div class="space-y-10 my-10">
+      <div class="font-semibold text-black text-2xl">Tags</div>
+      
+      {tags.length > 0 ? (
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {tags.map(({ tag, count }) => (
+            <li>
+              <a 
+                href={`/tag/${tag}`} 
+                class="group flex items-center justify-between py-3 px-4 border border-black hover:text-black transition-colors duration-75 ease-in-out"
+              >
+                <span class="font-medium">{tag}</span>
+                <span class="text-sm">{count} {count === 1 ? 'item' : 'items'}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="py-4">
+          <p>No tags found.</p>
+        </div>
+      )}
+    </div>
+  </Container>
+</PageLayout>
