@@ -10,6 +10,7 @@ html {
 html,
 body {
     @apply size-full;
+    @apply overflow-x-hidden;
     font-family: "Lexend", serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -53,7 +54,7 @@ article {
     }
 
     article img {
-        @apply my-1
+        @apply my-1;
     }
 }
 
