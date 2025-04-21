@@ -1,5 +1,8 @@
 import { defineCollection, z } from "astro:content";
 
+// Define available tags for blog posts
+const BlogTags = z.enum(["gpui"]);
+
 const blog = defineCollection({
   type: "content",
   schema: z.object({
@@ -7,6 +10,7 @@ const blog = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    tags: z.array(BlogTags).optional(),
   }),
 });
 
