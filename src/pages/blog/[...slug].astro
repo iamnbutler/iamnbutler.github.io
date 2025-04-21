@@ -41,7 +41,7 @@ const { Content } = await post.render();
                         <div class="font-base text-sm">
                             {post.data.tags?.map((tag, index) => (
                                 <>
-                                    <a href={`/blog/tag/${tag}`}>{tag}</a>
+                                    <a href={`/tag/${tag}`}>{tag}</a>
                                     {index < post.data.tags!.length - 1 && ", "}
                                 </>
                             ))}

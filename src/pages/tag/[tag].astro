@@ -1,0 +1,212 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import OutsetContainer from "@components/OutsetContainer.astro";
+import { Image } from "astro:assets";
+import { BLOG } from "@consts";
+import BackToPrev from "@components/BackToPrev.astro";
+
+// Helper type for all content collections that support tags
+type TaggableCollection = "blog" | "projects" | "lists" | "shots";
+
+export async function getStaticPaths() {
+    // Get content from all collections that support tags
+    const [blogPosts, projects, lists, shots] = await Promise.all([
+        getCollection("blog"),
+        getCollection("projects"),
+        getCollection("lists"),
+        getCollection("shots")
+    ]);
+    
+    // Gather all items with tags
+    const allTaggedItems = [
+        ...blogPosts.filter(item => item.data.tags && item.data.tags.length > 0),
+        ...projects.filter(item => item.data.tags && item.data.tags.length > 0),
+        ...lists.filter(item => item.data.tags && item.data.tags.length > 0),
+        ...shots.filter(item => item.data.tags && item.data.tags.length > 0)
+    ];
+    
+    // Get all unique tags
+    const uniqueTags = [...new Set(
+        allTaggedItems.flatMap(item => item.data.tags || [])
+    )];
+    
+    // Create a path for each unique tag
+    return uniqueTags.map(tag => ({
+        params: { tag },
+        props: { tag }
+    }));
+}
+
+const { tag } = Astro.props;
+
+// Helper function to get tagged items from a collection
+async function getTaggedItems<T extends TaggableCollection>(collection: T, tag: string) {
+    return (await getCollection(collection))
+        .filter((item) => {
+            // For blog and projects, respect draft status
+            const isDraft = "draft" in item.data && item.data.draft === true;
+            if (isDraft) return false;
+            
+            return item.data.tags && item.data.tags.includes(tag as any);
+        })
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+
+// Get items from all collections that have this tag
+const [blogItems, projectItems, listItems, shotItems] = await Promise.all([
+    getTaggedItems("blog", tag),
+    getTaggedItems("projects", tag),
+    getTaggedItems("lists", tag),
+    getTaggedItems("shots", tag)
+]);
+
+// Group blog posts, projects, and lists by year
+type ItemsByYear<T> = {
+    [year: string]: T[];
+};
+
+function groupByYear<T extends { data: { date: Date } }>(items: T[]): ItemsByYear<T> {
+    return items.reduce((acc: ItemsByYear<T>, item) => {
+        const year = item.data.date.getFullYear().toString();
+        if (!acc[year]) {
+            acc[year] = [];
+        }
+        acc[year].push(item);
+        return acc;
+    }, {});
+}
+
+const blogByYear = groupByYear(blogItems);
+const projectsByYear = groupByYear(projectItems);
+const listsByYear = groupByYear(listItems);
+
+// Sort years in descending order
+function sortYears(years: string[]): string[] {
+    return years.sort((a, b) => parseInt(b) - parseInt(a));
+}
+
+const blogYears = sortYears(Object.keys(blogByYear));
+const projectYears = sortYears(Object.keys(projectsByYear));
+const listYears = sortYears(Object.keys(listsByYear));
+
+// Filter shots with images
+const shotsWithImages = shotItems.filter((shot) => shot.data.img);
+
+// Count total items
+const totalItems = blogItems.length + projectItems.length + listItems.length + shotsWithImages.length;
+---
+
+<PageLayout title={`Content tagged with "${tag}"`} description={`All content related to ${tag}`}>
+    <Container>
+        <div>
+            <BackToPrev href="/"> Back to home </BackToPrev>
+        </div>
+        <div class="space-y-10 my-10">
+            <div class="font-semibold text-black">Content tagged with "{tag}"</div>
+            
+            {totalItems === 0 && (
+                <div class="py-4">
+                    <p>No content found with this tag.</p>
+                </div>
+            )}
+            
+            {/* Blog Posts Section */}
+            {blogItems.length > 0 && (
+                <div class="space-y-6">
+                    <h2 class="font-semibold text-lg text-black">Blog Posts</h2>
+                    <div class="space-y-8">
+                        {blogYears.map((year) => (
+                            <section class="space-y-4">
+                                <div class="font-semibold text-black">{year}</div>
+                                <div>
+                                    <ul class="flex flex-col gap-4">
+                                        {blogByYear[year].map((post) => (
+                                            <li>
+                                                <ArrowCard entry={post} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </section>
+                        ))}
+                    </div>
+                </div>
+            )}
+            
+            {/* Projects Section */}
+            {projectItems.length > 0 && (
+                <div class="space-y-6">
+                    <h2 class="font-semibold text-lg text-black">Projects</h2>
+                    <div class="space-y-8">
+                        {projectYears.map((year) => (
+                            <section class="space-y-4">
+                                <div class="font-semibold text-black">{year}</div>
+                                <div>
+                                    <ul class="flex flex-col gap-4">
+                                        {projectsByYear[year].map((project) => (
+                                            <li>
+                                                <ArrowCard entry={project} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </section>
+                        ))}
+                    </div>
+                </div>
+            )}
+            
+            {/* Lists Section */}
+            {listItems.length > 0 && (
+                <div class="space-y-6">
+                    <h2 class="font-semibold text-lg text-black">Lists</h2>
+                    <div class="space-y-8">
+                        {listYears.map((year) => (
+                            <section class="space-y-4">
+                                <div class="font-semibold text-black">{year}</div>
+                                <div>
+                                    <ul class="flex flex-col gap-4">
+                                        {listsByYear[year].map((list) => (
+                                            <li>
+                                                <ArrowCard entry={list} />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </section>
+                        ))}
+                    </div>
+                </div>
+            )}
+            
+            {/* Shots Section */}
+            {shotsWithImages.length > 0 && (
+                <div class="space-y-6">
+                    <h2 class="font-semibold text-lg text-black">Shots</h2>
+                    <OutsetContainer>
+                        <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px">
+                            {shotsWithImages.map((shot) => (
+                                <li class="aspect-square group">
+                                    <a
+                                        href={`/shots/${shot.slug}`}
+                                        class="block w-full h-full relative"
+                                    >
+                                        <Image
+                                            src={shot.data.img}
+                                            alt={shot.data.title || "Untitled"}
+                                            class="w-full h-full object-cover"
+                                        />
+                                        <div class="absolute bottom-1 left-1 text-xs text-black bg-white px-1 py-0.5 font-mono">{`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}</div>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </OutsetContainer>
+                </div>
+            )}
+        </div>
+    </Container>
+</PageLayout>
