@@ -2,6 +2,7 @@
 title: News Feed XFN
 date: 06-27-2019
 img: "./news-feed-xfn-1.png"
+tags: ["facebook", "design"]
 ---
 
 ![](./news-feed-xfn-1.png)

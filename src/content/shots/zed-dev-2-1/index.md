@@ -2,6 +2,7 @@
 title: Zed.dev 2.1
 date: 11-19-2021
 img: ./zed-dev-2-1-4.webp
+tags: ["zed", "design"]
 ---
 
 ![](./zed-dev-2-1-3.webp)

@@ -2,6 +2,7 @@
 title: B&W Renders
 date: 06-02-2017
 img: ./060317_06.jpg
+tags: ["3d", "art"]
 ---
 
 ![](./060217_2.png)

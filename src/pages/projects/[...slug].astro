@@ -36,6 +36,23 @@ const { Content } = await project.render();
                 <div class="font-base text-sm">
                     {readingTime(project.body)}
                 </div>
+                {
+                    project.data.tags && project.data.tags.length > 0 && (
+                        <>
+                            &bull;
+                            <div class="font-base text-sm">
+                                {project.data.tags?.map((tag, index) => (
+                                    <>
+                                        <a href={`/tags/${tag}`}>{tag}</a>
+                                        {index <
+                                            project.data.tags!.length - 1 &&
+                                            ", "}
+                                    </>
+                                ))}
+                            </div>
+                        </>
+                    )
+                }
             </div>
             <div class="text-2xl font-semibold text-black">
                 {project.data.title}

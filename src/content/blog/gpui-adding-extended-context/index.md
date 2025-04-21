@@ -2,7 +2,7 @@
 title: "Adding Extended Context in GPUI"
 description: "Make global items accessible from anywhere in your app through cx."
 date: "2025-04-20"
-tags: ["gpui"]
+tags: ["gpui", "eng"]
 ---
 
 Inevitably when building an app you have various state and data that you want accessible from anywhere in an app.

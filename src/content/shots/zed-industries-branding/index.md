@@ -2,6 +2,7 @@
 title: Zed Industries Branding
 date: 09-14-2021
 img: "./thumb.png"
+tags: ["zed", "design"]
 ---
 
 ![](./logo.png)

@@ -33,6 +33,22 @@ const dateString = shot.data.date.toString();
                 <div class="font-base text-sm">
                     <FormattedDate date={shot.data.date} />
                 </div>
+                {
+                    shot.data.tags && shot.data.tags.length > 0 && (
+                        <>
+                            &bull;
+                            <div class="font-base text-sm">
+                                {shot.data.tags?.map((tag, index) => (
+                                    <>
+                                        <a href={`/tags/${tag}`}>{tag}</a>
+                                        {index < shot.data.tags!.length - 1 &&
+                                            ", "}
+                                    </>
+                                ))}
+                            </div>
+                        </>
+                    )
+                }
             </div>
             <div class="text-2xl font-semibold text-black">
                 {shot.data.title}

@@ -35,19 +35,22 @@ const { Content } = await post.render();
                 <div class="font-base text-sm">
                     {readingTime(post.body)}
                 </div>
-                {post.data.tags && post.data.tags.length > 0 && (
-                    <>
-                        &bull;
-                        <div class="font-base text-sm">
-                            {post.data.tags?.map((tag, index) => (
-                                <>
-                                    <a href={`/blog/tag/${tag}`}>{tag}</a>
-                                    {index < post.data.tags!.length - 1 && ", "}
-                                </>
-                            ))}
-                        </div>
-                    </>
-                )}
+                {
+                    post.data.tags && post.data.tags.length > 0 && (
+                        <>
+                            &bull;
+                            <div class="font-base text-sm">
+                                {post.data.tags?.map((tag, index) => (
+                                    <>
+                                        <a href={`/tags/${tag}`}>{tag}</a>
+                                        {index < post.data.tags!.length - 1 &&
+                                            ", "}
+                                    </>
+                                ))}
+                            </div>
+                        </>
+                    )
+                }
             </div>
             <div class="text-2xl font-semibold text-black">
                 {post.data.title}

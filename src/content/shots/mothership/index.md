@@ -2,6 +2,7 @@
 title: Mothership
 date: 2020-02-19
 img: "./thumbnail.jpg"
+tags: ["design", "facebook"]
 ---
 
 ![](./mothership_banner.jpg)

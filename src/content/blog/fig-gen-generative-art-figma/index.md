@@ -2,6 +2,7 @@
 title: "fig-gen: Making Generative art in Figma."
 description: "Exploring the new Automator plugin for Figma. I thought exploring a minimal generative series using pixels and mapping equations would be a fun way to try it out."
 date: "2021-11-06"
+tags: ["art"]
 ---
 
 ## Generative Art with Figma & Automator

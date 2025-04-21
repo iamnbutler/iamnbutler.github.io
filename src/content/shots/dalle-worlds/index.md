@@ -2,6 +2,7 @@
 title: DALL·E Worlds
 date: 2022-08-01
 img: "./dalle-worlds2.png"
+tags: ["ai"]
 ---
 
 ![](./dalle-worlds1.png)

@@ -2,6 +2,7 @@
 title: "Building a new site with Astro"
 description: "It's that time of year again – time to build a new site. This time, I'm using Astro. Here's how it's going."
 date: "2024-02-26"
+tags: ["eng"]
 ---
 
 I'm out on paternity leave until early April, and with things finally calming down a little bit with the little one I thought I'd take a little time to build a new site.

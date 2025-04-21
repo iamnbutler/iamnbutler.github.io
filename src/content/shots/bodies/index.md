@@ -2,6 +2,7 @@
 title: Bodies
 date: Oct 26, 2019
 img: "./bodies_1.webp"
+tags: ["3d"]
 ---
 
 ![](./bodies_1.webp)

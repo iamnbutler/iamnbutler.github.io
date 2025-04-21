@@ -2,6 +2,7 @@
 title: "Juice for Audiobooks"
 date: "2019-11-26"
 img: "./thumb.png"
+tags: ["design"]
 ---
 
 ## Designing an audiobook player for people with their own files

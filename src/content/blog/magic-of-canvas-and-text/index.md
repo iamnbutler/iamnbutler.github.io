@@ -2,6 +2,7 @@
 title: "The Black Magic of Canvas and Text Editing"
 description: "Or: Writings on how complex canvas editors and text systems work."
 date: "2025-03-29"
+tags: ["eng"]
 ---
 
 As I dive into building my own canvas editor I'm starting to wonder about the folks and tech that has come before. Here is a collection of things I've found so far (with hopefully more to come!)

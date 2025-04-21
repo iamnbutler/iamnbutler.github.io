@@ -2,6 +2,7 @@
 title: Synthesize
 date: Dec 12, 2024
 img: "./synthesize_1.png"
+tags: ["design"]
 ---
 
 ![](./synthesize_1.png)

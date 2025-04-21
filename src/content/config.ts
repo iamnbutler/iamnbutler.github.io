@@ -1,7 +1,18 @@
 import { defineCollection, z } from "astro:content";
 
-// Define available tags for blog posts
-const BlogTags = z.enum(["gpui"]);
+// Define available tags for all content types
+const CommonTags = z.enum([
+  "gpui",
+  "design",
+  "eng",
+  "art",
+  "zed",
+  "facebook",
+  "3d",
+  "data-viz",
+  "hardware",
+  "ai",
+]);
 
 const blog = defineCollection({
   type: "content",
@@ -10,7 +21,7 @@ const blog = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
-    tags: z.array(BlogTags).optional(),
+    tags: z.array(CommonTags).optional(),
   }),
 });
 
@@ -33,16 +44,19 @@ const projects = defineCollection({
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional(),
+    tags: z.array(CommonTags).optional(),
   }),
 });
 
 const shots = defineCollection({
   type: "content",
-  schema: ({ image }) => z.object({
-    title: z.string().optional(),
-    date: z.coerce.date(),
-    img: image(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().optional(),
+      date: z.coerce.date(),
+      img: image(),
+      tags: z.array(CommonTags).optional(),
+    }),
 });
 
 const lists = defineCollection({
@@ -52,6 +66,7 @@ const lists = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    tags: z.array(CommonTags).optional(),
   }),
 });
 
