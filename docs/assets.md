@@ -7,7 +7,7 @@ This project uses Backblaze B2 for serving assets in production. Assets are auto
 ### 1. Asset Upload Script
 
 The `scripts/upload-assets.js` script:
-- Scans content directories and `public` folder for assets (images, videos, PDFs, etc.)
+- Scans `src/content`, `src/assets`, and `public` folders for assets (images, videos, PDFs, etc.)
 - Uses file hashing to only upload changed assets
 - Preserves the directory structure when uploading to B2
 - Runs automatically during the build process

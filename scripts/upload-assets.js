@@ -108,17 +108,21 @@ async function uploadAssets() {
     // Load hash cache
     const hashCache = await getHashCache();
     
-    // Find all assets in content and public directories
+    // Find all assets in content, assets, and public directories
     const contentDir = path.join(projectRoot, "src", "content");
+    const assetsDir = path.join(projectRoot, "src", "assets");
     const publicDir = path.join(projectRoot, "public");
     
     console.log("Finding assets in content directory...");
     const contentAssets = await findAssets(contentDir);
     
+    console.log("Finding assets in src/assets directory...");
+    const srcAssets = await findAssets(assetsDir);
+    
     console.log("Finding assets in public directory...");
     const publicAssets = await findAssets(publicDir);
     
-    const allAssets = [...contentAssets, ...publicAssets];
+    const allAssets = [...contentAssets, ...srcAssets, ...publicAssets];
     console.log(`Found ${allAssets.length} assets to process`);
     
     // Upload assets that have changed
