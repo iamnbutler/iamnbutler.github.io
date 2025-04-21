@@ -1,4 +1,6 @@
-import { B2 } from "backblaze-b2";
+import "dotenv/config";
+import B2 from "backblaze-b2";
+
 import fs from "fs/promises";
 import path from "path";
 import crypto from "crypto";
@@ -10,9 +12,22 @@ const projectRoot = path.resolve(__dirname, "..");
 
 // Asset file extensions to look for
 const ASSET_EXTENSIONS = [
-  ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", 
-  ".mp4", ".webm", ".mp3", ".wav", ".ogg", 
-  ".pdf", ".zip", ".ttf", ".woff", ".woff2"
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".gif",
+  ".svg",
+  ".webp",
+  ".mp4",
+  ".webm",
+  ".mp3",
+  ".wav",
+  ".ogg",
+  ".pdf",
+  ".zip",
+  ".ttf",
+  ".woff",
+  ".woff2",
 ];
 
 // Location of the cache file
@@ -21,7 +36,7 @@ const CACHE_FILE = path.join(projectRoot, ".b2-cache.json");
 // Create B2 client
 const b2 = new B2({
   applicationKeyId: process.env.B2_APPLICATION_KEY_ID,
-  applicationKey: process.env.B2_APPLICATION_KEY
+  applicationKey: process.env.B2_APPLICATION_KEY,
 });
 
 // Load or create hash cache
@@ -52,12 +67,12 @@ async function calculateFileHash(filePath) {
 async function shouldUploadFile(filePath, hashCache) {
   const relativePath = path.relative(projectRoot, filePath);
   const hash = await calculateFileHash(filePath);
-  
+
   // If file hash already in cache and matches, skip upload
   if (hashCache[relativePath] && hashCache[relativePath] === hash) {
     return false;
   }
-  
+
   // Update cache with latest hash
   hashCache[relativePath] = hash;
   return true;
@@ -66,10 +81,10 @@ async function shouldUploadFile(filePath, hashCache) {
 // Walk directories recursively and find asset files
 async function findAssets(dirPath, assetList = []) {
   const entries = await fs.readdir(dirPath, { withFileTypes: true });
-  
+
   for (const entry of entries) {
     const entryPath = path.join(dirPath, entry.name);
-    
+
     if (entry.isDirectory()) {
       // Skip node_modules and hidden directories
       if (entry.name === "node_modules" || entry.name.startsWith(".")) {
@@ -83,7 +98,7 @@ async function findAssets(dirPath, assetList = []) {
       }
     }
   }
-  
+
   return assetList;
 }
 
@@ -91,64 +106,64 @@ async function findAssets(dirPath, assetList = []) {
 async function uploadAssets() {
   try {
     console.log("Starting asset upload to Backblaze B2...");
-    
+
     // Authenticate with B2
     await b2.authorize();
-    
-    // Get bucket id
-    const response = await b2.listBuckets();
-    const bucketId = response.data.buckets.find(
-      bucket => bucket.bucketName === process.env.B2_BUCKET_NAME
-    )?.bucketId;
-    
+
+    // instead of b2.listBuckets(), do:
+    const resp = await b2.listBuckets({
+      bucketName: process.env.B2_BUCKET_NAME,
+    });
+    const bucketId = resp.data.buckets[0].bucketId;
+
     if (!bucketId) {
       throw new Error(`Bucket ${process.env.B2_BUCKET_NAME} not found`);
     }
-    
+
     // Load hash cache
     const hashCache = await getHashCache();
-    
+
     // Find all assets in content, assets, and public directories
     const contentDir = path.join(projectRoot, "src", "content");
     const assetsDir = path.join(projectRoot, "src", "assets");
     const publicDir = path.join(projectRoot, "public");
-    
+
     console.log("Finding assets in content directory...");
     const contentAssets = await findAssets(contentDir);
-    
+
     console.log("Finding assets in src/assets directory...");
     const srcAssets = await findAssets(assetsDir);
-    
+
     console.log("Finding assets in public directory...");
     const publicAssets = await findAssets(publicDir);
-    
+
     const allAssets = [...contentAssets, ...srcAssets, ...publicAssets];
     console.log(`Found ${allAssets.length} assets to process`);
-    
+
     // Upload assets that have changed
     let uploadedCount = 0;
     let skippedCount = 0;
-    
+
     for (const asset of allAssets) {
       // Determine if file needs uploading based on hash cache
       const needsUpload = await shouldUploadFile(asset, hashCache);
-      
+
       if (!needsUpload) {
         skippedCount++;
         continue;
       }
-      
+
       // Generate B2 file name (preserve relative path from project root)
       const relativePath = path.relative(projectRoot, asset);
       const b2FileName = relativePath.replace(/\\/g, "/"); // Ensure forward slashes for B2
-      
+
       // Get file content for upload
       const fileBuffer = await fs.readFile(asset);
-      
+
       // Determine content type based on extension
       const ext = path.extname(asset).toLowerCase();
       let contentType = "application/octet-stream"; // Default content type
-      
+
       if (ext === ".png") contentType = "image/png";
       else if ([".jpg", ".jpeg"].includes(ext)) contentType = "image/jpeg";
       else if (ext === ".gif") contentType = "image/gif";
@@ -161,13 +176,14 @@ async function uploadAssets() {
       else if (ext === ".ogg") contentType = "audio/ogg";
       else if (ext === ".pdf") contentType = "application/pdf";
       else if (ext === ".zip") contentType = "application/zip";
-      else if ([".ttf", ".woff", ".woff2"].includes(ext)) contentType = "font/" + ext.substring(1);
-      
+      else if ([".ttf", ".woff", ".woff2"].includes(ext))
+        contentType = "font/" + ext.substring(1);
+
       // Get upload URL
       const uploadUrlResponse = await b2.getUploadUrl({
-        bucketId: bucketId
+        bucketId: bucketId,
       });
-      
+
       // Upload file
       try {
         await b2.uploadFile({
@@ -175,22 +191,25 @@ async function uploadAssets() {
           uploadAuthToken: uploadUrlResponse.data.authorizationToken,
           fileName: b2FileName,
           data: fileBuffer,
-          contentType: contentType
+          contentType: contentType,
         });
-        
+
         console.log(`Uploaded: ${b2FileName}`);
         uploadedCount++;
       } catch (error) {
         console.error(`Error uploading ${b2FileName}:`, error.message);
       }
     }
-    
+
     // Save updated hash cache
     await saveHashCache(hashCache);
-    
-    console.log(`Asset upload complete: ${uploadedCount} uploaded, ${skippedCount} unchanged`);
-    console.log(`B2 endpoint: ${process.env.B2_ENDPOINT}/file/${process.env.B2_BUCKET_NAME}/`);
-    
+
+    console.log(
+      `Asset upload complete: ${uploadedCount} uploaded, ${skippedCount} unchanged`,
+    );
+    console.log(
+      `B2 endpoint: ${process.env.B2_ENDPOINT}/file/${process.env.B2_BUCKET_NAME}/`,
+    );
   } catch (error) {
     console.error("Error in asset upload process:", error);
     process.exit(1);
