@@ -2,6 +2,7 @@
 title: "Design Workshop"
 description: "A two part project: one part illustration, one part narrative. It was born out of a desire to make without a problem, to make for the sake of making."
 date: "2015-03-12"
+tags: ["design", "3d", "art"]
 ---
 
 This is a project about discovery, identifying weakness, and finding strength. A two part project: one part illustration, one part narrative. It was born out of a desire to make without a problem, to make for the sake of making.

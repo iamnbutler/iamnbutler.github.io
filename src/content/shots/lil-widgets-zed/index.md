@@ -2,6 +2,7 @@
 title: "lil' widgets"
 date: "2024-08-14"
 img: "./lil_widgets.png"
+tags: ["zed", "design"]
 ---
 
 A fun little status bar widget system I explored while we were working on building semantic indexing for Zed.

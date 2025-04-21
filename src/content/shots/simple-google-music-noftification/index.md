@@ -2,6 +2,7 @@
 title: Simple Google Music Notification
 date: Jan 10, 2013
 img: "./simple-google-music-noftification.webp"
+tags: ["design"]
 ---
 
 ![](./simple-google-music-noftification.webp)

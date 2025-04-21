@@ -2,6 +2,7 @@
 title: "Generating a Content Index"
 description: "Ahead of some schemes of building site-wide content search, and perhaps an RSS feed, let's build a content index."
 date: "2024-02-26"
+tags: ["eng"]
 ---
 
 I've been eyeing [TinySearch](https://github.com/tinysearch/tinysearch) for a long while, and now is a great chance while things are super simple to try to get it working.

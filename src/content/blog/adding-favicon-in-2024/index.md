@@ -2,6 +2,7 @@
 title: "Adding a Favicon in 2024"
 description: "What do we actually need to do to add a favicon to a site in 2024? With a little Astro flavor."
 date: "2024-02-27"
+tags: ["eng"]
 ---
 
 Let's go on a quick side quest to add a favicon to this new site. These always seem to be a bit of a pain because the vendor requirements are always changing. Evil Martians have a really great writeup that covers a lot of this here: [How to Favicon in 2024: Six files that fit most needs

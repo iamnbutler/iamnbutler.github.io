@@ -2,6 +2,7 @@
 title: Infinity Ring
 date: Oct 26, 2019
 img: "./infinity_ring_1.webp"
+tags: ["3d", "art"]
 ---
 
 ![](./infinity_ring_1.webp)

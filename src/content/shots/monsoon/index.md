@@ -2,6 +2,7 @@
 title: Monsoon
 date: Feb 13, 2024
 img: "./monsoon.png"
+tags: ["design", "zed"]
 ---
 
 ![](./monsoon.png)

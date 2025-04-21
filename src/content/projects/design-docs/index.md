@@ -4,6 +4,7 @@ description: "An open source design doc site focused on helping early career des
 date: "01/01/2021"
 demoURL: "https://www.designdocs.co/"
 repoURL: "https://github.com/iamnbutler/design-docs"
+tags: ["design", "eng"]
 ---
 
 ![Design Docs Home](./design-docs-home.png)

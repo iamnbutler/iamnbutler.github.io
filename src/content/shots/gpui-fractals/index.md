@@ -2,7 +2,7 @@
 title: gpui Fractals & More
 date: 02-22-2025
 img: ./thumb.png
-tags: [gpui]
+tags: ["gpui", "art", "eng"]
 ---
 
 

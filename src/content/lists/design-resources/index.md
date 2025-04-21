@@ -2,6 +2,7 @@
 title: "Design Resources"
 description: "A curated collection of design resources and references."
 date: "2021-03-08"
+tags: ["design"]
 ---
 
 ## Design Critique

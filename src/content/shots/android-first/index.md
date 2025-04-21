@@ -2,6 +2,7 @@
 title: Android First Posters
 date: 05-01-2017
 img: "./android_1.png"
+tags: ["design"]
 ---
 
 ![](./android_1.png)
