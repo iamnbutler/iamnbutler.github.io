@@ -1,6 +1,6 @@
 /**
  * Astro integration for Backblaze B2 asset handling
- * 
+ *
  * This integration transforms local asset URLs to Backblaze B2 URLs in production
  * while keeping them as local references during development.
  * It also configures Astro to use Backblaze B2 for optimized assets.
@@ -12,32 +12,30 @@ export default function createB2Integration() {
     hooks: {
       "astro:config:setup": ({ updateConfig, config, command }) => {
         const isProduction = command === "build";
-        
+
         // Only apply in production builds
         if (!isProduction) {
           return;
         }
-        
+
         // Get B2 configuration from environment variables
-        const {
-          B2_ENDPOINT,
-          B2_BUCKET_NAME
-        } = process.env;
-        
+        const { B2_ENDPOINT, B2_BUCKET_NAME } = process.env;
+
         if (!B2_ENDPOINT || !B2_BUCKET_NAME) {
-          console.warn("B2 environment variables not found. Assets will be served locally.");
+          console.warn(
+            "B2 environment variables not found. Assets will be served locally.",
+          );
           return;
         }
-        
+
         // Base URL for B2 assets
         const b2BaseUrl = `${B2_ENDPOINT}/file/${B2_BUCKET_NAME}`;
-        
+
         // Update configuration for both Astro's asset pipeline and Markdown
         updateConfig({
-          // Configure Astro to use B2 for optimized assets
           build: {
             ...config.build,
-            assetsPrefix: [b2BaseUrl]
+            assetsPrefix: b2BaseUrl,
           },
           // Keep existing markdown transformations
           markdown: {
@@ -49,7 +47,11 @@ export default function createB2Integration() {
                 import("unist-util-visit").then(({ visit }) => {
                   visit(tree, "image", (node) => {
                     // Only transform relative URLs (not external ones)
-                    if (node.url && !node.url.startsWith("http") && !node.url.startsWith("/")) {
+                    if (
+                      node.url &&
+                      !node.url.startsWith("http") &&
+                      !node.url.startsWith("/")
+                    ) {
                       // Convert relative paths to B2 URLs
                       node.url = `${b2BaseUrl}/${node.url}`;
                     } else if (node.url && node.url.startsWith("/")) {
@@ -58,7 +60,7 @@ export default function createB2Integration() {
                     }
                   });
                 });
-              }
+              },
             ],
             rehypePlugins: [
               ...(config.markdown.rehypePlugins || []),
@@ -66,10 +68,12 @@ export default function createB2Integration() {
                 // Transform image URLs in HTML
                 import("unist-util-visit").then(({ visit }) => {
                   visit(tree, { tagName: "img" }, (node) => {
-                    if (node.properties && node.properties.src && 
-                        !node.properties.src.startsWith("http") && 
-                        !node.properties.src.startsWith("data:")) {
-                      
+                    if (
+                      node.properties &&
+                      node.properties.src &&
+                      !node.properties.src.startsWith("http") &&
+                      !node.properties.src.startsWith("data:")
+                    ) {
                       if (node.properties.src.startsWith("/")) {
                         // Convert absolute paths to B2 URLs
                         node.properties.src = `${b2BaseUrl}${node.properties.src}`;
@@ -80,13 +84,15 @@ export default function createB2Integration() {
                     }
                   });
                 });
-              }
-            ]
-          }
+              },
+            ],
+          },
         });
 
-        console.log(`Configured Astro to use Backblaze B2 for assets: ${b2BaseUrl}`);
-      }
-    }
+        console.log(
+          `Configured Astro to use Backblaze B2 for assets: ${b2BaseUrl}`,
+        );
+      },
+    },
   };
 }

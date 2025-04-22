@@ -93,9 +93,14 @@ async function findAssets(dirPath, assetList = []) {
         }
         await findAssets(entryPath, assetList);
       } else if (entry.isFile()) {
-        const ext = path.extname(entry.name).toLowerCase();
-        if (ASSET_EXTENSIONS.includes(ext)) {
+        if (dirPath.includes("/_astro") || dirPath.includes("\_astro")) {
           assetList.push(entryPath);
+        } else {
+          // For other directories, only include files with supported extensions
+          const ext = path.extname(entry.name).toLowerCase();
+          if (ASSET_EXTENSIONS.includes(ext)) {
+            assetList.push(entryPath);
+          }
         }
       }
     }
@@ -137,12 +142,17 @@ async function uploadAssets() {
 
     console.log("Finding assets in public directory...");
     const publicAssets = await findAssets(publicDir);
-    
+
     // Add the dist/_astro directory to capture optimized assets
     console.log("Finding assets in dist/_astro directory...");
     const distAssets = await findAssets(distAssetsDir);
 
-    const allAssets = [...contentAssets, ...srcAssets, ...publicAssets, ...distAssets];
+    const allAssets = [
+      ...contentAssets,
+      ...srcAssets,
+      ...publicAssets,
+      ...distAssets,
+    ];
     console.log(`Found ${allAssets.length} assets to process`);
 
     let uploadedCount = 0;

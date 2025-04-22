@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "dev:network": "astro dev --host",
-    "build": "astro check && astro build && npm run upload-assets",
+    "build": "astro check && astro build && npm run upload-assets && npm run upload-astro-assets",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "upload-assets": "node scripts/upload-assets.js"
+    "upload-assets": "node scripts/upload-assets.js",
+    "upload-astro-assets": "node scripts/upload-astro-assets.js"
   },
   "dependencies": {
     "@astrojs/check": "0.5.9",
