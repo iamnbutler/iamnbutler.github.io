@@ -107,10 +107,8 @@ async function uploadAssets() {
   try {
     console.log("Starting asset upload to Backblaze B2...");
 
-    // Authenticate with B2
     await b2.authorize();
 
-    // instead of b2.listBuckets(), do:
     const resp = await b2.listBuckets({
       bucketName: process.env.B2_BUCKET_NAME,
     });
@@ -120,10 +118,8 @@ async function uploadAssets() {
       throw new Error(`Bucket ${process.env.B2_BUCKET_NAME} not found`);
     }
 
-    // Load hash cache
     const hashCache = await getHashCache();
 
-    // Find all assets in content, assets, and public directories
     const contentDir = path.join(projectRoot, "src", "content");
     const assetsDir = path.join(projectRoot, "src", "assets");
     const publicDir = path.join(projectRoot, "public");
@@ -140,12 +136,10 @@ async function uploadAssets() {
     const allAssets = [...contentAssets, ...srcAssets, ...publicAssets];
     console.log(`Found ${allAssets.length} assets to process`);
 
-    // Upload assets that have changed
     let uploadedCount = 0;
     let skippedCount = 0;
 
     for (const asset of allAssets) {
-      // Determine if file needs uploading based on hash cache
       const needsUpload = await shouldUploadFile(asset, hashCache);
 
       if (!needsUpload) {
@@ -153,16 +147,13 @@ async function uploadAssets() {
         continue;
       }
 
-      // Generate B2 file name (preserve relative path from project root)
       const relativePath = path.relative(projectRoot, asset);
-      const b2FileName = relativePath.replace(/\\/g, "/"); // Ensure forward slashes for B2
+      const b2FileName = relativePath.replace(/\\/g, "/");
 
-      // Get file content for upload
       const fileBuffer = await fs.readFile(asset);
 
-      // Determine content type based on extension
       const ext = path.extname(asset).toLowerCase();
-      let contentType = "application/octet-stream"; // Default content type
+      let contentType = "application/octet-stream";
 
       if (ext === ".png") contentType = "image/png";
       else if ([".jpg", ".jpeg"].includes(ext)) contentType = "image/jpeg";
@@ -184,7 +175,6 @@ async function uploadAssets() {
         bucketId: bucketId,
       });
 
-      // Upload file
       try {
         await b2.uploadFile({
           uploadUrl: uploadUrlResponse.data.uploadUrl,
@@ -201,7 +191,6 @@ async function uploadAssets() {
       }
     }
 
-    // Save updated hash cache
     await saveHashCache(hashCache);
 
     console.log(
@@ -216,5 +205,4 @@ async function uploadAssets() {
   }
 }
 
-// Execute if run directly
 uploadAssets();
