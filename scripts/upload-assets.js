@@ -80,23 +80,27 @@ async function shouldUploadFile(filePath, hashCache) {
 
 // Walk directories recursively and find asset files
 async function findAssets(dirPath, assetList = []) {
-  const entries = await fs.readdir(dirPath, { withFileTypes: true });
+  try {
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
 
-  for (const entry of entries) {
-    const entryPath = path.join(dirPath, entry.name);
+    for (const entry of entries) {
+      const entryPath = path.join(dirPath, entry.name);
 
-    if (entry.isDirectory()) {
-      // Skip node_modules and hidden directories
-      if (entry.name === "node_modules" || entry.name.startsWith(".")) {
-        continue;
-      }
-      await findAssets(entryPath, assetList);
-    } else if (entry.isFile()) {
-      const ext = path.extname(entry.name).toLowerCase();
-      if (ASSET_EXTENSIONS.includes(ext)) {
-        assetList.push(entryPath);
+      if (entry.isDirectory()) {
+        // Skip node_modules and hidden directories
+        if (entry.name === "node_modules" || entry.name.startsWith(".")) {
+          continue;
+        }
+        await findAssets(entryPath, assetList);
+      } else if (entry.isFile()) {
+        const ext = path.extname(entry.name).toLowerCase();
+        if (ASSET_EXTENSIONS.includes(ext)) {
+          assetList.push(entryPath);
+        }
       }
     }
+  } catch (error) {
+    console.warn(`Could not read directory ${dirPath}: ${error.message}`);
   }
 
   return assetList;
@@ -123,6 +127,7 @@ async function uploadAssets() {
     const contentDir = path.join(projectRoot, "src", "content");
     const assetsDir = path.join(projectRoot, "src", "assets");
     const publicDir = path.join(projectRoot, "public");
+    const distAssetsDir = path.join(projectRoot, "dist", "_astro");
 
     console.log("Finding assets in content directory...");
     const contentAssets = await findAssets(contentDir);
@@ -132,8 +137,12 @@ async function uploadAssets() {
 
     console.log("Finding assets in public directory...");
     const publicAssets = await findAssets(publicDir);
+    
+    // Add the dist/_astro directory to capture optimized assets
+    console.log("Finding assets in dist/_astro directory...");
+    const distAssets = await findAssets(distAssetsDir);
 
-    const allAssets = [...contentAssets, ...srcAssets, ...publicAssets];
+    const allAssets = [...contentAssets, ...srcAssets, ...publicAssets, ...distAssets];
     console.log(`Found ${allAssets.length} assets to process`);
 
     let uploadedCount = 0;
