@@ -3,6 +3,7 @@
  * 
  * This integration transforms local asset URLs to Backblaze B2 URLs in production
  * while keeping them as local references during development.
+ * It also configures Astro to use Backblaze B2 for optimized assets.
  */
 
 export default function createB2Integration() {
@@ -31,8 +32,14 @@ export default function createB2Integration() {
         // Base URL for B2 assets
         const b2BaseUrl = `${B2_ENDPOINT}/file/${B2_BUCKET_NAME}`;
         
-        // Update markdown plugin to transform image URLs
+        // Update configuration for both Astro's asset pipeline and Markdown
         updateConfig({
+          // Configure Astro to use B2 for optimized assets
+          build: {
+            ...config.build,
+            assetsPrefix: [b2BaseUrl]
+          },
+          // Keep existing markdown transformations
           markdown: {
             ...config.markdown,
             remarkPlugins: [
@@ -77,6 +84,8 @@ export default function createB2Integration() {
             ]
           }
         });
+
+        console.log(`Configured Astro to use Backblaze B2 for assets: ${b2BaseUrl}`);
       }
     }
   };
