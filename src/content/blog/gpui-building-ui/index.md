@@ -114,3 +114,42 @@ impl Render for MyView {
     }
 }
 ~~~
+
+## UI Components
+
+### Conditional Rendering
+
+When building UI, one of the most common tasks is conditional rendering.
+
+You can do this with if/match obviously:
+
+~~~rs
+#[derive(RenderOnce)]
+pub struct Checkbox {
+    pub checked: bool,
+}
+
+impl RenderOnce for Checkbox {
+    fn render(self, _: &mut Window, cx: &mut App) -> impl IntoElement {
+        div()
+            .child(
+                if self.checked {
+                    // might return some svg
+                    Icon::check().into_any_element()
+                } else {
+                    // else return an empty element
+                    div().into_any_element()
+                }
+            )
+    }
+}
+~~~
+
+but there are a number of other useful conditional rendering patterns as well:
+
+- `.when`
+- `.when_some`
+- `.when_none`
+- `.children` combined with methods returning an `Option<AnyElement>`
+
+_more coming soon_
