@@ -146,7 +146,7 @@ impl Render for AppExtensionExample {
 }
 ```
 
-Here is everything together (or grab the [gist](https://gist.github.com/iamnbutler/2c64442e807b93a02074218941fbe6b4):
+Here is everything together (or grab the [example](https://github.com/iamnbutler/gpui-examples/tree/main/context-extension))
 
 ```rust
 //! # GPUI App extension example

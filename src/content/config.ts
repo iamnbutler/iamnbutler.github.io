@@ -2,16 +2,17 @@ import { defineCollection, z } from "astro:content";
 
 // Define available tags for all content types
 const CommonTags = z.enum([
-  "gpui",
+  "3d",
+  "ai",
+  "art",
+  "data-viz",
   "design",
   "eng",
-  "art",
-  "zed",
   "facebook",
-  "3d",
-  "data-viz",
+  "gpui",
   "hardware",
-  "ai",
+  "rust",
+  "zed",
 ]);
 
 const blog = defineCollection({
