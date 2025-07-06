@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+
+// Function to extract plain text preview from markdown
+function extractPreview(content: string, maxLength: number = 300): string {
+    // Remove frontmatter
+    const withoutFrontmatter = content.replace(/^---[\s\S]*?---\s*/, "");
+
+    // Basic markdown to plain text conversion
+    let plainText = withoutFrontmatter
+        .replace(/!\[.*?\]\(.*?\)/g, "[image]") // Replace images with placeholder
+        .replace(/\[([^\]]+)\]\(.*?\)/g, "$1") // Remove link URLs, keep text
+        .replace(/#{1,6}\s+/g, "") // Remove headers
+        .replace(/```[\s\S]*?```/g, "[code block]") // Replace code blocks
+        .replace(/`([^`]+)`/g, "$1") // Remove inline code formatting
+        .replace(/\*\*([^*]+)\*\*/g, "$1") // Remove bold
+        .replace(/\*([^*]+)\*/g, "$1") // Remove italic
+        .replace(/_([^_]+)_/g, "$1") // Remove italic underscore
+        .replace(/^\s*[-*+]\s+/gm, "") // Remove list markers
+        .replace(/^\s*\d+\.\s+/gm, "") // Remove ordered list numbers
+        .replace(/\n{3,}/g, "\n\n") // Collapse multiple newlines
+        .trim();
+
+    // Truncate to maxLength
+    if (plainText.length > maxLength) {
+        plainText = plainText.substring(0, maxLength).trim() + "...";
+    }
+
+    return plainText;
+}
+
+const preview = extractPreview(post.body);
+---
+
+<article
+    class="aspect-square bg-white border border-gray-200 rounded-lg overflow-hidden relative group hover:shadow-lg transition-shadow duration-200"
+>
+    <a
+        href={`/blog/${post.slug}`}
+        class="block w-full h-full p-6 flex flex-col"
+    >
+        <div class="flex-grow">
+            <h3 class="text-lg font-semibold text-black mb-2 line-clamp-2">
+                {post.data.title}
+            </h3>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-2">
+                {post.data.description}
+            </p>
+            <div class="text-sm text-gray-800 leading-relaxed relative">
+                <p class="whitespace-pre-wrap">
+                    {preview}
+                </p>
+            </div>
+        </div>
+
+        <!-- Fade gradient -->
+        <div
+            class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none"
+        >
+        </div>
+
+        <!-- Date badge -->
+        <div
+            class="absolute bottom-4 left-6 text-xs text-gray-500 bg-white px-2 py-1 rounded"
+        >
+            {
+                post.data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                })
+            }
+        </div>
+    </a>
+</article>
