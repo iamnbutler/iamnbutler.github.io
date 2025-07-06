@@ -1,0 +1,34 @@
+---
+export interface Props {
+    className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<li class={`col-span-2 row-span-2 ${className}`}>
+    <article class="h-full p-6 bg-white rounded-lg border border-gray-200">
+        <div class="space-y-4">
+            <h4 class="font-semibold text-black text-xl">
+                Hey, I'm Nate <span class="text-2xl">👋🏻</span>
+            </h4>
+            <div class="space-y-3 text-lg text-gray-600 max-w-lg">
+                <p>
+                    I'm a designer & maker enabling people's creativity and
+                    ability share knowledge. Chances are you have probably used
+                    something I've built.
+                </p>
+                <p>
+                    I want to help people create the things important to them—To
+                    empower them to create something themselves and feel the
+                    euphoria it brings. My goal is always to help the people
+                    around me level up, in their careers & lives.
+                </p>
+                <p>
+                    I post about all types of things here. You will find a mix
+                    of work, top of mind, reflections, & process. Enjoy!
+                </p>
+            </div>
+        </div>
+    </article>
+</li>

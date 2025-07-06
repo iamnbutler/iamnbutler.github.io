@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    list: CollectionEntry<"lists">;
+}
+
+const { list } = Astro.props;
+---
+
+<article
+    class="aspect-square bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg overflow-hidden relative group hover:shadow-lg transition-shadow duration-200"
+>
+    <a
+        href={`/lists/${list.slug}`}
+        class="block w-full h-full p-6 flex flex-col justify-center items-center text-center relative"
+    >
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div
+                class="absolute inset-0"
+                style="background-image: repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor), repeating-linear-gradient(45deg, currentColor 25%, transparent 25%, transparent 75%, currentColor 75%, currentColor); background-size: 30px 30px; background-position: 0 0, 15px 15px;"
+            >
+            </div>
+        </div>
+        <div class="flex flex-col items-center gap-4 relative z-10">
+            <span
+                class="text-xs font-medium uppercase tracking-wider text-gray-600 bg-gray-100/80 backdrop-blur-sm px-3 py-1 rounded-full border border-gray-200"
+            >
+                List
+            </span>
+            <h3 class="text-xl font-semibold text-black">
+                {list.data.title}
+            </h3>
+            {
+                list.data.description && (
+                    <p class="text-sm text-gray-600 line-clamp-3 max-w-[80%]">
+                        {list.data.description}
+                    </p>
+                )
+            }
+        </div>
+
+        <!-- Date badge -->
+        <div class="absolute bottom-4 left-6 text-xs text-gray-500 z-10">
+            {
+                list.data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                })
+            }
+        </div>
+    </a>
+</article>

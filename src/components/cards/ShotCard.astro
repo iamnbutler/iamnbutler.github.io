@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+interface Props {
+    shot: CollectionEntry<"shots">;
+}
+
+const { shot } = Astro.props;
+---
+
+<article class="aspect-square group">
+    <a
+        href={`/shots/${shot.slug}`}
+        class="block w-full h-full relative overflow-hidden rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-200"
+    >
+        <Image
+            src={shot.data.img}
+            alt={shot.data.title || "Untitled"}
+            class="w-full h-full object-cover"
+        />
+        <div class="absolute bottom-2 left-2 text-xs text-black bg-white/90 backdrop-blur-sm px-2 py-1 rounded font-mono">
+            {`${shot.data.date.getFullYear()} – ${shot.data.date.toLocaleString("en-US", { month: "short" })}`}
+        </div>
+    </a>
+</article>
