@@ -41,10 +41,7 @@ const preview = extractPreview(post.body);
 <article
     class="aspect-square bg-white border border-gray-200 rounded-lg overflow-hidden relative group hover:shadow-lg transition-shadow duration-200"
 >
-    <a
-        href={`/blog/${post.slug}`}
-        class="block w-full h-full p-6 flex flex-col"
-    >
+    <a href={`/blog/${post.slug}`} class="w-full h-full p-6 flex flex-col">
         <div class="flex-grow">
             <h3 class="text-lg font-semibold text-black mb-2 line-clamp-2">
                 {post.data.title}
