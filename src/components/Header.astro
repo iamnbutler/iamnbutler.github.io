@@ -7,13 +7,46 @@ import { SITE } from "@consts";
 <header>
     <Container>
         <div
-            class="flex flex-wrap gap-y-2 justify-between opacity-0 hover:opacity-100"
+            class="flex flex-wrap gap-y-2 justify-between items-center opacity-0 hover:opacity-100"
         >
             <Link href="/" underline={false}>
                 <div class="font-semibold">
                     {SITE.NAME}
                 </div>
             </Link>
+            <button
+                class="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                id="search-hint"
+                aria-label="Search (Cmd+P)"
+            >
+                <span class="hidden sm:inline">Search</span>
+                <kbd
+                    class="ml-1 px-2 py-0.5 text-xs bg-gray-100 border border-gray-200 rounded"
+                >
+                    ⌘P
+                </kbd>
+            </button>
         </div>
     </Container>
 </header>
+
+<script>
+    // Add click handler for search hint
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchHint = document.getElementById("search-hint");
+            if (searchHint) {
+                searchHint.addEventListener("click", () => {
+                    // Trigger cmd+p event
+                    const event = new KeyboardEvent("keydown", {
+                        key: "p",
+                        ctrlKey: navigator.platform.indexOf("Win") > -1,
+                        metaKey: navigator.platform.indexOf("Mac") > -1,
+                        bubbles: true,
+                    });
+                    document.dispatchEvent(event);
+                });
+            }
+        });
+    }
+</script>

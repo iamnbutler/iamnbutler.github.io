@@ -1,0 +1,453 @@
+---
+// Search.astro
+---
+
+<div id="search-container" class="search-container hidden">
+    <div class="search-input-wrapper">
+        <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Try `design`, `ui` or `art`"
+            autocomplete="off"
+        />
+        <button
+            id="search-close"
+            class="search-close"
+            aria-label="Close search"
+        >
+            <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <div id="search-results" class="search-results">
+        <!-- Results will be inserted here -->
+    </div>
+</div>
+
+<style>
+    .search-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        z-index: 9999;
+        overflow-y: auto;
+        padding: 2rem 1rem;
+    }
+
+    .search-container.hidden {
+        display: none;
+    }
+
+    .search-input-wrapper {
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+        position: relative;
+        padding: 0 1rem;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 1rem 4rem 1rem 0;
+        font-size: 72px;
+        line-height: 1.1;
+        font-weight: 300;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 2px solid #e5e7eb;
+        transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+        border-bottom-color: #111827;
+    }
+
+    .search-input::placeholder {
+        color: #d1d5db;
+    }
+
+    .search-close {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0.75rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #6b7280;
+        transition: color 0.2s;
+    }
+
+    .search-close:hover {
+        color: #111827;
+    }
+
+    .search-results {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .search-results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .search-result-item {
+        aspect-ratio: 1;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        transition: box-shadow 0.2s;
+        cursor: pointer;
+    }
+
+    .search-result-item:hover {
+        box-shadow:
+            0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .search-result-link {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+    }
+
+    .search-result-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 0.75rem;
+        line-height: 1.25;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .search-result-content {
+        font-size: 0.875rem;
+        color: #374151;
+        line-height: 1.5;
+        flex-grow: 1;
+    }
+
+    .search-result-content mark {
+        background-color: #fef3c7;
+        color: inherit;
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.125rem;
+    }
+
+    .search-result-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4rem;
+        background: linear-gradient(to top, white, transparent);
+        pointer-events: none;
+    }
+
+    .search-no-results {
+        text-align: center;
+        padding: 3rem;
+        color: #6b7280;
+        font-size: 1.125rem;
+    }
+
+    .search-loading {
+        text-align: center;
+        padding: 3rem;
+        color: #6b7280;
+        font-size: 1.125rem;
+    }
+
+    @media (max-width: 768px) {
+        .search-input {
+            font-size: 48px;
+        }
+
+        .search-results-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+    }
+
+    @media (max-width: 480px) {
+        .search-input {
+            font-size: 36px;
+        }
+
+        .search-results-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script>
+    declare global {
+        interface Window {
+            tinysearchInit: any;
+            tinysearchSearch: any;
+            searchIndex: any[];
+        }
+    }
+
+    let wasmInitialized = false;
+    let searchContainer: HTMLElement;
+    let searchInput: HTMLInputElement;
+    let searchResults: HTMLElement;
+    let searchClose: HTMLElement;
+
+    // Initialize elements
+    function initializeElements() {
+        searchContainer = document.getElementById("search-container")!;
+        searchInput = document.getElementById(
+            "search-input",
+        ) as HTMLInputElement;
+        searchResults = document.getElementById("search-results")!;
+        searchClose = document.getElementById("search-close")!;
+    }
+
+    // Load the search index
+    async function loadSearchIndex() {
+        if (!window.searchIndex) {
+            try {
+                const response = await fetch("/search-index.json");
+                window.searchIndex = await response.json();
+            } catch (error) {
+                console.error("Failed to load search index:", error);
+            }
+        }
+    }
+
+    // Load WASM module script
+    function loadWasmScript(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            // Check if already loaded
+            if (window.tinysearchInit) {
+                resolve();
+                return;
+            }
+
+            const script = document.createElement("script");
+            script.type = "module";
+            script.onload = () => resolve();
+            script.onerror = () =>
+                reject(new Error("Failed to load search script"));
+
+            // Set the script content to load the module
+            script.textContent = `
+                import init, { search } from '/wasm/tinysearch_engine.js';
+                window.tinysearchInit = init;
+                window.tinysearchSearch = search;
+            `;
+
+            document.head.appendChild(script);
+        });
+    }
+
+    // Initialize WASM
+    async function initializeWasm() {
+        if (!wasmInitialized) {
+            try {
+                await loadWasmScript();
+                await window.tinysearchInit("/wasm/tinysearch_engine_bg.wasm");
+                wasmInitialized = true;
+            } catch (error) {
+                console.error("Failed to initialize search:", error);
+            }
+        }
+    }
+
+    // Find matching text with context
+    function findMatchingContext(
+        text: string,
+        query: string,
+        contextLength: number = 100,
+    ): string | null {
+        const lowerText = text.toLowerCase();
+        const lowerQuery = query.toLowerCase();
+        const index = lowerText.indexOf(lowerQuery);
+
+        if (index === -1) return null;
+
+        // Calculate start and end with context
+        let start = Math.max(0, index - contextLength);
+        let end = Math.min(text.length, index + query.length + contextLength);
+
+        // Try to find word boundaries
+        if (start > 0) {
+            const spaceIndex = text.lastIndexOf(" ", start);
+            if (spaceIndex > start - 20) start = spaceIndex + 1;
+        }
+
+        if (end < text.length) {
+            const spaceIndex = text.indexOf(" ", end);
+            if (spaceIndex !== -1 && spaceIndex < end + 20) end = spaceIndex;
+        }
+
+        // Extract the text with ellipsis if needed
+        let excerpt = text.substring(start, end);
+        if (start > 0) excerpt = "..." + excerpt;
+        if (end < text.length) excerpt = excerpt + "...";
+
+        // Highlight the matching text
+        const highlightRegex = new RegExp(`(${query})`, "gi");
+        excerpt = excerpt.replace(highlightRegex, "<mark>$1</mark>");
+
+        return excerpt;
+    }
+
+    // Perform search
+    async function performSearch(query: string) {
+        if (!wasmInitialized) {
+            searchResults.innerHTML =
+                '<div class="search-loading">Initializing search...</div>';
+            await initializeWasm();
+            await loadSearchIndex();
+        }
+
+        if (!query.trim()) {
+            searchResults.innerHTML = "";
+            return;
+        }
+
+        try {
+            const results = window.tinysearchSearch(query.toLowerCase(), 20);
+            displayResults(results, query);
+        } catch (error) {
+            console.error("Search error:", error);
+            searchResults.innerHTML =
+                '<div class="search-no-results">An error occurred while searching.</div>';
+        }
+    }
+
+    // Display search results
+    function displayResults(results: any[], query: string) {
+        if (!results || results.length === 0) {
+            searchResults.innerHTML =
+                '<div class="search-no-results">No results found.</div>';
+            return;
+        }
+
+        // Map results to include full content from search index
+        const enrichedResults = results.map(([title, url]) => {
+            const indexItem = window.searchIndex?.find(
+                (item) => item.url === url || item.title === title,
+            );
+            return { title, url, body: indexItem?.body || "" };
+        });
+
+        const resultsHtml = enrichedResults
+            .map((result) => {
+                const escapedTitle = escapeHtml(result.title);
+                const matchingContext =
+                    findMatchingContext(result.body, query) ||
+                    escapeHtml(result.body.substring(0, 200)) + "...";
+
+                return `
+                <div class="search-result-item">
+                    <a href="${result.url}" class="search-result-link">
+                        <h3 class="search-result-title">${escapedTitle}</h3>
+                        <div class="search-result-content">${matchingContext}</div>
+                        <div class="search-result-fade"></div>
+                    </a>
+                </div>
+            `;
+            })
+            .join("");
+
+        searchResults.innerHTML = `<div class="search-results-grid">${resultsHtml}</div>`;
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text: string): string {
+        const map: { [key: string]: string } = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;",
+        };
+        return text.replace(/[&<>"']/g, (m) => map[m]);
+    }
+
+    // Show search
+    function showSearch() {
+        searchContainer.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        searchInput.focus();
+        searchInput.value = "";
+        searchResults.innerHTML = "";
+    }
+
+    // Hide search
+    function hideSearch() {
+        searchContainer.classList.add("hidden");
+        document.body.style.overflow = "";
+        searchInput.value = "";
+        searchResults.innerHTML = "";
+    }
+
+    // Set up event listeners
+    function setupEventListeners() {
+        // Close button
+        searchClose.addEventListener("click", hideSearch);
+
+        // Search input
+        let searchTimeout: NodeJS.Timeout;
+        searchInput.addEventListener("input", (e) => {
+            clearTimeout(searchTimeout);
+            const query = (e.target as HTMLInputElement).value;
+            searchTimeout = setTimeout(() => performSearch(query), 300);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener("keydown", (e) => {
+            // Cmd+P or Ctrl+P to open search
+            if ((e.metaKey || e.ctrlKey) && e.key === "p") {
+                e.preventDefault();
+                showSearch();
+            }
+
+            // Escape to close search
+            if (
+                e.key === "Escape" &&
+                !searchContainer.classList.contains("hidden")
+            ) {
+                hideSearch();
+            }
+        });
+    }
+
+    // Initialize on page load
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeElements();
+            setupEventListeners();
+            // Pre-initialize WASM and search index in the background
+            Promise.all([initializeWasm(), loadSearchIndex()]);
+        });
+    }
+</script>

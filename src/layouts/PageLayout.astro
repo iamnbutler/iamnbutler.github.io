@@ -5,6 +5,7 @@ import Header from "@components/Header.astro";
 import Kuroneko from "@components/Kuroneko.astro";
 import OldZed from "@components/stickers/OldZed.astro";
 import Feris from "@components/stickers/Feris.astro";
+import Search from "@components/Search.astro";
 import { SITE } from "@consts";
 
 type Props = {
@@ -29,5 +30,7 @@ const { title, description } = Astro.props;
             <slot />
         </main>
         <Footer />
+        <!-- Global search interface - triggered with Cmd+P -->
+        <Search />
     </body>
 </html>
