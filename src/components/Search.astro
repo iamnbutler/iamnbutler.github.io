@@ -59,15 +59,16 @@
 
     .search-input {
         width: 100%;
-        padding: 1rem 4rem 1rem 0;
+        padding: 1.5rem 4rem 1.5rem 0;
         font-size: 72px;
-        line-height: 1.1;
+        line-height: 1.2;
         font-weight: 300;
         border: none;
         outline: none;
         background: transparent;
         border-bottom: 2px solid #e5e7eb;
         transition: border-color 0.2s;
+        min-height: 100px;
     }
 
     .search-input:focus {
@@ -76,6 +77,77 @@
 
     .search-input::placeholder {
         color: #d1d5db;
+    }
+
+    .search-suggestions {
+        margin-bottom: 2rem;
+    }
+
+    .search-suggestions-note {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        margin-top: 1rem;
+    }
+
+    .search-suggestions-label {
+        font-size: 1rem;
+        color: #6b7280;
+        margin-bottom: 0.75rem;
+    }
+
+    .search-suggestions-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .search-suggestion-item {
+        position: relative;
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        background: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        color: #374151;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .search-suggestion-shortcut {
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.75rem;
+        color: #6b7280;
+        font-family: monospace;
+    }
+
+    .search-suggestion-item:hover {
+        background: #e5e7eb;
+        border-color: #d1d5db;
+    }
+
+    .search-mixed-results {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .search-suggestion-group {
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 2rem;
+    }
+
+    .search-suggestion-group:last-child {
+        border-bottom: none;
+    }
+
+    .search-suggestion-header {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
     }
 
     .search-close {
@@ -101,44 +173,51 @@
         padding: 0 1rem;
     }
 
-    .search-results-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1rem;
-    }
+    /* Grid handled by Tailwind classes */
 
     .search-result-item {
         aspect-ratio: 1;
         background: white;
-        border: 1px solid #e5e7eb;
+        border: 1px solid rgb(229 231 235);
         border-radius: 0.5rem;
         overflow: hidden;
+        position: relative;
         transition: box-shadow 0.2s;
         cursor: pointer;
     }
 
     .search-result-item:hover {
         box-shadow:
-            0 10px 15px -3px rgba(0, 0, 0, 0.1),
-            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
 
     .search-result-link {
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
-        padding: 1.5rem;
-        height: 100%;
         text-decoration: none;
         color: inherit;
-        position: relative;
     }
 
     .search-result-title {
         font-size: 1.125rem;
         font-weight: 600;
-        color: #111827;
-        margin-bottom: 0.75rem;
+        color: black;
+        margin-bottom: 0.5rem;
         line-height: 1.25;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .search-result-description {
+        font-size: 0.875rem;
+        color: rgb(107 114 128);
+        margin-bottom: 1rem;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -147,16 +226,20 @@
 
     .search-result-content {
         font-size: 0.875rem;
-        color: #374151;
-        line-height: 1.5;
+        color: rgb(31 41 55);
+        line-height: 1.75;
+        position: relative;
         flex-grow: 1;
     }
 
+    .search-result-content p {
+        white-space: pre-wrap;
+    }
+
     .search-result-content mark {
-        background-color: #fef3c7;
+        background-color: transparent;
         color: inherit;
-        padding: 0.125rem 0.25rem;
-        border-radius: 0.125rem;
+        font-weight: 600;
     }
 
     .search-result-fade {
@@ -164,8 +247,13 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 4rem;
-        background: linear-gradient(to top, white, transparent);
+        height: 8rem;
+        background: linear-gradient(
+            to top,
+            white,
+            rgba(255, 255, 255, 0.9),
+            transparent
+        );
         pointer-events: none;
     }
 
@@ -187,20 +275,16 @@
         .search-input {
             font-size: 48px;
         }
-
-        .search-results-grid {
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        }
     }
 
     @media (max-width: 480px) {
         .search-input {
             font-size: 36px;
         }
+    }
 
-        .search-results-grid {
-            grid-template-columns: 1fr;
-        }
+    .flex-grow {
+        flex-grow: 1;
     }
 </style>
 
@@ -210,6 +294,7 @@
             tinysearchInit: any;
             tinysearchSearch: any;
             searchIndex: any[];
+            wordIndex: any;
         }
     }
 
@@ -218,6 +303,7 @@
     let searchInput: HTMLInputElement;
     let searchResults: HTMLElement;
     let searchClose: HTMLElement;
+    let currentSuggestions: string[] = [];
 
     // Initialize elements
     function initializeElements() {
@@ -239,6 +325,40 @@
                 console.error("Failed to load search index:", error);
             }
         }
+    }
+
+    // Load word index for partial matching
+    async function loadWordIndex() {
+        if (!window.wordIndex) {
+            try {
+                const response = await fetch("/word-index.json");
+                window.wordIndex = await response.json();
+            } catch (error) {
+                console.error("Failed to load word index:", error);
+            }
+        }
+    }
+
+    // Find partial matches in word index
+    function findPartialMatches(query: string, limit: number = 10): string[] {
+        if (!window.wordIndex || !window.wordIndex.words || query.length < 2) {
+            return [];
+        }
+
+        const lowerQuery = query.toLowerCase();
+        const matches: Array<{ word: string; count: number }> = [];
+
+        // Find words that start with the query
+        for (const entry of window.wordIndex.words) {
+            if (entry.word.startsWith(lowerQuery)) {
+                matches.push(entry);
+                if (matches.length >= limit * 2) break;
+            }
+        }
+
+        // Sort by frequency and take top results
+        matches.sort((a, b) => b.count - a.count);
+        return matches.slice(0, limit).map((m) => m.word);
     }
 
     // Load WASM module script
@@ -326,21 +446,202 @@
                 '<div class="search-loading">Initializing search...</div>';
             await initializeWasm();
             await loadSearchIndex();
+            await loadWordIndex();
         }
 
         if (!query.trim()) {
             searchResults.innerHTML = "";
+            currentSuggestions = [];
             return;
         }
 
+        // Check if query matches any word completely
+        const lowerQuery = query.toLowerCase();
+        const words = lowerQuery.split(/\s+/).filter((w) => w.length > 0);
+        const lastWord = words[words.length - 1];
+
+        // Find partial matches for the last word
+        const partialMatches = findPartialMatches(lastWord);
+
+        // Check if we have exact matches or should show suggestions
+        let hasExactMatch = false;
         try {
-            const results = window.tinysearchSearch(query.toLowerCase(), 20);
-            displayResults(results, query);
+            const exactResults = window.tinysearchSearch(lowerQuery, 1);
+            hasExactMatch = exactResults.length > 0;
         } catch (error) {
-            console.error("Search error:", error);
-            searchResults.innerHTML =
-                '<div class="search-no-results">An error occurred while searching.</div>';
+            // Ignore search errors for exact match check
         }
+
+        if (
+            !hasExactMatch &&
+            partialMatches.length > 0 &&
+            lastWord.length < 5
+        ) {
+            // Show suggestions
+            displaySuggestions(query, lastWord, partialMatches);
+            currentSuggestions = partialMatches;
+        } else {
+            // Perform full search
+            currentSuggestions = [];
+            try {
+                const results = window.tinysearchSearch(lowerQuery, 20);
+
+                // If no exact results but we have partial matches, search with them
+                if (results.length === 0 && partialMatches.length > 0) {
+                    const suggestionResults = [];
+                    for (const suggestion of partialMatches.slice(0, 3)) {
+                        const suggestionQuery = words
+                            .slice(0, -1)
+                            .concat(suggestion)
+                            .join(" ");
+                        try {
+                            const partialResults = window.tinysearchSearch(
+                                suggestionQuery.toLowerCase(),
+                                5,
+                            );
+                            suggestionResults.push(
+                                ...partialResults.map((r) => [
+                                    ...r,
+                                    suggestion,
+                                ]),
+                            );
+                        } catch (e) {
+                            // Ignore errors for individual suggestions
+                        }
+                    }
+                    displayMixedResults(suggestionResults, query);
+                } else {
+                    displayResults(results, query);
+                }
+            } catch (error) {
+                console.error("Search error:", error);
+                searchResults.innerHTML =
+                    '<div class="search-no-results">An error occurred while searching.</div>';
+            }
+        }
+    }
+
+    // Display suggestions
+    function displaySuggestions(
+        query: string,
+        partial: string,
+        suggestions: string[],
+    ) {
+        const limitedSuggestions = suggestions.slice(0, 5);
+        const html = `
+            <div class="search-suggestions">
+                <p class="search-suggestions-label">Did you mean:</p>
+                <div class="search-suggestions-list">
+                    ${limitedSuggestions
+                        .map(
+                            (suggestion, index) => `
+                        <button class="search-suggestion-item" data-suggestion="${escapeHtml(suggestion)}" data-index="${index}">
+                            <span class="search-suggestion-shortcut">${index + 1}</span>
+                            ${escapeHtml(suggestion)}
+                        </button>
+                    `,
+                        )
+                        .join("")}
+                </div>
+                <p class="search-suggestions-note">Search full words. You can find results in headlines, content text, alt tags & more.</p>
+            </div>
+        `;
+        searchResults.innerHTML = html;
+
+        // Add click handlers to suggestions
+        document.querySelectorAll(".search-suggestion-item").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const suggestion = (e.target as HTMLElement).getAttribute(
+                    "data-suggestion",
+                );
+                if (suggestion) {
+                    const words = query.toLowerCase().split(/\s+/);
+                    words[words.length - 1] = suggestion;
+                    searchInput.value = words.join(" ");
+                    performSearch(searchInput.value);
+                }
+            });
+        });
+    }
+
+    // Display mixed results with suggestions
+    function displayMixedResults(
+        results: Array<[string, string, string]>,
+        query: string,
+    ) {
+        if (!results || results.length === 0) {
+            searchResults.innerHTML =
+                '<div class="search-no-results">No results found.</div>';
+            return;
+        }
+
+        // Group results by suggestion word
+        const groupedResults: { [key: string]: Array<[string, string]> } = {};
+        results.forEach(([title, url, suggestion]) => {
+            if (!groupedResults[suggestion]) {
+                groupedResults[suggestion] = [];
+            }
+            groupedResults[suggestion].push([title, url]);
+        });
+
+        let html = '<div class="search-mixed-results">';
+
+        for (const [suggestion, suggestionResults] of Object.entries(
+            groupedResults,
+        )) {
+            html += `
+                <div class="search-suggestion-group">
+                    <p class="search-suggestion-header">Results for "${escapeHtml(suggestion)}":</p>
+                    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 2xl:max-w-[1600px] 2xl:mx-auto">
+            `;
+
+            const enrichedResults = suggestionResults.map(([title, url]) => {
+                const indexItem = window.searchIndex?.find(
+                    (item) => item.url === url || item.title === title,
+                );
+                const body = indexItem?.body || "";
+                const firstSentence = body.match(/^[^.!?]+[.!?]/)?.[0] || "";
+                const description = firstSentence || body.substring(0, 150);
+                return { title, url, body, description };
+            });
+
+            html += enrichedResults
+                .map((result) => {
+                    const escapedTitle = escapeHtml(result.title);
+                    const escapedDescription = escapeHtml(
+                        result.description.trim(),
+                    );
+                    const matchingContext =
+                        findMatchingContext(result.body, suggestion) ||
+                        escapeHtml(result.body.substring(0, 300)) + "...";
+
+                    return `
+                <li>
+                    <article class="search-result-item">
+                        <a href="${result.url}" class="search-result-link">
+                            <div class="flex-grow">
+                                <h3 class="search-result-title">${escapedTitle}</h3>
+                                ${escapedDescription ? `<p class="search-result-description">${escapedDescription}</p>` : ""}
+                                <div class="search-result-content">
+                                    <p>${matchingContext}</p>
+                                </div>
+                            </div>
+                            <div class="search-result-fade"></div>
+                        </a>
+                    </article>
+                </li>
+            `;
+                })
+                .join("");
+
+            html += `
+                    </ul>
+                </div>
+            `;
+        }
+
+        html += "</div>";
+        searchResults.innerHTML = html;
     }
 
     // Display search results
@@ -356,29 +657,43 @@
             const indexItem = window.searchIndex?.find(
                 (item) => item.url === url || item.title === title,
             );
-            return { title, url, body: indexItem?.body || "" };
+            // Extract description from body (first sentence or first 150 chars)
+            const body = indexItem?.body || "";
+            const firstSentence = body.match(/^[^.!?]+[.!?]/)?.[0] || "";
+            const description = firstSentence || body.substring(0, 150);
+            return { title, url, body, description };
         });
 
         const resultsHtml = enrichedResults
             .map((result) => {
                 const escapedTitle = escapeHtml(result.title);
+                const escapedDescription = escapeHtml(
+                    result.description.trim(),
+                );
                 const matchingContext =
                     findMatchingContext(result.body, query) ||
-                    escapeHtml(result.body.substring(0, 200)) + "...";
+                    escapeHtml(result.body.substring(0, 300)) + "...";
 
                 return `
-                <div class="search-result-item">
-                    <a href="${result.url}" class="search-result-link">
-                        <h3 class="search-result-title">${escapedTitle}</h3>
-                        <div class="search-result-content">${matchingContext}</div>
-                        <div class="search-result-fade"></div>
-                    </a>
-                </div>
-            `;
+                    <li>
+                        <article class="search-result-item">
+                            <a href="${result.url}" class="search-result-link">
+                                <div class="flex-grow">
+                                    <h3 class="search-result-title">${escapedTitle}</h3>
+                                    ${escapedDescription ? `<p class="search-result-description">${escapedDescription}</p>` : ""}
+                                    <div class="search-result-content">
+                                        <p>${matchingContext}</p>
+                                    </div>
+                                </div>
+                                <div class="search-result-fade"></div>
+                            </a>
+                        </article>
+                    </li>
+                `;
             })
             .join("");
 
-        searchResults.innerHTML = `<div class="search-results-grid">${resultsHtml}</div>`;
+        searchResults.innerHTML = `<ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 2xl:max-w-[1600px] 2xl:mx-auto">${resultsHtml}</ul>`;
     }
 
     // Escape HTML to prevent XSS
@@ -438,6 +753,24 @@
             ) {
                 hideSearch();
             }
+
+            // Cmd+Option+1-5 for suggestions
+            if (
+                (e.metaKey || e.ctrlKey) &&
+                e.altKey &&
+                !searchContainer.classList.contains("hidden")
+            ) {
+                const num = parseInt(e.key);
+                if (num >= 1 && num <= 5) {
+                    e.preventDefault();
+                    const suggestionBtn = document.querySelector(
+                        `.search-suggestion-item[data-index="${num - 1}"]`,
+                    ) as HTMLButtonElement;
+                    if (suggestionBtn) {
+                        suggestionBtn.click();
+                    }
+                }
+            }
         });
     }
 
@@ -446,8 +779,8 @@
         document.addEventListener("DOMContentLoaded", () => {
             initializeElements();
             setupEventListeners();
-            // Pre-initialize WASM and search index in the background
-            Promise.all([initializeWasm(), loadSearchIndex()]);
+            // Pre-initialize WASM, search index, and word index in the background
+            Promise.all([initializeWasm(), loadSearchIndex(), loadWordIndex()]);
         });
     }
 </script>

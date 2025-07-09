@@ -7,7 +7,7 @@
     "dev:network": "astro dev --host",
     "prebuild": "npm run search:generate",
     "build": "astro check && astro build",
-    "search:generate": "python3 scripts/generate-search-index.py && tinysearch public/search-index.json -p public/wasm",
+    "search:generate": "./scripts/generate-search-index.sh && ./scripts/generate-word-index.sh && tinysearch public/search-index.json -p public/wasm",
     "preview": "astro preview",
     "preview:network": "astro preview --host",
     "astro": "astro",
