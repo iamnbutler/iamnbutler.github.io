@@ -1,22 +1,22 @@
-CSS has a new layout mode. `display: grid-lanes` — the thing everyone's been calling masonry for the past five years finally has a real spec.
+I've been trying to get a masonry-ish layout working on this site for the homepage grid. Tried a polyfill, tried hacking dense grid into something passable — all kind of janky. Then I came across [Jen Simmons' post on the WebKit blog](https://webkit.org/blog/17660/introducing-css-grid-lanes/) about `display: grid-lanes` and it clicked.
 
-It works like grid but items pack into the shortest column instead of filling rows sequentially. You define columns, items flow down. No fixed row heights, no gaps below short items.
+This is the thing the CSSWG has been arguing about for five years. You might remember Firefox had `grid-template-rows: masonry` as an experiment back in 2020 — this isn't that. Grid-lanes is its own display value with its own layout algorithm. Items pack into the shortest column instead of filling rows. You define your columns and they just flow down.
+
+The wild part is it reuses basically everything from grid. `grid-template-columns`, `gap`, even `grid-column: span 2` — it all just works. There's one new property, `flow-tolerance`, which controls how aggressively items pack. Default is `1em`, meaning columns within 1em of each other get treated as equal height. Prevents stuff from shuffling around over tiny pixel differences which is nice.
+
+Here's what I'm using on this site right now:
 
 ```css
-.grid {
+.mosaic {
+  display: grid;
   display: grid-lanes;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 180px;
+  grid-auto-flow: dense;
   gap: 8px;
 }
 ```
 
-What's interesting about it:
-- Reuses all existing grid properties. `grid-column: span 2` just works.
-- `flow-tolerance` is a new property — controls how aggressively items pack. Default `1em` means columns within 1em of the same height are treated as equal. Prevents items shuffling around over tiny differences.
-- Define columns and you get a waterfall layout. Define rows instead and you get a brick layout.
+The trick is stacking the display declarations — browsers that don't understand `grid-lanes` just ignore it and fall back to regular grid. The `grid-auto-rows` and `dense` flow keep things looking decent on everything else.
 
-This isn't the old `grid-template-rows: masonry` thing from Firefox. That was an experiment from 2020. Grid-lanes is its own display value with its own layout algorithm — the CSSWG took five years of arguing to get here.
-
-Browser support right now: Safari Technology Preview 234. Chrome and Firefox are working on it. For production you stack declarations — `display: grid` first, then `display: grid-lanes`. Browsers that don't understand grid-lanes ignore it and fall back to regular grid.
-
-I'm using this on nate.rip with a dense grid fallback. When grid-lanes lands in stable browsers the layout will just get better without changing any code.
+Browser support as of writing: Safari Technology Preview 234. Chrome and Firefox are working on it. So right now it's basically a progressive enhancement — when it lands in stable browsers the layout just gets better without changing anything.
