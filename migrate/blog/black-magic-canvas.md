@@ -1,20 +1,43 @@
 ---
 title: "The Black Magic of Canvas and Text Editing"
-description: "Notes on building text editing with HTML canvas."
+description: "Or: Writings on how complex canvas editors and text systems work."
 date: "2025-03-29"
 tags: ["eng"]
 ---
 
-Building a text editor on HTML canvas is one of those things that sounds simple until you actually try it.
+As I dive into building my own canvas editor I'm starting to wonder about the folks and tech that has come before. Here is a collection of things I've found so far (with hopefully more to come!)
 
-The browser gives you `measureText()` and `fillText()`. That's it. Everything else — cursor positioning, selection, line wrapping, scrolling, input handling, IME support, clipboard, undo/redo — you build from scratch.
+## Canvas
 
-Some things I learned:
-- `measureText()` lies. The reported width doesn't always match the rendered width.
-- Cursor positioning requires tracking every character's x-offset individually.
-- Line wrapping is a word-boundary problem with surprisingly many edge cases.
-- Selection rendering is just drawing colored rectangles behind text.
-- IME input (for CJK languages) requires a hidden textarea overlay.
-- Clipboard access is async and permissions-gated.
+[**Figma**](https://www.madebyevan.com/figma/) - [Evan Wallace](https://www.madebyevan.com/)
 
-Canvas text editing is black magic because it forces you to reimplement everything the browser does for free with `<textarea>`. But sometimes that's exactly what you need — full control over rendering and behavior.
+A collection of writings on technical work on Figma.
+
+[**Figma**](https://rsms.me/work/figma/) - [Rasmus Andersson](https://rsms.me/)
+
+An overall overview of the Figma by Rasmus, including design, engineering, and culture.
+
+[**Inside Sketch: A deep dive into our Canvas tech**](https://www.sketch.com/blog/canvas-tech/) - Pieter Omvlee
+
+[**Figma 1**](https://andrewkchan.dev/posts/figma.html) & [**Figma 2**](https://andrewkchan.dev/posts/figma2.html) - Andrew Chan
+
+### Scene Graph
+
+[**Wikipedia: Scene Graph**](https://en.wikipedia.org/wiki/Scene_graph)
+
+Some advantages of the scene graph:
+
+- single parent, multiple children
+- propagate operations downwards to children
+- culling of non-visible elements
+- streamlined hit testing and selection
+
+## Text
+
+[**Text Rendering Hates You**](https://faultlore.com/blah/text-hates-you/) - [faultlore](https://faultlore.com/)
+
+A bible on text rendering.
+
+---
+
+Thannks to all the folks in [this thread](https://bsky.app/profile/nate.rip/post/3lljot7bds22d) for contributing links!
