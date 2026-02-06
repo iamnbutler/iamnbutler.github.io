@@ -1,0 +1,32 @@
+{
+  "lexicon": 1,
+  "id": "rip.nate.shot",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["slug", "images", "createdAt"],
+        "properties": {
+          "title": { "type": "string", "maxLength": 300 },
+          "slug": { "type": "string", "maxLength": 200 },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["image"],
+              "properties": {
+                "image": { "type": "blob", "accept": ["image/*"], "maxSize": 10000000 },
+                "alt": { "type": "string", "maxLength": 500 }
+              }
+            },
+            "maxLength": 20
+          },
+          "tags": { "type": "array", "items": { "type": "string" }, "maxLength": 20 },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
