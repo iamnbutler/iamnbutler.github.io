@@ -1,4 +1,3 @@
-const PUBLIC_API = 'https://public.api.bsky.app';
 const HANDLE = 'nate.rip';
 
 const COLLECTION_POST = 'rip.nate.blog.post';
@@ -23,13 +22,43 @@ export interface Shot {
   tags: string[];
 }
 
+// Resolve handle -> DID -> PDS endpoint from DID document
+let _did: string | null = null;
+let _pds: string | null = null;
+
+async function resolveIdentity(): Promise<{ did: string; pds: string }> {
+  if (_did && _pds) return { did: _did, pds: _pds };
+
+  // Resolve handle to DID via public API (this endpoint works on the AppView)
+  const handleRes = await fetch(`https://public.api.bsky.app/xrpc/com.atproto.identity.resolveHandle?handle=${HANDLE}`);
+  if (!handleRes.ok) throw new Error(`resolveHandle failed: ${handleRes.status}`);
+  const { did } = await handleRes.json();
+
+  // Resolve DID document to find PDS endpoint
+  const didRes = await fetch(`https://plc.directory/${did}`);
+  if (!didRes.ok) throw new Error(`DID resolution failed: ${didRes.status}`);
+  const didDoc = await didRes.json();
+  const pds = didDoc.service?.find((s: any) => s.id === '#atproto_pds')?.serviceEndpoint;
+  if (!pds) throw new Error('No PDS found in DID document');
+
+  _did = did;
+  _pds = pds;
+  return { did, pds };
+}
+
+export async function resolveDid(): Promise<string> {
+  const { did } = await resolveIdentity();
+  return did;
+}
+
 async function listRecords(collection: string): Promise<any[]> {
+  const { did, pds } = await resolveIdentity();
   const records: any[] = [];
   let cursor: string | undefined;
   do {
-    const params = new URLSearchParams({ repo: HANDLE, collection, limit: '100' });
+    const params = new URLSearchParams({ repo: did, collection, limit: '100' });
     if (cursor) params.set('cursor', cursor);
-    const res = await fetch(`${PUBLIC_API}/xrpc/com.atproto.repo.listRecords?${params}`);
+    const res = await fetch(`${pds}/xrpc/com.atproto.repo.listRecords?${params}`);
     if (!res.ok) throw new Error(`listRecords failed: ${res.status}`);
     const data = await res.json();
     records.push(...data.records);
@@ -74,15 +103,5 @@ export async function fetchShot(slug: string): Promise<Shot | null> {
 }
 
 export function blobUrl(did: string, cid: string): string {
-  return `${PUBLIC_API}/xrpc/com.atproto.sync.getBlob?did=${did}&cid=${cid}`;
-}
-
-let _did: string | null = null;
-export async function resolveDid(): Promise<string> {
-  if (_did) return _did;
-  const res = await fetch(`${PUBLIC_API}/xrpc/com.atproto.identity.resolveHandle?handle=${HANDLE}`);
-  if (!res.ok) throw new Error(`resolveHandle failed: ${res.status}`);
-  const data = await res.json();
-  _did = data.did;
-  return _did!;
+  return `https://bsky.social/xrpc/com.atproto.sync.getBlob?did=${did}&cid=${cid}`;
 }
