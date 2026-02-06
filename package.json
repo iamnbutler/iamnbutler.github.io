@@ -11,7 +11,6 @@
   "dependencies": {
     "@astrojs/svelte": "^7.2.5",
     "astro": "^5.0.0",
-    "masonry-pf": "^1.1.1",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",

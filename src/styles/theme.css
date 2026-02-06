@@ -254,8 +254,10 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 
 .mosaic {
   display: grid;
+  display: grid-lanes; /* progressive enhancement — Safari TP 234+ */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: masonry;
+  grid-auto-rows: 180px; /* grid fallback: fixed rows */
+  grid-auto-flow: dense; /* grid fallback: fill gaps */
   gap: var(--sp-2);
   margin-bottom: var(--sp-3);
 }
@@ -283,7 +285,6 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 /* Shot tiles */
 .tile-shot {
   background: var(--surface);
-  aspect-ratio: 4/3;
 }
 .tile-shot img {
   width: 100%;
@@ -313,12 +314,12 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   text-overflow: ellipsis;
 }
 .tile-w { grid-column: span 2; }
-.tile-t { aspect-ratio: 3/5; }
+.tile-t { grid-row: span 2; }
 
 /* Hero tiles — 2-col feature in mosaic */
 .tile-hero {
   grid-column: span 2;
-  aspect-ratio: 2/1;
+  grid-row: span 2;
   border-top: 2px solid var(--accent-2);
   clip-path: polygon(
     0 0,
