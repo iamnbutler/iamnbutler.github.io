@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import { fetchAllFragments, blobUrl, DID } from '../lib/atproto';
+
+const fragments = await fetchAllFragments();
+const sorted = [...fragments].reverse();
+const hero = sorted.find(f => f.type === 'shot' && f.images?.length);
+const grid = sorted.filter(f => f !== hero);
+
+function typeAccent(type: string): string {
+  return type === 'list' ? '#7b8adf' : type === 'shot' ? 'var(--accent-2)' : 'var(--accent)';
+}
+
+function excerpt(text: string): string {
+  return text.replace(/[#*_\[\]()>`-]/g, '').trim().slice(0, 100);
+}
+---
+<Base wide>
+  <div class="container">
+    <header class="panel panel-accent" style="margin-bottom: var(--sp-3);">
+      <h1>nate.rip</h1>
+      <div class="header-stats">
+        <span>{sorted.length} fragments</span>
+        <span class="sep">/</span>
+        <span class="type-post">{sorted.filter(f => f.type === 'post').length}p</span>
+        <span class="sep">/</span>
+        <span class="type-shot">{sorted.filter(f => f.type === 'shot').length}s</span>
+        <span class="sep">/</span>
+        <span class="type-list">{sorted.filter(f => f.type === 'list').length}l</span>
+      </div>
+    </header>
+  </div>
+
+  {hero && hero.images && (
+    <a href={`/f/${hero.id}`} class="hero">
+      <img src={blobUrl(DID, hero.images[0].cid)} alt={hero.title} />
+      <div class="hero-scanlines"></div>
+      <div class="hero-corners">
+        <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
+        <i class="hc hc-bl"></i><i class="hc hc-br"></i>
+      </div>
+      <div class="hero-info">
+        <span class="hero-tag type-shot">shot #{hero.id}</span>
+        <h2>{hero.title}</h2>
+      </div>
+    </a>
+  )}
+
+  <div class="divider"><span>fragments</span></div>
+
+  <section class="mosaic">
+    {grid.map((f, i) => {
+      const isShot = f.type === 'shot' && f.images?.length;
+      const isInlineHero = isShot && i > 0 && i % 10 === 0;
+
+      if (isInlineHero) {
+        return (
+          <a href={`/f/${f.id}`} class="tile tile-shot tile-hero">
+            <img src={blobUrl(DID, f.images![0].cid)} alt={f.title} loading="lazy" />
+            <div class="hero-scanlines"></div>
+            <div class="hero-corners">
+              <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
+              <i class="hc hc-bl"></i><i class="hc hc-br"></i>
+            </div>
+            <div class="hero-info">
+              <span class="hero-tag type-shot">shot #{f.id}</span>
+              <h2>{f.title}</h2>
+            </div>
+          </a>
+        );
+      }
+
+      if (isShot) {
+        const isWide = i % 7 === 0;
+        const isTall = !isWide && i % 5 === 2;
+        return (
+          <a href={`/f/${f.id}`} class:list={['tile', 'tile-shot', isWide && 'tile-w', isTall && 'tile-t']}>
+            <img src={blobUrl(DID, f.images![0].cid)} alt={f.title} loading="lazy" />
+            <div class="tile-overlay">
+              <span class="tile-id">#{f.id}</span>
+              <span class="tile-label">{f.title}</span>
+            </div>
+          </a>
+        );
+      }
+
+      return (
+        <a href={`/f/${f.id}`} class="tile tile-text" style={`--tile-accent: ${typeAccent(f.type)}`}>
+          <span class="tile-watermark">{f.id}</span>
+          <span class={`tile-tag type-${f.type}`}>{f.type}</span>
+          <h3>{f.title}</h3>
+          {f.content && (
+            <p class="tile-excerpt">{excerpt(f.content)}</p>
+          )}
+          <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
+        </a>
+      );
+    })}
+  </section>
+
+  <script>
+    import { registerMasonry } from 'masonry-pf';
+    registerMasonry(document.querySelector('.mosaic'));
+  </script>
+
+  <div class="container">
+    <div class="divider"><span>log</span></div>
+    <nav class="log">
+      {sorted.map(f => (
+        <a href={`/f/${f.id}`} class="log-row">
+          <span class="log-id">{String(f.id).padStart(2, '0')}</span>
+          <span class={`log-type type-${f.type}`}>{f.type}</span>
+          <span class="log-title">{f.title}</span>
+          <time class="log-date">{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
+        </a>
+      ))}
+    </nav>
+  </div>
+</Base>

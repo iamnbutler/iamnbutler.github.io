@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import { fetchAllFragments, fetchFragment, blobUrl, DID } from '../../lib/atproto';
+import { renderMarkdown } from '../../lib/markdown';
+import type { Fragment } from '../../lib/types';
+
+export async function getStaticPaths() {
+  const fragments = await fetchAllFragments();
+  return fragments.map(f => ({ params: { id: String(f.id) }, props: { fragment: f } }));
+}
+
+const { fragment } = Astro.props as { fragment: Fragment };
+const html = fragment.content ? await renderMarkdown(fragment.content) : '';
+const imageCount = fragment.images?.length ?? 0;
+---
+<Base title={fragment.title}>
+  <nav style="margin-bottom: var(--sp-2);">
+    <a href="/" class="panel-sm" style="display: inline-block; padding: var(--sp) var(--sp-2); font-family: var(--mono); font-size: var(--fs-s); text-transform: uppercase; letter-spacing: 0.05em;">&larr; back</a>
+  </nav>
+
+  <header class="frag-header">
+    <h1>{fragment.title}</h1>
+    <div class="frag-meta">
+      <span class={`type-${fragment.type}`}>#{fragment.id}</span>
+      <span> · </span>
+      <span class={`type-${fragment.type}`}>{fragment.type}</span>
+      <span> · </span>
+      <time datetime={fragment.createdAt}>{new Date(fragment.createdAt).toISOString().slice(0, 10)}</time>
+    </div>
+  </header>
+
+  {fragment.type === 'shot' && fragment.images && (
+    <div class="gallery">
+      {fragment.images.map((img, i) => {
+        const isFirst = i === 0;
+        const isLast = i === imageCount - 1;
+        const oddRemaining = (imageCount - 1) % 2 === 1;
+        const spanFull = isFirst || (isLast && oddRemaining && imageCount > 1);
+        return (
+          <div class:list={['gallery-item', spanFull && 'gallery-full']}>
+            <img src={blobUrl(DID, img.cid)} alt={img.alt || fragment.title} />
+            {imageCount > 1 && <span class="gallery-idx">{i + 1}/{imageCount}</span>}
+          </div>
+        );
+      })}
+    </div>
+  )}
+
+  {fragment.type === 'shot' && html && (
+    <article class="panel" style="margin-bottom: var(--sp-3);">
+      <div class="prose" set:html={html} />
+    </article>
+  )}
+
+  {fragment.type !== 'shot' && html && (
+    <article class="panel panel-accent">
+      <div class="prose" set:html={html} />
+    </article>
+  )}
+</Base>
+
+<style>
+  .prose :global(p) { margin-bottom: var(--sp-2); }
+  .prose :global(ul), .prose :global(ol) { margin-bottom: var(--sp-2); padding-left: var(--sp-3); }
+  .prose :global(li) { margin-bottom: var(--sp); }
+  .prose :global(h2), .prose :global(h3) { margin-top: var(--sp-3); margin-bottom: var(--sp); }
+  .prose :global(pre) { margin-bottom: var(--sp-2); }
+  .prose :global(blockquote) { border-left: 2px solid var(--accent); padding-left: var(--sp-2); color: var(--fg-2); margin-bottom: var(--sp-2); }
+  .prose :global(a) { color: var(--accent); }
+  .prose :global(a:hover) { color: var(--accent-2); }
+</style>

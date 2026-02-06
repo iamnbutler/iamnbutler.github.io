@@ -1,0 +1,22 @@
+---
+interface Props { title?: string; wide?: boolean; }
+const { title, wide } = Astro.props;
+const pageTitle = title ? `${title} · nate.rip` : 'nate.rip';
+import '../styles/theme.css';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+</head>
+<body class:list={[wide && 'wide']}>
+  <slot />
+  <script>
+    if (new URLSearchParams(window.location.search).has('edit')) {
+      import('../components/ThemeEditorLoader').then(m => m.default());
+    }
+  </script>
+</body>
+</html>

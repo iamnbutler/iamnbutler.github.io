@@ -1,29 +1,27 @@
 {
   "name": "nate-rip",
-  "version": "0.0.1",
+  "version": "23.0.0",
   "private": true,
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
   "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
   "dependencies": {
-    "@atproto/api": "^0.18.20",
-    "@sveltejs/adapter-static": "^3.0.10",
-    "@sveltejs/kit": "^2.50.2",
-    "@sveltejs/vite-plugin-svelte": "^6.2.4",
-    "gray-matter": "^4.0.3",
-    "mdsvex": "^0.12.6",
+    "@astrojs/svelte": "^7.2.5",
+    "astro": "^5.0.0",
+    "masonry-pf": "^1.1.1",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
-    "shiki": "^3.22.0",
-    "svelte": "^5.49.2",
-    "unified": "^11.0.5",
-    "vite": "^7.3.1"
+    "svelte": "^5.50.0",
+    "typescript": "^5.9.3",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@atproto/api": "^0.18.20",
+    "gray-matter": "^4.0.3",
     "tsx": "^4.21.0"
   }
 }
