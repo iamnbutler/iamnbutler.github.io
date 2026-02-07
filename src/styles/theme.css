@@ -855,13 +855,11 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   letter-spacing: 0.12em;
   color: var(--link-accent);
 }
-/* URL — prominent, below title */
-.link-url {
+.link-freq {
+  margin-left: auto;
   font-family: var(--mono);
   font-size: var(--fs-s);
   color: var(--link-accent);
-  letter-spacing: 0.02em;
-  position: relative;
   opacity: 0.8;
 }
 
