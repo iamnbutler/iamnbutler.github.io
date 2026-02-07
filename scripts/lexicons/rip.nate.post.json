@@ -12,7 +12,16 @@
           "fragmentId": { "type": "integer", "minimum": 1 },
           "title": { "type": "string", "maxLength": 300 },
           "content": { "type": "string", "maxLength": 500000 },
-          "createdAt": { "type": "string", "format": "datetime" }
+          "createdAt": { "type": "string", "format": "datetime" },
+          "images": {
+            "type": "array",
+            "maxLength": 20,
+            "items": {
+              "type": "blob",
+              "accept": ["image/png", "image/jpeg", "image/gif", "image/webp"],
+              "maxSize": 50000000
+            }
+          }
         }
       }
     }
