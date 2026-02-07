@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "rip.nate.post",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["fragmentId", "title", "content", "createdAt"],
+        "properties": {
+          "fragmentId": { "type": "integer", "minimum": 1 },
+          "title": { "type": "string", "maxLength": 300 },
+          "content": { "type": "string", "maxLength": 500000 },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
