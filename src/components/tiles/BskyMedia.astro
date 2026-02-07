@@ -1,0 +1,55 @@
+---
+import type { BskyPost } from '../../lib/types';
+import { relTime } from '../../lib/variants';
+
+interface Props {
+  post: BskyPost;
+  cls?: string;
+}
+
+const { post: p, cls = '' } = Astro.props;
+const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
+
+const mediaSrc = p.video
+  ? null
+  : p.images?.[0]?.fullsize
+    ?? p.externalEmbed?.thumb
+    ?? null;
+
+const mediaAlt = p.images?.[0]?.alt ?? p.externalEmbed?.title ?? '';
+---
+
+<a
+  href={bskyUrl}
+  class:list={['tile', 'tile-bsky', cls]}
+  data-type="bsky"
+  target="_blank"
+>
+  <div class="bsky-header">
+    <span class="bsky-field"><em>SRC</em> nate.rip</span>
+    <span class="bsky-field"><em>TS</em> {relTime(p.createdAt)}</span>
+  </div>
+  <div class="bsky-media">
+    {p.video ? (
+      <video
+        src={p.video.playlist}
+        poster={p.video.thumbnail}
+        autoplay
+        muted
+        loop
+        playsinline
+      />
+    ) : (
+      <img
+        src={mediaSrc!}
+        alt={mediaAlt}
+        loading="lazy"
+      />
+    )}
+    <div class="bsky-overlay">
+      <p class="bsky-text">
+        {p.text.length > 80 ? p.text.slice(0, 80) + '...' : p.text}
+      </p>
+    </div>
+  </div>
+</a>

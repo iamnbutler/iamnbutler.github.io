@@ -1,0 +1,24 @@
+---
+import type { Fragment } from '../../lib/types';
+import { blobUrl, DID } from '../../lib/atproto';
+
+interface Props {
+  fragment: Fragment;
+  cls?: string;
+}
+
+const { fragment: f, cls = '' } = Astro.props;
+---
+
+<a
+  href={`/f/${f.id}`}
+  class:list={['tile', 'tile-shot', 'shot-evidence', cls]}
+  data-type="shot"
+>
+  <img
+    src={blobUrl(DID, f.images![0].cid)}
+    alt={f.title}
+    loading="lazy"
+  />
+  <div class="shot-marker">{f.id}</div>
+</a>

@@ -1,0 +1,36 @@
+---
+import type { Fragment } from '../../lib/types';
+import { extractListItems, countListItems } from '../../lib/variants';
+
+interface Props {
+  fragment: Fragment;
+}
+
+const { fragment: f } = Astro.props;
+const items = extractListItems(f.content ?? '');
+const total = countListItems(f.content ?? '');
+const dateStr = new Date(f.createdAt).toISOString().slice(0, 10);
+---
+
+<a
+  href={`/f/${f.id}`}
+  class="tile tile-list"
+  data-type="list"
+>
+  <div class="list-head">
+    <span class="list-tag">list</span>
+    <h3>{f.title}</h3>
+  </div>
+  <div class="list-rule" />
+  <ul class="list-items">
+    {items.map((li) => (
+      <li>{li}</li>
+    ))}
+  </ul>
+  <div class="list-foot">
+    {total > items.length && (
+      <span class="list-more">+{total - items.length} more</span>
+    )}
+    <time>{dateStr}</time>
+  </div>
+</a>

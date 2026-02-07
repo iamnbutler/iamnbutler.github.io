@@ -1,0 +1,38 @@
+---
+import type { Fragment as FragmentType } from '../../lib/types';
+import { blobUrl, DID } from '../../lib/atproto';
+
+interface Props {
+  fragment: FragmentType;
+  cls?: string;
+}
+
+const { fragment: f, cls = '' } = Astro.props;
+---
+
+<a
+  href={`/f/${f.id}`}
+  class:list={['tile', 'tile-shot', cls]}
+  data-type="shot"
+>
+  <img
+    src={blobUrl(DID, f.images![0].cid)}
+    alt={f.title}
+    loading="lazy"
+  />
+  <div class="hero-scanlines" />
+  <div class="hero-corners">
+    <>
+      <i class="hc hc-tl" />
+      <i class="hc hc-tr" />
+    </>
+    <>
+      <i class="hc hc-bl" />
+      <i class="hc hc-br" />
+    </>
+  </div>
+  <div class="hero-info">
+    <span class="hero-tag type-shot">shot #{f.id}</span>
+    <h2>{f.title}</h2>
+  </div>
+</a>

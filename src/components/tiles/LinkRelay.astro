@@ -1,0 +1,40 @@
+---
+import type { Fragment } from '../../lib/types';
+
+interface Props {
+  fragment: Fragment;
+  avatar?: string;
+}
+
+const { fragment: f, avatar } = Astro.props;
+const domain = new URL(f.url!).hostname.replace(/^www\./, '');
+const dateStr = new Date(f.createdAt).toISOString().slice(0, 10);
+---
+
+<a
+  href={f.url}
+  class="tile tile-link"
+  data-type="link"
+  target="_blank"
+>
+  <div class="link-chrome">
+    <span class="link-signal">↗</span>
+    <span class="link-relay">relay</span>
+    <span class="link-freq">{domain}</span>
+  </div>
+  <div class="link-body">
+    <h3>{f.title}</h3>
+    {f.content && (
+      <div class="link-annotation">
+        <p class="link-comment">{f.content}</p>
+        {avatar && <img src={avatar} alt="" class="link-avatar" />}
+      </div>
+    )}
+  </div>
+  <div class="link-chrome-bottom">
+    <time>{dateStr}</time>
+    <div class="link-connectors">
+      <i /><i /><i />
+    </div>
+  </div>
+</a>

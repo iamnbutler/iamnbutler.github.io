@@ -1,0 +1,36 @@
+---
+import type { BskyPost } from '../../lib/types';
+import { relTime } from '../../lib/variants';
+
+interface Props {
+  post: BskyPost;
+  cls?: string;
+}
+
+const { post: p, cls = '' } = Astro.props;
+const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
+const textLen = p.text.length;
+---
+
+<a
+  href={bskyUrl}
+  class:list={['tile', 'tile-bsky', cls]}
+  data-type="bsky"
+  target="_blank"
+>
+  <div class="bsky-header">
+    <span class="bsky-field"><em>SRC</em> nate.rip</span>
+    <span class="bsky-field"><em>TS</em> {relTime(p.createdAt)}</span>
+    <span class="bsky-field"><em>LEN</em> {textLen}</span>
+  </div>
+  <div class="bsky-body">
+    <p class="bsky-text">
+      {p.text.length > 180 ? p.text.slice(0, 180) + '...' : p.text}
+    </p>
+  </div>
+  <div class="bsky-checksum">
+    {p.likeCount > 0 ? `0x${p.likeCount.toString(16).padStart(2, '0')} likes` : ''}
+    {p.likeCount > 0 && p.replyCount > 0 ? ' \u2022 ' : ''}
+    {p.replyCount > 0 ? `0x${p.replyCount.toString(16).padStart(2, '0')} rpl` : ''}
+  </div>
+</a>

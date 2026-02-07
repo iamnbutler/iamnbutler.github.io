@@ -2,13 +2,33 @@
 import Base from "../layouts/Base.astro";
 import {
     fetchAllFragments,
-    blobUrl,
     DID,
     fetchBskyPosts,
     fetchBskyFeed,
     parseBskyUrl,
 } from "../lib/atproto";
 import type { Fragment, BskyPost } from "../lib/types";
+import {
+    postMeta,
+    shotMeta,
+    linkVariant,
+    bskySize,
+    relTime,
+} from "../lib/variants";
+
+// Tile components
+import PostCassette from "../components/tiles/PostCassette.astro";
+import PostCircuit from "../components/tiles/PostCircuit.astro";
+import PostBlast from "../components/tiles/PostBlast.astro";
+import ShotViewfinder from "../components/tiles/ShotViewfinder.astro";
+import ShotEvidence from "../components/tiles/ShotEvidence.astro";
+import ShotHud from "../components/tiles/ShotHud.astro";
+import ShotHero from "../components/tiles/ShotHero.astro";
+import BskyText from "../components/tiles/BskyText.astro";
+import BskyMedia from "../components/tiles/BskyMedia.astro";
+import LinkRelay from "../components/tiles/LinkRelay.astro";
+import LinkDispatch from "../components/tiles/LinkDispatch.astro";
+import ListTile from "../components/tiles/ListTile.astro";
 
 // Pinned bsky post URLs
 const PINNED_BSKY_URLS = [
@@ -62,82 +82,6 @@ const grid = allEntries.filter((e) => e !== hero);
 const totalFragments = fragments.length;
 const myAvatar = 'https://github.com/iamnbutler.png';
 
-function excerpt(text: string, len: number = 120): string {
-    return text
-        .replace(/[#*_\[\]()>`~\-]/g, "")
-        .replace(/\n+/g, " ")
-        .trim()
-        .slice(0, len);
-}
-
-function extractListItems(content: string, max: number = 5): string[] {
-    const items: string[] = [];
-    for (const line of content.split("\n")) {
-        if (items.length >= max) break;
-        const h = line.match(/^##\s+(.+)/);
-        if (h) {
-            items.push(h[1].replace(/\*\*/g, ""));
-            continue;
-        }
-        const b = line.match(/^[-*]\s+(.+)/);
-        if (b && !line.startsWith("  ")) {
-            items.push(
-                b[1]
-                    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-                    .replace(/\*\*/g, "")
-                    .trim(),
-            );
-        }
-    }
-    return items;
-}
-
-function countListItems(content: string): number {
-    return content.split("\n").filter((l) => l.match(/^(##\s|[-*]\s)/)).length;
-}
-
-const SHOT_VARIANTS = ["viewfinder", "evidence", "hud"] as const;
-type ShotVariant = (typeof SHOT_VARIANTS)[number];
-
-function shotMeta(
-    i: number,
-    imgCount: number,
-): { cls: string; isHero: boolean; variant: ShotVariant } {
-    const variant = SHOT_VARIANTS[i % 3];
-    // Shots are visual — never 1x1, always at least 2-wide
-    if (imgCount >= 3 && i % 6 === 0)
-        return { cls: "tile-hero-wide", isHero: true, variant }; // 3x2 hero
-    if (i % 7 === 0) return { cls: "tile-3w", isHero: false, variant }; // 3-wide
-    if (i % 4 === 0) return { cls: "tile-w tile-t", isHero: false, variant }; // 2x2 feature
-    return { cls: "tile-w", isHero: false, variant }; // default 2-wide
-}
-
-const POST_VARIANTS = ["cassette", "circuit", "blast"] as const;
-type PostVariant = (typeof POST_VARIANTS)[number];
-
-function postMeta(
-    i: number,
-    contentLen: number,
-): { cls: string; showExcerpt: boolean; variant: PostVariant } {
-    const variant = POST_VARIANTS[i % 3];
-    // More variety — roughly half of posts get bigger treatment
-    if (contentLen > 2000 && i % 4 === 0)
-        return { cls: "tile-text-lg", showExcerpt: true, variant }; // 2-wide featured
-    if (i % 7 === 0) return { cls: "tile-text-tall", showExcerpt: true, variant }; // tall with excerpt
-    if (i % 3 === 0) return { cls: "tile-w", showExcerpt: true, variant }; // 2-wide with excerpt
-    return { cls: "", showExcerpt: false, variant }; // 1x1
-}
-
-// Bsky tiles — visual-first, generous sizing
-function bskySize(p: BskyPost, i: number): string {
-    if (p.video) return "tile-bsky-hero"; // videos 3x2
-    if (p.images && p.images.length >= 2) return "tile-bsky-hero"; // multi-image 3x2
-    if (p.images?.length === 1)
-        return i % 3 === 0 ? "tile-bsky-hero" : "tile-w"; // single image: some hero, rest 2-wide
-    if (p.hasMedia) return "tile-w"; // link thumb 2-wide
-    return ""; // text-only 1x1
-}
-
 // Build render sequence with log + feed injected
 type RenderItem =
     | { kind: "log" }
@@ -152,18 +96,6 @@ grid.forEach((e, i) => {
 });
 if (grid.length <= 5) renderItems.push({ kind: "log" });
 if (grid.length <= 12) renderItems.push({ kind: "feed" });
-
-// Format relative time for bsky posts
-function relTime(iso: string): string {
-    const d = new Date(iso);
-    const now = Date.now();
-    const diff = now - d.getTime();
-    const days = Math.floor(diff / 86400000);
-    if (days < 1) return "today";
-    if (days < 30) return `${days}d ago`;
-    if (days < 365) return `${Math.floor(days / 30)}mo ago`;
-    return d.toISOString().slice(0, 10);
-}
 ---
 
 <Base wide>
@@ -190,37 +122,9 @@ function relTime(iso: string): string {
             </nav>
         </header>
 
-        {
-            hero && hero.kind === "fragment" && hero.f.images && (
-                <a
-                    href={`/f/${hero.f.id}`}
-                    class="tile tile-shot tile-hero"
-                    data-type="shot"
-                >
-                    <img
-                        src={blobUrl(DID, hero.f.images[0].cid)}
-                        alt={hero.f.title}
-                    />
-                    <div class="hero-scanlines" />
-                    <div class="hero-corners">
-                        <>
-                            <i class="hc hc-tl" />
-                            <i class="hc hc-tr" />
-                        </>
-                        <>
-                            <i class="hc hc-bl" />
-                            <i class="hc hc-br" />
-                        </>
-                    </div>
-                    <div class="hero-info">
-                        <span class="hero-tag type-shot">
-                            shot #{hero.f.id}
-                        </span>
-                        <h2>{hero.f.title}</h2>
-                    </div>
-                </a>
-            )
-        }
+        {hero && hero.kind === "fragment" && hero.f.images && (
+            <ShotHero fragment={hero.f} cls="tile-hero" />
+        )}
 
         {
             renderItems.map((item) => {
@@ -385,366 +289,60 @@ function relTime(iso: string): string {
                 // Grid entries
                 const { e, i } = item;
 
-                // Bsky pinned post tile — signal packet style
+                // Bsky pinned post tile
                 if (e.kind === "bsky") {
                     const p = e.p;
                     const sizeCls = bskySize(p, i);
-                    const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
                     const hasMedia = !!(p.video || p.images?.length || p.externalEmbed?.thumb);
 
-                    const mediaSrc = p.video
-                        ? null
-                        : p.images?.[0]?.fullsize
-                          ?? p.externalEmbed?.thumb
-                          ?? null;
-
-                    const mediaAlt = p.images?.[0]?.alt ?? p.externalEmbed?.title ?? "";
-                    const textLen = p.text.length;
-
-                    // Media packet — header + media + overlay
                     if (hasMedia) {
-                        return (
-                            <a
-                                href={bskyUrl}
-                                class:list={["tile", "tile-bsky", sizeCls]}
-                                data-type="bsky"
-                                target="_blank"
-                            >
-                                <div class="bsky-header">
-                                    <span class="bsky-field"><em>SRC</em> nate.rip</span>
-                                    <span class="bsky-field"><em>TS</em> {relTime(p.createdAt)}</span>
-                                </div>
-                                <div class="bsky-media">
-                                    {p.video ? (
-                                        <video
-                                            src={p.video.playlist}
-                                            poster={p.video.thumbnail}
-                                            autoplay
-                                            muted
-                                            loop
-                                            playsinline
-                                        />
-                                    ) : (
-                                        <img
-                                            src={mediaSrc!}
-                                            alt={mediaAlt}
-                                            loading="lazy"
-                                        />
-                                    )}
-                                    <div class="bsky-overlay">
-                                        <p class="bsky-text">
-                                            {p.text.length > 80
-                                                ? p.text.slice(0, 80) + "..."
-                                                : p.text}
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        );
+                        return <BskyMedia post={p} cls={sizeCls} />;
                     }
-
-                    // Text-only packet — header + body + checksum
-                    return (
-                        <a
-                            href={bskyUrl}
-                            class:list={["tile", "tile-bsky", sizeCls]}
-                            data-type="bsky"
-                            target="_blank"
-                        >
-                            <div class="bsky-header">
-                                <span class="bsky-field"><em>SRC</em> nate.rip</span>
-                                <span class="bsky-field"><em>TS</em> {relTime(p.createdAt)}</span>
-                                <span class="bsky-field"><em>LEN</em> {textLen}</span>
-                            </div>
-                            <div class="bsky-body">
-                                <p class="bsky-text">
-                                    {p.text.length > 180
-                                        ? p.text.slice(0, 180) + "..."
-                                        : p.text}
-                                </p>
-                            </div>
-                            <div class="bsky-checksum">
-                                {p.likeCount > 0 ? `0x${p.likeCount.toString(16).padStart(2, '0')} likes` : ''}
-                                {p.likeCount > 0 && p.replyCount > 0 ? ' \u2022 ' : ''}
-                                {p.replyCount > 0 ? `0x${p.replyCount.toString(16).padStart(2, '0')} rpl` : ''}
-                            </div>
-                        </a>
-                    );
+                    return <BskyText post={p} cls={sizeCls} />;
                 }
 
-                // Fragment entries (same as before)
+                // Fragment entries
                 const f = e.f;
-                const isShot = f.type === "shot" && f.images?.length;
-                const isList = f.type === "list";
 
-                if (isShot) {
-                    const { cls, isHero: promoted, variant } = shotMeta(
-                        i,
-                        f.images!.length,
-                    );
+                // Shots
+                if (f.type === "shot" && f.images?.length) {
+                    const { cls, isHero: promoted, variant } = shotMeta(i, f.images!.length);
                     if (promoted) {
-                        return (
-                            <a
-                                href={`/f/${f.id}`}
-                                class:list={["tile", "tile-shot", cls]}
-                                data-type="shot"
-                            >
-                                <img
-                                    src={blobUrl(DID, f.images![0].cid)}
-                                    alt={f.title}
-                                    loading="lazy"
-                                />
-                                <div class="hero-scanlines" />
-                                <div class="hero-corners">
-                                    <>
-                                        <i class="hc hc-tl" />
-                                        <i class="hc hc-tr" />
-                                    </>
-                                    <>
-                                        <i class="hc hc-bl" />
-                                        <i class="hc hc-br" />
-                                    </>
-                                </div>
-                                <div class="hero-info">
-                                    <span class="hero-tag type-shot">
-                                        shot #{f.id}
-                                    </span>
-                                    <h2>{f.title}</h2>
-                                </div>
-                            </a>
-                        );
+                        return <ShotHero fragment={f} cls={cls} />;
                     }
-
-                    // Viewfinder variant — crosshairs + ticks + exposure
                     if (variant === "viewfinder") {
-                        return (
-                            <a
-                                href={`/f/${f.id}`}
-                                class:list={["tile", "tile-shot", "shot-viewfinder", cls]}
-                                data-type="shot"
-                            >
-                                <img
-                                    src={blobUrl(DID, f.images![0].cid)}
-                                    alt={f.title}
-                                    loading="lazy"
-                                />
-                                <span class="shot-exposure">f/{f.id} &bull; {new Date(f.createdAt).toISOString().slice(0, 10)}</span>
-                                <div class="shot-ticks" />
-                            </a>
-                        );
+                        return <ShotViewfinder fragment={f} cls={cls} />;
                     }
-
-                    // Evidence variant — film holder notches + marker badge
                     if (variant === "evidence") {
-                        return (
-                            <a
-                                href={`/f/${f.id}`}
-                                class:list={["tile", "tile-shot", "shot-evidence", cls]}
-                                data-type="shot"
-                            >
-                                <img
-                                    src={blobUrl(DID, f.images![0].cid)}
-                                    alt={f.title}
-                                    loading="lazy"
-                                />
-                                <div class="shot-marker">{f.id}</div>
-                            </a>
-                        );
+                        return <ShotEvidence fragment={f} cls={cls} />;
                     }
-
-                    // HUD variant — broken corner frame + scan line + data overlay
-                    return (
-                        <a
-                            href={`/f/${f.id}`}
-                            class:list={["tile", "tile-shot", "shot-hud", cls]}
-                            data-type="shot"
-                        >
-                            <img
-                                src={blobUrl(DID, f.images![0].cid)}
-                                alt={f.title}
-                                loading="lazy"
-                            />
-                            <div class="shot-data">REC<br/>{String(f.id).padStart(3, "0")}</div>
-                        </a>
-                    );
+                    return <ShotHud fragment={f} cls={cls} />;
                 }
 
-                if (isList) {
-                    const items = extractListItems(f.content ?? "");
-                    const total = countListItems(f.content ?? "");
-                    return (
-                        <a
-                            href={`/f/${f.id}`}
-                            class="tile tile-list"
-                            data-type="list"
-                        >
-                            <div class="list-head">
-                                <span class="list-tag">list</span>
-                                <h3>{f.title}</h3>
-                            </div>
-                            <div class="list-rule" />
-                            <ul class="list-items">
-                                {items.map((li) => (
-                                    <li>{li}</li>
-                                ))}
-                            </ul>
-                            <div class="list-foot">
-                                {total > items.length && (
-                                    <span class="list-more">
-                                        +{total - items.length} more
-                                    </span>
-                                )}
-                                <time>
-                                    {new Date(f.createdAt)
-                                        .toISOString()
-                                        .slice(0, 10)}
-                                </time>
-                            </div>
-                        </a>
-                    );
+                // Lists
+                if (f.type === "list") {
+                    return <ListTile fragment={f} />;
                 }
 
-                // Links — alternate relay / dispatch
+                // Links
                 if (f.type === "link" && f.url) {
-                    const domain = new URL(f.url).hostname.replace(
-                        /^www\./,
-                        "",
-                    );
-                    const dateStr = new Date(f.createdAt).toISOString().slice(0, 10);
-
-                    // Variant B: dispatch — stepped corners
-                    if (f.id % 2 === 0) {
-                        return (
-                            <a
-                                href={f.url}
-                                class="tile tile-link-b"
-                                data-type="link"
-                                target="_blank"
-                            >
-                                <div class="link-b-stripe" />
-                                <div class="link-b-head">
-                                    <span class="link-b-arrow">↗</span>
-                                    <span class="link-b-domain">{domain}</span>
-                                    <span class="link-b-date">{dateStr}</span>
-                                </div>
-                                <div class="link-b-body">
-                                    <h3>{f.title}</h3>
-                                    {f.content && (
-                                        <div class="link-annotation">
-                                            <p class="link-comment">{f.content}</p>
-                                            <img src={myAvatar} alt="" class="link-avatar" />
-                                        </div>
-                                    )}
-                                </div>
-                            </a>
-                        );
+                    const v = linkVariant(f);
+                    if (v === "dispatch") {
+                        return <LinkDispatch fragment={f} avatar={myAvatar} />;
                     }
-
-                    // Variant A: relay — diagonal chamfer
-                    return (
-                        <a
-                            href={f.url}
-                            class="tile tile-link"
-                            data-type="link"
-                            target="_blank"
-                        >
-                            <div class="link-chrome">
-                                <span class="link-signal">↗</span>
-                                <span class="link-relay">relay</span>
-                                <span class="link-freq">{domain}</span>
-                            </div>
-                            <div class="link-body">
-                                <h3>{f.title}</h3>
-                                {f.content && (
-                                    <div class="link-annotation">
-                                        <p class="link-comment">{f.content}</p>
-                                        <img src={myAvatar} alt="" class="link-avatar" />
-                                    </div>
-                                )}
-                            </div>
-                            <div class="link-chrome-bottom">
-                                <time>{dateStr}</time>
-                                <div class="link-connectors">
-                                    <i /><i /><i />
-                                </div>
-                            </div>
-                        </a>
-                    );
+                    return <LinkRelay fragment={f} avatar={myAvatar} />;
                 }
 
-                // Posts — alternate circuit board / blast door
-                const { cls, showExcerpt, variant: postVariant } = postMeta(
-                    i,
-                    f.content?.length ?? 0,
-                );
+                // Posts
+                const { cls, showExcerpt, variant: postVariant } = postMeta(i, f.content?.length ?? 0);
 
                 if (postVariant === "cassette") {
-                    return (
-                        <a
-                            href={`/f/${f.id}`}
-                            class:list={["tile", "tile-post", "post-cassette", cls]}
-                            data-type="post"
-                        >
-                            <span class="post-catalog">NR-{String(f.id).padStart(2, "0")}</span>
-                            <div class="post-label">
-                                <span class="post-type">post</span>
-                                <h3>{f.title}</h3>
-                                {showExcerpt && f.content && (
-                                    <p class="post-excerpt">{excerpt(f.content, 140)}</p>
-                                )}
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-type">post</span>
-                                <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
-                            </div>
-                            <div class="post-edge" />
-                        </a>
-                    );
+                    return <PostCassette fragment={f} cls={cls} showExcerpt={showExcerpt} />;
                 }
-
                 if (postVariant === "circuit") {
-                    return (
-                        <a
-                            href={`/f/${f.id}`}
-                            class:list={["tile", "tile-post", "post-circuit", cls]}
-                            data-type="post"
-                        >
-                            <div class="post-chip">
-                                <span class="post-part">IC-{String(f.id).padStart(2, "0")}</span>
-                                <span class="post-type">post</span>
-                                <h3>{f.title}</h3>
-                                {showExcerpt && f.content && (
-                                    <p class="post-excerpt">{excerpt(f.content, 160)}</p>
-                                )}
-                                <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
-                            </div>
-                        </a>
-                    );
+                    return <PostCircuit fragment={f} cls={cls} showExcerpt={showExcerpt} />;
                 }
-
-                // Blast door
-                return (
-                    <a
-                        href={`/f/${f.id}`}
-                        class:list={["tile", "tile-post", "post-blast", cls]}
-                        data-type="post"
-                    >
-                        <div class="post-rail">
-                            <div class="post-hex" />
-                            <div class="post-hex" />
-                            <span class="post-rail-label">Post</span>
-                            <div class="post-hex" />
-                        </div>
-                        <div class="post-body">
-                            <h3>{f.title}</h3>
-                            {showExcerpt && f.content && (
-                                <p class="post-excerpt">{excerpt(f.content, 160)}</p>
-                            )}
-                            <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
-                        </div>
-                        <div class="post-stripe" />
-                    </a>
-                );
+                return <PostBlast fragment={f} cls={cls} showExcerpt={showExcerpt} />;
             })
         }
     </section>
