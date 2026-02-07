@@ -8,6 +8,7 @@ const PUBLIC_API = 'https://public.api.bsky.app';
 const COLLECTION_POST = 'rip.nate.post';
 const COLLECTION_SHOT = 'rip.nate.shot';
 const COLLECTION_LIST = 'rip.nate.list';
+const COLLECTION_LINK = 'rip.nate.link';
 
 async function listRecords(collection: string): Promise<any[]> {
   const records: any[] = [];
@@ -31,6 +32,7 @@ function mapRecord(r: any, type: FragmentType): Fragment {
     rkey: r.uri.split('/').pop()!,
     title: r.value.title || '',
     content: r.value.content,
+    url: r.value.url,
     images: r.value.images?.map((img: any) => ({
       cid: img.ref?.$link || img.ref,
       mimeType: img.mimeType,
@@ -40,16 +42,18 @@ function mapRecord(r: any, type: FragmentType): Fragment {
 }
 
 export async function fetchAllFragments(): Promise<Fragment[]> {
-  const [posts, shots, lists] = await Promise.all([
+  const [posts, shots, lists, links] = await Promise.all([
     listRecords(COLLECTION_POST),
     listRecords(COLLECTION_SHOT),
     listRecords(COLLECTION_LIST),
+    listRecords(COLLECTION_LINK),
   ]);
 
   const fragments: Fragment[] = [
     ...posts.map((r: any) => mapRecord(r, 'post')),
     ...shots.map((r: any) => mapRecord(r, 'shot')),
     ...lists.map((r: any) => mapRecord(r, 'list')),
+    ...links.map((r: any) => mapRecord(r, 'link')),
   ];
 
   return fragments.sort((a, b) =>

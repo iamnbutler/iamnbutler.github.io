@@ -20,6 +20,7 @@
   --accent: #5ec4d4;
   --accent-2: #d4a843;
   --list-accent: #7b8adf;
+  --link-accent: #d4885a;
   --surface: #1e2438;
   --surface-2: #252c42;
 
@@ -40,6 +41,7 @@
     --accent: #2a7a8a;
     --accent-2: #9a7820;
     --list-accent: #4f5da0;
+    --link-accent: #b06a3a;
     --surface: #ccd2e0;
     --surface-2: #c0c8d8;
     color-scheme: light;
@@ -229,6 +231,7 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 .filter-btn[data-filter="post"].active { border-color: var(--accent); color: var(--accent); }
 .filter-btn[data-filter="shot"].active { border-color: var(--accent-2); color: var(--accent-2); }
 .filter-btn[data-filter="list"].active { border-color: var(--list-accent); color: var(--list-accent); }
+.filter-btn[data-filter="link"].active { border-color: var(--link-accent); color: var(--link-accent); }
 .filter-btn[data-filter="bsky"].active { border-color: #1185fe; color: #1185fe; }
 
 /* === Hero elements (scanlines, corners, info) === */
@@ -551,6 +554,70 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 }
 
 /* ======================================================
+   LINK TILES — shared/signal-boosted external content
+   ====================================================== */
+
+.tile-link {
+  background: var(--surface);
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp);
+  color: var(--fg);
+  /* Left accent bar instead of top — "this points elsewhere" */
+  border-top: none;
+  border-left: 3px solid var(--link-accent);
+  clip-path: none;
+  border-radius: var(--r);
+}
+.tile-link:hover {
+  border-left-color: color-mix(in oklch, var(--link-accent) 100%, white 20%);
+}
+
+.link-source {
+  display: flex;
+  align-items: center;
+  gap: var(--sp);
+}
+.link-arrow {
+  font-size: var(--fs-l);
+  line-height: 1;
+  color: var(--link-accent);
+}
+.link-domain {
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  color: var(--fg-2);
+  letter-spacing: 0.03em;
+}
+
+.tile-link h3 {
+  font-size: var(--fs);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: var(--lh);
+}
+
+.link-comment {
+  font-size: var(--fs-s);
+  color: var(--fg-2);
+  line-height: var(--lh);
+  font-style: italic;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.tile-link time {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  color: var(--fg-2);
+}
+
+/* ======================================================
    LOG TILE — tactical data terminal, 2-col 3-row
    ====================================================== */
 
@@ -728,6 +795,7 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 .type-post { color: var(--accent); }
 .type-shot { color: var(--accent-2); }
 .type-list { color: var(--list-accent); }
+.type-link { color: var(--link-accent); }
 .type-bsky { color: #1185fe; }
 
 /* ======================================================

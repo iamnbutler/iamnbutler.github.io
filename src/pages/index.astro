@@ -171,6 +171,9 @@ function relTime(iso: string): string {
                 <button class="filter-btn active" data-filter="list"
                     >{fragments.filter((f) => f.type === "list").length} lists</button
                 >
+                <button class="filter-btn active" data-filter="link"
+                    >{fragments.filter((f) => f.type === "link").length} links</button
+                >
                 <button class="filter-btn active" data-filter="bsky"
                     >{pinnedPosts.length} bsky</button
                 >
@@ -577,6 +580,33 @@ function relTime(iso: string): string {
                                         .slice(0, 10)}
                                 </time>
                             </div>
+                        </a>
+                    );
+                }
+
+                // Links — shared/signal-boosted external content
+                if (f.type === "link" && f.url) {
+                    const domain = new URL(f.url).hostname.replace(/^www\./, "");
+                    return (
+                        <a
+                            href={f.url}
+                            class="tile tile-link"
+                            data-type="link"
+                            target="_blank"
+                        >
+                            <div class="link-source">
+                                <span class="link-arrow">↗</span>
+                                <span class="link-domain">{domain}</span>
+                            </div>
+                            <h3>{f.title}</h3>
+                            {f.content && (
+                                <p class="link-comment">{f.content}</p>
+                            )}
+                            <time>
+                                {new Date(f.createdAt)
+                                    .toISOString()
+                                    .slice(0, 10)}
+                            </time>
                         </a>
                     );
                 }

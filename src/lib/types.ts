@@ -1,4 +1,4 @@
-export type FragmentType = 'post' | 'shot' | 'list';
+export type FragmentType = 'post' | 'shot' | 'list' | 'link';
 
 export interface Fragment {
   id: number;
@@ -6,6 +6,7 @@ export interface Fragment {
   rkey: string;
   title: string;
   content?: string;
+  url?: string;
   images?: { cid: string; mimeType: string; alt?: string }[];
   createdAt: string;
 }

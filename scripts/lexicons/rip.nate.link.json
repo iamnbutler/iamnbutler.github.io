@@ -1,0 +1,21 @@
+{
+  "lexicon": 1,
+  "id": "rip.nate.link",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["fragmentId", "url", "createdAt"],
+        "properties": {
+          "fragmentId": { "type": "integer", "minimum": 1 },
+          "url": { "type": "string", "format": "uri", "maxLength": 2048 },
+          "title": { "type": "string", "maxLength": 300 },
+          "comment": { "type": "string", "maxLength": 10000 },
+          "createdAt": { "type": "string", "format": "datetime" }
+        }
+      }
+    }
+  }
+}
