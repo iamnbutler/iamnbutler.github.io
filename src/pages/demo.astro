@@ -1727,6 +1727,177 @@ import Base from "../layouts/Base.astro";
       <div class="b5-stripe"></div>
     </div>
 
+    <!-- === NEW POST VARIANTS (production CSS) === -->
+    <div class="demo-section">
+      <h2>Post Tiles — New Variants (Dossier, Manifest, Terminal)</h2>
+      <p>3 additional post treatments using production CSS from theme.css</p>
+    </div>
+
+    <!-- Dossier -->
+    <div class="tile tile-post post-dossier demo-w" style="height: 180px;">
+      <div class="post-body">
+        <span class="post-type">post</span>
+        <h3>Dossier — Tab Protrusion + Dog-ear</h3>
+        <p class="post-excerpt">Ruled paper lines, CLASSIFIED stamp, manila folder feel with tab protrusion at top</p>
+        <time>2025-03-15</time>
+      </div>
+    </div>
+
+    <div class="tile tile-post post-dossier" style="height: 180px;">
+      <div class="post-body">
+        <span class="post-type">post</span>
+        <h3>On Craft</h3>
+        <time>2024-06-22</time>
+      </div>
+    </div>
+
+    <!-- Manifest -->
+    <div class="tile tile-post post-manifest demo-w" style="height: 180px;">
+      <span class="post-sku">SKU-012</span>
+      <div class="post-body">
+        <span class="post-type">post</span>
+        <h3>Manifest — Shipping Label / Packing Slip</h3>
+        <p class="post-excerpt">Dashed border, accent top, barcode stripe at bottom, clean functional layout</p>
+        <time>2024-08-20</time>
+      </div>
+    </div>
+
+    <div class="tile tile-post post-manifest" style="height: 180px;">
+      <span class="post-sku">SKU-007</span>
+      <div class="post-body">
+        <span class="post-type">post</span>
+        <h3>Building UI in GPUI</h3>
+        <time>2025-03-15</time>
+      </div>
+    </div>
+
+    <!-- Terminal -->
+    <div class="tile tile-post post-terminal demo-w" style="height: 180px;">
+      <div class="post-term-body">
+        <span class="post-prompt">2024-08-20</span>
+        <h3 class="post-term-title">Terminal — CRT Green-on-Black<span class="post-term-cursor"></span></h3>
+        <p class="post-excerpt" style="color: #4ade80; opacity: 0.7;">Scanlines overlay, terminal green text, blinking cursor, command prompt aesthetic</p>
+      </div>
+    </div>
+
+    <div class="tile tile-post post-terminal" style="height: 180px;">
+      <div class="post-term-body">
+        <span class="post-prompt">2025-03-15</span>
+        <h3 class="post-term-title">On Craft<span class="post-term-cursor"></span></h3>
+      </div>
+    </div>
+
+    <!-- === NEW SHOT VARIANTS (production CSS) === -->
+    <div class="demo-section">
+      <h2>Shot Tiles — New Variants (Thermal, Contact, Specimen)</h2>
+      <p>3 additional shot treatments using production CSS</p>
+    </div>
+
+    <div class="tile tile-shot shot-thermal demo-w" style="height: 180px;">
+      <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--surface), var(--surface-2));"></div>
+      <div class="shot-scale"></div>
+      <span class="shot-temp">42°C</span>
+    </div>
+
+    <div class="tile tile-shot shot-contact demo-w" style="height: 180px;">
+      <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--surface), var(--surface-2));"></div>
+      <span class="shot-frame">15A</span>
+    </div>
+
+    <div class="tile tile-shot shot-specimen demo-w" style="height: 180px;">
+      <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--surface), var(--surface-2));"></div>
+      <div class="shot-mount">
+        <span class="shot-mount-id">#42</span>
+        <span class="shot-mount-label">2025-01-10</span>
+      </div>
+    </div>
+
+    <!-- 1x1 versions -->
+    <div class="tile tile-shot shot-thermal" style="height: 180px;">
+      <div style="width: 100%; height: 100%; background: var(--surface);"></div>
+      <div class="shot-scale"></div>
+      <span class="shot-temp">15°C</span>
+    </div>
+
+    <div class="tile tile-shot shot-contact" style="height: 180px;">
+      <div style="width: 100%; height: 100%; background: var(--surface);"></div>
+      <span class="shot-frame">07A</span>
+    </div>
+
+    <div class="tile tile-shot shot-specimen" style="height: 180px;">
+      <div style="width: 100%; height: 100%; background: var(--surface);"></div>
+      <div class="shot-mount">
+        <span class="shot-mount-id">#07</span>
+        <span class="shot-mount-label">2024-06-22</span>
+      </div>
+    </div>
+
+    <!-- === NEW BSKY VARIANTS (production CSS) === -->
+    <div class="demo-section">
+      <h2>Bsky Tiles — New Variants (Comm Ping, Torn, Broadcast)</h2>
+      <p>3 additional bsky treatments using production CSS</p>
+    </div>
+
+    <!-- Comm Ping -->
+    <div class="tile tile-bsky bsky-ping demo-w" style="height: 180px; display: flex; flex-direction: row;">
+      <div class="bsky-telem">
+        <div class="bsky-bar"></div>
+        <div class="bsky-bar"></div>
+        <div class="bsky-bar"></div>
+      </div>
+      <div class="bsky-ping-body">
+        <span class="bsky-rx">RX</span>
+        <p class="bsky-text">Comm Ping — Chevron shape with radar rings from right edge, telemetry sidebar with signal bars</p>
+        <span style="font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">3d ago</span>
+      </div>
+    </div>
+
+    <!-- Torn Fragment -->
+    <div class="tile tile-bsky bsky-torn demo-w" style="height: 180px;">
+      <span class="bsky-torn-tag">bsky</span>
+      <p class="bsky-text">Torn Fragment — Jagged top edge, paper texture, loose drop shadow, organic counterpoint to the structured variants</p>
+      <span style="font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">5d ago</span>
+      <div class="bsky-torn-stripe"></div>
+    </div>
+
+    <!-- Broadcast -->
+    <div class="tile tile-bsky bsky-broadcast demo-w" style="height: 180px;">
+      <span class="bsky-channel">CH</span>
+      <div class="bsky-broadcast-body">
+        <span class="bsky-live">2d ago</span>
+        <p class="bsky-text">Broadcast — TV static noise frame, rounded corners, channel badge, live pulse indicator</p>
+      </div>
+      <div class="bsky-broadcast-foot">5 likes &bull; 2 replies</div>
+    </div>
+
+    <!-- 1x1 versions -->
+    <div class="tile tile-bsky bsky-ping" style="height: 180px; display: flex; flex-direction: row;">
+      <div class="bsky-telem">
+        <div class="bsky-bar"></div>
+        <div class="bsky-bar"></div>
+        <div class="bsky-bar"></div>
+      </div>
+      <div class="bsky-ping-body">
+        <span class="bsky-rx">RX</span>
+        <p class="bsky-text">Ping at 1x1</p>
+      </div>
+    </div>
+
+    <div class="tile tile-bsky bsky-torn" style="height: 180px;">
+      <span class="bsky-torn-tag">bsky</span>
+      <p class="bsky-text">Torn at 1x1</p>
+      <div class="bsky-torn-stripe"></div>
+    </div>
+
+    <div class="tile tile-bsky bsky-broadcast" style="height: 180px;">
+      <span class="bsky-channel">CH</span>
+      <div class="bsky-broadcast-body">
+        <span class="bsky-live">5d ago</span>
+        <p class="bsky-text">Broadcast at 1x1</p>
+      </div>
+      <div class="bsky-broadcast-foot">3 likes</div>
+    </div>
+
     <!-- === LINK VARIANTS === -->
     <div class="demo-section">
       <h2>Link Tiles — 5 Relay-Family Variants</h2>

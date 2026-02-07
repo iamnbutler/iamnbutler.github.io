@@ -1,0 +1,28 @@
+---
+import type { BskyPost } from '../../lib/types';
+import { relTime } from '../../lib/variants';
+
+interface Props {
+  post: BskyPost;
+  cls?: string;
+}
+
+const { post: p, cls = '' } = Astro.props;
+const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
+---
+
+<a
+  href={bskyUrl}
+  class:list={['tile', 'tile-bsky', 'bsky-torn', cls]}
+  data-type="bsky"
+  target="_blank"
+>
+  <span class="bsky-torn-tag">bsky</span>
+  <p class="bsky-text">
+    {p.text.length > 160 ? p.text.slice(0, 160) + '...' : p.text}
+  </p>
+  <span style="font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">
+    {relTime(p.createdAt)}
+  </span>
+  <div class="bsky-torn-stripe" />
+</a>

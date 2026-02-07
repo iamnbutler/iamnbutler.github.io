@@ -1,0 +1,32 @@
+---
+import type { BskyPost } from '../../lib/types';
+import { relTime } from '../../lib/variants';
+
+interface Props {
+  post: BskyPost;
+  cls?: string;
+}
+
+const { post: p, cls = '' } = Astro.props;
+const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
+---
+
+<a
+  href={bskyUrl}
+  class:list={['tile', 'tile-bsky', 'bsky-broadcast', cls]}
+  data-type="bsky"
+  target="_blank"
+>
+  <span class="bsky-channel">CH</span>
+  <div class="bsky-broadcast-body">
+    <span class="bsky-live">{relTime(p.createdAt)}</span>
+    <p class="bsky-text">
+      {p.text.length > 160 ? p.text.slice(0, 160) + '...' : p.text}
+    </p>
+  </div>
+  <div class="bsky-broadcast-foot">
+    {p.likeCount > 0 ? `${p.likeCount} likes` : ''}
+    {p.likeCount > 0 && p.replyCount > 0 ? ' \u2022 ' : ''}
+    {p.replyCount > 0 ? `${p.replyCount} replies` : ''}
+  </div>
+</a>

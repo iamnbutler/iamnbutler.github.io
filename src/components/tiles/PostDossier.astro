@@ -1,0 +1,28 @@
+---
+import type { Fragment } from '../../lib/types';
+import { excerpt } from '../../lib/variants';
+
+interface Props {
+  fragment: Fragment;
+  cls?: string;
+  showExcerpt?: boolean;
+}
+
+const { fragment: f, cls = '', showExcerpt = false } = Astro.props;
+const dateStr = new Date(f.createdAt).toISOString().slice(0, 10);
+---
+
+<a
+  href={`/f/${f.id}`}
+  class:list={['tile', 'tile-post', 'post-dossier', cls]}
+  data-type="post"
+>
+  <div class="post-body">
+    <span class="post-type">post</span>
+    <h3>{f.title}</h3>
+    {showExcerpt && f.content && (
+      <p class="post-excerpt">{excerpt(f.content, 140)}</p>
+    )}
+    <time>{dateStr}</time>
+  </div>
+</a>

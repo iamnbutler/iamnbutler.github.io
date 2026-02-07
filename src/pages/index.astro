@@ -13,19 +13,32 @@ import {
     shotMeta,
     linkVariant,
     bskySize,
+    bskyTextVariant,
     relTime,
 } from "../lib/variants";
 
-// Tile components
+// Tile components — posts
 import PostCassette from "../components/tiles/PostCassette.astro";
 import PostCircuit from "../components/tiles/PostCircuit.astro";
 import PostBlast from "../components/tiles/PostBlast.astro";
+import PostDossier from "../components/tiles/PostDossier.astro";
+import PostManifest from "../components/tiles/PostManifest.astro";
+import PostTerminal from "../components/tiles/PostTerminal.astro";
+// shots
 import ShotViewfinder from "../components/tiles/ShotViewfinder.astro";
 import ShotEvidence from "../components/tiles/ShotEvidence.astro";
 import ShotHud from "../components/tiles/ShotHud.astro";
+import ShotThermal from "../components/tiles/ShotThermal.astro";
+import ShotContact from "../components/tiles/ShotContact.astro";
+import ShotSpecimen from "../components/tiles/ShotSpecimen.astro";
 import ShotHero from "../components/tiles/ShotHero.astro";
+// bsky
 import BskyText from "../components/tiles/BskyText.astro";
 import BskyMedia from "../components/tiles/BskyMedia.astro";
+import BskyPing from "../components/tiles/BskyPing.astro";
+import BskyTorn from "../components/tiles/BskyTorn.astro";
+import BskyBroadcast from "../components/tiles/BskyBroadcast.astro";
+// links + lists
 import LinkRelay from "../components/tiles/LinkRelay.astro";
 import LinkDispatch from "../components/tiles/LinkDispatch.astro";
 import ListTile from "../components/tiles/ListTile.astro";
@@ -298,6 +311,11 @@ if (grid.length <= 12) renderItems.push({ kind: "feed" });
                     if (hasMedia) {
                         return <BskyMedia post={p} cls={sizeCls} />;
                     }
+
+                    const bv = bskyTextVariant(i);
+                    if (bv === "ping") return <BskyPing post={p} cls={sizeCls} />;
+                    if (bv === "torn") return <BskyTorn post={p} cls={sizeCls} />;
+                    if (bv === "broadcast") return <BskyBroadcast post={p} cls={sizeCls} />;
                     return <BskyText post={p} cls={sizeCls} />;
                 }
 
@@ -310,12 +328,11 @@ if (grid.length <= 12) renderItems.push({ kind: "feed" });
                     if (promoted) {
                         return <ShotHero fragment={f} cls={cls} />;
                     }
-                    if (variant === "viewfinder") {
-                        return <ShotViewfinder fragment={f} cls={cls} />;
-                    }
-                    if (variant === "evidence") {
-                        return <ShotEvidence fragment={f} cls={cls} />;
-                    }
+                    if (variant === "viewfinder") return <ShotViewfinder fragment={f} cls={cls} />;
+                    if (variant === "evidence") return <ShotEvidence fragment={f} cls={cls} />;
+                    if (variant === "thermal") return <ShotThermal fragment={f} cls={cls} />;
+                    if (variant === "contact") return <ShotContact fragment={f} cls={cls} />;
+                    if (variant === "specimen") return <ShotSpecimen fragment={f} cls={cls} />;
                     return <ShotHud fragment={f} cls={cls} />;
                 }
 
@@ -336,12 +353,11 @@ if (grid.length <= 12) renderItems.push({ kind: "feed" });
                 // Posts
                 const { cls, showExcerpt, variant: postVariant } = postMeta(i, f.content?.length ?? 0);
 
-                if (postVariant === "cassette") {
-                    return <PostCassette fragment={f} cls={cls} showExcerpt={showExcerpt} />;
-                }
-                if (postVariant === "circuit") {
-                    return <PostCircuit fragment={f} cls={cls} showExcerpt={showExcerpt} />;
-                }
+                if (postVariant === "cassette") return <PostCassette fragment={f} cls={cls} showExcerpt={showExcerpt} />;
+                if (postVariant === "circuit") return <PostCircuit fragment={f} cls={cls} showExcerpt={showExcerpt} />;
+                if (postVariant === "dossier") return <PostDossier fragment={f} cls={cls} showExcerpt={showExcerpt} />;
+                if (postVariant === "manifest") return <PostManifest fragment={f} cls={cls} showExcerpt={showExcerpt} />;
+                if (postVariant === "terminal") return <PostTerminal fragment={f} cls={cls} showExcerpt={showExcerpt} />;
                 return <PostBlast fragment={f} cls={cls} showExcerpt={showExcerpt} />;
             })
         }

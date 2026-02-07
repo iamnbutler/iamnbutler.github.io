@@ -2,7 +2,7 @@ import type { Fragment, BskyPost } from './types';
 
 // === Post variants ===
 
-export const POST_VARIANTS = ['cassette', 'circuit', 'blast'] as const;
+export const POST_VARIANTS = ['cassette', 'circuit', 'blast', 'dossier', 'manifest', 'terminal'] as const;
 export type PostVariant = (typeof POST_VARIANTS)[number];
 
 export function postMeta(i: number, contentLen: number): {
@@ -22,7 +22,7 @@ export function postMeta(i: number, contentLen: number): {
 
 // === Shot variants ===
 
-export const SHOT_VARIANTS = ['viewfinder', 'evidence', 'hud'] as const;
+export const SHOT_VARIANTS = ['viewfinder', 'evidence', 'hud', 'thermal', 'contact', 'specimen'] as const;
 export type ShotVariant = (typeof SHOT_VARIANTS)[number];
 
 export function shotMeta(i: number, imgCount: number): {
@@ -47,6 +47,15 @@ export type LinkVariant = (typeof LINK_VARIANTS)[number];
 
 export function linkVariant(f: Fragment): LinkVariant {
   return f.id % 2 === 0 ? 'dispatch' : 'relay';
+}
+
+// === Bsky variants ===
+
+export const BSKY_TEXT_VARIANTS = ['packet', 'ping', 'torn', 'broadcast'] as const;
+export type BskyTextVariant = (typeof BSKY_TEXT_VARIANTS)[number];
+
+export function bskyTextVariant(i: number): BskyTextVariant {
+  return BSKY_TEXT_VARIANTS[i % BSKY_TEXT_VARIANTS.length];
 }
 
 // === Bsky sizing ===
