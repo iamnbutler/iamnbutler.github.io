@@ -95,16 +95,20 @@ function countListItems(content: string): number {
     return content.split("\n").filter((l) => l.match(/^(##\s|[-*]\s)/)).length;
 }
 
+const SHOT_VARIANTS = ["viewfinder", "evidence", "hud"] as const;
+type ShotVariant = (typeof SHOT_VARIANTS)[number];
+
 function shotMeta(
     i: number,
     imgCount: number,
-): { cls: string; isHero: boolean } {
+): { cls: string; isHero: boolean; variant: ShotVariant } {
+    const variant = SHOT_VARIANTS[i % 3];
     // Shots are visual — never 1x1, always at least 2-wide
     if (imgCount >= 3 && i % 6 === 0)
-        return { cls: "tile-hero-wide", isHero: true }; // 3x2 hero
-    if (i % 7 === 0) return { cls: "tile-3w", isHero: false }; // 3-wide
-    if (i % 4 === 0) return { cls: "tile-w tile-t", isHero: false }; // 2x2 feature
-    return { cls: "tile-w", isHero: false }; // default 2-wide
+        return { cls: "tile-hero-wide", isHero: true, variant }; // 3x2 hero
+    if (i % 7 === 0) return { cls: "tile-3w", isHero: false, variant }; // 3-wide
+    if (i % 4 === 0) return { cls: "tile-w tile-t", isHero: false, variant }; // 2x2 feature
+    return { cls: "tile-w", isHero: false, variant }; // default 2-wide
 }
 
 function postMeta(
@@ -495,7 +499,7 @@ function relTime(iso: string): string {
                 const isList = f.type === "list";
 
                 if (isShot) {
-                    const { cls, isHero: promoted } = shotMeta(
+                    const { cls, isHero: promoted, variant } = shotMeta(
                         i,
                         f.images!.length,
                     );
@@ -531,10 +535,49 @@ function relTime(iso: string): string {
                             </a>
                         );
                     }
+
+                    // Viewfinder variant — crosshairs + ticks + exposure
+                    if (variant === "viewfinder") {
+                        return (
+                            <a
+                                href={`/f/${f.id}`}
+                                class:list={["tile", "tile-shot", "shot-viewfinder", cls]}
+                                data-type="shot"
+                            >
+                                <img
+                                    src={blobUrl(DID, f.images![0].cid)}
+                                    alt={f.title}
+                                    loading="lazy"
+                                />
+                                <span class="shot-exposure">f/{f.id} &bull; {new Date(f.createdAt).toISOString().slice(0, 10)}</span>
+                                <div class="shot-ticks" />
+                            </a>
+                        );
+                    }
+
+                    // Evidence variant — film holder notches + marker badge
+                    if (variant === "evidence") {
+                        return (
+                            <a
+                                href={`/f/${f.id}`}
+                                class:list={["tile", "tile-shot", "shot-evidence", cls]}
+                                data-type="shot"
+                            >
+                                <img
+                                    src={blobUrl(DID, f.images![0].cid)}
+                                    alt={f.title}
+                                    loading="lazy"
+                                />
+                                <div class="shot-marker">{f.id}</div>
+                            </a>
+                        );
+                    }
+
+                    // HUD variant — broken corner frame + scan line + data overlay
                     return (
                         <a
                             href={`/f/${f.id}`}
-                            class:list={["tile", "tile-shot", cls]}
+                            class:list={["tile", "tile-shot", "shot-hud", cls]}
                             data-type="shot"
                         >
                             <img
@@ -542,10 +585,7 @@ function relTime(iso: string): string {
                                 alt={f.title}
                                 loading="lazy"
                             />
-                            <div class="tile-overlay">
-                                <span class="tile-id">#{f.id}</span>
-                                <span class="tile-label">{f.title}</span>
-                            </div>
+                            <div class="shot-data">REC<br/>{String(f.id).padStart(3, "0")}</div>
                         </a>
                     );
                 }
