@@ -1,80 +1,137 @@
 ---
 import Base from '../layouts/Base.astro';
 import { fetchAllFragments, blobUrl, DID } from '../lib/atproto';
+import type { Fragment } from '../lib/types';
 
 const fragments = await fetchAllFragments();
 const sorted = [...fragments].reverse();
 const hero = sorted.find(f => f.type === 'shot' && f.images?.length);
 const grid = sorted.filter(f => f !== hero);
 
-function typeAccent(type: string): string {
-  return type === 'list' ? '#7b8adf' : type === 'shot' ? 'var(--accent-2)' : 'var(--accent)';
+function excerpt(text: string, len: number = 120): string {
+  return text.replace(/[#*_\[\]()>`~\-]/g, '').replace(/\n+/g, ' ').trim().slice(0, len);
 }
 
-function excerpt(text: string): string {
-  return text.replace(/[#*_\[\]()>`-]/g, '').trim().slice(0, 100);
+// Extract top-level items from list markdown
+function extractListItems(content: string, max: number = 5): string[] {
+  const items: string[] = [];
+  for (const line of content.split('\n')) {
+    if (items.length >= max) break;
+    const h = line.match(/^##\s+(.+)/);
+    if (h) { items.push(h[1].replace(/\*\*/g, '')); continue; }
+    const b = line.match(/^[-*]\s+(.+)/);
+    if (b && !line.startsWith('  ')) {
+      items.push(b[1].replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, '').trim());
+    }
+  }
+  return items;
 }
+
+function countListItems(content: string): number {
+  return content.split('\n').filter(l => l.match(/^(##\s|[-*]\s)/)).length;
+}
+
+function shotMeta(i: number, imgCount: number): { cls: string; isHero: boolean } {
+  if (imgCount >= 3 && i % 12 === 0) return { cls: 'tile-hero-wide', isHero: true };
+  if (i % 11 === 0) return { cls: 'tile-3w', isHero: false };
+  if (i % 7 === 0) return { cls: 'tile-w', isHero: false };
+  if (i % 5 === 2) return { cls: 'tile-t', isHero: false };
+  return { cls: '', isHero: false };
+}
+
+// Posts: mostly 1x1, rare bigger
+function postMeta(i: number, contentLen: number): { cls: string; showExcerpt: boolean } {
+  if (contentLen > 2000 && i % 9 === 0) return { cls: 'tile-text-lg', showExcerpt: true };
+  if (contentLen > 1200 && i % 13 === 5) return { cls: 'tile-text-tall', showExcerpt: true };
+  return { cls: '', showExcerpt: false };
+}
+
+// Build render sequence with log injected early
+type RenderItem =
+  | { kind: 'log' }
+  | { kind: 'frag'; f: Fragment; i: number };
+
+const renderItems: RenderItem[] = [];
+grid.forEach((f, i) => {
+  if (i === 5) renderItems.push({ kind: 'log' });
+  renderItems.push({ kind: 'frag', f, i });
+});
+if (grid.length <= 5) renderItems.push({ kind: 'log' });
 ---
 <Base wide>
-  <div class="container">
-    <header class="panel panel-accent" style="margin-bottom: var(--sp-3);">
+  <section class="mosaic">
+    <header class="tile tile-header">
       <h1>nate.rip</h1>
-      <div class="header-stats">
-        <span>{sorted.length} fragments</span>
-        <span class="sep">/</span>
-        <span class="type-post">{sorted.filter(f => f.type === 'post').length}p</span>
-        <span class="sep">/</span>
-        <span class="type-shot">{sorted.filter(f => f.type === 'shot').length}s</span>
-        <span class="sep">/</span>
-        <span class="type-list">{sorted.filter(f => f.type === 'list').length}l</span>
+      <div class="header-meta">
+        <span class="header-count">{sorted.length}</span>
+        <span class="header-label">fragments</span>
+        <div class="header-types">
+          <span class="type-post">{sorted.filter(f => f.type === 'post').length}p</span>
+          <span class="type-shot">{sorted.filter(f => f.type === 'shot').length}s</span>
+          <span class="type-list">{sorted.filter(f => f.type === 'list').length}l</span>
+        </div>
       </div>
     </header>
-  </div>
 
-  {hero && hero.images && (
-    <a href={`/f/${hero.id}`} class="hero">
-      <img src={blobUrl(DID, hero.images[0].cid)} alt={hero.title} />
-      <div class="hero-scanlines"></div>
-      <div class="hero-corners">
-        <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
-        <i class="hc hc-bl"></i><i class="hc hc-br"></i>
-      </div>
-      <div class="hero-info">
-        <span class="hero-tag type-shot">shot #{hero.id}</span>
-        <h2>{hero.title}</h2>
-      </div>
-    </a>
-  )}
+    {hero && hero.images && (
+      <a href={`/f/${hero.id}`} class="tile tile-shot tile-hero">
+        <img src={blobUrl(DID, hero.images[0].cid)} alt={hero.title} />
+        <div class="hero-scanlines"></div>
+        <div class="hero-corners">
+          <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
+          <i class="hc hc-bl"></i><i class="hc hc-br"></i>
+        </div>
+        <div class="hero-info">
+          <span class="hero-tag type-shot">shot #{hero.id}</span>
+          <h2>{hero.title}</h2>
+        </div>
+      </a>
+    )}
 
-  <div class="divider"><span>fragments</span></div>
-
-  <section class="mosaic">
-    {grid.map((f, i) => {
-      const isShot = f.type === 'shot' && f.images?.length;
-      const isInlineHero = isShot && i > 0 && i % 10 === 0;
-
-      if (isInlineHero) {
+    {renderItems.map(item => {
+      if (item.kind === 'log') {
         return (
-          <a href={`/f/${f.id}`} class="tile tile-shot tile-hero">
-            <img src={blobUrl(DID, f.images![0].cid)} alt={f.title} loading="lazy" />
-            <div class="hero-scanlines"></div>
-            <div class="hero-corners">
-              <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
-              <i class="hc hc-bl"></i><i class="hc hc-br"></i>
+          <nav class="tile tile-log">
+            <div class="log-label">log</div>
+            <div class="log-entries">
+              {sorted.map(f => (
+                <a href={`/f/${f.id}`} class="log-row">
+                  <span class="log-id">{String(f.id).padStart(2, '0')}</span>
+                  <span class={`log-type type-${f.type}`}>{f.type}</span>
+                  <span class="log-title">{f.title}</span>
+                  <time class="log-date">{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
+                </a>
+              ))}
             </div>
-            <div class="hero-info">
-              <span class="hero-tag type-shot">shot #{f.id}</span>
-              <h2>{f.title}</h2>
-            </div>
-          </a>
+          </nav>
         );
       }
 
+      const { f, i } = item;
+      const isShot = f.type === 'shot' && f.images?.length;
+      const isList = f.type === 'list';
+
+      // Shots
       if (isShot) {
-        const isWide = i % 7 === 0;
-        const isTall = !isWide && i % 5 === 2;
+        const { cls, isHero: promoted } = shotMeta(i, f.images!.length);
+        if (promoted) {
+          return (
+            <a href={`/f/${f.id}`} class:list={['tile', 'tile-shot', cls]}>
+              <img src={blobUrl(DID, f.images![0].cid)} alt={f.title} loading="lazy" />
+              <div class="hero-scanlines"></div>
+              <div class="hero-corners">
+                <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
+                <i class="hc hc-bl"></i><i class="hc hc-br"></i>
+              </div>
+              <div class="hero-info">
+                <span class="hero-tag type-shot">shot #{f.id}</span>
+                <h2>{f.title}</h2>
+              </div>
+            </a>
+          );
+        }
         return (
-          <a href={`/f/${f.id}`} class:list={['tile', 'tile-shot', isWide && 'tile-w', isTall && 'tile-t']}>
+          <a href={`/f/${f.id}`} class:list={['tile', 'tile-shot', cls]}>
             <img src={blobUrl(DID, f.images![0].cid)} alt={f.title} loading="lazy" />
             <div class="tile-overlay">
               <span class="tile-id">#{f.id}</span>
@@ -84,31 +141,44 @@ function excerpt(text: string): string {
         );
       }
 
+      // Lists — unique design with extracted items
+      if (isList) {
+        const items = extractListItems(f.content ?? '');
+        const total = countListItems(f.content ?? '');
+        return (
+          <a href={`/f/${f.id}`} class="tile tile-list">
+            <div class="list-head">
+              <span class="list-tag">list</span>
+              <h3>{f.title}</h3>
+            </div>
+            <div class="list-rule"></div>
+            <ul class="list-items">
+              {items.map(li => <li>{li}</li>)}
+            </ul>
+            <div class="list-foot">
+              {total > items.length && <span class="list-more">+{total - items.length} more</span>}
+              <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
+            </div>
+          </a>
+        );
+      }
+
+      // Posts
+      const { cls, showExcerpt } = postMeta(i, f.content?.length ?? 0);
+      const padCls = !cls && i % 5 === 1 ? 'tile-airy' : '';
       return (
-        <a href={`/f/${f.id}`} class="tile tile-text" style={`--tile-accent: ${typeAccent(f.type)}`}>
-          <span class="tile-watermark">{f.id}</span>
-          <span class={`tile-tag type-${f.type}`}>{f.type}</span>
-          <h3>{f.title}</h3>
-          {f.content && (
-            <p class="tile-excerpt">{excerpt(f.content)}</p>
-          )}
+        <a href={`/f/${f.id}`} class:list={['tile', 'tile-post', cls, padCls]}>
+          <span class="post-num">{f.id}</span>
+          <div class="post-content">
+            <span class="post-type">post</span>
+            <h3>{f.title}</h3>
+            {showExcerpt && f.content && (
+              <p class="post-excerpt">{excerpt(f.content, 160)}</p>
+            )}
+          </div>
           <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
         </a>
       );
     })}
   </section>
-
-  <div class="container">
-    <div class="divider"><span>log</span></div>
-    <nav class="log">
-      {sorted.map(f => (
-        <a href={`/f/${f.id}`} class="log-row">
-          <span class="log-id">{String(f.id).padStart(2, '0')}</span>
-          <span class={`log-type type-${f.type}`}>{f.type}</span>
-          <span class="log-title">{f.title}</span>
-          <time class="log-date">{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
-        </a>
-      ))}
-    </nav>
-  </div>
 </Base>
