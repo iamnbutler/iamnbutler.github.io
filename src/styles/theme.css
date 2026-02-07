@@ -554,41 +554,106 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 }
 
 /* ======================================================
-   LINK TILES — shared/signal-boosted external content
+   LINK TILES — relay card, intercepted transmission
    ====================================================== */
 
 .tile-link {
-  background: var(--surface);
-  padding: var(--sp-3);
+  grid-column: span 2;
+  background: var(--bg);
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--sp);
   color: var(--fg);
-  /* Left accent bar instead of top — "this points elsewhere" */
+  border: 2px solid color-mix(in oklch, var(--link-accent) 50%, var(--border));
   border-top: none;
-  border-left: 3px solid var(--link-accent);
-  clip-path: none;
-  border-radius: var(--r);
+  /* Asymmetric chamfer — big diagonal slash */
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%,
+    0 14px
+  );
 }
 .tile-link:hover {
-  border-left-color: color-mix(in oklch, var(--link-accent) 100%, white 20%);
+  border-color: var(--link-accent);
 }
 
-.link-source {
+/* Double frame — inner border following chamfer */
+.tile-link::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid color-mix(in oklch, var(--link-accent) 18%, transparent);
+  clip-path: polygon(
+    11px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 11px
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Top chrome bar — relay header */
+.link-chrome {
   display: flex;
   align-items: center;
-  gap: var(--sp);
+  gap: var(--sp-2);
+  padding: var(--sp) var(--sp-3);
+  padding-left: calc(var(--sp-3) + 8px); /* offset for chamfer */
+  background: color-mix(in oklch, var(--link-accent) 8%, var(--surface-2));
+  border-bottom: 1px solid color-mix(in oklch, var(--link-accent) 25%, var(--border));
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
-.link-arrow {
+.link-signal {
   font-size: var(--fs-l);
+  font-weight: 700;
+  color: var(--link-accent);
   line-height: 1;
+}
+.link-relay {
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--link-accent);
 }
-.link-domain {
+.link-freq {
+  margin-left: auto;
   font-family: var(--mono);
   font-size: var(--fs-s);
   color: var(--fg-2);
-  letter-spacing: 0.03em;
+  opacity: 0.5;
+}
+
+/* Body — content area with diagonal hash texture */
+.link-body {
+  flex: 1;
+  padding: var(--sp-3);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp);
+}
+.link-body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 10px,
+    color-mix(in oklch, var(--link-accent) 3%, transparent) 10px,
+    color-mix(in oklch, var(--link-accent) 3%, transparent) 11px
+  );
+  pointer-events: none;
 }
 
 .tile-link h3 {
@@ -597,6 +662,7 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   text-transform: none;
   letter-spacing: 0;
   line-height: var(--lh);
+  position: relative;
 }
 
 .link-comment {
@@ -608,14 +674,39 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  position: relative;
 }
 
+/* Bottom chrome — date + connector marks */
+.link-chrome-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp) var(--sp-3);
+  background: color-mix(in oklch, var(--link-accent) 5%, var(--surface-2));
+  border-top: 1px solid color-mix(in oklch, var(--link-accent) 18%, var(--border));
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
 .tile-link time {
-  margin-top: auto;
   font-family: var(--mono);
   font-size: var(--fs-s);
   color: var(--fg-2);
 }
+.link-connectors {
+  display: flex;
+  gap: 3px;
+}
+.link-connectors i {
+  display: block;
+  width: 10px;
+  height: 3px;
+  background: var(--link-accent);
+  opacity: 0.3;
+}
+.link-connectors i:nth-child(2) { opacity: 0.5; }
+.link-connectors i:last-child { opacity: 0.8; }
 
 /* ======================================================
    LOG TILE — tactical data terminal, 2-col 3-row
@@ -1139,7 +1230,7 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   .tile-bsky-hero { grid-row: span 1; }
   .tile-header { grid-column: 1 / -1; }
   .header-filters { flex-wrap: wrap; }
-  .tile-list { grid-column: span 1; }
+  .tile-list, .tile-link { grid-column: span 1; }
   .tile-log { grid-column: span 1; grid-row: span 2; }
   .tile-feed { grid-column: span 1; grid-row: span 3; }
   .gallery { grid-template-columns: 1fr; }

@@ -585,7 +585,7 @@ function relTime(iso: string): string {
                     );
                 }
 
-                // Links — shared/signal-boosted external content
+                // Links — relay card: intercepted transmission from elsewhere
                 if (f.type === "link" && f.url) {
                     const domain = new URL(f.url).hostname.replace(
                         /^www\./,
@@ -598,19 +598,27 @@ function relTime(iso: string): string {
                             data-type="link"
                             target="_blank"
                         >
-                            <div class="link-source">
-                                <span class="link-arrow">↗</span>
-                                <span class="link-domain">{domain}</span>
+                            <div class="link-chrome">
+                                <span class="link-signal">↗</span>
+                                <span class="link-relay">relay</span>
+                                <span class="link-freq">{domain}</span>
                             </div>
-                            <h3>{f.title}</h3>
-                            {f.content && (
-                                <p class="link-comment">{f.content}</p>
-                            )}
-                            <time>
-                                {new Date(f.createdAt)
-                                    .toISOString()
-                                    .slice(0, 10)}
-                            </time>
+                            <div class="link-body">
+                                <h3>{f.title}</h3>
+                                {f.content && (
+                                    <p class="link-comment">{f.content}</p>
+                                )}
+                            </div>
+                            <div class="link-chrome-bottom">
+                                <time>
+                                    {new Date(f.createdAt)
+                                        .toISOString()
+                                        .slice(0, 10)}
+                                </time>
+                                <div class="link-connectors">
+                                    <i /><i /><i />
+                                </div>
+                            </div>
                         </a>
                     );
                 }

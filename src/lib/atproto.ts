@@ -31,7 +31,7 @@ function mapRecord(r: any, type: FragmentType): Fragment {
     type,
     rkey: r.uri.split('/').pop()!,
     title: r.value.title || '',
-    content: r.value.content,
+    content: r.value.content || r.value.comment,
     url: r.value.url,
     images: r.value.images?.map((img: any) => ({
       cid: img.ref?.$link || img.ref,
