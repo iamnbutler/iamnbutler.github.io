@@ -1,0 +1,945 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base wide>
+  <style>
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-auto-rows: 200px;
+      gap: var(--sp-2);
+      padding: var(--sp-3);
+    }
+    .demo-section {
+      grid-column: 1 / -1;
+      padding: var(--sp-3) 0 var(--sp);
+      border-bottom: 1px solid var(--border);
+      height: auto;
+    }
+    .demo-section h2 {
+      font-size: var(--fs-l);
+      color: var(--fg);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .demo-section p {
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      margin-top: var(--sp);
+    }
+    .demo-w { grid-column: span 2; }
+    .demo-tall { grid-row: span 2; }
+    .demo-hero { grid-column: span 3; grid-row: span 2; }
+
+    /* ========================================
+       POSTS
+       ======================================== */
+
+    /* --- P1: Dossier Folder --- */
+    .p1-dossier {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      clip-path: polygon(
+        0 10px,
+        20% 10px, 22% 0, 42% 0, 44% 10px,
+        100% 10px,
+        100% calc(100% - 16px),
+        calc(100% - 16px) 100%,
+        0 100%
+      );
+      padding: 20px var(--sp-3) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--sp);
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 19px,
+        color-mix(in oklch, var(--accent) 8%, transparent) 19px,
+        color-mix(in oklch, var(--accent) 8%, transparent) 20px
+      );
+      background-color: var(--surface-2);
+    }
+    .p1-dossier::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 16px; height: 16px;
+      background: linear-gradient(135deg, var(--surface) 50%, var(--bg) 50%);
+    }
+    .p1-stamp {
+      position: absolute;
+      top: 18px; right: 12px;
+      font-family: var(--mono);
+      font-size: 48px; font-weight: 700;
+      color: var(--accent); opacity: 0.12;
+      transform: rotate(12deg);
+      line-height: 1;
+    }
+    .p1-tab {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    /* --- P2: Circuit Board (standalone) --- */
+    .p2-circuit {
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(
+        0 0, 100% 0,
+        100% 25%, calc(100% - 4px) 25%, calc(100% - 4px) 35%, 100% 35%,
+        100% 55%, calc(100% - 4px) 55%, calc(100% - 4px) 65%, 100% 65%,
+        100% 100%, 0 100%,
+        0 65%, 4px 65%, 4px 55%, 0 55%,
+        0 35%, 4px 35%, 4px 25%, 0 25%
+      );
+      padding: var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--sp);
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 5%, transparent) 19px, color-mix(in oklch, var(--accent) 5%, transparent) 20px),
+        repeating-linear-gradient(90deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 5%, transparent) 19px, color-mix(in oklch, var(--accent) 5%, transparent) 20px),
+        color-mix(in oklch, var(--accent) 3%, var(--surface));
+    }
+    .p2-circuit::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, transparent 20%, color-mix(in oklch, var(--accent) 12%, transparent) 20%, color-mix(in oklch, var(--accent) 12%, transparent) 20.5%, transparent 20.5%),
+        linear-gradient(0deg, transparent 40%, color-mix(in oklch, var(--accent) 12%, transparent) 40%, color-mix(in oklch, var(--accent) 12%, transparent) 40.5%, transparent 40.5%),
+        linear-gradient(90deg, transparent 60%, color-mix(in oklch, var(--accent) 8%, transparent) 60%, color-mix(in oklch, var(--accent) 8%, transparent) 60.5%, transparent 60.5%);
+      pointer-events: none;
+    }
+    .p2-chip {
+      border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
+      padding: var(--sp-2);
+      position: relative; z-index: 1;
+    }
+    .p2-part {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      letter-spacing: 0.05em;
+    }
+
+    /* --- P3: Blast Door --- */
+    .p3-blast {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%, 0 8px);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .p3-blast::after {
+      content: '';
+      position: absolute; inset: 0;
+      box-shadow: inset 2px 2px 0 rgba(255,255,255,0.04), inset -2px -2px 0 rgba(0,0,0,0.3);
+      pointer-events: none; z-index: 2;
+    }
+    .p3-rail {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: var(--sp) var(--sp-3);
+      padding-left: calc(var(--sp-3) + 4px);
+      background: linear-gradient(180deg, var(--surface-2), var(--surface), var(--surface-2));
+      border-bottom: 2px solid var(--border);
+      flex-shrink: 0;
+    }
+    .p3-hex {
+      width: 7px; height: 8px;
+      background: color-mix(in oklch, var(--fg-2) 40%, var(--surface));
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .p3-label {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--fg-2);
+    }
+    .p3-body {
+      flex: 1;
+      padding: var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--sp);
+      position: relative; z-index: 1;
+    }
+    .p3-stripe {
+      height: 4px;
+      background: repeating-linear-gradient(135deg,
+        color-mix(in oklch, var(--accent) 20%, transparent) 0px,
+        color-mix(in oklch, var(--accent) 20%, transparent) 6px,
+        transparent 6px, transparent 12px
+      );
+      flex-shrink: 0;
+    }
+
+    /* --- P4: Data Cassette (original) --- */
+    .p4-cassette {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      clip-path: polygon(
+        4px 0, calc(100% - 4px) 0,
+        calc(100% - 2px) 6px, 100% 6px,
+        100% calc(100% - 3px), calc(100% - 3px) 100%,
+        3px 100%, 0 calc(100% - 3px),
+        0 6px, 2px 6px
+      );
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 4px);
+      background-color: var(--surface-2);
+    }
+    .p4-label {
+      margin: 8px 10px 0;
+      border: 1px solid var(--border);
+      background: color-mix(in oklch, var(--surface) 50%, var(--bg));
+      padding: var(--sp-2) var(--sp-3);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--sp);
+    }
+    .p4-catalog {
+      position: absolute;
+      top: 14px; right: 18px;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2); opacity: 0.6;
+    }
+    .p4-window {
+      margin: var(--sp-2) 10px 10px;
+      height: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 6px color-mix(in oklch, var(--accent) 15%, transparent);
+      flex-shrink: 0;
+    }
+
+    /* --- PX: Cassette + Circuit Hybrid --- */
+    .px-hybrid {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      /* Pin notches only on the bottom portion of left/right edges */
+      clip-path: polygon(
+        4px 0, calc(100% - 4px) 0,
+        calc(100% - 2px) 6px, 100% 6px,
+        100% 78%, calc(100% - 4px) 78%, calc(100% - 4px) 82%, 100% 82%,
+        100% 88%, calc(100% - 4px) 88%, calc(100% - 4px) 92%, 100% 92%,
+        100% calc(100% - 3px), calc(100% - 3px) 100%,
+        3px 100%, 0 calc(100% - 3px),
+        0 92%, 4px 92%, 4px 88%, 0 88%,
+        0 82%, 4px 82%, 4px 78%, 0 78%,
+        0 6px, 2px 6px
+      );
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 4px);
+      background-color: var(--surface-2);
+    }
+    .px-label {
+      margin: 8px 10px 0;
+      border: 1px solid var(--border);
+      background: color-mix(in oklch, var(--surface) 50%, var(--bg));
+      padding: var(--sp-2) var(--sp-3);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--sp);
+    }
+    .px-catalog {
+      position: absolute;
+      top: 14px; right: 18px;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2); opacity: 0.6;
+    }
+    /* Circuit board insertion edge — bottom ~20% */
+    .px-edge {
+      margin: 0 4px 4px;
+      height: 38px;
+      flex-shrink: 0;
+      position: relative;
+      border-top: 1px solid var(--border);
+      /* PCB grid texture */
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 7px, color-mix(in oklch, var(--accent) 6%, transparent) 7px, color-mix(in oklch, var(--accent) 6%, transparent) 8px),
+        repeating-linear-gradient(90deg, transparent, transparent 7px, color-mix(in oklch, var(--accent) 6%, transparent) 7px, color-mix(in oklch, var(--accent) 6%, transparent) 8px),
+        color-mix(in oklch, var(--accent) 3%, var(--bg));
+    }
+    /* Trace lines on the edge */
+    .px-edge::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, transparent 15%, color-mix(in oklch, var(--accent) 15%, transparent) 15%, color-mix(in oklch, var(--accent) 15%, transparent) 15.5%, transparent 15.5%),
+        linear-gradient(90deg, transparent 40%, color-mix(in oklch, var(--accent) 10%, transparent) 40%, color-mix(in oklch, var(--accent) 10%, transparent) 40.5%, transparent 40.5%),
+        linear-gradient(90deg, transparent 72%, color-mix(in oklch, var(--accent) 12%, transparent) 72%, color-mix(in oklch, var(--accent) 12%, transparent) 72.5%, transparent 72.5%),
+        linear-gradient(0deg, transparent 45%, color-mix(in oklch, var(--accent) 10%, transparent) 45%, color-mix(in oklch, var(--accent) 10%, transparent) 45.5%, transparent 45.5%);
+      pointer-events: none;
+    }
+    /* Solder pads — small bright squares at pin positions */
+    .px-edge::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 8px; right: 8px;
+      display: flex;
+      height: 1px;
+      background: repeating-linear-gradient(90deg,
+        color-mix(in oklch, var(--accent) 20%, transparent) 0px,
+        color-mix(in oklch, var(--accent) 20%, transparent) 3px,
+        transparent 3px, transparent 12px
+      );
+    }
+
+    /* ========================================
+       SHOTS — 3 variants that rotate
+       ======================================== */
+
+    .shot-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--surface), var(--surface-2));
+    }
+
+    /* --- S1: Viewfinder Frame --- */
+    .s1-viewfinder {
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      background: var(--surface);
+    }
+    .s1-viewfinder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: color-mix(in oklch, var(--accent-2) 6%, transparent);
+      pointer-events: none; z-index: 1;
+    }
+    .s1-viewfinder::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, transparent calc(50% - 0.5px), color-mix(in oklch, var(--accent-2) 15%, transparent) calc(50% - 0.5px), color-mix(in oklch, var(--accent-2) 15%, transparent) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+        linear-gradient(0deg, transparent calc(50% - 0.5px), color-mix(in oklch, var(--accent-2) 15%, transparent) calc(50% - 0.5px), color-mix(in oklch, var(--accent-2) 15%, transparent) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+      pointer-events: none; z-index: 2;
+    }
+    .s1-exposure {
+      position: absolute;
+      bottom: 8px; left: 10px;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--accent-2); z-index: 3;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .s1-ticks {
+      position: absolute;
+      top: 0; right: 0;
+      height: 100%; width: 12px; z-index: 3;
+      background: repeating-linear-gradient(0deg,
+        transparent, transparent 18px,
+        color-mix(in oklch, var(--accent-2) 25%, transparent) 18px,
+        color-mix(in oklch, var(--accent-2) 25%, transparent) 20px
+      );
+    }
+
+    /* --- S2: Evidence Photo --- */
+    .s2-evidence {
+      position: relative;
+      overflow: visible;
+      clip-path: polygon(
+        0 8px,
+        15px 8px, 18px 0, 40px 0, 43px 8px,
+        calc(100% - 43px) 8px, calc(100% - 40px) 0, calc(100% - 18px) 0, calc(100% - 15px) 8px,
+        100% 8px,
+        100% 100%, 0 100%
+      );
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 2px 3px 10px rgba(0,0,0,0.35);
+      transition: transform 0.2s ease;
+    }
+    .s2-evidence:hover { transform: rotate(0.5deg) translateY(-2px); }
+    .s2-evidence::before {
+      content: '';
+      position: absolute; top: 0; left: 18px;
+      width: 22px; height: 10px;
+      background: rgba(255,255,255,0.06); z-index: 2;
+    }
+    .s2-evidence::after {
+      content: '';
+      position: absolute; top: 0; right: 18px;
+      width: 22px; height: 10px;
+      background: rgba(255,255,255,0.06); z-index: 2;
+    }
+    .s2-marker {
+      position: absolute;
+      bottom: 10px; right: 10px;
+      background: var(--accent-2);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: var(--fs); font-weight: 700;
+      padding: 2px 8px;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+      z-index: 3; line-height: 1.3;
+    }
+
+    /* --- S4: HUD Capture --- */
+    .s4-hud {
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(4px 0, calc(100% - 4px) 0, 100% 100%, 0 100%);
+      background: var(--surface);
+    }
+    .s4-hud > .shot-img { filter: sepia(0.05) hue-rotate(50deg); }
+    .s4-hud::before {
+      content: '';
+      position: absolute; inset: 8px; z-index: 2;
+      pointer-events: none;
+      border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
+      -webkit-mask-image:
+        linear-gradient(90deg, black 40%, transparent 40%, transparent 60%, black 60%),
+        linear-gradient(0deg, black 40%, transparent 40%, transparent 60%, black 60%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(90deg, black 40%, transparent 40%, transparent 60%, black 60%),
+        linear-gradient(0deg, black 40%, transparent 40%, transparent 60%, black 60%);
+      mask-composite: intersect;
+    }
+    .s4-hud::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 35%; height: 1px;
+      background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--accent) 25%, transparent) 20%, color-mix(in oklch, var(--accent) 40%, transparent) 50%, color-mix(in oklch, var(--accent) 25%, transparent) 80%, transparent);
+      z-index: 2; pointer-events: none;
+    }
+    .s4-data {
+      position: absolute;
+      top: 10px; right: 14px;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--accent); opacity: 0.6;
+      z-index: 3;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+      text-align: right; line-height: 1.5;
+    }
+
+    /* ========================================
+       BSKY — 2 directions + hybrid
+       ======================================== */
+
+    .bsky-text-demo {
+      font-size: var(--fs-s);
+      line-height: var(--lh);
+      color: var(--fg);
+    }
+
+    /* --- B2: Signal Packet --- */
+    .b2-packet {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      clip-path: polygon(
+        4px 0, 100% 0,
+        100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+        0 100%, 0 4px, 4px 4px
+      );
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px dashed color-mix(in oklch, #1185fe 30%, var(--border));
+      border-right: 1px dashed color-mix(in oklch, #1185fe 30%, var(--border));
+      border-top: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
+      border-bottom: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
+    }
+    .b2-header {
+      display: flex;
+      padding: var(--sp) var(--sp-2);
+      gap: var(--sp-2);
+      background: color-mix(in oklch, #1185fe 4%, var(--surface));
+      border-bottom: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+    }
+    .b2-field {
+      color: var(--fg-2);
+      border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+      padding-right: var(--sp-2);
+    }
+    .b2-field:last-child { border-right: none; }
+    .b2-field em { color: #1185fe; font-style: normal; }
+    .b2-payload {
+      flex: 1;
+      padding: var(--sp-2) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+    }
+    .b2-checksum {
+      padding: var(--sp) var(--sp-2);
+      background: color-mix(in oklch, #1185fe 3%, var(--surface));
+      border-top: 1px solid color-mix(in oklch, #1185fe 12%, var(--border));
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      flex-shrink: 0;
+    }
+
+    /* --- B4: Comm Ping --- */
+    .b4-ping {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+      padding: 0;
+      display: flex;
+      border: 1px solid color-mix(in oklch, #1185fe 25%, var(--border));
+    }
+    .b4-ping::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 92% 50%,
+        transparent 18px, color-mix(in oklch, #1185fe 8%, transparent) 19px, transparent 20px,
+        transparent 35px, color-mix(in oklch, #1185fe 5%, transparent) 36px, transparent 37px,
+        transparent 52px, color-mix(in oklch, #1185fe 3%, transparent) 53px, transparent 54px
+      );
+      pointer-events: none; z-index: 1;
+    }
+    .b4-telem {
+      width: 22px;
+      flex-shrink: 0;
+      background: color-mix(in oklch, #1185fe 6%, var(--surface));
+      border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      position: relative; z-index: 2;
+    }
+    .b4-bar {
+      width: 8px; height: 2px;
+      background: #1185fe; opacity: 0.3;
+    }
+    .b4-bar:nth-child(2) { opacity: 0.5; }
+    .b4-bar:last-child { opacity: 0.8; }
+    .b4-body {
+      flex: 1;
+      padding: var(--sp-2) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      position: relative; z-index: 2;
+    }
+    .b4-rx {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: #1185fe;
+      letter-spacing: 0.1em;
+    }
+
+    /* --- BX: Signal Ping Hybrid (Packet header + Chevron + Rings) --- */
+    .bx-hybrid {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      /* Chevron right edge + stepped TL corner */
+      clip-path: polygon(
+        4px 0, 4px 4px, 0 4px,
+        0 100%,
+        calc(100% - 14px) 100%,
+        100% 50%,
+        calc(100% - 14px) 0
+      );
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px dashed color-mix(in oklch, #1185fe 30%, var(--border));
+      border-top: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
+      border-bottom: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
+    }
+    /* Concentric rings from chevron point */
+    .bx-hybrid::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 92% 50%,
+        transparent 20px, color-mix(in oklch, #1185fe 7%, transparent) 21px, transparent 22px,
+        transparent 40px, color-mix(in oklch, #1185fe 4%, transparent) 41px, transparent 42px,
+        transparent 60px, color-mix(in oklch, #1185fe 3%, transparent) 61px, transparent 62px
+      );
+      pointer-events: none; z-index: 1;
+    }
+    .bx-header {
+      display: flex;
+      padding: var(--sp) var(--sp-2);
+      padding-left: calc(var(--sp-2) + 4px);
+      gap: var(--sp-2);
+      background: color-mix(in oklch, #1185fe 4%, var(--surface));
+      border-bottom: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      position: relative; z-index: 2;
+    }
+    .bx-field {
+      color: var(--fg-2);
+      border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+      padding-right: var(--sp-2);
+    }
+    .bx-field:last-child { border-right: none; padding-right: 20px; }
+    .bx-field em { color: #1185fe; font-style: normal; }
+    .bx-body {
+      flex: 1;
+      padding: var(--sp-2) var(--sp-3);
+      padding-right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      position: relative; z-index: 2;
+    }
+    .bx-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp) var(--sp-2);
+      padding-right: 24px;
+      background: color-mix(in oklch, #1185fe 3%, var(--surface));
+      border-top: 1px solid color-mix(in oklch, #1185fe 12%, var(--border));
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      flex-shrink: 0;
+      position: relative; z-index: 2;
+    }
+    .bx-bars {
+      display: flex; gap: 2px; align-items: flex-end;
+    }
+    .bx-bars i {
+      display: block; width: 3px; background: #1185fe;
+    }
+    .bx-bars i:nth-child(1) { height: 4px; opacity: 0.4; }
+    .bx-bars i:nth-child(2) { height: 7px; opacity: 0.6; }
+    .bx-bars i:nth-child(3) { height: 10px; opacity: 0.9; }
+
+    /* --- B5: Torn Fragment --- */
+    .b5-torn {
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(
+        0 5px, 3% 1px, 6% 6px, 10% 2px, 14% 5px, 18% 0, 22% 4px, 27% 1px,
+        32% 6px, 37% 2px, 42% 5px, 47% 0, 52% 4px, 57% 1px, 62% 5px, 67% 2px,
+        72% 6px, 77% 1px, 82% 4px, 87% 0, 92% 5px, 96% 2px, 100% 4px,
+        100% 100%, 0 100%
+      );
+      background: color-mix(in oklch, var(--surface-2) 90%, rgba(255,255,255,0.03));
+      padding: 14px var(--sp-3) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      filter: drop-shadow(0 -2px 3px rgba(0,0,0,0.12));
+      transition: transform 0.2s ease;
+    }
+    .b5-torn:hover { transform: rotate(-0.3deg) translateY(-2px); }
+    .b5-torn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(0deg, transparent 12px, rgba(255,255,255,0.012) 12px, rgba(255,255,255,0.012) 13px, transparent 13px),
+        linear-gradient(0deg, transparent 37px, rgba(255,255,255,0.01) 37px, rgba(255,255,255,0.01) 38px, transparent 38px),
+        linear-gradient(0deg, transparent 68px, rgba(255,255,255,0.008) 68px, rgba(255,255,255,0.008) 69px, transparent 69px);
+      pointer-events: none;
+    }
+    .b5-stripe {
+      height: 2px;
+      background: #1185fe;
+      margin-top: auto;
+    }
+    .b5-tag {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: #1185fe;
+    }
+
+    /* ========================================
+       Shared helpers
+       ======================================== */
+    .tile-title {
+      font-size: var(--fs); font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: var(--lh);
+      color: var(--fg);
+    }
+    .tile-subtitle {
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      line-height: var(--lh);
+    }
+    .tile-time {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+    }
+    .tile-accent {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+  </style>
+
+  <section class="demo-grid">
+    <!-- === POST DIRECTIONS === -->
+    <div class="demo-section">
+      <h2>Post Tiles — 4 Directions</h2>
+      <p>Dossier, Circuit Board, Blast Door, Cassette (original + circuit hybrid)</p>
+    </div>
+
+    <!-- P1: Dossier Folder -->
+    <div class="p1-dossier">
+      <span class="p1-stamp">07</span>
+      <span class="p1-tab">classified</span>
+      <span class="tile-title">Dossier Folder</span>
+      <span class="tile-subtitle">Tab protrusion, dog-ear, ruled paper</span>
+      <span class="tile-time">2025-03-15</span>
+    </div>
+
+    <div class="p1-dossier demo-w">
+      <span class="p1-stamp">12</span>
+      <span class="p1-tab">classified</span>
+      <span class="tile-title">Building UI in GPUI</span>
+      <span class="tile-subtitle">A deep look at the rendering framework behind Zed, exploring how GPUI handles retained-mode rendering and element layout</span>
+      <span class="tile-time">2024-08-20</span>
+    </div>
+
+    <!-- P2: Circuit Board -->
+    <div class="p2-circuit">
+      <div class="p2-chip">
+        <span class="p2-part">IC-07</span>
+        <span class="tile-title">Circuit Board</span>
+      </div>
+    </div>
+
+    <div class="p2-circuit demo-w">
+      <div class="p2-chip">
+        <span class="p2-part">IC-12 REV.A</span>
+        <span class="tile-title">Building UI in GPUI</span>
+        <span class="tile-subtitle">Pin notches on sides, PCB grid, trace lines</span>
+      </div>
+    </div>
+
+    <!-- P3: Blast Door -->
+    <div class="p3-blast">
+      <div class="p3-rail">
+        <div class="p3-hex"></div>
+        <div class="p3-hex"></div>
+        <span class="p3-label">Post</span>
+        <div class="p3-hex"></div>
+      </div>
+      <div class="p3-body">
+        <span class="tile-title">Blast Door</span>
+        <span class="tile-subtitle">Heavy top bevel, hex bolts, warning stripe</span>
+        <span class="tile-time">2025-03-15</span>
+      </div>
+      <div class="p3-stripe"></div>
+    </div>
+
+    <div class="p3-blast demo-w">
+      <div class="p3-rail">
+        <div class="p3-hex"></div>
+        <div class="p3-hex"></div>
+        <div class="p3-hex"></div>
+        <span class="p3-label">Post</span>
+        <div class="p3-hex"></div>
+      </div>
+      <div class="p3-body">
+        <span class="tile-title">Building UI in GPUI</span>
+        <span class="tile-subtitle">The rendering framework behind Zed, retained-mode rendering and element layout</span>
+        <span class="tile-time">2024-08-20</span>
+      </div>
+      <div class="p3-stripe"></div>
+    </div>
+
+    <!-- P4: Original Cassette (for comparison) -->
+    <div class="p4-cassette">
+      <span class="p4-catalog">NR-07</span>
+      <div class="p4-label">
+        <span class="tile-accent">post</span>
+        <span class="tile-title">Cassette (original)</span>
+        <span class="tile-time">2025-03-15</span>
+      </div>
+      <div class="p4-window"></div>
+    </div>
+
+    <!-- PX: Cassette + Circuit Hybrid -->
+    <div class="px-hybrid">
+      <span class="px-catalog">NR-07</span>
+      <div class="px-label">
+        <span class="tile-accent">post</span>
+        <span class="tile-title">Cassette + Circuit</span>
+        <span class="tile-time">2025-03-15</span>
+      </div>
+      <div class="px-edge"></div>
+    </div>
+
+    <div class="px-hybrid demo-w">
+      <span class="px-catalog">NR-12</span>
+      <div class="px-label">
+        <span class="tile-accent">post</span>
+        <span class="tile-title">Building UI in GPUI</span>
+        <span class="tile-subtitle">Cassette body + circuit board insertion edge with PCB grid, traces, and pin notches</span>
+        <span class="tile-time">2024-08-20</span>
+      </div>
+      <div class="px-edge"></div>
+    </div>
+
+    <div class="px-hybrid demo-w demo-tall">
+      <span class="px-catalog">NR-12</span>
+      <div class="px-label">
+        <span class="tile-accent">post</span>
+        <span class="tile-title">Building UI in GPUI</span>
+        <span class="tile-subtitle">A deep look at the rendering framework behind Zed, exploring how GPUI handles retained-mode rendering and element layout in a code editor. The cassette body holds the content while the circuit edge provides the insertion interface.</span>
+        <span class="tile-time">2024-08-20</span>
+      </div>
+      <div class="px-edge"></div>
+    </div>
+
+    <!-- === SHOT DIRECTIONS (3 variants) === -->
+    <div class="demo-section">
+      <h2>Shot Tiles — 3 Rotating Variants</h2>
+      <p>Viewfinder, Evidence Photo, HUD Capture — alternate based on index/size</p>
+    </div>
+
+    <!-- S1: Viewfinder Frame -->
+    <div class="s1-viewfinder demo-w">
+      <div class="shot-img"></div>
+      <span class="s1-exposure">f/42 &bull; 2025-01-10</span>
+      <div class="s1-ticks"></div>
+    </div>
+
+    <!-- S2: Evidence Photo -->
+    <div class="s2-evidence demo-w">
+      <div class="shot-img"></div>
+      <div class="s2-marker">42</div>
+    </div>
+
+    <!-- S4: HUD Capture -->
+    <div class="s4-hud demo-w">
+      <div class="shot-img"></div>
+      <div class="s4-data">REC<br/>042</div>
+    </div>
+
+    <!-- Show them at 1x1 size too -->
+    <div class="s1-viewfinder">
+      <div class="shot-img"></div>
+      <span class="s1-exposure">f/15</span>
+    </div>
+
+    <div class="s2-evidence">
+      <div class="shot-img"></div>
+      <div class="s2-marker">15</div>
+    </div>
+
+    <div class="s4-hud">
+      <div class="shot-img"></div>
+      <div class="s4-data">015</div>
+    </div>
+
+    <!-- === BSKY DIRECTIONS === -->
+    <div class="demo-section">
+      <h2>Bsky Tiles — Signal Packet, Comm Ping, Hybrid, Torn</h2>
+      <p>Protocol-inspired: structured headers, chevron shapes, concentric rings</p>
+    </div>
+
+    <!-- B2: Signal Packet -->
+    <div class="b2-packet demo-w">
+      <div class="b2-header">
+        <span class="b2-field"><em>SRC</em> nate.rip</span>
+        <span class="b2-field"><em>TS</em> 2d ago</span>
+        <span class="b2-field"><em>LEN</em> 142</span>
+      </div>
+      <div class="b2-payload">
+        <span class="bsky-text-demo">Signal Packet — Stepped stamp corners, structured header with field dividers, dashed side borders, hex checksum</span>
+      </div>
+      <div class="b2-checksum">0x0F likes &bull; 0x03 rpl</div>
+    </div>
+
+    <!-- B4: Comm Ping -->
+    <div class="b4-ping demo-w">
+      <div class="b4-telem">
+        <div class="b4-bar"></div>
+        <div class="b4-bar"></div>
+        <div class="b4-bar"></div>
+      </div>
+      <div class="b4-body">
+        <span class="b4-rx">RX</span>
+        <span class="bsky-text-demo">Comm Ping — Right-edge chevron, concentric rings from point, telemetry sidebar</span>
+        <span class="tile-time">3d ago</span>
+      </div>
+    </div>
+
+    <!-- BX: Signal Ping Hybrid -->
+    <div class="bx-hybrid demo-w">
+      <div class="bx-header">
+        <span class="bx-field"><em>SRC</em> nate.rip</span>
+        <span class="bx-field"><em>TS</em> 2d ago</span>
+        <span class="bx-field"><em>LEN</em> 142</span>
+      </div>
+      <div class="bx-body">
+        <span class="bsky-text-demo">Signal Ping Hybrid — Chevron shape + packet header with field dividers + concentric rings from the arrow point + hex engagement footer</span>
+      </div>
+      <div class="bx-footer">
+        <span>0x0F &bull; 0x03 rpl</span>
+        <div class="bx-bars"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <!-- BX at 1x1 -->
+    <div class="bx-hybrid">
+      <div class="bx-header">
+        <span class="bx-field"><em>SRC</em> nate.rip</span>
+        <span class="bx-field"><em>TS</em> 5d</span>
+      </div>
+      <div class="bx-body">
+        <span class="bsky-text-demo">Hybrid at 1x1 — compact but still has the chevron + header</span>
+      </div>
+      <div class="bx-footer">
+        <span>0x03</span>
+        <div class="bx-bars"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <!-- B5: Torn Fragment -->
+    <div class="b5-torn demo-w">
+      <span class="b5-tag">bsky</span>
+      <span class="bsky-text-demo">Torn Fragment — Jagged ragged top edge, paper texture, drop shadow, rotation on hover. The organic counterpoint.</span>
+      <span class="tile-time">5d ago</span>
+      <div class="b5-stripe"></div>
+    </div>
+
+    <div class="b5-torn">
+      <span class="b5-tag">bsky</span>
+      <span class="bsky-text-demo">Torn at 1x1 — still reads as ripped from a feed</span>
+      <div class="b5-stripe"></div>
+    </div>
+
+  </section>
+</Base>
