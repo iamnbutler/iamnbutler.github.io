@@ -2,7 +2,7 @@
 
 [Player](https://github.com/iamnbutler/player) is a toy music player built with [GPUI](https://www.gpui.rs/), the GPU-accelerated UI framework that powers [Zed](https://zed.dev). It started as an excuse to build something real with GPUI outside of Zed's codebase — not a prototype or a widget demo, but an app with actual audio playback, keyboard navigation, OS media key integration, and a music library.
 
-The whole thing came together over two days. The commit history reads like a speed run: init, types, list view, library serialization, audio playback, keyboard controls, shuffle, media keys, scrubbing — roughly one feature per hour.
+This was actually the second time around — almost exactly a year after the first attempt. The first one stalled out. This time the whole thing came together over two days. The commit history reads like a speed run: init, types, list view, library serialization, audio playback, keyboard controls, shuffle, media keys, scrubbing — roughly one feature per hour.
 
 ## The GPUI entity model
 
@@ -148,7 +148,7 @@ The track list itself uses GPUI's `uniform_list` for virtualized rendering — o
 
 ## Media controls with souvlaki
 
-The most interesting integration problem was OS media keys. macOS has its Now Playing widget, Linux has MPRIS — both expect metadata and respond to play/pause/next/previous from keyboard media keys, headphones, or the lock screen.
+There's a moment when you're testing a music player and you instinctively tap your AirPod to pause — and nothing happens. You realize how many things you take for granted about audio apps. Media key support wasn't in the plan initially, but once playback worked it became obvious it had to be there.
 
 [Souvlaki](https://github.com/Sinono3/souvlaki) handles the platform abstraction, but it uses a callback-based API that doesn't play well with GPUI's entity model. The solution was an `mpsc` channel bridge:
 
