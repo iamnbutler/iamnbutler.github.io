@@ -855,12 +855,14 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   letter-spacing: 0.12em;
   color: var(--link-accent);
 }
-.link-freq {
-  margin-left: auto;
+/* URL — prominent, below title */
+.link-url {
   font-family: var(--mono);
   font-size: var(--fs-s);
-  color: var(--fg-2);
-  opacity: 0.5;
+  color: var(--link-accent);
+  letter-spacing: 0.02em;
+  position: relative;
+  opacity: 0.8;
 }
 
 /* Body — content area with diagonal hash texture */
@@ -896,6 +898,21 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   position: relative;
 }
 
+/* Annotation — avatar + comment side by side */
+.link-annotation {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: flex-start;
+  position: relative;
+}
+.link-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+  border: 1px solid var(--border);
+}
 .link-comment {
   font-size: var(--fs-s);
   color: var(--fg-2);

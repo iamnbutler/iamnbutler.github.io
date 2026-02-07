@@ -60,6 +60,7 @@ const hero = allEntries.find(
 const grid = allEntries.filter((e) => e !== hero);
 
 const totalFragments = fragments.length;
+const myAvatar = 'https://github.com/iamnbutler.png';
 
 function excerpt(text: string, len: number = 120): string {
     return text
@@ -619,12 +620,15 @@ function relTime(iso: string): string {
                             <div class="link-chrome">
                                 <span class="link-signal">↗</span>
                                 <span class="link-relay">relay</span>
-                                <span class="link-freq">{domain}</span>
                             </div>
                             <div class="link-body">
                                 <h3>{f.title}</h3>
+                                <span class="link-url">{domain}</span>
                                 {f.content && (
-                                    <p class="link-comment">{f.content}</p>
+                                    <div class="link-annotation">
+                                        <img src={myAvatar} alt="" class="link-avatar" />
+                                        <p class="link-comment">{f.content}</p>
+                                    </div>
                                 )}
                             </div>
                             <div class="link-chrome-bottom">
