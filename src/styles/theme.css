@@ -1008,13 +1008,31 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 .type-bsky { color: #1185fe; }
 
 /* ======================================================
-   BSKY TILES — pinned bluesky posts
+   BSKY TILES — comm ping style
    ====================================================== */
 
 .tile-bsky {
   background: var(--surface-2);
-  border-top: 2px solid #1185fe;
   color: var(--fg);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+  border: 1px solid color-mix(in oklch, #1185fe 25%, var(--border));
+  padding: 0;
+  display: flex;
+}
+.tile-bsky:hover {
+  border-color: color-mix(in oklch, #1185fe 50%, var(--border));
+}
+
+/* Concentric rings from chevron point */
+.tile-bsky::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 92% 50%,
+    transparent 18px, color-mix(in oklch, #1185fe 18%, transparent) 19px, color-mix(in oklch, #1185fe 18%, transparent) 21px, transparent 22px,
+    transparent 38px, color-mix(in oklch, #1185fe 12%, transparent) 39px, color-mix(in oklch, #1185fe 12%, transparent) 41px, transparent 42px,
+    transparent 58px, color-mix(in oklch, #1185fe 7%, transparent) 59px, color-mix(in oklch, #1185fe 7%, transparent) 61px, transparent 62px
+  );
+  pointer-events: none; z-index: 1;
 }
 
 /* Bsky hero — video or multi-image, 3-col 2-row */
@@ -1023,78 +1041,97 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   grid-row: span 2;
 }
 
-/* Bsky with image */
-.tile-bsky img,
-.tile-bsky video {
+/* Telemetry sidebar */
+.bsky-telem {
+  width: 22px;
+  flex-shrink: 0;
+  background: color-mix(in oklch, #1185fe 6%, var(--surface));
+  border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  position: relative; z-index: 2;
+}
+.bsky-bar {
+  width: 8px; height: 2px;
+  background: #1185fe; opacity: 0.3;
+}
+.bsky-bar:nth-child(2) { opacity: 0.5; }
+.bsky-bar:last-child { opacity: 0.8; }
+
+/* Body area for text content */
+.bsky-body {
+  flex: 1;
+  padding: var(--sp-2) var(--sp-3);
+  padding-right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp);
+  position: relative; z-index: 2;
+  min-width: 0;
+}
+
+.bsky-rx {
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  color: #1185fe;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bsky-text {
+  font-size: var(--fs-s);
+  line-height: var(--lh);
+  color: var(--fg);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.bsky-meta {
+  display: flex;
+  gap: var(--sp-2);
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  color: var(--fg-2);
+  margin-top: auto;
+}
+
+/* Media inside ping — fills the body area */
+.bsky-media {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  overflow: hidden;
+}
+.bsky-media img,
+.bsky-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: filter 0.2s ease;
 }
-.tile-bsky:hover img,
-.tile-bsky:hover video { filter: brightness(1.15); }
+.tile-bsky:hover .bsky-media img,
+.tile-bsky:hover .bsky-media video { filter: brightness(1.15); }
 
+/* Overlay on media pings */
 .bsky-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--sp-2) var(--sp-3);
-  background: linear-gradient(transparent, var(--bg));
-  z-index: 1;
+  bottom: 0; left: 0; right: 0;
+  padding: var(--sp) var(--sp-2);
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  z-index: 3;
 }
-.bsky-tag {
-  font-family: var(--mono);
+.bsky-overlay .bsky-rx {
   font-size: var(--fs-s);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #1185fe;
 }
-.bsky-text {
-  font-size: var(--fs-s);
-  line-height: var(--lh);
-  color: var(--fg);
+.bsky-overlay .bsky-text {
+  -webkit-line-clamp: 2;
   margin-top: 2px;
-}
-
-/* Bsky text-only */
-.bsky-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp);
-  padding: var(--sp-3);
-}
-.bsky-content .bsky-text {
-  font-size: var(--fs);
-  line-height: var(--lh);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-}
-.bsky-meta {
-  display: flex;
-  gap: var(--sp-2);
-  padding: 0 var(--sp-3) var(--sp-3);
-  font-family: var(--mono);
-  font-size: var(--fs-s);
-  color: var(--fg-2);
-}
-
-/* Inner frame for text bsky tiles */
-.tile-bsky:not(:has(> img))::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 1px solid color-mix(in oklch, #1185fe 12%, transparent);
-  pointer-events: none;
-}
-.tile-bsky:not(:has(> img)):hover::after {
-  border-color: color-mix(in oklch, #1185fe 25%, transparent);
 }
 
 /* ======================================================
@@ -1346,6 +1383,7 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   .tile-text-lg, .tile-text-xl { grid-column: span 1; }
   .tile-text-xl, .tile-text-tall { grid-row: span 1; }
   .tile-bsky-hero { grid-row: span 1; }
+  .tile-bsky { clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%); }
   .tile-header { grid-column: 1 / -1; }
   .header-filters { flex-wrap: wrap; }
   .tile-list, .tile-link, .shot-evidence, .shot-viewfinder, .shot-hud { grid-column: span 1; }

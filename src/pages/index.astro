@@ -380,14 +380,23 @@ function relTime(iso: string): string {
                 // Grid entries
                 const { e, i } = item;
 
-                // Bsky pinned post tile
+                // Bsky pinned post tile — comm ping style
                 if (e.kind === "bsky") {
                     const p = e.p;
                     const sizeCls = bskySize(p, i);
                     const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
+                    const hasMedia = !!(p.video || p.images?.length || p.externalEmbed?.thumb);
 
-                    // Video post — autoplay muted loop
-                    if (p.video) {
+                    const mediaSrc = p.video
+                        ? null
+                        : p.images?.[0]?.fullsize
+                          ?? p.externalEmbed?.thumb
+                          ?? null;
+
+                    const mediaAlt = p.images?.[0]?.alt ?? p.externalEmbed?.title ?? "";
+
+                    // Media ping — telemetry + media fill + overlay
+                    if (hasMedia) {
                         return (
                             <a
                                 href={bskyUrl}
@@ -395,79 +404,42 @@ function relTime(iso: string): string {
                                 data-type="bsky"
                                 target="_blank"
                             >
-                                <video
-                                    src={p.video.playlist}
-                                    poster={p.video.thumbnail}
-                                    autoplay
-                                    muted
-                                    loop
-                                    playsinline
-                                />
-                                <div class="bsky-overlay">
-                                    <span class="bsky-tag">bsky</span>
-                                    <p class="bsky-text">
-                                        {p.text.length > 80
-                                            ? p.text.slice(0, 80) + "..."
-                                            : p.text}
-                                    </p>
+                                <div class="bsky-telem">
+                                    <div class="bsky-bar" />
+                                    <div class="bsky-bar" />
+                                    <div class="bsky-bar" />
+                                </div>
+                                <div class="bsky-media">
+                                    {p.video ? (
+                                        <video
+                                            src={p.video.playlist}
+                                            poster={p.video.thumbnail}
+                                            autoplay
+                                            muted
+                                            loop
+                                            playsinline
+                                        />
+                                    ) : (
+                                        <img
+                                            src={mediaSrc!}
+                                            alt={mediaAlt}
+                                            loading="lazy"
+                                        />
+                                    )}
+                                    <div class="bsky-overlay">
+                                        <span class="bsky-rx">rx</span>
+                                        <p class="bsky-text">
+                                            {p.text.length > 80
+                                                ? p.text.slice(0, 80) + "..."
+                                                : p.text}
+                                        </p>
+                                    </div>
                                 </div>
                             </a>
                         );
                     }
 
-                    // Image post
-                    if (p.images?.length) {
-                        return (
-                            <a
-                                href={bskyUrl}
-                                class:list={["tile", "tile-bsky", sizeCls]}
-                                data-type="bsky"
-                                target="_blank"
-                            >
-                                <img
-                                    src={p.images[0].fullsize}
-                                    alt={p.images[0].alt}
-                                    loading="lazy"
-                                />
-                                <div class="bsky-overlay">
-                                    <span class="bsky-tag">bsky</span>
-                                    <p class="bsky-text">
-                                        {p.text.length > 80
-                                            ? p.text.slice(0, 80) + "..."
-                                            : p.text}
-                                    </p>
-                                </div>
-                            </a>
-                        );
-                    }
-
-                    // External embed with OG thumbnail
-                    if (p.externalEmbed?.thumb) {
-                        return (
-                            <a
-                                href={bskyUrl}
-                                class:list={["tile", "tile-bsky", sizeCls]}
-                                data-type="bsky"
-                                target="_blank"
-                            >
-                                <img
-                                    src={p.externalEmbed.thumb}
-                                    alt={p.externalEmbed.title}
-                                    loading="lazy"
-                                />
-                                <div class="bsky-overlay">
-                                    <span class="bsky-tag">bsky</span>
-                                    <p class="bsky-text">
-                                        {p.text.length > 80
-                                            ? p.text.slice(0, 80) + "..."
-                                            : p.text}
-                                    </p>
-                                </div>
-                            </a>
-                        );
-                    }
-
-                    // Text-only fallback
+                    // Text-only ping — telemetry + body + meta
                     return (
                         <a
                             href={bskyUrl}
@@ -475,19 +447,24 @@ function relTime(iso: string): string {
                             data-type="bsky"
                             target="_blank"
                         >
-                            <div class="bsky-content">
-                                <span class="bsky-tag">bsky</span>
+                            <div class="bsky-telem">
+                                <div class="bsky-bar" />
+                                <div class="bsky-bar" />
+                                <div class="bsky-bar" />
+                            </div>
+                            <div class="bsky-body">
+                                <span class="bsky-rx">rx</span>
                                 <p class="bsky-text">
                                     {p.text.length > 180
                                         ? p.text.slice(0, 180) + "..."
                                         : p.text}
                                 </p>
-                            </div>
-                            <div class="bsky-meta">
-                                <time>{relTime(p.createdAt)}</time>
-                                {p.likeCount > 0 && (
-                                    <span>{p.likeCount} likes</span>
-                                )}
+                                <div class="bsky-meta">
+                                    <time>{relTime(p.createdAt)}</time>
+                                    {p.likeCount > 0 && (
+                                        <span>{p.likeCount} likes</span>
+                                    )}
+                                </div>
                             </div>
                         </a>
                     );
