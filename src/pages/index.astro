@@ -604,12 +604,43 @@ function relTime(iso: string): string {
                     );
                 }
 
-                // Links — relay card: intercepted transmission from elsewhere
+                // Links — alternate relay / dispatch
                 if (f.type === "link" && f.url) {
                     const domain = new URL(f.url).hostname.replace(
                         /^www\./,
                         "",
                     );
+                    const dateStr = new Date(f.createdAt).toISOString().slice(0, 10);
+
+                    // Variant B: dispatch — stepped corners
+                    if (f.id % 2 === 0) {
+                        return (
+                            <a
+                                href={f.url}
+                                class="tile tile-link-b"
+                                data-type="link"
+                                target="_blank"
+                            >
+                                <div class="link-b-stripe" />
+                                <div class="link-b-head">
+                                    <span class="link-b-arrow">↗</span>
+                                    <span class="link-b-domain">{domain}</span>
+                                    <span class="link-b-date">{dateStr}</span>
+                                </div>
+                                <div class="link-b-body">
+                                    <h3>{f.title}</h3>
+                                    {f.content && (
+                                        <div class="link-annotation">
+                                            <p class="link-comment">{f.content}</p>
+                                            <img src={myAvatar} alt="" class="link-avatar" />
+                                        </div>
+                                    )}
+                                </div>
+                            </a>
+                        );
+                    }
+
+                    // Variant A: relay — diagonal chamfer
                     return (
                         <a
                             href={f.url}
@@ -632,11 +663,7 @@ function relTime(iso: string): string {
                                 )}
                             </div>
                             <div class="link-chrome-bottom">
-                                <time>
-                                    {new Date(f.createdAt)
-                                        .toISOString()
-                                        .slice(0, 10)}
-                                </time>
+                                <time>{dateStr}</time>
                                 <div class="link-connectors">
                                     <i /><i /><i />
                                 </div>

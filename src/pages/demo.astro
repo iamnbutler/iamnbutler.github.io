@@ -536,6 +536,113 @@ import Base from "../layouts/Base.astro";
     }
 
     /* ========================================
+       LINK VARIANT B — relay dispatch
+       ======================================== */
+
+    .lB-dispatch {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      color: var(--fg);
+      grid-column: span 2;
+      /* Stepped corners — mirrored from relay A */
+      clip-path: polygon(
+        0 0,
+        calc(100% - 14px) 0,
+        calc(100% - 14px) 14px,
+        100% 14px,
+        100% 100%,
+        14px 100%,
+        14px calc(100% - 14px),
+        0 calc(100% - 14px)
+      );
+      border: 1px solid color-mix(in oklch, var(--link-accent) 35%, var(--border));
+    }
+    .lB-dispatch:hover {
+      border-color: var(--link-accent);
+    }
+    /* Inner frame following stepped shape */
+    .lB-dispatch::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid color-mix(in oklch, var(--link-accent) 12%, transparent);
+      clip-path: polygon(
+        0 0,
+        calc(100% - 11px) 0,
+        calc(100% - 11px) 11px,
+        100% 11px,
+        100% 100%,
+        11px 100%,
+        11px calc(100% - 11px),
+        0 calc(100% - 11px)
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+    /* Thin accent top stripe */
+    .lB-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, var(--link-accent), color-mix(in oklch, var(--link-accent) 30%, transparent));
+      flex-shrink: 0;
+    }
+    .lB-head {
+      display: flex;
+      align-items: baseline;
+      gap: var(--sp-2);
+      padding: var(--sp) var(--sp-3);
+      padding-right: calc(var(--sp-3) + 8px);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .lB-arrow {
+      color: var(--link-accent);
+      font-weight: 700;
+      font-size: var(--fs);
+      line-height: 1;
+    }
+    .lB-domain {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--link-accent);
+      opacity: 0.8;
+    }
+    .lB-date {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+    }
+    .lB-body {
+      flex: 1;
+      padding: 0 var(--sp-3) var(--sp-3);
+      padding-right: calc(var(--sp-3) + 8px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      position: relative;
+      z-index: 1;
+    }
+    .lB-body h3 {
+      font-size: var(--fs);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: var(--lh);
+      color: var(--fg);
+    }
+    .lB-comment {
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      line-height: var(--lh);
+      font-style: italic;
+    }
+
+    /* ========================================
        SHOTS — 3 variants that rotate
        ======================================== */
 
@@ -1321,6 +1428,69 @@ import Base from "../layouts/Base.astro";
       <span class="b5-tag">bsky</span>
       <span class="bsky-text-demo">Torn at 1x1 — still reads as ripped from a feed</span>
       <div class="b5-stripe"></div>
+    </div>
+
+    <!-- === LINK VARIANTS === -->
+    <div class="demo-section">
+      <h2>Link Tiles — Relay A (existing) vs Dispatch B</h2>
+      <p>Two relay-family styles that alternate to break repetition</p>
+    </div>
+
+    <!-- Relay A (current production style, simplified for demo) -->
+    <div style="grid-column: span 2; position: relative; overflow: hidden; background: var(--bg); padding: 0; display: flex; flex-direction: column; clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 14px); border: 2px solid color-mix(in oklch, var(--link-accent) 50%, var(--border)); border-top: none;">
+      <div style="display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp) var(--sp-3); padding-left: calc(var(--sp-3) + 8px); background: color-mix(in oklch, var(--link-accent) 8%, var(--surface-2)); border-bottom: 1px solid color-mix(in oklch, var(--link-accent) 25%, var(--border)); font-family: var(--mono); font-size: var(--fs-s);">
+        <span style="font-size: var(--fs-l); font-weight: 700; color: var(--link-accent); line-height: 1;">↗</span>
+        <span style="text-transform: uppercase; letter-spacing: 0.12em; color: var(--link-accent);">relay</span>
+        <span style="margin-left: auto; color: var(--link-accent); opacity: 0.8;">daniloleal.co</span>
+      </div>
+      <div style="flex: 1; padding: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp);">
+        <span class="tile-title" style="text-transform: none; letter-spacing: 0;">The Surprising Complexity</span>
+        <span class="tile-subtitle" style="font-style: italic;">Danilo explores the decisions and details</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: var(--sp) var(--sp-3); background: color-mix(in oklch, var(--link-accent) 5%, var(--surface-2)); border-top: 1px solid color-mix(in oklch, var(--link-accent) 18%, var(--border)); font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">
+        <span>2024-09-11</span>
+      </div>
+    </div>
+
+    <!-- Dispatch B -->
+    <div class="lB-dispatch">
+      <div class="lB-stripe"></div>
+      <div class="lB-head">
+        <span class="lB-arrow">↗</span>
+        <span class="lB-domain">x.com</span>
+        <span class="lB-date">2024-08-20</span>
+      </div>
+      <div class="lB-body">
+        <h3>Launching Zed's agent panel, inline assist and more</h3>
+        <span class="lB-comment">Launching Zed's agent panel, inline assist and more</span>
+      </div>
+    </div>
+
+    <!-- Side by side: A then B -->
+    <div style="grid-column: span 2; position: relative; overflow: hidden; background: var(--bg); padding: 0; display: flex; flex-direction: column; clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 14px); border: 2px solid color-mix(in oklch, var(--link-accent) 50%, var(--border)); border-top: none;">
+      <div style="display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp) var(--sp-3); padding-left: calc(var(--sp-3) + 8px); background: color-mix(in oklch, var(--link-accent) 8%, var(--surface-2)); border-bottom: 1px solid color-mix(in oklch, var(--link-accent) 25%, var(--border)); font-family: var(--mono); font-size: var(--fs-s);">
+        <span style="font-size: var(--fs-l); font-weight: 700; color: var(--link-accent); line-height: 1;">↗</span>
+        <span style="text-transform: uppercase; letter-spacing: 0.12em; color: var(--link-accent);">relay</span>
+        <span style="margin-left: auto; color: var(--link-accent); opacity: 0.8;">spotify.com</span>
+      </div>
+      <div style="flex: 1; padding: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp);">
+        <span class="tile-title" style="text-transform: none; letter-spacing: 0;">I did a podcast?</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: var(--sp) var(--sp-3); background: color-mix(in oklch, var(--link-accent) 5%, var(--surface-2)); border-top: 1px solid color-mix(in oklch, var(--link-accent) 18%, var(--border)); font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">
+        <span>2024-11-24</span>
+      </div>
+    </div>
+
+    <div class="lB-dispatch">
+      <div class="lB-stripe"></div>
+      <div class="lB-head">
+        <span class="lB-arrow">↗</span>
+        <span class="lB-domain">maggieappleton.com</span>
+        <span class="lB-date">2025-07-09</span>
+      </div>
+      <div class="lB-body">
+        <h3>Gastown — Local-first software design</h3>
+      </div>
     </div>
 
   </section>
