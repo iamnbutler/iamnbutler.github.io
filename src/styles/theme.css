@@ -2,7 +2,7 @@
 
 :root {
   --font: system-ui, -apple-system, sans-serif;
-  --mono: ui-monospace, 'SF Mono', monospace;
+  --mono: 'Nimbus Mono PS', 'Courier New', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
   --fs-s: 11px;
   --fs: 13px;
   --fs-l: 16px;
@@ -478,65 +478,89 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 }
 
 /* ======================================================
-   POST TILES — inner frame, scanlines, depth
+   POST TILES — cassette + slab typography
    ====================================================== */
 
 .tile-post {
-  /* Scanline texture layered over surface */
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 3px,
-      rgba(255, 255, 255, 0.015) 3px,
-      rgba(255, 255, 255, 0.015) 4px
-    ),
-    var(--surface-2);
-  padding: var(--sp-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* Cassette clip-path with pin notches at circuit edge */
+  clip-path: polygon(
+    4px 0, calc(100% - 4px) 0,
+    calc(100% - 2px) 6px, 100% 6px,
+    100% 88%, calc(100% - 6px) 88%, calc(100% - 6px) 92%, 100% 92%,
+    100% calc(100% - 3px), calc(100% - 3px) 100%,
+    3px 100%, 0 calc(100% - 3px),
+    0 92%, 6px 92%, 6px 88%, 0 88%,
+    0 6px, 2px 6px
+  );
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 4px);
+  background-color: var(--surface-2);
+}
+.tile-post:hover {
+  border-color: color-mix(in oklch, var(--accent) 40%, var(--border));
+}
+
+/* Catalog number */
+.post-catalog {
+  position: absolute;
+  top: 12px; right: 16px;
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  color: var(--fg-2); opacity: 0.5;
+  z-index: 2;
+}
+
+/* Main label area — big title fills it */
+.post-label {
+  margin: 8px 10px 0;
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--surface) 50%, var(--bg));
+  padding: var(--sp-2) var(--sp-3);
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: var(--sp);
-  color: var(--fg);
-  border-top: 2px solid var(--accent);
+  overflow: hidden;
 }
 
-/* Inner frame — recessed panel feel */
-.tile-post::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 1px solid color-mix(in oklch, var(--fg-2) 15%, transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-.tile-post:hover::after {
-  border-color: color-mix(in oklch, var(--accent) 25%, transparent);
-}
-
-/* Content above frame */
-.tile-post > * { position: relative; z-index: 2; }
-
-/* Big watermark number */
-.post-num {
-  position: absolute;
-  top: -8px;
-  right: 8px;
+/* Giant title */
+.post-big {
   font-family: var(--mono);
-  font-size: 64px;
+  font-size: clamp(22px, 5cqi, 44px);
   font-weight: 700;
-  line-height: 1;
-  color: var(--border);
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 0;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--fg);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
-.post-content { flex: 1; display: flex; flex-direction: column; gap: var(--sp); }
+.post-excerpt {
+  font-size: var(--fs-s);
+  color: var(--fg-2);
+  line-height: var(--lh);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 
+/* Footer — type + date between label and edge */
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--sp) 10px;
+}
 .post-type {
   font-family: var(--mono);
   font-size: var(--fs-s);
@@ -544,48 +568,48 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   letter-spacing: 0.08em;
   color: var(--accent);
 }
-
-.tile-post h3 {
-  font-size: var(--fs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: var(--lh);
-}
-
 .tile-post time {
   font-family: var(--mono);
   font-size: var(--fs-s);
   color: var(--fg-2);
 }
 
-.post-excerpt {
-  color: var(--fg-2);
-  font-size: var(--fs-s);
-  line-height: var(--lh);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+/* Circuit edge — slim strip at bottom */
+.post-edge {
+  height: 20px;
+  flex-shrink: 0;
+  position: relative;
+  border-top: 1px solid color-mix(in oklch, var(--accent) 35%, var(--border));
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 8%, transparent) 19px, color-mix(in oklch, var(--accent) 8%, transparent) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 8%, transparent) 19px, color-mix(in oklch, var(--accent) 8%, transparent) 20px),
+    color-mix(in oklch, var(--accent) 3%, var(--bg));
+}
+.post-edge::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, transparent 25%, color-mix(in oklch, var(--accent) 18%, transparent) 25%, color-mix(in oklch, var(--accent) 18%, transparent) 25.5%, transparent 25.5%),
+    linear-gradient(90deg, transparent 60%, color-mix(in oklch, var(--accent) 18%, transparent) 60%, color-mix(in oklch, var(--accent) 18%, transparent) 60.5%, transparent 60.5%);
+  pointer-events: none;
+}
+.post-edge::after {
+  content: '';
+  position: absolute;
+  bottom: 3px; left: 12px; right: 12px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+    color-mix(in oklch, var(--accent) 25%, transparent) 0px,
+    color-mix(in oklch, var(--accent) 25%, transparent) 3px,
+    transparent 3px, transparent 18px
+  );
 }
 
-/* Bigger post tile variants */
-.tile-text-lg .post-num { font-size: 80px; }
-.tile-text-lg .post-excerpt { -webkit-line-clamp: 5; }
-.tile-text-lg h3 { font-size: var(--fs-l); }
-.tile-text-tall .post-excerpt { -webkit-line-clamp: 6; }
-
-/* Padding variation — airy tiles float content with more breathing room */
-.tile-airy {
-  padding: var(--sp-4) var(--sp-3);
-  justify-content: center;
-}
-.tile-airy::after {
-  top: 10px;
-  left: 7px;
-  right: 7px;
-  bottom: 7px;
-}
+/* Size variants — scale the title */
+.tile-text-lg .post-big { font-size: clamp(26px, 6cqi, 52px); -webkit-line-clamp: 3; }
+.tile-text-lg .post-excerpt { -webkit-line-clamp: 3; }
+.tile-text-tall .post-big { font-size: clamp(24px, 5cqi, 48px); -webkit-line-clamp: 5; }
+.tile-text-tall .post-excerpt { -webkit-line-clamp: 4; }
 
 /* ======================================================
    LIST TILES — manifest/inventory feel, dashed frame

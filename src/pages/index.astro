@@ -640,31 +640,33 @@ function relTime(iso: string): string {
                     );
                 }
 
-                // Posts
+                // Posts — cassette + slab
                 const { cls, showExcerpt } = postMeta(
                     i,
                     f.content?.length ?? 0,
                 );
-                const padCls = !cls && i % 5 === 1 ? "tile-airy" : "";
                 return (
                     <a
                         href={`/f/${f.id}`}
-                        class:list={["tile", "tile-post", cls, padCls]}
+                        class:list={["tile", "tile-post", cls]}
                         data-type="post"
                     >
-                        <span class="post-num">{f.id}</span>
-                        <div class="post-content">
-                            <span class="post-type">post</span>
-                            <h3>{f.title}</h3>
+                        <span class="post-catalog">NR-{String(f.id).padStart(2, "0")}</span>
+                        <div class="post-label">
+                            <span class="post-big">{f.title}</span>
                             {showExcerpt && f.content && (
                                 <p class="post-excerpt">
-                                    {excerpt(f.content, 160)}
+                                    {excerpt(f.content, 140)}
                                 </p>
                             )}
                         </div>
-                        <time>
-                            {new Date(f.createdAt).toISOString().slice(0, 10)}
-                        </time>
+                        <div class="post-footer">
+                            <span class="post-type">post</span>
+                            <time>
+                                {new Date(f.createdAt).toISOString().slice(0, 10)}
+                            </time>
+                        </div>
+                        <div class="post-edge" />
                     </a>
                 );
             })
