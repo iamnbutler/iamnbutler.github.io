@@ -111,16 +111,20 @@ function shotMeta(
     return { cls: "tile-w", isHero: false, variant }; // default 2-wide
 }
 
+const POST_VARIANTS = ["circuit", "blast"] as const;
+type PostVariant = (typeof POST_VARIANTS)[number];
+
 function postMeta(
     i: number,
     contentLen: number,
-): { cls: string; showExcerpt: boolean } {
+): { cls: string; showExcerpt: boolean; variant: PostVariant } {
+    const variant = POST_VARIANTS[i % 2];
     // More variety — roughly half of posts get bigger treatment
     if (contentLen > 2000 && i % 4 === 0)
-        return { cls: "tile-text-lg", showExcerpt: true }; // 2-wide featured
-    if (i % 7 === 0) return { cls: "tile-text-tall", showExcerpt: true }; // tall with excerpt
-    if (i % 3 === 0) return { cls: "tile-w", showExcerpt: true }; // 2-wide with excerpt
-    return { cls: "", showExcerpt: false }; // 1x1
+        return { cls: "tile-text-lg", showExcerpt: true, variant }; // 2-wide featured
+    if (i % 7 === 0) return { cls: "tile-text-tall", showExcerpt: true, variant }; // tall with excerpt
+    if (i % 3 === 0) return { cls: "tile-w", showExcerpt: true, variant }; // 2-wide with excerpt
+    return { cls: "", showExcerpt: false, variant }; // 1x1
 }
 
 // Bsky tiles — visual-first, generous sizing
@@ -380,7 +384,7 @@ function relTime(iso: string): string {
                 // Grid entries
                 const { e, i } = item;
 
-                // Bsky pinned post tile — comm ping style
+                // Bsky pinned post tile — signal packet style
                 if (e.kind === "bsky") {
                     const p = e.p;
                     const sizeCls = bskySize(p, i);
@@ -394,8 +398,9 @@ function relTime(iso: string): string {
                           ?? null;
 
                     const mediaAlt = p.images?.[0]?.alt ?? p.externalEmbed?.title ?? "";
+                    const textLen = p.text.length;
 
-                    // Media ping — telemetry + media fill + overlay
+                    // Media packet — header + media + overlay
                     if (hasMedia) {
                         return (
                             <a
@@ -404,10 +409,9 @@ function relTime(iso: string): string {
                                 data-type="bsky"
                                 target="_blank"
                             >
-                                <div class="bsky-telem">
-                                    <div class="bsky-bar" />
-                                    <div class="bsky-bar" />
-                                    <div class="bsky-bar" />
+                                <div class="bsky-header">
+                                    <span class="bsky-field"><em>SRC</em> nate.rip</span>
+                                    <span class="bsky-field"><em>TS</em> {relTime(p.createdAt)}</span>
                                 </div>
                                 <div class="bsky-media">
                                     {p.video ? (
@@ -427,7 +431,6 @@ function relTime(iso: string): string {
                                         />
                                     )}
                                     <div class="bsky-overlay">
-                                        <span class="bsky-rx">rx</span>
                                         <p class="bsky-text">
                                             {p.text.length > 80
                                                 ? p.text.slice(0, 80) + "..."
@@ -439,7 +442,7 @@ function relTime(iso: string): string {
                         );
                     }
 
-                    // Text-only ping — telemetry + body + meta
+                    // Text-only packet — header + body + checksum
                     return (
                         <a
                             href={bskyUrl}
@@ -447,24 +450,22 @@ function relTime(iso: string): string {
                             data-type="bsky"
                             target="_blank"
                         >
-                            <div class="bsky-telem">
-                                <div class="bsky-bar" />
-                                <div class="bsky-bar" />
-                                <div class="bsky-bar" />
+                            <div class="bsky-header">
+                                <span class="bsky-field"><em>SRC</em> nate.rip</span>
+                                <span class="bsky-field"><em>TS</em> {relTime(p.createdAt)}</span>
+                                <span class="bsky-field"><em>LEN</em> {textLen}</span>
                             </div>
                             <div class="bsky-body">
-                                <span class="bsky-rx">rx</span>
                                 <p class="bsky-text">
                                     {p.text.length > 180
                                         ? p.text.slice(0, 180) + "..."
                                         : p.text}
                                 </p>
-                                <div class="bsky-meta">
-                                    <time>{relTime(p.createdAt)}</time>
-                                    {p.likeCount > 0 && (
-                                        <span>{p.likeCount} likes</span>
-                                    )}
-                                </div>
+                            </div>
+                            <div class="bsky-checksum">
+                                {p.likeCount > 0 ? `0x${p.likeCount.toString(16).padStart(2, '0')} likes` : ''}
+                                {p.likeCount > 0 && p.replyCount > 0 ? ' \u2022 ' : ''}
+                                {p.replyCount > 0 ? `0x${p.replyCount.toString(16).padStart(2, '0')} rpl` : ''}
                             </div>
                         </a>
                     );
@@ -640,33 +641,53 @@ function relTime(iso: string): string {
                     );
                 }
 
-                // Posts — cassette + slab
-                const { cls, showExcerpt } = postMeta(
+                // Posts — alternate circuit board / blast door
+                const { cls, showExcerpt, variant: postVariant } = postMeta(
                     i,
                     f.content?.length ?? 0,
                 );
+
+                if (postVariant === "circuit") {
+                    return (
+                        <a
+                            href={`/f/${f.id}`}
+                            class:list={["tile", "tile-post", "post-circuit", cls]}
+                            data-type="post"
+                        >
+                            <div class="post-chip">
+                                <span class="post-part">IC-{String(f.id).padStart(2, "0")}</span>
+                                <span class="post-type">post</span>
+                                <h3>{f.title}</h3>
+                                {showExcerpt && f.content && (
+                                    <p class="post-excerpt">{excerpt(f.content, 160)}</p>
+                                )}
+                                <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
+                            </div>
+                        </a>
+                    );
+                }
+
+                // Blast door
                 return (
                     <a
                         href={`/f/${f.id}`}
-                        class:list={["tile", "tile-post", cls]}
+                        class:list={["tile", "tile-post", "post-blast", cls]}
                         data-type="post"
                     >
-                        <span class="post-catalog">NR-{String(f.id).padStart(2, "0")}</span>
-                        <div class="post-label">
-                            <span class="post-big">{f.title}</span>
+                        <div class="post-rail">
+                            <div class="post-hex" />
+                            <div class="post-hex" />
+                            <span class="post-rail-label">Post</span>
+                            <div class="post-hex" />
+                        </div>
+                        <div class="post-body">
+                            <h3>{f.title}</h3>
                             {showExcerpt && f.content && (
-                                <p class="post-excerpt">
-                                    {excerpt(f.content, 140)}
-                                </p>
+                                <p class="post-excerpt">{excerpt(f.content, 160)}</p>
                             )}
+                            <time>{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
                         </div>
-                        <div class="post-footer">
-                            <span class="post-type">post</span>
-                            <time>
-                                {new Date(f.createdAt).toISOString().slice(0, 10)}
-                            </time>
-                        </div>
-                        <div class="post-edge" />
+                        <div class="post-stripe" />
                     </a>
                 );
             })

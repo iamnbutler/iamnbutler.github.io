@@ -2,7 +2,7 @@
 
 :root {
   --font: system-ui, -apple-system, sans-serif;
-  --mono: 'Nimbus Mono PS', 'Courier New', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  --mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
   --fs-s: 11px;
   --fs: 13px;
   --fs-l: 16px;
@@ -478,89 +478,16 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 }
 
 /* ======================================================
-   POST TILES — cassette + slab typography
+   POST TILES — shared base
    ====================================================== */
 
 .tile-post {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
   color: var(--fg);
   padding: 0;
   display: flex;
   flex-direction: column;
-  /* Cassette clip-path with pin notches at circuit edge */
-  clip-path: polygon(
-    4px 0, calc(100% - 4px) 0,
-    calc(100% - 2px) 6px, 100% 6px,
-    100% 88%, calc(100% - 6px) 88%, calc(100% - 6px) 92%, 100% 92%,
-    100% calc(100% - 3px), calc(100% - 3px) 100%,
-    3px 100%, 0 calc(100% - 3px),
-    0 92%, 6px 92%, 6px 88%, 0 88%,
-    0 6px, 2px 6px
-  );
-  background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 4px);
-  background-color: var(--surface-2);
-}
-.tile-post:hover {
-  border-color: color-mix(in oklch, var(--accent) 40%, var(--border));
 }
 
-/* Catalog number */
-.post-catalog {
-  position: absolute;
-  top: 12px; right: 16px;
-  font-family: var(--mono);
-  font-size: var(--fs-s);
-  color: var(--fg-2); opacity: 0.5;
-  z-index: 2;
-}
-
-/* Main label area — big title fills it */
-.post-label {
-  margin: 8px 10px 0;
-  border: 1px solid var(--border);
-  background: color-mix(in oklch, var(--surface) 50%, var(--bg));
-  padding: var(--sp-2) var(--sp-3);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: var(--sp);
-  overflow: hidden;
-}
-
-/* Giant title */
-.post-big {
-  font-family: var(--mono);
-  font-size: clamp(22px, 5cqi, 44px);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: var(--fg);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
-
-.post-excerpt {
-  font-size: var(--fs-s);
-  color: var(--fg-2);
-  line-height: var(--lh);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-/* Footer — type + date between label and edge */
-.post-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: var(--sp) 10px;
-}
 .post-type {
   font-family: var(--mono);
   font-size: var(--fs-s);
@@ -568,48 +495,132 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   letter-spacing: 0.08em;
   color: var(--accent);
 }
+
+.tile-post h3 {
+  font-size: var(--fs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: var(--lh);
+}
+
 .tile-post time {
   font-family: var(--mono);
   font-size: var(--fs-s);
   color: var(--fg-2);
 }
 
-/* Circuit edge — slim strip at bottom */
-.post-edge {
-  height: 20px;
-  flex-shrink: 0;
-  position: relative;
-  border-top: 1px solid color-mix(in oklch, var(--accent) 35%, var(--border));
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 8%, transparent) 19px, color-mix(in oklch, var(--accent) 8%, transparent) 20px),
-    repeating-linear-gradient(90deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 8%, transparent) 19px, color-mix(in oklch, var(--accent) 8%, transparent) 20px),
-    color-mix(in oklch, var(--accent) 3%, var(--bg));
+.post-excerpt {
+  color: var(--fg-2);
+  font-size: var(--fs-s);
+  line-height: var(--lh);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
-.post-edge::before {
+
+/* --- Circuit Board variant --- */
+.post-circuit {
+  clip-path: polygon(
+    0 0, 100% 0,
+    100% 25%, calc(100% - 4px) 25%, calc(100% - 4px) 35%, 100% 35%,
+    100% 55%, calc(100% - 4px) 55%, calc(100% - 4px) 65%, 100% 65%,
+    100% 100%, 0 100%,
+    0 65%, 4px 65%, 4px 55%, 0 55%,
+    0 35%, 4px 35%, 4px 25%, 0 25%
+  );
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 5%, transparent) 19px, color-mix(in oklch, var(--accent) 5%, transparent) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 5%, transparent) 19px, color-mix(in oklch, var(--accent) 5%, transparent) 20px),
+    color-mix(in oklch, var(--accent) 3%, var(--surface));
+  padding: var(--sp-3);
+  justify-content: flex-end;
+  gap: var(--sp);
+}
+/* Trace lines */
+.post-circuit::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, transparent 25%, color-mix(in oklch, var(--accent) 18%, transparent) 25%, color-mix(in oklch, var(--accent) 18%, transparent) 25.5%, transparent 25.5%),
-    linear-gradient(90deg, transparent 60%, color-mix(in oklch, var(--accent) 18%, transparent) 60%, color-mix(in oklch, var(--accent) 18%, transparent) 60.5%, transparent 60.5%);
+    linear-gradient(90deg, transparent 20%, color-mix(in oklch, var(--accent) 12%, transparent) 20%, color-mix(in oklch, var(--accent) 12%, transparent) 20.5%, transparent 20.5%),
+    linear-gradient(0deg, transparent 40%, color-mix(in oklch, var(--accent) 12%, transparent) 40%, color-mix(in oklch, var(--accent) 12%, transparent) 40.5%, transparent 40.5%),
+    linear-gradient(90deg, transparent 60%, color-mix(in oklch, var(--accent) 8%, transparent) 60%, color-mix(in oklch, var(--accent) 8%, transparent) 60.5%, transparent 60.5%);
   pointer-events: none;
 }
-.post-edge::after {
-  content: '';
-  position: absolute;
-  bottom: 3px; left: 12px; right: 12px;
-  height: 2px;
-  background: repeating-linear-gradient(90deg,
-    color-mix(in oklch, var(--accent) 25%, transparent) 0px,
-    color-mix(in oklch, var(--accent) 25%, transparent) 3px,
-    transparent 3px, transparent 18px
-  );
+.post-chip {
+  border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
+  padding: var(--sp-2) var(--sp-3);
+  position: relative; z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp);
+  flex: 1;
+  justify-content: flex-end;
+}
+.post-part {
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  color: var(--fg-2);
+  letter-spacing: 0.05em;
 }
 
-/* Size variants — scale the title */
-.tile-text-lg .post-big { font-size: clamp(26px, 6cqi, 52px); -webkit-line-clamp: 3; }
-.tile-text-lg .post-excerpt { -webkit-line-clamp: 3; }
-.tile-text-tall .post-big { font-size: clamp(24px, 5cqi, 48px); -webkit-line-clamp: 5; }
-.tile-text-tall .post-excerpt { -webkit-line-clamp: 4; }
+/* --- Blast Door variant --- */
+.post-blast {
+  background: var(--surface-2);
+  clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%, 0 8px);
+}
+.post-blast::after {
+  content: '';
+  position: absolute; inset: 0;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.04), inset -2px -2px 0 rgba(0,0,0,0.3);
+  pointer-events: none; z-index: 2;
+}
+.post-rail {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp) var(--sp-3);
+  padding-left: calc(var(--sp-3) + 4px);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface), var(--surface-2));
+  border-bottom: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.post-hex {
+  width: 7px; height: 8px;
+  background: color-mix(in oklch, var(--fg-2) 40%, var(--surface));
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.post-rail-label {
+  font-family: var(--mono);
+  font-size: var(--fs-s);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--fg-2);
+}
+.post-body {
+  flex: 1;
+  padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--sp);
+  position: relative; z-index: 1;
+}
+.post-stripe {
+  height: 4px;
+  background: repeating-linear-gradient(135deg,
+    color-mix(in oklch, var(--accent) 20%, transparent) 0px,
+    color-mix(in oklch, var(--accent) 20%, transparent) 6px,
+    transparent 6px, transparent 12px
+  );
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.tile-text-lg .post-excerpt { -webkit-line-clamp: 5; }
+.tile-text-lg h3 { font-size: var(--fs-l); }
+.tile-text-tall .post-excerpt { -webkit-line-clamp: 6; }
 
 /* ======================================================
    LIST TILES — manifest/inventory feel, dashed frame
@@ -1032,31 +1043,27 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 .type-bsky { color: #1185fe; }
 
 /* ======================================================
-   BSKY TILES — comm ping style
+   BSKY TILES — signal packet style
    ====================================================== */
 
 .tile-bsky {
   background: var(--surface-2);
   color: var(--fg);
-  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
-  border: 1px solid color-mix(in oklch, #1185fe 25%, var(--border));
+  clip-path: polygon(
+    4px 0, 100% 0,
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+    0 100%, 0 4px, 4px 4px
+  );
+  border-left: 1px dashed color-mix(in oklch, #1185fe 30%, var(--border));
+  border-right: 1px dashed color-mix(in oklch, #1185fe 30%, var(--border));
+  border-top: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
+  border-bottom: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
   padding: 0;
   display: flex;
+  flex-direction: column;
 }
 .tile-bsky:hover {
   border-color: color-mix(in oklch, #1185fe 50%, var(--border));
-}
-
-/* Concentric rings from chevron point */
-.tile-bsky::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(circle at 92% 50%,
-    transparent 18px, color-mix(in oklch, #1185fe 18%, transparent) 19px, color-mix(in oklch, #1185fe 18%, transparent) 21px, transparent 22px,
-    transparent 38px, color-mix(in oklch, #1185fe 12%, transparent) 39px, color-mix(in oklch, #1185fe 12%, transparent) 41px, transparent 42px,
-    transparent 58px, color-mix(in oklch, #1185fe 7%, transparent) 59px, color-mix(in oklch, #1185fe 7%, transparent) 61px, transparent 62px
-  );
-  pointer-events: none; z-index: 1;
 }
 
 /* Bsky hero — video or multi-image, 3-col 2-row */
@@ -1065,44 +1072,36 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   grid-row: span 2;
 }
 
-/* Telemetry sidebar */
-.bsky-telem {
-  width: 22px;
-  flex-shrink: 0;
-  background: color-mix(in oklch, #1185fe 6%, var(--surface));
-  border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+/* Packet header */
+.bsky-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  position: relative; z-index: 2;
+  padding: var(--sp) var(--sp-2);
+  gap: var(--sp-2);
+  background: color-mix(in oklch, #1185fe 4%, var(--surface));
+  border-bottom: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: var(--fs-s);
 }
-.bsky-bar {
-  width: 8px; height: 2px;
-  background: #1185fe; opacity: 0.3;
+.bsky-field {
+  color: var(--fg-2);
+  border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border));
+  padding-right: var(--sp-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.bsky-bar:nth-child(2) { opacity: 0.5; }
-.bsky-bar:last-child { opacity: 0.8; }
+.bsky-field:last-child { border-right: none; }
+.bsky-field em { color: #1185fe; font-style: normal; }
 
 /* Body area for text content */
 .bsky-body {
   flex: 1;
   padding: var(--sp-2) var(--sp-3);
-  padding-right: 24px;
   display: flex;
   flex-direction: column;
   gap: var(--sp);
-  position: relative; z-index: 2;
   min-width: 0;
-}
-
-.bsky-rx {
-  font-family: var(--mono);
-  font-size: var(--fs-s);
-  color: #1185fe;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .bsky-text {
@@ -1115,20 +1114,21 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   -webkit-box-orient: vertical;
 }
 
-.bsky-meta {
-  display: flex;
-  gap: var(--sp-2);
+/* Checksum footer */
+.bsky-checksum {
+  padding: var(--sp) var(--sp-2);
+  background: color-mix(in oklch, #1185fe 3%, var(--surface));
+  border-top: 1px solid color-mix(in oklch, #1185fe 12%, var(--border));
   font-family: var(--mono);
   font-size: var(--fs-s);
   color: var(--fg-2);
-  margin-top: auto;
+  flex-shrink: 0;
 }
 
-/* Media inside ping — fills the body area */
+/* Media inside packet */
 .bsky-media {
   flex: 1;
   position: relative;
-  z-index: 2;
   min-width: 0;
   overflow: hidden;
 }
@@ -1142,7 +1142,7 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 .tile-bsky:hover .bsky-media img,
 .tile-bsky:hover .bsky-media video { filter: brightness(1.15); }
 
-/* Overlay on media pings */
+/* Overlay on media packets */
 .bsky-overlay {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -1150,12 +1150,9 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   background: linear-gradient(transparent, rgba(0,0,0,0.7));
   z-index: 3;
 }
-.bsky-overlay .bsky-rx {
-  font-size: var(--fs-s);
-}
 .bsky-overlay .bsky-text {
   -webkit-line-clamp: 2;
-  margin-top: 2px;
+  font-size: var(--fs-s);
 }
 
 /* ======================================================
@@ -1407,7 +1404,6 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
   .tile-text-lg, .tile-text-xl { grid-column: span 1; }
   .tile-text-xl, .tile-text-tall { grid-row: span 1; }
   .tile-bsky-hero { grid-row: span 1; }
-  .tile-bsky { clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%); }
   .tile-header { grid-column: 1 / -1; }
   .header-filters { flex-wrap: wrap; }
   .tile-list, .tile-link, .shot-evidence, .shot-viewfinder, .shot-hud { grid-column: span 1; }
