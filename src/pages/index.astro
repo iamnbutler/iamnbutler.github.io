@@ -10,17 +10,18 @@ import {
 } from "../lib/atproto";
 import type { Fragment, BskyPost } from "../lib/types";
 
-// Pinned bsky post URLs — these render as individual tiles in the grid
+// Pinned bsky post URLs
 const PINNED_BSKY_URLS = [
-    // 'https://bsky.app/profile/nate.rip/post/3malzuto3x22s',
-    // 'https://bsky.app/profile/nate.rip/post/3ldrtb6uwas25',
-    // 'https://bsky.app/profile/nate.rip/post/3m3nzy5xslc2d',
-    // 'https://bsky.app/profile/nate.rip/post/3lyc7rukcjk2u',
-    // 'https://bsky.app/profile/nate.rip/post/3lxqjdifcpc2k',
-    // 'https://bsky.app/profile/nate.rip/post/3ltkowbdsuk2g',
-    // 'https://bsky.app/profile/nate.rip/post/3lsrtnq22os2d',
     "https://bsky.app/profile/nate.rip/post/3mcs53dio3c2s",
     "https://bsky.app/profile/nate.rip/post/3malzuto3x22s",
+    "https://bsky.app/profile/nate.rip/post/3lxqjbta66k2k",
+    "https://bsky.app/profile/nate.rip/post/3ltkowbdsuk2g",
+    "https://bsky.app/profile/nate.rip/post/3ljqadka7qk2r",
+    "https://bsky.app/profile/nate.rip/post/3ljixbqlta22z",
+    "https://bsky.app/profile/nate.rip/post/3li2ujkthr22x",
+    "https://bsky.app/profile/nate.rip/post/3lggjq25c6k2w",
+    "https://bsky.app/profile/nate.rip/post/3lbulbyvexk2v",
+    "https://bsky.app/profile/nate.rip/post/3ju4vkv7esa2p",
 ];
 
 const pinnedRkeys = PINNED_BSKY_URLS.map((u) => parseBskyUrl(u)!).filter(
@@ -586,7 +587,10 @@ function relTime(iso: string): string {
 
                 // Links — shared/signal-boosted external content
                 if (f.type === "link" && f.url) {
-                    const domain = new URL(f.url).hostname.replace(/^www\./, "");
+                    const domain = new URL(f.url).hostname.replace(
+                        /^www\./,
+                        "",
+                    );
                     return (
                         <a
                             href={f.url}
