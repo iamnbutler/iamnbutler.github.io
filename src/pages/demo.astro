@@ -1012,6 +1012,303 @@ import Base from "../layouts/Base.astro";
     }
 
     /* ========================================
+       LINK VARIANT C — Intercept
+       ======================================== */
+
+    .lC-intercept {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      color: var(--fg);
+      grid-column: span 2;
+      /* Notched top edge — torn-off teletype */
+      clip-path: polygon(
+        0 6px, 4% 2px, 8% 7px, 13% 3px, 18% 6px, 23% 1px, 28% 5px,
+        33% 2px, 38% 7px, 43% 3px, 48% 6px, 53% 1px, 58% 5px,
+        63% 2px, 68% 6px, 73% 3px, 78% 7px, 83% 2px, 88% 5px,
+        93% 1px, 97% 6px, 100% 3px,
+        100% 100%,
+        calc(100% - 10px) 100%, calc(100% - 10px) calc(100% - 10px), 0 calc(100% - 10px)
+      );
+      border: 1px solid color-mix(in oklch, var(--link-accent) 35%, var(--border));
+      filter: drop-shadow(0 -1px 2px rgba(0,0,0,0.1));
+    }
+    .lC-intercept:hover {
+      border-color: var(--link-accent);
+    }
+    /* Horizontal ruled-paper lines */
+    .lC-intercept::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent, transparent 22px,
+        color-mix(in oklch, var(--link-accent) 6%, transparent) 22px,
+        color-mix(in oklch, var(--link-accent) 6%, transparent) 23px
+      );
+      pointer-events: none; z-index: 1;
+    }
+    .lC-stamp {
+      position: absolute;
+      top: 14px; right: 12px;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--link-accent);
+      opacity: 0.25;
+      transform: rotate(4deg);
+      border: 1px solid color-mix(in oklch, var(--link-accent) 20%, transparent);
+      padding: 1px 6px;
+      z-index: 2;
+    }
+    .lC-head {
+      display: flex;
+      align-items: baseline;
+      gap: var(--sp-2);
+      padding: 12px var(--sp-3) var(--sp);
+      flex-shrink: 0;
+      position: relative; z-index: 2;
+    }
+    .lC-arrow {
+      color: var(--link-accent);
+      font-weight: 700;
+      font-size: var(--fs);
+    }
+    .lC-domain {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--link-accent);
+      opacity: 0.8;
+    }
+    .lC-date {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+    }
+    .lC-body {
+      flex: 1;
+      padding: 0 var(--sp-3) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      position: relative; z-index: 2;
+    }
+    .lC-body h3 {
+      font-size: var(--fs);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: var(--lh);
+    }
+    .lC-comment {
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      line-height: var(--lh);
+      font-style: italic;
+    }
+
+    /* ========================================
+       LINK VARIANT D — Beacon
+       ======================================== */
+
+    .lD-beacon {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      padding: 0;
+      display: flex;
+      color: var(--fg);
+      grid-column: span 2;
+      /* Right-pointing chevron */
+      clip-path: polygon(
+        0 0, calc(100% - 20px) 0,
+        100% 50%,
+        calc(100% - 20px) 100%,
+        0 100%
+      );
+      border: 1px solid color-mix(in oklch, var(--link-accent) 35%, var(--border));
+    }
+    .lD-beacon:hover {
+      border-color: var(--link-accent);
+    }
+    /* Radar rings from right chevron tip */
+    .lD-beacon::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 95% 50%,
+        transparent 12px, color-mix(in oklch, var(--link-accent) 15%, transparent) 13px, color-mix(in oklch, var(--link-accent) 15%, transparent) 15px, transparent 16px,
+        transparent 30px, color-mix(in oklch, var(--link-accent) 10%, transparent) 31px, color-mix(in oklch, var(--link-accent) 10%, transparent) 33px, transparent 34px,
+        transparent 50px, color-mix(in oklch, var(--link-accent) 6%, transparent) 51px, color-mix(in oklch, var(--link-accent) 6%, transparent) 53px, transparent 54px,
+        transparent 72px, color-mix(in oklch, var(--link-accent) 4%, transparent) 73px, color-mix(in oklch, var(--link-accent) 4%, transparent) 75px, transparent 76px
+      );
+      pointer-events: none; z-index: 1;
+    }
+    /* Accent sidebar */
+    .lD-side {
+      width: 3px;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, var(--link-accent), color-mix(in oklch, var(--link-accent) 20%, transparent));
+    }
+    .lD-content {
+      flex: 1;
+      padding: var(--sp-2) var(--sp-3);
+      padding-right: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      position: relative; z-index: 2;
+    }
+    .lD-tag {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--link-accent);
+    }
+    .lD-content h3 {
+      font-size: var(--fs);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: var(--lh);
+    }
+    .lD-meta {
+      display: flex;
+      gap: var(--sp-2);
+      align-items: baseline;
+      margin-top: auto;
+    }
+    .lD-domain {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--link-accent);
+      opacity: 0.8;
+    }
+    .lD-date {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      margin-left: auto;
+    }
+
+    /* ========================================
+       LINK VARIANT E — Uplink
+       ======================================== */
+
+    .lE-uplink {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      color: var(--fg);
+      grid-column: span 2;
+      /* Angled satellite-dish cut on top-left */
+      clip-path: polygon(
+        36px 0, 100% 0,
+        100% 100%,
+        0 100%,
+        0 28px
+      );
+      border: 1px solid color-mix(in oklch, var(--link-accent) 35%, var(--border));
+    }
+    .lE-uplink:hover {
+      border-color: var(--link-accent);
+    }
+    /* Frequency wave lines */
+    .lE-uplink::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, transparent 18px, color-mix(in oklch, var(--link-accent) 10%, transparent) 18.5px, color-mix(in oklch, var(--link-accent) 10%, transparent) 19px, transparent 19.5px),
+        linear-gradient(135deg, transparent 28px, color-mix(in oklch, var(--link-accent) 6%, transparent) 28.5px, color-mix(in oklch, var(--link-accent) 6%, transparent) 29px, transparent 29.5px);
+      pointer-events: none; z-index: 1;
+    }
+    .lE-freq {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      padding: var(--sp) var(--sp-3);
+      padding-left: 44px;
+      background: color-mix(in oklch, var(--link-accent) 5%, var(--surface-2));
+      border-bottom: 1px solid color-mix(in oklch, var(--link-accent) 18%, var(--border));
+      flex-shrink: 0;
+      position: relative; z-index: 2;
+    }
+    .lE-arrow {
+      color: var(--link-accent);
+      font-weight: 700;
+      font-size: var(--fs);
+    }
+    .lE-label {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--link-accent);
+    }
+    .lE-bars {
+      margin-left: auto;
+      display: flex;
+      gap: 2px;
+      align-items: flex-end;
+    }
+    .lE-bars i {
+      display: block;
+      width: 3px;
+      background: var(--link-accent);
+    }
+    .lE-bars i:nth-child(1) { height: 4px; opacity: 0.3; }
+    .lE-bars i:nth-child(2) { height: 6px; opacity: 0.5; }
+    .lE-bars i:nth-child(3) { height: 8px; opacity: 0.7; }
+    .lE-bars i:nth-child(4) { height: 10px; opacity: 1; }
+    .lE-body {
+      flex: 1;
+      padding: var(--sp-2) var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      position: relative; z-index: 2;
+    }
+    .lE-body h3 {
+      font-size: var(--fs);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: var(--lh);
+    }
+    .lE-comment {
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      line-height: var(--lh);
+      font-style: italic;
+    }
+    .lE-foot {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: var(--sp) var(--sp-3);
+      background: color-mix(in oklch, var(--link-accent) 3%, var(--surface-2));
+      border-top: 1px solid color-mix(in oklch, var(--link-accent) 12%, var(--border));
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      flex-shrink: 0;
+      position: relative; z-index: 2;
+    }
+    .lE-domain {
+      color: var(--link-accent);
+      opacity: 0.8;
+    }
+
+    /* ========================================
        Shared helpers
        ======================================== */
     .tile-title {
@@ -1432,8 +1729,8 @@ import Base from "../layouts/Base.astro";
 
     <!-- === LINK VARIANTS === -->
     <div class="demo-section">
-      <h2>Link Tiles — Relay A (existing) vs Dispatch B</h2>
-      <p>Two relay-family styles that alternate to break repetition</p>
+      <h2>Link Tiles — 5 Relay-Family Variants</h2>
+      <p>A: Relay (diagonal chamfer), B: Dispatch (stepped), C: Intercept (torn top), D: Beacon (chevron), E: Uplink (satellite cut)</p>
     </div>
 
     <!-- Relay A (current production style, simplified for demo) -->
@@ -1490,6 +1787,89 @@ import Base from "../layouts/Base.astro";
       </div>
       <div class="lB-body">
         <h3>Gastown — Local-first software design</h3>
+      </div>
+    </div>
+
+    <!-- Intercept C — torn top teletype -->
+    <div class="lC-intercept">
+      <span class="lC-stamp">intercepted</span>
+      <div class="lC-head">
+        <span class="lC-arrow">↗</span>
+        <span class="lC-domain">daniloleal.co</span>
+        <span class="lC-date">2024-09-11</span>
+      </div>
+      <div class="lC-body">
+        <h3>The Surprising Complexity of Design Systems</h3>
+        <span class="lC-comment">Danilo explores the decisions and details behind scaling a design system</span>
+      </div>
+    </div>
+
+    <div class="lC-intercept">
+      <span class="lC-stamp">intercepted</span>
+      <div class="lC-head">
+        <span class="lC-arrow">↗</span>
+        <span class="lC-domain">x.com</span>
+        <span class="lC-date">2024-08-20</span>
+      </div>
+      <div class="lC-body">
+        <h3>Launching Zed's agent panel</h3>
+      </div>
+    </div>
+
+    <!-- Beacon D — chevron with radar rings -->
+    <div class="lD-beacon">
+      <div class="lD-side"></div>
+      <div class="lD-content">
+        <span class="lD-tag">beacon</span>
+        <h3>Maggie Appleton — Gastown: Local-first Software Design</h3>
+        <div class="lD-meta">
+          <span class="lD-domain">maggieappleton.com</span>
+          <span class="lD-date">2025-07-09</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lD-beacon">
+      <div class="lD-side"></div>
+      <div class="lD-content">
+        <span class="lD-tag">beacon</span>
+        <h3>I did a podcast?</h3>
+        <div class="lD-meta">
+          <span class="lD-domain">spotify.com</span>
+          <span class="lD-date">2024-11-24</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Uplink E — satellite-dish angle -->
+    <div class="lE-uplink">
+      <div class="lE-freq">
+        <span class="lE-arrow">↗</span>
+        <span class="lE-label">uplink</span>
+        <div class="lE-bars"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="lE-body">
+        <h3>The Surprising Complexity of Design Systems</h3>
+        <span class="lE-comment">A thoughtful exploration of tradeoffs at scale</span>
+      </div>
+      <div class="lE-foot">
+        <span class="lE-domain">daniloleal.co</span>
+        <span>2024-09-11</span>
+      </div>
+    </div>
+
+    <div class="lE-uplink">
+      <div class="lE-freq">
+        <span class="lE-arrow">↗</span>
+        <span class="lE-label">uplink</span>
+        <div class="lE-bars"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="lE-body">
+        <h3>Gastown — Local-first software design</h3>
+      </div>
+      <div class="lE-foot">
+        <span class="lE-domain">maggieappleton.com</span>
+        <span>2025-07-09</span>
       </div>
     </div>
 
