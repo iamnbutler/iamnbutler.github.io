@@ -1,18 +1,52 @@
 ---
 import Base from '../layouts/Base.astro';
-import { fetchAllFragments, blobUrl, DID } from '../lib/atproto';
-import type { Fragment } from '../lib/types';
+import { fetchAllFragments, blobUrl, DID, fetchBskyPosts, fetchBskyFeed, parseBskyUrl } from '../lib/atproto';
+import type { Fragment, BskyPost } from '../lib/types';
 
-const fragments = await fetchAllFragments();
-const sorted = [...fragments].reverse();
-const hero = sorted.find(f => f.type === 'shot' && f.images?.length);
-const grid = sorted.filter(f => f !== hero);
+// Pinned bsky post URLs — these render as individual tiles in the grid
+const PINNED_BSKY_URLS = [
+  'https://bsky.app/profile/nate.rip/post/3malzuto3x22s',
+  'https://bsky.app/profile/nate.rip/post/3ldrtb6uwas25',
+  'https://bsky.app/profile/nate.rip/post/3m3nzy5xslc2d',
+  'https://bsky.app/profile/nate.rip/post/3lyc7rukcjk2u',
+  'https://bsky.app/profile/nate.rip/post/3lxqjdifcpc2k',
+  'https://bsky.app/profile/nate.rip/post/3ltkowbdsuk2g',
+  'https://bsky.app/profile/nate.rip/post/3lsrtnq22os2d',
+];
+
+const pinnedRkeys = PINNED_BSKY_URLS.map(u => parseBskyUrl(u)!).filter(Boolean);
+
+// Fetch everything in parallel
+const [fragments, pinnedPosts, feedPosts] = await Promise.all([
+  fetchAllFragments(),
+  fetchBskyPosts(pinnedRkeys),
+  fetchBskyFeed(25, new Set(pinnedRkeys)),
+]);
+
+// Build a unified timeline: fragments + pinned bsky posts, sorted by date desc
+type GridEntry =
+  | { kind: 'fragment'; f: Fragment }
+  | { kind: 'bsky'; p: BskyPost };
+
+const allEntries: GridEntry[] = [
+  ...fragments.map(f => ({ kind: 'fragment' as const, f })),
+  ...pinnedPosts.map(p => ({ kind: 'bsky' as const, p })),
+];
+allEntries.sort((a, b) => {
+  const da = new Date(a.kind === 'fragment' ? a.f.createdAt : a.p.createdAt).getTime();
+  const db = new Date(b.kind === 'fragment' ? b.f.createdAt : b.p.createdAt).getTime();
+  return db - da; // newest first
+});
+
+const hero = allEntries.find(e => e.kind === 'fragment' && e.f.type === 'shot' && e.f.images?.length);
+const grid = allEntries.filter(e => e !== hero);
+
+const totalFragments = fragments.length;
 
 function excerpt(text: string, len: number = 120): string {
   return text.replace(/[#*_\[\]()>`~\-]/g, '').replace(/\n+/g, ' ').trim().slice(0, len);
 }
 
-// Extract top-level items from list markdown
 function extractListItems(content: string, max: number = 5): string[] {
   const items: string[] = [];
   for (const line of content.split('\n')) {
@@ -39,79 +73,170 @@ function shotMeta(i: number, imgCount: number): { cls: string; isHero: boolean }
   return { cls: '', isHero: false };
 }
 
-// Posts: mostly 1x1, rare bigger
 function postMeta(i: number, contentLen: number): { cls: string; showExcerpt: boolean } {
   if (contentLen > 2000 && i % 9 === 0) return { cls: 'tile-text-lg', showExcerpt: true };
   if (contentLen > 1200 && i % 13 === 5) return { cls: 'tile-text-tall', showExcerpt: true };
   return { cls: '', showExcerpt: false };
 }
 
-// Build render sequence with log injected early
+// Bsky post tile size — posts with images get wider
+function bskyMeta(p: BskyPost, i: number): string {
+  if (p.images?.length) return 'tile-w';
+  return '';
+}
+
+// Build render sequence with log + feed injected
 type RenderItem =
   | { kind: 'log' }
-  | { kind: 'frag'; f: Fragment; i: number };
+  | { kind: 'feed' }
+  | { kind: 'entry'; e: GridEntry; i: number };
 
 const renderItems: RenderItem[] = [];
-grid.forEach((f, i) => {
+grid.forEach((e, i) => {
   if (i === 5) renderItems.push({ kind: 'log' });
-  renderItems.push({ kind: 'frag', f, i });
+  if (i === 12) renderItems.push({ kind: 'feed' });
+  renderItems.push({ kind: 'entry', e, i });
 });
 if (grid.length <= 5) renderItems.push({ kind: 'log' });
+if (grid.length <= 12) renderItems.push({ kind: 'feed' });
+
+// Format relative time for bsky posts
+function relTime(iso: string): string {
+  const d = new Date(iso);
+  const now = Date.now();
+  const diff = now - d.getTime();
+  const days = Math.floor(diff / 86400000);
+  if (days < 1) return 'today';
+  if (days < 30) return `${days}d ago`;
+  if (days < 365) return `${Math.floor(days / 30)}mo ago`;
+  return d.toISOString().slice(0, 10);
+}
 ---
 <Base wide>
   <section class="mosaic">
     <header class="tile tile-header">
       <h1>nate.rip</h1>
       <div class="header-meta">
-        <span class="header-count">{sorted.length}</span>
+        <span class="header-count">{totalFragments}</span>
         <span class="header-label">fragments</span>
         <div class="header-types">
-          <span class="type-post">{sorted.filter(f => f.type === 'post').length}p</span>
-          <span class="type-shot">{sorted.filter(f => f.type === 'shot').length}s</span>
-          <span class="type-list">{sorted.filter(f => f.type === 'list').length}l</span>
+          <span class="type-post">{fragments.filter(f => f.type === 'post').length}p</span>
+          <span class="type-shot">{fragments.filter(f => f.type === 'shot').length}s</span>
+          <span class="type-list">{fragments.filter(f => f.type === 'list').length}l</span>
+          <span class="type-bsky">{pinnedPosts.length}b</span>
         </div>
       </div>
     </header>
 
-    {hero && hero.images && (
-      <a href={`/f/${hero.id}`} class="tile tile-shot tile-hero">
-        <img src={blobUrl(DID, hero.images[0].cid)} alt={hero.title} />
+    {hero && hero.kind === 'fragment' && hero.f.images && (
+      <a href={`/f/${hero.f.id}`} class="tile tile-shot tile-hero">
+        <img src={blobUrl(DID, hero.f.images[0].cid)} alt={hero.f.title} />
         <div class="hero-scanlines"></div>
         <div class="hero-corners">
           <i class="hc hc-tl"></i><i class="hc hc-tr"></i>
           <i class="hc hc-bl"></i><i class="hc hc-br"></i>
         </div>
         <div class="hero-info">
-          <span class="hero-tag type-shot">shot #{hero.id}</span>
-          <h2>{hero.title}</h2>
+          <span class="hero-tag type-shot">shot #{hero.f.id}</span>
+          <h2>{hero.f.title}</h2>
         </div>
       </a>
     )}
 
     {renderItems.map(item => {
+      // Log tile
       if (item.kind === 'log') {
         return (
           <nav class="tile tile-log">
             <div class="log-label">log</div>
             <div class="log-entries">
-              {sorted.map(f => (
-                <a href={`/f/${f.id}`} class="log-row">
-                  <span class="log-id">{String(f.id).padStart(2, '0')}</span>
-                  <span class={`log-type type-${f.type}`}>{f.type}</span>
-                  <span class="log-title">{f.title}</span>
-                  <time class="log-date">{new Date(f.createdAt).toISOString().slice(0, 10)}</time>
-                </a>
-              ))}
+              {allEntries.map(e => {
+                if (e.kind === 'fragment') {
+                  return (
+                    <a href={`/f/${e.f.id}`} class="log-row">
+                      <span class="log-id">{String(e.f.id).padStart(2, '0')}</span>
+                      <span class={`log-type type-${e.f.type}`}>{e.f.type}</span>
+                      <span class="log-title">{e.f.title}</span>
+                      <time class="log-date">{new Date(e.f.createdAt).toISOString().slice(0, 10)}</time>
+                    </a>
+                  );
+                }
+                return (
+                  <a href={`https://bsky.app/profile/${e.p.author.handle}/post/${e.p.rkey}`} class="log-row" target="_blank">
+                    <span class="log-id log-bsky">bs</span>
+                    <span class="log-type type-bsky">bsky</span>
+                    <span class="log-title">{e.p.text.slice(0, 60)}</span>
+                    <time class="log-date">{new Date(e.p.createdAt).toISOString().slice(0, 10)}</time>
+                  </a>
+                );
+              })}
             </div>
           </nav>
         );
       }
 
-      const { f, i } = item;
+      // Feed tile — scrollable feed of recent bsky posts
+      if (item.kind === 'feed') {
+        return (
+          <div class="tile tile-feed">
+            <div class="feed-header">
+              <span class="feed-icon">@</span>
+              <span class="feed-label">nate.rip on bsky</span>
+            </div>
+            <div class="feed-entries">
+              {feedPosts.slice(0, 15).map(p => (
+                <a href={`https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`} class="feed-row" target="_blank">
+                  <div class="feed-text">{p.text.length > 120 ? p.text.slice(0, 120) + '...' : p.text}</div>
+                  <div class="feed-meta">
+                    <time>{relTime(p.createdAt)}</time>
+                    {p.likeCount > 0 && <span class="feed-stat">{p.likeCount} likes</span>}
+                    {p.images?.length ? <span class="feed-stat">{p.images.length} img</span> : null}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      // Grid entries
+      const { e, i } = item;
+
+      // Bsky pinned post tile
+      if (e.kind === 'bsky') {
+        const p = e.p;
+        const sizeCls = bskyMeta(p, i);
+        const bskyUrl = `https://bsky.app/profile/${p.author.handle}/post/${p.rkey}`;
+        if (p.images?.length) {
+          return (
+            <a href={bskyUrl} class:list={['tile', 'tile-bsky', sizeCls]} target="_blank">
+              <img src={p.images[0].fullsize} alt={p.images[0].alt} loading="lazy" />
+              <div class="bsky-overlay">
+                <span class="bsky-tag">bsky</span>
+                <p class="bsky-text">{p.text.length > 80 ? p.text.slice(0, 80) + '...' : p.text}</p>
+              </div>
+            </a>
+          );
+        }
+        return (
+          <a href={bskyUrl} class:list={['tile', 'tile-bsky', sizeCls]} target="_blank">
+            <div class="bsky-content">
+              <span class="bsky-tag">bsky</span>
+              <p class="bsky-text">{p.text.length > 180 ? p.text.slice(0, 180) + '...' : p.text}</p>
+            </div>
+            <div class="bsky-meta">
+              <time>{relTime(p.createdAt)}</time>
+              {p.likeCount > 0 && <span>{p.likeCount} likes</span>}
+            </div>
+          </a>
+        );
+      }
+
+      // Fragment entries (same as before)
+      const f = e.f;
       const isShot = f.type === 'shot' && f.images?.length;
       const isList = f.type === 'list';
 
-      // Shots
       if (isShot) {
         const { cls, isHero: promoted } = shotMeta(i, f.images!.length);
         if (promoted) {
@@ -141,7 +266,6 @@ if (grid.length <= 5) renderItems.push({ kind: 'log' });
         );
       }
 
-      // Lists — unique design with extracted items
       if (isList) {
         const items = extractListItems(f.content ?? '');
         const total = countListItems(f.content ?? '');

@@ -1,8 +1,9 @@
-import type { Fragment, FragmentType } from './types';
+import type { Fragment, FragmentType, BskyPost } from './types';
 
 const HANDLE = 'nate.rip';
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const PDS = 'https://morel.us-east.host.bsky.network';
+const PUBLIC_API = 'https://public.api.bsky.app';
 
 const COLLECTION_POST = 'rip.nate.post';
 const COLLECTION_SHOT = 'rip.nate.shot';
@@ -63,6 +64,79 @@ export async function fetchFragment(id: number): Promise<Fragment | null> {
 
 export function blobUrl(did: string, cid: string): string {
   return `https://bsky.social/xrpc/com.atproto.sync.getBlob?did=${did}&cid=${cid}`;
+}
+
+// === Bluesky public API ===
+
+function mapBskyPost(post: any): BskyPost {
+  const images = post.embed?.$type === 'app.bsky.embed.images#view'
+    ? post.embed.images.map((img: any) => ({
+        thumb: img.thumb,
+        fullsize: img.fullsize,
+        alt: img.alt || '',
+        aspectRatio: img.aspectRatio,
+      }))
+    : undefined;
+
+  const externalEmbed = post.embed?.$type === 'app.bsky.embed.external#view'
+    ? {
+        uri: post.embed.external.uri,
+        title: post.embed.external.title || '',
+        description: post.embed.external.description || '',
+        thumb: post.embed.external.thumb,
+      }
+    : undefined;
+
+  return {
+    uri: post.uri,
+    rkey: post.uri.split('/').pop()!,
+    text: post.record.text,
+    createdAt: post.record.createdAt,
+    author: {
+      handle: post.author.handle,
+      displayName: post.author.displayName || post.author.handle,
+      avatar: post.author.avatar,
+    },
+    images,
+    externalEmbed,
+    likeCount: post.likeCount ?? 0,
+    replyCount: post.replyCount ?? 0,
+    repostCount: post.repostCount ?? 0,
+  };
+}
+
+/** Fetch a single bsky post by rkey */
+export async function fetchBskyPost(rkey: string): Promise<BskyPost | null> {
+  const uri = `at://${DID}/app.bsky.feed.post/${rkey}`;
+  const params = new URLSearchParams({ uri, depth: '0', parentHeight: '0' });
+  const res = await fetch(`${PUBLIC_API}/xrpc/app.bsky.feed.getPostThread?${params}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  if (!data.thread?.post) return null;
+  return mapBskyPost(data.thread.post);
+}
+
+/** Fetch multiple bsky posts by rkeys, in parallel */
+export async function fetchBskyPosts(rkeys: string[]): Promise<BskyPost[]> {
+  const results = await Promise.all(rkeys.map(rk => fetchBskyPost(rk)));
+  return results.filter((p): p is BskyPost => p !== null);
+}
+
+/** Fetch author feed from public API, excluding specific rkeys */
+export async function fetchBskyFeed(limit: number = 20, excludeRkeys: Set<string> = new Set()): Promise<BskyPost[]> {
+  const params = new URLSearchParams({ actor: DID, limit: String(limit), filter: 'posts_no_replies' });
+  const res = await fetch(`${PUBLIC_API}/xrpc/app.bsky.feed.getAuthorFeed?${params}`);
+  if (!res.ok) return [];
+  const data = await res.json();
+  return (data.feed ?? [])
+    .map((item: any) => mapBskyPost(item.post))
+    .filter((p: BskyPost) => !excludeRkeys.has(p.rkey));
+}
+
+/** Parse a bsky.app URL into a rkey */
+export function parseBskyUrl(url: string): string | null {
+  const m = url.match(/\/post\/([a-z0-9]+)$/i);
+  return m ? m[1] : null;
 }
 
 export { DID };
