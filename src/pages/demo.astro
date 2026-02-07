@@ -236,16 +236,14 @@ import Base from "../layouts/Base.astro";
       overflow: hidden;
       background: var(--surface-2);
       border: 1px solid var(--border);
-      /* Big pin notches on bottom portion of sides — 8px deep, clearly visible */
+      /* Pin notches flanking the slim circuit edge */
       clip-path: polygon(
         4px 0, calc(100% - 4px) 0,
         calc(100% - 2px) 6px, 100% 6px,
-        100% 76%, calc(100% - 8px) 76%, calc(100% - 8px) 80%, 100% 80%,
-        100% 86%, calc(100% - 8px) 86%, calc(100% - 8px) 90%, 100% 90%,
+        100% 86%, calc(100% - 6px) 86%, calc(100% - 6px) 91%, 100% 91%,
         100% calc(100% - 3px), calc(100% - 3px) 100%,
         3px 100%, 0 calc(100% - 3px),
-        0 90%, 8px 90%, 8px 86%, 0 86%,
-        0 80%, 8px 80%, 8px 76%, 0 76%,
+        0 91%, 6px 91%, 6px 86%, 0 86%,
         0 6px, 2px 6px
       );
       padding: 0;
@@ -272,41 +270,38 @@ import Base from "../layouts/Base.astro";
       font-size: var(--fs-s);
       color: var(--fg-2); opacity: 0.6;
     }
-    /* Circuit board insertion edge — bottom ~22% */
+    /* Circuit board insertion edge — slim strip */
     .px-edge {
       margin: 0;
-      height: 44px;
+      height: 24px;
       flex-shrink: 0;
       position: relative;
-      border-top: 2px solid color-mix(in oklch, var(--accent) 40%, var(--border));
-      /* Visible PCB grid texture */
+      border-top: 1px solid color-mix(in oklch, var(--accent) 35%, var(--border));
+      /* Sparse PCB grid — wide spacing, subtle */
       background:
-        repeating-linear-gradient(0deg, transparent, transparent 7px, color-mix(in oklch, var(--accent) 15%, transparent) 7px, color-mix(in oklch, var(--accent) 15%, transparent) 8px),
-        repeating-linear-gradient(90deg, transparent, transparent 7px, color-mix(in oklch, var(--accent) 15%, transparent) 7px, color-mix(in oklch, var(--accent) 15%, transparent) 8px),
-        color-mix(in oklch, var(--accent) 5%, var(--bg));
+        repeating-linear-gradient(0deg, transparent, transparent 23px, color-mix(in oklch, var(--accent) 8%, transparent) 23px, color-mix(in oklch, var(--accent) 8%, transparent) 24px),
+        repeating-linear-gradient(90deg, transparent, transparent 23px, color-mix(in oklch, var(--accent) 8%, transparent) 23px, color-mix(in oklch, var(--accent) 8%, transparent) 24px),
+        color-mix(in oklch, var(--accent) 3%, var(--bg));
     }
-    /* Trace lines on the edge — bolder */
+    /* A couple of trace lines — thin, understated */
     .px-edge::before {
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(90deg, transparent 15%, color-mix(in oklch, var(--accent) 30%, transparent) 15%, color-mix(in oklch, var(--accent) 30%, transparent) 16%, transparent 16%),
-        linear-gradient(90deg, transparent 40%, color-mix(in oklch, var(--accent) 25%, transparent) 40%, color-mix(in oklch, var(--accent) 25%, transparent) 41%, transparent 41%),
-        linear-gradient(90deg, transparent 72%, color-mix(in oklch, var(--accent) 30%, transparent) 72%, color-mix(in oklch, var(--accent) 30%, transparent) 73%, transparent 73%),
-        linear-gradient(0deg, transparent 40%, color-mix(in oklch, var(--accent) 20%, transparent) 40%, color-mix(in oklch, var(--accent) 20%, transparent) 41%, transparent 41%),
-        linear-gradient(0deg, transparent 70%, color-mix(in oklch, var(--accent) 20%, transparent) 70%, color-mix(in oklch, var(--accent) 20%, transparent) 71%, transparent 71%);
+        linear-gradient(90deg, transparent 22%, color-mix(in oklch, var(--accent) 18%, transparent) 22%, color-mix(in oklch, var(--accent) 18%, transparent) 22.5%, transparent 22.5%),
+        linear-gradient(90deg, transparent 65%, color-mix(in oklch, var(--accent) 18%, transparent) 65%, color-mix(in oklch, var(--accent) 18%, transparent) 65.5%, transparent 65.5%);
       pointer-events: none;
     }
-    /* Solder pads row */
+    /* Solder pads — small dots along bottom */
     .px-edge::after {
       content: '';
       position: absolute;
-      bottom: 6px; left: 10px; right: 10px;
+      bottom: 4px; left: 12px; right: 12px;
       height: 2px;
       background: repeating-linear-gradient(90deg,
-        color-mix(in oklch, var(--accent) 35%, transparent) 0px,
-        color-mix(in oklch, var(--accent) 35%, transparent) 4px,
-        transparent 4px, transparent 14px
+        color-mix(in oklch, var(--accent) 25%, transparent) 0px,
+        color-mix(in oklch, var(--accent) 25%, transparent) 3px,
+        transparent 3px, transparent 18px
       );
     }
 
@@ -517,9 +512,9 @@ import Base from "../layouts/Base.astro";
       content: '';
       position: absolute; inset: 0;
       background: radial-gradient(circle at 92% 50%,
-        transparent 18px, color-mix(in oklch, #1185fe 8%, transparent) 19px, transparent 20px,
-        transparent 35px, color-mix(in oklch, #1185fe 5%, transparent) 36px, transparent 37px,
-        transparent 52px, color-mix(in oklch, #1185fe 3%, transparent) 53px, transparent 54px
+        transparent 18px, color-mix(in oklch, #1185fe 18%, transparent) 19px, color-mix(in oklch, #1185fe 18%, transparent) 21px, transparent 22px,
+        transparent 38px, color-mix(in oklch, #1185fe 12%, transparent) 39px, color-mix(in oklch, #1185fe 12%, transparent) 41px, transparent 42px,
+        transparent 58px, color-mix(in oklch, #1185fe 7%, transparent) 59px, color-mix(in oklch, #1185fe 7%, transparent) 61px, transparent 62px
       );
       pointer-events: none; z-index: 1;
     }
@@ -576,14 +571,15 @@ import Base from "../layouts/Base.astro";
       border-top: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
       border-bottom: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
     }
-    /* Concentric rings from chevron point */
+    /* Concentric rings from chevron point — bold enough to actually see */
     .bx-hybrid::before {
       content: '';
       position: absolute; inset: 0;
       background: radial-gradient(circle at 92% 50%,
-        transparent 20px, color-mix(in oklch, #1185fe 7%, transparent) 21px, transparent 22px,
-        transparent 40px, color-mix(in oklch, #1185fe 4%, transparent) 41px, transparent 42px,
-        transparent 60px, color-mix(in oklch, #1185fe 3%, transparent) 61px, transparent 62px
+        transparent 18px, color-mix(in oklch, #1185fe 22%, transparent) 19px, color-mix(in oklch, #1185fe 22%, transparent) 21px, transparent 22px,
+        transparent 38px, color-mix(in oklch, #1185fe 15%, transparent) 39px, color-mix(in oklch, #1185fe 15%, transparent) 41px, transparent 42px,
+        transparent 58px, color-mix(in oklch, #1185fe 10%, transparent) 59px, color-mix(in oklch, #1185fe 10%, transparent) 61px, transparent 62px,
+        transparent 78px, color-mix(in oklch, #1185fe 6%, transparent) 79px, color-mix(in oklch, #1185fe 6%, transparent) 81px, transparent 82px
       );
       pointer-events: none; z-index: 1;
     }
@@ -662,9 +658,9 @@ import Base from "../layouts/Base.astro";
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(0deg, transparent 12px, rgba(255,255,255,0.012) 12px, rgba(255,255,255,0.012) 13px, transparent 13px),
-        linear-gradient(0deg, transparent 37px, rgba(255,255,255,0.01) 37px, rgba(255,255,255,0.01) 38px, transparent 38px),
-        linear-gradient(0deg, transparent 68px, rgba(255,255,255,0.008) 68px, rgba(255,255,255,0.008) 69px, transparent 69px);
+        linear-gradient(0deg, transparent 12px, rgba(255,255,255,0.06) 12px, rgba(255,255,255,0.06) 13px, transparent 13px),
+        linear-gradient(0deg, transparent 37px, rgba(255,255,255,0.05) 37px, rgba(255,255,255,0.05) 38px, transparent 38px),
+        linear-gradient(0deg, transparent 68px, rgba(255,255,255,0.04) 68px, rgba(255,255,255,0.04) 69px, transparent 69px);
       pointer-events: none;
     }
     .b5-stripe {
