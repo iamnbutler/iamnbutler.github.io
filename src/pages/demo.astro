@@ -306,6 +306,265 @@ import Base from "../layouts/Base.astro";
     }
 
     /* ========================================
+       TYPOGRAPHIC POSTS
+       ======================================== */
+
+    /* --- P5: Slab Monument — title fills the tile --- */
+    .p5-slab {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-2);
+      padding: var(--sp-3);
+      display: flex;
+      align-items: flex-end;
+      border-left: 3px solid var(--accent);
+    }
+    .p5-title {
+      font-family: var(--font);
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 0.85;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--fg);
+      word-break: break-all;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .demo-w .p5-title {
+      font-size: 56px;
+    }
+    .demo-tall .p5-title {
+      font-size: 72px;
+    }
+    .p5-sub {
+      position: absolute;
+      bottom: 36px;
+      left: var(--sp-3);
+      right: var(--sp-3);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      line-height: var(--lh);
+      z-index: 2;
+    }
+    .p5-corner {
+      position: absolute;
+      top: var(--sp-2);
+      right: var(--sp-3);
+      text-align: right;
+      z-index: 2;
+    }
+    .p5-num {
+      display: block;
+      font-family: var(--mono);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.3;
+    }
+    .p5-date {
+      display: block;
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      margin-top: 2px;
+    }
+    /* Ghost underline — large type casts a shadow */
+    .p5-slab::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--accent),
+        color-mix(in oklch, var(--accent) 30%, transparent) 70%,
+        transparent
+      );
+    }
+
+    /* --- P6: Redacted Dossier — clean type + censorship bars --- */
+    .p6-redacted {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      padding: var(--sp-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp);
+      /* Faint ruled lines */
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 21px,
+        color-mix(in oklch, var(--fg-2) 6%, transparent) 21px,
+        color-mix(in oklch, var(--fg-2) 6%, transparent) 22px
+      );
+    }
+    .p6-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .p6-class {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 1px 6px;
+    }
+    .p6-ref {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+    }
+    .p6-title {
+      font-family: var(--font);
+      font-size: var(--fs-l);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      color: var(--fg);
+      margin-top: var(--sp);
+    }
+    .p6-body {
+      font-size: var(--fs-s);
+      line-height: 1.7;
+      color: var(--fg-2);
+      flex: 1;
+    }
+    .p6-bar {
+      display: inline-block;
+      width: 4em;
+      height: 1.1em;
+      vertical-align: text-bottom;
+      background: var(--fg);
+      opacity: 0.85;
+      border-radius: 1px;
+      margin: 0 1px;
+    }
+    .p6-date {
+      font-family: var(--mono);
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      margin-top: auto;
+    }
+    /* Red margin line on left */
+    .p6-redacted::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 28px;
+      width: 1px;
+      background: color-mix(in oklch, #c44 40%, transparent);
+    }
+
+    /* --- P7: Departure Board — split-flap arrivals aesthetic --- */
+    .p7-board {
+      position: relative;
+      overflow: hidden;
+      background: #111318;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #2a2d35;
+      clip-path: none;
+      border-radius: 3px;
+    }
+    .p7-row {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      border-bottom: 1px solid #1e2028;
+      flex-shrink: 0;
+    }
+    .p7-row-head {
+      background: #1a1d25;
+      border-bottom: 2px solid #2a2d35;
+    }
+    .p7-row-head .p7-col {
+      font-size: 9px;
+      color: #4a5068;
+      letter-spacing: 0.15em;
+      padding: 5px 8px;
+    }
+    .p7-row-active {
+      background: #181b22;
+    }
+    .p7-row-active .p7-col-dest {
+      color: var(--accent);
+    }
+    .p7-row-dim {
+      opacity: 0.4;
+    }
+    .p7-col {
+      font-family: var(--mono);
+      font-size: var(--fs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--fg);
+      padding: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* Split-flap cell look */
+      background: linear-gradient(
+        180deg,
+        transparent 48%,
+        rgba(0,0,0,0.15) 48%,
+        rgba(0,0,0,0.15) 52%,
+        transparent 52%
+      );
+    }
+    .p7-col-id {
+      width: 36px;
+      flex-shrink: 0;
+      text-align: center;
+      color: var(--fg-2);
+      border-right: 1px solid #1e2028;
+    }
+    .p7-col-dest {
+      flex: 1;
+      min-width: 0;
+    }
+    .p7-col-time {
+      width: 52px;
+      flex-shrink: 0;
+      text-align: right;
+      color: var(--fg-2);
+      border-left: 1px solid #1e2028;
+    }
+    .p7-col-status {
+      width: 48px;
+      flex-shrink: 0;
+      text-align: center;
+      font-size: var(--fs-s);
+      color: var(--fg-2);
+      border-left: 1px solid #1e2028;
+    }
+    .p7-live {
+      color: var(--accent);
+    }
+    /* Ambient glow at top */
+    .p7-board::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent,
+        color-mix(in oklch, var(--accent) 30%, transparent) 30%,
+        color-mix(in oklch, var(--accent) 50%, transparent) 50%,
+        color-mix(in oklch, var(--accent) 30%, transparent) 70%,
+        transparent
+      );
+      z-index: 1;
+    }
+
+    /* ========================================
        SHOTS — 3 variants that rotate
        ======================================== */
 
@@ -817,6 +1076,154 @@ import Base from "../layouts/Base.astro";
         <span class="tile-time">2024-08-20</span>
       </div>
       <div class="px-edge"></div>
+    </div>
+
+    <!-- === TYPOGRAPHIC POST DIRECTIONS === -->
+    <div class="demo-section">
+      <h2>Post Tiles — Typographic Focus</h2>
+      <p>Slab Monument, Redacted Dossier, Departure Board</p>
+    </div>
+
+    <!-- P5: Slab Monument — title IS the tile -->
+    <div class="p5-slab">
+      <span class="p5-title">GPUI</span>
+      <div class="p5-corner">
+        <span class="p5-num">07</span>
+        <span class="p5-date">2025-03-15</span>
+      </div>
+    </div>
+
+    <div class="p5-slab demo-w">
+      <span class="p5-title">BUILDING UI IN GPUI</span>
+      <div class="p5-corner">
+        <span class="p5-num">12</span>
+        <span class="p5-date">2024-08-20</span>
+      </div>
+    </div>
+
+    <div class="p5-slab demo-w demo-tall">
+      <span class="p5-title">BUILDING UI IN GPUI</span>
+      <span class="p5-sub">A deep look at the rendering framework behind Zed</span>
+      <div class="p5-corner">
+        <span class="p5-num">12</span>
+        <span class="p5-date">2024-08-20</span>
+      </div>
+    </div>
+
+    <!-- P6: Redacted Dossier — clean type with censorship bars -->
+    <div class="p6-redacted">
+      <div class="p6-head">
+        <span class="p6-class">RESTRICTED</span>
+        <span class="p6-ref">DOC-07</span>
+      </div>
+      <h3 class="p6-title">Redacted Dossier</h3>
+      <p class="p6-body">Tab protrusion and <span class="p6-bar"></span> paper lines with <span class="p6-bar"></span> visual treatment</p>
+      <span class="p6-date">2025-03-15</span>
+    </div>
+
+    <div class="p6-redacted demo-w">
+      <div class="p6-head">
+        <span class="p6-class">RESTRICTED</span>
+        <span class="p6-ref">DOC-12</span>
+      </div>
+      <h3 class="p6-title">Building UI in GPUI</h3>
+      <p class="p6-body">A deep look at <span class="p6-bar"></span> rendering framework behind Zed, exploring how <span class="p6-bar"></span> handles retained-mode rendering and <span class="p6-bar"></span> layout</p>
+      <span class="p6-date">2024-08-20</span>
+    </div>
+
+    <div class="p6-redacted demo-w demo-tall">
+      <div class="p6-head">
+        <span class="p6-class">RESTRICTED</span>
+        <span class="p6-ref">DOC-12</span>
+      </div>
+      <h3 class="p6-title">Building UI in GPUI</h3>
+      <p class="p6-body">A deep look at <span class="p6-bar"></span> rendering framework behind Zed, exploring how <span class="p6-bar"></span> handles retained-mode rendering and <span class="p6-bar"></span> layout in a code editor. The <span class="p6-bar"></span> provides a unique approach to <span class="p6-bar"></span> that prioritizes performance.</p>
+      <span class="p6-date">2024-08-20</span>
+    </div>
+
+    <!-- P7: Departure Board — split-flap / arrivals board -->
+    <div class="p7-board">
+      <div class="p7-row p7-row-head">
+        <span class="p7-col p7-col-id">ID</span>
+        <span class="p7-col p7-col-dest">TITLE</span>
+        <span class="p7-col p7-col-time">DATE</span>
+      </div>
+      <div class="p7-row p7-row-active">
+        <span class="p7-col p7-col-id">07</span>
+        <span class="p7-col p7-col-dest">DEPARTURE BOARD</span>
+        <span class="p7-col p7-col-time">03-15</span>
+      </div>
+      <div class="p7-row p7-row-dim">
+        <span class="p7-col p7-col-id">06</span>
+        <span class="p7-col p7-col-dest">PREVIOUS ENTRY</span>
+        <span class="p7-col p7-col-time">03-01</span>
+      </div>
+    </div>
+
+    <div class="p7-board demo-w">
+      <div class="p7-row p7-row-head">
+        <span class="p7-col p7-col-id">ID</span>
+        <span class="p7-col p7-col-dest">TITLE</span>
+        <span class="p7-col p7-col-time">DATE</span>
+        <span class="p7-col p7-col-status">STATUS</span>
+      </div>
+      <div class="p7-row p7-row-active">
+        <span class="p7-col p7-col-id">12</span>
+        <span class="p7-col p7-col-dest">BUILDING UI IN GPUI</span>
+        <span class="p7-col p7-col-time">08-20</span>
+        <span class="p7-col p7-col-status p7-live">LIVE</span>
+      </div>
+      <div class="p7-row p7-row-dim">
+        <span class="p7-col p7-col-id">11</span>
+        <span class="p7-col p7-col-dest">DESIGN TOKENS AT SCALE</span>
+        <span class="p7-col p7-col-time">07-15</span>
+        <span class="p7-col p7-col-status">ARCH</span>
+      </div>
+      <div class="p7-row p7-row-dim">
+        <span class="p7-col p7-col-id">10</span>
+        <span class="p7-col p7-col-dest">THOUGHTS ON CRAFT</span>
+        <span class="p7-col p7-col-time">06-22</span>
+        <span class="p7-col p7-col-status">ARCH</span>
+      </div>
+    </div>
+
+    <div class="p7-board demo-w demo-tall">
+      <div class="p7-row p7-row-head">
+        <span class="p7-col p7-col-id">ID</span>
+        <span class="p7-col p7-col-dest">TITLE</span>
+        <span class="p7-col p7-col-time">DATE</span>
+        <span class="p7-col p7-col-status">STATUS</span>
+      </div>
+      <div class="p7-row p7-row-active">
+        <span class="p7-col p7-col-id">12</span>
+        <span class="p7-col p7-col-dest">BUILDING UI IN GPUI</span>
+        <span class="p7-col p7-col-time">08-20</span>
+        <span class="p7-col p7-col-status p7-live">LIVE</span>
+      </div>
+      <div class="p7-row">
+        <span class="p7-col p7-col-id">11</span>
+        <span class="p7-col p7-col-dest">DESIGN TOKENS AT SCALE</span>
+        <span class="p7-col p7-col-time">07-15</span>
+        <span class="p7-col p7-col-status">ARCH</span>
+      </div>
+      <div class="p7-row">
+        <span class="p7-col p7-col-id">10</span>
+        <span class="p7-col p7-col-dest">THOUGHTS ON CRAFT</span>
+        <span class="p7-col p7-col-time">06-22</span>
+        <span class="p7-col p7-col-status">ARCH</span>
+      </div>
+      <div class="p7-row p7-row-dim">
+        <span class="p7-col p7-col-id">09</span>
+        <span class="p7-col p7-col-dest">SHIPPING INCREMENTALLY</span>
+        <span class="p7-col p7-col-time">05-10</span>
+        <span class="p7-col p7-col-status">ARCH</span>
+      </div>
+      <div class="p7-row p7-row-dim">
+        <span class="p7-col p7-col-id">08</span>
+        <span class="p7-col p7-col-dest">ON VISUAL DENSITY</span>
+        <span class="p7-col p7-col-time">04-03</span>
+        <span class="p7-col p7-col-status">ARCH</span>
+      </div>
     </div>
 
     <!-- === SHOT DIRECTIONS (3 variants) === -->
