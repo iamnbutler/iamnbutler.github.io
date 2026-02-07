@@ -7,23 +7,20 @@
       "key": "tid",
       "record": {
         "type": "object",
-        "required": ["slug", "images", "createdAt"],
+        "required": ["fragmentId", "images", "createdAt"],
         "properties": {
+          "fragmentId": { "type": "integer", "minimum": 1 },
           "title": { "type": "string", "maxLength": 300 },
-          "slug": { "type": "string", "maxLength": 200 },
+          "content": { "type": "string", "maxLength": 500000 },
           "images": {
             "type": "array",
+            "maxLength": 20,
             "items": {
-              "type": "object",
-              "required": ["image"],
-              "properties": {
-                "image": { "type": "blob", "accept": ["image/*"], "maxSize": 10000000 },
-                "alt": { "type": "string", "maxLength": 500 }
-              }
-            },
-            "maxLength": 20
+              "type": "blob",
+              "accept": ["image/png", "image/jpeg", "image/gif", "image/webp", "image/svg+xml", "video/mp4"],
+              "maxSize": 50000000
+            }
           },
-          "tags": { "type": "array", "items": { "type": "string" }, "maxLength": 20 },
           "createdAt": { "type": "string", "format": "datetime" }
         }
       }
