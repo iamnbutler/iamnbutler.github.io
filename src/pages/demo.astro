@@ -26,6 +26,7 @@ import Base from "../layouts/Base.astro";
       gap: var(--sp-2);
       height: 180px;
     }
+    .demo-row.tall { height: 320px; }
     .demo-label {
       width: 100px;
       flex-shrink: 0;
@@ -41,12 +42,13 @@ import Base from "../layouts/Base.astro";
     .demo-label.shot { color: var(--accent-2); }
     .demo-label.bsky { color: #1185fe; }
     .demo-label.link { color: var(--link-accent); }
+    .demo-label.meta { color: var(--fg-2); }
 
     /* Tile sizing within rows */
     .demo-row > .tile,
+    .demo-row > [class^="x-"],
     .demo-row > [class*="p7-"],
     .demo-row > [class*="p8-"],
-    .demo-row > [class*="bx-"],
     .demo-row > [class*="lC-"],
     .demo-row > [class*="lD-"],
     .demo-row > [class*="lE-"] {
@@ -63,7 +65,7 @@ import Base from "../layouts/Base.astro";
     }
 
     /* ========================================
-       Exploration-only styles (not in production theme.css)
+       Exploration-only styles
        ======================================== */
 
     /* --- Departure Board (p7) --- */
@@ -96,11 +98,6 @@ import Base from "../layouts/Base.astro";
     .p7-col-time { width: 52px; flex-shrink: 0; text-align: right; color: var(--fg-2); border-left: 1px solid #1e2028; }
     .p7-col-status { width: 48px; flex-shrink: 0; text-align: center; font-size: var(--fs-s); color: var(--fg-2); border-left: 1px solid #1e2028; }
     .p7-live { color: var(--accent); }
-    .p7-board::after {
-      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--accent) 30%, transparent) 30%, color-mix(in oklch, var(--accent) 50%, transparent) 50%, color-mix(in oklch, var(--accent) 30%, transparent) 70%, transparent);
-      z-index: 1;
-    }
 
     /* --- Cassette+Slab (p8, big title variant) --- */
     .p8-casslab {
@@ -119,36 +116,444 @@ import Base from "../layouts/Base.astro";
     .p8-date { font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2); }
     .p8-edge { height: 20px; flex-shrink: 0; position: relative; border-top: 1px solid color-mix(in oklch, var(--accent) 35%, var(--border)); background: repeating-linear-gradient(0deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 8%, transparent) 19px, color-mix(in oklch, var(--accent) 8%, transparent) 20px), repeating-linear-gradient(90deg, transparent, transparent 19px, color-mix(in oklch, var(--accent) 8%, transparent) 19px, color-mix(in oklch, var(--accent) 8%, transparent) 20px), color-mix(in oklch, var(--accent) 3%, var(--bg)); }
 
-    /* --- Signal Ping Hybrid (bx, exploration) --- */
-    .bx-hybrid {
-      position: relative; overflow: hidden; background: var(--surface-2);
-      clip-path: polygon(4px 0, 4px 4px, 0 4px, 0 100%, calc(100% - 14px) 100%, 100% 50%, calc(100% - 14px) 0);
-      padding: 0; display: flex; flex-direction: column;
-      border-left: 1px dashed color-mix(in oklch, #1185fe 30%, var(--border));
-      border-top: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
-      border-bottom: 1px solid color-mix(in oklch, #1185fe 30%, var(--border));
+    /* --- NEW: Microfiche (post) --- */
+    .x-fiche {
+      position: relative; overflow: hidden;
+      background: #0a0c10;
+      border: 1px solid #1a1e28;
+      display: flex; flex-direction: column;
     }
-    .bx-hybrid::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 92% 50%, transparent 18px, color-mix(in oklch, #1185fe 22%, transparent) 19px, color-mix(in oklch, #1185fe 22%, transparent) 21px, transparent 22px, transparent 38px, color-mix(in oklch, #1185fe 15%, transparent) 39px, color-mix(in oklch, #1185fe 15%, transparent) 41px, transparent 42px, transparent 58px, color-mix(in oklch, #1185fe 10%, transparent) 59px, color-mix(in oklch, #1185fe 10%, transparent) 61px, transparent 62px);
-      pointer-events: none; z-index: 1;
+    .x-fiche::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: repeating-linear-gradient(90deg, #2a3040 0px, #2a3040 6px, transparent 6px, transparent 10px);
+      z-index: 2;
     }
-    .bx-header { display: flex; padding: var(--sp) var(--sp-2); padding-left: calc(var(--sp-2) + 4px); gap: var(--sp-2); background: color-mix(in oklch, #1185fe 4%, var(--surface)); border-bottom: 1px solid color-mix(in oklch, #1185fe 15%, var(--border)); flex-shrink: 0; font-family: var(--mono); font-size: var(--fs-s); position: relative; z-index: 2; }
-    .bx-field { color: var(--fg-2); border-right: 1px solid color-mix(in oklch, #1185fe 15%, var(--border)); padding-right: var(--sp-2); }
-    .bx-field:last-child { border-right: none; padding-right: 20px; }
-    .bx-field em { color: #1185fe; font-style: normal; }
-    .bx-body { flex: 1; padding: var(--sp-2) var(--sp-3); padding-right: 24px; display: flex; flex-direction: column; gap: var(--sp); position: relative; z-index: 2; font-size: var(--fs-s); line-height: var(--lh); color: var(--fg); }
-    .bx-footer { display: flex; align-items: center; justify-content: space-between; padding: var(--sp) var(--sp-2); padding-right: 24px; background: color-mix(in oklch, #1185fe 3%, var(--surface)); border-top: 1px solid color-mix(in oklch, #1185fe 12%, var(--border)); font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2); flex-shrink: 0; position: relative; z-index: 2; }
-    .bx-bars { display: flex; gap: 2px; align-items: flex-end; }
-    .bx-bars i { display: block; width: 3px; background: #1185fe; }
-    .bx-bars i:nth-child(1) { height: 4px; opacity: 0.4; }
-    .bx-bars i:nth-child(2) { height: 7px; opacity: 0.6; }
-    .bx-bars i:nth-child(3) { height: 10px; opacity: 0.9; }
+    .x-fiche-carrier {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px var(--sp-2); padding-top: 10px;
+      background: #0d1018;
+      border-bottom: 1px solid #1a1e28;
+      flex-shrink: 0;
+    }
+    .x-fiche-ref {
+      font-family: var(--mono); font-size: 9px;
+      color: #4a5570; letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .x-fiche-body {
+      flex: 1; padding: var(--sp-3);
+      display: flex; flex-direction: column;
+      justify-content: center; gap: var(--sp);
+    }
+    .x-fiche-body h3 {
+      font-size: var(--fs-l); font-weight: 700;
+      color: #c8d4e8;
+      text-shadow: 0 0 12px rgba(200, 212, 232, 0.15);
+    }
+    .x-fiche-body p {
+      font-size: var(--fs-s); color: #5a6a80;
+      line-height: var(--lh);
+    }
+    .x-fiche-body time {
+      font-family: var(--mono); font-size: var(--fs-s);
+      color: #3a4a60;
+    }
+    .x-fiche::after {
+      content: '';
+      position: absolute; top: 40%; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,212,232,0.06) 20%, rgba(200,212,232,0.06) 80%, transparent);
+      pointer-events: none;
+    }
+
+    /* --- NEW: Broadsheet (post) --- */
+    .x-broadsheet {
+      position: relative; overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+    }
+    .x-broadsheet-dateline {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: var(--sp) var(--sp-3);
+      border-bottom: 2px solid var(--fg);
+      flex-shrink: 0;
+    }
+    .x-broadsheet-dateline span {
+      font-family: var(--mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--fg-2);
+    }
+    .x-broadsheet-body {
+      flex: 1; padding: var(--sp-2) var(--sp-3);
+      display: flex; flex-direction: column;
+      justify-content: center; gap: var(--sp);
+    }
+    .x-broadsheet-body h3 {
+      font-size: var(--fs-l); font-weight: 800;
+      line-height: 1.1; color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+    .x-broadsheet-body p {
+      font-size: var(--fs-s); color: var(--fg-2);
+      line-height: var(--lh);
+    }
+    .x-broadsheet::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--fg);
+    }
+    /* Column rule for wider variants */
+    .s2 .x-broadsheet-body {
+      border-right: 1px solid color-mix(in oklch, var(--fg) 12%, transparent);
+      margin-right: 30%;
+      padding-right: var(--sp-3);
+    }
+
+    /* --- NEW: Polaroid (shot) --- */
+    .x-polaroid {
+      position: relative; overflow: hidden;
+      background: #e8e4de;
+      padding: 6px 6px 32px 6px;
+      display: flex; flex-direction: column;
+    }
+    .x-polaroid .shot-placeholder {
+      flex: 1; border-radius: 0;
+      background: linear-gradient(135deg, #1a1e28, #2a2e38);
+    }
+    .x-polaroid-caption {
+      position: absolute; bottom: 6px; left: 10px; right: 10px;
+      font-family: var(--mono); font-size: var(--fs-s);
+      color: #3a3632;
+      display: flex; justify-content: space-between;
+      line-height: 22px;
+    }
+
+    /* --- NEW: Slide Mount (shot) --- */
+    .x-slide {
+      position: relative; overflow: hidden;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 18px;
+      display: flex; flex-direction: column;
+    }
+    .x-slide::before {
+      content: '';
+      position: absolute; top: -6px; left: calc(50% - 10px);
+      width: 20px; height: 12px;
+      background: var(--bg);
+      border-radius: 0 0 10px 10px;
+      border: 1px solid var(--border);
+      border-top: none;
+      z-index: 2;
+    }
+    .x-slide .shot-placeholder {
+      flex: 1; border-radius: 0;
+    }
+    .x-slide-meta {
+      display: flex; justify-content: space-between;
+      padding-top: 4px;
+      font-family: var(--mono); font-size: 9px;
+      color: var(--fg-2); letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* --- NEW: Proof (shot) --- */
+    .x-proof {
+      position: relative; overflow: hidden;
+      background: #f5f3ef;
+      padding: 12px;
+      display: flex; flex-direction: column;
+    }
+    .x-proof .shot-placeholder {
+      flex: 1;
+      background: linear-gradient(135deg, #1a1e28, #2a2e38);
+    }
+    /* crop marks — four L-shapes at corners */
+    .x-proof::before,
+    .x-proof::after {
+      content: '';
+      position: absolute;
+      width: 14px; height: 14px;
+      border-color: #888;
+      border-style: solid;
+      border-width: 0;
+      z-index: 2;
+    }
+    .x-proof::before {
+      top: 4px; left: 4px;
+      border-top-width: 1px; border-left-width: 1px;
+    }
+    .x-proof::after {
+      top: 4px; right: 4px;
+      border-top-width: 1px; border-right-width: 1px;
+    }
+    .x-proof-bl, .x-proof-br {
+      position: absolute;
+      width: 14px; height: 14px;
+      border-color: #888;
+      border-style: solid;
+      border-width: 0;
+      z-index: 2;
+    }
+    .x-proof-bl { bottom: 4px; left: 4px; border-bottom-width: 1px; border-left-width: 1px; }
+    .x-proof-br { bottom: 4px; right: 4px; border-bottom-width: 1px; border-right-width: 1px; }
+    .x-proof-stamp {
+      position: absolute; bottom: 14px; right: 16px;
+      font-family: var(--mono); font-size: var(--fs-s);
+      font-weight: 700; color: #c44;
+      transform: rotate(-8deg);
+      z-index: 3;
+    }
+
+    /* --- NEW: Contact Sheet (multi-shot) --- */
+    .x-contact {
+      position: relative; overflow: hidden;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      padding: 6px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 3px;
+    }
+    .x-contact-frame {
+      position: relative;
+      background: linear-gradient(135deg, #1a1e28, #2a2e38);
+      overflow: hidden;
+    }
+    .x-contact-frame::after {
+      content: attr(data-n);
+      position: absolute; bottom: 1px; right: 3px;
+      font-family: var(--mono); font-size: 8px;
+      color: rgba(255,200,100,0.5);
+    }
+
+    /* --- NEW: Filmstrip (multi-shot) --- */
+    .x-filmstrip {
+      position: relative; overflow: hidden;
+      background: #111;
+      padding: 14px 4px;
+      display: flex; gap: 3px;
+    }
+    .x-filmstrip::before,
+    .x-filmstrip::after {
+      content: '';
+      position: absolute; left: 0; right: 0; height: 10px;
+      background: repeating-linear-gradient(90deg,
+        transparent 0px, transparent 8px,
+        #222 8px, #222 10px,
+        transparent 10px, transparent 16px,
+        #222 16px, #222 18px,
+        transparent 18px, transparent 24px
+      );
+      z-index: 2;
+    }
+    .x-filmstrip::before { top: 0; }
+    .x-filmstrip::after { bottom: 0; }
+    .x-filmstrip-frame {
+      flex: 1; min-width: 0;
+      background: linear-gradient(135deg, #1a1e28, #2a2e38);
+      position: relative;
+    }
+    .x-filmstrip-n {
+      position: absolute; bottom: 2px; left: 4px;
+      font-family: var(--mono); font-size: 8px;
+      color: rgba(255,200,100,0.4);
+    }
+
+    /* --- NEW: Gram (bsky) — telegram / cablegram --- */
+    .x-gram {
+      position: relative; overflow: hidden;
+      background: var(--surface);
+      border: 2px double var(--border);
+      display: flex; flex-direction: column;
+      padding: 0;
+    }
+    .x-gram-header {
+      padding: var(--sp) var(--sp-2);
+      border-bottom: 2px double var(--border);
+      display: flex; gap: var(--sp-3);
+      font-family: var(--mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--fg-2);
+      flex-shrink: 0;
+    }
+    .x-gram-header em { color: #1185fe; font-style: normal; }
+    .x-gram-body {
+      flex: 1; padding: var(--sp-2) var(--sp-3);
+      font-family: var(--mono); font-size: var(--fs-s);
+      text-transform: uppercase; letter-spacing: 0.04em;
+      line-height: 1.6; color: var(--fg);
+    }
+    .x-gram-footer {
+      padding: var(--sp) var(--sp-2);
+      border-top: 2px double var(--border);
+      font-family: var(--mono); font-size: 9px;
+      color: var(--fg-2); letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex; justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    /* --- NEW: Sticky (bsky) — post-it note --- */
+    .x-sticky {
+      position: relative; overflow: hidden;
+      background: color-mix(in oklch, #e8c840 12%, var(--surface));
+      border: none;
+      transform: rotate(-0.8deg);
+      box-shadow: 2px 3px 8px rgba(0,0,0,0.15);
+      padding: var(--sp-3);
+      display: flex; flex-direction: column;
+      gap: var(--sp);
+    }
+    .x-sticky::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 20px; height: 20px;
+      background: linear-gradient(225deg, var(--bg) 50%, color-mix(in oklch, #e8c840 8%, var(--surface-2)) 50%);
+      z-index: 2;
+    }
+    .x-sticky p {
+      font-size: var(--fs); line-height: var(--lh);
+      color: var(--fg);
+    }
+    .x-sticky-meta {
+      margin-top: auto;
+      font-family: var(--mono); font-size: var(--fs-s);
+      color: var(--fg-2);
+    }
+
+    /* --- NEW: Wire (bsky) — news wire bulletin --- */
+    .x-wire {
+      position: relative; overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+    }
+    .x-wire-header {
+      background: #1185fe;
+      color: var(--bg);
+      padding: 4px var(--sp-2);
+      font-family: var(--mono); font-size: 9px;
+      font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .x-wire-dateline {
+      padding: var(--sp) var(--sp-2);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--mono); font-size: 9px;
+      color: var(--fg-2); text-transform: uppercase;
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+    }
+    .x-wire-body {
+      flex: 1; padding: var(--sp-2) var(--sp-3);
+      font-size: var(--fs-s); line-height: var(--lh);
+      color: var(--fg);
+    }
+    .x-wire-stats {
+      padding: var(--sp) var(--sp-2);
+      border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 9px;
+      color: var(--fg-2);
+      display: flex; gap: var(--sp-3);
+      flex-shrink: 0;
+    }
+
+    /* --- NEW: Index Card (list) --- */
+    .x-index {
+      position: relative; overflow: hidden;
+      background: #f5f0e6;
+      border: 1px solid #d4cbb8;
+      display: flex; flex-direction: column;
+    }
+    .x-index::before {
+      content: '';
+      position: absolute; top: 0; left: calc(50% - 16px);
+      width: 32px; height: 14px;
+      background: color-mix(in oklch, var(--accent) 15%, #f5f0e6);
+      border-radius: 0 0 4px 4px;
+      border: 1px solid #d4cbb8;
+      border-top: none;
+    }
+    .x-index-head {
+      padding: 20px var(--sp-3) var(--sp);
+      border-bottom: 1px solid #d4cbb8;
+      flex-shrink: 0;
+    }
+    .x-index-head h3 {
+      font-size: var(--fs); font-weight: 700;
+      color: #2a2520; text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .x-index-body {
+      flex: 1; padding: var(--sp) var(--sp-3);
+      background: repeating-linear-gradient(0deg,
+        transparent, transparent 19px,
+        #e0d8c8 19px, #e0d8c8 20px
+      );
+    }
+    .x-index-item {
+      font-family: var(--mono); font-size: var(--fs-s);
+      color: #3a3530; line-height: 20px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .x-index-item::before {
+      content: '› ';
+      color: #8a7a68;
+    }
+    .x-index-num {
+      position: absolute; bottom: 6px; right: 10px;
+      font-family: var(--mono); font-size: 9px;
+      color: #a09080;
+    }
+
+    /* --- NEW: Blueprint (list) --- */
+    .x-blueprint {
+      position: relative; overflow: hidden;
+      background: #0c1a2e;
+      border: 1px solid #1a3050;
+      display: flex; flex-direction: column;
+      color: #8ab4e0;
+    }
+    .x-blueprint::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(100,160,220,0.06) 19px, rgba(100,160,220,0.06) 20px),
+        repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(100,160,220,0.06) 19px, rgba(100,160,220,0.06) 20px);
+      pointer-events: none;
+    }
+    .x-blueprint-head {
+      padding: var(--sp-2) var(--sp-3);
+      border-bottom: 1px solid #1a3050;
+      position: relative; z-index: 1;
+      flex-shrink: 0;
+    }
+    .x-blueprint-head h3 {
+      font-family: var(--mono); font-size: var(--fs-s);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: #c8e0ff;
+    }
+    .x-blueprint-body {
+      flex: 1; padding: var(--sp) var(--sp-3);
+      position: relative; z-index: 1;
+    }
+    .x-blueprint-item {
+      font-family: var(--mono); font-size: var(--fs-s);
+      line-height: 20px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .x-blueprint-item::before {
+      content: attr(data-n) '. ';
+      color: #4a7aa0;
+    }
 
     /* --- Link exploration variants (C, D, E) --- */
     .lC-intercept { position: relative; overflow: hidden; background: var(--bg); padding: 0; display: flex; flex-direction: column; color: var(--fg); clip-path: polygon(0 6px, 4% 2px, 8% 7px, 13% 3px, 18% 6px, 23% 1px, 28% 5px, 33% 2px, 38% 7px, 43% 3px, 48% 6px, 53% 1px, 58% 5px, 63% 2px, 68% 6px, 73% 3px, 78% 7px, 83% 2px, 88% 5px, 93% 1px, 97% 6px, 100% 3px, 100% 100%, calc(100% - 10px) 100%, calc(100% - 10px) calc(100% - 10px), 0 calc(100% - 10px)); border: 1px solid color-mix(in oklch, var(--link-accent) 35%, var(--border)); }
     .lC-intercept::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 22px, color-mix(in oklch, var(--link-accent) 6%, transparent) 22px, color-mix(in oklch, var(--link-accent) 6%, transparent) 23px); pointer-events: none; z-index: 1; }
-    .lC-stamp { position: absolute; top: 14px; right: 12px; font-family: var(--mono); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--link-accent); opacity: 0.25; transform: rotate(4deg); border: 1px solid color-mix(in oklch, var(--link-accent) 20%, transparent); padding: 1px 6px; z-index: 2; }
     .lC-head { display: flex; align-items: baseline; gap: var(--sp-2); padding: 12px var(--sp-3) var(--sp); flex-shrink: 0; position: relative; z-index: 2; }
     .lC-arrow { color: var(--link-accent); font-weight: 700; }
     .lC-domain, .lD-domain, .lE-domain { font-family: var(--mono); font-size: var(--fs-s); color: var(--link-accent); opacity: 0.8; }
@@ -179,6 +584,7 @@ import Base from "../layouts/Base.astro";
 
     @media (max-width: 700px) {
       .demo-row { height: 140px; }
+      .demo-row.tall { height: 240px; }
       .demo-label { width: 70px; font-size: 9px; }
     }
   </style>
@@ -229,34 +635,12 @@ import Base from "../layouts/Base.astro";
     </div>
 
     <div class="demo-row">
-      <span class="demo-label accent">Dossier</span>
-      <div class="tile tile-post post-dossier">
-        <div class="post-body"><span class="post-type">post</span><h3>On Craft</h3><time>2024-06-22</time></div>
-      </div>
-      <div class="tile tile-post post-dossier s2">
-        <div class="post-body"><span class="post-type">post</span><h3>Building UI in GPUI</h3><p class="post-excerpt">Tab protrusion, ruled paper, classified stamp</p><time>2024-08-20</time></div>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-label accent">Manifest</span>
-      <div class="tile tile-post post-manifest">
-        <span class="post-sku">SKU-007</span>
-        <div class="post-body"><span class="post-type">post</span><h3>On Craft</h3><time>2024-06-22</time></div>
-      </div>
-      <div class="tile tile-post post-manifest s2">
-        <span class="post-sku">SKU-012</span>
-        <div class="post-body"><span class="post-type">post</span><h3>Building UI in GPUI</h3><p class="post-excerpt">Dashed border, barcode stripe, shipping label</p><time>2024-08-20</time></div>
-      </div>
-    </div>
-
-    <div class="demo-row">
       <span class="demo-label accent">Terminal</span>
       <div class="tile tile-post post-terminal">
         <div class="post-term-body"><span class="post-prompt">2024-06-22</span><h3 class="post-term-title">On Craft<span class="post-term-cursor"></span></h3></div>
       </div>
       <div class="tile tile-post post-terminal s2">
-        <div class="post-term-body"><span class="post-prompt">2024-08-20</span><h3 class="post-term-title">Building UI in GPUI<span class="post-term-cursor"></span></h3><p class="post-excerpt" style="color: #4ade80; opacity: 0.7;">CRT scanlines, green text, blinking cursor</p></div>
+        <div class="post-term-body"><span class="post-prompt">2024-08-20</span><h3 class="post-term-title">Building UI in GPUI<span class="post-term-cursor"></span></h3><p class="post-excerpt" style="color: #4ade80; opacity: 0.7;">A deep look at the rendering framework behind Zed</p></div>
       </div>
     </div>
 
@@ -283,7 +667,30 @@ import Base from "../layouts/Base.astro";
         <div class="p7-row p7-row-active"><span class="p7-col p7-col-id">12</span><span class="p7-col p7-col-dest">BUILDING UI IN GPUI</span><span class="p7-col p7-col-time">08-20</span><span class="p7-col p7-col-status p7-live">LIVE</span></div>
         <div class="p7-row"><span class="p7-col p7-col-id">11</span><span class="p7-col p7-col-dest">DESIGN TOKENS AT SCALE</span><span class="p7-col p7-col-time">07-15</span><span class="p7-col p7-col-status">ARCH</span></div>
         <div class="p7-row p7-row-dim"><span class="p7-col p7-col-id">10</span><span class="p7-col p7-col-dest">THOUGHTS ON CRAFT</span><span class="p7-col p7-col-time">06-22</span><span class="p7-col p7-col-status">ARCH</span></div>
-        <div class="p7-row p7-row-dim"><span class="p7-col p7-col-id">09</span><span class="p7-col p7-col-dest">SHIPPING INCREMENTALLY</span><span class="p7-col p7-col-time">05-10</span><span class="p7-col p7-col-status">ARCH</span></div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label accent">Microfiche</span>
+      <div class="x-fiche">
+        <div class="x-fiche-carrier"><span class="x-fiche-ref">NR-07 / POST</span><span class="x-fiche-ref">REEL 3</span></div>
+        <div class="x-fiche-body"><h3>On Craft</h3><time>2024-06-22</time></div>
+      </div>
+      <div class="x-fiche s2">
+        <div class="x-fiche-carrier"><span class="x-fiche-ref">NR-12 / POST</span><span class="x-fiche-ref">REEL 3</span></div>
+        <div class="x-fiche-body"><h3>Building UI in GPUI</h3><p>A deep look at the rendering framework behind Zed</p><time>2024-08-20</time></div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label accent">Broadsheet</span>
+      <div class="x-broadsheet">
+        <div class="x-broadsheet-dateline"><span>Post</span><span>Jun 22, 2024</span></div>
+        <div class="x-broadsheet-body"><h3>On Craft</h3></div>
+      </div>
+      <div class="x-broadsheet s2">
+        <div class="x-broadsheet-dateline"><span>Post</span><span>Aug 20, 2024</span></div>
+        <div class="x-broadsheet-body"><h3>Building UI in GPUI</h3><p>A deep look at the rendering framework behind Zed</p></div>
       </div>
     </div>
 
@@ -309,21 +716,48 @@ import Base from "../layouts/Base.astro";
     </div>
 
     <div class="demo-row">
-      <span class="demo-label shot">Thermal</span>
-      <div class="tile tile-shot shot-thermal"><div class="shot-placeholder"></div><div class="shot-scale"></div><span class="shot-temp">15&deg;C</span></div>
-      <div class="tile tile-shot shot-thermal s2"><div class="shot-placeholder"></div><div class="shot-scale"></div><span class="shot-temp">42&deg;C</span></div>
+      <span class="demo-label shot">Polaroid</span>
+      <div class="x-polaroid"><div class="shot-placeholder"></div><div class="x-polaroid-caption"><span>#15</span><span>Jun 2024</span></div></div>
+      <div class="x-polaroid s2"><div class="shot-placeholder"></div><div class="x-polaroid-caption"><span>gpui Fractals &amp; More</span><span>Feb 2025</span></div></div>
     </div>
+
+    <div class="demo-row">
+      <span class="demo-label shot">Slide</span>
+      <div class="x-slide"><div class="shot-placeholder"></div><div class="x-slide-meta"><span>S-015</span><span>2024</span></div></div>
+      <div class="x-slide s2"><div class="shot-placeholder"></div><div class="x-slide-meta"><span>S-042</span><span>Feb 2025</span></div></div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label shot">Proof</span>
+      <div class="x-proof"><div class="shot-placeholder"></div><div class="x-proof-bl"></div><div class="x-proof-br"></div><span class="x-proof-stamp">PRINT</span></div>
+      <div class="x-proof s2"><div class="shot-placeholder"></div><div class="x-proof-bl"></div><div class="x-proof-br"></div><span class="x-proof-stamp">PRINT</span></div>
+    </div>
+
+    <!-- ═══════════════════ MULTI-SHOT ═══════════════════ -->
+    <div class="demo-section"><h2>Multi-Shot</h2></div>
 
     <div class="demo-row">
       <span class="demo-label shot">Contact</span>
-      <div class="tile tile-shot shot-contact"><div class="shot-placeholder"></div><span class="shot-frame">07A</span></div>
-      <div class="tile tile-shot shot-contact s2"><div class="shot-placeholder"></div><span class="shot-frame">15A</span></div>
+      <div class="x-contact s3">
+        <div class="x-contact-frame" data-n="1A"></div>
+        <div class="x-contact-frame" data-n="2A"></div>
+        <div class="x-contact-frame" data-n="3A"></div>
+        <div class="x-contact-frame" data-n="4A"></div>
+        <div class="x-contact-frame" data-n="5A"></div>
+        <div class="x-contact-frame" data-n="6A"></div>
+        <div class="x-contact-frame" data-n="7A"></div>
+        <div class="x-contact-frame" data-n="8A"></div>
+      </div>
     </div>
 
     <div class="demo-row">
-      <span class="demo-label shot">Specimen</span>
-      <div class="tile tile-shot shot-specimen"><div class="shot-placeholder"></div><div class="shot-mount"><span class="shot-mount-id">#07</span><span class="shot-mount-label">2024-06-22</span></div></div>
-      <div class="tile tile-shot shot-specimen s2"><div class="shot-placeholder"></div><div class="shot-mount"><span class="shot-mount-id">#42</span><span class="shot-mount-label">2025-01-10</span></div></div>
+      <span class="demo-label shot">Filmstrip</span>
+      <div class="x-filmstrip s3">
+        <div class="x-filmstrip-frame"><span class="x-filmstrip-n">01</span></div>
+        <div class="x-filmstrip-frame"><span class="x-filmstrip-n">02</span></div>
+        <div class="x-filmstrip-frame"><span class="x-filmstrip-n">03</span></div>
+        <div class="x-filmstrip-frame"><span class="x-filmstrip-n">04</span></div>
+      </div>
     </div>
 
     <!-- ═══════════════════ BSKY ═══════════════════ -->
@@ -333,63 +767,137 @@ import Base from "../layouts/Base.astro";
       <span class="demo-label bsky">Packet</span>
       <div class="tile tile-bsky">
         <div class="bsky-header"><span class="bsky-field"><em>SRC</em> nate.rip</span><span class="bsky-field"><em>TS</em> 2d</span></div>
-        <div class="bsky-body"><p class="bsky-text">Short post at 1x1 size</p></div>
+        <div class="bsky-body"><p class="bsky-text">Short post at 1x1</p></div>
         <div class="bsky-checksum">0x03 likes</div>
       </div>
       <div class="tile tile-bsky s2">
         <div class="bsky-header"><span class="bsky-field"><em>SRC</em> nate.rip</span><span class="bsky-field"><em>TS</em> 2d ago</span><span class="bsky-field"><em>LEN</em> 142</span></div>
-        <div class="bsky-body"><p class="bsky-text">Signal Packet — stepped stamp corners, structured header with field dividers, dashed side borders, hex checksum footer</p></div>
+        <div class="bsky-body"><p class="bsky-text">Signal Packet — stepped stamp corners, structured header, hex checksum footer</p></div>
         <div class="bsky-checksum">0x0F likes &bull; 0x03 rpl</div>
       </div>
     </div>
 
     <div class="demo-row">
-      <span class="demo-label bsky">Ping</span>
-      <div class="tile tile-bsky bsky-ping" style="display: flex; flex-direction: row;">
-        <div class="bsky-telem"><div class="bsky-bar"></div><div class="bsky-bar"></div><div class="bsky-bar"></div></div>
-        <div class="bsky-ping-body"><span class="bsky-rx">RX</span><p class="bsky-text">Ping 1x1</p></div>
+      <span class="demo-label bsky">Gram</span>
+      <div class="x-gram">
+        <div class="x-gram-header"><span><em>TO:</em> TIMELINE</span><span><em>FROM:</em> NATE.RIP</span></div>
+        <div class="x-gram-body">HAVING A BLAST TONIGHT COOKING A NEW NATE.RIP STOP</div>
+        <div class="x-gram-footer"><span>2D AGO</span><span>END</span></div>
       </div>
-      <div class="tile tile-bsky bsky-ping s2" style="display: flex; flex-direction: row;">
-        <div class="bsky-telem"><div class="bsky-bar"></div><div class="bsky-bar"></div><div class="bsky-bar"></div></div>
-        <div class="bsky-ping-body"><span class="bsky-rx">RX</span><p class="bsky-text">Comm Ping — chevron shape with radar rings from right edge, telemetry sidebar</p><span style="font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">3d ago</span></div>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-label bsky">Torn</span>
-      <div class="tile tile-bsky bsky-torn">
-        <span class="bsky-torn-tag">bsky</span><p class="bsky-text">Torn at 1x1</p><div class="bsky-torn-stripe"></div>
-      </div>
-      <div class="tile tile-bsky bsky-torn s2">
-        <span class="bsky-torn-tag">bsky</span><p class="bsky-text">Torn Fragment — jagged top edge, paper texture, drop shadow, organic counterpoint</p><span style="font-family: var(--mono); font-size: var(--fs-s); color: var(--fg-2);">5d ago</span><div class="bsky-torn-stripe"></div>
+      <div class="x-gram s2">
+        <div class="x-gram-header"><span><em>TO:</em> TIMELINE</span><span><em>FROM:</em> NATE.RIP</span><span><em>PRI:</em> ROUTINE</span></div>
+        <div class="x-gram-body">THIS FEED IS SUCH A BETTER OVERALL EXPERIENCE ON BSKY STOP I LOVE THE PROOF IT IS OF THE VALUE OF USER-CREATED ALGORITHMS STOP</div>
+        <div class="x-gram-footer"><span>1MO AGO</span><span>3 LIKES</span><span>END</span></div>
       </div>
     </div>
 
     <div class="demo-row">
-      <span class="demo-label bsky">Broadcast</span>
-      <div class="tile tile-bsky bsky-broadcast">
-        <span class="bsky-channel">CH</span>
-        <div class="bsky-broadcast-body"><span class="bsky-live">5d ago</span><p class="bsky-text">Broadcast 1x1</p></div>
-        <div class="bsky-broadcast-foot">3 likes</div>
+      <span class="demo-label bsky">Sticky</span>
+      <div class="x-sticky">
+        <p>having a blast tonight cooking a new nate.rip</p>
+        <span class="x-sticky-meta">2d ago</span>
       </div>
-      <div class="tile tile-bsky bsky-broadcast s2">
-        <span class="bsky-channel">CH</span>
-        <div class="bsky-broadcast-body"><span class="bsky-live">2d ago</span><p class="bsky-text">Broadcast — TV static noise, rounded corners, channel badge, live pulse indicator</p></div>
-        <div class="bsky-broadcast-foot">5 likes &bull; 2 replies</div>
+      <div class="x-sticky s2">
+        <p>This feed is such a better overall experience on bsky. I love the proof it is of the value of user-created algorithms.</p>
+        <span class="x-sticky-meta">1mo ago &bull; 3 likes</span>
       </div>
     </div>
 
     <div class="demo-row">
-      <span class="demo-label bsky">Hybrid</span>
-      <div class="bx-hybrid">
-        <div class="bx-header"><span class="bx-field"><em>SRC</em> nate.rip</span><span class="bx-field"><em>TS</em> 5d</span></div>
-        <div class="bx-body">Hybrid 1x1</div>
-        <div class="bx-footer"><span>0x03</span><div class="bx-bars"><i></i><i></i><i></i></div></div>
+      <span class="demo-label bsky">Wire</span>
+      <div class="x-wire">
+        <div class="x-wire-header">BULLETIN</div>
+        <div class="x-wire-dateline">BSKY &mdash; 2d ago</div>
+        <div class="x-wire-body">having a blast tonight cooking a new nate.rip ~ astro, backed by atproto</div>
+        <div class="x-wire-stats"><span>3 likes</span><span>1 reply</span></div>
       </div>
-      <div class="bx-hybrid s2">
-        <div class="bx-header"><span class="bx-field"><em>SRC</em> nate.rip</span><span class="bx-field"><em>TS</em> 2d ago</span><span class="bx-field"><em>LEN</em> 142</span></div>
-        <div class="bx-body">Signal Ping Hybrid — chevron + packet header + concentric rings + hex footer</div>
-        <div class="bx-footer"><span>0x0F &bull; 0x03 rpl</span><div class="bx-bars"><i></i><i></i><i></i></div></div>
+      <div class="x-wire s2">
+        <div class="x-wire-header">BULLETIN</div>
+        <div class="x-wire-dateline">BSKY &mdash; 1mo ago</div>
+        <div class="x-wire-body">This feed is such a better overall experience on bsky. I love the proof it is of the value of user-created algorithms. Great work.</div>
+        <div class="x-wire-stats"><span>3 likes</span><span>2 replies</span></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ LISTS ═══════════════════ -->
+    <div class="demo-section"><h2>Lists</h2></div>
+
+    <div class="demo-row">
+      <span class="demo-label meta">Current</span>
+      <div class="tile tile-list s3">
+        <div class="list-head"><span class="list-type">list</span><h3>Immediate Mode GUI Resources</h3></div>
+        <div class="list-items"><div class="list-item">Design</div><div class="list-item">About the IMGUI Paradigm</div><div class="list-item">Why is UI in Rust So Hard?</div></div>
+        <div class="list-foot"><span>+19 more</span><time>2025-07-11</time></div>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label meta">Index Card</span>
+      <div class="x-index s3">
+        <div class="x-index-head"><h3>Immediate Mode GUI Resources</h3></div>
+        <div class="x-index-body">
+          <div class="x-index-item">Design</div>
+          <div class="x-index-item">About the IMGUI Paradigm</div>
+          <div class="x-index-item">Why is UI in Rust So Hard?</div>
+          <div class="x-index-item">Immediate-Mode Graphical User Interfaces</div>
+          <div class="x-index-item">Managing State</div>
+        </div>
+        <span class="x-index-num">039</span>
+      </div>
+    </div>
+
+    <div class="demo-row">
+      <span class="demo-label meta">Blueprint</span>
+      <div class="x-blueprint s3">
+        <div class="x-blueprint-head"><h3>Immediate Mode GUI Resources</h3></div>
+        <div class="x-blueprint-body">
+          <div class="x-blueprint-item" data-n="1">Design</div>
+          <div class="x-blueprint-item" data-n="2">About the IMGUI Paradigm</div>
+          <div class="x-blueprint-item" data-n="3">Why is UI in Rust So Hard?</div>
+          <div class="x-blueprint-item" data-n="4">Immediate-Mode Graphical User Interfaces</div>
+          <div class="x-blueprint-item" data-n="5">Managing State</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ LOG ═══════════════════ -->
+    <div class="demo-section"><h2>Log</h2></div>
+
+    <div class="demo-row tall">
+      <span class="demo-label meta">Current</span>
+      <div class="tile tile-log s3" style="position: relative;">
+        <div class="log-chrome-top">
+          <div class="log-rivets"><i></i><i></i><i></i><i></i></div>
+          <div class="log-label">log</div>
+          <span class="log-count">65</span>
+        </div>
+        <div class="log-body"><div class="log-screen"><div class="log-entries">
+          <div class="log-row"><span class="log-id">40</span><span class="log-type type-post">post</span><span class="log-title">CSS Grid Lanes</span><time class="log-date">2026-02-06</time></div>
+          <div class="log-row"><span class="log-id">56</span><span class="log-type type-post">post</span><span class="log-title">Spool</span><time class="log-date">2026-01-26</time></div>
+          <div class="log-row"><span class="log-id log-bsky">bs</span><span class="log-type type-bsky">bsky</span><span class="log-title">having a blast tonight...</span><time class="log-date">2026-02-07</time></div>
+          <div class="log-row"><span class="log-id">35</span><span class="log-type type-shot">shot</span><span class="log-title">gpui Fractals &amp; More</span><time class="log-date">2025-02-22</time></div>
+          <div class="log-row"><span class="log-id">39</span><span class="log-type type-list">list</span><span class="log-title">Immediate Mode GUI Resources</span><time class="log-date">2025-07-11</time></div>
+          <div class="log-row"><span class="log-id">57</span><span class="log-type type-link">link</span><span class="log-title">Product Design Is Lost</span><time class="log-date">2025-07-09</time></div>
+        </div></div></div>
+        <div class="log-chrome-bottom"><div class="log-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ FEED ═══════════════════ -->
+    <div class="demo-section"><h2>Bsky Feed</h2></div>
+
+    <div class="demo-row tall">
+      <span class="demo-label meta">Current</span>
+      <div class="tile tile-feed s3" style="position: relative;" data-type="bsky">
+        <div class="feed-bezel">
+          <div class="feed-header"><span class="feed-icon">@</span><span class="feed-label">nate.rip on bsky</span><div class="feed-signal"><i></i><i></i><i></i></div></div>
+          <div class="feed-screen"><div class="feed-crt"></div><div class="feed-vignette"></div><div class="feed-entries">
+            <div class="feed-row"><div class="feed-text">having a blast tonight cooking a new nate.rip ~ astro, backed by atproto</div><div class="feed-meta"><time>today</time></div></div>
+            <div class="feed-row"><div class="feed-text">seems like a timely day for a repost</div><div class="feed-meta"><time>14d ago</time><span class="feed-repost">repost</span></div></div>
+            <div class="feed-row"><div class="feed-text">A local-first, zero-cloud, peer sync wiki for friends and family</div><div class="feed-meta"><time>23d ago</time><span class="feed-repost">repost</span></div></div>
+          </div></div>
+          <div class="feed-statusbar"><span>23 posts</span><span class="feed-pulse"></span></div>
+        </div>
       </div>
     </div>
 
@@ -417,7 +925,6 @@ import Base from "../layouts/Base.astro";
     <div class="demo-row">
       <span class="demo-label link">Intercept</span>
       <div class="lC-intercept s3">
-        <span class="lC-stamp">intercepted</span>
         <div class="lC-head"><span class="lC-arrow">↗</span><span class="lC-domain">daniloleal.co</span><span class="lC-date">2024-09-11</span></div>
         <div class="lC-body"><h3>The Surprising Complexity of Design Systems</h3></div>
       </div>
