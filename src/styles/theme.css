@@ -183,22 +183,30 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 .tile-text-xl { grid-column: span 2; grid-row: span 2; }
 .tile-text-tall { grid-row: span 2; }
 
-/* === Header tile — horizontal nav bar === */
+/* === Header — transparent nav bar === */
 
 .tile-header {
   grid-column: 1 / -1;
   grid-row: span 1;
-  background: var(--surface);
-  padding: var(--sp-2) var(--sp-3);
-  border-top: 2px solid var(--accent);
+  background: none;
+  border: none;
+  clip-path: none;
+  padding: var(--sp-2) var(--sp);
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--sp-3);
   height: auto;
   min-height: 0;
 }
 .tile-header:hover { transform: none; }
-.tile-header h1 { white-space: nowrap; }
+.tile-header h1 {
+  font-family: var(--mono);
+  font-size: var(--fs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  white-space: nowrap;
+}
 .header-count {
   font-family: var(--mono);
   font-size: var(--fs-s);
@@ -206,33 +214,29 @@ hr { border: none; border-top: var(--border-w) solid var(--border); margin: var(
 }
 .header-filters {
   display: flex;
-  gap: var(--sp);
+  gap: var(--sp-2);
   margin-left: auto;
 }
 .filter-btn {
   background: none;
-  border: 1px solid var(--border);
+  border: none;
   color: var(--fg-2);
   font-family: var(--mono);
   font-size: var(--fs-s);
-  padding: 2px var(--sp-2);
+  padding: 0;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: all 0.15s;
-  clip-path: polygon(0 0, calc(100% - 3px) 0, 100% 3px, 100% 100%, 3px 100%, 0 calc(100% - 3px));
+  transition: color 0.15s;
+  clip-path: none;
 }
-.filter-btn:hover { background: var(--surface-2); }
-.filter-btn.active {
-  background: var(--surface-2);
-  color: var(--fg);
-  border-color: var(--fg-2);
-}
-.filter-btn[data-filter="post"].active { border-color: var(--accent); color: var(--accent); }
-.filter-btn[data-filter="shot"].active { border-color: var(--accent-2); color: var(--accent-2); }
-.filter-btn[data-filter="list"].active { border-color: var(--list-accent); color: var(--list-accent); }
-.filter-btn[data-filter="link"].active { border-color: var(--link-accent); color: var(--link-accent); }
-.filter-btn[data-filter="bsky"].active { border-color: #1185fe; color: #1185fe; }
+.filter-btn:hover { color: var(--fg); }
+.filter-btn.active { color: var(--fg); }
+.filter-btn[data-filter="post"].active { color: var(--accent); }
+.filter-btn[data-filter="shot"].active { color: var(--accent-2); }
+.filter-btn[data-filter="list"].active { color: var(--list-accent); }
+.filter-btn[data-filter="link"].active { color: var(--link-accent); }
+.filter-btn[data-filter="bsky"].active { color: #1185fe; }
 
 /* === Hero elements (scanlines, corners, info) === */
 
