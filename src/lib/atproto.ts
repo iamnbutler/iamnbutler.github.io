@@ -69,7 +69,9 @@ export function blobUrl(did: string, cid: string): string {
 // === Bluesky public API ===
 
 function mapBskyPost(post: any): BskyPost {
-  const images = post.embed?.$type === 'app.bsky.embed.images#view'
+  const embedType = post.embed?.$type;
+
+  const images = embedType === 'app.bsky.embed.images#view'
     ? post.embed.images.map((img: any) => ({
         thumb: img.thumb,
         fullsize: img.fullsize,
@@ -78,7 +80,15 @@ function mapBskyPost(post: any): BskyPost {
       }))
     : undefined;
 
-  const externalEmbed = post.embed?.$type === 'app.bsky.embed.external#view'
+  const video = embedType === 'app.bsky.embed.video#view'
+    ? {
+        playlist: post.embed.playlist,
+        thumbnail: post.embed.thumbnail,
+        aspectRatio: post.embed.aspectRatio,
+      }
+    : undefined;
+
+  const externalEmbed = embedType === 'app.bsky.embed.external#view'
     ? {
         uri: post.embed.external.uri,
         title: post.embed.external.title || '',
@@ -86,6 +96,12 @@ function mapBskyPost(post: any): BskyPost {
         thumb: post.embed.external.thumb,
       }
     : undefined;
+
+  // Best available thumbnail: images > video thumbnail > external thumb
+  const mediaThumb = images?.[0]?.fullsize
+    ?? video?.thumbnail
+    ?? externalEmbed?.thumb
+    ?? undefined;
 
   return {
     uri: post.uri,
@@ -98,10 +114,13 @@ function mapBskyPost(post: any): BskyPost {
       avatar: post.author.avatar,
     },
     images,
+    video,
     externalEmbed,
     likeCount: post.likeCount ?? 0,
     replyCount: post.replyCount ?? 0,
     repostCount: post.repostCount ?? 0,
+    hasMedia: !!(images?.length || video || externalEmbed?.thumb),
+    mediaThumb,
   };
 }
 
@@ -129,7 +148,11 @@ export async function fetchBskyFeed(limit: number = 20, excludeRkeys: Set<string
   if (!res.ok) return [];
   const data = await res.json();
   return (data.feed ?? [])
-    .map((item: any) => mapBskyPost(item.post))
+    .map((item: any) => {
+      const p = mapBskyPost(item.post);
+      p.isRepost = item.reason?.$type === 'app.bsky.feed.defs#reasonRepost';
+      return p;
+    })
     .filter((p: BskyPost) => !excludeRkeys.has(p.rkey));
 }
 
