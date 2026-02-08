@@ -73,8 +73,11 @@ export function bskySize(p: BskyPost, i: number): string {
 
 export function excerpt(text: string, len: number = 120): string {
   return text
-    .replace(/[#*_\[\]()>`~\-]/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // markdown links → link text only
+    .replace(/https?:\/\/\S+/g, '')           // bare URLs
+    .replace(/[#*_>`~]/g, '')
     .replace(/\n+/g, ' ')
+    .replace(/\s{2,}/g, ' ')
     .trim()
     .slice(0, len);
 }
