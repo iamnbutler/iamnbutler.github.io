@@ -1,72 +1,189 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { fetchAllFragments, fetchFragment, blobUrl, DID } from '../../lib/atproto';
-import { renderMarkdown } from '../../lib/markdown';
+import { fetchAllFragments, blobUrl, DID } from '../../lib/atproto';
+import { renderMarkdown, extractHeadings } from '../../lib/markdown';
 import type { Fragment } from '../../lib/types';
 
 export async function getStaticPaths() {
   const fragments = await fetchAllFragments();
-  return fragments.map(f => ({ params: { id: String(f.id) }, props: { fragment: f } }));
+  return fragments.map(f => ({
+    params: { id: String(f.id) },
+    props: { fragment: f, allFragments: fragments },
+  }));
 }
 
-const { fragment } = Astro.props as { fragment: Fragment };
+const { fragment, allFragments } = Astro.props as {
+  fragment: Fragment;
+  allFragments: Fragment[];
+};
+
 const html = fragment.content ? await renderMarkdown(fragment.content) : '';
+const headings = fragment.content ? extractHeadings(fragment.content) : [];
 const imageCount = fragment.images?.length ?? 0;
+
+const wordCount = fragment.content
+  ? fragment.content.replace(/[#*_\[\]()>`~\-]/g, '').split(/\s+/).filter(Boolean).length
+  : 0;
+
+// Prev/next by fragment ID
+const sorted = [...allFragments].sort((a, b) => a.id - b.id);
+const idx = sorted.findIndex(f => f.id === fragment.id);
+const prev = idx > 0 ? sorted[idx - 1] : null;
+const next = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+
+// Related: same type, exclude current, newest first, take 6
+const related = allFragments
+  .filter(f => f.type === fragment.type && f.id !== fragment.id)
+  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  .slice(0, 6);
+
+const typeAccent: Record<string, string> = {
+  post: 'var(--accent)',
+  shot: 'var(--accent-2)',
+  list: 'var(--list-accent)',
+  link: 'var(--link-accent)',
+};
+const accent = typeAccent[fragment.type] || 'var(--accent)';
+const date = new Date(fragment.createdAt).toISOString().slice(0, 10);
 ---
-<Base title={fragment.title}>
-  <nav style="margin-bottom: var(--sp-2);">
-    <a href="/" class="panel-sm" style="display: inline-block; padding: var(--sp) var(--sp-2); font-family: var(--mono); font-size: var(--fs-s); text-transform: uppercase; letter-spacing: 0.05em;">&larr; back</a>
-  </nav>
+<Base title={fragment.title} wide>
+  <div class="detail-page" style={`--type-accent: ${accent}`}>
 
-  <header class="frag-header">
-    <h1>{fragment.title}</h1>
-    <div class="frag-meta">
-      <span class={`type-${fragment.type}`}>#{fragment.id}</span>
-      <span> · </span>
-      <span class={`type-${fragment.type}`}>{fragment.type}</span>
-      <span> · </span>
-      <time datetime={fragment.createdAt}>{new Date(fragment.createdAt).toISOString().slice(0, 10)}</time>
-    </div>
-  </header>
+    <!-- === Chrome bar header === -->
+    <header class="d-chrome">
+      <div class="d-chrome-rivets"><i /><i /><i /><i /></div>
+      <a href="/" class="d-chrome-back">&larr; index</a>
+      <span class={`d-chrome-type type-${fragment.type}`}>{fragment.type}</span>
+      <span class="d-chrome-id">#{String(fragment.id).padStart(2, '0')}</span>
+      <time class="d-chrome-date">{date}</time>
+      <div class="d-chrome-ticks"><i /><i /><i /><i /><i /></div>
+    </header>
 
-  {fragment.type === 'shot' && fragment.images && (
-    <div class="gallery">
-      {fragment.images.map((img, i) => {
-        const isFirst = i === 0;
-        const isLast = i === imageCount - 1;
-        const oddRemaining = (imageCount - 1) % 2 === 1;
-        const spanFull = isFirst || (isLast && oddRemaining && imageCount > 1);
-        return (
-          <div class:list={['gallery-item', spanFull && 'gallery-full']}>
-            <img src={blobUrl(DID, img.cid)} alt={img.alt || fragment.title} />
-            {imageCount > 1 && <span class="gallery-idx">{i + 1}/{imageCount}</span>}
+    <!-- === Title === -->
+    <h1 class="d-title">{fragment.title}</h1>
+
+    <!-- === Body: main + sidebar === -->
+    <div class="d-body">
+
+      <!-- Main content -->
+      <main class="d-main">
+
+        {/* Shot gallery */}
+        {fragment.type === 'shot' && fragment.images && (
+          <div class="d-gallery">
+            {fragment.images.map((img, i) => {
+              const isFirst = i === 0;
+              const isLast = i === imageCount - 1;
+              const oddRemaining = (imageCount - 1) % 2 === 1;
+              const spanFull = isFirst || (isLast && oddRemaining && imageCount > 1);
+              return (
+                <div class:list={['d-gallery-item', spanFull && 'd-gallery-full']}>
+                  <img src={blobUrl(DID, img.cid)} alt={img.alt || fragment.title} loading="lazy" />
+                  <div class="d-gallery-chrome">
+                    <span class="d-gallery-n">{String(i + 1).padStart(2, '0')}/{String(imageCount).padStart(2, '0')}</span>
+                    <span class="d-gallery-exposure">f/{fragment.id}</span>
+                  </div>
+                  {/* Crosshair overlays */}
+                  <div class="d-gallery-crosshair" />
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        )}
+
+        {/* Prose content — no wrapping container */}
+        {html && (
+          <div class="d-prose" set:html={html} />
+        )}
+
+        {/* Link target */}
+        {fragment.type === 'link' && fragment.url && (
+          <a href={fragment.url} target="_blank" rel="noopener" class="d-link-target">
+            <span class="d-link-signal">&nearr;</span>
+            <span class="d-link-url">{fragment.url}</span>
+          </a>
+        )}
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="d-sidebar">
+        {/* TOC */}
+        {headings.length > 0 && (
+          <div class="d-sb-panel">
+            <div class="d-sb-chrome">
+              <span class="d-sb-dot" /><span class="d-sb-dot" />
+              <span class="d-sb-label">contents</span>
+            </div>
+            <nav class="d-sb-toc">
+              {headings.map(h => (
+                <a href={`#${h.slug}`} class:list={['d-toc-link', h.level === 3 && 'd-toc-sub']}>
+                  {h.text}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
+
+        {/* Prev/Next nav */}
+        <div class="d-sb-panel">
+          <div class="d-sb-chrome">
+            <span class="d-sb-dot" />
+            <span class="d-sb-label">nav</span>
+          </div>
+          <div class="d-sb-nav">
+            {prev ? (
+              <a href={`/f/${prev.id}`} class="d-nav-link">
+                <span class="d-nav-dir">&larr; prev</span>
+                <span class="d-nav-title">{prev.title}</span>
+              </a>
+            ) : <span class="d-nav-link d-nav-dead">&larr; —</span>}
+            {next ? (
+              <a href={`/f/${next.id}`} class="d-nav-link">
+                <span class="d-nav-dir">next &rarr;</span>
+                <span class="d-nav-title">{next.title}</span>
+              </a>
+            ) : <span class="d-nav-link d-nav-dead">&rarr; —</span>}
+          </div>
+        </div>
+
+        {/* Info panel — moved down */}
+        <div class="d-sb-panel">
+          <div class="d-sb-chrome">
+            <span class="d-sb-dot" /><span class="d-sb-dot" /><span class="d-sb-dot" />
+            <span class="d-sb-label">sys</span>
+          </div>
+          <div class="d-sb-rows">
+            <div class="d-sb-row"><span class="d-sb-k">TYPE</span><span class={`d-sb-v type-${fragment.type}`}>{fragment.type}</span></div>
+            <div class="d-sb-row"><span class="d-sb-k">FRAG</span><span class="d-sb-v">{fragment.id}</span></div>
+            <div class="d-sb-row"><span class="d-sb-k">DATE</span><span class="d-sb-v">{date}</span></div>
+            {wordCount > 0 && <div class="d-sb-row"><span class="d-sb-k">WORDS</span><span class="d-sb-v">{wordCount}</span></div>}
+            {imageCount > 0 && <div class="d-sb-row"><span class="d-sb-k">IMG</span><span class="d-sb-v">{imageCount}</span></div>}
+          </div>
+        </div>
+      </aside>
     </div>
-  )}
 
-  {fragment.type === 'shot' && html && (
-    <article class="panel" style="margin-bottom: var(--sp-3);">
-      <div class="prose" set:html={html} />
-    </article>
-  )}
+    <!-- === Related === -->
+    {related.length > 0 && (
+      <section class="d-related">
+        <div class="d-related-chrome">
+          <div class="d-related-rivets"><i /><i /><i /></div>
+          <span class="d-related-label">more {fragment.type}s</span>
+          <span class="d-related-count">{related.length}</span>
+          <div class="d-related-ticks"><i /><i /><i /><i /><i /><i /><i /><i /></div>
+        </div>
+        <div class="d-related-rows">
+          {related.map((r, i) => (
+            <a href={`/f/${r.id}`} class="d-related-row">
+              <span class="d-related-id">{String(r.id).padStart(2, '0')}</span>
+              <span class={`d-related-type type-${r.type}`}>{r.type}</span>
+              <span class="d-related-title">{r.title}</span>
+              <time class="d-related-date">{new Date(r.createdAt).toISOString().slice(0, 10)}</time>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
-  {fragment.type !== 'shot' && html && (
-    <article class="panel panel-accent">
-      <div class="prose" set:html={html} />
-    </article>
-  )}
+  </div>
 </Base>
-
-<style>
-  .prose :global(p) { margin-bottom: var(--sp-2); }
-  .prose :global(ul), .prose :global(ol) { margin-bottom: var(--sp-2); padding-left: var(--sp-3); }
-  .prose :global(li) { margin-bottom: var(--sp); }
-  .prose :global(h2), .prose :global(h3) { margin-top: var(--sp-3); margin-bottom: var(--sp); }
-  .prose :global(pre) { margin-bottom: var(--sp-2); }
-  .prose :global(blockquote) { border-left: 2px solid var(--accent); padding-left: var(--sp-2); color: var(--fg-2); margin-bottom: var(--sp-2); }
-  .prose :global(img) { max-width: 100%; height: auto; margin-bottom: var(--sp-2); border: 1px solid var(--border); }
-  .prose :global(a) { color: var(--accent); }
-  .prose :global(a:hover) { color: var(--accent-2); }
-</style>
