@@ -9,6 +9,7 @@
 import { AtpAgent } from '@atproto/api';
 import { readFileSync, existsSync } from 'fs';
 import { resolve, dirname, extname, basename } from 'path';
+import { stripMarkdown, markdownContent } from './lib/markdown.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
@@ -39,15 +40,15 @@ function blobUrl(did: string, cid: string): string {
 }
 
 const fragmentId = parseInt(idStr, 10);
-let content = readFileSync(resolve(file), 'utf-8');
-const title = titleOverride || content.split('\n')[0].replace(/^#\s*/, '').trim() || 'Untitled';
+let markdownText = readFileSync(resolve(file), 'utf-8');
+const title = titleOverride || markdownText.split('\n')[0].replace(/^#\s*/, '').trim() || 'Untitled';
 const mdDir = dirname(resolve(file));
 
 // Find all markdown image references: ![alt](path)
 const IMG_RE = /!\[([^\]]*)\]\(([^)]+)\)/g;
 const imageRefs: { match: string; alt: string; path: string; absPath: string }[] = [];
 
-for (const m of content.matchAll(IMG_RE)) {
+for (const m of markdownText.matchAll(IMG_RE)) {
   const imgPath = m[2];
   // Skip URLs (already absolute)
   if (imgPath.startsWith('http://') || imgPath.startsWith('https://')) continue;
@@ -89,7 +90,7 @@ async function main() {
     const blob = data.blob;
     const cid = blob.ref?.$link ?? blob.ref?.toString?.() ?? String(blob.ref);
     const url = blobUrl(DID, cid);
-    content = content.replace(ref.match, `![${ref.alt}](${url})`);
+    markdownText = markdownText.replace(ref.match, `![${ref.alt}](${url})`);
     console.log(`  blob: ${basename(ref.absPath)} → ${cid.slice(0, 12)}...`);
   }
 
@@ -98,7 +99,8 @@ async function main() {
     site: PUBLICATION_URI,
     path: `/f/${fragmentId}`,
     title,
-    textContent: content,
+    content: markdownContent(markdownText),
+    textContent: stripMarkdown(markdownText),
     publishedAt: dateOverride ? new Date(dateOverride).toISOString() : new Date().toISOString(),
     fragmentId,
     fragmentType: 'post',

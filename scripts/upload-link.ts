@@ -5,6 +5,7 @@
  * If no title given, fetches the page title from the URL.
  */
 import { AtpAgent } from '@atproto/api';
+import { stripMarkdown, markdownContent } from './lib/markdown.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
@@ -38,20 +39,27 @@ if (!title) {
 const agent = new AtpAgent({ service: 'https://bsky.social' });
 await agent.login({ identifier: HANDLE, password: PASSWORD });
 
+const record: Record<string, any> = {
+  $type: 'site.standard.document',
+  site: PUBLICATION_URI,
+  path: `/f/${fragmentId}`,
+  title,
+  publishedAt: new Date().toISOString(),
+  fragmentId,
+  fragmentType: 'link',
+  externalUrl: url,
+};
+
+// Add comment as both content (markdown) and textContent (plaintext)
+if (comment) {
+  record.content = markdownContent(comment);
+  record.textContent = stripMarkdown(comment);
+}
+
 await agent.com.atproto.repo.createRecord({
   repo: agent.session!.did,
   collection: 'site.standard.document',
-  record: {
-    $type: 'site.standard.document',
-    site: PUBLICATION_URI,
-    path: `/f/${fragmentId}`,
-    title,
-    textContent: comment || undefined,
-    publishedAt: new Date().toISOString(),
-    fragmentId,
-    fragmentType: 'link',
-    externalUrl: url,
-  },
+  record,
 });
 
 console.log(`[${fragmentId}] link: ${title}`);

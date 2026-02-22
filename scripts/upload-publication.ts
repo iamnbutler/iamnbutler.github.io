@@ -20,6 +20,14 @@ async function main() {
     url: 'https://nate.rip',
     name: 'nate.rip',
     description: 'Fragments of thought, photos, lists, and links.',
+    basicTheme: {
+      $type: 'site.standard.theme.basic',
+      // Dark theme colors from theme.css
+      background: { $type: 'site.standard.theme.color#rgb', r: 23, g: 28, b: 43 },    // #171c2b
+      foreground: { $type: 'site.standard.theme.color#rgb', r: 184, g: 191, b: 207 }, // #b8bfcf
+      accent: { $type: 'site.standard.theme.color#rgb', r: 94, g: 196, b: 212 },      // #5ec4d4
+      accentForeground: { $type: 'site.standard.theme.color#rgb', r: 23, g: 28, b: 43 }, // #171c2b (dark on bright accent)
+    },
     preferences: {
       showInDiscover: true,
     },

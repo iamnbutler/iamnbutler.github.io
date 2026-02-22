@@ -27,13 +27,18 @@ async function listRecords(collection: string): Promise<any[]> {
 function mapRecord(r: any): Fragment {
   const v = r.value;
   const type: FragmentType = v.fragmentType || 'post';
+
+  // Extract markdown from content union (structured) or fall back to textContent
+  // content is { $type: "rip.nate.content.markdown", text: "..." }
+  const markdown = v.content?.text ?? v.textContent;
+
   return {
     id: v.fragmentId,
     type,
     rkey: r.uri.split('/').pop()!,
     atUri: r.uri,
     title: v.title || '',
-    content: v.textContent,
+    content: markdown,
     url: v.externalUrl,
     images: v.images?.map((img: any) => ({
       cid: img.ref?.$link || img.ref,

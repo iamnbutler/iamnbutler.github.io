@@ -11,8 +11,8 @@
         "properties": {
           "site": {
             "type": "string",
-            "maxLength": 2048,
-            "description": "AT-URI of the publication record or base URL for loose documents."
+            "format": "uri",
+            "description": "Points to a publication record (at://) or a publication url (https://) for loose documents. Avoid trailing slashes."
           },
           "title": {
             "type": "string",
@@ -27,35 +27,38 @@
           },
           "path": {
             "type": "string",
-            "maxLength": 2048,
-            "description": "Path to combine with site URL (e.g., /f/42). Should start with /."
+            "description": "Combine with site or publication url to construct a canonical URL to the document. Prepend with a leading slash."
           },
           "description": {
             "type": "string",
             "maxLength": 30000,
             "maxGraphemes": 3000,
-            "description": "Brief description or excerpt from the document."
+            "description": "A brief description or excerpt from the document."
           },
           "coverImage": {
             "type": "blob",
-            "accept": ["image/png", "image/jpeg", "image/gif", "image/webp"],
+            "accept": ["image/*"],
             "maxSize": 1000000,
-            "description": "Image used for thumbnail or cover."
+            "description": "Image used for thumbnail or cover image. Less than 1MB in size."
+          },
+          "content": {
+            "type": "union",
+            "refs": [],
+            "closed": false,
+            "description": "Open union used to define the record's content. Each entry must specify a $type and may be extended with other lexicons to support additional content formats."
           },
           "textContent": {
             "type": "string",
-            "maxLength": 500000,
-            "description": "Plaintext or markdown content of the document."
+            "description": "Plaintext representation of the document's contents. Should not contain markdown or other formatting."
           },
           "tags": {
             "type": "array",
-            "maxLength": 8,
             "items": {
               "type": "string",
               "maxLength": 1280,
               "maxGraphemes": 128
             },
-            "description": "Tags to categorize the document."
+            "description": "Array of strings used to tag or categorize the document. Avoid prepending tags with hashtags."
           },
           "updatedAt": {
             "type": "string",
@@ -65,7 +68,7 @@
           "bskyPostRef": {
             "type": "ref",
             "ref": "com.atproto.repo.strongRef",
-            "description": "Reference to a Bluesky post for comments."
+            "description": "Strong reference to a Bluesky post. Useful to keep track of comments off-platform."
           },
 
           "fragmentId": {

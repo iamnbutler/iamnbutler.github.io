@@ -10,6 +10,7 @@ import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join, extname } from 'path';
 import { execSync } from 'child_process';
 import matter from 'gray-matter';
+import { stripMarkdown, markdownContent } from './lib/markdown.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
@@ -163,7 +164,8 @@ for (let i = 0; i < items.length; i++) {
         site: PUBLICATION_URI,
         path: `/f/${fragmentId}`,
         title: item.title,
-        textContent: item.content,
+        content: markdownContent(item.content),
+        textContent: stripMarkdown(item.content),
         publishedAt,
         fragmentId,
         fragmentType: 'post',
@@ -180,7 +182,8 @@ for (let i = 0; i < items.length; i++) {
         site: PUBLICATION_URI,
         path: `/f/${fragmentId}`,
         title: item.title,
-        textContent: item.content,
+        content: markdownContent(item.content),
+        textContent: stripMarkdown(item.content),
         publishedAt,
         fragmentId,
         fragmentType: 'list',
@@ -200,21 +203,28 @@ for (let i = 0; i < items.length; i++) {
       console.log(`  blob: ${img} (${(buf.length / 1024).toFixed(0)}KB)`);
     }
 
+    // Shots: content is optional, textContent is plaintext caption
+    const record: Record<string, any> = {
+      $type: 'site.standard.document',
+      site: PUBLICATION_URI,
+      path: `/f/${fragmentId}`,
+      title: item.title,
+      publishedAt,
+      fragmentId,
+      fragmentType: 'shot',
+      images: blobs,
+      coverImage: blobs[0],
+    };
+
+    if (item.content) {
+      record.content = markdownContent(item.content);
+      record.textContent = stripMarkdown(item.content);
+    }
+
     await agent.com.atproto.repo.createRecord({
       repo: agent.session!.did,
       collection: 'site.standard.document',
-      record: {
-        $type: 'site.standard.document',
-        site: PUBLICATION_URI,
-        path: `/f/${fragmentId}`,
-        title: item.title,
-        textContent: item.content || undefined,
-        publishedAt,
-        fragmentId,
-        fragmentType: 'shot',
-        images: blobs,
-        coverImage: blobs[0],
-      },
+      record,
     });
     console.log(`[${fragmentId}] shot: ${item.title} (${blobs.length} images)`);
   }

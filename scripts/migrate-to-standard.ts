@@ -8,6 +8,7 @@
  * 3. Optionally deletes old records (--delete-old)
  */
 import { AtpAgent } from '@atproto/api';
+import { stripMarkdown, markdownContent } from './lib/markdown.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
@@ -61,7 +62,6 @@ async function listRecords(collection: string): Promise<any[]> {
 function convertRecord(r: any, collection: OldCollection): Record<string, any> {
   const v = r.value;
   const fragmentType = TYPE_MAP[collection];
-  const rkey = r.uri.split('/').pop()!;
 
   const doc: Record<string, any> = {
     $type: 'site.standard.document',
@@ -73,12 +73,16 @@ function convertRecord(r: any, collection: OldCollection): Record<string, any> {
     fragmentType,
   };
 
-  // Content field mapping
+  // Content field mapping - use content union for markdown, textContent for plaintext
   if (collection === 'rip.nate.link') {
-    doc.textContent = v.comment || undefined;
+    if (v.comment) {
+      doc.content = markdownContent(v.comment);
+      doc.textContent = stripMarkdown(v.comment);
+    }
     doc.externalUrl = v.url;
-  } else {
-    doc.textContent = v.content || undefined;
+  } else if (v.content) {
+    doc.content = markdownContent(v.content);
+    doc.textContent = stripMarkdown(v.content);
   }
 
   // Images
@@ -138,7 +142,6 @@ async function main() {
 
   for (const { collection, record } of allOldRecords) {
     const v = record.value;
-    const oldRkey = record.uri.split('/').pop()!;
 
     try {
       const newDoc = convertRecord(record, collection);
