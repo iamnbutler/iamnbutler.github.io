@@ -1,0 +1,61 @@
+{
+  "lexicon": 1,
+  "id": "site.standard.publication",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["url", "name"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Base publication url (ex: https://nate.rip). The canonical document URL is formed by combining this value with the document path."
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 5000,
+            "maxGraphemes": 500,
+            "description": "Name of the publication."
+          },
+          "icon": {
+            "type": "blob",
+            "accept": ["image/*"],
+            "maxSize": 1000000,
+            "description": "Square image to identify the publication. Should be at least 256x256."
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 30000,
+            "maxGraphemes": 3000,
+            "description": "Brief description of the publication."
+          },
+          "basicTheme": {
+            "type": "ref",
+            "ref": "site.standard.theme.basic",
+            "description": "Simplified publication theme for tools and apps to utilize when displaying content."
+          },
+          "preferences": {
+            "type": "ref",
+            "ref": "#preferences",
+            "description": "Object containing platform specific preferences."
+          }
+        }
+      },
+      "description": "A publication record representing a blog, website, or content platform."
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "showInDiscover": {
+          "type": "boolean",
+          "default": true,
+          "description": "Boolean which decides whether the publication should appear in discovery feeds."
+        }
+      },
+      "description": "Platform-specific preferences for the publication."
+    }
+  }
+}

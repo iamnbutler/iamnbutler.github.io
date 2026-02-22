@@ -46,7 +46,7 @@ const typeAccent: Record<string, string> = {
 const accent = typeAccent[fragment.type] || 'var(--accent)';
 const date = new Date(fragment.createdAt).toISOString().slice(0, 10);
 ---
-<Base title={fragment.title} wide>
+<Base title={fragment.title} wide atUri={fragment.atUri}>
   <div class="detail-page" style={`--type-accent: ${accent}`}>
 
     <!-- === Chrome bar header === -->
