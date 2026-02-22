@@ -1,0 +1,101 @@
+{
+  "lexicon": 1,
+  "id": "site.standard.document",
+  "defs": {
+    "main": {
+      "type": "record",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": ["site", "title", "publishedAt"],
+        "properties": {
+          "site": {
+            "type": "string",
+            "maxLength": 2048,
+            "description": "AT-URI of the publication record or base URL for loose documents."
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 5000,
+            "maxGraphemes": 500,
+            "description": "Title of the document."
+          },
+          "publishedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Timestamp of the document's publish time."
+          },
+          "path": {
+            "type": "string",
+            "maxLength": 2048,
+            "description": "Path to combine with site URL (e.g., /f/42). Should start with /."
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 30000,
+            "maxGraphemes": 3000,
+            "description": "Brief description or excerpt from the document."
+          },
+          "coverImage": {
+            "type": "blob",
+            "accept": ["image/png", "image/jpeg", "image/gif", "image/webp"],
+            "maxSize": 1000000,
+            "description": "Image used for thumbnail or cover."
+          },
+          "textContent": {
+            "type": "string",
+            "maxLength": 500000,
+            "description": "Plaintext or markdown content of the document."
+          },
+          "tags": {
+            "type": "array",
+            "maxLength": 8,
+            "items": {
+              "type": "string",
+              "maxLength": 1280,
+              "maxGraphemes": 128
+            },
+            "description": "Tags to categorize the document."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Timestamp of the document's last edit."
+          },
+          "bskyPostRef": {
+            "type": "ref",
+            "ref": "com.atproto.repo.strongRef",
+            "description": "Reference to a Bluesky post for comments."
+          },
+
+          "fragmentId": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Extension: nate.rip fragment ID for URL generation."
+          },
+          "fragmentType": {
+            "type": "string",
+            "enum": ["post", "shot", "list", "link"],
+            "description": "Extension: nate.rip content type."
+          },
+          "images": {
+            "type": "array",
+            "maxLength": 20,
+            "items": {
+              "type": "blob",
+              "accept": ["image/png", "image/jpeg", "image/gif", "image/webp", "image/svg+xml", "video/mp4"],
+              "maxSize": 50000000
+            },
+            "description": "Extension: Multiple images for shot galleries."
+          },
+          "externalUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048,
+            "description": "Extension: External URL for link-type fragments."
+          }
+        }
+      }
+    }
+  }
+}

@@ -14,6 +14,8 @@ const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
 const PASSWORD = process.env.ATP_PASSWORD;
 
+const PUBLICATION_URI = `at://${DID}/site.standard.publication/self`;
+
 const rawArgs = process.argv.slice(2);
 const DRY_RUN = rawArgs.includes('--dry-run');
 const dateIdx = rawArgs.indexOf('--date');
@@ -92,20 +94,24 @@ async function main() {
   }
 
   const record: Record<string, any> = {
-    $type: 'rip.nate.post',
-    fragmentId,
+    $type: 'site.standard.document',
+    site: PUBLICATION_URI,
+    path: `/f/${fragmentId}`,
     title,
-    content,
-    createdAt: dateOverride ? new Date(dateOverride).toISOString() : new Date().toISOString(),
+    textContent: content,
+    publishedAt: dateOverride ? new Date(dateOverride).toISOString() : new Date().toISOString(),
+    fragmentId,
+    fragmentType: 'post',
   };
 
   if (blobs.length > 0) {
     record.images = blobs;
+    record.coverImage = blobs[0];
   }
 
   const res = await agent.com.atproto.repo.createRecord({
     repo: agent.session!.did,
-    collection: 'rip.nate.post',
+    collection: 'site.standard.document',
     record,
   });
 

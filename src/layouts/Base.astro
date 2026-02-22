@@ -1,6 +1,6 @@
 ---
-interface Props { title?: string; wide?: boolean; }
-const { title, wide } = Astro.props;
+interface Props { title?: string; wide?: boolean; atUri?: string; }
+const { title, wide, atUri } = Astro.props;
 const pageTitle = title ? `${title} · nate.rip` : 'nate.rip';
 import '../styles/theme.css';
 ---
@@ -10,6 +10,7 @@ import '../styles/theme.css';
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{pageTitle}</title>
+  {atUri && <link rel="site.standard.document" href={atUri} />}
 </head>
 <body class:list={[wide && 'wide']}>
   <slot />

@@ -4,6 +4,7 @@ export interface Fragment {
   id: number;
   type: FragmentType;
   rkey: string;
+  atUri: string;
   title: string;
   content?: string;
   url?: string;

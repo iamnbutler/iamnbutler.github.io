@@ -1,5 +1,5 @@
 /**
- * Upload all content to atproto PDS as v23 fragments.
+ * Upload all content to atproto PDS as site.standard.document records.
  * Usage: ATP_PASSWORD=... npx tsx scripts/upload.ts
  *
  * Reads posts from migrate/blog/, lists and shots from git main branch.
@@ -11,10 +11,12 @@ import { join, extname } from 'path';
 import { execSync } from 'child_process';
 import matter from 'gray-matter';
 
+const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
 const PASSWORD = process.env.ATP_PASSWORD;
 if (!PASSWORD) { console.error('Set ATP_PASSWORD env var'); process.exit(1); }
 
+const PUBLICATION_URI = `at://${DID}/site.standard.publication/self`;
 const DRY_RUN = process.argv.includes('--dry-run');
 
 type ContentItem = {
@@ -150,18 +152,21 @@ const MIME: Record<string, string> = {
 for (let i = 0; i < items.length; i++) {
   const item = items[i];
   const fragmentId = i + 1;
-  const createdAt = item.date.toISOString();
+  const publishedAt = item.date.toISOString();
 
   if (item.type === 'post') {
     await agent.com.atproto.repo.createRecord({
       repo: agent.session!.did,
-      collection: 'rip.nate.post',
+      collection: 'site.standard.document',
       record: {
-        $type: 'rip.nate.post',
-        fragmentId,
+        $type: 'site.standard.document',
+        site: PUBLICATION_URI,
+        path: `/f/${fragmentId}`,
         title: item.title,
-        content: item.content,
-        createdAt,
+        textContent: item.content,
+        publishedAt,
+        fragmentId,
+        fragmentType: 'post',
       },
     });
     console.log(`[${fragmentId}] post: ${item.title}`);
@@ -169,13 +174,16 @@ for (let i = 0; i < items.length; i++) {
   } else if (item.type === 'list') {
     await agent.com.atproto.repo.createRecord({
       repo: agent.session!.did,
-      collection: 'rip.nate.list',
+      collection: 'site.standard.document',
       record: {
-        $type: 'rip.nate.list',
-        fragmentId,
+        $type: 'site.standard.document',
+        site: PUBLICATION_URI,
+        path: `/f/${fragmentId}`,
         title: item.title,
-        content: item.content,
-        createdAt,
+        textContent: item.content,
+        publishedAt,
+        fragmentId,
+        fragmentType: 'list',
       },
     });
     console.log(`[${fragmentId}] list: ${item.title}`);
@@ -194,14 +202,18 @@ for (let i = 0; i < items.length; i++) {
 
     await agent.com.atproto.repo.createRecord({
       repo: agent.session!.did,
-      collection: 'rip.nate.shot',
+      collection: 'site.standard.document',
       record: {
-        $type: 'rip.nate.shot',
-        fragmentId,
+        $type: 'site.standard.document',
+        site: PUBLICATION_URI,
+        path: `/f/${fragmentId}`,
         title: item.title,
-        content: item.content || undefined,
+        textContent: item.content || undefined,
+        publishedAt,
+        fragmentId,
+        fragmentType: 'shot',
         images: blobs,
-        createdAt,
+        coverImage: blobs[0],
       },
     });
     console.log(`[${fragmentId}] shot: ${item.title} (${blobs.length} images)`);

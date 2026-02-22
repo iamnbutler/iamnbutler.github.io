@@ -5,10 +5,9 @@ const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const PDS = 'https://morel.us-east.host.bsky.network';
 const PUBLIC_API = 'https://public.api.bsky.app';
 
-const COLLECTION_POST = 'rip.nate.post';
-const COLLECTION_SHOT = 'rip.nate.shot';
-const COLLECTION_LIST = 'rip.nate.list';
-const COLLECTION_LINK = 'rip.nate.link';
+const PUBLICATION_RKEY = 'self';
+const PUBLICATION_URI = `at://${DID}/site.standard.publication/${PUBLICATION_RKEY}`;
+const COLLECTION_DOCUMENT = 'site.standard.document';
 
 async function listRecords(collection: string): Promise<any[]> {
   const records: any[] = [];
@@ -25,36 +24,31 @@ async function listRecords(collection: string): Promise<any[]> {
   return records;
 }
 
-function mapRecord(r: any, type: FragmentType): Fragment {
+function mapRecord(r: any): Fragment {
+  const v = r.value;
+  const type: FragmentType = v.fragmentType || 'post';
   return {
-    id: r.value.fragmentId,
+    id: v.fragmentId,
     type,
     rkey: r.uri.split('/').pop()!,
-    title: r.value.title || '',
-    content: r.value.content || r.value.comment,
-    url: r.value.url,
-    images: r.value.images?.map((img: any) => ({
+    atUri: r.uri,
+    title: v.title || '',
+    content: v.textContent || v.content,
+    url: v.externalUrl,
+    images: v.images?.map((img: any) => ({
       cid: img.ref?.$link || img.ref,
       mimeType: img.mimeType,
     })),
-    createdAt: r.value.createdAt,
+    createdAt: v.publishedAt || v.createdAt,
   };
 }
 
 export async function fetchAllFragments(): Promise<Fragment[]> {
-  const [posts, shots, lists, links] = await Promise.all([
-    listRecords(COLLECTION_POST),
-    listRecords(COLLECTION_SHOT),
-    listRecords(COLLECTION_LIST),
-    listRecords(COLLECTION_LINK),
-  ]);
+  const records = await listRecords(COLLECTION_DOCUMENT);
 
-  const fragments: Fragment[] = [
-    ...posts.map((r: any) => mapRecord(r, 'post')),
-    ...shots.map((r: any) => mapRecord(r, 'shot')),
-    ...lists.map((r: any) => mapRecord(r, 'list')),
-    ...links.map((r: any) => mapRecord(r, 'link')),
-  ];
+  const fragments: Fragment[] = records
+    .filter((r: any) => r.value.fragmentId) // only nate.rip documents
+    .map((r: any) => mapRecord(r));
 
   return fragments.sort((a, b) =>
     new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
