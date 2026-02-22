@@ -33,13 +33,13 @@ function mapRecord(r: any): Fragment {
     rkey: r.uri.split('/').pop()!,
     atUri: r.uri,
     title: v.title || '',
-    content: v.textContent || v.content,
+    content: v.textContent,
     url: v.externalUrl,
     images: v.images?.map((img: any) => ({
       cid: img.ref?.$link || img.ref,
       mimeType: img.mimeType,
     })),
-    createdAt: v.publishedAt || v.createdAt,
+    createdAt: v.publishedAt,
   };
 }
 
