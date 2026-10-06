@@ -7,9 +7,10 @@
  *        Add --dry-run to preview without uploading.
  */
 import { AtpAgent } from '@atproto/api';
-import { readFileSync, existsSync } from 'fs';
-import { resolve, dirname, extname, basename } from 'path';
+import { readFileSync } from 'fs';
+import { resolve, dirname, basename } from 'path';
 import { stripMarkdown, markdownContent } from './lib/markdown.js';
+import { collectPostImages, parseFragmentId, parsePublishingArgs, preflightPublishing, publishingFetch } from './lib/publishing.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
@@ -17,11 +18,7 @@ const PASSWORD = process.env.ATP_PASSWORD;
 
 const PUBLICATION_URI = `at://${DID}/site.standard.publication/self`;
 
-const rawArgs = process.argv.slice(2);
-const DRY_RUN = rawArgs.includes('--dry-run');
-const dateIdx = rawArgs.indexOf('--date');
-const dateOverride = dateIdx !== -1 ? rawArgs[dateIdx + 1] : undefined;
-const args = rawArgs.filter((a, i) => a !== '--dry-run' && a !== '--date' && (dateIdx === -1 || i !== dateIdx + 1));
+const { args, dryRun: DRY_RUN, publishedAt } = parsePublishingArgs(process.argv.slice(2));
 
 const [file, idStr, titleOverride] = args;
 if (!file || !idStr) {
@@ -30,44 +27,21 @@ if (!file || !idStr) {
 }
 if (!PASSWORD && !DRY_RUN) { console.error('Set ATP_PASSWORD env var'); process.exit(1); }
 
-const MIME: Record<string, string> = {
-  '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
-  '.gif': 'image/gif', '.webp': 'image/webp',
-};
-
 function blobUrl(did: string, cid: string): string {
   return `https://bsky.social/xrpc/com.atproto.sync.getBlob?did=${did}&cid=${cid}`;
 }
 
-const fragmentId = parseInt(idStr, 10);
+const fragmentId = parseFragmentId(idStr);
 let markdownText = readFileSync(resolve(file), 'utf-8');
 const title = titleOverride || markdownText.split('\n')[0].replace(/^#\s*/, '').trim() || 'Untitled';
 const mdDir = dirname(resolve(file));
 
-// Find all markdown image references: ![alt](path)
-const IMG_RE = /!\[([^\]]*)\]\(([^)]+)\)/g;
-const imageRefs: { match: string; alt: string; path: string; absPath: string }[] = [];
-
-for (const m of markdownText.matchAll(IMG_RE)) {
-  const imgPath = m[2];
-  // Skip URLs (already absolute)
-  if (imgPath.startsWith('http://') || imgPath.startsWith('https://')) continue;
-  const absPath = resolve(mdDir, imgPath);
-  if (!existsSync(absPath)) {
-    console.warn(`  warning: image not found: ${imgPath} (resolved to ${absPath})`);
-    continue;
-  }
-  const ext = extname(absPath).toLowerCase();
-  if (!MIME[ext]) {
-    console.warn(`  warning: unsupported image type: ${ext} (${imgPath})`);
-    continue;
-  }
-  imageRefs.push({ match: m[0], alt: m[1], path: imgPath, absPath });
-}
+// Validate and read every local image before any network writes.
+const imageRefs = collectPostImages(markdownText, mdDir);
 
 console.log(`Post: #${fragmentId} "${title}"`);
 console.log(`Images: ${imageRefs.length} local reference(s) found`);
-imageRefs.forEach(r => console.log(`  ${r.path} (${(readFileSync(r.absPath).length / 1024).toFixed(0)}KB)`));
+imageRefs.forEach(r => console.log(`  ${r.path} (${(r.bytes.length / 1024).toFixed(0)}KB)`));
 
 if (DRY_RUN) {
   console.log('\n--dry-run: not uploading');
@@ -75,16 +49,19 @@ if (DRY_RUN) {
 }
 
 async function main() {
-  const agent = new AtpAgent({ service: 'https://bsky.social' });
+  const agent = new AtpAgent({ service: 'https://bsky.social', fetch: publishingFetch });
   await agent.login({ identifier: HANDLE, password: PASSWORD! });
+  await preflightPublishing({
+    authenticatedDid: agent.session?.did,
+    expectedDid: DID,
+    fragmentId,
+    listRecords: (params, options) => agent.com.atproto.repo.listRecords(params, options),
+  });
 
   // Upload image blobs and rewrite markdown
   const blobs = [];
   for (const ref of imageRefs) {
-    const buf = readFileSync(ref.absPath);
-    const ext = extname(ref.absPath).toLowerCase();
-    const mime = MIME[ext] || 'application/octet-stream';
-    const { data } = await agent.uploadBlob(buf, { encoding: mime });
+    const { data } = await agent.uploadBlob(ref.bytes, { encoding: ref.mime });
     blobs.push(data.blob);
 
     const blob = data.blob;
@@ -101,7 +78,7 @@ async function main() {
     title,
     content: markdownContent(markdownText),
     textContent: stripMarkdown(markdownText),
-    publishedAt: dateOverride ? new Date(dateOverride).toISOString() : new Date().toISOString(),
+    publishedAt: publishedAt ?? new Date().toISOString(),
     fragmentId,
     fragmentType: 'post',
   };

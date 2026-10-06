@@ -1,31 +1,33 @@
 /**
  * Upload a link fragment to atproto PDS.
- * Usage: env $(cat .env | xargs) npx tsx scripts/upload-link.ts <url> <fragmentId> [title] [comment]
+ * Usage: ATP_PASSWORD=... npx tsx scripts/upload-link.ts <url> <fragmentId> [title] [comment] [--date ISO] [--dry-run]
  *
  * If no title given, fetches the page title from the URL.
  */
 import { AtpAgent } from '@atproto/api';
 import { stripMarkdown, markdownContent } from './lib/markdown.js';
+import { parseFragmentId, parsePublishingArgs, preflightPublishing, publishingFetch, validateLinkUrl } from './lib/publishing.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
 const PASSWORD = process.env.ATP_PASSWORD;
-if (!PASSWORD) { console.error('Set ATP_PASSWORD env var'); process.exit(1); }
-
 const PUBLICATION_URI = `at://${DID}/site.standard.publication/self`;
 
-const [,, url, idStr, titleArg, comment] = process.argv;
+const { args, dryRun: DRY_RUN, publishedAt } = parsePublishingArgs(process.argv.slice(2));
+const [url, idStr, titleArg, comment] = args;
 if (!url || !idStr) {
-  console.error('Usage: upload-link.ts <url> <fragmentId> [title] [comment]');
+  console.error('Usage: upload-link.ts <url> <fragmentId> [title] [comment] [--date ISO] [--dry-run]');
   process.exit(1);
 }
-const fragmentId = parseInt(idStr, 10);
+const fragmentId = parseFragmentId(idStr);
+validateLinkUrl(url);
+if (!PASSWORD && !DRY_RUN) { console.error('Set ATP_PASSWORD env var'); process.exit(1); }
 
 // Resolve title: use arg, or fetch from page
 let title = titleArg;
 if (!title) {
   try {
-    const res = await fetch(url);
+    const res = await publishingFetch(url);
     const html = await res.text();
     const m = html.match(/<title[^>]*>([^<]+)/i);
     title = m ? m[1].trim() : new URL(url).hostname;
@@ -36,15 +38,12 @@ if (!title) {
   }
 }
 
-const agent = new AtpAgent({ service: 'https://bsky.social' });
-await agent.login({ identifier: HANDLE, password: PASSWORD });
-
 const record: Record<string, any> = {
   $type: 'site.standard.document',
   site: PUBLICATION_URI,
   path: `/f/${fragmentId}`,
   title,
-  publishedAt: new Date().toISOString(),
+  publishedAt: publishedAt ?? new Date().toISOString(),
   fragmentId,
   fragmentType: 'link',
   externalUrl: url,
@@ -55,6 +54,21 @@ if (comment) {
   record.content = markdownContent(comment);
   record.textContent = stripMarkdown(comment);
 }
+
+if (DRY_RUN) {
+  console.log(JSON.stringify(record, null, 2));
+  console.log('\n--dry-run: not uploading');
+  process.exit(0);
+}
+
+const agent = new AtpAgent({ service: 'https://bsky.social', fetch: publishingFetch });
+await agent.login({ identifier: HANDLE, password: PASSWORD! });
+await preflightPublishing({
+  authenticatedDid: agent.session?.did,
+  expectedDid: DID,
+  fragmentId,
+  listRecords: (params, options) => agent.com.atproto.repo.listRecords(params, options),
+});
 
 await agent.com.atproto.repo.createRecord({
   repo: agent.session!.did,
