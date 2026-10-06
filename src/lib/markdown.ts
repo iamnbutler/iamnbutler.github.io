@@ -4,38 +4,55 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
+import type { Root, RootContent } from 'hast';
 
-let processor: any;
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeSlug)
+  .use(rehypeShiki, {
+    theme: 'github-dark-dimmed',
+  })
+  .use(rehypeStringify, { allowDangerousHtml: true });
 
-async function getProcessor() {
-  if (!processor) {
-    processor = unified()
-      .use(remarkParse)
-      .use(remarkRehype, { allowDangerousHtml: true })
-      .use(rehypeSlug)
-      .use(rehypeShiki, {
-        theme: 'github-dark-dimmed',
-      })
-      .use(rehypeStringify, { allowDangerousHtml: true });
+export interface MarkdownHeading {
+  text: string;
+  slug: string;
+  level: 2 | 3;
+}
+
+function headingText(node: RootContent): string {
+  if (node.type === 'text') return node.value;
+  return 'children' in node ? node.children.map(headingText).join('') : '';
+}
+
+/** Render once, collecting TOC entries from the same AST and IDs as the HTML. */
+export async function renderMarkdownWithHeadings(md: string): Promise<{
+  html: string;
+  headings: MarkdownHeading[];
+}> {
+  const tree = await processor.run(processor.parse(md));
+  const headings: MarkdownHeading[] = [];
+
+  function collect(node: Root | RootContent): void {
+    if (node.type === 'element' && (node.tagName === 'h2' || node.tagName === 'h3')) {
+      const id = node.properties.id;
+      // Even an empty ID (e.g. a punctuation-only heading) is rehype-slug's ID.
+      if (typeof id === 'string') {
+        headings.push({
+          text: headingText(node),
+          slug: id,
+          level: node.tagName === 'h2' ? 2 : 3,
+        });
+      }
+    }
+    if ('children' in node) node.children.forEach(collect);
   }
-  return processor;
+
+  collect(tree);
+  return { html: processor.stringify(tree), headings };
 }
 
 export async function renderMarkdown(md: string): Promise<string> {
-  const result = await (await getProcessor()).process(md);
-  return String(result);
-}
-
-/** Extract heading text + slug pairs for TOC generation */
-export function extractHeadings(md: string): { text: string; slug: string; level: number }[] {
-  const headings: { text: string; slug: string; level: number }[] = [];
-  for (const line of md.split('\n')) {
-    const m = line.match(/^(#{2,3})\s+(.+)/);
-    if (m) {
-      const text = m[2].replace(/[*_`\[\]()]/g, '').trim();
-      const slug = text.toLowerCase().replace(/[^\w]+/g, '-').replace(/^-|-$/g, '');
-      headings.push({ text, slug, level: m[1].length });
-    }
-  }
-  return headings;
+  return (await renderMarkdownWithHeadings(md)).html;
 }

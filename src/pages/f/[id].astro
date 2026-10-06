@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { fetchAllFragments, blobUrl, DID } from '../../lib/atproto';
-import { renderMarkdown, extractHeadings } from '../../lib/markdown';
+import { renderMarkdownWithHeadings } from '../../lib/markdown';
 import type { Fragment } from '../../lib/types';
 
 export async function getStaticPaths() {
@@ -17,8 +17,9 @@ const { fragment, allFragments } = Astro.props as {
   allFragments: Fragment[];
 };
 
-const html = fragment.content ? await renderMarkdown(fragment.content) : '';
-const headings = fragment.content ? extractHeadings(fragment.content) : [];
+const { html, headings } = fragment.content
+  ? await renderMarkdownWithHeadings(fragment.content)
+  : { html: '', headings: [] };
 const imageCount = fragment.images?.length ?? 0;
 
 const wordCount = fragment.content
