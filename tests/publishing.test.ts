@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import {
-  collectPostImages, parseFragmentId, parsePublishedAt, parsePublishingArgs,
+  collectPostImages, rewritePostImages, parseFragmentId, parsePublishedAt, parsePublishingArgs,
   preflightPublishing, publishingFetch, validateLinkUrl,
   type ListDocuments,
 } from '../scripts/lib/publishing.js';
@@ -195,4 +195,18 @@ test('publisher dry-run exits and preflight precedes every blob/record write (so
     assert.ok(source.includes('parsePublishingArgs(process.argv.slice(2))'));
     assert.ok(source.includes('parseFragmentId(idStr)'));
   }
+});
+
+
+test('inline, fenced, and indented code examples are not local images', () => {
+  const markdown = '`![alt](missing.png)`\n\n```md\n![alt](missing.png)\n```\n\n    ![alt](missing.png)';
+  assert.deepEqual(collectPostImages(markdown, '/posts', () => assert.fail('must not read examples')), []);
+});
+
+test('image rewriting targets parsed spans, preserving identical code examples and titles', () => {
+  const markdown = '`![a](one.png)`\n\n![a](one.png)\n\n![b](<two (2).png> "Caption")';
+  const images = collectPostImages(markdown, '/posts', () => new Uint8Array([1]));
+  assert.equal(images[1].path, 'two (2).png');
+  assert.equal(rewritePostImages(markdown, images, ['https://example.com/one', 'https://example.com/two']),
+    '`![a](one.png)`\n\n![a](https://example.com/one)\n\n![b](https://example.com/two "Caption")');
 });

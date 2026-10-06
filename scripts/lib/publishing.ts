@@ -1,5 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { extname, resolve } from 'node:path';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import type { Root, RootContent, Image } from 'mdast';
 
 export const REQUEST_TIMEOUT_MS = 30_000;
 const COLLECTION = 'site.standard.document';
@@ -65,9 +68,15 @@ export function collectPostImages(
   directory: string,
   readImage: (path: string) => Uint8Array = path => readFileSync(path),
 ) {
+  const nodes: Image[] = [];
+  function collect(node: Root | RootContent): void {
+    if (node.type === 'image') nodes.push(node);
+    if ('children' in node) node.children.forEach(collect);
+  }
+  collect(unified().use(remarkParse).parse(markdown));
   const images = [];
-  for (const match of markdown.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
-    const path = match[2];
+  for (const node of nodes) {
+    const path = node.url;
     if (/^https?:\/\//i.test(path)) continue;
     const absPath = resolve(directory, path);
     const mime = MIME[extname(absPath).toLowerCase()];
@@ -76,9 +85,23 @@ export function collectPostImages(
     try { bytes = readImage(absPath); } catch (cause) {
       throw new Error(`Cannot read local image: ${path} (resolved to ${absPath})`, { cause });
     }
-    images.push({ match: match[0], alt: match[1], path, absPath, mime, bytes });
+    const start = node.position!.start.offset!;
+    const end = node.position!.end.offset!;
+    images.push({ match: markdown.slice(start, end), alt: node.alt ?? '', title: node.title, start, end, path, absPath, mime, bytes });
   }
   return images;
+}
+
+/** Replace exact parsed image spans, never identical text inside code examples. */
+export function rewritePostImages(markdown: string, images: ReturnType<typeof collectPostImages>, urls: string[]): string {
+  if (images.length !== urls.length) throw new Error('Every local image needs an uploaded URL');
+  for (let i = images.length - 1; i >= 0; i--) {
+    const image = images[i];
+    const alt = image.alt.replace(/([\\\[\]])/g, '\\$1');
+    const title = image.title ? ` ${JSON.stringify(image.title)}` : '';
+    markdown = markdown.slice(0, image.start) + `![${alt}](${urls[i]}${title})` + markdown.slice(image.end);
+  }
+  return markdown;
 }
 
 /** Bound all publisher HTTP calls, including login, title fetching and writes. */

@@ -10,7 +10,7 @@ import { AtpAgent } from '@atproto/api';
 import { readFileSync } from 'fs';
 import { resolve, dirname, basename } from 'path';
 import { stripMarkdown, markdownContent } from './lib/markdown.js';
-import { collectPostImages, parseFragmentId, parsePublishingArgs, preflightPublishing, publishingFetch } from './lib/publishing.js';
+import { collectPostImages, rewritePostImages, parseFragmentId, parsePublishingArgs, preflightPublishing, publishingFetch } from './lib/publishing.js';
 
 const DID = 'did:plc:5dnwnjydruv7wmbi33xchkr6';
 const HANDLE = process.env.ATP_HANDLE || 'nate.rip';
@@ -60,6 +60,7 @@ async function main() {
 
   // Upload image blobs and rewrite markdown
   const blobs = [];
+  const imageUrls: string[] = [];
   for (const ref of imageRefs) {
     const { data } = await agent.uploadBlob(ref.bytes, { encoding: ref.mime });
     blobs.push(data.blob);
@@ -67,9 +68,11 @@ async function main() {
     const blob = data.blob;
     const cid = blob.ref?.$link ?? blob.ref?.toString?.() ?? String(blob.ref);
     const url = blobUrl(DID, cid);
-    markdownText = markdownText.replace(ref.match, `![${ref.alt}](${url})`);
+    imageUrls.push(url);
     console.log(`  blob: ${basename(ref.absPath)} → ${cid.slice(0, 12)}...`);
   }
+
+  markdownText = rewritePostImages(markdownText, imageRefs, imageUrls);
 
   const record: Record<string, any> = {
     $type: 'site.standard.document',
