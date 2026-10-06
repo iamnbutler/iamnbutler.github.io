@@ -82,13 +82,13 @@
     <div class="panel-actions">
       <button onclick={exportCSS}>{exportLabel}</button>
       <button onclick={reset}>Reset</button>
-      <button onclick={onclose}>&times;</button>
+      <button onclick={onclose} aria-label="Close theme editor">&times;</button>
     </div>
   </header>
 
   <div class="panel-body">
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('colors')}>
+      <button class="section-toggle" aria-expanded={openSections.colors} onclick={() => toggle('colors')}>
         <span class="section-arrow" class:open={openSections.colors}>&#9654;</span>
         Colors
       </button>
@@ -100,7 +100,7 @@
     </section>
 
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('typography')}>
+      <button class="section-toggle" aria-expanded={openSections.typography} onclick={() => toggle('typography')}>
         <span class="section-arrow" class:open={openSections.typography}>&#9654;</span>
         Typography
       </button>
@@ -112,7 +112,7 @@
     </section>
 
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('spacing')}>
+      <button class="section-toggle" aria-expanded={openSections.spacing} onclick={() => toggle('spacing')}>
         <span class="section-arrow" class:open={openSections.spacing}>&#9654;</span>
         Spacing
       </button>
@@ -124,7 +124,7 @@
     </section>
 
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('corners')}>
+      <button class="section-toggle" aria-expanded={openSections.corners} onclick={() => toggle('corners')}>
         <span class="section-arrow" class:open={openSections.corners}>&#9654;</span>
         Corners &amp; Shapes
       </button>
@@ -136,7 +136,7 @@
     </section>
 
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('shadows')}>
+      <button class="section-toggle" aria-expanded={openSections.shadows} onclick={() => toggle('shadows')}>
         <span class="section-arrow" class:open={openSections.shadows}>&#9654;</span>
         Shadows
       </button>
@@ -148,7 +148,7 @@
     </section>
 
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('transitions')}>
+      <button class="section-toggle" aria-expanded={openSections.transitions} onclick={() => toggle('transitions')}>
         <span class="section-arrow" class:open={openSections.transitions}>&#9654;</span>
         Transitions
       </button>
@@ -160,7 +160,7 @@
     </section>
 
     <section class="section">
-      <button class="section-toggle" onclick={() => toggle('experimental')}>
+      <button class="section-toggle" aria-expanded={openSections.experimental} onclick={() => toggle('experimental')}>
         <span class="section-arrow" class:open={openSections.experimental}>&#9654;</span>
         Experimental
       </button>

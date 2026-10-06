@@ -34,7 +34,7 @@ const mediaAlt = p.images?.[0]?.alt ?? p.externalEmbed?.title ?? '';
       <video
         src={p.video.playlist}
         poster={p.video.thumbnail}
-        autoplay
+        data-bsky-autoplay
         muted
         loop
         playsinline
@@ -53,3 +53,26 @@ const mediaAlt = p.images?.[0]?.alt ?? p.externalEmbed?.title ?? '';
     </div>
   </div>
 </a>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const videos = document.querySelectorAll<HTMLVideoElement>('video[data-bsky-autoplay]');
+
+  function syncPlayback() {
+    videos.forEach((video) => {
+      // Opt in only after checking the browser preference to avoid a motion flash.
+      video.autoplay = !reducedMotion.matches;
+      if (reducedMotion.matches) {
+        video.pause();
+      } else {
+        video.muted = true;
+        void video.play().catch(() => {
+          // Autoplay can still be blocked by the browser; keep the poster visible.
+        });
+      }
+    });
+  }
+
+  syncPlayback();
+  reducedMotion.addEventListener('change', syncPlayback);
+</script>
