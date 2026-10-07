@@ -2784,3 +2784,19 @@ hr {
         font-size: 20px;
     }
 }
+
+/* Keyboard focus remains visible without changing pointer interaction styles. */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

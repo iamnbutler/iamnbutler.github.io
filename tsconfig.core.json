@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "include": [
+    "src/lib/**/*.ts",
+    "scripts/lib/**/*.ts",
+    "scripts/upload-post.ts",
+    "scripts/upload-link.ts",
+    "scripts/check-content.ts",
+    "tests/*.test.ts"
+  ]
+}
