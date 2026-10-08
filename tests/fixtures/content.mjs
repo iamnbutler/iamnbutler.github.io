@@ -12,6 +12,22 @@ const records = ['post', 'shot', 'list', 'link'].map((type, i) => ({
     ...(type === 'link' ? { externalUrl: 'https://example.com/' } : {}),
   },
 }));
+// Newest shot becomes the hero; the next three exercise each grid shot variant.
+for (const [i, date] of ['2026-01-05', '2026-01-04', '2026-01-03', '2026-01-02'].entries()) {
+  const id = i + 5;
+  records.push({
+    uri: `at://${did}/site.standard.document/fixture-${id}`,
+    value: {
+      ...records[1].value,
+      fragmentId: id, path: `/f/${id}`, title: `Fixture video ${id}`,
+      publishedAt: `${date}T00:00:00Z`,
+      images: [
+        { ref: { $link: `fixture-video-${id}` }, mimeType: 'video/mp4', alt: `Fixture video ${id}` },
+        ...(id === 5 ? [{ ref: { $link: 'fixture-mixed-image' }, mimeType: 'image/png', alt: 'Mixed gallery image' }] : []),
+      ],
+    },
+  });
+}
 globalThis.fetch = async (input, init) => {
   const url = new URL(input instanceof Request ? input.url : input);
   if (url.hostname === 'morel.us-east.host.bsky.network') return Response.json({ records });

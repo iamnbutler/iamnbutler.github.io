@@ -1,0 +1,29 @@
+---
+import type { Fragment } from '../../lib/types';
+import { blobUrl, DID } from '../../lib/atproto';
+
+interface Props {
+  media: NonNullable<Fragment['images']>[number];
+  title: string;
+}
+
+const { media, title } = Astro.props;
+const src = blobUrl(DID, media.cid);
+---
+
+{media.mimeType.startsWith('video/') ? (
+  <>
+    <video
+      class="shot-video-preview"
+      src={src}
+      muted
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+    />
+    <span class="shot-video-label" aria-hidden="true">▶ Video</span>
+  </>
+) : (
+  <img src={src} alt={media.alt || title} loading="lazy" />
+)}

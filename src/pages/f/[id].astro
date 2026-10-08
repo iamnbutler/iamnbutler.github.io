@@ -77,15 +77,23 @@ const date = new Date(fragment.createdAt).toISOString().slice(0, 10);
               const isLast = i === imageCount - 1;
               const oddRemaining = (imageCount - 1) % 2 === 1;
               const spanFull = isFirst || (isLast && oddRemaining && imageCount > 1);
+              const isVideo = img.mimeType.startsWith('video/');
               return (
-                <div class:list={['d-gallery-item', spanFull && 'd-gallery-full']}>
-                  <img src={blobUrl(DID, img.cid)} alt={img.alt || fragment.title} loading="lazy" />
+                <div class:list={['d-gallery-item', spanFull && 'd-gallery-full', isVideo && 'd-gallery-video']}>
+                  {isVideo ? (
+                    <video controls playsinline preload="metadata" aria-label={img.alt || fragment.title}>
+                      <source src={blobUrl(DID, img.cid)} type={img.mimeType} />
+                      <a href={blobUrl(DID, img.cid)}>Open video: {img.alt || fragment.title}</a>
+                    </video>
+                  ) : (
+                    <img src={blobUrl(DID, img.cid)} alt={img.alt || fragment.title} loading="lazy" />
+                  )}
                   <div class="d-gallery-chrome">
                     <span class="d-gallery-n">{String(i + 1).padStart(2, '0')}/{String(imageCount).padStart(2, '0')}</span>
                     <span class="d-gallery-exposure">f/{fragment.id}</span>
                   </div>
                   {/* Crosshair overlays */}
-                  <div class="d-gallery-crosshair" />
+                  {!isVideo && <div class="d-gallery-crosshair" />}
                 </div>
               );
             })}
@@ -158,7 +166,7 @@ const date = new Date(fragment.createdAt).toISOString().slice(0, 10);
             <div class="d-sb-row"><span class="d-sb-k">FRAG</span><span class="d-sb-v">{fragment.id}</span></div>
             <div class="d-sb-row"><span class="d-sb-k">DATE</span><span class="d-sb-v">{date}</span></div>
             {wordCount > 0 && <div class="d-sb-row"><span class="d-sb-k">WORDS</span><span class="d-sb-v">{wordCount}</span></div>}
-            {imageCount > 0 && <div class="d-sb-row"><span class="d-sb-k">IMG</span><span class="d-sb-v">{imageCount}</span></div>}
+            {imageCount > 0 && <div class="d-sb-row"><span class="d-sb-k">MEDIA</span><span class="d-sb-v">{imageCount}</span></div>}
           </div>
         </div>
       </aside>

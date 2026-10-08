@@ -1,6 +1,6 @@
 ---
 import type { Fragment as FragmentType } from '../../lib/types';
-import { blobUrl, DID } from '../../lib/atproto';
+import ShotMedia from './ShotMedia.astro';
 
 interface Props {
   fragment: FragmentType;
@@ -14,12 +14,9 @@ const { fragment: f, cls = '' } = Astro.props;
   href={`/f/${f.id}`}
   class:list={['tile', 'tile-shot', cls]}
   data-type="shot"
+  aria-label={f.title}
 >
-  <img
-    src={blobUrl(DID, f.images![0].cid)}
-    alt={f.title}
-    loading="lazy"
-  />
+  <ShotMedia media={f.images![0]} title={f.title} />
   <div class="hero-scanlines" />
   <div class="hero-corners">
     <>
